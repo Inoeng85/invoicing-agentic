@@ -1,0 +1,268 @@
+<!doctype html>
+<html lang="id">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Invoicing UI System — Overview</title>
+    <script>
+      try {
+        if (localStorage.getItem('invoicing-proto-theme') === 'dark') document.documentElement.classList.add('dark')
+      } catch (e) {}
+    </script>
+    <link rel="stylesheet" href="assets/ui.css" />
+    <script src="assets/prototype.js" defer></script>
+  </head>
+  <body data-shell="docs">
+    <main class="mx-auto max-w-7xl space-y-16 px-4 py-12 sm:px-6">
+      <section class="relative overflow-hidden rounded-2xl border bg-background px-6 py-12 shadow-xs sm:px-12">
+        <div
+          class="pointer-events-none absolute -top-24 -right-24 size-80 rounded-full bg-primary/10 blur-3xl"
+          aria-hidden="true"
+        ></div>
+        <div class="relative max-w-3xl space-y-5">
+          <span class="badge badge-sent"><span class="badge-dot"></span>Design system v2 · Tailwind CSS v4 + shadcn/ui</span>
+          <h1 class="text-4xl font-semibold tracking-tight text-balance sm:text-5xl">
+            UI system untuk invoicing freelancer Indonesia
+          </h1>
+          <p class="text-lg text-pretty text-muted-foreground">
+            Token, komponen, dan pola layar untuk MVP FR-01–FR-08. Token mengikuti konvensi shadcn/ui
+            (<code class="code">--primary</code>, <code class="code">--muted</code>, …) di atas Tailwind v4, dan pola
+            layout mengikuti gaya aplikasi Tailwind UI. Semua nominal ditampilkan dalam IDR.
+          </p>
+          <div class="flex flex-wrap gap-3">
+            <a class="btn btn-default btn-lg" href="screen-dashboard.html"><i data-icon="monitor"></i>Lihat layar MVP</a>
+            <a class="btn btn-outline btn-lg" href="color-palette.html"><i data-icon="palette"></i>Mulai dari token</a>
+          </div>
+        </div>
+      </section>
+
+      <section class="doc-section">
+        <div>
+          <h2 class="doc-title">Fondasi &amp; komponen</h2>
+          <p class="doc-desc">Setiap halaman memuat banyak opsi. Opsi bertanda <span class="badge badge-default">Rekomendasi</span> dipakai di layar MVP.</p>
+        </div>
+        <div class="grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
+          <a href="color-palette.html" class="card group gap-4 transition-shadow hover:shadow-md">
+            <div class="card-header">
+              <span class="grid size-10 place-items-center rounded-lg bg-primary/10 text-primary"><i data-icon="palette" class="size-5"></i></span>
+            </div>
+            <div class="card-content space-y-1">
+              <h3 class="card-title">Color palette</h3>
+              <p class="card-description">Token shadcn (light/dark), skala brand, status invoice, kontras WCAG.</p>
+            </div>
+          </a>
+          <a href="typography.html" class="card group gap-4 transition-shadow hover:shadow-md">
+            <div class="card-header">
+              <span class="grid size-10 place-items-center rounded-lg bg-primary/10 text-primary"><i data-icon="type" class="size-5"></i></span>
+            </div>
+            <div class="card-content space-y-1">
+              <h3 class="card-title">Typography</h3>
+              <p class="card-description">Skala tipe, angka tabular IDR, pola teks, 3 opsi font stack.</p>
+            </div>
+          </a>
+          <a href="buttons.html" class="card group gap-4 transition-shadow hover:shadow-md">
+            <div class="card-header">
+              <span class="grid size-10 place-items-center rounded-lg bg-primary/10 text-primary"><i data-icon="pointer" class="size-5"></i></span>
+            </div>
+            <div class="card-content space-y-1">
+              <h3 class="card-title">Button</h3>
+              <p class="card-description">7 varian, 4 ukuran, state, button group, aksi per status invoice.</p>
+            </div>
+          </a>
+          <a href="forms.html" class="card group gap-4 transition-shadow hover:shadow-md">
+            <div class="card-header">
+              <span class="grid size-10 place-items-center rounded-lg bg-primary/10 text-primary"><i data-icon="text-cursor-input" class="size-5"></i></span>
+            </div>
+            <div class="card-content space-y-1">
+              <h3 class="card-title">Form</h3>
+              <p class="card-description">Input, select, switch PPN, validasi, form klien, profil, auth.</p>
+            </div>
+          </a>
+          <a href="header.html" class="card group gap-4 transition-shadow hover:shadow-md">
+            <div class="card-header">
+              <span class="grid size-10 place-items-center rounded-lg bg-primary/10 text-primary"><i data-icon="panel-top" class="size-5"></i></span>
+            </div>
+            <div class="card-content space-y-1">
+              <h3 class="card-title">Header &amp; shell</h3>
+              <p class="card-description">6 opsi app shell: stacked, sidebar, page heading, auth, publik, editor.</p>
+            </div>
+          </a>
+          <a href="footer.html" class="card group gap-4 transition-shadow hover:shadow-md">
+            <div class="card-header">
+              <span class="grid size-10 place-items-center rounded-lg bg-primary/10 text-primary"><i data-icon="panel-bottom" class="size-5"></i></span>
+            </div>
+            <div class="card-content space-y-1">
+              <h3 class="card-title">Footer</h3>
+              <p class="card-description">App, publik (disclaimer PPN), auth, sticky action bar mobile.</p>
+            </div>
+          </a>
+          <a href="menu.html" class="card group gap-4 transition-shadow hover:shadow-md">
+            <div class="card-header">
+              <span class="grid size-10 place-items-center rounded-lg bg-primary/10 text-primary"><i data-icon="list" class="size-5"></i></span>
+            </div>
+            <div class="card-content space-y-1">
+              <h3 class="card-title">Menu &amp; navigasi</h3>
+              <p class="card-description">Top nav, sidebar, sheet mobile, dropdown akun &amp; aksi baris, tabs.</p>
+            </div>
+          </a>
+          <a href="components.html" class="card group gap-4 transition-shadow hover:shadow-md">
+            <div class="card-header">
+              <span class="grid size-10 place-items-center rounded-lg bg-primary/10 text-primary"><i data-icon="blocks" class="size-5"></i></span>
+            </div>
+            <div class="card-content space-y-1">
+              <h3 class="card-title">Components</h3>
+              <p class="card-description">Card, badge, alert, table, dialog, toast, empty state, skeleton.</p>
+            </div>
+          </a>
+        </div>
+      </section>
+
+      <section class="doc-section">
+        <div>
+          <h2 class="doc-title">Layar MVP</h2>
+          <p class="doc-desc">Prototipe interaktif (kalkulasi PPN langsung, dialog, filter status, dark mode).</p>
+        </div>
+        <div class="table-container">
+          <table class="table">
+            <thead>
+              <tr>
+                <th>Layar</th>
+                <th>Kebutuhan</th>
+                <th>Interaksi prototipe</th>
+                <th class="text-right">Buka</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td class="font-medium">Masuk / Daftar</td>
+                <td><span class="badge badge-secondary">Pendukung</span></td>
+                <td class="text-muted-foreground">Tabs masuk/daftar, validasi inline</td>
+                <td class="text-right"><a class="btn btn-ghost btn-sm" href="screen-auth.html">Buka<i data-icon="arrow-right"></i></a></td>
+              </tr>
+              <tr>
+                <td class="font-medium">Dashboard</td>
+                <td><span class="badge badge-outline">FR-08</span></td>
+                <td class="text-muted-foreground">Metrik, filter status, menu aksi baris</td>
+                <td class="text-right"><a class="btn btn-ghost btn-sm" href="screen-dashboard.html">Buka<i data-icon="arrow-right"></i></a></td>
+              </tr>
+              <tr>
+                <td class="font-medium">Klien</td>
+                <td><span class="badge badge-outline">FR-01</span></td>
+                <td class="text-muted-foreground">Pencarian, dialog tambah klien</td>
+                <td class="text-right"><a class="btn btn-ghost btn-sm" href="screen-clients.html">Buka<i data-icon="arrow-right"></i></a></td>
+              </tr>
+              <tr>
+                <td class="font-medium">Editor invoice</td>
+                <td><span class="badge badge-outline">FR-02</span> <span class="badge badge-outline">FR-03</span></td>
+                <td class="text-muted-foreground">Tambah/hapus baris, switch PPN 11%, total langsung</td>
+                <td class="text-right"><a class="btn btn-ghost btn-sm" href="screen-invoice-editor.html">Buka<i data-icon="arrow-right"></i></a></td>
+              </tr>
+              <tr>
+                <td class="font-medium">Detail &amp; preview</td>
+                <td><span class="badge badge-outline">FR-04</span> <span class="badge badge-outline">FR-05</span> <span class="badge badge-outline">FR-07</span></td>
+                <td class="text-muted-foreground">Dialog kirim email, salin tautan, tandai lunas</td>
+                <td class="text-right"><a class="btn btn-ghost btn-sm" href="screen-invoice-preview.html">Buka<i data-icon="arrow-right"></i></a></td>
+              </tr>
+              <tr>
+                <td class="font-medium">Tampilan publik</td>
+                <td><span class="badge badge-outline">FR-06</span></td>
+                <td class="text-muted-foreground">Unduh PDF, instruksi pembayaran</td>
+                <td class="text-right"><a class="btn btn-ghost btn-sm" href="screen-public.html">Buka<i data-icon="arrow-right"></i></a></td>
+              </tr>
+              <tr>
+                <td class="font-medium">Pengaturan</td>
+                <td><span class="badge badge-secondary">Pendukung</span></td>
+                <td class="text-muted-foreground">Sub-navigasi, profil bisnis, default PPN</td>
+                <td class="text-right"><a class="btn btn-ghost btn-sm" href="screen-settings.html">Buka<i data-icon="arrow-right"></i></a></td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </section>
+
+      <section class="doc-section">
+        <div>
+          <h2 class="doc-title">Contoh halaman fitur</h2>
+          <p class="doc-desc">5 halaman tambahan untuk fitur, aturan bisnis, dan edge case BRD (MVP-SCOPE-LOCK + DESIGN-GUIDELINES §9–§10).</p>
+        </div>
+        <div class="grid gap-4 sm:grid-cols-2 lg:grid-cols-5">
+          <a href="screen-invoice-list.html" class="card gap-3 py-5 transition-shadow hover:shadow-md">
+            <div class="card-content space-y-2">
+              <span class="grid size-9 place-items-center rounded-lg bg-primary/10 text-primary"><i data-icon="list"></i></span>
+              <h3 class="font-semibold">Daftar invoice</h3>
+              <p class="text-sm text-muted-foreground">Filter status, periode, duplikat, ekspor CSV, arsip.</p>
+              <p class="text-xs text-muted-foreground">FR-08 · FR-09 · FR-11 · BR-06</p>
+            </div>
+          </a>
+          <a href="screen-client-detail.html" class="card gap-3 py-5 transition-shadow hover:shadow-md">
+            <div class="card-content space-y-2">
+              <span class="grid size-9 place-items-center rounded-lg bg-primary/10 text-primary"><i data-icon="building"></i></span>
+              <h3 class="font-semibold">Detail klien</h3>
+              <p class="text-sm text-muted-foreground">Kontak, riwayat, email kosong, nonaktifkan.</p>
+              <p class="text-xs text-muted-foreground">FR-01</p>
+            </div>
+          </a>
+          <a href="screen-invoice-send.html" class="card gap-3 py-5 transition-shadow hover:shadow-md">
+            <div class="card-content space-y-2">
+              <span class="grid size-9 place-items-center rounded-lg bg-primary/10 text-primary"><i data-icon="send"></i></span>
+              <h3 class="font-semibold">Alur kirim</h3>
+              <p class="text-sm text-muted-foreground">Preview email + 4 state: siap, tanpa email, gagal, berhasil.</p>
+              <p class="text-xs text-muted-foreground">FR-05 · BR-02</p>
+            </div>
+          </a>
+          <a href="screen-invoice-locked.html" class="card gap-3 py-5 transition-shadow hover:shadow-md">
+            <div class="card-content space-y-2">
+              <span class="grid size-9 place-items-center rounded-lg bg-primary/10 text-primary"><i data-icon="lock"></i></span>
+              <h3 class="font-semibold">Invoice terkunci</h3>
+              <p class="text-sm text-muted-foreground">Read-only setelah kirim, batalkan &amp; buat pengganti.</p>
+              <p class="text-xs text-muted-foreground">BR-01 · BR-02 · FR-07 · FR-09</p>
+            </div>
+          </a>
+          <a href="screen-pdf-states.html" class="card gap-3 py-5 transition-shadow hover:shadow-md">
+            <div class="card-content space-y-2">
+              <span class="grid size-9 place-items-center rounded-lg bg-primary/10 text-primary"><i data-icon="file-text"></i></span>
+              <h3 class="font-semibold">PDF &amp; tautan publik</h3>
+              <p class="text-sm text-muted-foreground">PDF A4 ID/EN, publik lunas, link dicabut.</p>
+              <p class="text-xs text-muted-foreground">FR-04 · FR-06 · FR-13 · BR-05</p>
+            </div>
+          </a>
+        </div>
+      </section>
+
+      <section class="grid gap-4 lg:grid-cols-3">
+        <div class="card">
+          <div class="card-header">
+            <h3 class="card-title">Kenapa shadcn/ui?</h3>
+            <p class="card-description">Token semantik &amp; varian komponen yang konsisten.</p>
+          </div>
+          <div class="card-content text-sm text-muted-foreground">
+            Kita memakai <strong class="text-foreground">konvensi token dan resep class</strong> shadcn/ui. Komponen React-nya
+            tidak dipakai langsung karena <code class="code">@invoicing/web</code> berjalan di Remix 3 UI, bukan React.
+          </div>
+        </div>
+        <div class="card">
+          <div class="card-header">
+            <h3 class="card-title">Kenapa pola Tailwind UI?</h3>
+            <p class="card-description">Layout aplikasi SaaS yang teruji.</p>
+          </div>
+          <div class="card-content text-sm text-muted-foreground">
+            App shell, page heading, stats, dan list mengikuti <strong class="text-foreground">pola</strong> Tailwind UI (Tailwind
+            Plus). Markup ditulis ulang dari nol karena kode Tailwind Plus berlisensi berbayar.
+          </div>
+        </div>
+        <div class="card">
+          <div class="card-header">
+            <h3 class="card-title">Build</h3>
+            <p class="card-description">Tailwind CLI v4, tanpa CDN.</p>
+          </div>
+          <div class="card-content space-y-2 text-sm">
+            <pre class="overflow-x-auto rounded-md bg-muted p-3 font-mono text-xs">npm run design:css</pre>
+            <p class="text-muted-foreground">
+              Sumber: <code class="code">src/tailwind.css</code> → <code class="code">assets/ui.css</code>
+            </p>
+          </div>
+        </div>
+      </section>
+    </main>
+  </body>
+</html>

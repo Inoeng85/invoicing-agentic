@@ -1,0 +1,96 @@
+<!doctype html>
+<html lang="id">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Masuk — Invoicing</title>
+    <script>
+      try {
+        if (localStorage.getItem('invoicing-proto-theme') === 'dark') document.documentElement.classList.add('dark')
+      } catch (e) {}
+    </script>
+    <link rel="stylesheet" href="assets/ui.css" />
+    <script src="assets/prototype.js" defer></script>
+  </head>
+  <body data-shell="screen" class="min-h-screen bg-background">
+    <div class="grid min-h-screen lg:grid-cols-2">
+      <div class="flex flex-col gap-6 p-6 md:p-10">
+        <a class="flex items-center gap-2 font-semibold" href="index.html"><span class="grid size-7 place-items-center rounded-md bg-primary text-primary-foreground"><i data-icon="receipt"></i></span><span class="leading-tight">Invoicing<span class="hidden text-xs font-normal text-muted-foreground lg:block">Freelancer Indonesia</span></span></a>
+
+        <div class="flex flex-1 items-center justify-center">
+          <div class="w-full max-w-sm space-y-6">
+            <div role="tablist" class="tabs-list w-full" aria-label="Autentikasi">
+              <button role="tab" class="tabs-trigger" aria-selected="true" aria-controls="panel-login">Masuk</button>
+              <button role="tab" class="tabs-trigger" aria-controls="panel-register">Daftar</button>
+            </div>
+
+            <section id="panel-login" role="tabpanel" class="space-y-6">
+              <div class="space-y-1 text-center">
+                <h1 class="text-xl font-bold">Selamat datang kembali</h1>
+                <p class="text-sm text-muted-foreground">Masuk untuk mengelola invoice kamu.</p>
+              </div>
+              <form class="grid gap-4" action="screen-dashboard.html">
+                <div class="field"><label class="label" for="l-email">Email</label><input id="l-email" type="email" class="input" autocomplete="email" required value="dewi@studiokartika.id" /></div>
+                <div class="field">
+                  <div class="flex items-center justify-between"><label class="label" for="l-pass">Kata sandi</label><a class="text-sm text-muted-foreground underline-offset-4 hover:underline" href="#">Lupa?</a></div>
+                  <input id="l-pass" type="password" class="input" autocomplete="current-password" required value="rahasia123" />
+                </div>
+                <button type="submit" class="btn btn-default w-full">Masuk</button>
+              </form>
+            </section>
+
+            <section id="panel-register" role="tabpanel" hidden class="space-y-6">
+              <div class="space-y-1 text-center">
+                <h1 class="text-xl font-bold">Buat akun gratis</h1>
+                <p class="text-sm text-muted-foreground">Mulai kirim invoice profesional dalam rupiah.</p>
+              </div>
+              <form class="grid gap-4" data-demo="Akun dibuat — lanjut lengkapi profil bisnis">
+                <div class="field"><label class="label" for="r-name">Nama lengkap</label><input id="r-name" class="input" autocomplete="name" required placeholder="Dewi Kartika" /></div>
+                <div class="field"><label class="label" for="r-email">Email</label><input id="r-email" type="email" class="input" autocomplete="email" required placeholder="nama@email.com" /></div>
+                <div class="field">
+                  <label class="label" for="r-pass">Kata sandi</label>
+                  <input id="r-pass" type="password" class="input" autocomplete="new-password" minlength="8" required />
+                  <p class="field-description">Minimal 8 karakter.</p>
+                </div>
+                <label class="flex items-start gap-2 text-sm text-muted-foreground">
+                  <input type="checkbox" class="checkbox mt-0.5" required />
+                  <span>Saya menyetujui <a class="font-medium text-foreground underline underline-offset-4" href="#">Syarat</a> dan <a class="font-medium text-foreground underline underline-offset-4" href="#">Kebijakan Privasi</a>.</span>
+                </label>
+                <button type="submit" class="btn btn-default w-full">Buat akun</button>
+              </form>
+            </section>
+
+            <p class="text-center text-xs text-muted-foreground">Dengan melanjutkan, data kamu diproses sesuai UU PDP.</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="relative hidden overflow-hidden bg-slate-900 text-white lg:block dark:bg-slate-950">
+        <div class="absolute -top-32 -right-32 size-[28rem] rounded-full bg-blue-500/30 blur-3xl" aria-hidden="true"></div>
+        <div class="absolute -bottom-40 -left-20 size-[24rem] rounded-full bg-emerald-500/20 blur-3xl" aria-hidden="true"></div>
+        <div class="relative flex h-full flex-col justify-between p-12">
+          <p class="text-sm text-slate-400">Untuk freelancer &amp; UMKM Indonesia</p>
+          <div class="space-y-8">
+            <div class="max-w-sm rotate-[-2deg] rounded-xl bg-white p-5 text-slate-900 shadow-2xl">
+              <div class="flex items-center justify-between">
+                <span class="font-mono text-xs text-slate-500">INV-2026-0013</span>
+                <span class="badge badge-paid"><span class="badge-dot"></span>Lunas</span>
+              </div>
+              <p class="mt-3 text-sm text-slate-500">PT Arunika Digital</p>
+              <p class="text-3xl font-semibold tracking-tight tabular-nums">Rp 5.550.000</p>
+              <div class="mt-4 h-1.5 overflow-hidden rounded-full bg-slate-100"><div class="h-full w-full rounded-full bg-emerald-500"></div></div>
+            </div>
+            <blockquote class="max-w-md space-y-3">
+              <p class="text-xl leading-relaxed font-medium">"Dulu bikin invoice di Word 30 menit. Sekarang 2 menit, PPN langsung terhitung, dan klien bayar lebih cepat."</p>
+              <footer class="text-sm text-slate-400">Dewi Kartika · Desainer UI, Yogyakarta</footer>
+            </blockquote>
+          </div>
+          <ul class="flex gap-6 text-sm text-slate-300">
+            <li class="inline-flex items-center gap-2"><i data-icon="check" class="size-4 text-emerald-400"></i>IDR &amp; PPN 11%</li>
+            <li class="inline-flex items-center gap-2"><i data-icon="check" class="size-4 text-emerald-400"></i>PDF &amp; tautan publik</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>

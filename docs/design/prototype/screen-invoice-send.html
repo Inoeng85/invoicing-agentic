@@ -1,0 +1,146 @@
+<!doctype html>
+<html lang="id">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Kirim invoice — Invoicing</title>
+    <script>
+      try {
+        if (localStorage.getItem('invoicing-proto-theme') === 'dark') document.documentElement.classList.add('dark')
+      } catch (e) {}
+    </script>
+    <link rel="stylesheet" href="assets/ui.css" />
+    <script src="assets/prototype.js" defer></script>
+  </head>
+  <body data-shell="screen" class="min-h-screen">
+    <header class="sticky top-0 z-40 border-b bg-background/90 backdrop-blur">
+      <div class="mx-auto flex h-14 max-w-5xl items-center gap-3 px-4 sm:px-6 lg:px-8">
+        <a class="btn btn-ghost btn-icon btn-sm" href="screen-invoice-editor.html" aria-label="Kembali ke editor"><i data-icon="arrow-left"></i></a>
+        <div>
+          <p class="text-sm font-semibold">Kirim invoice ke klien</p>
+          <p class="text-xs text-muted-foreground">Draft · Yayasan Cerdas Bangsa · Rp 3.330.000</p>
+        </div>
+        <span class="badge badge-outline ml-auto">FR-05 · BR-02</span>
+      </div>
+    </header>
+
+    <main class="mx-auto max-w-5xl space-y-8 px-4 py-8 pb-24 sm:px-6">
+      <div class="flex flex-wrap items-center justify-between gap-3">
+        <p class="text-sm text-muted-foreground">Pilih state untuk melihat pola UI tiap kondisi:</p>
+        <div role="tablist" class="tabs-list" aria-label="State pengiriman">
+          <button role="tab" class="tabs-trigger" aria-selected="true" aria-controls="st-ready">Siap kirim</button>
+          <button role="tab" class="tabs-trigger" aria-controls="st-noemail">Tanpa email</button>
+          <button role="tab" class="tabs-trigger" aria-controls="st-failed">Gagal</button>
+          <button role="tab" class="tabs-trigger" aria-controls="st-success">Berhasil</button>
+        </div>
+      </div>
+
+      <div class="grid gap-6 lg:grid-cols-[1fr_22rem]">
+        <section class="card gap-0 overflow-hidden py-0" aria-label="Preview email">
+          <div class="space-y-1 border-b bg-muted/40 px-6 py-4 text-sm">
+            <div class="grid grid-cols-[4.5rem_1fr] gap-2"><span class="text-muted-foreground">Dari</span><span>Studio Kartika &lt;noreply@invoice.app&gt; · balas ke dewi@studiokartika.id</span></div>
+            <div class="grid grid-cols-[4.5rem_1fr] gap-2"><span class="text-muted-foreground">Kepada</span><span><span data-unless-tab="st-noemail">keuangan@cerdasbangsa.or.id</span><span data-when-tab="st-noemail" hidden class="font-medium text-destructive">— Email klien wajib untuk kirim</span></span></div>
+            <div class="grid grid-cols-[4.5rem_1fr] gap-2"><span class="text-muted-foreground">Subjek</span><span class="font-medium">Invoice INV-2026-0014 dari Studio Kartika</span></div>
+          </div>
+          <div class="bg-page p-6 sm:p-10">
+            <div class="mx-auto max-w-md space-y-5 rounded-xl border bg-card p-6 text-sm shadow-xs">
+              <div class="flex items-center gap-2"><span class="grid size-8 place-items-center rounded-md bg-primary/10 text-xs font-semibold text-primary">SK</span><span class="font-semibold">Studio Kartika</span></div>
+              <p>Halo Sari,</p>
+              <p class="text-muted-foreground">Berikut invoice untuk workshop desain. Terima kasih atas kerja samanya.</p>
+              <div class="rounded-lg bg-muted/60 p-4">
+                <p class="text-xs text-muted-foreground">Jumlah tagihan</p>
+                <p class="text-2xl font-bold tabular-nums">Rp 3.330.000</p>
+                <p class="text-xs text-muted-foreground">Jatuh tempo 29 Okt 2026</p>
+              </div>
+              <a class="btn btn-default w-full" href="screen-public.html">Lihat invoice</a>
+              <p class="text-xs text-muted-foreground">PDF terlampir. Tautan ini privat — jangan diteruskan.</p>
+              <div class="separator"></div>
+              <p class="text-[11px] text-muted-foreground">Powered by Invoicing · Privasi</p>
+            </div>
+          </div>
+        </section>
+
+        <aside class="space-y-4">
+          <!-- Siap kirim -->
+          <div id="st-ready" role="tabpanel" class="space-y-4">
+            <section class="card gap-4">
+              <div class="card-header"><h2 class="card-title">Checklist sebelum kirim</h2></div>
+              <div class="card-content">
+                <ul class="grid gap-2.5 text-sm">
+                  <li class="flex items-center gap-2"><i data-icon="circle-check" class="size-4 text-success"></i>Klien punya email</li>
+                  <li class="flex items-center gap-2"><i data-icon="circle-check" class="size-4 text-success"></i>2 item pekerjaan, total &gt; 0</li>
+                  <li class="flex items-center gap-2"><i data-icon="circle-check" class="size-4 text-success"></i>Rekening di profil bisnis</li>
+                  <li class="flex items-center gap-2"><i data-icon="circle-check" class="size-4 text-success"></i>PPN 11% · Rp 330.000</li>
+                </ul>
+              </div>
+            </section>
+            <div class="alert alert-info">
+              <i data-icon="lock"></i>
+              <p class="alert-title">Nomor dikunci setelah kirim</p>
+              <p class="alert-description">Invoice mendapat nomor <span class="font-mono">INV-2026-0014</span> dan item tidak bisa diedit lagi (BR-01, BR-02).</p>
+            </div>
+            <button class="btn btn-default btn-lg w-full" data-toast="Invoice INV-2026-0014 terkirim ke keuangan@cerdasbangsa.or.id"><i data-icon="send"></i>Kirim ke klien</button>
+            <a class="btn btn-outline w-full" href="screen-pdf-states.html"><i data-icon="eye"></i>Preview PDF</a>
+          </div>
+
+          <!-- Tanpa email -->
+          <div id="st-noemail" role="tabpanel" hidden class="space-y-4">
+            <section class="card gap-4">
+              <div class="card-header"><h2 class="card-title">Checklist sebelum kirim</h2></div>
+              <div class="card-content">
+                <ul class="grid gap-2.5 text-sm">
+                  <li class="flex items-center gap-2 font-medium text-destructive"><i data-icon="circle-alert" class="size-4"></i>Klien belum punya email</li>
+                  <li class="flex items-center gap-2"><i data-icon="circle-check" class="size-4 text-success"></i>2 item pekerjaan, total &gt; 0</li>
+                  <li class="flex items-center gap-2"><i data-icon="circle-check" class="size-4 text-success"></i>Rekening di profil bisnis</li>
+                </ul>
+              </div>
+            </section>
+            <div class="field">
+              <label class="label text-destructive" for="ne-email">Email klien</label>
+              <input id="ne-email" type="email" class="input" aria-invalid="true" aria-describedby="ne-msg" placeholder="keuangan@cerdasbangsa.or.id" />
+              <p id="ne-msg" class="field-message">Email klien wajib untuk kirim.</p>
+            </div>
+            <button class="btn btn-default btn-lg w-full" disabled aria-describedby="ne-msg"><i data-icon="send"></i>Kirim ke klien</button>
+            <a class="btn btn-outline w-full" href="screen-client-detail.html">Lengkapi data klien</a>
+          </div>
+
+          <!-- Gagal -->
+          <div id="st-failed" role="tabpanel" hidden class="space-y-4">
+            <div class="alert alert-destructive">
+              <i data-icon="circle-alert"></i>
+              <p class="alert-title">Email gagal terkirim</p>
+              <p class="alert-description">Server email tidak merespons (timeout). Invoice <strong>tetap draft</strong> dan nomor belum dipakai.</p>
+            </div>
+            <section class="card gap-3 py-5">
+              <div class="card-content space-y-2 text-sm text-muted-foreground">
+                <p class="font-medium text-foreground">Yang bisa dilakukan</p>
+                <p>1. Coba kirim lagi dalam beberapa menit.</p>
+                <p>2. Atau unduh PDF dan kirim manual — status tetap draft sampai terkirim lewat aplikasi.</p>
+              </div>
+            </section>
+            <button class="btn btn-default btn-lg w-full" data-toast="Mencoba kirim ulang…" data-toast-variant="info"><i data-icon="send"></i>Coba kirim lagi</button>
+            <button class="btn btn-outline w-full"><i data-icon="download"></i>Unduh PDF</button>
+          </div>
+
+          <!-- Berhasil -->
+          <div id="st-success" role="tabpanel" hidden class="space-y-4">
+            <div class="alert alert-success">
+              <i data-icon="circle-check"></i>
+              <p class="alert-title">Terkirim ke keuangan@cerdasbangsa.or.id</p>
+              <p class="alert-description">29 Sep 2026, 15:52 · nomor <span class="font-mono">INV-2026-0014</span></p>
+            </div>
+            <section class="card gap-4">
+              <div class="card-header"><h2 class="card-title">Tautan publik</h2><p class="card-description">FR-06 · bagikan lewat WhatsApp bila perlu.</p></div>
+              <div class="card-content flex gap-2">
+                <input class="input font-mono text-xs" readonly value="https://invoice.app/i/Qm8rT2vZ" aria-label="Tautan publik" />
+                <button class="btn btn-outline btn-icon shrink-0" data-copy="https://invoice.app/i/Qm8rT2vZ" aria-label="Salin tautan"><i data-icon="copy"></i></button>
+              </div>
+            </section>
+            <a class="btn btn-default w-full" href="screen-invoice-locked.html">Lihat detail invoice<i data-icon="arrow-right"></i></a>
+            <a class="btn btn-ghost w-full" href="screen-invoice-list.html">Kembali ke daftar</a>
+          </div>
+        </aside>
+      </div>
+    </main>
+  </body>
+</html>

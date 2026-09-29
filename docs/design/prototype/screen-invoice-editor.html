@@ -1,0 +1,154 @@
+<!doctype html>
+<html lang="id">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Invoice draft — Invoicing</title>
+    <script>
+      try {
+        if (localStorage.getItem('invoicing-proto-theme') === 'dark') document.documentElement.classList.add('dark')
+      } catch (e) {}
+    </script>
+    <link rel="stylesheet" href="assets/ui.css" />
+    <script src="assets/prototype.js" defer></script>
+  </head>
+  <body data-shell="screen" class="min-h-screen">
+    <form data-invoice data-ppn-rate="0.11" data-demo="Draft invoice tersimpan">
+      <header class="sticky top-0 z-40 border-b bg-background/90 backdrop-blur">
+        <div class="mx-auto flex h-14 max-w-5xl items-center gap-3 px-4 sm:px-6 lg:px-8">
+          <a class="btn btn-ghost btn-icon btn-sm" href="screen-invoice-list.html" aria-label="Kembali ke daftar invoice"><i data-icon="arrow-left"></i></a>
+          <div class="min-w-0">
+            <div class="flex items-center gap-2">
+              <h1 class="truncate text-xl font-bold">Invoice draft</h1>
+              <span class="badge badge-draft"><span class="badge-dot"></span>Draft</span>
+            </div>
+          </div>
+          <div class="ml-auto flex gap-2">
+            <button type="submit" class="btn btn-outline btn-sm"><i data-icon="save"></i>Simpan draft</button>
+            <a class="btn btn-outline btn-sm" href="screen-invoice-preview.html"><i data-icon="eye"></i>Preview</a>
+          </div>
+        </div>
+      </header>
+
+      <main class="mx-auto max-w-5xl space-y-8 px-4 py-8 pb-24 sm:px-6 lg:px-8">
+        <section class="card" aria-labelledby="sec-client">
+          <div class="card-header">
+            <h2 id="sec-client" class="text-lg font-semibold">Klien &amp; tanggal</h2>
+            <p class="card-description">FR-02 · Pilih klien yang sudah tersimpan (FR-01).</p>
+          </div>
+          <div class="card-content grid items-start gap-5 sm:grid-cols-3">
+            <div class="field sm:col-span-3">
+              <label class="label" for="inv-client">Klien <span class="text-destructive">*</span></label>
+              <div class="flex gap-2">
+                <select id="inv-client" class="select" required>
+                  <option>PT Arunika Digital - finance@arunika.id</option>
+                  <option>CV Nusantara Kreatif - agus@nusantarakreatif.co.id</option>
+                  <option>Budi Santoso - (email kosong)</option>
+                  <option>Yayasan Cerdas Bangsa - keuangan@cerdasbangsa.or.id</option>
+                </select>
+                <a class="btn btn-outline btn-icon shrink-0" href="screen-clients.html" aria-label="Tambah klien baru"><i data-icon="plus"></i></a>
+              </div>
+            </div>
+            <div class="field">
+              <label class="label" for="inv-date">Tanggal</label>
+              <div class="relative"><input id="inv-date" class="input pr-9" value="29 Sep 2026" /><i data-icon="calendar" class="pointer-events-none absolute top-1/2 right-3 size-4 -translate-y-1/2 text-muted-foreground"></i></div>
+            </div>
+            <div class="field">
+              <label class="label" for="inv-due">Jatuh tempo</label>
+              <div class="relative"><input id="inv-due" class="input pr-9" value="29 Okt 2026" /><i data-icon="calendar" class="pointer-events-none absolute top-1/2 right-3 size-4 -translate-y-1/2 text-muted-foreground"></i></div>
+              <p class="field-description">Default +30 hari dari pengaturan.</p>
+            </div>
+            <div class="field">
+              <label class="label" for="inv-no">No.</label>
+              <input id="inv-no" class="input font-mono text-muted-foreground" value="(auto INV-2026-0014 saat kirim)" disabled />
+            </div>
+          </div>
+        </section>
+
+        <section class="card" aria-labelledby="sec-lines">
+          <div class="card-header flex-row items-center justify-between">
+            <div class="space-y-1.5">
+              <h2 id="sec-lines" class="text-lg font-semibold">Line items</h2>
+              <p class="card-description"><span data-line-count>2</span> baris · diskon dalam rupiah per baris</p>
+            </div>
+          </div>
+          <div class="card-content space-y-4">
+            <div>
+              <div class="hidden grid-cols-[1fr_4.5rem_9rem_8rem_8rem_2.25rem] gap-3 border-b pb-2 text-xs font-medium text-muted-foreground md:grid">
+                <span>Deskripsi</span><span>Qty</span><span>Harga</span><span>Diskon</span><span class="text-right">Subtotal</span><span></span>
+              </div>
+              <div data-lines class="divide-y">
+                <div data-line class="grid gap-3 py-4 md:grid-cols-[1fr_4.5rem_9rem_8rem_8rem_2.25rem] md:items-center">
+                  <input class="input" aria-label="Deskripsi" value="Desain UI halaman utama" />
+                  <input class="input text-right tabular-nums" aria-label="Qty" inputmode="decimal" value="1" data-qty />
+                  <div class="input-group"><span class="input-addon px-2">Rp</span><input class="input text-right tabular-nums" aria-label="Harga" inputmode="numeric" value="3000000" data-price /></div>
+                  <div class="input-group"><span class="input-addon px-2">Rp</span><input class="input text-right tabular-nums" aria-label="Diskon" inputmode="numeric" value="0" data-discount /></div>
+                  <p class="text-right text-sm font-medium tabular-nums" data-line-total>Rp 3.000.000</p>
+                  <button type="button" class="btn btn-ghost btn-icon btn-sm justify-self-end text-muted-foreground hover:text-destructive" aria-label="Hapus baris" data-remove-line><i data-icon="trash"></i></button>
+                </div>
+                <div data-line class="grid gap-3 py-4 md:grid-cols-[1fr_4.5rem_9rem_8rem_8rem_2.25rem] md:items-center">
+                  <input class="input" aria-label="Deskripsi" value="Desain halaman produk (per halaman)" />
+                  <input class="input text-right tabular-nums" aria-label="Qty" inputmode="decimal" value="2" data-qty />
+                  <div class="input-group"><span class="input-addon px-2">Rp</span><input class="input text-right tabular-nums" aria-label="Harga" inputmode="numeric" value="1250000" data-price /></div>
+                  <div class="input-group"><span class="input-addon px-2">Rp</span><input class="input text-right tabular-nums" aria-label="Diskon" inputmode="numeric" value="500000" data-discount /></div>
+                  <p class="text-right text-sm font-medium tabular-nums" data-line-total>Rp 2.000.000</p>
+                  <button type="button" class="btn btn-ghost btn-icon btn-sm justify-self-end text-muted-foreground hover:text-destructive" aria-label="Hapus baris" data-remove-line><i data-icon="trash"></i></button>
+                </div>
+              </div>
+              <template data-line-template>
+                <div data-line class="grid gap-3 py-4 md:grid-cols-[1fr_4.5rem_9rem_8rem_8rem_2.25rem] md:items-center">
+                  <input class="input" aria-label="Deskripsi" placeholder="Deskripsi pekerjaan" />
+                  <input class="input text-right tabular-nums" aria-label="Qty" inputmode="decimal" value="1" data-qty />
+                  <div class="input-group"><span class="input-addon px-2">Rp</span><input class="input text-right tabular-nums" aria-label="Harga" inputmode="numeric" placeholder="0" data-price /></div>
+                  <div class="input-group"><span class="input-addon px-2">Rp</span><input class="input text-right tabular-nums" aria-label="Diskon" inputmode="numeric" value="0" data-discount /></div>
+                  <p class="text-right text-sm font-medium tabular-nums" data-line-total>Rp 0</p>
+                  <button type="button" class="btn btn-ghost btn-icon btn-sm justify-self-end text-muted-foreground hover:text-destructive" aria-label="Hapus baris" data-remove-line><i data-icon="trash"></i></button>
+                </div>
+              </template>
+              <button type="button" class="btn btn-ghost btn-sm mt-2" data-add-line><i data-icon="plus"></i>Baris</button>
+            </div>
+
+            <div class="grid gap-6 border-t pt-6 md:grid-cols-2">
+              <div class="space-y-2">
+                <label class="flex items-center gap-2 text-sm font-medium">
+                  <input type="checkbox" class="checkbox" checked data-ppn-toggle />
+                  PPN 11%
+                </label>
+                <p class="text-xs text-muted-foreground">
+                  PPN hanya kalkulator. Bukan e-Faktur DJP.
+                  <a class="underline underline-offset-4 hover:text-foreground" href="#">Pelajari lebih lanjut</a>
+                </p>
+                <p class="text-xs text-muted-foreground">FR-03 · dasar PPN = subtotal setelah diskon baris (BR-04).</p>
+              </div>
+              <dl class="w-full space-y-2 text-sm md:ml-auto md:max-w-xs">
+                <div class="flex justify-between"><dt class="text-muted-foreground">Subtotal</dt><dd class="tabular-nums" data-subtotal>Rp 5.000.000</dd></div>
+                <div class="flex justify-between" data-ppn-row><dt class="text-muted-foreground">PPN 11%</dt><dd class="tabular-nums" data-ppn>Rp 550.000</dd></div>
+                <div class="separator"></div>
+                <div class="flex items-baseline justify-between"><dt class="font-medium">Total</dt><dd class="text-2xl font-bold tabular-nums" data-total>Rp 5.550.000</dd></div>
+              </dl>
+            </div>
+          </div>
+        </section>
+
+        <section class="card" aria-labelledby="sec-notes">
+          <div class="card-header">
+            <h2 id="sec-notes" class="text-lg font-semibold">Catatan footer</h2>
+            <p class="card-description">Default dari footer di Pengaturan; tampil di PDF &amp; tampilan publik.</p>
+          </div>
+          <div class="card-content">
+            <textarea id="inv-notes" class="textarea" aria-label="Catatan footer">Pembayaran ke BCA 123-456-7890 a/n Dewi Kartika. Terima kasih atas kepercayaannya.</textarea>
+          </div>
+        </section>
+
+        <div class="flex flex-col-reverse gap-2 border-t pt-6 sm:flex-row sm:items-center">
+          <a class="btn btn-ghost" href="screen-invoice-list.html">Batal</a>
+          <div class="flex flex-col gap-2 sm:ml-auto sm:flex-row">
+            <a class="btn btn-outline" href="screen-pdf-states.html"><i data-icon="download"></i>Unduh PDF</a>
+            <a class="btn btn-default" href="screen-invoice-send.html"><i data-icon="send"></i>Kirim ke klien</a>
+          </div>
+        </div>
+        <p class="text-xs text-muted-foreground sm:text-right">"Kirim ke klien" nonaktif jika draft tidak valid atau klien tanpa email (FR-05).</p>
+      </main>
+    </form>
+  </body>
+</html>

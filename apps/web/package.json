@@ -1,0 +1,30 @@
+{
+  "name": "@invoicing/web",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "css:build": "tailwindcss -i ./app/styles/app.css -o ./public/app.css",
+    "css:watch": "tailwindcss -i ./app/styles/app.css -o ./public/app.css --watch",
+    "predev": "npm run css:build",
+    "prestart": "npm run css:build",
+    "dev": "concurrently -k -n css,server -c cyan,green \"npm run css:watch\" \"NODE_ENV=development node --watch --import remix/node-tsx server.ts\"",
+    "hmr": "NODE_ENV=development node hmr.ts",
+    "start": "NODE_ENV=production node --import remix/node-tsx server.ts",
+    "test": "NODE_ENV=test remix test",
+    "typecheck": "tsc --noEmit"
+  },
+  "engines": {
+    "node": ">=24.3.0"
+  },
+  "dependencies": {
+    "@invoicing/domain": "*",
+    "remix": "^3.0.0-rc.4"
+  },
+  "devDependencies": {
+    "@tailwindcss/cli": "^4.1.0",
+    "@types/node": "latest",
+    "concurrently": "^9.2.0",
+    "tailwindcss": "^4.1.0",
+    "typescript": "latest"
+  }
+}

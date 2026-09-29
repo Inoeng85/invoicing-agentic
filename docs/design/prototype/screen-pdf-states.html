@@ -1,0 +1,181 @@
+<!doctype html>
+<html lang="id">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>PDF &amp; tautan publik — Invoicing</title>
+    <script>
+      try {
+        if (localStorage.getItem('invoicing-proto-theme') === 'dark') document.documentElement.classList.add('dark')
+      } catch (e) {}
+    </script>
+    <link rel="stylesheet" href="assets/ui.css" />
+    <script src="assets/prototype.js" defer></script>
+  </head>
+  <body data-shell="screen" class="min-h-screen">
+    <header class="sticky top-0 z-40 border-b bg-background/90 backdrop-blur">
+      <div class="mx-auto flex h-14 max-w-5xl items-center gap-3 px-4 sm:px-6 lg:px-8">
+        <a class="btn btn-ghost btn-icon btn-sm" href="screen-invoice-list.html" aria-label="Kembali"><i data-icon="arrow-left"></i></a>
+        <div>
+          <p class="text-sm font-semibold">PDF &amp; tautan publik</p>
+          <p class="text-xs text-muted-foreground">INV-2026-0010 · PT Arunika Digital</p>
+        </div>
+        <span class="badge badge-outline ml-auto hidden sm:inline-flex">FR-04 · FR-06 · FR-13 · BR-05</span>
+      </div>
+    </header>
+
+    <main class="mx-auto max-w-5xl space-y-8 px-4 py-8 pb-24 sm:px-6">
+      <div role="tablist" class="tabs-list" aria-label="Varian">
+        <button role="tab" class="tabs-trigger" aria-selected="true" aria-controls="pdf-id">PDF · Indonesia</button>
+        <button role="tab" class="tabs-trigger" aria-controls="pdf-en">PDF · English</button>
+        <button role="tab" class="tabs-trigger" aria-controls="pub-paid">Publik · Lunas</button>
+        <button role="tab" class="tabs-trigger" aria-controls="pub-revoked">Link dicabut</button>
+      </div>
+
+      <!-- PDF ID -->
+      <section id="pdf-id" role="tabpanel" class="grid gap-6 lg:grid-cols-[1fr_18rem]">
+        <div class="rounded-xl bg-slate-200/70 p-4 sm:p-8 dark:bg-slate-800/60">
+          <article class="mx-auto flex aspect-[1/1.414] w-full max-w-[560px] flex-col bg-white p-8 text-[11px] leading-relaxed text-slate-900 shadow-lg sm:p-10" aria-label="Halaman PDF A4">
+            <div class="flex items-start justify-between">
+              <div class="flex items-center gap-2.5">
+                <span class="grid size-10 place-items-center rounded-md bg-blue-50 text-sm font-semibold text-blue-700">SK</span>
+                <div><p class="text-sm font-semibold">Studio Kartika</p><p class="text-slate-500">Jl. Kaliurang Km 5, Sleman, Yogyakarta</p><p class="text-slate-500">NPWP 12.345.678.9-012.345</p></div>
+              </div>
+              <div class="text-right"><p class="text-lg font-semibold tracking-tight">INVOICE</p><p class="font-mono">INV-2026-0010</p></div>
+            </div>
+            <div class="mt-8 grid grid-cols-3 gap-4">
+              <div><p class="font-semibold text-slate-500 uppercase">Kepada</p><p class="font-medium">PT Arunika Digital</p><p class="text-slate-500">Jl. Sudirman No. 21, Jakarta Selatan</p></div>
+              <div><p class="font-semibold text-slate-500 uppercase">Tanggal</p><p>1 Sep 2026</p><p class="mt-1 font-semibold text-slate-500 uppercase">Jatuh tempo</p><p>1 Okt 2026</p></div>
+              <div class="text-right"><p class="font-semibold text-slate-500 uppercase">Total</p><p class="text-base font-semibold tabular-nums">Rp 8.880.000</p></div>
+            </div>
+            <table class="mt-8 w-full">
+              <thead><tr class="border-b border-slate-300 text-left text-slate-500 uppercase"><th class="py-1.5 font-semibold">Deskripsi</th><th class="py-1.5 text-right font-semibold">Qty</th><th class="py-1.5 text-right font-semibold">Harga</th><th class="py-1.5 text-right font-semibold">Jumlah</th></tr></thead>
+              <tbody class="divide-y divide-slate-200">
+                <tr><td class="py-2">UI kit aplikasi mobile</td><td class="py-2 text-right">1</td><td class="py-2 text-right tabular-nums">Rp 6.000.000</td><td class="py-2 text-right tabular-nums">Rp 6.000.000</td></tr>
+                <tr><td class="py-2">Prototipe interaktif</td><td class="py-2 text-right">1</td><td class="py-2 text-right tabular-nums">Rp 2.000.000</td><td class="py-2 text-right tabular-nums">Rp 2.000.000</td></tr>
+              </tbody>
+            </table>
+            <dl class="mt-4 ml-auto w-48 space-y-1">
+              <div class="flex justify-between"><dt class="text-slate-500">Subtotal</dt><dd class="tabular-nums">Rp 8.000.000</dd></div>
+              <div class="flex justify-between"><dt class="text-slate-500">PPN 11%</dt><dd class="tabular-nums">Rp 880.000</dd></div>
+              <div class="flex justify-between border-t border-slate-300 pt-1 font-semibold"><dt>Total</dt><dd class="tabular-nums">Rp 8.880.000</dd></div>
+            </dl>
+            <div class="mt-8 rounded bg-slate-50 p-3"><p class="font-semibold">Pembayaran</p><p class="text-slate-600">BCA 123-456-7890 a.n. Dewi Kartika</p></div>
+            <div class="mt-auto border-t border-slate-200 pt-3 text-[9px] text-slate-500">
+              <p>PPN yang tercantum dihitung sebagai informasi penagihan dan bukan Faktur Pajak elektronik (e-Faktur).</p>
+              <p class="mt-1">Terima kasih atas kepercayaannya. · Halaman 1 dari 1</p>
+            </div>
+          </article>
+        </div>
+        <aside class="space-y-4">
+          <section class="card gap-4">
+            <div class="card-header"><h2 class="card-title">Isi wajib PDF (FR-04)</h2></div>
+            <div class="card-content">
+              <ul class="grid gap-2 text-sm">
+                <li class="flex items-center gap-2"><i data-icon="circle-check" class="size-4 text-success"></i>Logo &amp; identitas bisnis</li>
+                <li class="flex items-center gap-2"><i data-icon="circle-check" class="size-4 text-success"></i>Nomor, tanggal, jatuh tempo</li>
+                <li class="flex items-center gap-2"><i data-icon="circle-check" class="size-4 text-success"></i>Item, subtotal, PPN, total</li>
+                <li class="flex items-center gap-2"><i data-icon="circle-check" class="size-4 text-success"></i>Rekening pembayaran</li>
+                <li class="flex items-center gap-2"><i data-icon="circle-check" class="size-4 text-success"></i>Footer disclaimer PPN</li>
+              </ul>
+            </div>
+          </section>
+          <button class="btn btn-default w-full" data-toast="INV-2026-0010.pdf diunduh" data-toast-variant="info"><i data-icon="download"></i>Unduh PDF</button>
+          <p class="text-xs text-muted-foreground">Unduh PDF tidak mengubah status invoice (§9.4).</p>
+        </aside>
+      </section>
+
+      <!-- PDF EN -->
+      <section id="pdf-en" role="tabpanel" hidden class="grid gap-6 lg:grid-cols-[1fr_18rem]">
+        <div class="rounded-xl bg-slate-200/70 p-4 sm:p-8 dark:bg-slate-800/60">
+          <article class="mx-auto flex aspect-[1/1.414] w-full max-w-[560px] flex-col bg-white p-8 text-[11px] leading-relaxed text-slate-900 shadow-lg sm:p-10" lang="en" aria-label="PDF page A4 (English)">
+            <div class="flex items-start justify-between">
+              <div class="flex items-center gap-2.5">
+                <span class="grid size-10 place-items-center rounded-md bg-blue-50 text-sm font-semibold text-blue-700">SK</span>
+                <div><p class="text-sm font-semibold">Studio Kartika</p><p class="text-slate-500">Jl. Kaliurang Km 5, Sleman, Yogyakarta</p></div>
+              </div>
+              <div class="text-right"><p class="text-lg font-semibold tracking-tight">INVOICE</p><p class="font-mono">INV-2026-0010</p></div>
+            </div>
+            <div class="mt-8 grid grid-cols-3 gap-4">
+              <div><p class="font-semibold text-slate-500 uppercase">Bill to</p><p class="font-medium">PT Arunika Digital</p></div>
+              <div><p class="font-semibold text-slate-500 uppercase">Issue date</p><p>1 Sep 2026</p><p class="mt-1 font-semibold text-slate-500 uppercase">Due date</p><p>1 Oct 2026</p></div>
+              <div class="text-right"><p class="font-semibold text-slate-500 uppercase">Amount due</p><p class="text-base font-semibold tabular-nums">IDR 8,880,000</p></div>
+            </div>
+            <table class="mt-8 w-full">
+              <thead><tr class="border-b border-slate-300 text-left text-slate-500 uppercase"><th class="py-1.5 font-semibold">Description</th><th class="py-1.5 text-right font-semibold">Qty</th><th class="py-1.5 text-right font-semibold">Unit price</th><th class="py-1.5 text-right font-semibold">Amount</th></tr></thead>
+              <tbody class="divide-y divide-slate-200">
+                <tr><td class="py-2">Mobile app UI kit</td><td class="py-2 text-right">1</td><td class="py-2 text-right tabular-nums">IDR 6,000,000</td><td class="py-2 text-right tabular-nums">IDR 6,000,000</td></tr>
+                <tr><td class="py-2">Interactive prototype</td><td class="py-2 text-right">1</td><td class="py-2 text-right tabular-nums">IDR 2,000,000</td><td class="py-2 text-right tabular-nums">IDR 2,000,000</td></tr>
+              </tbody>
+            </table>
+            <dl class="mt-4 ml-auto w-48 space-y-1">
+              <div class="flex justify-between"><dt class="text-slate-500">Subtotal</dt><dd class="tabular-nums">IDR 8,000,000</dd></div>
+              <div class="flex justify-between"><dt class="text-slate-500">VAT (PPN) 11%</dt><dd class="tabular-nums">IDR 880,000</dd></div>
+              <div class="flex justify-between border-t border-slate-300 pt-1 font-semibold"><dt>Total</dt><dd class="tabular-nums">IDR 8,880,000</dd></div>
+            </dl>
+            <div class="mt-8 rounded bg-slate-50 p-3"><p class="font-semibold">Payment</p><p class="text-slate-600">BCA 123-456-7890 · Dewi Kartika</p></div>
+            <div class="mt-auto border-t border-slate-200 pt-3 text-[9px] text-slate-500">
+              <p>VAT shown is for billing information only and is not an Indonesian electronic tax invoice (e-Faktur).</p>
+            </div>
+          </article>
+        </div>
+        <aside class="space-y-4">
+          <section class="card gap-4">
+            <div class="card-header">
+              <h2 class="card-title">Label PDF ID/EN</h2>
+              <p class="card-description">FR-13 (Could) · untuk klien luar negeri.</p>
+            </div>
+            <div class="card-content grid gap-3 text-sm">
+              <div class="field">
+                <label class="label" for="lang">Bahasa label</label>
+                <select id="lang" class="select"><option>Indonesia</option><option selected>English</option></select>
+              </div>
+              <p class="text-muted-foreground">Hanya label yang diterjemahkan; mata uang tetap IDR (multi-currency: Won't have).</p>
+            </div>
+          </section>
+        </aside>
+      </section>
+
+      <!-- Publik lunas -->
+      <section id="pub-paid" role="tabpanel" hidden>
+        <div class="mx-auto max-w-2xl overflow-hidden rounded-xl border bg-background shadow-sm">
+          <div class="flex items-center justify-between border-b px-5 py-3">
+            <div class="flex items-center gap-2 font-semibold"><span class="grid size-8 place-items-center rounded-md bg-primary/10 text-xs text-primary">SK</span>Studio Kartika</div>
+            <button class="btn btn-outline btn-sm" data-toast="PDF diunduh" data-toast-variant="info"><i data-icon="download"></i>Unduh PDF</button>
+          </div>
+          <div class="space-y-6 p-6 sm:p-8">
+            <div class="flex flex-col items-center gap-3 rounded-xl bg-emerald-50 p-6 text-center dark:bg-emerald-500/10">
+              <span class="grid size-12 place-items-center rounded-full bg-success text-success-foreground"><i data-icon="check" class="size-6"></i></span>
+              <span class="badge badge-paid"><span class="badge-dot"></span>Lunas</span>
+              <p class="text-3xl font-semibold tracking-tight tabular-nums">Rp 8.880.000</p>
+              <p class="text-sm text-muted-foreground">Dibayar 12 Sep 2026 · terima kasih!</p>
+            </div>
+            <dl class="grid grid-cols-2 gap-4 text-sm">
+              <div><dt class="text-xs text-muted-foreground uppercase">Nomor</dt><dd class="font-mono">INV-2026-0010</dd></div>
+              <div><dt class="text-xs text-muted-foreground uppercase">Ditagihkan ke</dt><dd>PT Arunika Digital</dd></div>
+            </dl>
+            <p class="text-sm text-muted-foreground">Instruksi pembayaran disembunyikan karena invoice sudah lunas.</p>
+          </div>
+          <div class="border-t px-5 py-3 text-xs text-muted-foreground">Powered by Invoicing · Privasi</div>
+        </div>
+      </section>
+
+      <!-- Link dicabut -->
+      <section id="pub-revoked" role="tabpanel" hidden>
+        <div class="mx-auto flex max-w-md flex-col items-center gap-5 rounded-xl border bg-background px-6 py-14 text-center shadow-sm">
+          <span class="grid size-14 place-items-center rounded-full bg-muted"><i data-icon="link" class="size-6 text-muted-foreground"></i></span>
+          <div class="space-y-2">
+            <p class="text-xs font-medium tracking-wide text-muted-foreground uppercase">404</p>
+            <h2 class="text-xl font-semibold tracking-tight">Link tidak valid atau dicabut</h2>
+            <p class="text-sm text-muted-foreground">Penerbit invoice mungkin sudah membuat tautan baru. Hubungi mereka untuk meminta tautan terbaru.</p>
+          </div>
+          <div class="grid w-full gap-2 rounded-lg bg-muted/60 p-4 text-left text-sm">
+            <p class="font-medium">Kenapa ini terjadi?</p>
+            <p class="text-muted-foreground">Tautan invoice bisa dicabut kapan saja oleh penerbit demi keamanan (BR-05), atau invoice telah dibatalkan.</p>
+          </div>
+          <p class="text-xs text-muted-foreground">Powered by Invoicing · Privasi</p>
+        </div>
+      </section>
+    </main>
+  </body>
+</html>

@@ -1,0 +1,228 @@
+<!doctype html>
+<html lang="id">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Dashboard — Invoicing</title>
+    <script>
+      try {
+        if (localStorage.getItem('invoicing-proto-theme') === 'dark') document.documentElement.classList.add('dark')
+      } catch (e) {}
+    </script>
+    <link rel="stylesheet" href="assets/ui.css" />
+    <script src="assets/prototype.js" defer></script>
+  </head>
+  <body data-shell="screen" class="min-h-screen">
+    <header class="sticky top-0 z-40 border-b bg-background/90 backdrop-blur">
+      <div class="mx-auto flex h-14 max-w-5xl items-center gap-6 px-4 sm:px-6 lg:px-8">
+        <button class="btn btn-ghost btn-icon btn-sm md:hidden" data-dialog-open="nav-sheet" aria-label="Buka menu"><i data-icon="menu"></i></button>
+        <a class="flex items-center gap-2 font-semibold" href="screen-dashboard.html"><span class="grid size-7 place-items-center rounded-md bg-primary text-primary-foreground"><i data-icon="receipt"></i></span><span class="leading-tight">Invoicing<span class="hidden text-xs font-normal text-muted-foreground lg:block">Freelancer Indonesia</span></span></a>
+        <nav class="hidden items-center gap-1 md:flex" aria-label="Utama">
+          <a class="nav-link" aria-current="page" href="screen-dashboard.html">Dashboard</a>
+          <a class="nav-link" href="screen-clients.html">Klien</a>
+          <a class="nav-link" href="screen-invoice-list.html">Invoice</a>
+          <a class="nav-link" href="screen-settings.html">Pengaturan</a>
+        </nav>
+        <div class="ml-auto flex items-center gap-2">
+          <a class="btn btn-default btn-sm" href="screen-invoice-editor.html"><i data-icon="plus"></i><span class="hidden sm:inline">Invoice baru</span></a>
+          <details class="dropdown">
+            <summary class="flex cursor-pointer items-center rounded-full p-0.5 hover:bg-accent" aria-label="Menu akun"><span class="avatar bg-primary/10 text-primary">DK</span></summary>
+            <div class="dropdown-content w-56">
+              <div class="px-2 py-1.5"><p class="text-sm font-medium">Dewi Kartika</p><p class="text-xs text-muted-foreground">dewi@studiokartika.id</p></div>
+              <div class="dropdown-separator"></div>
+              <a class="dropdown-item" href="screen-settings.html"><i data-icon="building"></i>Profil bisnis</a>
+              <a class="dropdown-item" href="screen-settings.html"><i data-icon="settings"></i>Pengaturan</a>
+              <div class="dropdown-separator"></div>
+              <a class="dropdown-item" href="screen-auth.html"><i data-icon="log-out"></i>Keluar</a>
+            </div>
+          </details>
+        </div>
+      </div>
+    </header>
+
+    <main class="mx-auto max-w-5xl space-y-8 px-4 py-8 sm:px-6">
+      <div class="flex flex-wrap items-end justify-between gap-4">
+        <div>
+          <h1 class="text-xl font-bold">Dashboard</h1>
+          <p class="text-sm text-muted-foreground">Selamat pagi, Dewi. Ini ringkasan tagihan Studio Kartika.</p>
+        </div>
+        <div class="inline-flex rounded-md shadow-xs">
+          <button class="btn btn-outline btn-sm rounded-r-none">7 hari</button>
+          <button class="btn btn-outline btn-sm -ml-px rounded-none bg-accent">30 hari</button>
+          <button class="btn btn-outline btn-sm -ml-px rounded-l-none">Tahun ini</button>
+        </div>
+      </div>
+
+      <div class="alert alert-warning">
+        <i data-icon="triangle-alert"></i>
+        <p class="alert-title">1 invoice lewat jatuh tempo</p>
+        <p class="alert-description">INV-2026-0012 untuk CV Nusantara Kreatif terlambat 3 hari (Rp 2.000.000). <a href="screen-invoice-list.html" class="font-medium underline underline-offset-4">Tindak lanjuti</a></p>
+      </div>
+
+      <section class="grid gap-4 sm:grid-cols-2 lg:grid-cols-3" aria-label="Ringkasan">
+        <div class="card gap-2 border-primary/30 bg-primary/5 py-5 sm:col-span-2 lg:col-span-1">
+          <div class="card-header flex-row items-center justify-between"><p class="text-sm font-medium text-primary">Outstanding (IDR)</p><i data-icon="wallet" class="size-4 text-primary"></i></div>
+          <div class="card-content"><p class="text-3xl font-bold tabular-nums">Rp 7.550.000</p><p class="text-xs text-muted-foreground">2 invoice terkirim belum lunas</p></div>
+        </div>
+        <div class="card gap-2 py-5">
+          <div class="card-header flex-row items-center justify-between"><p class="text-sm font-medium text-muted-foreground">Jatuh tempo</p><i data-icon="triangle-alert" class="size-4 text-warning"></i></div>
+          <div class="card-content"><p class="text-2xl font-bold tabular-nums">1</p><p class="text-xs text-warning">Rp 2.000.000 · lewat 3 hari</p></div>
+        </div>
+        <div class="card gap-2 py-5">
+          <div class="card-header flex-row items-center justify-between"><p class="text-sm font-medium text-muted-foreground">Draft</p><i data-icon="file-text" class="size-4 text-muted-foreground"></i></div>
+          <div class="card-content"><p class="text-2xl font-bold tabular-nums">3</p><p class="text-xs text-muted-foreground">Rp 5.280.000 belum dikirim</p></div>
+        </div>
+      </section>
+
+      <section class="space-y-4" aria-labelledby="recent-title">
+        <div class="flex flex-wrap items-center justify-between gap-3">
+          <h2 id="recent-title" class="text-lg font-semibold tracking-tight">Invoice terbaru</h2>
+          <div role="tablist" class="tabs-list" aria-label="Filter status" data-filter-target="invoice-rows">
+            <button role="tab" class="tabs-trigger" aria-selected="true" data-filter="all">Semua <span class="tabs-count">8</span></button>
+            <button role="tab" class="tabs-trigger" data-filter="draft">Draft <span class="tabs-count">3</span></button>
+            <button role="tab" class="tabs-trigger" data-filter="sent">Terkirim <span class="tabs-count">1</span></button>
+            <button role="tab" class="tabs-trigger" data-filter="overdue">Jatuh tempo <span class="tabs-count">1</span></button>
+            <button role="tab" class="tabs-trigger" data-filter="paid">Lunas <span class="tabs-count">3</span></button>
+          </div>
+        </div>
+
+        <div class="table-container md:overflow-visible">
+          <table class="table">
+            <thead>
+              <tr><th>No.</th><th>Klien</th><th class="text-right">Jumlah</th><th>Status</th><th class="hidden md:table-cell">Due</th><th class="w-12"><span class="sr-only">Aksi</span></th></tr>
+            </thead>
+            <tbody id="invoice-rows">
+              <tr data-status="sent">
+                <td><a class="font-mono text-xs font-medium hover:text-primary" href="screen-invoice-preview.html">INV-2026-0013</a></td>
+                <td><div class="font-medium">PT Arunika Digital</div><div class="text-xs text-muted-foreground">Redesign website</div></td>
+                <td class="text-right font-medium tabular-nums">Rp 5.550.000</td>
+                <td><span class="badge badge-sent"><span class="badge-dot"></span>Terkirim</span></td>
+                <td class="hidden text-muted-foreground md:table-cell">13 Okt 2026</td>
+                <td>
+                  <details class="dropdown">
+                    <summary class="btn btn-ghost btn-icon btn-sm" aria-label="Aksi INV-2026-0013"><i data-icon="more-horizontal"></i></summary>
+                    <div class="dropdown-content">
+                      <a class="dropdown-item" href="screen-invoice-preview.html"><i data-icon="eye"></i>Lihat</a>
+                      <button class="dropdown-item"><i data-icon="download"></i>Unduh PDF</button>
+                      <button class="dropdown-item" data-copy="https://invoice.app/i/7fK2qP9"><i data-icon="link"></i>Salin tautan</button>
+                      <div class="dropdown-separator"></div>
+                      <button class="dropdown-item" data-toast="INV-2026-0013 ditandai lunas"><i data-icon="check"></i>Tandai lunas</button>
+                    </div>
+                  </details>
+                </td>
+              </tr>
+              <tr data-status="overdue">
+                <td><a class="font-mono text-xs font-medium hover:text-primary" href="screen-invoice-preview.html">INV-2026-0012</a></td>
+                <td><div class="font-medium">CV Nusantara Kreatif</div><div class="text-xs text-muted-foreground">Ilustrasi kampanye</div></td>
+                <td class="text-right font-medium tabular-nums">Rp 2.000.000</td>
+                <td><span class="badge badge-overdue"><span class="badge-dot"></span>Jatuh tempo</span></td>
+                <td class="hidden font-medium text-warning md:table-cell">26 Sep 2026</td>
+                <td>
+                  <details class="dropdown">
+                    <summary class="btn btn-ghost btn-icon btn-sm" aria-label="Aksi INV-2026-0012"><i data-icon="more-horizontal"></i></summary>
+                    <div class="dropdown-content">
+                      <a class="dropdown-item" href="screen-invoice-preview.html"><i data-icon="eye"></i>Lihat</a>
+                      <button class="dropdown-item" data-toast="Pengingat dikirim ulang ke CV Nusantara Kreatif"><i data-icon="mail"></i>Kirim ulang</button>
+                      <div class="dropdown-separator"></div>
+                      <button class="dropdown-item" data-toast="INV-2026-0012 ditandai lunas"><i data-icon="check"></i>Tandai lunas</button>
+                    </div>
+                  </details>
+                </td>
+              </tr>
+              <tr data-status="draft">
+                <td><a class="text-xs text-muted-foreground italic hover:text-primary" href="screen-invoice-editor.html">(auto saat kirim)</a></td>
+                <td><div class="font-medium">Yayasan Cerdas Bangsa</div><div class="text-xs text-muted-foreground">Workshop desain</div></td>
+                <td class="text-right font-medium tabular-nums">Rp 3.330.000</td>
+                <td><span class="badge badge-draft"><span class="badge-dot"></span>Draft</span></td>
+                <td class="hidden text-muted-foreground md:table-cell">—</td>
+                <td>
+                  <details class="dropdown">
+                    <summary class="btn btn-ghost btn-icon btn-sm" aria-label="Aksi draft"><i data-icon="more-horizontal"></i></summary>
+                    <div class="dropdown-content">
+                      <a class="dropdown-item" href="screen-invoice-editor.html"><i data-icon="pencil"></i>Edit</a>
+                      <a class="dropdown-item" href="screen-invoice-send.html"><i data-icon="send"></i>Kirim ke klien</a>
+                      <div class="dropdown-separator"></div>
+                      <button class="dropdown-item dropdown-item-destructive" data-dialog-open="dlg-delete"><i data-icon="trash"></i>Hapus draft</button>
+                    </div>
+                  </details>
+                </td>
+              </tr>
+              <tr data-status="draft">
+                <td><a class="text-xs text-muted-foreground italic hover:text-primary" href="screen-invoice-editor.html">(auto saat kirim)</a></td>
+                <td><div class="font-medium">CV Nusantara Kreatif</div><div class="text-xs text-muted-foreground">Revisi logo</div></td>
+                <td class="text-right font-medium tabular-nums">Rp 1.200.000</td>
+                <td><span class="badge badge-draft"><span class="badge-dot"></span>Draft</span></td>
+                <td class="hidden text-muted-foreground md:table-cell">—</td>
+                <td><a class="btn btn-ghost btn-icon btn-sm" href="screen-invoice-editor.html" aria-label="Edit draft"><i data-icon="pencil"></i></a></td>
+              </tr>
+              <tr data-status="draft">
+                <td><a class="text-xs text-muted-foreground italic hover:text-primary" href="screen-invoice-editor.html">(auto saat kirim)</a></td>
+                <td><div class="font-medium">Budi Santoso</div><div class="text-xs text-muted-foreground">Foto produk</div></td>
+                <td class="text-right font-medium tabular-nums">Rp 750.000</td>
+                <td><span class="badge badge-draft"><span class="badge-dot"></span>Draft</span></td>
+                <td class="hidden text-muted-foreground md:table-cell">—</td>
+                <td><a class="btn btn-ghost btn-icon btn-sm" href="screen-invoice-editor.html" aria-label="Edit draft"><i data-icon="pencil"></i></a></td>
+              </tr>
+              <tr data-status="paid">
+                <td><a class="font-mono text-xs font-medium hover:text-primary" href="screen-invoice-preview.html">INV-2026-0011</a></td>
+                <td><div class="font-medium">Budi Santoso</div><div class="text-xs text-muted-foreground">Foto katalog</div></td>
+                <td class="text-right font-medium tabular-nums">Rp 1.500.000</td>
+                <td><span class="badge badge-paid"><span class="badge-dot"></span>Lunas</span></td>
+                <td class="hidden text-muted-foreground md:table-cell">20 Sep 2026</td>
+                <td><button class="btn btn-ghost btn-icon btn-sm" aria-label="Unduh PDF"><i data-icon="download"></i></button></td>
+              </tr>
+              <tr data-status="paid">
+                <td><a class="font-mono text-xs font-medium hover:text-primary" href="screen-invoice-preview.html">INV-2026-0010</a></td>
+                <td><div class="font-medium">PT Arunika Digital</div><div class="text-xs text-muted-foreground">UI kit aplikasi</div></td>
+                <td class="text-right font-medium tabular-nums">Rp 8.880.000</td>
+                <td><span class="badge badge-paid"><span class="badge-dot"></span>Lunas</span></td>
+                <td class="hidden text-muted-foreground md:table-cell">15 Sep 2026</td>
+                <td><button class="btn btn-ghost btn-icon btn-sm" aria-label="Unduh PDF"><i data-icon="download"></i></button></td>
+              </tr>
+              <tr data-status="paid">
+                <td><a class="font-mono text-xs font-medium hover:text-primary" href="screen-invoice-preview.html">INV-2026-0009</a></td>
+                <td><div class="font-medium">Yayasan Cerdas Bangsa</div><div class="text-xs text-muted-foreground">Materi pelatihan</div></td>
+                <td class="text-right font-medium tabular-nums">Rp 7.820.000</td>
+                <td><span class="badge badge-paid"><span class="badge-dot"></span>Lunas</span></td>
+                <td class="hidden text-muted-foreground md:table-cell">5 Sep 2026</td>
+                <td><button class="btn btn-ghost btn-icon btn-sm" aria-label="Unduh PDF"><i data-icon="download"></i></button></td>
+              </tr>
+            </tbody>
+          </table>
+          <div class="border-t p-10 text-center text-sm text-muted-foreground" data-empty-for="invoice-rows" hidden>Tidak ada invoice dengan status ini.</div>
+        </div>
+      </section>
+    </main>
+
+    <footer class="border-t">
+      <div class="mx-auto flex max-w-5xl flex-col gap-2 px-4 py-6 pb-20 text-sm text-muted-foreground sm:flex-row sm:justify-between sm:px-6">
+        <p>© 2026 Invoicing</p>
+        <nav class="flex gap-4"><a class="hover:text-foreground" href="#">Privasi</a><a class="hover:text-foreground" href="#">Syarat</a><a class="hover:text-foreground" href="#">Bantuan</a></nav>
+      </div>
+    </footer>
+
+    <dialog id="nav-sheet" class="sheet" aria-label="Menu navigasi">
+      <div class="flex items-center justify-between">
+        <span class="font-semibold">Invoicing</span>
+        <button class="btn btn-ghost btn-icon btn-sm" data-dialog-close aria-label="Tutup"><i data-icon="x"></i></button>
+      </div>
+      <nav class="grid gap-0.5">
+        <a class="sidebar-link" aria-current="page" href="screen-dashboard.html"><i data-icon="layout-dashboard"></i>Dashboard</a>
+        <a class="sidebar-link" href="screen-clients.html"><i data-icon="users"></i>Klien</a>
+        <a class="sidebar-link" href="screen-invoice-list.html"><i data-icon="file-text"></i>Invoice</a>
+        <a class="sidebar-link" href="screen-settings.html"><i data-icon="settings"></i>Pengaturan</a>
+      </nav>
+    </dialog>
+
+    <dialog id="dlg-delete" class="dialog" role="alertdialog" aria-labelledby="dlg-delete-title">
+      <div class="dialog-header">
+        <h2 id="dlg-delete-title" class="dialog-title">Hapus draft invoice?</h2>
+        <p class="dialog-description">Draft untuk Yayasan Cerdas Bangsa (Rp 3.330.000) akan dihapus permanen.</p>
+      </div>
+      <div class="dialog-footer">
+        <button class="btn btn-outline" data-dialog-close>Batal</button>
+        <button class="btn btn-destructive" data-dialog-close data-toast="Draft dihapus">Ya, hapus</button>
+      </div>
+    </dialog>
+  </body>
+</html>

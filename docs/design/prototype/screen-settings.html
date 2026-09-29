@@ -1,0 +1,142 @@
+<!doctype html>
+<html lang="id">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Pengaturan — Invoicing</title>
+    <script>
+      try {
+        if (localStorage.getItem('invoicing-proto-theme') === 'dark') document.documentElement.classList.add('dark')
+      } catch (e) {}
+    </script>
+    <link rel="stylesheet" href="assets/ui.css" />
+    <script src="assets/prototype.js" defer></script>
+  </head>
+  <body data-shell="screen" class="min-h-screen">
+    <header class="sticky top-0 z-40 border-b bg-background/90 backdrop-blur">
+      <div class="mx-auto flex h-14 max-w-5xl items-center gap-6 px-4 sm:px-6 lg:px-8">
+        <a class="flex items-center gap-2 font-semibold" href="screen-dashboard.html"><span class="grid size-7 place-items-center rounded-md bg-primary text-primary-foreground"><i data-icon="receipt"></i></span><span class="leading-tight">Invoicing<span class="hidden text-xs font-normal text-muted-foreground lg:block">Freelancer Indonesia</span></span></a>
+        <nav class="hidden items-center gap-1 md:flex" aria-label="Utama">
+          <a class="nav-link" href="screen-dashboard.html">Dashboard</a>
+          <a class="nav-link" href="screen-clients.html">Klien</a>
+          <a class="nav-link" href="screen-invoice-list.html">Invoice</a>
+          <a class="nav-link" aria-current="page" href="screen-settings.html">Pengaturan</a>
+        </nav>
+        <span class="avatar ml-auto bg-primary/10 text-primary">DK</span>
+      </div>
+    </header>
+
+    <main class="mx-auto max-w-5xl px-4 py-8 pb-24 sm:px-6 lg:px-8">
+      <form class="space-y-8" data-demo="Pengaturan tersimpan">
+        <div class="flex flex-wrap items-end justify-between gap-4">
+          <div>
+            <h1 class="text-xl font-bold">Pengaturan</h1>
+            <p class="text-sm text-muted-foreground">Profil bisnis tampil di kop invoice, PDF (FR-04), dan tampilan publik (FR-06).</p>
+          </div>
+          <nav class="flex gap-1" aria-label="Bagian pengaturan">
+            <a class="nav-link" href="#profil">Profil bisnis</a>
+            <a class="nav-link" href="#invoice">Invoice</a>
+            <a class="nav-link" href="#akun">Akun</a>
+          </nav>
+        </div>
+
+        <section id="profil" class="card scroll-mt-20" aria-labelledby="h-profil">
+          <div class="card-header">
+            <h2 id="h-profil" class="text-lg font-semibold">Profil bisnis</h2>
+            <p class="card-description">Wajib diisi sebelum invoice pertama dikirim.</p>
+          </div>
+          <div class="card-content grid gap-5">
+            <div class="grid items-start gap-5 sm:grid-cols-2">
+              <div class="field"><label class="label" for="s-legal">Nama legal <span class="text-destructive">*</span></label><input id="s-legal" class="input" required value="Studio Kartika" /></div>
+              <div class="field"><label class="label" for="s-npwp">NPWP <span class="font-normal text-muted-foreground">(opsional)</span></label><input id="s-npwp" class="input font-mono" placeholder="00.000.000.0-000.000" /></div>
+            </div>
+            <div class="field"><label class="label" for="s-addr">Alamat</label><textarea id="s-addr" class="textarea min-h-16">Jl. Kaliurang Km 5, Sleman, Yogyakarta 55281</textarea></div>
+            <div class="field">
+              <span class="label">Logo</span>
+              <div class="flex items-center gap-4">
+                <span class="grid size-14 place-items-center rounded-xl bg-primary/10 text-lg font-semibold text-primary" aria-label="Preview logo">SK</span>
+                <button type="button" class="btn btn-outline btn-sm"><i data-icon="upload"></i>Upload</button>
+                <span class="text-xs text-muted-foreground">PNG/JPG persegi, maks 1 MB</span>
+              </div>
+            </div>
+            <div class="field"><label class="label" for="s-bank">Rekening bank</label><input id="s-bank" class="input" value="BCA 123-456-7890 a/n Dewi Kartika" /></div>
+            <div class="field">
+              <label class="label" for="s-footer">Footer default</label>
+              <textarea id="s-footer" class="textarea min-h-16">Terima kasih atas kepercayaannya.</textarea>
+              <p class="field-description">Muncul sebagai catatan footer di setiap invoice baru.</p>
+            </div>
+          </div>
+        </section>
+
+        <section id="invoice" class="card scroll-mt-20" aria-labelledby="h-invoice">
+          <div class="card-header">
+            <h2 id="h-invoice" class="text-lg font-semibold">Invoice</h2>
+            <p class="card-description">Default untuk invoice baru; bisa diubah per invoice.</p>
+          </div>
+          <div class="card-content grid items-start gap-5 sm:grid-cols-2">
+            <div class="field">
+              <label class="label" for="s-format">Format nomor</label>
+              <input id="s-format" class="input font-mono" value="INV-{YYYY}-{SEQ}" />
+              <p class="field-description">Berikutnya: <span class="font-mono">INV-2026-0014</span> · dikunci saat kirim (BR-02).</p>
+            </div>
+            <div class="field">
+              <label class="label" for="s-due">Default due</label>
+              <div class="input-group"><input id="s-due" class="input text-right tabular-nums" inputmode="numeric" value="30" /><span class="input-addon">hari</span></div>
+            </div>
+            <div class="space-y-1 sm:col-span-2">
+              <label class="flex items-center gap-2 text-sm font-medium"><input type="checkbox" class="checkbox" checked />PPN 11% aktif secara default</label>
+              <p class="text-xs text-muted-foreground">PPN hanya kalkulator. Bukan e-Faktur DJP.</p>
+            </div>
+          </div>
+        </section>
+
+        <section id="akun" class="card scroll-mt-20" aria-labelledby="h-akun">
+          <div class="card-header">
+            <h2 id="h-akun" class="text-lg font-semibold">Akun</h2>
+          </div>
+          <div class="card-content grid gap-5">
+            <div class="field max-w-md"><label class="label" for="s-email">Email</label><input id="s-email" type="email" class="input" value="dewi@studiokartika.id" disabled /></div>
+            <div class="flex flex-wrap gap-2">
+              <button type="button" class="btn btn-outline" data-dialog-open="dlg-password"><i data-icon="lock"></i>Ubah password</button>
+              <button type="button" class="btn btn-ghost text-destructive hover:bg-destructive/10 hover:text-destructive" data-dialog-open="dlg-delete-account"><i data-icon="trash"></i>Hapus akun</button>
+            </div>
+          </div>
+          <div class="card-footer border-t pt-6 text-sm text-muted-foreground">
+            Legal: <a class="font-medium text-foreground underline-offset-4 hover:underline" href="#">Syarat</a> · <a class="font-medium text-foreground underline-offset-4 hover:underline" href="#">Privasi</a>
+          </div>
+        </section>
+
+        <div class="flex justify-end gap-2">
+          <button type="reset" class="btn btn-outline">Batal</button>
+          <button type="submit" class="btn btn-default"><i data-icon="save"></i>Simpan perubahan</button>
+        </div>
+      </form>
+    </main>
+
+    <dialog id="dlg-password" class="dialog" aria-labelledby="dlg-pw-title">
+      <form method="dialog" class="grid gap-4" data-demo="Password diperbarui">
+        <div class="dialog-header">
+          <h2 id="dlg-pw-title" class="dialog-title">Ubah password</h2>
+          <p class="dialog-description">Minimal 8 karakter.</p>
+        </div>
+        <div class="field"><label class="label" for="pw-cur">Password saat ini</label><input id="pw-cur" type="password" class="input" required /></div>
+        <div class="field"><label class="label" for="pw-new">Password baru</label><input id="pw-new" type="password" class="input" minlength="8" required /></div>
+        <div class="dialog-footer">
+          <button type="button" class="btn btn-outline" data-dialog-close>Batal</button>
+          <button type="submit" class="btn btn-default">Simpan</button>
+        </div>
+      </form>
+    </dialog>
+
+    <dialog id="dlg-delete-account" class="dialog" role="alertdialog" aria-labelledby="dlg-da-title">
+      <div class="dialog-header">
+        <h2 id="dlg-da-title" class="dialog-title">Hapus akun secara permanen?</h2>
+        <p class="dialog-description">Semua klien dan invoice akan dihapus dan tautan publik berhenti berfungsi.</p>
+      </div>
+      <div class="dialog-footer">
+        <button class="btn btn-outline" data-dialog-close>Batal</button>
+        <button class="btn btn-destructive" data-dialog-close data-toast="Permintaan hapus akun dicatat" data-toast-variant="error">Hapus akun</button>
+      </div>
+    </dialog>
+  </body>
+</html>

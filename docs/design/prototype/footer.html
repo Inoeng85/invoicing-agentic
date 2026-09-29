@@ -1,0 +1,131 @@
+<!doctype html>
+<html lang="id">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Invoicing UI System — Footer</title>
+    <script>
+      try {
+        if (localStorage.getItem('invoicing-proto-theme') === 'dark') document.documentElement.classList.add('dark')
+      } catch (e) {}
+    </script>
+    <link rel="stylesheet" href="assets/ui.css" />
+    <script src="assets/prototype.js" defer></script>
+  </head>
+  <body data-shell="docs">
+    <main class="mx-auto max-w-7xl space-y-14 px-4 py-12 sm:px-6">
+      <header class="max-w-3xl space-y-2">
+        <p class="text-sm font-medium text-primary">Layout</p>
+        <h1 class="text-3xl font-semibold tracking-tight">Footer</h1>
+        <p class="text-muted-foreground">
+          Footer di aplikasi dibuat minimal; footer publik wajib memuat disclaimer PPN non-e-Faktur dan tautan legal
+          (lihat <code class="code">brd/legal</code>).
+        </p>
+      </header>
+
+      <section class="doc-section">
+        <div class="flex flex-wrap items-center gap-2">
+          <h2 class="doc-title">A · App footer minimal</h2>
+          <span class="badge badge-default">Rekomendasi</span>
+        </div>
+        <div class="preview">
+          <div class="h-20 px-4 pt-4 text-sm text-muted-foreground">Konten aplikasi…</div>
+          <footer class="border-t bg-background">
+            <div class="flex flex-col gap-3 px-4 py-4 text-sm text-muted-foreground sm:flex-row sm:items-center sm:justify-between">
+              <p>© 2026 Invoicing · Dibuat untuk freelancer Indonesia</p>
+              <nav class="flex gap-4">
+                <a class="hover:text-foreground" href="#">Privasi</a>
+                <a class="hover:text-foreground" href="#">Syarat</a>
+                <a class="hover:text-foreground" href="#">Bantuan</a>
+              </nav>
+            </div>
+          </footer>
+        </div>
+      </section>
+
+      <section class="doc-section">
+        <div class="flex flex-wrap items-center gap-2">
+          <h2 class="doc-title">B · Footer publik invoice</h2>
+          <span class="badge badge-outline">FR-06 · disclaimer PPN</span>
+        </div>
+        <div class="preview">
+          <footer class="space-y-4 bg-background px-6 py-6">
+            <div class="alert">
+              <i data-icon="info"></i>
+              <p class="alert-title">Catatan pajak</p>
+              <p class="alert-description">
+                PPN pada invoice ini dihitung sebagai informasi penagihan dan bukan Faktur Pajak elektronik (e-Faktur).
+                Hubungi penerbit invoice bila memerlukan faktur pajak resmi.
+              </p>
+            </div>
+            <div class="flex flex-col gap-2 text-xs text-muted-foreground sm:flex-row sm:items-center sm:justify-between">
+              <p>Diterbitkan oleh <span class="font-medium text-foreground">Studio Kartika</span> · dewi@studiokartika.id</p>
+              <p class="inline-flex items-center gap-1.5"><i data-icon="shield-check" class="size-3.5"></i>Tautan privat · Dibuat dengan Invoicing</p>
+            </div>
+          </footer>
+        </div>
+      </section>
+
+      <section class="doc-section">
+        <div class="flex flex-wrap items-center gap-2">
+          <h2 class="doc-title">C · Footer marketing (landing)</h2>
+          <span class="badge badge-outline">Post-MVP</span>
+        </div>
+        <div class="preview">
+          <footer class="bg-background px-6 py-10">
+            <div class="grid gap-8 md:grid-cols-5">
+              <div class="space-y-3 md:col-span-2">
+                <a class="flex items-center gap-2 font-semibold" href="#"><span class="grid size-7 place-items-center rounded-md bg-primary text-primary-foreground"><i data-icon="receipt"></i></span>Invoicing</a>
+                <p class="max-w-xs text-sm text-muted-foreground">Invoice profesional dalam rupiah, dengan PPN 11% opsional dan tautan publik.</p>
+                <form class="flex max-w-sm gap-2" data-demo="Terima kasih, kamu sudah berlangganan">
+                  <input class="input" type="email" placeholder="Email kamu" required />
+                  <button class="btn btn-default" type="submit">Langganan</button>
+                </form>
+              </div>
+              <div class="space-y-3 text-sm">
+                <p class="font-medium">Produk</p>
+                <ul class="space-y-2 text-muted-foreground"><li><a href="#" class="hover:text-foreground">Fitur</a></li><li><a href="#" class="hover:text-foreground">Harga</a></li><li><a href="#" class="hover:text-foreground">Changelog</a></li></ul>
+              </div>
+              <div class="space-y-3 text-sm">
+                <p class="font-medium">Sumber</p>
+                <ul class="space-y-2 text-muted-foreground"><li><a href="#" class="hover:text-foreground">Panduan PPN</a></li><li><a href="#" class="hover:text-foreground">Template invoice</a></li><li><a href="#" class="hover:text-foreground">Bantuan</a></li></ul>
+              </div>
+              <div class="space-y-3 text-sm">
+                <p class="font-medium">Legal</p>
+                <ul class="space-y-2 text-muted-foreground"><li><a href="#" class="hover:text-foreground">Kebijakan privasi</a></li><li><a href="#" class="hover:text-foreground">Syarat &amp; ketentuan</a></li></ul>
+              </div>
+            </div>
+            <div class="separator my-8"></div>
+            <p class="text-xs text-muted-foreground">© 2026 Invoicing. Bukan penyedia e-Faktur.</p>
+          </footer>
+        </div>
+      </section>
+
+      <section class="doc-section">
+        <div class="flex flex-wrap items-center gap-2">
+          <h2 class="doc-title">D · Sticky action bar (mobile)</h2>
+          <span class="badge badge-outline">Editor &amp; preview</span>
+        </div>
+        <div class="preview mx-auto max-w-sm">
+          <div class="relative h-72 overflow-hidden rounded-[inherit]">
+            <div class="space-y-3 p-4">
+              <div class="skeleton h-5 w-1/2"></div>
+              <div class="skeleton h-20"></div>
+              <div class="skeleton h-20"></div>
+            </div>
+            <div class="absolute inset-x-0 bottom-0 border-t bg-background/95 p-3 backdrop-blur">
+              <div class="mb-2 flex items-baseline justify-between text-sm">
+                <span class="text-muted-foreground">Total</span>
+                <span class="text-lg font-semibold tabular-nums">Rp 5.550.000</span>
+              </div>
+              <div class="grid grid-cols-2 gap-2">
+                <button class="btn btn-outline">Simpan draft</button>
+                <button class="btn btn-default"><i data-icon="send"></i>Kirim</button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+    </main>
+  </body>
+</html>

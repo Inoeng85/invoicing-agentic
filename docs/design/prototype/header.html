@@ -1,0 +1,210 @@
+<!doctype html>
+<html lang="id">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Invoicing UI System — Header &amp; shell</title>
+    <script>
+      try {
+        if (localStorage.getItem('invoicing-proto-theme') === 'dark') document.documentElement.classList.add('dark')
+      } catch (e) {}
+    </script>
+    <link rel="stylesheet" href="assets/ui.css" />
+    <script src="assets/prototype.js" defer></script>
+  </head>
+  <body data-shell="docs">
+    <main class="mx-auto max-w-7xl space-y-14 px-4 py-12 sm:px-6">
+      <header class="max-w-3xl space-y-2">
+        <p class="text-sm font-medium text-primary">Layout</p>
+        <h1 class="text-3xl font-semibold tracking-tight">Header &amp; app shell</h1>
+        <p class="text-muted-foreground">
+          Enam opsi shell mengikuti pola "Application UI → Application shells / Headings" di Tailwind UI. Opsi A dipakai
+          di layar MVP; F khusus editor invoice.
+        </p>
+      </header>
+
+      <!-- A -->
+      <section class="doc-section">
+        <div class="flex flex-wrap items-center gap-2">
+          <h2 class="doc-title">A · Stacked top nav</h2>
+          <span class="badge badge-default">Rekomendasi</span>
+          <span class="badge badge-outline">Dashboard, Klien, Invoice</span>
+        </div>
+        <div class="preview">
+          <header class="border-b bg-background">
+            <div class="flex h-14 items-center gap-6 px-4">
+              <a class="flex items-center gap-2 font-semibold" href="#"><span class="grid size-7 place-items-center rounded-md bg-primary text-primary-foreground"><i data-icon="receipt"></i></span>Invoicing</a>
+              <nav class="hidden items-center gap-1 md:flex">
+                <a class="nav-link" aria-current="page" href="#">Dashboard</a>
+                <a class="nav-link" href="#">Klien</a>
+                <a class="nav-link" href="#">Invoice</a>
+                <a class="nav-link" href="#">Pengaturan</a>
+              </nav>
+              <div class="ml-auto flex items-center gap-2">
+                <button class="btn btn-default btn-sm"><i data-icon="plus"></i>Invoice baru</button>
+                <details class="dropdown">
+                  <summary class="flex cursor-pointer items-center gap-2 rounded-full p-0.5 hover:bg-accent"><span class="avatar bg-primary/10 text-primary">DK</span></summary>
+                  <div class="dropdown-content w-56">
+                    <div class="px-2 py-1.5"><p class="text-sm font-medium">Dewi Kartika</p><p class="text-xs text-muted-foreground">dewi@studiokartika.id</p></div>
+                    <div class="dropdown-separator"></div>
+                    <a class="dropdown-item" href="#"><i data-icon="user"></i>Profil bisnis</a>
+                    <a class="dropdown-item" href="#"><i data-icon="settings"></i>Pengaturan</a>
+                    <div class="dropdown-separator"></div>
+                    <button class="dropdown-item"><i data-icon="log-out"></i>Keluar</button>
+                  </div>
+                </details>
+              </div>
+            </div>
+          </header>
+          <div class="px-4 py-6">
+            <div class="flex flex-wrap items-end justify-between gap-4">
+              <div>
+                <h3 class="text-2xl font-semibold tracking-tight">Dashboard</h3>
+                <p class="text-sm text-muted-foreground">Selamat datang kembali, Dewi.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- B -->
+      <section class="doc-section">
+        <div class="flex flex-wrap items-center gap-2">
+          <h2 class="doc-title">B · Sidebar</h2>
+          <span class="badge badge-outline">Skala post-MVP (banyak menu)</span>
+        </div>
+        <div class="preview">
+          <div class="flex min-h-72 overflow-hidden">
+            <aside class="hidden w-56 shrink-0 flex-col gap-4 border-r bg-background p-3 sm:flex">
+              <a class="flex items-center gap-2 px-2 pt-1 font-semibold" href="#"><span class="grid size-7 place-items-center rounded-md bg-primary text-primary-foreground"><i data-icon="receipt"></i></span>Invoicing</a>
+              <nav class="grid gap-0.5">
+                <a class="sidebar-link" aria-current="page" href="#"><i data-icon="layout-dashboard"></i>Dashboard</a>
+                <a class="sidebar-link" href="#"><i data-icon="users"></i>Klien</a>
+                <a class="sidebar-link" href="#"><i data-icon="file-text"></i>Invoice<span class="ml-auto text-xs tabular-nums">13</span></a>
+                <a class="sidebar-link" href="#"><i data-icon="settings"></i>Pengaturan</a>
+              </nav>
+              <div class="mt-auto flex items-center gap-2 rounded-lg border p-2">
+                <span class="avatar">DK</span>
+                <div class="min-w-0 text-xs"><p class="truncate font-medium">Studio Kartika</p><p class="truncate text-muted-foreground">dewi@studiokartika.id</p></div>
+                <i data-icon="chevrons-up-down" class="ml-auto size-4 text-muted-foreground"></i>
+              </div>
+            </aside>
+            <div class="flex-1">
+              <div class="flex h-14 items-center gap-3 border-b bg-background px-4">
+                <div class="relative w-full max-w-sm">
+                  <i data-icon="search" class="pointer-events-none absolute top-1/2 left-3 size-4 -translate-y-1/2 text-muted-foreground"></i>
+                  <input class="input h-8 pl-9" placeholder="Cari…" />
+                </div>
+                <button class="btn btn-ghost btn-icon btn-sm ml-auto" aria-label="Notifikasi"><i data-icon="bell"></i></button>
+              </div>
+              <div class="p-4 text-sm text-muted-foreground">Konten halaman…</div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- C -->
+      <section class="doc-section">
+        <div class="flex flex-wrap items-center gap-2">
+          <h2 class="doc-title">C · Page heading dengan breadcrumb &amp; aksi</h2>
+          <span class="badge badge-outline">Detail invoice / klien</span>
+        </div>
+        <div class="preview">
+          <div class="space-y-4 bg-background p-6">
+            <nav class="breadcrumb" aria-label="Breadcrumb">
+              <a href="#">Invoice</a><i data-icon="chevron-right"></i><span class="text-foreground">INV-2026-0013</span>
+            </nav>
+            <div class="flex flex-wrap items-start justify-between gap-4">
+              <div class="space-y-1">
+                <div class="flex items-center gap-3">
+                  <h3 class="text-2xl font-semibold tracking-tight">INV-2026-0013</h3>
+                  <span class="badge badge-sent"><span class="badge-dot"></span>Terkirim</span>
+                </div>
+                <div class="flex flex-wrap items-center gap-x-5 gap-y-1 text-sm text-muted-foreground">
+                  <span class="inline-flex items-center gap-1.5"><i data-icon="building"></i>PT Arunika Digital</span>
+                  <span class="inline-flex items-center gap-1.5"><i data-icon="calendar"></i>Jatuh tempo 13 Okt 2026</span>
+                  <span class="inline-flex items-center gap-1.5 font-medium text-foreground tabular-nums"><i data-icon="wallet"></i>Rp 5.550.000</span>
+                </div>
+              </div>
+              <div class="flex gap-2">
+                <button class="btn btn-outline"><i data-icon="download"></i>Unduh PDF</button>
+                <button class="btn btn-success"><i data-icon="check"></i>Tandai lunas</button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- D -->
+      <section class="doc-section">
+        <div class="flex flex-wrap items-center gap-2">
+          <h2 class="doc-title">D · Brand header gelap</h2>
+          <span class="badge badge-outline">Alternatif A</span>
+        </div>
+        <div class="preview">
+          <header class="bg-slate-900 text-white dark:bg-slate-950">
+            <div class="flex h-14 items-center gap-6 px-4">
+              <a class="flex items-center gap-2 font-semibold" href="#"><span class="grid size-7 place-items-center rounded-md bg-blue-500"><i data-icon="receipt"></i></span>Invoicing</a>
+              <nav class="hidden items-center gap-1 text-sm md:flex">
+                <a class="rounded-md bg-white/10 px-3 py-2 font-medium" href="#">Dashboard</a>
+                <a class="rounded-md px-3 py-2 text-slate-300 hover:bg-white/5 hover:text-white" href="#">Klien</a>
+                <a class="rounded-md px-3 py-2 text-slate-300 hover:bg-white/5 hover:text-white" href="#">Invoice</a>
+              </nav>
+              <div class="ml-auto flex items-center gap-3">
+                <button class="btn btn-sm bg-white text-slate-900 hover:bg-white/90"><i data-icon="plus"></i>Invoice baru</button>
+                <span class="avatar bg-white/10 text-white">DK</span>
+              </div>
+            </div>
+          </header>
+          <div class="bg-slate-900 px-4 pt-2 pb-16 text-white dark:bg-slate-950"><h3 class="text-2xl font-semibold tracking-tight">Dashboard</h3></div>
+          <div class="-mt-10 px-4 pb-6"><div class="card"><div class="card-content text-sm text-muted-foreground">Konten "overlap" di atas header (pola Tailwind UI).</div></div></div>
+        </div>
+      </section>
+
+      <div class="grid gap-10 lg:grid-cols-2">
+        <!-- E -->
+        <section class="doc-section">
+          <div class="flex flex-wrap items-center gap-2">
+            <h2 class="doc-title">E · Publik &amp; auth</h2>
+            <span class="badge badge-outline">Tanpa navigasi aplikasi</span>
+          </div>
+          <div class="preview">
+            <header class="flex h-14 items-center justify-between border-b bg-background px-4">
+              <div class="flex items-center gap-2 font-semibold"><span class="grid size-7 place-items-center rounded-md bg-primary/10 text-sm text-primary">SK</span>Studio Kartika</div>
+              <button class="btn btn-outline btn-sm"><i data-icon="download"></i>Unduh PDF</button>
+            </header>
+            <div class="p-4 text-sm text-muted-foreground">Brand milik freelancer, bukan brand aplikasi (FR-06).</div>
+          </div>
+          <div class="preview">
+            <header class="flex h-14 items-center justify-between bg-background px-4">
+              <a class="flex items-center gap-2 font-semibold" href="#"><span class="grid size-7 place-items-center rounded-md bg-primary text-primary-foreground"><i data-icon="receipt"></i></span>Invoicing</a>
+              <span class="text-sm text-muted-foreground">Belum punya akun? <a href="#" class="font-medium text-primary hover:underline">Daftar</a></span>
+            </header>
+          </div>
+        </section>
+
+        <!-- F -->
+        <section class="doc-section">
+          <div class="flex flex-wrap items-center gap-2">
+            <h2 class="doc-title">F · Editor (focus mode)</h2>
+            <span class="badge badge-outline">Editor invoice</span>
+          </div>
+          <div class="preview">
+            <header class="flex h-14 items-center gap-3 border-b bg-background px-4">
+              <a class="btn btn-ghost btn-icon btn-sm" href="#" aria-label="Kembali"><i data-icon="arrow-left"></i></a>
+              <div class="min-w-0">
+                <p class="truncate text-sm font-semibold">Invoice baru</p>
+                <p class="text-xs text-muted-foreground">Draft · disimpan otomatis 12:04</p>
+              </div>
+              <div class="ml-auto flex gap-2">
+                <button class="btn btn-outline btn-sm hidden sm:inline-flex">Simpan draft</button>
+                <button class="btn btn-default btn-sm"><i data-icon="eye"></i>Preview</button>
+              </div>
+            </header>
+            <div class="p-4 text-sm text-muted-foreground">Navigasi disembunyikan agar fokus pada pengisian.</div>
+          </div>
+        </section>
+      </div>
+    </main>
+  </body>
+</html>

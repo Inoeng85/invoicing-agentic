@@ -1,0 +1,36 @@
+{
+  "name": "invoicing-workspace",
+  "private": true,
+  "workspaces": [
+    "apps/*",
+    "packages/*"
+  ],
+  "scripts": {
+    "dev": "concurrently -k -n web,api -c green,blue \"npm run dev -w @invoicing/web\" \"npm run dev -w @invoicing/api\"",
+    "dev:web": "npm run dev -w @invoicing/web",
+    "dev:api": "npm run dev -w @invoicing/api",
+    "start:web": "npm run start -w @invoicing/web",
+    "start:api": "npm run start -w @invoicing/api",
+    "test": "npm run test -w @invoicing/web",
+    "typecheck": "npm run typecheck -w @invoicing/web && npm run typecheck -w @invoicing/api && npm run typecheck -w @invoicing/domain",
+    "test:domain": "npm run test -w @invoicing/domain",
+    "gate": "node --import tsx scripts/gates/run-all.ts",
+    "css:build": "npm run css:build -w @invoicing/web",
+    "design:css": "tailwindcss -i docs/design/prototype/src/tailwind.css -o docs/design/prototype/assets/ui.css --minify",
+    "design:css:watch": "tailwindcss -i docs/design/prototype/src/tailwind.css -o docs/design/prototype/assets/ui.css --watch",
+    "db:migrate": "npm run db:migrate -w @invoicing/database",
+    "db:migrate:deploy": "npm run db:migrate:deploy -w @invoicing/database",
+    "db:reset": "npm run db:reset -w @invoicing/database",
+    "db:seed": "npm run db:seed -w @invoicing/database",
+    "db:studio": "npm run db:studio -w @invoicing/database",
+    "setup": "node --import tsx scripts/setup.ts",
+    "verify": "node --import tsx scripts/verify.ts"
+  },
+  "devDependencies": {
+    "concurrently": "^9.2.0",
+    "tsx": "^4.19.0"
+  },
+  "engines": {
+    "node": ">=24.3.0"
+  }
+}

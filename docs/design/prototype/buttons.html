@@ -1,0 +1,189 @@
+<!doctype html>
+<html lang="id">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Invoicing UI System — Button</title>
+    <script>
+      try {
+        if (localStorage.getItem('invoicing-proto-theme') === 'dark') document.documentElement.classList.add('dark')
+      } catch (e) {}
+    </script>
+    <link rel="stylesheet" href="assets/ui.css" />
+    <script src="assets/prototype.js" defer></script>
+  </head>
+  <body data-shell="docs">
+    <main class="mx-auto max-w-7xl space-y-14 px-4 py-12 sm:px-6">
+      <header class="max-w-3xl space-y-2">
+        <p class="text-sm font-medium text-primary">Komponen</p>
+        <h1 class="text-3xl font-semibold tracking-tight">Button</h1>
+        <p class="text-muted-foreground">
+          Resep <code class="code">.btn</code> + varian meniru <code class="code">buttonVariants</code> shadcn/ui
+          (<code class="code">variant</code> × <code class="code">size</code>). Satu aksi primer per layar.
+        </p>
+      </header>
+
+      <section class="doc-section">
+        <h2 class="doc-title">Varian</h2>
+        <div class="preview">
+          <div class="preview-label"><span>variant</span><code class="font-mono">btn btn-{variant}</code></div>
+          <div class="flex flex-wrap items-center gap-3 p-6">
+            <button class="btn btn-default">Default</button>
+            <button class="btn btn-secondary">Secondary</button>
+            <button class="btn btn-outline">Outline</button>
+            <button class="btn btn-ghost">Ghost</button>
+            <button class="btn btn-link">Link</button>
+            <button class="btn btn-destructive">Destructive</button>
+            <button class="btn btn-success">Success</button>
+          </div>
+        </div>
+        <div class="table-container">
+          <table class="table">
+            <thead><tr><th>Varian</th><th>Kapan dipakai</th><th>Contoh di MVP</th></tr></thead>
+            <tbody>
+              <tr><td><code class="code">default</code></td><td>Aksi utama, maksimal 1 per area</td><td>Kirim invoice, Simpan, Masuk</td></tr>
+              <tr><td><code class="code">outline</code></td><td>Aksi sekunder di samping primer</td><td>Unduh PDF, Preview, Batal</td></tr>
+              <tr><td><code class="code">secondary</code></td><td>Aksi netral di toolbar</td><td>Filter, Ekspor</td></tr>
+              <tr><td><code class="code">ghost</code></td><td>Aksi di tabel / ikon</td><td>Menu ⋯, Edit baris</td></tr>
+              <tr><td><code class="code">success</code></td><td>Konfirmasi pembayaran</td><td>Tandai lunas</td></tr>
+              <tr><td><code class="code">destructive</code></td><td>Aksi tak bisa dibatalkan (dengan dialog)</td><td>Hapus draft, Cabut tautan</td></tr>
+              <tr><td><code class="code">link</code></td><td>Navigasi inline</td><td>Lupa kata sandi?</td></tr>
+            </tbody>
+          </table>
+        </div>
+      </section>
+
+      <section class="doc-section">
+        <h2 class="doc-title">Ukuran &amp; ikon</h2>
+        <div class="preview">
+          <div class="preview-label"><span>size</span><code class="font-mono">btn-sm · (default) · btn-lg · btn-icon</code></div>
+          <div class="flex flex-wrap items-center gap-3 p-6">
+            <button class="btn btn-default btn-sm"><i data-icon="plus"></i>Small</button>
+            <button class="btn btn-default"><i data-icon="plus"></i>Default</button>
+            <button class="btn btn-default btn-lg"><i data-icon="plus"></i>Large</button>
+            <button class="btn btn-outline btn-icon" aria-label="Lainnya"><i data-icon="more-horizontal"></i></button>
+            <button class="btn btn-outline btn-icon btn-sm" aria-label="Edit"><i data-icon="pencil"></i></button>
+            <button class="btn btn-default">Lanjut<i data-icon="arrow-right"></i></button>
+            <button class="btn btn-outline rounded-full"><i data-icon="download"></i>Pill</button>
+          </div>
+        </div>
+      </section>
+
+      <section class="doc-section">
+        <h2 class="doc-title">State</h2>
+        <div class="preview">
+          <div class="preview-label"><span>state</span><span>hover · focus-visible · disabled · loading</span></div>
+          <div class="flex flex-wrap items-center gap-3 p-6">
+            <button class="btn btn-default">Normal</button>
+            <button class="btn btn-default ring-[3px] ring-ring/40">Focus</button>
+            <button class="btn btn-default" disabled>Disabled</button>
+            <button class="btn btn-default" disabled><i data-icon="loader" class="animate-spin"></i>Mengirim…</button>
+            <button class="btn btn-outline" disabled>Disabled outline</button>
+            <button class="btn btn-default" data-toast="Invoice INV-2026-0013 terkirim ke finance@arunika.id"><i data-icon="send"></i>Klik untuk toast</button>
+          </div>
+        </div>
+      </section>
+
+      <section class="doc-section">
+        <div>
+          <h2 class="doc-title">Button group &amp; toolbar</h2>
+          <p class="doc-desc">Pola Tailwind UI "button groups".</p>
+        </div>
+        <div class="grid gap-4 lg:grid-cols-2">
+          <div class="preview">
+            <div class="preview-label">Segmented</div>
+            <div class="p-6">
+              <div class="inline-flex rounded-md shadow-xs">
+                <button class="btn btn-outline rounded-r-none">Minggu</button>
+                <button class="btn btn-outline -ml-px rounded-none bg-accent">Bulan</button>
+                <button class="btn btn-outline -ml-px rounded-l-none">Tahun</button>
+              </div>
+            </div>
+          </div>
+          <div class="preview">
+            <div class="preview-label">Split button</div>
+            <div class="p-6">
+              <div class="inline-flex rounded-md shadow-xs">
+                <button class="btn btn-default rounded-r-none"><i data-icon="send"></i>Kirim invoice</button>
+                <details class="dropdown">
+                  <summary class="btn btn-default btn-icon rounded-l-none border-l border-primary-foreground/20" aria-label="Opsi kirim"><i data-icon="chevron-down"></i></summary>
+                  <div class="dropdown-content">
+                    <button class="dropdown-item"><i data-icon="mail"></i>Kirim via email</button>
+                    <button class="dropdown-item" data-copy="https://invoice.app/i/7fK2qP9"><i data-icon="link"></i>Salin tautan saja</button>
+                    <button class="dropdown-item"><i data-icon="download"></i>Unduh PDF</button>
+                  </div>
+                </details>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="doc-section">
+        <div>
+          <h2 class="doc-title">Aksi per status invoice</h2>
+          <p class="doc-desc">Tombol yang tampil di header detail invoice, mengikuti BR-01 (edit hanya saat draft), BR-02 (nomor terkunci setelah kirim), dan BR-06 (hapus hanya draft).</p>
+        </div>
+        <div class="grid gap-4 md:grid-cols-2 xl:grid-cols-4">
+          <div class="card gap-4">
+            <div class="card-header"><span class="badge badge-draft"><span class="badge-dot"></span>Draft</span></div>
+            <div class="card-content flex flex-wrap gap-2">
+              <button class="btn btn-default btn-sm"><i data-icon="send"></i>Kirim</button>
+              <button class="btn btn-outline btn-sm"><i data-icon="pencil"></i>Edit</button>
+              <button class="btn btn-ghost btn-sm text-destructive hover:text-destructive"><i data-icon="trash"></i>Hapus</button>
+            </div>
+          </div>
+          <div class="card gap-4">
+            <div class="card-header"><span class="badge badge-sent"><span class="badge-dot"></span>Terkirim</span></div>
+            <div class="card-content flex flex-wrap gap-2">
+              <button class="btn btn-success btn-sm"><i data-icon="check"></i>Tandai lunas</button>
+              <button class="btn btn-outline btn-sm"><i data-icon="download"></i>Unduh PDF</button>
+              <button class="btn btn-outline btn-sm" data-copy="https://invoice.app/i/7fK2qP9"><i data-icon="link"></i>Salin tautan</button>
+            </div>
+          </div>
+          <div class="card gap-4">
+            <div class="card-header"><span class="badge badge-overdue"><span class="badge-dot"></span>Jatuh tempo</span></div>
+            <div class="card-content flex flex-wrap gap-2">
+              <button class="btn btn-success btn-sm"><i data-icon="check"></i>Tandai lunas</button>
+              <button class="btn btn-outline btn-sm"><i data-icon="mail"></i>Kirim ulang</button>
+            </div>
+          </div>
+          <div class="card gap-4">
+            <div class="card-header"><span class="badge badge-paid"><span class="badge-dot"></span>Lunas</span></div>
+            <div class="card-content flex flex-wrap gap-2">
+              <button class="btn btn-outline btn-sm"><i data-icon="download"></i>Unduh PDF</button>
+              <button class="btn btn-ghost btn-sm"><i data-icon="copy"></i>Duplikat</button>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="doc-section">
+        <h2 class="doc-title">Opsi bentuk</h2>
+        <div class="grid gap-4 md:grid-cols-3">
+          <div class="card ring-2 ring-primary">
+            <div class="card-header">
+              <div class="flex items-center justify-between"><h3 class="card-title">A · Rounded-md</h3><span class="badge badge-default">Rekomendasi</span></div>
+              <p class="card-description">Default shadcn (<code class="code">--radius: .625rem</code>).</p>
+            </div>
+            <div class="card-content flex gap-2"><button class="btn btn-default">Simpan</button><button class="btn btn-outline">Batal</button></div>
+          </div>
+          <div class="card">
+            <div class="card-header">
+              <h3 class="card-title">B · Pill</h3>
+              <p class="card-description">Ramah mobile / halaman publik.</p>
+            </div>
+            <div class="card-content flex gap-2"><button class="btn btn-default rounded-full">Simpan</button><button class="btn btn-outline rounded-full">Batal</button></div>
+          </div>
+          <div class="card">
+            <div class="card-header">
+              <h3 class="card-title">C · Sharp</h3>
+              <p class="card-description">Kesan dokumen / enterprise.</p>
+            </div>
+            <div class="card-content flex gap-2"><button class="btn btn-default rounded-none">Simpan</button><button class="btn btn-outline rounded-none">Batal</button></div>
+          </div>
+        </div>
+      </section>
+    </main>
+  </body>
+</html>

@@ -1,0 +1,181 @@
+<!doctype html>
+<html lang="id">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Invoicing UI System — Typography</title>
+    <script>
+      try {
+        if (localStorage.getItem('invoicing-proto-theme') === 'dark') document.documentElement.classList.add('dark')
+      } catch (e) {}
+    </script>
+    <link rel="stylesheet" href="assets/ui.css" />
+    <script src="assets/prototype.js" defer></script>
+  </head>
+  <body data-shell="docs">
+    <main class="mx-auto max-w-7xl space-y-14 px-4 py-12 sm:px-6">
+      <header class="max-w-3xl space-y-2">
+        <p class="text-sm font-medium text-primary">Fondasi</p>
+        <h1 class="text-3xl font-semibold tracking-tight">Typography</h1>
+        <p class="text-muted-foreground">
+          Mengikuti DESIGN-GUIDELINES §5.2 dengan font sistem (cepat, tanpa unduhan). Angka nominal selalu
+          <code class="code">tabular-nums</code> agar kolom rupiah rata.
+        </p>
+      </header>
+
+      <section class="doc-section">
+        <div>
+          <h2 class="doc-title">Skala tipe (DESIGN-GUIDELINES §5.2)</h2>
+          <p class="doc-desc">Skala aplikasi MVP. Judul besar (text-3xl+) hanya untuk dokumen publik/PDF dan halaman dokumentasi ini.</p>
+        </div>
+        <div class="divide-y rounded-xl border bg-card">
+          <div class="grid gap-2 p-5 md:grid-cols-[14rem_1fr] md:items-baseline">
+            <div class="font-mono text-xs text-muted-foreground">Page title · text-xl font-bold</div>
+            <p class="text-xl font-bold">Dashboard</p>
+          </div>
+          <div class="grid gap-2 p-5 md:grid-cols-[14rem_1fr] md:items-baseline">
+            <div class="font-mono text-xs text-muted-foreground">Section title · text-lg font-semibold</div>
+            <p class="text-lg font-semibold">Invoice terbaru</p>
+          </div>
+          <div class="grid gap-2 p-5 md:grid-cols-[14rem_1fr] md:items-baseline">
+            <div class="font-mono text-xs text-muted-foreground">Angka metrik · text-2xl font-bold</div>
+            <p class="text-2xl font-bold tabular-nums">Rp 7.550.000</p>
+          </div>
+          <div class="grid gap-2 p-5 md:grid-cols-[14rem_1fr] md:items-baseline">
+            <div class="font-mono text-xs text-muted-foreground">Label form · text-sm font-medium</div>
+            <p class="text-sm font-medium">Email klien</p>
+          </div>
+          <div class="grid gap-2 p-5 md:grid-cols-[14rem_1fr] md:items-baseline">
+            <div class="font-mono text-xs text-muted-foreground">Body · text-sm</div>
+            <p class="text-sm">Invoice dikirim ke email klien beserta tautan publik untuk melihat dan mengunduh PDF.</p>
+          </div>
+          <div class="grid gap-2 p-5 md:grid-cols-[14rem_1fr] md:items-baseline">
+            <div class="font-mono text-xs text-muted-foreground">Nav item · text-sm font-medium</div>
+            <p class="text-sm font-medium">Dashboard · Klien · Invoice · Pengaturan</p>
+          </div>
+          <div class="grid gap-2 p-5 md:grid-cols-[14rem_1fr] md:items-baseline">
+            <div class="font-mono text-xs text-muted-foreground">Meta / caption · text-xs muted</div>
+            <p class="text-xs text-muted-foreground">Nomor dibuat otomatis saat kirim · 29 Sep 2026</p>
+          </div>
+          <div class="grid gap-2 p-5 md:grid-cols-[14rem_1fr] md:items-baseline">
+            <div class="font-mono text-xs text-muted-foreground">Disclaimer PPN · text-xs muted</div>
+            <p class="text-xs text-muted-foreground">PPN hanya kalkulator. Bukan e-Faktur DJP.</p>
+          </div>
+          <div class="grid gap-2 p-5 md:grid-cols-[14rem_1fr] md:items-baseline">
+            <div class="font-mono text-xs text-muted-foreground">Total publik · text-4xl font-semibold</div>
+            <p class="text-4xl font-semibold tracking-tight tabular-nums">Rp 5.550.000</p>
+          </div>
+        </div>
+      </section>
+
+      <section class="doc-section">
+        <div>
+          <h2 class="doc-title">Angka &amp; mata uang</h2>
+          <p class="doc-desc">Format <code class="code">Intl.NumberFormat('id-ID', {currency:'IDR', maximumFractionDigits:0})</code>.</p>
+        </div>
+        <div class="grid gap-4 md:grid-cols-3">
+          <div class="card">
+            <div class="card-header"><p class="text-xs font-medium tracking-wide text-muted-foreground uppercase">Display</p></div>
+            <div class="card-content">
+              <p class="text-4xl font-semibold tracking-tight tabular-nums">Rp 5.550.000</p>
+              <p class="mt-1 text-sm text-muted-foreground">text-4xl · total di preview/publik</p>
+            </div>
+          </div>
+          <div class="card">
+            <div class="card-header"><p class="text-xs font-medium tracking-wide text-muted-foreground uppercase">Metric</p></div>
+            <div class="card-content">
+              <p class="text-2xl font-bold tracking-tight tabular-nums">Rp 7.550.000</p>
+              <p class="mt-1 text-sm text-muted-foreground">text-2xl · kartu dashboard</p>
+            </div>
+          </div>
+          <div class="card">
+            <div class="card-header"><p class="text-xs font-medium tracking-wide text-muted-foreground uppercase">Tabel</p></div>
+            <div class="card-content space-y-1 text-right text-sm tabular-nums">
+              <p>Rp 750.000</p>
+              <p>Rp 12.000.000</p>
+              <p>Rp 1.110.000</p>
+              <p class="border-t pt-1 font-semibold">Rp 13.860.000</p>
+            </div>
+          </div>
+        </div>
+        <div class="alert alert-warning">
+          <i data-icon="triangle-alert"></i>
+          <p class="alert-title">Jangan tampilkan desimal untuk IDR</p>
+          <p class="alert-description">Gunakan titik pemisah ribuan (Rp 1.250.000), bukan Rp 1,250,000.00. Simpan nilai dalam integer (sen) di database.</p>
+        </div>
+      </section>
+
+      <section class="doc-section">
+        <h2 class="doc-title">Pola teks</h2>
+        <div class="grid gap-4 md:grid-cols-2">
+          <div class="card">
+            <div class="card-header">
+              <h3 class="card-title">Label – nilai</h3>
+              <p class="card-description">Detail invoice / klien.</p>
+            </div>
+            <div class="card-content">
+              <dl class="grid grid-cols-[8rem_1fr] gap-x-4 gap-y-2 text-sm">
+                <dt class="text-muted-foreground">Nomor</dt><dd class="font-mono">INV-2026-0013</dd>
+                <dt class="text-muted-foreground">Tanggal</dt><dd>29 Sep 2026</dd>
+                <dt class="text-muted-foreground">Jatuh tempo</dt><dd>13 Okt 2026 <span class="text-muted-foreground">(14 hari)</span></dd>
+                <dt class="text-muted-foreground">Klien</dt><dd>PT Arunika Digital</dd>
+              </dl>
+            </div>
+          </div>
+          <div class="card">
+            <div class="card-header">
+              <h3 class="card-title">Inline</h3>
+              <p class="card-description">Link, kode, kbd, teks error.</p>
+            </div>
+            <div class="card-content space-y-3 text-sm">
+              <p>Lihat <a class="font-medium text-primary underline-offset-4 hover:underline" href="#">kebijakan privasi</a> untuk detail.</p>
+              <p>Tautan publik: <code class="code">/i/7fK2…qP9</code></p>
+              <p>Cari cepat <span class="kbd">⌘</span> <span class="kbd">K</span></p>
+              <p class="text-[13px] font-medium text-destructive">Email klien wajib diisi sebelum invoice dikirim.</p>
+              <blockquote class="border-l-2 pl-4 text-muted-foreground italic">PPN 11% dihitung dari subtotal setelah diskon baris.</blockquote>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="doc-section">
+        <div>
+          <h2 class="doc-title">Opsi font stack</h2>
+          <p class="doc-desc">Ganti <code class="code">--font-sans</code> di <code class="code">@theme</code>.</p>
+        </div>
+        <div class="grid gap-4 md:grid-cols-3">
+          <div class="card ring-2 ring-primary">
+            <div class="card-header">
+              <div class="flex items-center justify-between"><h3 class="card-title">A · System UI</h3><span class="badge badge-default">Rekomendasi</span></div>
+              <p class="card-description">0 KB, native di tiap OS.</p>
+            </div>
+            <div class="card-content">
+              <p class="text-2xl font-semibold tracking-tight" style="font-family: ui-sans-serif, system-ui, sans-serif">Rp 5.550.000</p>
+              <p class="text-sm text-muted-foreground" style="font-family: ui-sans-serif, system-ui, sans-serif">Studio Kartika · Invoice terkirim</p>
+            </div>
+          </div>
+          <div class="card">
+            <div class="card-header">
+              <h3 class="card-title">B · Inter / Geist</h3>
+              <p class="card-description">Default shadcn; butuh self-host ±60 KB.</p>
+            </div>
+            <div class="card-content">
+              <p class="text-2xl font-semibold tracking-tight" style="font-family: Inter, 'Helvetica Neue', Arial, sans-serif">Rp 5.550.000</p>
+              <p class="text-sm text-muted-foreground" style="font-family: Inter, 'Helvetica Neue', Arial, sans-serif">Studio Kartika · Invoice terkirim</p>
+            </div>
+          </div>
+          <div class="card">
+            <div class="card-header">
+              <h3 class="card-title">C · Serif (dokumen)</h3>
+              <p class="card-description">Hanya untuk judul PDF/publik.</p>
+            </div>
+            <div class="card-content">
+              <p class="text-2xl font-semibold" style="font-family: Georgia, 'Times New Roman', serif">Rp 5.550.000</p>
+              <p class="text-sm text-muted-foreground" style="font-family: Georgia, serif">Studio Kartika · Invoice terkirim</p>
+            </div>
+          </div>
+        </div>
+      </section>
+    </main>
+  </body>
+</html>

@@ -1,0 +1,174 @@
+<!doctype html>
+<html lang="id">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Klien — Invoicing</title>
+    <script>
+      try {
+        if (localStorage.getItem('invoicing-proto-theme') === 'dark') document.documentElement.classList.add('dark')
+      } catch (e) {}
+    </script>
+    <link rel="stylesheet" href="assets/ui.css" />
+    <script src="assets/prototype.js" defer></script>
+  </head>
+  <body data-shell="screen" class="min-h-screen">
+    <header class="sticky top-0 z-40 border-b bg-background/90 backdrop-blur">
+      <div class="mx-auto flex h-14 max-w-5xl items-center gap-6 px-4 sm:px-6 lg:px-8">
+        <a class="flex items-center gap-2 font-semibold" href="screen-dashboard.html"><span class="grid size-7 place-items-center rounded-md bg-primary text-primary-foreground"><i data-icon="receipt"></i></span><span class="leading-tight">Invoicing<span class="hidden text-xs font-normal text-muted-foreground lg:block">Freelancer Indonesia</span></span></a>
+        <nav class="hidden items-center gap-1 md:flex" aria-label="Utama">
+          <a class="nav-link" href="screen-dashboard.html">Dashboard</a>
+          <a class="nav-link" aria-current="page" href="screen-clients.html">Klien</a>
+          <a class="nav-link" href="screen-invoice-list.html">Invoice</a>
+          <a class="nav-link" href="screen-settings.html">Pengaturan</a>
+        </nav>
+        <div class="ml-auto flex items-center gap-2">
+          <a class="btn btn-default btn-sm" href="screen-invoice-editor.html"><i data-icon="plus"></i><span class="hidden sm:inline">Invoice baru</span></a>
+          <span class="avatar bg-primary/10 text-primary">DK</span>
+        </div>
+      </div>
+    </header>
+
+    <main class="mx-auto max-w-5xl space-y-8 px-4 py-8 pb-24 sm:px-6">
+      <div class="flex flex-wrap items-end justify-between gap-4">
+        <div>
+          <h1 class="text-xl font-bold">Klien</h1>
+          <p class="text-sm text-muted-foreground">4 klien aktif · 1 nonaktif · data dipakai otomatis saat membuat invoice (FR-01).</p>
+        </div>
+        <button class="btn btn-default" data-dialog-open="dlg-client"><i data-icon="plus"></i>Tambah klien</button>
+      </div>
+
+      <div class="flex flex-wrap items-center gap-3">
+        <div class="relative w-full max-w-sm">
+          <i data-icon="search" class="pointer-events-none absolute top-1/2 left-3 size-4 -translate-y-1/2 text-muted-foreground"></i>
+          <input class="input pl-9" placeholder="Cari nama/email..." data-search="client-rows" aria-label="Cari klien" />
+        </div>
+        <div role="tablist" class="tabs-list ml-auto" aria-label="Tampilan">
+          <button role="tab" class="tabs-trigger" aria-selected="true" aria-controls="view-table"><i data-icon="list"></i>Tabel</button>
+          <button role="tab" class="tabs-trigger" aria-controls="view-cards"><i data-icon="layout-grid"></i>Kartu</button>
+        </div>
+      </div>
+
+      <section id="view-cards" role="tabpanel" hidden>
+        <ul id="client-list" class="grid gap-4 sm:grid-cols-2 lg:grid-cols-3" role="list">
+          <li data-row class="card gap-4">
+            <div class="card-header flex-row items-start gap-3">
+              <span class="avatar size-10 bg-blue-100 text-sm text-blue-700 dark:bg-blue-500/15 dark:text-blue-300">AD</span>
+              <div class="min-w-0 flex-1">
+                <h3 class="truncate font-semibold">PT Arunika Digital</h3>
+                <p class="truncate text-sm text-muted-foreground">Rina Wulandari · finance@arunika.id</p>
+              </div>
+              <details class="dropdown">
+                <summary class="btn btn-ghost btn-icon btn-sm" aria-label="Aksi klien"><i data-icon="more-horizontal"></i></summary>
+                <div class="dropdown-content">
+                  <a class="dropdown-item" href="screen-invoice-editor.html"><i data-icon="file-text"></i>Buat invoice</a>
+                  <button class="dropdown-item" data-dialog-open="dlg-client"><i data-icon="pencil"></i>Edit</button>
+                </div>
+              </details>
+            </div>
+            <div class="card-content grid grid-cols-2 gap-3 text-sm">
+              <div><p class="text-xs text-muted-foreground">Belum dibayar</p><p class="font-medium tabular-nums">Rp 5.550.000</p></div>
+              <div><p class="text-xs text-muted-foreground">Total invoice</p><p class="font-medium tabular-nums">2</p></div>
+            </div>
+            <div class="card-footer border-t pt-4 text-xs text-muted-foreground"><i data-icon="clock" class="size-3.5"></i>Terakhir ditagih 29 Sep 2026</div>
+          </li>
+          <li data-row class="card gap-4">
+            <div class="card-header flex-row items-start gap-3">
+              <span class="avatar size-10 bg-amber-100 text-sm text-amber-700 dark:bg-amber-500/15 dark:text-amber-300">NK</span>
+              <div class="min-w-0 flex-1">
+                <h3 class="truncate font-semibold">CV Nusantara Kreatif</h3>
+                <p class="truncate text-sm text-muted-foreground">Agus Pratama · agus@nusantarakreatif.co.id</p>
+              </div>
+              <span class="badge badge-overdue">Terlambat</span>
+            </div>
+            <div class="card-content grid grid-cols-2 gap-3 text-sm">
+              <div><p class="text-xs text-muted-foreground">Belum dibayar</p><p class="font-medium text-warning tabular-nums">Rp 2.000.000</p></div>
+              <div><p class="text-xs text-muted-foreground">Total invoice</p><p class="font-medium tabular-nums">2</p></div>
+            </div>
+            <div class="card-footer border-t pt-4 text-xs text-muted-foreground"><i data-icon="clock" class="size-3.5"></i>Terakhir ditagih 12 Sep 2026</div>
+          </li>
+          <li data-row class="card gap-4">
+            <div class="card-header flex-row items-start gap-3">
+              <span class="avatar size-10 bg-emerald-100 text-sm text-emerald-700 dark:bg-emerald-500/15 dark:text-emerald-300">BS</span>
+              <div class="min-w-0 flex-1">
+                <h3 class="truncate font-semibold">Budi Santoso</h3>
+                <p class="truncate text-sm text-muted-foreground">Perorangan · <span class="badge badge-overdue">Email kosong</span></p>
+              </div>
+            </div>
+            <div class="card-content grid grid-cols-2 gap-3 text-sm">
+              <div><p class="text-xs text-muted-foreground">Belum dibayar</p><p class="font-medium tabular-nums">Rp 0</p></div>
+              <div><p class="text-xs text-muted-foreground">Total invoice</p><p class="font-medium tabular-nums">2</p></div>
+            </div>
+            <div class="card-footer border-t pt-4 text-xs text-muted-foreground"><i data-icon="clock" class="size-3.5"></i>Terakhir ditagih 6 Sep 2026</div>
+          </li>
+          <li data-row class="card gap-4">
+            <div class="card-header flex-row items-start gap-3">
+              <span class="avatar size-10 text-sm">YC</span>
+              <div class="min-w-0 flex-1">
+                <h3 class="truncate font-semibold">Yayasan Cerdas Bangsa</h3>
+                <p class="truncate text-sm text-muted-foreground">Sari Ayu · keuangan@cerdasbangsa.or.id</p>
+              </div>
+            </div>
+            <div class="card-content grid grid-cols-2 gap-3 text-sm">
+              <div><p class="text-xs text-muted-foreground">Belum dibayar</p><p class="font-medium tabular-nums">Rp 0</p></div>
+              <div><p class="text-xs text-muted-foreground">Total invoice</p><p class="font-medium tabular-nums">2</p></div>
+            </div>
+            <div class="card-footer border-t pt-4 text-xs text-muted-foreground"><i data-icon="clock" class="size-3.5"></i>Terakhir ditagih 22 Agu 2026</div>
+          </li>
+          <li>
+            <button class="flex h-full min-h-44 w-full flex-col items-center justify-center gap-2 rounded-xl border-2 border-dashed text-sm font-medium text-muted-foreground transition-colors hover:border-primary/50 hover:text-primary" data-dialog-open="dlg-client">
+              <i data-icon="plus" class="size-5"></i>Tambah klien
+            </button>
+          </li>
+        </ul>
+        
+      </section>
+
+      <section id="view-table" role="tabpanel">
+        <div class="table-container">
+          <table class="table">
+            <thead><tr><th>Nama</th><th>Email</th><th class="text-right">Invoice</th><th class="text-right">Aksi</th></tr></thead>
+            <tbody id="client-rows">
+              <tr data-row><td><a class="font-medium hover:text-primary" href="screen-client-detail.html">PT Arunika Digital</a></td><td>finance@arunika.id</td><td class="text-right tabular-nums">2</td><td class="text-right"><button class="btn btn-ghost btn-sm" data-dialog-open="dlg-client">Edit</button><button class="btn btn-ghost btn-sm text-destructive hover:text-destructive" data-dialog-open="dlg-deactivate">Nonaktifkan</button></td></tr>
+              <tr data-row><td><a class="font-medium hover:text-primary" href="screen-client-detail.html">CV Nusantara Kreatif</a></td><td>agus@nusantarakreatif.co.id</td><td class="text-right tabular-nums">2</td><td class="text-right"><button class="btn btn-ghost btn-sm" data-dialog-open="dlg-client">Edit</button><button class="btn btn-ghost btn-sm text-destructive hover:text-destructive" data-dialog-open="dlg-deactivate">Nonaktifkan</button></td></tr>
+              <tr data-row><td><a class="font-medium hover:text-primary" href="screen-client-detail.html">Budi Santoso</a></td><td><span class="badge badge-overdue">Email kosong</span></td><td class="text-right tabular-nums">2</td><td class="text-right"><button class="btn btn-ghost btn-sm" data-dialog-open="dlg-client">Edit</button><button class="btn btn-ghost btn-sm text-destructive hover:text-destructive" data-dialog-open="dlg-deactivate">Nonaktifkan</button></td></tr>
+              <tr data-row><td><a class="font-medium hover:text-primary" href="screen-client-detail.html">Yayasan Cerdas Bangsa</a></td><td>keuangan@cerdasbangsa.or.id</td><td class="text-right tabular-nums">2</td><td class="text-right"><button class="btn btn-ghost btn-sm" data-dialog-open="dlg-client">Edit</button><button class="btn btn-ghost btn-sm text-destructive hover:text-destructive" data-dialog-open="dlg-deactivate">Nonaktifkan</button></td></tr>
+              <tr data-row class="text-muted-foreground"><td><span class="font-medium">Toko Batik Sekar</span> <span class="badge badge-cancelled ml-1 no-underline">Nonaktif</span></td><td>admin@batiksekar.id</td><td class="text-right tabular-nums">1</td><td class="text-right"><button class="btn btn-ghost btn-sm" data-toast="Toko Batik Sekar diaktifkan kembali">Aktifkan</button></td></tr>
+            </tbody>
+          </table>
+          <div class="border-t p-10 text-center text-sm text-muted-foreground" data-empty-for="client-rows" hidden>Tidak ada klien yang cocok.</div>
+        </div>
+      </section>
+    </main>
+
+    <dialog id="dlg-client" class="dialog" aria-labelledby="dlg-client-title">
+      <form method="dialog" class="grid gap-5" data-demo="Klien tersimpan">
+        <div class="dialog-header">
+          <h2 id="dlg-client-title" class="dialog-title">Tambah klien</h2>
+          <p class="dialog-description">Email klien wajib untuk kirim invoice.</p>
+        </div>
+        <div class="grid gap-3">
+          <div class="field"><label class="label" for="cl-name">Nama klien <span class="text-destructive">*</span></label><input id="cl-name" class="input" required placeholder="PT Contoh Jaya" /></div>
+          <div class="field"><label class="label" for="cl-email">Email klien <span class="text-destructive">*</span></label><input id="cl-email" type="email" class="input" required placeholder="finance@contoh.co.id" /></div>
+          <div class="field"><label class="label" for="cl-addr">Alamat</label><textarea id="cl-addr" class="textarea min-h-16" placeholder="Alamat penagihan"></textarea></div>
+          <div class="field"><label class="label" for="cl-note">Catatan</label><textarea id="cl-note" class="textarea min-h-16" placeholder="Mis. PIC, termin khusus"></textarea></div>
+        </div>
+        <div class="dialog-footer">
+          <button type="button" class="btn btn-outline" data-dialog-close>Batal</button>
+          <button type="submit" class="btn btn-default">Simpan</button>
+        </div>
+      </form>
+    </dialog>
+
+    <dialog id="dlg-deactivate" class="dialog" role="alertdialog" aria-labelledby="dlg-deact-title">
+      <div class="dialog-header">
+        <h2 id="dlg-deact-title" class="dialog-title">Nonaktifkan klien?</h2>
+        <p class="dialog-description">Klien disembunyikan dari editor invoice. Invoice lama tetap tersimpan.</p>
+      </div>
+      <div class="dialog-footer">
+        <button class="btn btn-outline" data-dialog-close>Batal</button>
+        <button class="btn btn-destructive" data-dialog-close data-toast="Klien dinonaktifkan">Nonaktifkan klien</button>
+      </div>
+    </dialog>
+  </body>
+</html>

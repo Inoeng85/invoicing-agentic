@@ -1,0 +1,189 @@
+<!doctype html>
+<html lang="id">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Invoicing UI System — Menu</title>
+    <script>
+      try {
+        if (localStorage.getItem('invoicing-proto-theme') === 'dark') document.documentElement.classList.add('dark')
+      } catch (e) {}
+    </script>
+    <link rel="stylesheet" href="assets/ui.css" />
+    <script src="assets/prototype.js" defer></script>
+  </head>
+  <body data-shell="docs">
+    <main class="mx-auto max-w-7xl space-y-14 px-4 py-12 sm:px-6">
+      <header class="max-w-3xl space-y-2">
+        <p class="text-sm font-medium text-primary">Navigasi</p>
+        <h1 class="text-3xl font-semibold tracking-tight">Menu &amp; navigasi</h1>
+        <p class="text-muted-foreground">
+          IA MVP: <strong class="text-foreground">Dashboard · Invoice · Klien · Pengaturan</strong>. Halaman aktif ditandai
+          <code class="code">aria-current="page"</code>; dropdown memakai <code class="code">&lt;details&gt;</code> agar tetap
+          berfungsi tanpa JavaScript (progressive enhancement Remix).
+        </p>
+      </header>
+
+      <section class="doc-section">
+        <h2 class="doc-title">Top navigation</h2>
+        <div class="grid gap-4 lg:grid-cols-2">
+          <div class="preview">
+            <div class="preview-label"><span>A · Pill (nav-link)</span><span class="badge badge-default">Rekomendasi</span></div>
+            <nav class="flex flex-wrap gap-1 p-4">
+              <a class="nav-link" aria-current="page" href="#"><i data-icon="layout-dashboard"></i>Dashboard</a>
+              <a class="nav-link" href="#"><i data-icon="users"></i>Klien</a>
+              <a class="nav-link" href="#"><i data-icon="file-text"></i>Invoice</a>
+              <a class="nav-link" href="#"><i data-icon="settings"></i>Pengaturan</a>
+            </nav>
+          </div>
+          <div class="preview">
+            <div class="preview-label">B · Underline</div>
+            <nav class="flex gap-6 border-b bg-background px-4 text-sm font-medium">
+              <a class="-mb-px border-b-2 border-primary py-3 text-foreground" href="#">Dashboard</a>
+              <a class="-mb-px border-b-2 border-transparent py-3 text-muted-foreground hover:border-border hover:text-foreground" href="#">Klien</a>
+              <a class="-mb-px border-b-2 border-transparent py-3 text-muted-foreground hover:border-border hover:text-foreground" href="#">Invoice</a>
+              <a class="-mb-px border-b-2 border-transparent py-3 text-muted-foreground hover:border-border hover:text-foreground" href="#">Pengaturan</a>
+            </nav>
+          </div>
+        </div>
+      </section>
+
+      <section class="doc-section">
+        <h2 class="doc-title">Sidebar &amp; sheet mobile</h2>
+        <div class="grid gap-4 lg:grid-cols-[18rem_1fr]">
+          <div class="preview">
+            <div class="preview-label">C · Sidebar dengan grup</div>
+            <nav class="grid gap-4 p-3">
+              <div class="grid gap-0.5">
+                <p class="px-2.5 pb-1 text-xs font-medium text-muted-foreground">Utama</p>
+                <a class="sidebar-link" aria-current="page" href="#"><i data-icon="layout-dashboard"></i>Dashboard</a>
+                <a class="sidebar-link" href="#"><i data-icon="users"></i>Klien</a>
+                <a class="sidebar-link" href="#"><i data-icon="file-text"></i>Invoice<span class="badge badge-secondary ml-auto">3 draft</span></a>
+              </div>
+              <div class="grid gap-0.5">
+                <p class="px-2.5 pb-1 text-xs font-medium text-muted-foreground">Akun</p>
+                <a class="sidebar-link" href="#"><i data-icon="building"></i>Profil bisnis</a>
+                <a class="sidebar-link" href="#"><i data-icon="settings"></i>Pengaturan</a>
+              </div>
+            </nav>
+          </div>
+          <div class="preview">
+            <div class="preview-label">D · Hamburger → sheet (mobile &lt; md)</div>
+            <div class="flex items-center gap-3 border-b bg-background px-4 py-3">
+              <button class="btn btn-ghost btn-icon btn-sm" data-dialog-open="mobile-sheet" aria-label="Buka menu"><i data-icon="menu"></i></button>
+              <span class="font-semibold">Invoicing</span>
+              <span class="avatar ml-auto">DK</span>
+            </div>
+            <p class="p-4 text-sm text-muted-foreground">Klik ikon menu untuk membuka sheet (native <code class="code">&lt;dialog&gt;</code>).</p>
+          </div>
+        </div>
+      </section>
+
+      <section class="doc-section">
+        <div>
+          <h2 class="doc-title">Dropdown menu</h2>
+          <p class="doc-desc">Klik untuk membuka. Aksi destruktif selalu di bawah separator.</p>
+        </div>
+        <div class="preview">
+          <div class="flex flex-wrap items-start gap-4 p-6 pb-64">
+            <details class="dropdown">
+              <summary class="btn btn-outline"><span class="avatar size-6 text-[10px]">DK</span>Dewi Kartika<i data-icon="chevron-down"></i></summary>
+              <div class="dropdown-content dropdown-content-start w-60">
+                <div class="px-2 py-1.5"><p class="text-sm font-medium">Studio Kartika</p><p class="text-xs text-muted-foreground">dewi@studiokartika.id</p></div>
+                <div class="dropdown-separator"></div>
+                <a class="dropdown-item" href="#"><i data-icon="user"></i>Profil bisnis<span class="dropdown-shortcut">⇧P</span></a>
+                <a class="dropdown-item" href="#"><i data-icon="settings"></i>Pengaturan<span class="dropdown-shortcut">⌘,</span></a>
+                <a class="dropdown-item" href="#"><i data-icon="circle-help"></i>Bantuan</a>
+                <div class="dropdown-separator"></div>
+                <button class="dropdown-item"><i data-icon="log-out"></i>Keluar</button>
+              </div>
+            </details>
+
+            <details class="dropdown">
+              <summary class="btn btn-ghost btn-icon" aria-label="Aksi invoice"><i data-icon="more-horizontal"></i></summary>
+              <div class="dropdown-content dropdown-content-start">
+                <div class="dropdown-label">INV-2026-0013</div>
+                <div class="dropdown-separator"></div>
+                <button class="dropdown-item"><i data-icon="eye"></i>Lihat</button>
+                <button class="dropdown-item"><i data-icon="download"></i>Unduh PDF</button>
+                <button class="dropdown-item" data-copy="https://invoice.app/i/7fK2qP9"><i data-icon="link"></i>Salin tautan publik</button>
+                <button class="dropdown-item" data-toast="INV-2026-0013 ditandai lunas"><i data-icon="check"></i>Tandai lunas</button>
+                <div class="dropdown-separator"></div>
+                <button class="dropdown-item dropdown-item-destructive"><i data-icon="ban"></i>Cabut tautan</button>
+              </div>
+            </details>
+
+            <details class="dropdown">
+              <summary class="btn btn-secondary"><i data-icon="filter"></i>Status<i data-icon="chevron-down"></i></summary>
+              <div class="dropdown-content dropdown-content-start w-52">
+                <label class="dropdown-item"><input type="checkbox" class="checkbox" checked />Draft</label>
+                <label class="dropdown-item"><input type="checkbox" class="checkbox" checked />Terkirim</label>
+                <label class="dropdown-item"><input type="checkbox" class="checkbox" checked />Jatuh tempo</label>
+                <label class="dropdown-item"><input type="checkbox" class="checkbox" />Lunas</label>
+              </div>
+            </details>
+          </div>
+        </div>
+      </section>
+
+      <section class="doc-section">
+        <h2 class="doc-title">Tabs &amp; sub-navigasi</h2>
+        <div class="grid gap-4 lg:grid-cols-2">
+          <div class="preview">
+            <div class="preview-label">E · Segmented tabs (filter status)</div>
+            <div class="p-4">
+              <div role="tablist" class="tabs-list" aria-label="Filter status">
+                <button role="tab" class="tabs-trigger" aria-selected="true">Semua <span class="tabs-count">13</span></button>
+                <button role="tab" class="tabs-trigger">Draft <span class="tabs-count">3</span></button>
+                <button role="tab" class="tabs-trigger">Terkirim <span class="tabs-count">4</span></button>
+                <button role="tab" class="tabs-trigger">Lunas <span class="tabs-count">6</span></button>
+              </div>
+            </div>
+          </div>
+          <div class="preview">
+            <div class="preview-label">F · Vertical sub-nav (pengaturan)</div>
+            <nav class="grid max-w-56 gap-0.5 p-4">
+              <a class="sidebar-link" aria-current="page" href="#"><i data-icon="building"></i>Profil bisnis</a>
+              <a class="sidebar-link" href="#"><i data-icon="receipt"></i>Invoice &amp; pajak</a>
+              <a class="sidebar-link" href="#"><i data-icon="user"></i>Akun</a>
+            </nav>
+          </div>
+        </div>
+      </section>
+
+      <section class="doc-section">
+        <h2 class="doc-title">Breadcrumb &amp; pagination</h2>
+        <div class="preview">
+          <div class="flex flex-wrap items-center justify-between gap-6 p-6">
+            <nav class="breadcrumb" aria-label="Breadcrumb">
+              <a href="#"><i data-icon="home"></i></a><i data-icon="chevron-right"></i>
+              <a href="#">Klien</a><i data-icon="chevron-right"></i>
+              <span class="text-foreground">PT Arunika Digital</span>
+            </nav>
+            <nav class="flex items-center gap-1" aria-label="Pagination">
+              <button class="btn btn-ghost btn-sm"><i data-icon="chevron-left"></i>Sebelumnya</button>
+              <button class="btn btn-outline btn-icon btn-sm" aria-current="page">1</button>
+              <button class="btn btn-ghost btn-icon btn-sm">2</button>
+              <button class="btn btn-ghost btn-icon btn-sm">3</button>
+              <button class="btn btn-ghost btn-sm">Berikutnya<i data-icon="chevron-right"></i></button>
+            </nav>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <dialog id="mobile-sheet" class="sheet" aria-label="Menu navigasi">
+      <div class="flex items-center justify-between">
+        <span class="flex items-center gap-2 font-semibold"><span class="grid size-7 place-items-center rounded-md bg-primary text-primary-foreground"><i data-icon="receipt"></i></span>Invoicing</span>
+        <button class="btn btn-ghost btn-icon btn-sm" data-dialog-close aria-label="Tutup"><i data-icon="x"></i></button>
+      </div>
+      <nav class="grid gap-0.5">
+        <a class="sidebar-link" aria-current="page" href="#"><i data-icon="layout-dashboard"></i>Dashboard</a>
+        <a class="sidebar-link" href="#"><i data-icon="users"></i>Klien</a>
+        <a class="sidebar-link" href="#"><i data-icon="file-text"></i>Invoice</a>
+        <a class="sidebar-link" href="#"><i data-icon="settings"></i>Pengaturan</a>
+      </nav>
+      <button class="btn btn-default mt-auto"><i data-icon="plus"></i>Invoice baru</button>
+    </dialog>
+  </body>
+</html>

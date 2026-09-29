@@ -1,0 +1,11 @@
+node_modules/
+.DS_Store
+.env
+.env.*
+!.env.example
+*.db
+*.db-journal
+apps/*/prisma/*.db
+apps/*/prisma/*.db-journal
+apps/web/public/app.css
+docs/design/prototype/assets/ui.css

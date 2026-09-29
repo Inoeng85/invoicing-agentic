@@ -1,0 +1,149 @@
+<!doctype html>
+<html lang="id">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>INV-2026-0013 (terkunci) — Invoicing</title>
+    <script>
+      try {
+        if (localStorage.getItem('invoicing-proto-theme') === 'dark') document.documentElement.classList.add('dark')
+      } catch (e) {}
+    </script>
+    <link rel="stylesheet" href="assets/ui.css" />
+    <script src="assets/prototype.js" defer></script>
+  </head>
+  <body data-shell="screen" class="min-h-screen">
+    <header class="sticky top-0 z-40 border-b bg-background/90 backdrop-blur">
+      <div class="mx-auto flex h-14 max-w-5xl items-center gap-3 px-4 sm:px-6 lg:px-8">
+        <a class="btn btn-ghost btn-icon btn-sm" href="screen-invoice-list.html" aria-label="Kembali ke daftar invoice"><i data-icon="arrow-left"></i></a>
+        <div class="min-w-0">
+          <div class="flex items-center gap-2">
+            <p class="font-mono text-sm font-semibold">INV-2026-0013</p>
+            <span class="badge badge-sent"><span class="badge-dot"></span>Terkirim</span>
+          </div>
+          <p class="text-xs text-muted-foreground">Dikirim 29 Sep 2026, 14:30 ke finance@arunika.id</p>
+        </div>
+        <div class="ml-auto flex gap-2">
+          <details class="dropdown">
+            <summary class="btn btn-outline btn-sm">Aksi lain<i data-icon="chevron-down"></i></summary>
+            <div class="dropdown-content w-60">
+              <button class="dropdown-item" data-toast="Draft baru dibuat dari INV-2026-0013"><i data-icon="copy"></i>Duplikat jadi draft baru</button>
+              <a class="dropdown-item" href="screen-pdf-states.html"><i data-icon="download"></i>Unduh PDF</a>
+              <button class="dropdown-item" data-copy="https://invoice.app/i/7fK2qP9xLm"><i data-icon="link"></i>Salin tautan publik</button>
+              <div class="dropdown-separator"></div>
+              <button class="dropdown-item dropdown-item-destructive" data-dialog-open="dlg-cancel"><i data-icon="ban"></i>Batalkan &amp; buat pengganti</button>
+            </div>
+          </details>
+          <button class="btn btn-success btn-sm" data-dialog-open="dlg-paid"><i data-icon="check"></i>Tandai lunas</button>
+        </div>
+      </div>
+    </header>
+
+    <main class="mx-auto grid max-w-5xl gap-6 px-4 py-8 pb-24 sm:px-6 lg:grid-cols-[1fr_22rem]">
+      <div class="space-y-6">
+        <div class="alert alert-info">
+          <i data-icon="lock"></i>
+          <p class="alert-title">Invoice sudah terkirim — item &amp; nomor terkunci</p>
+          <p class="alert-description">
+            Sesuai BR-01 dan BR-02, item pekerjaan dan nomor tidak bisa diubah setelah dikirim agar klien dan catatan kamu tetap sama.
+            Perlu revisi? <button class="font-medium underline underline-offset-4" data-dialog-open="dlg-cancel">Batalkan &amp; buat pengganti</button> atau duplikat jadi draft baru.
+          </p>
+        </div>
+
+        <section class="card" aria-labelledby="l-client">
+          <div class="card-header"><h2 id="l-client" class="card-title">Klien &amp; tanggal</h2></div>
+          <div class="card-content grid items-start gap-5 sm:grid-cols-3">
+            <div class="field"><label class="label" for="l-c">Klien</label><input id="l-c" class="input" value="PT Arunika Digital" disabled /></div>
+            <div class="field"><label class="label" for="l-d">Tanggal terbit</label><input id="l-d" class="input" value="29 Sep 2026" disabled /></div>
+            <div class="field"><label class="label" for="l-due">Jatuh tempo</label><input id="l-due" class="input" value="13 Okt 2026" disabled /></div>
+          </div>
+        </section>
+
+        <section class="card" aria-labelledby="l-lines">
+          <div class="card-header flex-row items-center justify-between">
+            <h2 id="l-lines" class="card-title">Item pekerjaan</h2>
+            <span class="inline-flex items-center gap-1.5 text-xs text-muted-foreground"><i data-icon="lock" class="size-3.5"></i>Terkunci</span>
+          </div>
+          <div class="card-content">
+            <div class="table-container shadow-none">
+              <table class="table">
+                <thead><tr><th>Deskripsi</th><th class="text-right">Qty</th><th class="text-right">Harga</th><th class="text-right">Diskon</th><th class="text-right">Jumlah</th></tr></thead>
+                <tbody>
+                  <tr class="hover:bg-transparent"><td>Desain UI halaman utama</td><td class="text-right tabular-nums">1</td><td class="text-right tabular-nums">Rp 3.000.000</td><td class="text-right tabular-nums">—</td><td class="text-right tabular-nums">Rp 3.000.000</td></tr>
+                  <tr class="hover:bg-transparent"><td>Desain halaman produk (per halaman)</td><td class="text-right tabular-nums">2</td><td class="text-right tabular-nums">Rp 1.250.000</td><td class="text-right tabular-nums">Rp 500.000</td><td class="text-right tabular-nums">Rp 2.000.000</td></tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </section>
+
+        <section class="card" aria-labelledby="l-notes">
+          <div class="card-header">
+            <h2 id="l-notes" class="card-title">Catatan internal</h2>
+            <p class="card-description">Tidak tampil ke klien — satu-satunya bagian yang masih bisa diubah.</p>
+          </div>
+          <form class="card-content grid gap-3" data-demo="Catatan internal disimpan">
+            <textarea class="textarea" aria-label="Catatan internal">Rina konfirmasi via WA: pembayaran dijadwalkan 10 Okt.</textarea>
+            <div><button type="submit" class="btn btn-outline btn-sm">Simpan catatan</button></div>
+          </form>
+        </section>
+      </div>
+
+      <aside class="space-y-4 lg:sticky lg:top-20 lg:self-start">
+        <section class="card gap-4">
+          <div class="card-header"><h2 class="card-title">Ringkasan</h2></div>
+          <div class="card-content">
+            <dl class="space-y-2 text-sm">
+              <div class="flex justify-between"><dt class="text-muted-foreground">Subtotal</dt><dd class="tabular-nums">Rp 5.000.000</dd></div>
+              <div class="flex justify-between"><dt class="text-muted-foreground">PPN 11%</dt><dd class="tabular-nums">Rp 550.000</dd></div>
+              <div class="separator"></div>
+              <div class="flex items-baseline justify-between"><dt class="font-medium">Total</dt><dd class="text-2xl font-bold tabular-nums">Rp 5.550.000</dd></div>
+            </dl>
+            <p class="mt-3 text-xs text-muted-foreground">PPN hanya kalkulator. Bukan e-Faktur DJP.</p>
+          </div>
+        </section>
+
+        <section class="card gap-4">
+          <div class="card-header"><h2 class="card-title">Siklus status</h2></div>
+          <div class="card-content">
+            <ol class="grid gap-3 text-sm">
+              <li class="flex items-center gap-3"><span class="grid size-6 place-items-center rounded-full bg-success text-success-foreground"><i data-icon="check" class="size-3.5"></i></span>Draft</li>
+              <li class="flex items-center gap-3"><span class="grid size-6 place-items-center rounded-full bg-primary text-primary-foreground"><i data-icon="send" class="size-3.5"></i></span><span class="font-medium">Terkirim</span><span class="text-xs text-muted-foreground">sekarang</span></li>
+              <li class="flex items-center gap-3 text-muted-foreground"><span class="grid size-6 place-items-center rounded-full border border-dashed"><i data-icon="clock" class="size-3.5"></i></span>Jatuh tempo bila lewat 13 Okt (BR-03)</li>
+              <li class="flex items-center gap-3 text-muted-foreground"><span class="grid size-6 place-items-center rounded-full border border-dashed"><i data-icon="wallet" class="size-3.5"></i></span>Lunas (FR-07)</li>
+            </ol>
+          </div>
+        </section>
+      </aside>
+    </main>
+
+    <dialog id="dlg-paid" class="dialog" aria-labelledby="dlg-paid-title">
+      <form method="dialog" class="grid gap-4" data-demo="INV-2026-0013 ditandai lunas">
+        <div class="dialog-header">
+          <h2 id="dlg-paid-title" class="dialog-title">Tandai lunas?</h2>
+          <p class="dialog-description">Rp 5.550.000 dari PT Arunika Digital. Status publik berubah menjadi "Lunas".</p>
+        </div>
+        <div class="field"><label class="label" for="pd">Tanggal dibayar</label><div class="relative"><input id="pd" class="input pr-9" value="29 Sep 2026" /><i data-icon="calendar" class="pointer-events-none absolute top-1/2 right-3 size-4 -translate-y-1/2 text-muted-foreground"></i></div></div>
+        <div class="dialog-footer">
+          <button type="button" class="btn btn-outline" data-dialog-close>Batal</button>
+          <button type="submit" class="btn btn-success"><i data-icon="check"></i>Tandai lunas</button>
+        </div>
+      </form>
+    </dialog>
+
+    <dialog id="dlg-cancel" class="dialog" role="alertdialog" aria-labelledby="dlg-cancel-title">
+      <form method="dialog" class="grid gap-4" data-demo="INV-2026-0013 dibatalkan · draft pengganti dibuat">
+        <div class="dialog-header">
+          <h2 id="dlg-cancel-title" class="dialog-title">Batalkan INV-2026-0013?</h2>
+          <p class="dialog-description">Invoice ini diarsip sebagai "Dibatalkan" (tidak dihapus, BR-06) dan tautan publik dicabut. Draft pengganti dengan item yang sama akan dibuka di editor.</p>
+        </div>
+        <div class="field"><label class="label" for="cr">Alasan (internal)</label><input id="cr" class="input" placeholder="mis. revisi jumlah halaman" /></div>
+        <label class="flex items-center gap-2 text-sm"><input type="checkbox" class="checkbox" checked />Beri tahu klien lewat email</label>
+        <div class="dialog-footer">
+          <button type="button" class="btn btn-outline" data-dialog-close>Kembali</button>
+          <button type="submit" class="btn btn-destructive">Batalkan &amp; buat pengganti</button>
+        </div>
+      </form>
+    </dialog>
+  </body>
+</html>

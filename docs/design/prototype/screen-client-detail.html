@@ -1,0 +1,153 @@
+<!doctype html>
+<html lang="id">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>PT Arunika Digital — Klien — Invoicing</title>
+    <script>
+      try {
+        if (localStorage.getItem('invoicing-proto-theme') === 'dark') document.documentElement.classList.add('dark')
+      } catch (e) {}
+    </script>
+    <link rel="stylesheet" href="assets/ui.css" />
+    <script src="assets/prototype.js" defer></script>
+  </head>
+  <body data-shell="screen" class="min-h-screen">
+    <header class="sticky top-0 z-40 border-b bg-background/90 backdrop-blur">
+      <div class="mx-auto flex h-14 max-w-5xl items-center gap-6 px-4 sm:px-6 lg:px-8">
+        <a class="flex items-center gap-2 font-semibold" href="screen-dashboard.html"><span class="grid size-7 place-items-center rounded-md bg-primary text-primary-foreground"><i data-icon="receipt"></i></span><span class="leading-tight">Invoicing<span class="hidden text-xs font-normal text-muted-foreground lg:block">Freelancer Indonesia</span></span></a>
+        <nav class="hidden items-center gap-1 md:flex" aria-label="Utama">
+          <a class="nav-link" href="screen-dashboard.html">Dashboard</a>
+          <a class="nav-link" aria-current="page" href="screen-clients.html">Klien</a>
+          <a class="nav-link" href="screen-invoice-list.html">Invoice</a>
+          <a class="nav-link" href="screen-settings.html">Pengaturan</a>
+        </nav>
+        <span class="avatar ml-auto bg-primary/10 text-primary">DK</span>
+      </div>
+    </header>
+
+    <main class="mx-auto max-w-5xl space-y-8 px-4 py-8 pb-24 sm:px-6">
+      <nav class="breadcrumb" aria-label="Breadcrumb">
+        <a href="screen-clients.html">Klien</a><i data-icon="chevron-right"></i><span class="text-foreground">PT Arunika Digital</span>
+      </nav>
+
+      <div class="flex flex-wrap items-start justify-between gap-4">
+        <div class="flex items-center gap-4">
+          <span class="avatar size-14 bg-blue-100 text-lg text-blue-700 dark:bg-blue-500/15 dark:text-blue-300">AD</span>
+          <div>
+            <div class="flex items-center gap-2">
+              <h1 class="text-xl font-bold">PT Arunika Digital</h1>
+              <span class="badge badge-paid"><span class="badge-dot"></span>Aktif</span>
+            </div>
+            <p class="text-sm text-muted-foreground">Klien sejak Mar 2026 · FR-01</p>
+          </div>
+        </div>
+        <div class="flex flex-wrap gap-2">
+          <button class="btn btn-ghost text-destructive hover:bg-destructive/10 hover:text-destructive" data-dialog-open="dlg-deactivate"><i data-icon="ban"></i>Nonaktifkan klien</button>
+          <button class="btn btn-outline" data-dialog-open="dlg-edit"><i data-icon="pencil"></i>Edit</button>
+          <a class="btn btn-default" href="screen-invoice-editor.html"><i data-icon="plus"></i>Invoice untuk klien ini</a>
+        </div>
+      </div>
+
+      <div class="grid gap-6 lg:grid-cols-[20rem_1fr]">
+        <aside class="space-y-4">
+          <section class="card gap-4">
+            <div class="card-header"><h2 class="card-title">Kontak penagihan</h2></div>
+            <div class="card-content">
+              <dl class="grid gap-3 text-sm">
+                <div class="flex gap-3"><i data-icon="user" class="mt-0.5 size-4 text-muted-foreground"></i><div><dt class="sr-only">Kontak</dt><dd>Rina Wulandari</dd></div></div>
+                <div class="flex gap-3"><i data-icon="mail" class="mt-0.5 size-4 text-muted-foreground"></i><div><dt class="sr-only">Email</dt><dd>finance@arunika.id</dd><p class="text-xs text-muted-foreground">Tujuan kirim invoice</p></div></div>
+                <div class="flex gap-3"><i data-icon="phone" class="mt-0.5 size-4 text-muted-foreground"></i><div><dt class="sr-only">Telepon</dt><dd>+62 812 3456 7890</dd></div></div>
+                <div class="flex gap-3"><i data-icon="building" class="mt-0.5 size-4 text-muted-foreground"></i><div><dt class="sr-only">Alamat</dt><dd>Jl. Sudirman No. 21, Jakarta Selatan 12190</dd></div></div>
+                <div class="flex gap-3"><i data-icon="file-text" class="mt-0.5 size-4 text-muted-foreground"></i><div><dt class="sr-only">NPWP</dt><dd class="font-mono text-xs">01.234.567.8-012.000</dd><p class="text-xs text-muted-foreground">NPWP</p></div></div>
+              </dl>
+            </div>
+          </section>
+
+          <section class="card gap-4">
+            <div class="card-header"><h2 class="card-title">Ringkasan</h2></div>
+            <div class="card-content grid grid-cols-2 gap-4 text-sm">
+              <div><p class="text-xs text-muted-foreground">Outstanding</p><p class="text-lg font-semibold tabular-nums">Rp 5.550.000</p></div>
+              <div><p class="text-xs text-muted-foreground">Total dibayar</p><p class="text-lg font-semibold tabular-nums">Rp 8.880.000</p></div>
+              <div><p class="text-xs text-muted-foreground">Rata-rata bayar</p><p class="font-medium">9 hari</p></div>
+              <div><p class="text-xs text-muted-foreground">Invoice</p><p class="font-medium">2</p></div>
+            </div>
+          </section>
+        </aside>
+
+        <section class="space-y-4" aria-labelledby="hist-title">
+          <div class="flex items-center justify-between">
+            <h2 id="hist-title" class="text-lg font-semibold tracking-tight">Riwayat invoice</h2>
+            <a class="btn btn-link btn-sm" href="screen-invoice-list.html">Lihat semua invoice<i data-icon="arrow-right"></i></a>
+          </div>
+          <div class="table-container">
+            <table class="table">
+              <thead><tr><th>No.</th><th>Tanggal</th><th>Status</th><th class="text-right">Jumlah</th></tr></thead>
+              <tbody>
+                <tr><td><a class="font-mono text-xs font-medium hover:text-primary" href="screen-invoice-locked.html">INV-2026-0013</a></td><td>29 Sep 2026</td><td><span class="badge badge-sent"><span class="badge-dot"></span>Terkirim</span></td><td class="text-right tabular-nums">Rp 5.550.000</td></tr>
+                <tr><td><a class="font-mono text-xs font-medium hover:text-primary" href="screen-pdf-states.html">INV-2026-0010</a></td><td>1 Sep 2026</td><td><span class="badge badge-paid"><span class="badge-dot"></span>Lunas</span></td><td class="text-right tabular-nums">Rp 8.880.000</td></tr>
+              </tbody>
+            </table>
+          </div>
+
+          <h3 class="pt-2 text-sm font-semibold text-muted-foreground">Contoh state klien lain</h3>
+          <div class="grid gap-4 md:grid-cols-2">
+            <div class="card gap-3 py-5">
+              <div class="card-content space-y-3">
+                <div class="flex items-center justify-between">
+                  <p class="font-medium">Budi Santoso</p>
+                  <span class="badge badge-overdue">Email kosong</span>
+                </div>
+                <div class="alert alert-warning">
+                  <i data-icon="triangle-alert"></i>
+                  <p class="alert-title">Email klien wajib untuk kirim</p>
+                  <p class="alert-description">Draft tetap bisa dibuat, tapi tombol "Kirim ke klien" nonaktif sampai email diisi.</p>
+                </div>
+                <button class="btn btn-outline btn-sm" data-dialog-open="dlg-edit"><i data-icon="mail"></i>Tambah email</button>
+              </div>
+            </div>
+            <div class="card gap-3 py-5 opacity-80">
+              <div class="card-content space-y-3">
+                <div class="flex items-center justify-between">
+                  <p class="font-medium text-muted-foreground">Toko Batik Sekar</p>
+                  <span class="badge badge-cancelled no-underline">Nonaktif</span>
+                </div>
+                <p class="text-sm text-muted-foreground">Tidak muncul di pilihan klien editor. Invoice lama tetap tersimpan &amp; bisa dibuka.</p>
+                <button class="btn btn-outline btn-sm" data-toast="Toko Batik Sekar diaktifkan kembali"><i data-icon="check"></i>Aktifkan kembali</button>
+              </div>
+            </div>
+          </div>
+        </section>
+      </div>
+    </main>
+
+    <dialog id="dlg-edit" class="dialog sm:max-w-xl" aria-labelledby="dlg-edit-title">
+      <form method="dialog" class="grid gap-5" data-demo="Data klien diperbarui">
+        <div class="dialog-header">
+          <h2 id="dlg-edit-title" class="dialog-title">Edit klien</h2>
+          <p class="dialog-description">Perubahan tidak mengubah invoice yang sudah terkirim.</p>
+        </div>
+        <div class="grid items-start gap-4 sm:grid-cols-2">
+          <div class="field sm:col-span-2"><label class="label" for="e-name">Nama klien <span class="text-destructive">*</span></label><input id="e-name" class="input" required value="PT Arunika Digital" /></div>
+          <div class="field"><label class="label" for="e-contact">Kontak</label><input id="e-contact" class="input" value="Rina Wulandari" /></div>
+          <div class="field"><label class="label" for="e-email">Email klien <span class="text-destructive">*</span></label><input id="e-email" type="email" required class="input" value="finance@arunika.id" /></div>
+        </div>
+        <div class="dialog-footer">
+          <button type="button" class="btn btn-outline" data-dialog-close>Batal</button>
+          <button type="submit" class="btn btn-default">Simpan</button>
+        </div>
+      </form>
+    </dialog>
+
+    <dialog id="dlg-deactivate" class="dialog" role="alertdialog" aria-labelledby="dlg-deact-title">
+      <div class="dialog-header">
+        <h2 id="dlg-deact-title" class="dialog-title">Nonaktifkan PT Arunika Digital?</h2>
+        <p class="dialog-description">Klien disembunyikan dari editor invoice. 1 invoice terkirim (Rp 5.550.000) tetap aktif dan bisa ditandai lunas.</p>
+      </div>
+      <div class="dialog-footer">
+        <button class="btn btn-outline" data-dialog-close>Batal</button>
+        <button class="btn btn-destructive" data-dialog-close data-toast="Klien dinonaktifkan">Nonaktifkan</button>
+      </div>
+    </dialog>
+  </body>
+</html>

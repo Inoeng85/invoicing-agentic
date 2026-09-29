@@ -1,0 +1,282 @@
+<!doctype html>
+<html lang="id">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Invoicing UI System — Form</title>
+    <script>
+      try {
+        if (localStorage.getItem('invoicing-proto-theme') === 'dark') document.documentElement.classList.add('dark')
+      } catch (e) {}
+    </script>
+    <link rel="stylesheet" href="assets/ui.css" />
+    <script src="assets/prototype.js" defer></script>
+  </head>
+  <body data-shell="docs">
+    <main class="mx-auto max-w-7xl space-y-14 px-4 py-12 sm:px-6">
+      <header class="max-w-3xl space-y-2">
+        <p class="text-sm font-medium text-primary">Komponen</p>
+        <h1 class="text-3xl font-semibold tracking-tight">Form &amp; text input</h1>
+        <p class="text-muted-foreground">
+          Resep shadcn: <code class="code">.field</code> → <code class="code">.label</code> + kontrol +
+          <code class="code">.field-description</code> / <code class="code">.field-message</code>. Error ditandai
+          <code class="code">aria-invalid="true"</code> sehingga gaya dan aksesibilitas selalu sinkron.
+        </p>
+      </header>
+
+      <div role="tablist" class="tabs-list" aria-label="Contoh form">
+        <button role="tab" class="tabs-trigger" aria-selected="true" aria-controls="tab-controls">Kontrol</button>
+        <button role="tab" class="tabs-trigger" aria-controls="tab-validation">Validasi</button>
+        <button role="tab" class="tabs-trigger" aria-controls="tab-client">Form klien</button>
+        <button role="tab" class="tabs-trigger" aria-controls="tab-profile">Profil bisnis</button>
+        <button role="tab" class="tabs-trigger" aria-controls="tab-layouts">Opsi layout</button>
+      </div>
+
+      <section id="tab-controls" role="tabpanel" class="grid gap-6 lg:grid-cols-2">
+        <div class="card">
+          <div class="card-header"><h3 class="card-title">Text input</h3></div>
+          <div class="card-content grid gap-5">
+            <div class="field">
+              <label class="label" for="c-name">Nama klien</label>
+              <input id="c-name" class="input" placeholder="PT Arunika Digital" />
+            </div>
+            <div class="field">
+              <label class="label" for="c-email">Email penagihan</label>
+              <input id="c-email" type="email" class="input" placeholder="finance@arunika.id" />
+              <p class="field-description">Invoice &amp; tautan publik dikirim ke alamat ini.</p>
+            </div>
+            <div class="field">
+              <label class="label" for="c-amount">Harga satuan</label>
+              <div class="input-group">
+                <span class="input-addon">Rp</span>
+                <input id="c-amount" class="input text-right tabular-nums" inputmode="numeric" value="2.500.000" />
+              </div>
+            </div>
+            <div class="field">
+              <label class="label" for="c-search">Cari</label>
+              <div class="relative">
+                <i data-icon="search" class="pointer-events-none absolute top-1/2 left-3 size-4 -translate-y-1/2 text-muted-foreground"></i>
+                <input id="c-search" class="input pl-9" placeholder="Cari invoice atau klien…" />
+              </div>
+            </div>
+            <div class="field">
+              <label class="label" for="c-disabled">Nomor invoice</label>
+              <input id="c-disabled" class="input font-mono" value="INV-2026-0013" disabled />
+              <p class="field-description"><i data-icon="lock" class="mr-1 inline size-3"></i>Terkunci setelah invoice dikirim (BR-02).</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="card">
+          <div class="card-header"><h3 class="card-title">Select, textarea, pilihan</h3></div>
+          <div class="card-content grid gap-5">
+            <div class="grid items-start gap-5 sm:grid-cols-2">
+              <div class="field">
+                <label class="label" for="c-client">Klien</label>
+                <select id="c-client" class="select">
+                  <option>PT Arunika Digital</option>
+                  <option>CV Nusantara Kreatif</option>
+                  <option>Budi Santoso</option>
+                </select>
+              </div>
+              <div class="field">
+                <label class="label" for="c-due">Jatuh tempo</label>
+                <input id="c-due" type="date" class="input" value="2026-10-13" />
+              </div>
+            </div>
+            <div class="field">
+              <label class="label" for="c-notes">Catatan</label>
+              <textarea id="c-notes" class="textarea" placeholder="Transfer ke BCA 123-456-7890 a.n. Dewi Kartika"></textarea>
+            </div>
+            <label class="switch">
+              <input type="checkbox" class="peer sr-only" checked />
+              <span class="switch-track"></span>
+              Kenakan PPN 11%
+            </label>
+            <div class="flex items-start gap-3">
+              <input id="c-terms" type="checkbox" class="checkbox mt-0.5" checked />
+              <div class="grid gap-1">
+                <label for="c-terms" class="label">Saya setuju dengan Syarat &amp; Ketentuan</label>
+                <p class="field-description">Wajib saat pendaftaran.</p>
+              </div>
+            </div>
+            <fieldset class="grid gap-3">
+              <legend class="label mb-3">Termin pembayaran</legend>
+              <label class="flex items-center gap-2 text-sm"><input type="radio" name="term" class="radio" checked />7 hari</label>
+              <label class="flex items-center gap-2 text-sm"><input type="radio" name="term" class="radio" />14 hari</label>
+              <label class="flex items-center gap-2 text-sm"><input type="radio" name="term" class="radio" />30 hari</label>
+            </fieldset>
+          </div>
+        </div>
+      </section>
+
+      <section id="tab-validation" role="tabpanel" hidden class="grid gap-6 lg:grid-cols-2">
+        <div class="card">
+          <div class="card-header">
+            <h3 class="card-title">Error inline</h3>
+            <p class="card-description">Pesan spesifik + cara memperbaiki. Fokus ke field pertama yang error.</p>
+          </div>
+          <div class="card-content grid gap-5">
+            <div class="alert alert-destructive">
+              <i data-icon="circle-alert"></i>
+              <p class="alert-title">Invoice belum bisa dikirim</p>
+              <p class="alert-description">Perbaiki 2 isian di bawah ini.</p>
+            </div>
+            <div class="field">
+              <label class="label text-destructive" for="v-email">Email klien</label>
+              <input id="v-email" class="input" aria-invalid="true" aria-describedby="v-email-msg" value="finance@arunika" />
+              <p id="v-email-msg" class="field-message">Format email tidak valid. Contoh: nama@perusahaan.id</p>
+            </div>
+            <div class="field">
+              <label class="label text-destructive" for="v-qty">Kuantitas</label>
+              <input id="v-qty" class="input" aria-invalid="true" value="0" />
+              <p class="field-message">Minimal 1.</p>
+            </div>
+          </div>
+        </div>
+        <div class="card">
+          <div class="card-header">
+            <h3 class="card-title">Sukses &amp; helper</h3>
+            <p class="card-description">Umpan balik positif singkat; jangan berlebihan.</p>
+          </div>
+          <div class="card-content grid gap-5">
+            <div class="field">
+              <label class="label" for="v-npwp">NPWP <span class="font-normal text-muted-foreground">(opsional)</span></label>
+              <input id="v-npwp" class="input border-success font-mono focus-visible:ring-success/25" value="12.345.678.9-012.345" />
+              <p class="flex items-center gap-1.5 text-[13px] font-medium text-success"><i data-icon="circle-check" class="size-3.5"></i>Format NPWP valid</p>
+            </div>
+            <div class="field">
+              <div class="flex items-center justify-between">
+                <label class="label" for="v-pass">Kata sandi</label>
+                <span class="text-xs text-muted-foreground">Kuat</span>
+              </div>
+              <input id="v-pass" type="password" class="input" value="rahasia-sekali-123" />
+              <div class="progress"><span style="width: 80%"></span></div>
+              <p class="field-description">Minimal 8 karakter.</p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section id="tab-client" role="tabpanel" hidden>
+        <form class="card max-w-2xl" data-demo="Klien PT Arunika Digital tersimpan">
+          <div class="card-header">
+            <h3 class="card-title">Tambah klien</h3>
+            <p class="card-description">FR-01 · Data dipakai di invoice dan email.</p>
+          </div>
+          <div class="card-content grid items-start gap-5 sm:grid-cols-2">
+            <div class="field sm:col-span-2">
+              <label class="label" for="f-name">Nama / perusahaan</label>
+              <input id="f-name" class="input" required value="PT Arunika Digital" />
+            </div>
+            <div class="field">
+              <label class="label" for="f-contact">Nama kontak</label>
+              <input id="f-contact" class="input" value="Rina Wulandari" />
+            </div>
+            <div class="field">
+              <label class="label" for="f-email">Email penagihan</label>
+              <input id="f-email" type="email" required class="input" value="finance@arunika.id" />
+            </div>
+            <div class="field">
+              <label class="label" for="f-phone">Telepon</label>
+              <div class="input-group"><span class="input-addon">+62</span><input id="f-phone" class="input" value="812 3456 7890" /></div>
+            </div>
+            <div class="field">
+              <label class="label" for="f-npwp">NPWP <span class="font-normal text-muted-foreground">(opsional)</span></label>
+              <input id="f-npwp" class="input font-mono" placeholder="00.000.000.0-000.000" />
+            </div>
+            <div class="field sm:col-span-2">
+              <label class="label" for="f-address">Alamat</label>
+              <textarea id="f-address" class="textarea">Jl. Sudirman No. 21, Jakarta Selatan 12190</textarea>
+            </div>
+          </div>
+          <div class="card-footer justify-end border-t pt-6">
+            <button type="button" class="btn btn-outline">Batal</button>
+            <button type="submit" class="btn btn-default"><i data-icon="save"></i>Simpan klien</button>
+          </div>
+        </form>
+      </section>
+
+      <section id="tab-profile" role="tabpanel" hidden>
+        <form class="max-w-4xl divide-y rounded-xl border bg-card" data-demo="Profil bisnis tersimpan">
+          <div class="grid gap-6 p-6 md:grid-cols-3">
+            <div>
+              <h3 class="font-semibold">Identitas bisnis</h3>
+              <p class="mt-1 text-sm text-muted-foreground">Tampil di kop invoice &amp; PDF (FR-04).</p>
+            </div>
+            <div class="grid gap-5 md:col-span-2">
+              <div class="flex items-center gap-4">
+                <span class="grid size-14 place-items-center rounded-lg bg-primary/10 text-lg font-semibold text-primary">SK</span>
+                <button type="button" class="btn btn-outline btn-sm"><i data-icon="upload"></i>Unggah logo</button>
+                <span class="text-xs text-muted-foreground">PNG/JPG, maks 1 MB</span>
+              </div>
+              <div class="grid items-start gap-5 sm:grid-cols-2">
+                <div class="field"><label class="label" for="p-biz">Nama bisnis</label><input id="p-biz" class="input" value="Studio Kartika" /></div>
+                <div class="field"><label class="label" for="p-owner">Nama pemilik</label><input id="p-owner" class="input" value="Dewi Kartika" /></div>
+              </div>
+              <div class="field"><label class="label" for="p-addr">Alamat</label><textarea id="p-addr" class="textarea">Jl. Kaliurang Km 5, Sleman, Yogyakarta</textarea></div>
+            </div>
+          </div>
+          <div class="grid gap-6 p-6 md:grid-cols-3">
+            <div>
+              <h3 class="font-semibold">Pembayaran &amp; pajak</h3>
+              <p class="mt-1 text-sm text-muted-foreground">Default untuk invoice baru.</p>
+            </div>
+            <div class="grid gap-5 md:col-span-2">
+              <div class="field"><label class="label" for="p-bank">Instruksi pembayaran</label><textarea id="p-bank" class="textarea">BCA 123-456-7890 a.n. Dewi Kartika</textarea></div>
+              <label class="switch"><input type="checkbox" class="peer sr-only" /><span class="switch-track"></span>Aktifkan PPN 11% secara default</label>
+              <div class="alert alert-info">
+                <i data-icon="info"></i>
+                <p class="alert-title">Bukan e-Faktur</p>
+                <p class="alert-description">PPN di aplikasi ini hanya untuk penagihan. Faktur pajak resmi tetap dibuat lewat DJP.</p>
+              </div>
+            </div>
+          </div>
+          <div class="flex justify-end gap-2 p-4">
+            <button type="button" class="btn btn-ghost">Reset</button>
+            <button type="submit" class="btn btn-default">Simpan perubahan</button>
+          </div>
+        </form>
+      </section>
+
+      <section id="tab-layouts" role="tabpanel" hidden class="grid gap-6 lg:grid-cols-3">
+        <div class="card ring-2 ring-primary">
+          <div class="card-header">
+            <div class="flex items-center justify-between"><h3 class="card-title">A · Stacked</h3><span class="badge badge-default">Rekomendasi</span></div>
+            <p class="card-description">Label di atas. Paling mudah di mobile.</p>
+          </div>
+          <div class="card-content grid gap-4">
+            <div class="field"><label class="label">Nama</label><input class="input" value="Dewi Kartika" /></div>
+            <div class="field"><label class="label">Email</label><input class="input" value="dewi@studiokartika.id" /></div>
+          </div>
+        </div>
+        <div class="card">
+          <div class="card-header">
+            <h3 class="card-title">B · Horizontal</h3>
+            <p class="card-description">Label di kiri. Untuk pengaturan desktop.</p>
+          </div>
+          <div class="card-content grid gap-4">
+            <div class="grid grid-cols-[5rem_1fr] items-center gap-3"><label class="label">Nama</label><input class="input" value="Dewi Kartika" /></div>
+            <div class="grid grid-cols-[5rem_1fr] items-center gap-3"><label class="label">Email</label><input class="input" value="dewi@studio…" /></div>
+          </div>
+        </div>
+        <div class="card">
+          <div class="card-header">
+            <h3 class="card-title">C · Floating inset</h3>
+            <p class="card-description">Pola Tailwind UI "inset label".</p>
+          </div>
+          <div class="card-content grid gap-4">
+            <div class="rounded-md border border-input bg-background px-3 pt-2 pb-1.5 shadow-xs focus-within:border-ring focus-within:ring-[3px] focus-within:ring-ring/25">
+              <label class="block text-xs font-medium text-muted-foreground">Nama</label>
+              <input class="w-full bg-transparent text-sm outline-none" value="Dewi Kartika" />
+            </div>
+            <div class="rounded-md border border-input bg-background px-3 pt-2 pb-1.5 shadow-xs focus-within:border-ring focus-within:ring-[3px] focus-within:ring-ring/25">
+              <label class="block text-xs font-medium text-muted-foreground">Email</label>
+              <input class="w-full bg-transparent text-sm outline-none" value="dewi@studiokartika.id" />
+            </div>
+          </div>
+        </div>
+      </section>
+    </main>
+  </body>
+</html>

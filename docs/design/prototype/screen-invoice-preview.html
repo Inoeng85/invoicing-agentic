@@ -1,0 +1,188 @@
+<!doctype html>
+<html lang="id">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>INV-2026-0013 — Invoicing</title>
+    <script>
+      try {
+        if (localStorage.getItem('invoicing-proto-theme') === 'dark') document.documentElement.classList.add('dark')
+      } catch (e) {}
+    </script>
+    <link rel="stylesheet" href="assets/ui.css" />
+    <script src="assets/prototype.js" defer></script>
+  </head>
+  <body data-shell="screen" class="min-h-screen">
+    <header class="sticky top-0 z-40 border-b bg-background/90 backdrop-blur">
+      <div class="mx-auto flex h-14 max-w-5xl items-center gap-6 px-4 sm:px-6 lg:px-8">
+        <a class="flex items-center gap-2 font-semibold" href="screen-dashboard.html"><span class="grid size-7 place-items-center rounded-md bg-primary text-primary-foreground"><i data-icon="receipt"></i></span><span class="leading-tight">Invoicing<span class="hidden text-xs font-normal text-muted-foreground lg:block">Freelancer Indonesia</span></span></a>
+        <nav class="hidden items-center gap-1 md:flex" aria-label="Utama">
+          <a class="nav-link" href="screen-dashboard.html">Dashboard</a>
+          <a class="nav-link" href="screen-clients.html">Klien</a>
+          <a class="nav-link" aria-current="page" href="screen-invoice-list.html">Invoice</a>
+          <a class="nav-link" href="screen-settings.html">Pengaturan</a>
+        </nav>
+        <span class="avatar ml-auto bg-primary/10 text-primary">DK</span>
+      </div>
+    </header>
+
+    <main class="mx-auto max-w-5xl space-y-8 px-4 py-8 pb-24 sm:px-6">
+      <nav class="breadcrumb" aria-label="Breadcrumb">
+        <a href="screen-dashboard.html">Invoice</a><i data-icon="chevron-right"></i><span class="text-foreground">INV-2026-0013</span>
+      </nav>
+
+      <div class="flex flex-wrap items-start justify-between gap-4">
+        <div class="space-y-1">
+          <div class="flex items-center gap-3">
+            <h1 class="text-xl font-bold">INV-2026-0013</h1>
+            <span class="badge badge-sent"><span class="badge-dot"></span>Terkirim</span>
+          </div>
+          <div class="flex flex-wrap items-center gap-x-5 gap-y-1 text-sm text-muted-foreground">
+            <span class="inline-flex items-center gap-1.5"><i data-icon="building"></i>PT Arunika Digital</span>
+            <span class="inline-flex items-center gap-1.5"><i data-icon="calendar"></i>Jatuh tempo 13 Okt 2026</span>
+            <span class="inline-flex items-center gap-1.5"><i data-icon="eye"></i>Dilihat klien 30 Sep</span>
+          </div>
+        </div>
+        <div class="flex flex-wrap gap-2">
+          <button class="btn btn-outline"><i data-icon="download"></i>Unduh PDF</button>
+          <button class="btn btn-outline" data-dialog-open="dlg-send"><i data-icon="mail"></i>Kirim ulang</button>
+          <button class="btn btn-success" data-dialog-open="dlg-paid"><i data-icon="check"></i>Tandai lunas</button>
+        </div>
+      </div>
+
+      <div class="grid gap-6 lg:grid-cols-[1fr_20rem]">
+        <article class="mx-auto w-full max-w-3xl rounded-xl border bg-card p-8 shadow-sm sm:p-12" aria-label="Preview dokumen invoice">
+          <div class="flex flex-wrap items-start justify-between gap-6">
+            <div class="flex items-center gap-3">
+              <span class="grid size-12 place-items-center rounded-lg bg-primary/10 text-lg font-semibold text-primary">SK</span>
+              <div>
+                <p class="font-semibold">Studio Kartika</p>
+                <p class="text-sm text-muted-foreground">Jl. Kaliurang Km 5, Sleman, Yogyakarta</p>
+              </div>
+            </div>
+            <div class="text-right">
+              <p class="text-xs font-medium tracking-wide text-muted-foreground uppercase">Invoice</p>
+              <p class="font-mono text-lg font-semibold">INV-2026-0013</p>
+            </div>
+          </div>
+
+          <div class="mt-10 grid gap-6 text-sm sm:grid-cols-3">
+            <div>
+              <p class="text-xs font-medium tracking-wide text-muted-foreground uppercase">Ditagihkan ke</p>
+              <p class="mt-1 font-medium">PT Arunika Digital</p>
+              <p class="text-muted-foreground">u.p. Rina Wulandari</p>
+              <p class="text-muted-foreground">Jl. Sudirman No. 21, Jakarta Selatan</p>
+            </div>
+            <div>
+              <p class="text-xs font-medium tracking-wide text-muted-foreground uppercase">Tanggal terbit</p>
+              <p class="mt-1">29 Sep 2026</p>
+              <p class="mt-3 text-xs font-medium tracking-wide text-muted-foreground uppercase">Jatuh tempo</p>
+              <p class="mt-1">13 Okt 2026</p>
+            </div>
+            <div class="sm:text-right">
+              <p class="text-xs font-medium tracking-wide text-muted-foreground uppercase">Jumlah tagihan</p>
+              <p class="mt-1 text-2xl font-bold tabular-nums">Rp 5.550.000</p>
+            </div>
+          </div>
+
+          <table class="mt-10 w-full text-sm">
+            <thead>
+              <tr class="border-b text-left text-xs tracking-wide text-muted-foreground uppercase">
+                <th class="py-2 font-medium">Deskripsi</th><th class="py-2 text-right font-medium">Qty</th><th class="hidden py-2 text-right font-medium sm:table-cell">Harga</th><th class="hidden py-2 text-right font-medium sm:table-cell">Diskon</th><th class="py-2 text-right font-medium">Jumlah</th>
+              </tr>
+            </thead>
+            <tbody class="divide-y">
+              <tr><td class="py-3">Desain UI halaman utama</td><td class="py-3 text-right tabular-nums">1</td><td class="hidden py-3 text-right tabular-nums sm:table-cell">Rp 3.000.000</td><td class="hidden py-3 text-right tabular-nums sm:table-cell">—</td><td class="py-3 text-right tabular-nums">Rp 3.000.000</td></tr>
+              <tr><td class="py-3">Desain halaman produk (per halaman)</td><td class="py-3 text-right tabular-nums">2</td><td class="hidden py-3 text-right tabular-nums sm:table-cell">Rp 1.250.000</td><td class="hidden py-3 text-right tabular-nums sm:table-cell">Rp 500.000</td><td class="py-3 text-right tabular-nums">Rp 2.000.000</td></tr>
+            </tbody>
+          </table>
+
+          <dl class="mt-6 ml-auto w-full max-w-xs space-y-2 border-t pt-4 text-sm">
+            <div class="flex justify-between"><dt class="text-muted-foreground">Subtotal</dt><dd class="tabular-nums">Rp 5.000.000</dd></div>
+            <div class="flex justify-between"><dt class="text-muted-foreground">PPN 11%</dt><dd class="tabular-nums">Rp 550.000</dd></div>
+            <div class="flex justify-between border-t pt-2 text-base font-semibold"><dt>Total</dt><dd class="tabular-nums">Rp 5.550.000</dd></div>
+          </dl>
+
+          <div class="mt-10 grid gap-4 rounded-lg bg-muted/60 p-4 text-sm sm:grid-cols-2">
+            <div><p class="font-medium">Pembayaran</p><p class="text-muted-foreground">BCA 123-456-7890 a.n. Dewi Kartika</p></div>
+            <div><p class="font-medium">Catatan</p><p class="text-muted-foreground">Terima kasih atas kepercayaannya.</p></div>
+          </div>
+          <p class="mt-6 text-xs text-muted-foreground">PPN pada invoice ini untuk keperluan penagihan dan bukan Faktur Pajak elektronik (e-Faktur).</p>
+        </article>
+
+        <aside class="space-y-4">
+          <section class="card gap-4">
+            <div class="card-header">
+              <h2 class="card-title">Tautan publik</h2>
+              <p class="card-description">Klien bisa melihat &amp; mengunduh PDF tanpa login.</p>
+            </div>
+            <div class="card-content space-y-3">
+              <div class="flex gap-2">
+                <input class="input font-mono text-xs" readonly value="https://invoice.app/i/7fK2qP9xLm" aria-label="Tautan publik" />
+                <button class="btn btn-outline btn-icon shrink-0" data-copy="https://invoice.app/i/7fK2qP9xLm" aria-label="Salin tautan"><i data-icon="copy"></i></button>
+              </div>
+              <a class="btn btn-link btn-sm" href="screen-public.html"><i data-icon="external-link"></i>Buka tampilan klien</a>
+            </div>
+            <div class="card-footer border-t pt-4">
+              <button class="btn btn-ghost btn-sm text-destructive hover:bg-destructive/10 hover:text-destructive" data-dialog-open="dlg-revoke"><i data-icon="ban"></i>Cabut tautan</button>
+            </div>
+          </section>
+
+          <section class="card gap-4">
+            <div class="card-header"><h2 class="card-title">Aktivitas</h2></div>
+            <div class="card-content">
+              <ol class="relative space-y-5 border-l pl-6">
+                <li class="relative"><span class="absolute top-0.5 -left-[31px] grid size-5 place-items-center rounded-full bg-primary/10 text-primary ring-4 ring-card"><i data-icon="eye" class="size-3"></i></span><p class="text-sm font-medium">Dilihat klien</p><p class="text-xs text-muted-foreground">30 Sep 2026, 09:12</p></li>
+                <li class="relative"><span class="absolute top-0.5 -left-[31px] grid size-5 place-items-center rounded-full bg-primary/10 text-primary ring-4 ring-card"><i data-icon="send" class="size-3"></i></span><p class="text-sm font-medium">Dikirim ke finance@arunika.id</p><p class="text-xs text-muted-foreground">29 Sep 2026, 14:30</p></li>
+                <li class="relative"><span class="absolute top-0.5 -left-[31px] grid size-5 place-items-center rounded-full bg-muted text-muted-foreground ring-4 ring-card"><i data-icon="lock" class="size-3"></i></span><p class="text-sm font-medium">Nomor INV-2026-0013 dikunci</p><p class="text-xs text-muted-foreground">BR-02</p></li>
+                <li class="relative"><span class="absolute top-0.5 -left-[31px] grid size-5 place-items-center rounded-full bg-muted text-muted-foreground ring-4 ring-card"><i data-icon="pencil" class="size-3"></i></span><p class="text-sm font-medium">Draft dibuat</p><p class="text-xs text-muted-foreground">29 Sep 2026, 14:02</p></li>
+              </ol>
+            </div>
+          </section>
+        </aside>
+      </div>
+    </main>
+
+    <dialog id="dlg-send" class="dialog" aria-labelledby="dlg-send-title">
+      <form method="dialog" class="grid gap-4" data-demo="Invoice dikirim ulang ke finance@arunika.id">
+        <div class="dialog-header">
+          <h2 id="dlg-send-title" class="dialog-title">Kirim ulang invoice</h2>
+          <p class="dialog-description">Email berisi tautan publik dan lampiran PDF.</p>
+        </div>
+        <div class="field"><label class="label" for="s-to">Kepada</label><input id="s-to" type="email" class="input" value="finance@arunika.id" required /></div>
+        <div class="field"><label class="label" for="s-subject">Subjek</label><input id="s-subject" class="input" value="Invoice INV-2026-0013 dari Studio Kartika" /></div>
+        <div class="field"><label class="label" for="s-msg">Pesan</label><textarea id="s-msg" class="textarea">Halo Rina, berikut invoice untuk proyek redesign website sebesar Rp 5.550.000, jatuh tempo 13 Okt 2026. Terima kasih!</textarea></div>
+        <label class="flex items-center gap-2 text-sm"><input type="checkbox" class="checkbox" checked />Lampirkan PDF</label>
+        <div class="dialog-footer">
+          <button type="button" class="btn btn-outline" data-dialog-close>Batal</button>
+          <button type="submit" class="btn btn-default"><i data-icon="send"></i>Kirim</button>
+        </div>
+      </form>
+    </dialog>
+
+    <dialog id="dlg-paid" class="dialog" aria-labelledby="dlg-paid-title">
+      <form method="dialog" class="grid gap-4" data-demo="INV-2026-0013 ditandai lunas">
+        <div class="dialog-header">
+          <h2 id="dlg-paid-title" class="dialog-title">Tandai sebagai lunas?</h2>
+          <p class="dialog-description">Catat pembayaran Rp 5.550.000 dari PT Arunika Digital (FR-07).</p>
+        </div>
+        <div class="field"><label class="label" for="p-date">Tanggal pembayaran</label><div class="relative"><input id="p-date" class="input pr-9" value="29 Sep 2026" /><i data-icon="calendar" class="pointer-events-none absolute top-1/2 right-3 size-4 -translate-y-1/2 text-muted-foreground"></i></div></div>
+        <div class="dialog-footer">
+          <button type="button" class="btn btn-outline" data-dialog-close>Batal</button>
+          <button type="submit" class="btn btn-success"><i data-icon="check"></i>Tandai lunas</button>
+        </div>
+      </form>
+    </dialog>
+
+    <dialog id="dlg-revoke" class="dialog" role="alertdialog" aria-labelledby="dlg-revoke-title">
+      <div class="dialog-header">
+        <h2 id="dlg-revoke-title" class="dialog-title">Cabut tautan publik?</h2>
+        <p class="dialog-description">Tautan lama berhenti berfungsi. Kamu bisa membuat tautan baru kapan saja.</p>
+      </div>
+      <div class="dialog-footer">
+        <button class="btn btn-outline" data-dialog-close>Batal</button>
+        <button class="btn btn-destructive" data-dialog-close data-toast="Tautan publik dicabut">Cabut tautan</button>
+      </div>
+    </dialog>
+  </body>
+</html>
