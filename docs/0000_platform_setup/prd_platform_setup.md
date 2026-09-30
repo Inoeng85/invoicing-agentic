@@ -3,7 +3,7 @@
 | Meta | Nilai |
 |------|-------|
 | ID | PRD-0000 |
-| Versi | 1.2 · Phase 0 selesai (PG-0 lokal); push remote & Phase 1 terbuka |
+| Versi | 1.3 · Phase 0 selesai · Phase 1 workflow siap (Actions remote pending) |
 | Development phase | [PRD_platform_setup_development_phase.md](./PRD_platform_setup_development_phase.md) |
 | Tanggal | 2026-09-30 (verifikasi PG-0) |
 | Owner | Product (Cursor, PM) |
@@ -44,12 +44,12 @@ Kode MVP invoicing (web, API, domain, database) sudah lolos gate otomatis G0–G
 | B-01 | Runtime | **Selesai (Phase 0)** | `.nvmrc` / `.node-version` = 24.3.0 · `.npmrc` `engine-strict=true` · `npm ci` gagal di Node 20 (`EBADENGINE`) · sukses di Node 24.3.0 |
 | B-02 | Package manager | **Selesai (Phase 0)** | Hanya `package-lock.json` di root; `yarn.lock` dihapus |
 | B-03 | CI path | **Selesai (Phase 1)** | `ci.yml` root `Agentic/` · cache `package-lock.json` |
-| B-04 | CI coverage | Sebagian | Workflow memanggil `npm run verify`; **run GitHub** menunggu push |
+| B-04 | CI coverage | Sebagian | `ci.yml` → `npm run verify`; run GitHub **startup_failure** (aktifkan Actions di repo) |
 | B-05 | Database lokal | **Selesai (Phase 0)** | Satu `packages/database/prisma/dev.db` · `DATABASE_URL=file:./dev.db` di semua `.env.example` |
 | B-06 | Env | Sebagian | `.env.example` lengkap (PS-09); validasi boot = Phase 2 (`000001-be-env-validation`) |
 | B-07–B-12 | Staging/prod, email, observability, design token app | Terbuka | Phase 2–3 |
 
-**Gate PG-0:** lulus di lingkungan dev (lihat [development phase §Gate PG-0](./PRD_platform_setup_development_phase.md#gate-pg-0-prd-m0)). **Sisa M0:** push `main` ke remote GitHub (belum ada `git remote`).
+**Gate PG-0:** lulus (2026-09-30) · remote https://github.com/Inoeng85/invoicing-agentic
 
 ---
 

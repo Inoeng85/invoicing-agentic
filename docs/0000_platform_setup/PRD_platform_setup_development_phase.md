@@ -23,7 +23,7 @@
 | Fase dev | Milestone PRD | Gate | Jumlah task |
 |----------|---------------|------|-------------|
 | Phase 0 — Local baseline | M0 | PG-0 (**9/9 task done** · gate lokal ✅ · push remote ⏳) | 9 |
-| Phase 1 — Continuous Integration | M1 | PG-1 (**in progress** — CI lokal + workflow; protection setelah run hijau) | 3 |
+| Phase 1 — Continuous Integration | M1 | PG-1 (**workflow siap** · run GitHub `startup_failure` — cek Actions settings) | 3 |
 | Phase 2 — Staging | M2 | PG-2 | 16 |
 | Phase 3 — Production readiness | M3 | PG-3 | 10 |
 
