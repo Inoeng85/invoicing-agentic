@@ -18,13 +18,14 @@
   },
   "dependencies": {
     "@invoicing/domain": "*",
+    "@invoicing/platform": "*",
     "remix": "^3.0.0-rc.4"
   },
   "devDependencies": {
-    "@tailwindcss/cli": "^4.1.0",
-    "@types/node": "latest",
+    "@tailwindcss/cli": "4.3.3",
+    "@types/node": "22.15.30",
     "concurrently": "^9.2.0",
-    "tailwindcss": "^4.1.0",
-    "typescript": "latest"
+    "tailwindcss": "4.3.3",
+    "typescript": "7.0.2"
   }
 }

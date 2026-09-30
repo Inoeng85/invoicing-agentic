@@ -93,8 +93,10 @@ Daftar referensi: [TECHNOLOGY-STACK.md](./TECHNOLOGY-STACK.md) §5.
 | `npm run db:migrate` | `prisma migrate dev` (interaktif, lokal) |
 | `npm run db:migrate:deploy` | `prisma migrate deploy` (CI / non-interaktif) |
 | `npm run db:reset` | Reset + migrate ulang |
-| `npm run db:seed` | No-op sampai Phase 2 (demo Studio Kartika) |
+| `npm run db:seed` | Demo Studio Kartika (idempoten) |
 | `npm run db:studio` | Prisma Studio |
+| `npm run db:migrate:deploy:postgres` | Migrasi PostgreSQL (staging/CI) |
+| `npm run doctor` | Diagnosa Node, lockfile, env, DB, port |
 
 ---
 

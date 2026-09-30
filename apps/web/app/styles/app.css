@@ -1,14 +1,15 @@
 @layer base, rmx, app;
 
 @import 'tailwindcss';
+@import '../../../../packages/design-tokens/tokens.css';
 
 @layer base {
   :root {
-    --color-brand: #2563eb;
+    --color-brand: var(--primary);
   }
 
   body {
-    @apply antialiased text-slate-900 bg-slate-50;
+    @apply antialiased bg-page text-foreground font-sans;
   }
 }
 

@@ -1,0 +1,30 @@
+name: Deploy staging
+
+# Requires Railway (or host) secrets — see docs/0000_platform_setup/RUNBOOK-STAGING.md
+
+on:
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    environment: staging
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version-file: .nvmrc
+          cache: npm
+          cache-dependency-path: package-lock.json
+      - run: npm ci
+      - run: npm run css:build
+      - run: npm run db:migrate:deploy:postgres
+        env:
+          DATABASE_URL: ${{ secrets.DATABASE_URL }}
+      - name: Deploy (placeholder)
+        run: |
+          echo "Wire host CLI here (Railway/Fly). Secrets: DATABASE_URL, SESSION_SECRET, APP_URL, CORS_ORIGIN, API_BASE_URL, EMAIL_*"
+          echo "Smoke after deploy: curl -f \"\$API_BASE_URL/api/health/ready\""

@@ -1,6 +1,6 @@
 import { createRouter } from 'remix/router'
 import { cors } from 'remix/middleware/cors'
-import { logger } from 'remix/middleware/logger'
+import { requestLogging } from '@invoicing/platform'
 
 import apiController from './controllers/api.controller.tsx'
 import clientsController from './controllers/clients.controller.tsx'
@@ -9,7 +9,7 @@ import { routes } from './routes.ts'
 
 export const router = createRouter({
   middleware: [
-    logger(),
+    requestLogging(),
     cors({
       origin: process.env.CORS_ORIGIN ?? 'http://localhost:44100',
       methods: ['GET', 'POST', 'PATCH', 'DELETE', 'OPTIONS'],

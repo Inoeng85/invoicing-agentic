@@ -1,7 +1,11 @@
 import * as http from 'node:http'
 import { createRequestListener } from 'remix/node-fetch-server'
 
+import { bootstrapPlatform } from '@invoicing/platform'
+
 import { router } from './app/router.ts'
+
+bootstrapPlatform('web')
 
 const port = process.env.PORT ? Number.parseInt(process.env.PORT, 10) : 44100
 const hmrProxyPort = process.env.HMR_PROXY_PORT

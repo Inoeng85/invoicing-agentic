@@ -331,6 +331,25 @@ Sama dengan PRD §7.1 — jangan ubah urutan di satu dokumen tanpa mengubah yang
 
 **Tujuan fase:** merge ke `main` → staging otomatis di PostgreSQL, env tervalidasi, log terstruktur, email sandbox, token design bersama.
 
+| Task | Status | Catatan |
+|------|--------|---------|
+| 000002-docs-adr-platform-decisions | Done | `docs/0000_platform_setup/adr/ADR-0001…0004` Accepted |
+| 000003-docs-branch-commit-convention | Done | `CONTRIBUTING.md` + PR template |
+| 000007-stack-pin-dev-dependencies | Done | TS 7.0.2 · @types/node 22.15.30 · tailwind 4.3.3 |
+| 000004-db-postgres-strategy | Done | Dual schema + `db:migrate:deploy:postgres` · job `verify-postgres.yml` |
+| 000001-be-env-validation | Done | `@invoicing/platform` bootstrap web/api |
+| 000002-be-structured-logging-request-id | Done | JSON log + `X-Request-Id` middleware |
+| 000003-be-email-adapter-selection | Done | `EMAIL_PROVIDER=log|resend` |
+| 000003-db-seed-demo | Done | Studio Kartika idempoten |
+| 000008-stack-doctor-script | Done | `npm run doctor` |
+| 000001-fe-shared-design-tokens | Done | `packages/design-tokens/tokens.css` |
+| 000002-fe-web-css-token-build | Done | `app.css` import token |
+| 000004-infra-ci-performance | Done | npm cache di CI (existing) |
+| 000005-infra-hosting-provision | Pending | Butuh akun Railway + secrets |
+| 000006-infra-domain-tls-cors | Pending | Butuh domain staging |
+| 000007-infra-staging-cd | Partial | `deploy-staging.yml` placeholder |
+| 000008-infra-email-provider-staging | Pending | Butuh Resend staging key |
+
 ### 000002-docs-adr-platform-decisions
 
 | PS | Depends | Output |

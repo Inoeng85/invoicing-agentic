@@ -1,5 +1,5 @@
 {
-  "name": "@invoicing/domain",
+  "name": "@invoicing/platform",
   "private": true,
   "type": "module",
   "engines": {
@@ -9,16 +9,14 @@
     ".": "./src/index.ts"
   },
   "scripts": {
-    "test": "node --import tsx --test src/invoiceTotals.test.ts",
     "typecheck": "tsc --noEmit"
   },
   "dependencies": {
-    "@invoicing/database": "*",
-    "pdf-lib": "^1.17.1"
+    "@invoicing/domain": "*",
+    "remix": "^3.0.0-rc.4"
   },
   "devDependencies": {
     "@types/node": "22.15.30",
-    "tsx": "^4.19.0",
     "typescript": "7.0.2"
   }
 }

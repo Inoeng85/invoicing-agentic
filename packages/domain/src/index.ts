@@ -3,6 +3,7 @@ export { computeInvoiceTotals, computeLineSubtotalCents, type InvoiceTotals, typ
 export { formatIdr } from './money.ts'
 export { DomainError, isDomainError } from './errors.ts'
 export { registerUser, loginUser, getUserById } from './auth.ts'
+export { hashPassword } from './password.ts'
 export { updateBusinessProfile } from './profile.ts'
 export {
   listClients,
@@ -30,4 +31,10 @@ export {
   verifySessionToken,
   SESSION_COOKIE_NAME,
 } from './session.ts'
-export { sendEmail, setEmailSender, type EmailSender } from './email.ts'
+export {
+  sendEmail,
+  setEmailSender,
+  type EmailSender,
+  type SendEmailInput,
+  type EmailSendResult,
+} from './email.ts'
