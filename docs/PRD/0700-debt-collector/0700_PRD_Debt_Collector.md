@@ -7,8 +7,8 @@
 | Gate | **G7** |
 | FR | **FR-14** |
 | BR | **BR-07, BR-08, BR-09** |
-| Status | Draft spec — menunggu review |
-| Development phase | *(dibuat setelah spec disetujui)* |
+| Status | Implemented |
+| Development phase | [0700_PRD_Debt_Collector_Development_phase.md](./0700_PRD_Debt_Collector_Development_phase.md) |
 
 ## Ringkasan
 

@@ -139,11 +139,13 @@ flowchart TB
     InvCtrl[invoices]
     PubCtrl[public_i_token]
     SettingsCtrl[settings]
+    CollectorsCtrl[collectors_collection]
   end
 
   subgraph apiActions [apps_api_controllers]
     ApiV1[v1_clients_invoices]
     ApiHealth[health]
+    ApiCollectors[v1_collectors_collection]
   end
 
   subgraph domainPkg [packages_domain]
@@ -152,6 +154,8 @@ flowchart TB
     Invoices[invoices_service]
     Totals[invoiceTotals]
     Numbers[invoiceNumber]
+    Collectors[collectors_service]
+    Collections[collections_service]
   end
 
   subgraph crossCut [Cross_cutting]
@@ -170,6 +174,11 @@ flowchart TB
   ApiV1 --> Clients
   ApiV1 --> Invoices
   ApiHealth --> Users
+  CollectorsCtrl --> Collectors
+  CollectorsCtrl --> Collections
+  ApiCollectors --> Collectors
+  ApiCollectors --> Collections
+  Invoices --> Collections
 
   SessionMW --> RequireAuth
   RequireAuth --> DashCtrl

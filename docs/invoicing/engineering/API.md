@@ -65,10 +65,25 @@ Selaras [ARCHITECTURE.md](../ARCHITECTURE.md) §14.
 | POST | `/api/v1/invoices/:id/send` | FR-05 · Implemented — assign `INV-{YYYY}-{SEQ4}` + token; 502 `email_failed` jika email gagal (status tetap draft) |
 | POST | `/api/v1/invoices/:id/mark-paid` | FR-07 · Implemented |
 | GET | `/api/v1/invoices/:id/pdf` | FR-04 · Implemented |
-| POST | `/api/v1/invoices/:id/revoke-link` | BR-05 · Implemented (UI web: gap G-02) |
-| POST | `/api/v1/invoices/:id/cancel` | BR-01 · **Belum** (gap G-01) |
+| POST | `/api/v1/invoices/:id/revoke-link` | BR-05 · Implemented |
+| POST | `/api/v1/invoices/:id/cancel` | BR-01 · Implemented |
 
 ---
+
+## Debt collector (FR-14 · PRD-0700)
+
+| Method | Path | Keterangan |
+|--------|------|------------|
+| GET | `/api/v1/collectors` | List + ringkasan (`activeCount`, `activeOutstandingCents`, `earnedCommissionCents`) |
+| POST | `/api/v1/collectors` | Create → 201. Body `{ name, email?, phone?, notes?, commissionRate }` (fraksi 0–1) |
+| GET | `/api/v1/collectors/:id` | Detail + assignment aktif |
+| PATCH | `/api/v1/collectors/:id` | Update; `active: false` → 409 `collector_has_active_assignments` bila masih menagih |
+| DELETE | `/api/v1/collectors/:id` | Nonaktifkan (BR-09) |
+| GET | `/api/v1/invoices/:id/collection` | `{ active, history }` — `history[0]` = assignment aktif bila ada |
+| POST | `/api/v1/invoices/:id/collection/assign` | `{ collectorId }` — assign/reassign (BR-07) |
+| POST | `/api/v1/invoices/:id/collection/unassign` | Lepas kolektor |
+| POST | `/api/v1/invoices/:id/collection/activities` | `{ occurredAt, outcome, note? }` → 201 |
+| GET | `/api/v1/invoices?collectorId=` | Filter invoice yang sedang ditagih kolektor |
 
 ## Public (FR-06)
 

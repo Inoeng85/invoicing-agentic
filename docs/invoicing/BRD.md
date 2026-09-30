@@ -58,6 +58,8 @@ Validasi: [brd/STAKEHOLDER-VALIDATION.md](./brd/STAKEHOLDER-VALIDATION.md).
 
 Should/Could/Won't: file yang sama. FR-10 (default due +30 hari, footer default) sudah ikut terimplementasi; FR-09, FR-11–FR-13 belum.
 
+Post-MVP: FR-14 debt collector — [PRD-0700](../PRD/0700-debt-collector/0700_PRD_Debt_Collector.md).
+
 Status per FR (web · API · domain · layar design): [brd/ARCHITECTURE-ALIGNMENT.md §3](./brd/ARCHITECTURE-ALIGNMENT.md#3-pemetaan-fr-must--arsitektur--stack--design).
 
 ---

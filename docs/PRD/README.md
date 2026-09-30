@@ -20,6 +20,7 @@
 | 9 | **0500** | [0500-tandai-lunas](./0500-tandai-lunas/) | G5 (partial) | FR-07 | 0402 |
 | 10 | **0501** | [0501-dashboard](./0501-dashboard/) | G5 | FR-08, BR-03 | 0500 |
 | 11 | **0600** | [0600-release-readiness](./0600-release-readiness/) | G6 | UAT, legal, CI, PG formal | 0501 + PG-2 |
+| 12 | **0700** | [0700-debt-collector](./0700-debt-collector/) | G7 | FR-14, BR-07–BR-09 (post-MVP) | 0501 |
 
 **Canonical platform (detail penuh):** tetap di [0000_platform_setup/prd_platform_setup.md](../0000_platform_setup/prd_platform_setup.md).
 

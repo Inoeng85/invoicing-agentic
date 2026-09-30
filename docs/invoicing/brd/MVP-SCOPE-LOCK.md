@@ -57,3 +57,17 @@ Must have di bawah ini = **sumber teks requirement**; implementasi mengikuti `@i
 | Product | Cursor (PM) | 2026-09-29 | Approved |
 | Engineering | _(sign-off pending)_ | | Pre-release auto: `npm run release:check` + [LEGAL-REVIEW-CHECKLIST.md](../legal/LEGAL-REVIEW-CHECKLIST.md) |
 | Legal (draft) | _(review [../legal/](../legal/))_ | | |
+
+## Post-MVP (disetujui terpisah)
+
+| ID | Requirement | PRD |
+|----|-------------|-----|
+| FR-14 | Debt collector (kontak) + assign ke invoice outstanding + log penagihan + komisi | [0700](../../PRD/0700-debt-collector/0700_PRD_Debt_Collector.md) |
+
+| BR | Aturan |
+|----|--------|
+| BR-07 | Assign/aktivitas penagihan hanya untuk invoice `sent`/`overdue`; kolektor harus aktif & milik user |
+| BR-08 | Rate komisi di-snapshot saat assign; dikunci saat `paid`, tanpa komisi saat `cancelled` |
+| BR-09 | Kolektor dengan assignment aktif tidak dapat dinonaktifkan |
+
+Kolektor **bukan user** — non-goal multi-user tetap berlaku.
