@@ -3,6 +3,7 @@ import { redirect } from 'remix/response/redirect'
 import type { Handle } from 'remix/ui'
 import { loginUser, registerUser } from '@invoicing/domain'
 
+import { APP_NAME } from '../../lib/brand.ts'
 import { appendSessionCookie } from '../../lib/session.ts'
 import { AuthShell } from '../../ui/auth-shell.tsx'
 import { routes } from '../../routes.ts'
@@ -40,7 +41,7 @@ function LoginPage(handle: Handle<{ error: string | null }>) {
   return () => {
     let { error } = handle.props
     return (
-      <AuthShell tab="login" title="Masuk — Invoicing">
+      <AuthShell tab="login" title={`Masuk — ${APP_NAME}`}>
         <section class="space-y-6" aria-labelledby="login-heading">
           <div class="space-y-1 text-center">
             <h1 id="login-heading" class="text-xl font-bold text-foreground">
@@ -123,7 +124,7 @@ function RegisterPage(handle: Handle<{ error: string | null }>) {
   return () => {
     let { error } = handle.props
     return (
-      <AuthShell tab="register" title="Daftar — Invoicing">
+      <AuthShell tab="register" title={`Daftar — ${APP_NAME}`}>
         <section class="space-y-6" aria-labelledby="register-heading">
           <div class="space-y-1 text-center">
             <h1 id="register-heading" class="text-xl font-bold text-foreground">

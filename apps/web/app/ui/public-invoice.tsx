@@ -2,6 +2,7 @@ import type { Handle } from 'remix/ui'
 import { computeLineSubtotalCents, type getInvoiceByPublicToken } from '@invoicing/domain'
 
 import { Document } from '../actions/document.tsx'
+import { APP_NAME } from '../lib/brand.ts'
 import { routes } from '../routes.ts'
 import { icon } from './icons.tsx'
 import { daysBetween, formatDate, formatIdr, initials } from './kit.tsx'
@@ -27,7 +28,7 @@ function PublicFooter() {
           {icon('shield-check', 'size-3.5')}
           Tautan privat — jangan dibagikan ke pihak lain
         </p>
-        <p>Powered by Invoicing · Privasi</p>
+        <p>Powered by {APP_NAME} · Privasi</p>
       </div>
     </footer>
   )
@@ -208,7 +209,7 @@ export function PublicInvoicePage(handle: Handle<{ invoice: PublicInvoice }>) {
 
 export function PublicInvoiceUnavailable() {
   return () => (
-    <Document title="Tautan tidak tersedia — Invoicing" head={noindex}>
+    <Document title={`Tautan tidak tersedia — ${APP_NAME}`} head={noindex}>
       <main class="mx-auto flex min-h-[70vh] max-w-md flex-col items-center justify-center gap-4 px-4 text-center">
         <span class="grid size-12 place-items-center rounded-full bg-muted text-muted-foreground">
           {icon('link', 'size-5')}

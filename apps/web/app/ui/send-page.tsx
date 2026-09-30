@@ -3,6 +3,7 @@ import type { getInvoice } from '@invoicing/domain'
 
 import { CsrfInput } from '../lib/csrf-field.tsx'
 import { routes } from '../routes.ts'
+import { APP_NAME } from '../lib/brand.ts'
 import { icon } from './icons.tsx'
 import { alertBox, formatDate, formatDateTime, formatIdr, hasEmail as isUsableEmail, initials, STATUS_LABEL } from './kit.tsx'
 import { AppLayout, TaskHeader, type ShellUser } from './layout.tsx'
@@ -234,7 +235,7 @@ export function SendPage(handle: Handle<SendPageProps>) {
                 </span>
                 <p class="text-xs text-muted-foreground">Tautan ini privat — jangan diteruskan.</p>
                 <div class="separator" />
-                <p class="text-[11px] text-muted-foreground">Powered by Invoicing · Privasi</p>
+                <p class="text-[11px] text-muted-foreground">Powered by {APP_NAME} · Privasi</p>
               </div>
             </div>
           </section>

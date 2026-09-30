@@ -3,6 +3,7 @@ import { getUserById } from '@invoicing/domain'
 
 import { Document } from '../actions/document.tsx'
 import { CsrfInput } from '../lib/csrf-field.tsx'
+import { APP_NAME, APP_TAGLINE } from '../lib/brand.ts'
 import { routes } from '../routes.ts'
 import { icon, type IconName } from './icons.tsx'
 import { initials } from './kit.tsx'
@@ -46,13 +47,13 @@ export function AppLayout(handle: Handle<AppLayoutProps>) {
     let { title, user, active, header, children } = handle.props
 
     return (
-      <Document title={`${title} — Invoicing`}>
+      <Document title={`${title} — ${APP_NAME}`}>
         <div class="flex min-h-screen flex-col">
           {header ?? <MainHeader user={user} active={active} />}
           <main class="page-container flex-1">{children}</main>
           <footer class="border-t bg-background">
             <div class="mx-auto flex max-w-5xl flex-col gap-3 px-4 py-4 text-sm text-muted-foreground sm:flex-row sm:items-center sm:justify-between sm:px-6">
-              <p>© 2026 Invoicing · Dibuat untuk freelancer Indonesia</p>
+              <p>© 2026 {APP_NAME} · Dibuat untuk freelancer Indonesia</p>
               <nav class="flex gap-4" aria-label="Legal">
                 <span>Privasi</span>
                 <span>Syarat</span>
@@ -135,7 +136,7 @@ function MainHeader(handle: Handle<{ user: ShellUser; active?: NavKey }>) {
 
         <div id="nav-sheet" popover="auto" class="sheet" aria-label="Menu navigasi">
           <div class="flex items-center justify-between">
-            <span class="font-semibold">Invoicing</span>
+            <span class="font-semibold">{APP_NAME}</span>
             <button
               type="button"
               class="btn btn-ghost btn-icon btn-sm"
@@ -172,8 +173,8 @@ export function Brand() {
         {icon('receipt', 'size-4')}
       </span>
       <span class="leading-tight">
-        Invoicing
-        <span class="hidden text-xs font-normal text-muted-foreground lg:block">Freelancer Indonesia</span>
+        {APP_NAME}
+        <span class="hidden text-xs font-normal text-muted-foreground lg:block">{APP_TAGLINE}</span>
       </span>
     </a>
   )

@@ -15,7 +15,7 @@ if (!to) {
 
 let result = await sendEmail({
   to,
-  subject: 'Invoicing MVP — email smoke test',
+  subject: 'PuraPuraLupa — email smoke test',
   html: '<p>Smoke test OK.</p>',
 })
 

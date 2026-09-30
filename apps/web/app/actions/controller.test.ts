@@ -172,4 +172,19 @@ describe('root controller', () => {
     assert.ok(photoCard !== -1 && dataForm !== -1, 'both sections render')
     assert.ok(photoCard < dataForm, 'photo card comes before the data form')
   })
+
+  it('brands pages as PuraPuraLupa', async () => {
+    let login = await (await fetchResponse(routes.login.index.href())).text()
+    assert.match(login, /<title>Masuk — PuraPuraLupa<\/title>/)
+    assert.match(login, />Komisi Matel Indonesia \(Komando\)</)
+    assert.ok(!login.includes('>Freelancer Indonesia<'), 'old tagline must not appear')
+    assert.ok(!/\bInvoicing\b/.test(login), 'old app name must not appear')
+
+    let user = await makeUser()
+    let page = await (await fetchResponse(routes.collectors.index.href(), { headers: sessionHeaders(user.id) })).text()
+    assert.match(page, /<title>Kolektor — PuraPuraLupa<\/title>/)
+    assert.match(page, /© 2026 PuraPuraLupa/)
+    assert.match(page, />Komisi Matel Indonesia \(Komando\)</)
+    assert.ok(!/\bInvoicing\b/.test(page), 'old app name must not appear')
+  })
 })

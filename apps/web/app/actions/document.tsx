@@ -2,6 +2,7 @@ import type { Handle, RemixNode } from 'remix/ui'
 import { ImportMap } from 'remix/ui/server'
 
 import { scriptEntry } from '../assets.ts'
+import { APP_NAME } from '../lib/brand.ts'
 
 export interface DocumentProps {
   children?: RemixNode
@@ -9,7 +10,7 @@ export interface DocumentProps {
   title?: string
 }
 
-const DEFAULT_TITLE = readAppDisplayName('Invoicing')
+const DEFAULT_TITLE = readAppDisplayName(APP_NAME)
 
 export function Document(handle: Handle<DocumentProps>) {
   return () => {

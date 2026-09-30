@@ -1,6 +1,7 @@
 import type { Handle, RemixNode } from 'remix/ui'
 
 import { Document } from '../actions/document.tsx'
+import { APP_NAME, APP_TAGLINE } from '../lib/brand.ts'
 import { routes } from '../routes.ts'
 import { icon } from './icons.tsx'
 
@@ -25,8 +26,8 @@ export function AuthShell(handle: Handle<AuthShellProps>) {
                 {icon('receipt', 'size-4')}
               </span>
               <span class="leading-tight">
-                Invoicing
-                <span class="hidden text-xs font-normal text-muted-foreground lg:block">Freelancer Indonesia</span>
+                {APP_NAME}
+                <span class="hidden text-xs font-normal text-muted-foreground lg:block">{APP_TAGLINE}</span>
               </span>
             </a>
 
