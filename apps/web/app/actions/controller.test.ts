@@ -340,4 +340,25 @@ describe('root controller', () => {
     assert.equal((await submit({ latitude: '', longitude: '' })).status, 303)
     assert.equal((await getClient(user.id, client.id)).latitude, null)
   })
+
+  it('does not half-apply a client edit when the email is invalid', async () => {
+    let user = await makeUser()
+    let client = await makeClient(user.id)
+    await setClientLocation(user.id, client.id, { latitude: -6.2, longitude: 106.8 })
+    let response = await fetchResponse(routes.clients.update.href({ clientId: client.id }), {
+      method: 'POST',
+      headers: sessionHeaders(user.id),
+      body: new URLSearchParams({
+        _csrf: createCsrfToken(user.id),
+        _method: 'PUT',
+        name: client.name,
+        email: 'bukan-email',
+        latitude: '-7.25',
+        longitude: '112.75',
+      }),
+    })
+    assert.equal(response.status, 422)
+    let unchanged = await getClient(user.id, client.id)
+    assert.deepEqual([unchanged.latitude, unchanged.longitude], [-6.2, 106.8])
+  })
 })

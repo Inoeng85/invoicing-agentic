@@ -3,6 +3,7 @@ import type { Handle, RemixNode } from 'remix/ui'
 import type { RenderFunction } from 'remix/middleware/render'
 import { redirect } from 'remix/response/redirect'
 import {
+  assertValidCoordinates,
   createClient,
   getClient,
   isDomainError,
@@ -629,13 +630,16 @@ export default createController(routes.clients, {
       let error: string | undefined = values.name ? undefined : 'Nama klien wajib'
       if (!error) {
         try {
-          await setClientLocation(userId, clientId, readLocation(formData))
+          // Validate everything before the first write so a rejected edit never persists half of itself.
+          let location = readLocation(formData)
+          if (location) assertValidCoordinates(location)
           await updateClient(userId, clientId, {
             name: values.name,
             email: values.email,
             address: values.address || null,
             notes: values.notes || null,
           })
+          await setClientLocation(userId, clientId, location)
         } catch (caught) {
           if (!isDomainError(caught)) throw caught
           error = caught.message

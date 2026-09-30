@@ -15,6 +15,19 @@ export const LocationPicker = clientEntry(import.meta.url, function LocationPick
   let setMarker: ((lat: number, lng: number) => void) | null = null
   let clearMarker: (() => void) | null = null
 
+  // remix/ui keeps `value` inputs controlled, so typing must flow back into state or it is reverted.
+  function onCoordinateInput(field: 'latitude' | 'longitude') {
+    return on<HTMLInputElement>('input', (event) => {
+      let value = event.currentTarget.value
+      if (field === 'latitude') latitude = value
+      else longitude = value
+      let lat = Number.parseFloat(latitude)
+      let lng = Number.parseFloat(longitude)
+      if (Number.isFinite(lat) && Number.isFinite(lng) && Math.abs(lat) <= 90 && Math.abs(lng) <= 180) setMarker?.(lat, lng)
+      handle.update()
+    })
+  }
+
   async function mount(node: HTMLElement, signal: AbortSignal) {
     let L = await loadLeaflet()
     if (signal.aborted) return
@@ -52,8 +65,24 @@ export const LocationPicker = clientEntry(import.meta.url, function LocationPick
       <div class="h-64 w-full overflow-hidden rounded-xl border" mix={[ref((node, signal) => void mount(node as HTMLElement, signal))]} />
       <p class="field-description">Klik peta untuk menaruh pin, atau isi koordinat manual. Dipakai di peta tracking kolektor.</p>
       <div class="grid grid-cols-2 gap-2">
-        <input class="input" name="latitude" inputmode="decimal" placeholder="Latitude" aria-label="Latitude" value={latitude} />
-        <input class="input" name="longitude" inputmode="decimal" placeholder="Longitude" aria-label="Longitude" value={longitude} />
+        <input
+          class="input"
+          name="latitude"
+          inputmode="decimal"
+          placeholder="Latitude"
+          aria-label="Latitude"
+          value={latitude}
+          mix={[onCoordinateInput('latitude')]}
+        />
+        <input
+          class="input"
+          name="longitude"
+          inputmode="decimal"
+          placeholder="Longitude"
+          aria-label="Longitude"
+          value={longitude}
+          mix={[onCoordinateInput('longitude')]}
+        />
       </div>
       <button
         type="button"
