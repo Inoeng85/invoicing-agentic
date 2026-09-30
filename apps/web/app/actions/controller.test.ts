@@ -3,7 +3,7 @@ import '@invoicing/domain/test-setup'
 import * as assert from 'remix/assert'
 import { describe, it } from 'remix/test'
 
-import { assignCollector, createSessionToken, setCollectorPhoto } from '@invoicing/domain'
+import { assignCollector, createSessionToken, setCollectorPhoto, updateCollector } from '@invoicing/domain'
 import { PNG_BYTES, makeClient, makeCollector, makeInvoice, makeUser } from '@invoicing/domain/test-fixtures'
 
 import { createCsrfToken } from '../lib/csrf.ts'
@@ -138,5 +138,24 @@ describe('root controller', () => {
       headers: sessionHeaders(user.id),
     })
     assert.equal(photo.status, 404)
+  })
+
+  it('shows the collector profile with avatar in the collection panel', async () => {
+    let user = await makeUser()
+    let client = await makeClient(user.id)
+    let invoice = await makeInvoice(user.id, client.id)
+    let collector = await makeCollector(user.id)
+    await updateCollector(user.id, collector.id, { email: 'budi@kolektor.test' })
+    await assignCollector(user.id, invoice.id, collector.id)
+    let detailHref = routes.invoices.show.href({ invoiceId: invoice.id })
+    let photoPath = routes.collectorActions.photo.href({ collectorId: collector.id })
+
+    let before = await (await fetchResponse(detailHref, { headers: sessionHeaders(user.id) })).text()
+    assert.match(before, /budi@kolektor\.test/)
+    assert.ok(!before.includes(`${photoPath}?v=`), 'no photo yet: initials avatar only')
+
+    await setCollectorPhoto(user.id, collector.id, PNG_BYTES)
+    let after = await (await fetchResponse(detailHref, { headers: sessionHeaders(user.id) })).text()
+    assert.ok(after.includes(`<img src="${photoPath}?v=`), 'photo avatar rendered')
   })
 })

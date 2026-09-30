@@ -9,6 +9,7 @@ import {
 import { CsrfInput } from '../lib/csrf-field.tsx'
 import { formatPercentInput } from '../lib/percent.ts'
 import { routes } from '../routes.ts'
+import { collectorAvatar } from './collector-avatar.tsx'
 import { alertBox, formatDate, formatIdr, toDateInput } from './kit.tsx'
 
 const OUTCOME_LABEL: Record<CollectionOutcome, string> = {
@@ -64,12 +65,20 @@ export function collectionPanel(options: CollectionPanelOptions): RemixNode {
         {errorCode ? alertBox('destructive', ERROR_MESSAGES[errorCode] ?? 'Aksi penagihan gagal.') : null}
 
         {active ? (
-          <div class="space-y-1 text-sm">
-            <p class="font-medium">{active.collector.name}</p>
-            <p class="text-muted-foreground">
-              Sejak {formatDate(active.assignedAt)} · komisi {formatPercentInput(active.rateSnapshot)}% (≈{' '}
-              {formatIdr(computeCommissionCents(invoice.totalCents, active.rateSnapshot))})
-            </p>
+          <div class="flex items-start gap-3 text-sm">
+            {collectorAvatar(active.collector, 'size-10')}
+            <div class="min-w-0 space-y-0.5">
+              <p class="font-medium">{active.collector.name}</p>
+              {active.collector.email || active.collector.phone ? (
+                <p class="truncate text-muted-foreground">
+                  {[active.collector.email, active.collector.phone].filter(Boolean).join(' · ')}
+                </p>
+              ) : null}
+              <p class="text-muted-foreground">
+                Sejak {formatDate(active.assignedAt)} · komisi {formatPercentInput(active.rateSnapshot)}% (≈{' '}
+                {formatIdr(computeCommissionCents(invoice.totalCents, active.rateSnapshot))})
+              </p>
+            </div>
           </div>
         ) : isOpen ? (
           <p class="text-sm text-muted-foreground">Belum ada kolektor.</p>
@@ -133,7 +142,8 @@ export function collectionPanel(options: CollectionPanelOptions): RemixNode {
           <ol class="space-y-3 border-t pt-4 text-sm">
             {collection.history.map((assignment) => (
               <li key={assignment.id} class="space-y-1">
-                <p class="font-medium">
+                <p class="flex items-center gap-2 font-medium">
+                  {collectorAvatar(assignment.collector, 'size-6')}
                   {assignment.collector.name}{' '}
                   <span class="text-xs font-normal text-muted-foreground">
                     {assignment.endedAt
