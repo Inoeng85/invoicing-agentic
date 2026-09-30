@@ -227,5 +227,5 @@ Implementasi gate: [scripts/gates/run-all.ts](../../../scripts/gates/run-all.ts)
 ## Setelah semua gate Pass
 
 1. Jalankan UAT lengkap: [USER-STORIES-UAT.md](../brd/USER-STORIES-UAT.md)  
-2. Deploy staging (PostgreSQL prod path): [STACK-INTEGRATION.md](./STACK-INTEGRATION.md)  
+2. Deploy staging (SQLite + volume): [STACK-INTEGRATION.md](./STACK-INTEGRATION.md)  
 3. Update [BRD-DEFINITION-OF-DONE.md](../BRD-DEFINITION-OF-DONE.md) checklist fitur bisnis

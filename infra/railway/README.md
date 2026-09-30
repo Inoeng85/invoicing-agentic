@@ -1,6 +1,12 @@
-# Railway — staging (ADR-0002, ADR-0003)
+# Railway — staging (ADR-0002, ADR-0003) · SQLite
 
-Buat **dua service** dalam satu project Railway, keduanya root directory = repo root.
+Buat **dua service** (web + API) dengan **volume persisten bersama** agar satu file SQLite dipakai kedua proses.
+
+## Volume (wajib untuk SQLite)
+
+1. Tambah volume Railway (mis. `/data`).
+2. Mount volume yang **sama** ke service `invoicing-api` dan `invoicing-web`.
+3. Set di **kedua** service: `DATABASE_URL=file:/data/invoicing.db`
 
 ## Service `invoicing-api`
 
@@ -8,13 +14,8 @@ Buat **dua service** dalam satu project Railway, keduanya root directory = repo 
 |---------|--------|
 | Start command | `npm run start:api` |
 | Health check path | `/api/health/ready` |
-| Port | `PORT` (Railway inject) |
 
-Build command (recommended):
-
-```sh
-npm ci && npm run css:build
-```
+Build: `npm ci && npm run css:build`
 
 Variables: `DATABASE_URL`, `SESSION_SECRET`, `NODE_ENV=production`, `APP_URL`, `CORS_ORIGIN`, `EMAIL_*`, `TRUST_PROXY=1`.
 
@@ -23,23 +24,20 @@ Variables: `DATABASE_URL`, `SESSION_SECRET`, `NODE_ENV=production`, `APP_URL`, `
 | Setting | Value |
 |---------|--------|
 | Start command | `npm run start:web` |
-| Port | `PORT` |
 
-Variables: `DATABASE_URL`, `SESSION_SECRET`, `NODE_ENV=production`, `APP_URL`, `API_BASE_URL`, `EMAIL_*`.
+Variables: sama `DATABASE_URL` (path volume), `SESSION_SECRET`, `APP_URL`, `API_BASE_URL`, `EMAIL_*`.
 
-`API_BASE_URL` = public URL service API (untuk fetch server-side jika dipakai).
-
-## Migrate & seed (sekali per deploy schema)
-
-Jalankan di GitHub Actions atau Railway one-off:
+## Migrate & seed
 
 ```sh
-npm run db:migrate:deploy:postgres
+npm run db:migrate:deploy
 npm run db:seed   # optional, staging QA
 ```
 
+Jalankan dari CI deploy atau Railway one-off (cwd repo, env `DATABASE_URL` sama).
+
 ## GitHub Environment `staging`
 
-Secrets: `RAILWAY_TOKEN`, `RAILWAY_PROJECT_ID`, `RAILWAY_SERVICE_ID_API`, `RAILWAY_SERVICE_ID_WEB`, `DATABASE_URL`, plus runtime vars di Railway dashboard.
+Secrets: `RAILWAY_TOKEN`, `RAILWAY_SERVICE_ID_API`, `RAILWAY_SERVICE_ID_WEB`, `DATABASE_URL` (untuk migrate di CI).
 
 Workflow: [.github/workflows/deploy-staging.yml](../../.github/workflows/deploy-staging.yml)

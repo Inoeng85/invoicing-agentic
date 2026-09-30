@@ -70,7 +70,7 @@ Langkah individual masih tersedia: `npm run test:domain`, `npm run typecheck`, `
 
 **Release (Phase 6):** `npm run release:check` · [RELEASE-READINESS.md](./RELEASE-READINESS.md).
 
-**Postgres parity (PG-2):** `DATABASE_URL=postgresql://… npm run verify:postgres` (opsional; dev harian = SQLite + `npm run verify`). CI: workflow `Verify PostgreSQL`.
+**Database:** SQLite semua env ([ADR-0001](../../0000_platform_setup/adr/ADR-0001-sqlite-postgresql.md)) · `npm run verify` = parity staging/prod.
 
 ---
 
@@ -99,7 +99,6 @@ Daftar referensi: [TECHNOLOGY-STACK.md](./TECHNOLOGY-STACK.md) §5.
 | `npm run db:reset` | Reset + migrate ulang |
 | `npm run db:seed` | Demo Studio Kartika (idempoten) |
 | `npm run db:studio` | Prisma Studio |
-| `npm run db:migrate:deploy:postgres` | Migrasi PostgreSQL (staging/CI) |
 | `npm run doctor` | Diagnosa Node, lockfile, env, DB, port |
 
 ---

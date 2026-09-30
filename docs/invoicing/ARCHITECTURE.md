@@ -37,7 +37,7 @@ Dokumen ini menjembatani **requirement bisnis (BRD)** dengan **struktur sistem**
 | Runtime | Node.js ≥ 24.3 · TypeScript strict |
 | Apps | `@invoicing/web` (Remix 3 SSR + Tailwind v4) · `@invoicing/api` (JSON REST) |
 | Shared | `@invoicing/domain` · `@invoicing/database` (Prisma) |
-| DB | SQLite (MVP) → PostgreSQL (prod) · Prisma 6 |
+| DB | SQLite (dev/staging/prod) · Prisma 6 · volume persisten di host |
 | Integrasi | PDF: **pdf-lib** (implemented) · Email: adapter domain, default log; **Resend** untuk produksi (gap G-04) |
 | Auth | scrypt + session token HMAC (`SESSION_SECRET`), cookie `invoicing_session` / Bearer |
 | UI design | Token semantik [DESIGN-GUIDELINES §13](./design/DESIGN-GUIDELINES.md#13-prototype-html) · light only MVP |

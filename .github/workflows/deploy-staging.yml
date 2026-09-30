@@ -39,7 +39,7 @@ jobs:
             echo "Migrate skipped (DATABASE_URL not set in staging environment)."
             exit 0
           fi
-          npm run db:migrate:deploy:postgres
+          npm run db:migrate:deploy
       - name: Deploy API (Railway)
         env:
           RAILWAY_TOKEN: ${{ secrets.RAILWAY_TOKEN }}

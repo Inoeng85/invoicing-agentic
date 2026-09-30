@@ -1,18 +1,23 @@
-# ADR-0001 — SQLite (dev) dan PostgreSQL (staging/prod)
+# ADR-0001 — SQLite (semua environment)
 
-| Status | Accepted |
-|--------|----------|
+| Status | Accepted (revised 2026-09-30) |
+|--------|----------------------------------|
 | Tanggal | 2026-09-30 |
-| Konteks | Q-01 · PS-16 |
+| Konteks | Q-01 · PS-16 · keputusan product: tanpa PostgreSQL |
 
 ## Keputusan
 
-1. **Development:** SQLite `file:./dev.db` (schema `prisma/schema.prisma`, migrasi `prisma/migrations/`).
-2. **Staging / production / CI parity:** PostgreSQL managed (`prisma/postgresql/schema.prisma`, migrasi `prisma/postgresql/migrations/`).
-3. **Runtime:** `@invoicing/database` memilih Prisma client dari `DATABASE_URL` (`postgres*` → client PostgreSQL, selain itu SQLite).
-4. **Deploy staging/prod:** `npm run db:migrate:deploy:postgres` sebelum start proses.
+1. **Development, staging, production:** SQLite file (`prisma/schema.prisma`, migrasi `prisma/migrations/`).
+2. **`DATABASE_URL`:** `file:./dev.db` (lokal) atau `file:./data/prod.db` di host dengan **volume persisten** (Railway volume / disk).
+3. **Deploy:** `npm run db:migrate:deploy` sebelum start web & API.
+4. **PostgreSQL:** tidak dipakai; dual schema & client Postgres dihapus dari repo.
 
 ## Konsekuensi
 
-- Dua riwayat migrasi dipelihara selaras model (enum `InvoiceStatus` native di PostgreSQL).
-- Gate lokal/CI SQLite tetap default; job opsional `verify-postgres` menjalankan gate terhadap PostgreSQL.
+- Satu riwayat migrasi, satu Prisma client (`@prisma/client`).
+- Backup prod = salin file `.db` (bukan snapshot Postgres) — lihat [RUNBOOK-OPS.md](../RUNBOOK-OPS.md).
+- Skala & konkurensi tulis terbatas SQLite; cukup untuk MVP freelancer invoicing.
+
+## Ditolak
+
+- PostgreSQL managed untuk staging/prod (kompleksitas ops vs MVP).

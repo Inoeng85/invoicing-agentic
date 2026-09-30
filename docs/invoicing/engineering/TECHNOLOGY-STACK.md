@@ -17,7 +17,7 @@ Dokumen ini merangkum **teknologi yang dipilih** untuk MVP freelancer invoicing 
 | Arsitektur app | Monorepo npm workspaces: web + API + shared packages |
 | UI | Remix 3 RC (SSR, `remix/ui`) + Tailwind CSS v4 · token semantik design (konvensi shadcn/ui, tanpa React) |
 | API | Remix router, JSON REST |
-| Data | Prisma ORM 6 · SQLite (dev/MVP) → PostgreSQL (prod) |
+| Data | Prisma ORM 6 · SQLite (semua environment) |
 | Integrasi | PDF **pdf-lib** · email adapter (log → Resend) · auth `node:crypto` (scrypt, HMAC) |
 | Deploy | Node process langsung atau container opsional (Fly/Railway/VPS) |
 
@@ -51,7 +51,7 @@ flowchart TB
 
   subgraph dataLayer [Data]
     Prisma[Prisma Client 6.x]
-    DB[("SQLite MVP<br/>PostgreSQL prod")]
+    DB[("SQLite file<br/>dev/staging/prod")]
   end
 
   subgraph external [Integrasi]
@@ -230,7 +230,7 @@ flowchart LR
 | Lingkungan | Database | ORM | Lokasi schema |
 |------------|----------|-----|---------------|
 | Local / MVP | SQLite (`file:./prisma/dev.db`) | Prisma | `packages/database/prisma/` |
-| Production | PostgreSQL | Prisma (provider switch) | Same schema |
+| Production | SQLite (volume) | Prisma | Same schema/migrations |
 
 **Entitas (BRD domain model):** User, BusinessProfile, Client, Invoice, InvoiceLineItem — [ARCHITECTURE](../ARCHITECTURE.md) §8.
 
@@ -337,7 +337,7 @@ Workspace root: [package.json](../../../package.json).
 
 | Aspek | Development | Production |
 |-------|-------------|------------|
-| Database | SQLite file | PostgreSQL managed |
+| Database | SQLite file | SQLite on persistent volume |
 | Process | `npm run dev` (web+api) | `npm run start:web`, `start:api` |
 | Docker | Tidak wajib | Opsional |
 | Email | Log adapter (default) | Resend, verified domain SPF/DKIM |

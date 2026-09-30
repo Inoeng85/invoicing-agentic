@@ -329,14 +329,14 @@ Sama dengan PRD §7.1 — jangan ubah urutan di satu dokumen tanpa mengubah yang
 
 ## Phase 2 — Staging
 
-**Tujuan fase:** merge ke `main` → staging otomatis di PostgreSQL, env tervalidasi, log terstruktur, email sandbox, token design bersama.
+**Tujuan fase:** merge ke `main` → staging otomatis (SQLite + volume), env tervalidasi, log terstruktur, email sandbox, token design bersama.
 
 | Task | Status | Catatan |
 |------|--------|---------|
 | 000002-docs-adr-platform-decisions | Done | `docs/0000_platform_setup/adr/ADR-0001…0004` Accepted |
 | 000003-docs-branch-commit-convention | Done | `CONTRIBUTING.md` + PR template |
 | 000007-stack-pin-dev-dependencies | Done | TS 7.0.2 · @types/node 22.15.30 · tailwind 4.3.3 |
-| 000004-db-postgres-strategy | Done | Dual schema + `db:migrate:deploy:postgres` · job `verify-postgres.yml` |
+| 000004-db-postgres-strategy | Superseded | SQLite-only · ADR-0001 revised · Postgres dihapus |
 | 000001-be-env-validation | Done | `@invoicing/platform` bootstrap web/api |
 | 000002-be-structured-logging-request-id | Done | JSON log + `X-Request-Id` middleware |
 | 000003-be-email-adapter-selection | Done | `EMAIL_PROVIDER=log|resend` |
@@ -576,8 +576,8 @@ Sama dengan PRD §7.1 — jangan ubah urutan di satu dokumen tanpa mengubah yang
 ### Gate PG-2 (PRD M2)
 
 - [ ] ADR-0001…0004 Accepted — PS-48
-- [ ] Merge ke `main` → staging otomatis, `/api/health/ready` 200 di PostgreSQL — PS-28, PS-35
-- [ ] Gate G0–G5 Pass terhadap PostgreSQL — PS-16
+- [ ] Merge ke `main` → staging otomatis, `/api/health/ready` 200 (SQLite) — PS-28, PS-35
+- [x] Gate G0–G5 Pass (SQLite) — PS-16 · `npm run verify`
 - [ ] Env tervalidasi saat boot; log JSON dengan `requestId` — PS-10, PS-33, PS-34
 - [ ] Email sandbox staging diterima QA — PS-38, PS-39 (staging)
 - [ ] Prototype & web membangun dari token yang sama — PS-41, PS-42, PS-45

@@ -13,7 +13,7 @@
 
 1. CI `verify` hijau (lokal: `npm run verify`).
 2. Workflow [deploy-staging.yml](../../.github/workflows/deploy-staging.yml) (`workflow_dispatch`) atau deploy otomatis host.
-3. `npm run db:migrate:deploy:postgres` · `npm run db:seed` (sekali).
+3. `npm run db:migrate:deploy` · `npm run db:seed` (sekali).
 4. Smoke: `GET $API_BASE_URL/api/health/ready` → 200.
 
 ### Production (tag SemVer)
@@ -35,18 +35,17 @@
 
 ---
 
-## 3. Backup & restore PostgreSQL (PS-17)
+## 3. Backup & restore SQLite (PS-17)
 
 | Env | RPO | Mekanisme |
 |-----|-----|-----------|
-| Production | 24 jam | Snapshot harian managed Postgres (Railway plugin / host) |
+| Production | 24 jam | Salin file DB (volume persisten) — cron/host backup |
 
 **Restore uji (staging dulu):**
 
-1. Buat instance Postgres sementara dari snapshot.
-2. Set `DATABASE_URL` staging ke instance restore.
-3. `npm run db:migrate:deploy:postgres` (jika perlu) · start API.
-4. `GET /api/health/ready` → 200; catat durasi restore.
+1. Stop API/web (hindari tulis saat restore).
+2. Ganti file `.db` dengan salinan backup (path = `DATABASE_URL`, biasanya di volume `/data`).
+3. Start API · `GET /api/health/ready` → 200; catat durasi restore.
 
 ---
 

@@ -3,7 +3,7 @@
 | Meta | Nilai |
 |------|-------|
 | ID | PRD-0000 |
-| Versi | 1.9 · PG-3 prod CD (repo) · verify:postgres · G-08 hapus draft web |
+| Versi | 2.0 · SQLite-only (ADR-0001) · PostgreSQL dihapus dari repo |
 | Development phase | [PRD_platform_setup_development_phase.md](./PRD_platform_setup_development_phase.md) |
 | Tanggal | 2026-09-30 (verifikasi PG-0 & PG-1) |
 | Owner | Product (Cursor, PM) |
@@ -28,7 +28,7 @@ Kode MVP invoicing (web, API, domain, database) sudah lolos gate otomatis G0–G
 | B-04 | CI coverage | `ci.yml`: migrate, test:domain, typecheck, gate. Tanpa `css:build`, `npm test` (web), `design:css` | Regressi CSS/router tidak terdeteksi (G-09) |
 | B-05 | Database lokal | Dua file SQLite: `packages/database/prisma/dev.db` dan `packages/database/prisma/prisma/dev.db`; `DATABASE_URL` relatif berbeda di tiap `.env` | Migrasi & runtime bisa menulis ke DB berbeda |
 | B-06 | Env | `.env.example` tidak memuat `SESSION_SECRET`, `APP_URL`, `EMAIL_*`, `CORS_ORIGIN`, `NODE_ENV`; tidak ada validasi env saat boot | Onboarding manual; error runtime di production (G-12) |
-| B-07 | Database prod | `schema.prisma` hard-coded `provider = "sqlite"`; belum ada strategi PostgreSQL | Tidak bisa deploy staging/prod sesuai ARCH §13 |
+| B-07 | Database prod | **Selesai** · SQLite semua env + volume host (ADR-0001 revised) | Deploy staging/prod pakai `db:migrate:deploy` |
 | B-08 | Email | Log adapter default; belum ada akun/domain provider | Staging tidak bisa uji kirim nyata (G-04) |
 | B-09 | Observability | API pakai `remix/middleware/logger` (teks); web tanpa logger; tanpa `requestId` | Tidak memenuhi ARCH §14.2/§14.5 (G-06) |
 | B-10 | Design pipeline | Token design di `docs/design/prototype/src/tailwind.css`; `apps/web/app/styles/app.css` hanya `--color-brand` | Dua sumber style; UI app menyimpang dari guideline (G-07) |
@@ -118,7 +118,7 @@ flowchart LR
 |-------|-------|----|---------|------------|
 | Sumber | Working copy | PR / push | `main` HEAD | Tag `v*.*.*` |
 | Node | 24.x (`.nvmrc`) | 24.x | 24.x | 24.x |
-| DB | SQLite file | SQLite ephemeral | PostgreSQL managed | PostgreSQL managed + snapshot harian |
+| DB | SQLite file | SQLite (volume) | SQLite (volume) | SQLite (volume + backup file) |
 | Migrasi | `prisma migrate dev` | `migrate deploy` ke DB test | `migrate deploy` saat deploy | `migrate deploy` setelah approval |
 | Email | Log adapter | Log adapter | Provider sandbox / allowlist penerima | Provider, domain SPF/DKIM verified |
 | Secret | `.env` lokal (gitignored) | GitHub Actions secrets (jika perlu) | Secret store host, scope staging | Secret store host, scope prod |
@@ -167,7 +167,7 @@ Prioritas: **P0** = wajib sebelum tim mulai kerja paralel / CI aktif · **P1** =
 | PS-13 | Satu path SQLite canonical untuk dev (mis. absolut via root script atau relatif ke `schema.prisma`) dipakai migrate **dan** runtime web/API | P0 | Hanya satu file `dev.db`; data yang dibuat via web terlihat di Prisma Studio |
 | PS-14 | Perintah DB standar dari root: `db:migrate`, `db:reset`, `db:seed`, `db:studio` | P0 | Semua jalan dari `Agentic/` |
 | PS-15 | Seed demo (1 user, profil bisnis, 3–4 klien, invoice berbagai status) selaras sample data prototype (Studio Kartika) | P1 | `npm run db:seed` idempoten; dipakai di staging untuk UAT |
-| PS-16 | Strategi PostgreSQL untuk staging/prod (lihat Q-01), termasuk migrasi yang kompatibel | P1 | `prisma migrate deploy` sukses ke Postgres staging; gate G0–G5 lulus terhadap Postgres |
+| PS-16 | Strategi DB staging/prod (Q-01 → **SQLite-only**, ADR-0001) | P1 | `npm run db:migrate:deploy` + volume persisten; gate G0–G5 lulus via `npm run verify` |
 | PS-17 | Backup harian prod + uji restore; RPO 24 jam | P2 | Restore ke DB sementara berhasil dan `health/ready` 200 |
 
 ### 5.5 Pengalaman dev lokal
@@ -324,7 +324,7 @@ Hubungan dengan fase produk: M0–M1 membuka Phase 6 ([DEVELOPMENT-PHASES](../in
 
 | ID | Pertanyaan | Opsi | Rekomendasi awal |
 |----|------------|------|------------------|
-| Q-01 | Bagaimana SQLite (dev) dan PostgreSQL (staging/prod) hidup berdampingan dengan satu `schema.prisma`? | (a) Postgres juga di lokal (instal native, tanpa Docker); (b) dua schema per provider, dibangkitkan dari satu sumber; (c) SQLite di lokal, Postgres mulai CI | (a) untuk paritas, dengan SQLite tetap jadi fallback cepat — perlu keputusan engineering |
+| Q-01 | Strategi DB dev vs staging/prod | **Decided:** SQLite semua environment · satu schema/migrasi · [ADR-0001](./adr/ADR-0001-sqlite-postgresql.md) |
 | Q-02 | Host staging/prod | Fly.io · Railway · VPS + reverse proxy (ARCH §14.2 menyebut Fly/Railway/CloudWatch) | Railway/Fly untuk tim kecil (managed Postgres + secret store) |
 | Q-03 | Topologi web & API | Dua service terpisah (sesuai arsitektur) vs satu proses | Dua service, API di subdomain `api.` |
 | Q-04 | Lokasi token design bersama | `packages/design-tokens` vs `docs/design/prototype/src/tokens.css` | `packages/design-tokens` agar bisa di-import app tanpa bergantung pada folder docs |

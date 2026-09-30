@@ -1,10 +1,10 @@
 # Runbook — Staging (Phase 2)
 
-ADR: [ADR-0002](./adr/ADR-0002-hosting.md) · [ADR-0003](./adr/ADR-0003-web-api-topology.md)
+ADR: [ADR-0002](./adr/ADR-0002-hosting.md) · [ADR-0003](./adr/ADR-0003-web-api-topology.md) · [ADR-0001](./adr/ADR-0001-sqlite-postgresql.md)
 
 ## Prasyarat
 
-1. Akun **Railway** (atau host setara) + PostgreSQL plugin.
+1. Akun **Railway** (atau host setara) + **volume persisten** untuk file SQLite.
 2. Domain staging (TLS otomatis di Railway).
 3. Secret **tidak** di repo — inject di dashboard host / GitHub Environment `staging`.
 
@@ -12,7 +12,7 @@ ADR: [ADR-0002](./adr/ADR-0002-hosting.md) · [ADR-0003](./adr/ADR-0003-web-api-
 
 | Secret | Contoh |
 |--------|--------|
-| `DATABASE_URL` | `postgresql://…` (managed) |
+| `DATABASE_URL` | `file:/data/invoicing.db` (volume shared web+api) |
 | `SESSION_SECRET` | random 32+ byte hex |
 | `APP_URL` | `https://staging…` |
 | `CORS_ORIGIN` | sama dengan `APP_URL` origin web |
@@ -24,22 +24,15 @@ ADR: [ADR-0002](./adr/ADR-0002-hosting.md) · [ADR-0003](./adr/ADR-0003-web-api-
 ## Deploy
 
 1. Build: `npm ci` → `npm run css:build`
-2. Migrate: `npm run db:migrate:deploy:postgres`
-3. Start: `npm run start:api` + `npm run start:web` (dua service)
+2. Migrate: `npm run db:migrate:deploy`
+3. Start: `npm run start:api` + `npm run start:web` (dua service, satu file DB)
 4. Seed sekali: `npm run db:seed` (user demo Studio Kartika)
 5. Smoke: `GET $API_BASE_URL/api/health/ready` → 200
 
 Provision detail: [infra/railway/README.md](../../infra/railway/README.md)
 
-Workflow: [.github/workflows/deploy-staging.yml](../../.github/workflows/deploy-staging.yml) (`workflow_dispatch` atau setelah CI hijau)
+Workflow: [.github/workflows/deploy-staging.yml](../../.github/workflows/deploy-staging.yml)
 
-Smoke lokal/CI: `API_BASE_URL=… npm run staging:smoke`
+Smoke: `API_BASE_URL=… npm run staging:smoke`
 
-## Verifikasi lokal parity Postgres
-
-```sh
-# Opsional — butuh Postgres yang sudah jalan (staging Railway, dll.), bukan Docker wajib
-DATABASE_URL=postgresql://… npm run verify:postgres
-```
-
-Paritas otomatis di GitHub: workflow **Verify PostgreSQL** (service Postgres di CI).
+Verifikasi lokal = SQLite: `npm run verify` (sama engine dengan staging/prod).
