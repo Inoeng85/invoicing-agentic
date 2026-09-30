@@ -46,6 +46,17 @@ export {
   getCollectorPhoto,
   type CollectorPhotoMimeType,
 } from './collector-photos.ts'
+export { assertValidCoordinates, distanceMeters, type GeoPoint } from './geo.ts'
+export {
+  MAX_LOCATION_ACCURACY_M,
+  createTrackingLink,
+  revokeTrackingLink,
+  getTrackingSession,
+  recordCollectorLocation,
+  getTrackingView,
+  type TrackingSession,
+  type TrackingView,
+} from './collector-tracking.ts'
 export {
   listInvoices,
   getInvoice,
