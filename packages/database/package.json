@@ -14,7 +14,7 @@
     "db:seed:clients": "node --import tsx prisma/seed/run.ts clients",
     "db:seed:collectors": "node --import tsx prisma/seed/run.ts collectors",
     "db:seed:invoices": "node --import tsx prisma/seed/run.ts invoices",
-    "db:seed:sample": "node --import tsx prisma/seed/run.ts all",
+    "db:seed:sample": "prisma migrate deploy && node --import tsx prisma/seed/run.ts all",
     "db:push": "prisma db push",
     "db:studio": "prisma studio",
     "postinstall": "prisma generate",
@@ -24,6 +24,7 @@
     ".": "./src/index.ts"
   },
   "dependencies": {
+    "@invoicing/domain": "*",
     "@prisma/client": "^6.16.0"
   },
   "devDependencies": {

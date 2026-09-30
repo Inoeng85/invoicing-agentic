@@ -2,7 +2,7 @@ import { randomBytes } from 'node:crypto'
 
 import type { InvoiceStatus } from '@prisma/client'
 
-import { computeCommissionCents, computeInvoiceTotals } from '../../../domain/src/invoiceTotals.ts'
+import { computeCommissionCents, computeInvoiceTotals } from '@invoicing/domain'
 import { prisma } from '../../src/client.ts'
 import { createRandom, SAMPLE_EMAIL, SAMPLE_SIZE, type Random } from './random.ts'
 

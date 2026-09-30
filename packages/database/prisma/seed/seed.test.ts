@@ -1,9 +1,11 @@
+import './env.ts'
+
 import '../../../domain/src/test-setup.ts'
 
 import * as assert from 'node:assert/strict'
 import { describe, it } from 'node:test'
 
-import { computeCommissionCents } from '../../../domain/src/invoiceTotals.ts'
+import { computeCommissionCents } from '@invoicing/domain'
 import { prisma } from '../../src/client.ts'
 import { seedSampleClients } from './clients.ts'
 import { seedSampleCollectors } from './collectors.ts'

@@ -22,6 +22,7 @@
     "ci:local": "node --import tsx scripts/ci-local.ts",
     "email:smoke": "node --import tsx scripts/email-smoke.ts",
     "test:domain": "npm run test -w @invoicing/domain",
+    "test:seed": "npm run test -w @invoicing/database",
     "gate": "node --import tsx scripts/gates/run-all.ts",
     "css:build": "npm run css:build -w @invoicing/web",
     "design:css": "tailwindcss -i docs/design/prototype/src/tailwind.css -o docs/design/prototype/assets/ui.css --minify",
@@ -31,6 +32,10 @@
     "db:migrate:deploy": "npm run db:migrate:deploy -w @invoicing/database",
     "db:reset": "npm run db:reset -w @invoicing/database",
     "db:seed": "npm run db:seed -w @invoicing/database",
+    "db:seed:clients": "npm run db:seed:clients -w @invoicing/database",
+    "db:seed:collectors": "npm run db:seed:collectors -w @invoicing/database",
+    "db:seed:invoices": "npm run db:seed:invoices -w @invoicing/database",
+    "db:seed:sample": "node scripts/assert-agentic-root.mjs && npm run db:seed:sample -w @invoicing/database",
     "db:studio": "npm run db:studio -w @invoicing/database",
     "setup": "node --import tsx scripts/setup.ts",
     "verify": "node --import tsx scripts/verify.ts"

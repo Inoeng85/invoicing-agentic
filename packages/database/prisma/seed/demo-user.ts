@@ -1,4 +1,4 @@
-import { hashPassword } from '../../../domain/src/password.ts'
+import { hashPassword } from '@invoicing/domain'
 import { prisma } from '../../src/client.ts'
 
 const DEMO_EMAIL = (process.env.SEED_DEMO_USER_EMAIL ?? 'dewi.kartika@studio-kartika.demo').toLowerCase()
