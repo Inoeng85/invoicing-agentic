@@ -1,7 +1,7 @@
 import { createRouter, type MiddlewareContext } from 'remix/router'
 import { render } from 'remix/middleware/render'
 import { staticFiles } from 'remix/middleware/static'
-import { requestLogging } from '@invoicing/platform'
+import { clientIp, rateLimitKey, requestLogging } from '@invoicing/platform'
 
 import controller from './actions/controller.tsx'
 import loginController, { registerController } from './actions/auth/controller.tsx'
@@ -12,6 +12,20 @@ import { assets } from './assets.ts'
 import { routes } from './routes.ts'
 
 const renderMiddleware = render({ assets })
+
+function publicInvoiceRateLimit() {
+  return async (context: { request: Request }, next: () => Promise<Response>) => {
+    let path = new URL(context.request.url).pathname
+    if (path.startsWith('/i/')) {
+      let ip = clientIp(context.request)
+      if (!rateLimitKey(`public:${ip}`, 120, 60_000)) {
+        return new Response('Too Many Requests', { status: 429 })
+      }
+    }
+    return next()
+  }
+}
+
 type AppContext = MiddlewareContext<[typeof renderMiddleware]>
 
 declare module 'remix' {
@@ -21,7 +35,12 @@ declare module 'remix' {
 }
 
 export const router = createRouter<AppContext>({
-  middleware: [requestLogging(), staticFiles('./public', { index: false }), renderMiddleware],
+  middleware: [
+    requestLogging(),
+    publicInvoiceRateLimit(),
+    staticFiles('./public', { index: false }),
+    renderMiddleware,
+  ],
 })
 
 router.map(routes, controller)

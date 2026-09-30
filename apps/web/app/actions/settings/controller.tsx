@@ -2,6 +2,8 @@ import { createController } from 'remix/router'
 import { redirect } from 'remix/response/redirect'
 import { getUserById, updateBusinessProfile } from '@invoicing/domain'
 
+import { assertCsrf } from '../../lib/csrf.ts'
+import { CsrfInput } from '../../lib/csrf-field.tsx'
 import { requireUserId } from '../../lib/auth.ts'
 import { AppLayout } from '../../ui/layout.tsx'
 import { routes } from '../../routes.ts'
@@ -15,6 +17,7 @@ export default createController(routes.settings, {
       return context.render(
         <AppLayout title="Pengaturan" userEmail={user?.email}>
           <form method="post" action={routes.settings.action.href()} class="max-w-lg space-y-3 rounded-xl border bg-white p-6">
+            <CsrfInput userId={userId} />
             <h2 class="text-lg font-semibold">Profil bisnis</h2>
             <label class="block text-sm">
               Nama legal
@@ -51,6 +54,7 @@ export default createController(routes.settings, {
 
     async action(context) {
       let userId = requireUserId(context.request)
+      await assertCsrf(context.request, userId)
       let formData = await context.request.formData()
       await updateBusinessProfile(userId, {
         legalName: String(formData.get('legalName') ?? ''),

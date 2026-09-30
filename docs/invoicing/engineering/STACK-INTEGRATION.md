@@ -68,6 +68,8 @@ Langkah individual masih tersedia: `npm run test:domain`, `npm run typecheck`, `
 
 **GitHub Actions:** workflow `.github/workflows/ci.yml` menjalankan `npm run db:migrate:deploy` lalu `npm run verify` di Node dari `.nvmrc`. Branch protection: [.github/BRANCH_PROTECTION.md](../../../.github/BRANCH_PROTECTION.md).
 
+**Release (Phase 6):** `npm run release:check` · [RELEASE-READINESS.md](./RELEASE-READINESS.md).
+
 ---
 
 ## Environment

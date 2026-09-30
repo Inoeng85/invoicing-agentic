@@ -8,6 +8,7 @@ import {
   loginUser,
   markInvoicePaid,
   registerUser,
+  cancelInvoice,
   revokePublicLink,
   sendInvoice,
   updateBusinessProfile,
@@ -147,6 +148,14 @@ export default createController(routes, {
       return handleDomain(async () => {
         let userId = requireUserId(context.request)
         let data = await revokePublicLink(userId, context.params.id)
+        return json({ data })
+      })
+    },
+
+    async v1InvoiceCancel(context) {
+      return handleDomain(async () => {
+        let userId = requireUserId(context.request)
+        let data = await cancelInvoice(userId, context.params.id)
         return json({ data })
       })
     },

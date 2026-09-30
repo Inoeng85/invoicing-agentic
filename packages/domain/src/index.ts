@@ -19,6 +19,7 @@ export {
   updateInvoiceDraft,
   deleteInvoiceDraft,
   sendInvoice,
+  cancelInvoice,
   markInvoicePaid,
   revokePublicLink,
   getInvoiceByPublicToken,

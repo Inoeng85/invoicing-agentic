@@ -14,12 +14,12 @@ npm run test:domain
 npm run gate
 ```
 
-### Status gate (2026-09-29)
+### Status gate (2026-09-30)
 
 | Gate | Otomatis (`npm run gate`) | Manual / UAT |
 |------|---------------------------|--------------|
 | G0–G5 | **Pass** (test:domain 3/3, typecheck, gate) | Pending (G1.2, G1.3, G2.2, G3.3, G4.2, G4.3, G5.2) |
-| G6 | CI `ci.yml` ada | Legal review, sign-off engineering, gap Must ([alignment §6](../brd/ARCHITECTURE-ALIGNMENT.md#6-register-gap-dokumen--kode)) |
+| G6 | `npm run release:check` · CI `verify` job | G6.1 CI GitHub · legal · UAT · sign-off · G-04 prod Resend |
 
 ---
 
@@ -192,7 +192,8 @@ npm run gate
 
 ### Definition of Done
 
-- [ ] `.github/workflows/ci.yml`: migrate + test:domain + typecheck + gate
+- [x] `.github/workflows/ci.yml`: `npm run verify` (+ gate summary artifact)
+- [ ] CI hijau di GitHub (G6.1)
 - [ ] [legal/](../legal/) reviewed sebelum prod
 - [ ] Semua Must FR UAT Pass
 - [ ] Node ≥ 24.3 di CI (selaras engines)

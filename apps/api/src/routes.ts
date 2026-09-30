@@ -20,5 +20,6 @@ export const routes = route({
   v1InvoiceMarkPaid: post('/api/v1/invoices/:id/mark-paid'),
   v1InvoicePdf: get('/api/v1/invoices/:id/pdf'),
   v1InvoiceRevokeLink: post('/api/v1/invoices/:id/revoke-link'),
+  v1InvoiceCancel: post('/api/v1/invoices/:id/cancel'),
   publicInvoice: get('/api/public/invoices/:token'),
 })

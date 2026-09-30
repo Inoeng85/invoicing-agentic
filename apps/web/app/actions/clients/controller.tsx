@@ -2,6 +2,8 @@ import { createController } from 'remix/router'
 import type { Handle } from 'remix/ui'
 import { redirect } from 'remix/response/redirect'
 import { createClient, getClient, getUserById, listClients, updateClient } from '@invoicing/domain'
+import { assertCsrf } from '../../lib/csrf.ts'
+import { CsrfInput } from '../../lib/csrf-field.tsx'
 import { requireUserId } from '../../lib/auth.ts'
 import { AppLayout } from '../../ui/layout.tsx'
 import { routes } from '../../routes.ts'
@@ -38,12 +40,15 @@ export default createController(routes.clients, {
     },
 
     new(context) {
-      requireUserId(context.request)
-      return context.render(<ClientForm title="Klien baru" action={routes.clients.create.href()} />)
+      let userId = requireUserId(context.request)
+      return context.render(
+        <ClientForm title="Klien baru" action={routes.clients.create.href()} userId={userId} />,
+      )
     },
 
     async create(context) {
       let userId = requireUserId(context.request)
+      await assertCsrf(context.request, userId)
       let formData = await context.request.formData()
       await createClient(userId, {
         name: String(formData.get('name') ?? ''),
@@ -75,17 +80,19 @@ export default createController(routes.clients, {
     },
 
     edit(context) {
-      requireUserId(context.request)
+      let userId = requireUserId(context.request)
       return context.render(
         <ClientForm
           title="Edit klien"
           action={routes.clients.update.href({ clientId: context.params.clientId })}
+          userId={userId}
         />,
       )
     },
 
     async update(context) {
       let userId = requireUserId(context.request)
+      await assertCsrf(context.request, userId)
       let formData = await context.request.formData()
       await updateClient(userId, context.params.clientId, {
         name: String(formData.get('name') ?? ''),
@@ -99,12 +106,13 @@ export default createController(routes.clients, {
   },
 })
 
-function ClientForm(handle: Handle<{ title: string; action: string }>) {
+function ClientForm(handle: Handle<{ title: string; action: string; userId: string }>) {
   return () => {
-    let { title, action } = handle.props
+    let { title, action, userId } = handle.props
     return (
       <AppLayout title={title}>
         <form method="post" action={action} class="max-w-lg space-y-3 rounded-xl border bg-white p-6">
+          <CsrfInput userId={userId} />
           <h2 class="text-lg font-semibold">{title}</h2>
         <label class="block text-sm">
           Nama

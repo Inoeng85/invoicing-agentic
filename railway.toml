@@ -1,0 +1,7 @@
+# Railway — create separate services for web and API (ADR-0003).
+# API service example:
+#   build: npm ci && npm run css:build
+#   start: npm run start:api
+#   health: GET /api/health/ready
+# Web service:
+#   start: npm run start:web

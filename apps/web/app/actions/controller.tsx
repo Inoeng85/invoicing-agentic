@@ -7,10 +7,14 @@ import {
   getInvoiceByPublicToken,
   getUserById,
   markInvoicePaid,
+  revokePublicLink,
+  cancelInvoice,
   sendInvoice,
 } from '@invoicing/domain'
 
 import { Document } from './document.tsx'
+import { assertCsrf } from '../lib/csrf.ts'
+import { CsrfInput } from '../lib/csrf-field.tsx'
 import { requireUserId } from '../lib/auth.ts'
 import { clearSessionCookie } from '../lib/session.ts'
 import { AppLayout } from '../ui/layout.tsx'
@@ -51,6 +55,7 @@ export default createController(routes, {
             </ul>
           </section>
           <form method="post" action={routes.logout.href()} class="mt-8">
+            <CsrfInput userId={userId} />
             <button type="submit" class="text-sm text-slate-500 underline">
               Logout
             </button>
@@ -59,7 +64,9 @@ export default createController(routes, {
       )
     },
 
-    async logout() {
+    async logout(context) {
+      let userId = requireUserId(context.request)
+      await assertCsrf(context.request, userId)
       let headers = new Headers()
       clearSessionCookie(headers)
       throw redirect(routes.login.index.href(), { headers, status: 303 })
@@ -67,6 +74,7 @@ export default createController(routes, {
 
     async invoiceSend(context) {
       let userId = requireUserId(context.request)
+      await assertCsrf(context.request, userId)
       let appUrl = process.env.APP_URL ?? 'http://localhost:44100'
       await sendInvoice(userId, context.params.invoiceId, { appUrl })
       throw redirect(routes.invoices.show.href({ invoiceId: context.params.invoiceId }), 303)
@@ -74,7 +82,22 @@ export default createController(routes, {
 
     async invoiceMarkPaid(context) {
       let userId = requireUserId(context.request)
+      await assertCsrf(context.request, userId)
       await markInvoicePaid(userId, context.params.invoiceId)
+      throw redirect(routes.invoices.show.href({ invoiceId: context.params.invoiceId }), 303)
+    },
+
+    async invoiceRevokeLink(context) {
+      let userId = requireUserId(context.request)
+      await assertCsrf(context.request, userId)
+      await revokePublicLink(userId, context.params.invoiceId)
+      throw redirect(routes.invoices.show.href({ invoiceId: context.params.invoiceId }), 303)
+    },
+
+    async invoiceCancel(context) {
+      let userId = requireUserId(context.request)
+      await assertCsrf(context.request, userId)
+      await cancelInvoice(userId, context.params.invoiceId)
       throw redirect(routes.invoices.show.href({ invoiceId: context.params.invoiceId }), 303)
     },
 
@@ -90,7 +113,10 @@ export default createController(routes, {
       try {
         let invoice = await getInvoiceByPublicToken(context.params.token)
         return context.render(
-          <Document title={`Invoice ${invoice.number ?? ''}`}>
+          <Document
+            title={`Invoice ${invoice.number ?? ''}`}
+            head={<meta name="robots" content="noindex, nofollow" />}
+          >
             <div class="page-container py-8">
               <div class="mx-auto max-w-2xl rounded-xl border bg-white p-6 shadow-sm">
                 <h1 class="text-xl font-bold">{invoice.user.profile?.legalName}</h1>

@@ -14,6 +14,8 @@ import {
   updateInvoiceDraft,
 } from '@invoicing/domain'
 
+import { assertCsrf } from '../../lib/csrf.ts'
+import { CsrfInput } from '../../lib/csrf-field.tsx'
 import { requireUserId } from '../../lib/auth.ts'
 import { idrToCents, parseIdrInput } from '../../lib/money.ts'
 import { AppLayout } from '../../ui/layout.tsx'
@@ -65,12 +67,18 @@ export default createController(routes.invoices, {
       let userId = requireUserId(context.request)
       let clients = await listClients(userId)
       return context.render(
-        <InvoiceDraftForm title="Invoice baru" action={routes.invoices.create.href()} clients={clients} />,
+        <InvoiceDraftForm
+          title="Invoice baru"
+          action={routes.invoices.create.href()}
+          clients={clients}
+          userId={userId}
+        />,
       )
     },
 
     async create(context) {
       let userId = requireUserId(context.request)
+      await assertCsrf(context.request, userId)
       let formData = await context.request.formData()
       let invoice = await createInvoiceDraft(userId, {
         clientId: String(formData.get('clientId') ?? ''),
@@ -90,12 +98,14 @@ export default createController(routes.invoices, {
     async show(context) {
       let userId = requireUserId(context.request)
       let invoice = await getInvoice(userId, context.params.invoiceId)
+      let linkRevoked = Boolean(invoice.publicTokenRevokedAt)
       return context.render(
         <AppLayout title={invoice.number ?? 'Draft'}>
           <div class="space-y-4 rounded-xl border bg-white p-6">
             <div class="flex flex-wrap gap-2 text-sm">
               <span class="rounded bg-slate-100 px-2 py-1">{invoice.status}</span>
               <span>Klien: {invoice.client.name}</span>
+              {linkRevoked ? <span class="rounded bg-amber-100 px-2 py-1">Link publik dicabut</span> : null}
             </div>
             <p>Subtotal: {formatIdr(invoice.subtotalCents)}</p>
             {invoice.ppnEnabled ? <p>PPN: {formatIdr(invoice.ppnCents)}</p> : null}
@@ -118,21 +128,41 @@ export default createController(routes.invoices, {
                     Edit
                   </a>
                   <form method="post" action={routes.invoiceSend.href({ invoiceId: invoice.id })}>
+                    <CsrfInput userId={userId} />
                     <button type="submit" class="rounded bg-blue-600 px-3 py-2 text-sm text-white">
                       Kirim
                     </button>
                   </form>
                 </>
               ) : null}
-              <a href={routes.invoicePdf.href({ invoiceId: invoice.id })} class="rounded border px-3 py-2 text-sm">
-                PDF
-              </a>
+              {invoice.status !== 'draft' && invoice.status !== 'cancelled' ? (
+                <a href={routes.invoicePdf.href({ invoiceId: invoice.id })} class="rounded border px-3 py-2 text-sm">
+                  PDF
+                </a>
+              ) : null}
               {invoice.status === 'sent' || invoice.status === 'overdue' ? (
-                <form method="post" action={routes.invoiceMarkPaid.href({ invoiceId: invoice.id })}>
-                  <button type="submit" class="rounded bg-emerald-600 px-3 py-2 text-sm text-white">
-                    Tandai lunas
-                  </button>
-                </form>
+                <>
+                  <form method="post" action={routes.invoiceMarkPaid.href({ invoiceId: invoice.id })}>
+                    <CsrfInput userId={userId} />
+                    <button type="submit" class="rounded bg-emerald-600 px-3 py-2 text-sm text-white">
+                      Tandai lunas
+                    </button>
+                  </form>
+                  {!linkRevoked ? (
+                    <form method="post" action={routes.invoiceRevokeLink.href({ invoiceId: invoice.id })}>
+                      <CsrfInput userId={userId} />
+                      <button type="submit" class="rounded border border-amber-500 px-3 py-2 text-sm text-amber-800">
+                        Cabut link publik
+                      </button>
+                    </form>
+                  ) : null}
+                  <form method="post" action={routes.invoiceCancel.href({ invoiceId: invoice.id })}>
+                    <CsrfInput userId={userId} />
+                    <button type="submit" class="rounded border border-red-300 px-3 py-2 text-sm text-red-700">
+                      Batalkan invoice
+                    </button>
+                  </form>
+                </>
               ) : null}
             </div>
           </div>
@@ -153,6 +183,7 @@ export default createController(routes.invoices, {
           title="Edit draft"
           action={routes.invoices.update.href({ invoiceId: invoice.id })}
           clients={clients}
+          userId={userId}
           defaults={{
             clientId: invoice.clientId,
             ppnEnabled: invoice.ppnEnabled,
@@ -167,6 +198,7 @@ export default createController(routes.invoices, {
 
     async update(context) {
       let userId = requireUserId(context.request)
+      await assertCsrf(context.request, userId)
       let formData = await context.request.formData()
       await updateInvoiceDraft(userId, context.params.invoiceId, {
         clientId: String(formData.get('clientId') ?? ''),
@@ -194,6 +226,7 @@ interface ClientOption {
 type InvoiceDraftFormProps = {
   title: string
   action: string
+  userId: string
   clients: ClientOption[]
   defaults?: {
     clientId: string
@@ -212,6 +245,7 @@ function InvoiceDraftForm(handle: Handle<InvoiceDraftFormProps>) {
     return (
       <AppLayout title={props.title}>
         <form method="post" action={props.action} class="max-w-lg space-y-3 rounded-xl border bg-white p-6">
+          <CsrfInput userId={props.userId} />
           <h2 class="text-lg font-semibold">{props.title}</h2>
           <label class="block text-sm">
             Klien

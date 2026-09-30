@@ -47,10 +47,12 @@ function mapLines(
   }))
 }
 
-async function nextInvoiceNumber(userId: string, issueDate: Date): Promise<string> {
+type InvoiceTx = Pick<typeof prisma, 'invoice'>
+
+async function nextInvoiceNumberInTx(tx: InvoiceTx, userId: string, issueDate: Date): Promise<string> {
   let year = issueDate.getFullYear()
   let prefix = `INV-${year}-`
-  let count = await prisma.invoice.count({
+  let count = await tx.invoice.count({
     where: { userId, number: { startsWith: prefix } },
   })
   return `${prefix}${String(count + 1).padStart(4, '0')}`
@@ -212,34 +214,68 @@ export async function sendInvoice(
   invoiceId: string,
   options: { appUrl: string },
 ) {
-  let invoice = await getInvoice(userId, invoiceId)
-  if (invoice.status !== 'draft') {
-    throw new DomainError('Invoice sudah dikirim', 'already_sent', 409)
-  }
-  if (!invoice.client.email) throw new DomainError('Email klien wajib', 'missing_client_email')
+  let sendPayload = await prisma.$transaction(async (tx) => {
+    let invoice = await tx.invoice.findFirst({
+      where: { id: invoiceId, userId },
+      include: { client: true, user: { include: { profile: true } } },
+    })
+    if (!invoice) throw new DomainError('Invoice tidak ditemukan', 'not_found', 404)
+    if (invoice.status !== 'draft') {
+      throw new DomainError('Invoice sudah dikirim', 'already_sent', 409)
+    }
+    if (!invoice.client.email) throw new DomainError('Email klien wajib', 'missing_client_email')
 
-  let number = await nextInvoiceNumber(userId, invoice.issueDate)
-  let publicToken = randomBytes(24).toString('base64url')
+    let number = await nextInvoiceNumberInTx(tx, userId, invoice.issueDate)
+    let publicToken = randomBytes(24).toString('base64url')
+
+    let updated = await tx.invoice.updateMany({
+      where: { id: invoiceId, userId, status: 'draft' },
+      data: {
+        status: 'sent',
+        number,
+        publicToken,
+        publicTokenRevokedAt: null,
+        sentAt: new Date(),
+      },
+    })
+    if (updated.count === 0) {
+      throw new DomainError('Invoice sudah dikirim', 'already_sent', 409)
+    }
+
+    return {
+      number,
+      publicToken,
+      to: invoice.client.email,
+      legalName: invoice.user.profile?.legalName ?? 'Freelancer',
+    }
+  })
 
   let emailResult = await sendEmail({
-    to: invoice.client.email,
-    subject: `Invoice ${number} dari ${invoice.user.profile?.legalName ?? 'Freelancer'}`,
-    html: `<p>Invoice ${number} siap dibayar.</p><p><a href="${options.appUrl}/i/${publicToken}">Lihat invoice</a></p>`,
+    to: sendPayload.to,
+    subject: `Invoice ${sendPayload.number} dari ${sendPayload.legalName}`,
+    html: `<p>Invoice ${sendPayload.number} siap dibayar.</p><p><a href="${options.appUrl}/i/${sendPayload.publicToken}">Lihat invoice</a></p>`,
   })
 
   if (!emailResult.ok) {
+    await prisma.invoice.updateMany({
+      where: { id: invoiceId, userId, status: 'sent', number: sendPayload.number },
+      data: { status: 'draft', number: null, publicToken: null, sentAt: null },
+    })
     throw new DomainError(emailResult.error ?? 'Gagal mengirim email', 'email_failed', 502)
+  }
+
+  return getInvoice(userId, invoiceId)
+}
+
+export async function cancelInvoice(userId: string, invoiceId: string) {
+  let invoice = await getInvoice(userId, invoiceId)
+  if (invoice.status !== 'sent' && invoice.status !== 'overdue') {
+    throw new DomainError('Hanya invoice terkirim yang dapat dibatalkan', 'invalid_status', 409)
   }
 
   return prisma.invoice.update({
     where: { id: invoiceId },
-    data: {
-      status: 'sent',
-      number,
-      publicToken,
-      publicTokenRevokedAt: null,
-      sentAt: new Date(),
-    },
+    data: { status: 'cancelled' },
     include: { client: true, lineItems: true },
   })
 }
@@ -259,6 +295,12 @@ export async function markInvoicePaid(userId: string, invoiceId: string) {
 
 export async function revokePublicLink(userId: string, invoiceId: string) {
   let invoice = await getInvoice(userId, invoiceId)
+  if (invoice.status === 'draft' || invoice.status === 'cancelled') {
+    throw new DomainError('Link publik tidak tersedia untuk draft', 'invalid_status', 409)
+  }
+  if (invoice.publicTokenRevokedAt) {
+    throw new DomainError('Link sudah dicabut', 'already_revoked', 409)
+  }
   return prisma.invoice.update({
     where: { id: invoiceId },
     data: { publicTokenRevokedAt: new Date() },
