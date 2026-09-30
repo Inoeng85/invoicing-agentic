@@ -38,6 +38,8 @@ Smoke lokal/CI: `API_BASE_URL=… npm run staging:smoke`
 ## Verifikasi lokal parity Postgres
 
 ```sh
-docker compose -f docker-compose.postgres.yml up -d
-npm run verify:postgres
+# Opsional — butuh Postgres yang sudah jalan (staging Railway, dll.), bukan Docker wajib
+DATABASE_URL=postgresql://… npm run verify:postgres
 ```
+
+Paritas otomatis di GitHub: workflow **Verify PostgreSQL** (service Postgres di CI).

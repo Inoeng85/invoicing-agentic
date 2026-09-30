@@ -1,8 +1,9 @@
 /**
- * Run full verify against PostgreSQL (PG-2 / PS-16 local parity).
+ * Run full verify against PostgreSQL (PG-2 / PS-16).
+ * Set DATABASE_URL to a reachable Postgres (staging host, local install, etc.).
+ * Tanpa Docker — app tetap jalan SQLite lokal via `npm run verify`.
  *
- *   docker compose -f docker-compose.postgres.yml up -d
- *   npm run verify:postgres
+ *   DATABASE_URL=postgresql://… npm run verify:postgres
  */
 import { spawnSync } from 'node:child_process'
 import { dirname, join } from 'node:path'

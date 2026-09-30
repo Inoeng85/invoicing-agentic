@@ -70,7 +70,7 @@ Langkah individual masih tersedia: `npm run test:domain`, `npm run typecheck`, `
 
 **Release (Phase 6):** `npm run release:check` · [RELEASE-READINESS.md](./RELEASE-READINESS.md).
 
-**Postgres parity (PG-2):** `docker compose -f docker-compose.postgres.yml up -d` → `npm run verify:postgres`.
+**Postgres parity (PG-2):** `DATABASE_URL=postgresql://… npm run verify:postgres` (opsional; dev harian = SQLite + `npm run verify`). CI: workflow `Verify PostgreSQL`.
 
 ---
 
