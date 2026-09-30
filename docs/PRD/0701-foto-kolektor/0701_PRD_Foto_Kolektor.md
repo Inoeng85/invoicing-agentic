@@ -6,7 +6,7 @@
 | Induk | [0700 Debt Collector](../0700-debt-collector/0700_PRD_Debt_Collector.md) |
 | Gate | G7 (web tests) |
 | FR | **FR-14h** |
-| Status | Draft spec |
+| Status | Implemented |
 | Development phase | [0701_PRD_Foto_Kolektor_Development_phase.md](./0701_PRD_Foto_Kolektor_Development_phase.md) |
 
 ## Ringkasan
