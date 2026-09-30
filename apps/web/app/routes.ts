@@ -23,6 +23,9 @@ export const routes = route({
   }),
   collectorActions: {
     setActive: post('/collectors/:collectorId/active'),
+    photo: get('/collectors/:collectorId/photo'),
+    uploadPhoto: post('/collectors/:collectorId/photo'),
+    deletePhoto: post('/collectors/:collectorId/photo/delete'),
   },
   invoiceCollection: {
     assign: post('/invoices/:invoiceId/collection/assign'),

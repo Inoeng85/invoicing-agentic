@@ -3,9 +3,10 @@ import '@invoicing/domain/test-setup'
 import * as assert from 'remix/assert'
 import { describe, it } from 'remix/test'
 
-import { assignCollector, createSessionToken } from '@invoicing/domain'
-import { makeClient, makeCollector, makeInvoice, makeUser } from '@invoicing/domain/test-fixtures'
+import { assignCollector, createSessionToken, setCollectorPhoto } from '@invoicing/domain'
+import { PNG_BYTES, makeClient, makeCollector, makeInvoice, makeUser } from '@invoicing/domain/test-fixtures'
 
+import { createCsrfToken } from '../lib/csrf.ts'
 import { router } from '../router.ts'
 import { routes } from '../routes.ts'
 
@@ -16,6 +17,28 @@ async function fetchResponse(url: string, init?: RequestInit): Promise<Response>
   } catch (error) {
     if (error instanceof Response) return error
     throw error
+  }
+}
+
+function sessionHeaders(userId: string): Record<string, string> {
+  return { Cookie: `invoicing_session=${encodeURIComponent(createSessionToken(userId))}` }
+}
+
+// Serialize like a browser would so the request carries a real Content-Length and multipart boundary.
+async function multipartInit(userId: string, fields: Record<string, string | Blob>, contentLength?: string) {
+  let form = new FormData()
+  form.set('_csrf', createCsrfToken(userId))
+  for (let [key, value] of Object.entries(fields)) form.set(key, value)
+  let encoded = new Response(form)
+  let body = new Uint8Array(await encoded.arrayBuffer())
+  return {
+    method: 'POST',
+    body,
+    headers: {
+      ...sessionHeaders(userId),
+      'Content-Type': encoded.headers.get('Content-Type') ?? '',
+      'Content-Length': contentLength ?? String(body.byteLength),
+    },
   }
 }
 
@@ -62,5 +85,58 @@ describe('root controller', () => {
     assert.match(detailHtml, /id="penagihan"/)
     assert.match(detailHtml, new RegExp(collector.name))
     assert.match(detailHtml, /Catat aktivitas/)
+  })
+
+  it('uploads a collector photo and serves it back to the owner only', async () => {
+    let user = await makeUser()
+    let collector = await makeCollector(user.id)
+    let upload = await fetchResponse(
+      routes.collectorActions.uploadPhoto.href({ collectorId: collector.id }),
+      await multipartInit(user.id, { photo: new Blob([PNG_BYTES], { type: 'image/jpeg' }) }),
+    )
+    assert.equal(upload.status, 303)
+    assert.match(upload.headers.get('Location') ?? '', /notice=photo_saved/)
+
+    let photoHref = routes.collectorActions.photo.href({ collectorId: collector.id })
+    let photo = await fetchResponse(photoHref, { headers: sessionHeaders(user.id) })
+    assert.equal(photo.status, 200)
+    assert.equal(photo.headers.get('Content-Type'), 'image/png')
+    assert.equal(photo.headers.get('X-Content-Type-Options'), 'nosniff')
+    assert.deepEqual(Array.from(new Uint8Array(await photo.arrayBuffer())), Array.from(PNG_BYTES))
+
+    let other = await makeUser()
+    let foreign = await fetchResponse(photoHref, { headers: sessionHeaders(other.id) })
+    assert.equal(foreign.status, 404)
+
+    let anonymous = await fetchResponse(photoHref)
+    assert.equal(anonymous.status, 302)
+    assert.equal(anonymous.headers.get('Location'), routes.login.index.href())
+  })
+
+  it('rejects an oversized photo request before reading the body', async () => {
+    let user = await makeUser()
+    let collector = await makeCollector(user.id)
+    let response = await fetchResponse(
+      routes.collectorActions.uploadPhoto.href({ collectorId: collector.id }),
+      await multipartInit(user.id, { photo: new Blob([PNG_BYTES]) }, '5000000'),
+    )
+    assert.equal(response.status, 303)
+    assert.match(response.headers.get('Location') ?? '', /notice=photo_too_large/)
+  })
+
+  it('deletes a collector photo', async () => {
+    let user = await makeUser()
+    let collector = await makeCollector(user.id)
+    await setCollectorPhoto(user.id, collector.id, PNG_BYTES)
+    let response = await fetchResponse(routes.collectorActions.deletePhoto.href({ collectorId: collector.id }), {
+      method: 'POST',
+      headers: sessionHeaders(user.id),
+      body: new URLSearchParams({ _csrf: createCsrfToken(user.id) }),
+    })
+    assert.match(response.headers.get('Location') ?? '', /notice=photo_removed/)
+    let photo = await fetchResponse(routes.collectorActions.photo.href({ collectorId: collector.id }), {
+      headers: sessionHeaders(user.id),
+    })
+    assert.equal(photo.status, 404)
   })
 })

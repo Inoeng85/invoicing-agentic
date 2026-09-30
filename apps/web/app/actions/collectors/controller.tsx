@@ -5,10 +5,13 @@ import { redirect } from 'remix/response/redirect'
 import {
   createCollector,
   getCollector,
+  getCollectorPhoto,
   getCollectorSummary,
   isDomainError,
   listCollectorSummaries,
+  removeCollectorPhoto,
   setCollectorActive,
+  setCollectorPhoto,
   updateCollector,
 } from '@invoicing/domain'
 
@@ -16,6 +19,7 @@ import { assertCsrf } from '../../lib/csrf.ts'
 import { CsrfInput } from '../../lib/csrf-field.tsx'
 import { requireUserId } from '../../lib/auth.ts'
 import { formatPercentInput, parsePercentInput } from '../../lib/percent.ts'
+import { collectorAvatar } from '../../ui/collector-avatar.tsx'
 import { icon } from '../../ui/icons.tsx'
 import { alertBox, formatDate, formatIdr, pageTitle, statusBadge } from '../../ui/kit.tsx'
 import { AppLayout, loadShellUser, type ShellUser } from '../../ui/layout.tsx'
@@ -30,7 +34,17 @@ const NOTICES: Record<string, { variant: 'success' | 'destructive'; title: strin
     variant: 'destructive',
     title: 'Kolektor masih menagih invoice aktif — lepas atau ganti kolektor di invoice tersebut dulu',
   },
+  photo_saved: { variant: 'success', title: 'Foto tersimpan' },
+  photo_removed: { variant: 'success', title: 'Foto dihapus' },
+  photo_too_large: { variant: 'destructive', title: 'Foto maksimal 1 MB' },
+  photo_invalid_type: { variant: 'destructive', title: 'Format foto harus JPG, PNG, atau WebP' },
+  photo_missing: { variant: 'destructive', title: 'Pilih file foto dulu' },
 }
+
+// Room for the multipart envelope around a MAX_COLLECTOR_PHOTO_BYTES file.
+const MAX_PHOTO_REQUEST_BYTES = 1_100_000
+
+type FormCollector = { id: string; name: string; photoUpdatedAt: Date | null }
 
 interface CollectorValues {
   name: string
@@ -61,9 +75,13 @@ function toCollectorInput(values: CollectorValues) {
   }
 }
 
-function noticeFor(url: URL) {
-  let notice = NOTICES[url.searchParams.get('notice') ?? '']
+function noticeAlert(key: string | null | undefined) {
+  let notice = NOTICES[key ?? '']
   return notice ? alertBox(notice.variant, notice.title) : null
+}
+
+function noticeFor(url: URL) {
+  return noticeAlert(url.searchParams.get('notice'))
 }
 
 function redirectWithNotice(href: string, notice: string): never {
@@ -252,6 +270,7 @@ export default createController(routes.collectors, {
       let [user, collector] = await Promise.all([loadShellUser(userId), getCollector(userId, context.params.collectorId)])
       return renderCollectorForm(context, user, {
         collector,
+        notice: context.url.searchParams.get('notice'),
         values: {
           name: collector.name,
           email: collector.email ?? '',
@@ -301,16 +320,71 @@ export const collectorActionsController = createController(routes.collectorActio
       }
       redirectWithNotice(target, active ? 'activated' : 'deactivated')
     },
+
+    async photo(context) {
+      let userId = requireUserId(context.request)
+      try {
+        let photo = await getCollectorPhoto(userId, context.params.collectorId)
+        return new Response(Buffer.from(photo.bytes), {
+          headers: {
+            'Content-Type': photo.mimeType,
+            'X-Content-Type-Options': 'nosniff',
+            'Cache-Control': 'private, max-age=86400',
+          },
+        })
+      } catch (error) {
+        if (isDomainError(error) && error.status === 404) return new Response('Not Found', { status: 404 })
+        throw error
+      }
+    },
+
+    async uploadPhoto(context) {
+      let userId = requireUserId(context.request)
+      let collectorId = context.params.collectorId
+      let editHref = routes.collectors.edit.href({ collectorId })
+      // Checked before any body parsing so an oversized upload is never buffered.
+      let length = Number(context.request.headers.get('Content-Length'))
+      if (!length || length > MAX_PHOTO_REQUEST_BYTES) redirectWithNotice(editHref, 'photo_too_large')
+      await assertCsrf(context.request, userId)
+      let file = (await context.request.formData()).get('photo')
+      if (!(file instanceof File) || file.size === 0) redirectWithNotice(editHref, 'photo_missing')
+      try {
+        await setCollectorPhoto(userId, collectorId, new Uint8Array(await file.arrayBuffer()))
+      } catch (error) {
+        if (!isDomainError(error)) throw error
+        redirectWithNotice(editHref, error.code)
+      }
+      redirectWithNotice(editHref, 'photo_saved')
+    },
+
+    async deletePhoto(context) {
+      let userId = requireUserId(context.request)
+      await assertCsrf(context.request, userId)
+      let collectorId = context.params.collectorId
+      await removeCollectorPhoto(userId, collectorId)
+      redirectWithNotice(routes.collectors.edit.href({ collectorId }), 'photo_removed')
+    },
   },
 })
 
 function renderCollectorForm(
   context: { render: RenderFunction },
   user: ShellUser,
-  options: { collector?: { id: string; name: string }; values?: Partial<CollectorValues>; error?: string },
+  options: {
+    collector?: FormCollector
+    values?: Partial<CollectorValues>
+    error?: string
+    notice?: string | null
+  },
 ) {
   return context.render(
-    <CollectorFormPage user={user} collector={options.collector} values={options.values ?? {}} error={options.error} />,
+    <CollectorFormPage
+      user={user}
+      collector={options.collector}
+      values={options.values ?? {}}
+      error={options.error}
+      notice={options.notice}
+    />,
     { status: options.error ? 422 : 200 },
   )
 }
@@ -318,13 +392,14 @@ function renderCollectorForm(
 function CollectorFormPage(
   handle: Handle<{
     user: ShellUser
-    collector?: { id: string; name: string }
+    collector?: FormCollector
     values: Partial<CollectorValues>
     error?: string
+    notice?: string | null
   }>,
 ) {
   return () => {
-    let { user, collector, values, error } = handle.props
+    let { user, collector, values, error, notice } = handle.props
     let title = collector ? 'Edit kolektor' : 'Tambah kolektor'
     let cancelHref = collector
       ? routes.collectors.show.href({ collectorId: collector.id })
@@ -336,6 +411,7 @@ function CollectorFormPage(
           {icon('chevron-right')}
           <span class="text-foreground">{title}</span>
         </nav>
+        {noticeAlert(notice)}
         <form
           method="post"
           action={collector ? routes.collectors.update.href({ collectorId: collector.id }) : routes.collectors.create.href()}
@@ -392,6 +468,46 @@ function CollectorFormPage(
             </button>
           </div>
         </form>
+        {collector ? (
+          <section class="card mx-auto max-w-xl" aria-labelledby="col-photo-title">
+            <div class="card-header">
+              <h2 id="col-photo-title" class="card-title">
+                Foto
+              </h2>
+              <p class="card-description">JPG, PNG, atau WebP · maksimal 1 MB. Tampil di panel Penagihan invoice.</p>
+            </div>
+            <div class="card-content flex flex-wrap items-center gap-4">
+              {collectorAvatar(collector, 'size-16')}
+              <form
+                method="post"
+                action={routes.collectorActions.uploadPhoto.href({ collectorId: collector.id })}
+                enctype="multipart/form-data"
+                class="flex flex-wrap items-center gap-2"
+              >
+                <CsrfInput userId={user.id} />
+                <input
+                  class="input"
+                  type="file"
+                  name="photo"
+                  accept="image/jpeg,image/png,image/webp"
+                  required
+                  aria-label="File foto"
+                />
+                <button type="submit" class="btn btn-outline btn-sm">
+                  Unggah
+                </button>
+              </form>
+              {collector.photoUpdatedAt ? (
+                <form method="post" action={routes.collectorActions.deletePhoto.href({ collectorId: collector.id })}>
+                  <CsrfInput userId={user.id} />
+                  <button type="submit" class="btn btn-ghost btn-sm text-destructive">
+                    Hapus foto
+                  </button>
+                </form>
+              ) : null}
+            </div>
+          </section>
+        ) : null}
       </AppLayout>
     )
   }
