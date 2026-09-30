@@ -1,8 +1,9 @@
 # Invoicing Workspace (Agentic)
 
-Monorepo **dokumentasi** + **web** + **backend API** + shared packages. Tanpa Docker.
+Monorepo **dokumentasi** + **web** + **backend API** + shared packages. Tanpa Docker · **SQLite** semua environment.
 
-**Dokumentasi:** [docs/invoicing/BRD-DEFINITION-OF-DONE.md](docs/invoicing/BRD-DEFINITION-OF-DONE.md)
+**Dokumentasi:** [docs/invoicing/BRD-DEFINITION-OF-DONE.md](docs/invoicing/BRD-DEFINITION-OF-DONE.md)  
+**Launch (PG/G6):** [docs/0000_platform_setup/LAUNCH-LANE.md](docs/0000_platform_setup/LAUNCH-LANE.md)
 
 ## Struktur
 
@@ -13,21 +14,31 @@ Monorepo **dokumentasi** + **web** + **backend API** + shared packages. Tanpa Do
 | [packages/database/](packages/database/) | `@invoicing/database` | — |
 | [packages/domain/](packages/domain/) | `@invoicing/domain` | — |
 
-## Dev (ringkas)
+## Dev
 
-Prasyarat: **Node 24.3+** (`nvm use` — lihat `.nvmrc`).
-
-Runbook lengkap: [docs/invoicing/engineering/STACK-INTEGRATION.md](docs/invoicing/engineering/STACK-INTEGRATION.md).
+Prasyarat: **Node 24.3+** (`nvm use`).
 
 ```sh
-npm run setup    # first-time / clean clone
-npm run dev      # web + API
-npm run verify   # same checks as CI (Phase 1)
+npm run setup
+npm run dev       # web + API
+npm run verify    # typecheck, tests, gate G0–G6
 ```
+
+Runbook: [STACK-INTEGRATION.md](docs/invoicing/engineering/STACK-INTEGRATION.md)
+
+## Scripts (platform & release)
+
+| Command | Purpose |
+|---------|---------|
+| `npm run ci:local` | Paritas job CI GitHub (PG-1) |
+| `npm run release:check` | G6 readiness |
+| `npm run host:check` | Env production sebelum deploy |
+| `npm run staging:smoke` | Health API setelah deploy |
+| `npm run email:smoke` | Resend (G-04) |
+| `npm run start` | Production: web + API satu host |
 
 ## Dokumen kunci
 
-- [BRD](docs/invoicing/BRD.md)
-- [System architecture](docs/invoicing/ARCHITECTURE.md)
+- [Platform PRD](docs/0000_platform_setup/prd_platform_setup.md)
+- [Architecture](docs/invoicing/ARCHITECTURE.md)
 - [API spec](docs/invoicing/engineering/API.md)
-- [Platform setup PRD](docs/0000_platform_setup/prd_platform_setup.md)

@@ -1,6 +1,6 @@
 # Release Readiness — Phase 6 (G6)
 
-**Prasyarat platform:** [PRD-0000](../../0000_platform_setup/prd_platform_setup.md) M0–M3 (PG-0 ✅ · PG-1 fallback `ci:local` · PG-2 [checklist](../../0000_platform_setup/STAGING-PROVISION-CHECKLIST.md)).
+**Urutan lengkap:** [LAUNCH-LANE.md](../../0000_platform_setup/LAUNCH-LANE.md)
 
 ## Otomatis (lokal)
 

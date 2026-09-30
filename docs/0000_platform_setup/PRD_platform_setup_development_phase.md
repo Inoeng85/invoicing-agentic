@@ -261,11 +261,11 @@ Sama dengan PRD §7.1 — jangan ubah urutan di satu dokumen tanpa mengubah yang
 |------|--------|------------|
 | 000002-infra-ci-workflow-fix | Done | `ci.yml` — root path, `.nvmrc`, env CI, `db:migrate:deploy` |
 | 000003-infra-ci-verify-pipeline | Done | Job menjalankan `npm run verify` |
-| 000001-infra-github-repo-protection | Blocked | GitHub API 403: Pro atau repo public · lihat `.github/BRANCH_PROTECTION.md` |
+| 000001-infra-github-repo-protection | Partial | Repo public · billing Actions · script `apply-branch-protection.sh` |
 
 ### 000001-infra-github-repo-protection
 
-**Status:** Blocked · 2026-09-30 (verifikasi ulang)
+**Status:** Partial · 2026-09-30 (repo public; tunggu CI hijau + script)
 
 | PS | Depends | Output |
 |----|---------|--------|
@@ -278,7 +278,7 @@ Sama dengan PRD §7.1 — jangan ubah urutan di satu dokumen tanpa mengubah yang
 
 **Verifikasi:** push langsung ke `main` ditolak.
 
-**Hasil:** runbook [.github/BRANCH_PROTECTION.md](../../../.github/BRANCH_PROTECTION.md). `gh api …/branches/main/protection` → **403** *Upgrade to GitHub Pro or make this repository public* (repo `Inoeng85/invoicing-agentic` private). Proteksi manual di UI membutuhkan hal yang sama + CI hijau.
+**Hasil:** [.github/BRANCH_PROTECTION.md](../../../.github/BRANCH_PROTECTION.md) + `scripts/apply-branch-protection.sh`. CI GitHub terblokir **billing** (2026-09-30); fallback **`npm run ci:local`** PASS.
 
 ### 000002-infra-ci-workflow-fix
 
@@ -345,7 +345,7 @@ Sama dengan PRD §7.1 — jangan ubah urutan di satu dokumen tanpa mengubah yang
 | 000001-fe-shared-design-tokens | Done | `packages/design-tokens/tokens.css` |
 | 000002-fe-web-css-token-build | Done | `app.css` import token |
 | 000004-infra-ci-performance | Done | npm cache di CI (existing) |
-| 000005-infra-hosting-provision | Pending | Butuh akun Railway + secrets |
+| 000005-infra-hosting-provision | Partial | `railway.toml`, env examples, LAUNCH-LANE · operator Railway |
 | 000006-infra-domain-tls-cors | Pending | Butuh domain staging |
 | 000007-infra-staging-cd | Partial | Railway redeploy + smoke + `workflow_run` setelah CI · butuh secrets |
 | 000008-infra-email-provider-staging | Pending | Butuh Resend staging key |

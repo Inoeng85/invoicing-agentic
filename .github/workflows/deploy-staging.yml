@@ -31,7 +31,24 @@ jobs:
           cache-dependency-path: package-lock.json
       - run: npm ci
       - run: npm run css:build
-      - name: Prisma migrate (Postgres)
+      - name: Host env check
+        env:
+          NODE_ENV: production
+          DATABASE_URL: ${{ secrets.DATABASE_URL }}
+          SESSION_SECRET: ${{ secrets.SESSION_SECRET }}
+          APP_URL: ${{ secrets.APP_URL }}
+          CORS_ORIGIN: ${{ secrets.CORS_ORIGIN }}
+          API_BASE_URL: ${{ secrets.API_BASE_URL }}
+          EMAIL_PROVIDER: ${{ secrets.EMAIL_PROVIDER }}
+          EMAIL_API_KEY: ${{ secrets.EMAIL_API_KEY }}
+          EMAIL_FROM: ${{ secrets.EMAIL_FROM }}
+        run: |
+          if [ -z "$DATABASE_URL" ]; then
+            echo "host:check skipped (secrets not set)."
+            exit 0
+          fi
+          npm run host:check
+      - name: Prisma migrate (SQLite)
         env:
           DATABASE_URL: ${{ secrets.DATABASE_URL }}
         run: |

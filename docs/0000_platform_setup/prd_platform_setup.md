@@ -3,8 +3,9 @@
 | Meta | Nilai |
 |------|-------|
 | ID | PRD-0000 |
-| Versi | 2.2 · PG-3 prod checklist · npm run start · host:check |
+| Versi | 2.3 · LAUNCH-LANE · railway.toml · deploy host:check |
 | Development phase | [PRD_platform_setup_development_phase.md](./PRD_platform_setup_development_phase.md) |
+| Launch | [LAUNCH-LANE.md](./LAUNCH-LANE.md) |
 | Tanggal | 2026-09-30 (verifikasi PG-0 & PG-1) |
 | Owner | Product (Cursor, PM) |
 | Reviewer | Engineering lead, Design |

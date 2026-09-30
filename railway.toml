@@ -1,7 +1,8 @@
-# Railway — create separate services for web and API (ADR-0003).
-# API service example:
-#   build: npm ci && npm run css:build
-#   start: npm run start:api
-#   health: GET /api/health/ready
-# Web service:
-#   start: npm run start:web
+# SQLite single-service deploy (Mode B) — infra/railway/README.md
+[build]
+builder = "NIXPACKS"
+buildCommand = "npm ci && npm run css:build"
+
+[deploy]
+startCommand = "npm run start"
+restartPolicyType = "ON_FAILURE"
