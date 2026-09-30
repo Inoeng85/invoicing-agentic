@@ -19,6 +19,17 @@ export {
   deactivateClient,
 } from './clients.ts'
 export {
+  listCollectors,
+  getCollector,
+  createCollector,
+  updateCollector,
+  setCollectorActive,
+  listCollectorSummaries,
+  getCollectorSummary,
+  type CollectorInput,
+  type CollectorSummary,
+} from './collectors.ts'
+export {
   listInvoices,
   getInvoice,
   createInvoiceDraft,
