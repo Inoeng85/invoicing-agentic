@@ -247,9 +247,9 @@ Sama dengan PRD §7.1 — jangan ubah urutan di satu dokumen tanpa mengubah yang
 - [x] Satu `package-lock.json`, tanpa `yarn.lock` — PS-03 · 2026-09-30
 - [x] Satu `dev.db`, dipakai migrate & runtime — PS-13 · 2026-09-30
 - [x] `npm run setup && npm run verify` hijau (Node 24.3.0) — PS-18, PS-20, PS-43 · 2026-09-30
-- [ ] Initial commit ter-push ke `main` — PS-05: commit `4bbc062` ada · **push remote pending**
+- [x] Initial commit ter-push ke `main` — PS-05 · remote `Inoeng85/invoicing-agentic` · 2026-09-30
 
-**Kesimpulan PG-0:** siap lanjut **Phase 1** setelah remote + push; M0 formal tertutup setelah push.
+**Kesimpulan PG-0:** **lulus** (2026-09-30) setelah push ke GitHub.
 
 ---
 

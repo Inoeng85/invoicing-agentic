@@ -14,13 +14,13 @@ jobs:
   verify:
     runs-on: ubuntu-latest
     env:
-      DATABASE_URL: file:./dev.db
+      DATABASE_URL: "file:./dev.db"
       SESSION_SECRET: ci-session-secret-not-for-production
       EMAIL_PROVIDER: log
       NODE_ENV: test
-      APP_URL: http://localhost:44100
-      CORS_ORIGIN: http://localhost:44100
-      API_BASE_URL: http://localhost:44101
+      APP_URL: "http://localhost:44100"
+      CORS_ORIGIN: "http://localhost:44100"
+      API_BASE_URL: "http://localhost:44101"
     steps:
       - uses: actions/checkout@v4
 
