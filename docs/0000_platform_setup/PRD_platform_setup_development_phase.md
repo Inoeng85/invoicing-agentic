@@ -2,9 +2,9 @@
 
 | Meta | Nilai |
 |------|-------|
-| Versi | 1.2 · selaras [prd_platform_setup.md](./prd_platform_setup.md) v1.2 |
+| Versi | 1.3 · selaras [prd_platform_setup.md](./prd_platform_setup.md) v1.4 |
 | Milestone & gate | PRD [§7](./prd_platform_setup.md#7-milestone-gate--development-phase) · pemetaan PS→task [§7.2](./prd_platform_setup.md#72-pemetaan-requirement--task) |
-| Verifikasi terakhir | 2026-09-30 · Node v24.3.0 · commit `4bbc062` |
+| Verifikasi terakhir | 2026-09-30 · PG-0 lulus · PG-1 partial · commit `b3525dc` |
 
 **Scope:** platform & environment saja — tanpa pengembangan fitur.
 
@@ -23,7 +23,7 @@
 | Fase dev | Milestone PRD | Gate | Jumlah task |
 |----------|---------------|------|-------------|
 | Phase 0 — Local baseline | M0 | PG-0 (**9/9 task done** · gate lokal ✅ · push remote ⏳) | 9 |
-| Phase 1 — Continuous Integration | M1 | PG-1 (**workflow siap** · run GitHub `startup_failure` — cek Actions settings) | 3 |
+| Phase 1 — Continuous Integration | M1 | PG-1 (**2/3 task done** · CI run + branch protection terblokir plan/repo) | 3 |
 | Phase 2 — Staging | M2 | PG-2 | 16 |
 | Phase 3 — Production readiness | M3 | PG-3 | 10 |
 
@@ -261,11 +261,11 @@ Sama dengan PRD §7.1 — jangan ubah urutan di satu dokumen tanpa mengubah yang
 |------|--------|------------|
 | 000002-infra-ci-workflow-fix | Done | `ci.yml` — root path, `.nvmrc`, env CI, `db:migrate:deploy` |
 | 000003-infra-ci-verify-pipeline | Done | Job menjalankan `npm run verify` |
-| 000001-infra-github-repo-protection | Pending | Setelah push + CI hijau · lihat `.github/BRANCH_PROTECTION.md` |
+| 000001-infra-github-repo-protection | Blocked | GitHub API 403: Pro atau repo public · lihat `.github/BRANCH_PROTECTION.md` |
 
 ### 000001-infra-github-repo-protection
 
-**Status:** Pending (butuh remote + status check CI)
+**Status:** Blocked · 2026-09-30 (verifikasi ulang)
 
 | PS | Depends | Output |
 |----|---------|--------|
@@ -278,7 +278,7 @@ Sama dengan PRD §7.1 — jangan ubah urutan di satu dokumen tanpa mengubah yang
 
 **Verifikasi:** push langsung ke `main` ditolak.
 
-**Hasil:** runbook [.github/BRANCH_PROTECTION.md](../../../.github/BRANCH_PROTECTION.md); aktifkan manual/`gh` setelah workflow **`verify`** hijau.
+**Hasil:** runbook [.github/BRANCH_PROTECTION.md](../../../.github/BRANCH_PROTECTION.md). `gh api …/branches/main/protection` → **403** *Upgrade to GitHub Pro or make this repository public* (repo `Inoeng85/invoicing-agentic` private). Proteksi manual di UI membutuhkan hal yang sama + CI hijau.
 
 ### 000002-infra-ci-workflow-fix
 
@@ -297,7 +297,7 @@ Sama dengan PRD §7.1 — jangan ubah urutan di satu dokumen tanpa mengubah yang
 
 **Verifikasi:** workflow jalan di PR uji dan mencapai langkah test.
 
-**Hasil:** `working-directory: Agentic` dihapus · `node-version-file: .nvmrc` · env job-level · `npm run verify` lokal dengan env CI PASS.
+**Hasil:** `working-directory: Agentic` dihapus · `node-version-file: .nvmrc` · `cache-dependency-path: package-lock.json` · env per-step · `db:migrate:deploy`. Audit file: **PASS** (2026-09-30). Run GitHub: masih `startup_failure` (runner tidak start).
 
 ### 000003-infra-ci-verify-pipeline
 
@@ -314,14 +314,16 @@ Sama dengan PRD §7.1 — jangan ubah urutan di satu dokumen tanpa mengubah yang
 
 **Verifikasi:** PR sengaja merusak CSS → CI merah · PR normal → CI hijau.
 
-**Hasil:** satu step `npm run verify`; branch protection mengacu job `verify` setelah run GitHub hijau.
+**Hasil:** satu step `npm run verify` (job name `verify`). Lokal dengan env CI: exit 0 · gate G0–G5 PASS (2026-09-30).
 
 ### Gate PG-1 (PRD M1)
 
-- [ ] PR pertama hijau di GitHub Actions — PS-22 · menunggu push + run remote
-- [x] CI membaca Node dari `.nvmrc` — PS-24 · 2026-09-30
-- [x] CI menjalankan `npm run verify` (typecheck, test domain, test web, css:build, design:css, gate) — PS-23, PS-43 · 2026-09-30
-- [ ] `main` terproteksi dengan status check wajib — PS-05 (proteksi)
+- [ ] PR/run hijau di GitHub Actions — PS-22 · run terbaru `startup_failure` ([36661916437](https://github.com/Inoeng85/invoicing-agentic/actions/runs/36661916437))
+- [x] CI membaca Node dari `.nvmrc` — PS-24 · 2026-09-30 (audit `ci.yml`)
+- [x] CI **dikonfigurasi** menjalankan `npm run verify` — PS-23, PS-43 · 2026-09-30 · **paritas lokal verified**
+- [ ] `main` terproteksi dengan status check wajib — PS-05 · **blocked** (private repo + Free → butuh public atau Pro)
+
+**Kesimpulan PG-1:** implementasi Phase 1 **selesai di repo**; gate **formal terbuka** sampai Actions runner jalan dan branch protection dapat diaktifkan.
 
 ---
 

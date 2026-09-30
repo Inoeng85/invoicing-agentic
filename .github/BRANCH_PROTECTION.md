@@ -2,12 +2,16 @@
 
 **Remote:** https://github.com/Inoeng85/invoicing-agentic
 
+## Prasyarat akun (verifikasi 2026-09-30)
+
+Repo **private** + akun **GitHub Free**: API branch protection mengembalikan **403** — *Upgrade to GitHub Pro or make this repository public*. Tanpa salah satu opsi ini, rule `main` + required check **tidak bisa** dipasang via API/UI penuh.
+
 ## Jika CI `startup_failure` (0 jobs)
 
-1. **Settings → Actions → General** — pilih *Allow all actions and reusable workflows*.
-2. Pastikan **Actions** enabled untuk repo private (akun Free: kuota menit Actions).
-3. Buka tab **Actions** → jika ada banner *Approve workflows*, setujui workflow baru.
-4. Workflow minimal `CI smoke` juga gagal → masalah akun/billing, bukan isi `ci.yml`.
+1. **Settings → Actions → General** — pilih *Allow all actions and reusable workflows* (sudah `enabled: true` di repo ini).
+2. Jika tetap gagal: coba **public** repo sementara atau **GitHub Pro** (sama dengan syarat branch protection).
+3. Buka tab **Actions** → banner *Approve workflows* jika ada.
+4. Setelah runner jalan, required check = job **`verify`** (workflow CI).
 
 Setelah **push pertama** dan workflow CI **hijau** sekali:
 

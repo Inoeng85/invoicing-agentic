@@ -3,9 +3,9 @@
 | Meta | Nilai |
 |------|-------|
 | ID | PRD-0000 |
-| Versi | 1.3 · Phase 0 selesai · Phase 1 workflow siap (Actions remote pending) |
+| Versi | 1.4 · Phase 1 implementasi selesai · PG-1 formal terbuka (GitHub plan/repo) |
 | Development phase | [PRD_platform_setup_development_phase.md](./PRD_platform_setup_development_phase.md) |
-| Tanggal | 2026-09-30 (verifikasi PG-0) |
+| Tanggal | 2026-09-30 (verifikasi PG-0 & PG-1) |
 | Owner | Product (Cursor, PM) |
 | Reviewer | Engineering lead, Design |
 | Sumber | [ARCHITECTURE.md](../invoicing/ARCHITECTURE.md) v1.5 · [TECHNOLOGY-STACK.md](../invoicing/engineering/TECHNOLOGY-STACK.md) v1.2 · [DESIGN-GUIDELINES.md](../invoicing/design/DESIGN-GUIDELINES.md) v1.1 · [ARCHITECTURE-ALIGNMENT.md](../invoicing/brd/ARCHITECTURE-ALIGNMENT.md) v2.0 |
@@ -16,7 +16,7 @@
 
 ## 1. Latar belakang
 
-Kode MVP invoicing (web, API, domain, database) sudah lolos gate otomatis G0–G5. **Milestone M0 (Phase 0)** menutup baseline lokal: Node 24 ter-pin, satu lockfile npm, SQLite canonical, env example lengkap, `npm run setup` / `npm run verify`, dan runbook dev. **CI GitHub, staging/prod, dan validasi env saat boot** masih mengikuti Phase 1–2.
+Kode MVP invoicing (web, API, domain, database) sudah lolos gate otomatis G0–G5. **Milestone M0 (Phase 0)** menutup baseline lokal: Node 24 ter-pin, satu lockfile npm, SQLite canonical, env example lengkap, `npm run setup` / `npm run verify`, dan runbook dev. **Phase 1 (M1):** workflow CI & `npm run verify` sudah di repo; run GitHub dan branch protection **belum memenuhi PG-1** (lihat §1.3). Staging/prod dan validasi env saat boot = Phase 2.
 
 ### 1.1 Baseline awal (hasil pemeriksaan 2026-09-29)
 
@@ -44,12 +44,24 @@ Kode MVP invoicing (web, API, domain, database) sudah lolos gate otomatis G0–G
 | B-01 | Runtime | **Selesai (Phase 0)** | `.nvmrc` / `.node-version` = 24.3.0 · `.npmrc` `engine-strict=true` · `npm ci` gagal di Node 20 (`EBADENGINE`) · sukses di Node 24.3.0 |
 | B-02 | Package manager | **Selesai (Phase 0)** | Hanya `package-lock.json` di root; `yarn.lock` dihapus |
 | B-03 | CI path | **Selesai (Phase 1)** | `ci.yml` root `Agentic/` · cache `package-lock.json` |
-| B-04 | CI coverage | Sebagian | `ci.yml` → `npm run verify`; run GitHub **startup_failure** (aktifkan Actions di repo) |
+| B-04 | CI coverage | Sebagian (Phase 1) | Workflow = `verify` (PS-23); **runner GitHub belum jalan** (`startup_failure`) · paritas lokal OK |
 | B-05 | Database lokal | **Selesai (Phase 0)** | Satu `packages/database/prisma/dev.db` · `DATABASE_URL=file:./dev.db` di semua `.env.example` |
 | B-06 | Env | Sebagian | `.env.example` lengkap (PS-09); validasi boot = Phase 2 (`000001-be-env-validation`) |
 | B-07–B-12 | Staging/prod, email, observability, design token app | Terbuka | Phase 2–3 |
 
 **Gate PG-0:** lulus (2026-09-30) · remote https://github.com/Inoeng85/invoicing-agentic
+
+### 1.3 Status setelah Phase 1 (verifikasi 2026-09-30)
+
+| Cek | Hasil | Bukti |
+|-----|--------|--------|
+| PS-22 `ci.yml` path & cache | **Lulus (repo)** | Tanpa `working-directory: Agentic` · `cache-dependency-path: package-lock.json` |
+| PS-24 Node dari `.nvmrc` | **Lulus (repo)** | `setup-node` · `node-version-file: .nvmrc` |
+| PS-23 / PS-43 `npm run verify` | **Lulus (repo + lokal)** | Step CI = `verify`; lokal dengan env CI exit 0 · gate G0–G5 PASS |
+| PS-22 run GitHub hijau | **Gagal** | Semua run `startup_failure` (job `verify` tidak start) · contoh run [36661916437](https://github.com/Inoeng85/invoicing-agentic/actions/runs/36661916437) |
+| PS-05 branch protection | **Terblokir** | API: *Upgrade to GitHub Pro or make this repository public* (repo private, akun Free) |
+
+**Gate PG-1:** **belum lulus formal** — 2/3 task Phase 1 selesai di kode; tutup PG-1 dengan (a) repo **public** atau **GitHub Pro**, (b) CI hijau, (c) rule `main` + required check `verify`.
 
 ---
 
@@ -247,7 +259,7 @@ Prioritas: **P0** = wajib sebelum tim mulai kerja paralel / CI aktif · **P1** =
 | Milestone | Fase dev | Isi (requirement) | Gate pass |
 |-----------|----------|-------------------|-----------|
 | **M0 — Local baseline** | Phase 0 | PS-01–PS-03, PS-05 (commit/remote), PS-06–PS-07, PS-09, PS-13–PS-14, PS-18, PS-20–PS-21, PS-46 | **PG-0:** ✅ lokal 2026-09-30 (`npm run setup && npm run verify`, satu lockfile, satu `dev.db`) · ⏳ push remote |
-| **M1 — CI** | Phase 1 | PS-05 (branch protection), PS-22–PS-24, PS-43 (via verify) | **PG-1:** workflow verify siap · PR hijau + branch protection ⏳ |
+| **M1 — CI** | Phase 1 | PS-05 (branch protection), PS-22–PS-24, PS-43 (via verify) | **PG-1:** ⏳ implementasi ✅ · run CI + proteksi `main` (butuh public/Pro) |
 | **M2 — Staging** | Phase 2 | PS-04, PS-08, PS-10–PS-11, PS-15–PS-16, PS-19, PS-25, PS-27–PS-28, PS-31, PS-33–PS-35, PS-38–PS-42, PS-45, PS-48 | **PG-2:** merge → staging otomatis; `/api/health/ready` 200 di Postgres; gate G0–G5 lulus terhadap staging DB; email sandbox diterima QA |
 | **M3 — Production readiness** | Phase 3 | PS-12, PS-17, PS-26, PS-29–PS-30, PS-32, PS-36–PS-37, PS-39 (prod), PS-44, PS-47 | **PG-3:** tag `v0.1.0-rc` deploy ke prod-like; restore & rollback teruji; alert teruji |
 
@@ -367,6 +379,6 @@ Tim fitur perlu memperhatikan: G-04 (provider email) memakai PS-38–PS-40; G-05
 
 | Peran | Nama | Tanggal | Status |
 |-------|------|---------|--------|
-| Product | Cursor (PM) | 2026-09-30 | Phase 0 terverifikasi (PG-0 lokal) |
+| Product | Cursor (PM) | 2026-09-30 | PG-0 lulus · Phase 1 diverifikasi (PG-1 terbuka) |
 | Engineering | _(pending)_ | | |
 | Design | _(pending)_ | | |
