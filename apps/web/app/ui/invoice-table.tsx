@@ -14,6 +14,7 @@ export interface InvoiceRow {
   publicTokenRevokedAt: Date | null
   client: { name: string }
   lineItems: Array<{ description: string }>
+  collectionAssignments?: Array<{ collector: { name: string } }>
 }
 
 export type StatusFilter = InvoiceStatus | 'all'
@@ -185,6 +186,9 @@ export function invoiceTable(options: {
         </td>
         <td class="text-right font-medium tabular-nums">{formatIdr(inv.totalCents)}</td>
         <td>{statusBadge(inv.status)}</td>
+        <td class="hidden text-sm text-muted-foreground lg:table-cell">
+          {inv.collectionAssignments?.[0]?.collector.name ?? '—'}
+        </td>
         <td
           class={`hidden md:table-cell ${inv.status === 'overdue' ? 'font-medium text-warning' : 'text-muted-foreground'}`}
         >
@@ -206,6 +210,7 @@ export function invoiceTable(options: {
               <th>Klien</th>
               <th class="text-right">Jumlah</th>
               <th>Status</th>
+              <th class="hidden lg:table-cell">Kolektor</th>
               <th class="hidden md:table-cell">Due</th>
               <th class="w-12">
                 <span class="sr-only">Aksi</span>

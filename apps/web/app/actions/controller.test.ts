@@ -29,4 +29,11 @@ describe('root controller', () => {
     assert.equal(response.status, 302)
     assert.equal(response.headers.get('Location'), routes.login.index.href())
   })
+
+  it('POST collection assign requires login', async () => {
+    let response = await fetchResponse(routes.invoiceCollection.assign.href({ invoiceId: 'x' }), { method: 'POST' })
+
+    assert.equal(response.status, 302)
+    assert.equal(response.headers.get('Location'), routes.login.index.href())
+  })
 })

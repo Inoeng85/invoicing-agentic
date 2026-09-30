@@ -21,6 +21,9 @@ const NOTICES: Record<string, { variant: 'success' | 'info'; title: string }> = 
   paid: { variant: 'success', title: 'Invoice ditandai lunas' },
   revoked: { variant: 'success', title: 'Tautan publik dicabut — tautan lama berhenti berfungsi' },
   cancelled: { variant: 'info', title: 'Invoice dibatalkan. Buat draft baru bila perlu pengganti.' },
+  assigned: { variant: 'success', title: 'Kolektor di-assign' },
+  unassigned: { variant: 'info', title: 'Kolektor dilepas dari invoice' },
+  activity_added: { variant: 'success', title: 'Aktivitas penagihan dicatat' },
 }
 
 interface TimelineEntry {
@@ -36,11 +39,12 @@ export interface InvoiceDetailProps {
   invoice: Invoice
   publicUrl: string
   notice?: string | null
+  collectionPanel?: RemixNode
 }
 
 export function InvoiceDetail(handle: Handle<InvoiceDetailProps>) {
   return () => {
-    let { user, invoice, publicUrl, notice } = handle.props
+    let { user, invoice, publicUrl, notice, collectionPanel } = handle.props
     let id = invoice.id
     let profile = invoice.user.profile
     let legalName = profile?.legalName ?? user.legalName
@@ -381,6 +385,8 @@ export function InvoiceDetail(handle: Handle<InvoiceDetailProps>) {
                 </div>
               ) : null}
             </section>
+
+            {collectionPanel}
 
             <section class="card gap-4">
               <div class="card-header">

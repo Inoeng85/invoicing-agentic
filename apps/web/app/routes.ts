@@ -24,6 +24,11 @@ export const routes = route({
   collectorActions: {
     setActive: post('/collectors/:collectorId/active'),
   },
+  invoiceCollection: {
+    assign: post('/invoices/:invoiceId/collection/assign'),
+    unassign: post('/invoices/:invoiceId/collection/unassign'),
+    addActivity: post('/invoices/:invoiceId/collection/activities'),
+  },
   clientSetActive: post('/clients/:clientId/active'),
   invoiceSendReview: get('/invoices/:invoiceId/send'),
   invoiceSend: post('/invoices/:invoiceId/send'),

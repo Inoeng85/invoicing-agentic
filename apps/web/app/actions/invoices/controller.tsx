@@ -4,15 +4,18 @@ import { redirect } from 'remix/response/redirect'
 import {
   createInvoiceDraft,
   getInvoice,
+  getInvoiceCollection,
   getUserById,
   isDomainError,
   listClients,
+  listCollectors,
   listInvoices,
   updateInvoiceDraft,
 } from '@invoicing/domain'
 
 import { assertCsrf } from '../../lib/csrf.ts'
 import { requireUserId } from '../../lib/auth.ts'
+import { collectionPanel } from '../../ui/collection-panel.tsx'
 import { icon } from '../../ui/icons.tsx'
 import { InvoiceDetail } from '../../ui/invoice-detail.tsx'
 import {
@@ -145,7 +148,12 @@ export default createController(routes.invoices, {
   actions: {
     async index(context) {
       let userId = requireUserId(context.request)
-      let [user, invoices] = await Promise.all([loadShellUser(userId), listInvoices(userId)])
+      let collectorId = context.url.searchParams.get('collectorId') ?? ''
+      let [user, invoices, collectors] = await Promise.all([
+        loadShellUser(userId),
+        listInvoices(userId, undefined, collectorId || undefined),
+        listCollectors(userId, true),
+      ])
       let status = context.url.searchParams.get('status')
       let active: StatusFilter = isInvoiceStatus(status) ? status : 'all'
       let q = (context.url.searchParams.get('q') ?? '').trim()
@@ -171,6 +179,7 @@ export default createController(routes.invoices, {
         let params = new URLSearchParams()
         if (key !== 'all') params.set('status', key)
         if (q) params.set('q', q)
+        if (collectorId) params.set('collectorId', collectorId)
         let query = params.toString()
         return query ? `${routes.invoices.index.href()}?${query}` : routes.invoices.index.href()
       }
@@ -221,8 +230,28 @@ export default createController(routes.invoices, {
             toolbar: (
               <div class="flex flex-wrap items-center gap-3 border-b p-3">
                 {statusTabs({ invoices: matches, active, href: tabHref })}
+                {collectors.length ? (
+                  <form method="get" action={routes.invoices.index.href()} class="flex items-center gap-2">
+                    {active !== 'all' ? <input type="hidden" name="status" value={active} /> : null}
+                    {q ? <input type="hidden" name="q" value={q} /> : null}
+                    <select name="collectorId" class="select h-8" aria-label="Filter kolektor">
+                      <option value="" selected={!collectorId}>
+                        Semua kolektor
+                      </option>
+                      {collectors.map((c) => (
+                        <option key={c.id} value={c.id} selected={c.id === collectorId}>
+                          {c.name}
+                        </option>
+                      ))}
+                    </select>
+                    <button type="submit" class="btn btn-outline btn-sm">
+                      Terapkan
+                    </button>
+                  </form>
+                ) : null}
                 <form method="get" action={routes.invoices.index.href()} class="relative ml-auto w-full max-w-xs">
                   {active !== 'all' ? <input type="hidden" name="status" value={active} /> : null}
+                  {collectorId ? <input type="hidden" name="collectorId" value={collectorId} /> : null}
                   {icon(
                     'search',
                     'pointer-events-none absolute top-1/2 left-3 size-4 -translate-y-1/2 text-muted-foreground',
@@ -267,7 +296,13 @@ export default createController(routes.invoices, {
 
     async show(context) {
       let userId = requireUserId(context.request)
-      let [user, invoice] = await Promise.all([loadShellUser(userId), getInvoice(userId, context.params.invoiceId)])
+      let invoiceId = context.params.invoiceId
+      let [user, invoice, collection, collectors] = await Promise.all([
+        loadShellUser(userId),
+        getInvoice(userId, invoiceId),
+        getInvoiceCollection(userId, invoiceId),
+        listCollectors(userId),
+      ])
       return context.render(
         <InvoiceDetail
           user={user}
@@ -276,6 +311,13 @@ export default createController(routes.invoices, {
           publicUrl={
             invoice.publicToken ? `${appUrl()}${routes.publicInvoice.href({ token: invoice.publicToken })}` : ''
           }
+          collectionPanel={collectionPanel({
+            userId,
+            invoice,
+            collection,
+            collectors,
+            errorCode: context.url.searchParams.get('code'),
+          })}
         />,
       )
     },
