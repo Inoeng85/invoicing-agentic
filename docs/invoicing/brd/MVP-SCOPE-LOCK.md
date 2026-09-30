@@ -55,5 +55,5 @@ Must have di bawah ini = **sumber teks requirement**; implementasi mengikuti `@i
 | Peran | Nama | Tanggal | MoSCoW Must |
 |-------|------|---------|-------------|
 | Product | Cursor (PM) | 2026-09-29 | Approved |
-| Engineering | _(pending)_ | | |
+| Engineering | _(sign-off pending)_ | | Pre-release auto: `npm run release:check` + [LEGAL-REVIEW-CHECKLIST.md](../legal/LEGAL-REVIEW-CHECKLIST.md) |
 | Legal (draft) | _(review [../legal/](../legal/))_ | | |

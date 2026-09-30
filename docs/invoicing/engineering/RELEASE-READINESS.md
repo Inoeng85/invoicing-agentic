@@ -1,6 +1,6 @@
 # Release Readiness — Phase 6 (G6)
 
-**Prasyarat platform:** [PRD-0000](../../0000_platform_setup/prd_platform_setup.md) M0–M3 (PG-0 lokal ✅; PG-1…PG-3 butuh host).
+**Prasyarat platform:** [PRD-0000](../../0000_platform_setup/prd_platform_setup.md) M0–M3 (PG-0 ✅ · PG-1 fallback `ci:local` · PG-2 [checklist](../../0000_platform_setup/STAGING-PROVISION-CHECKLIST.md)).
 
 ## Otomatis (lokal)
 
@@ -13,7 +13,7 @@ npm run verify          # typecheck, tests, CSS, gate G0–G5
 
 | ID | Kriteria | Status |
 |----|----------|--------|
-| G6.1 | CI hijau di GitHub | Repo **public** (2026-09-30) — pantau workflow `verify` setelah push |
+| G6.1 | CI hijau di GitHub | Billing Actions harus OK · fallback lokal: `npm run ci:local` |
 | G6.2 | `npm run gate` / verify Phase 0–5 | Otomatis via `npm run verify` |
 | G6.3 | Sign-off engineering | [MVP-SCOPE-LOCK.md](../brd/MVP-SCOPE-LOCK.md) |
 

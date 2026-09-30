@@ -323,7 +323,7 @@ Sama dengan PRD §7.1 — jangan ubah urutan di satu dokumen tanpa mengubah yang
 - [x] CI **dikonfigurasi** menjalankan `npm run verify` — PS-23, PS-43 · 2026-09-30 · **paritas lokal verified**
 - [ ] `main` terproteksi dengan status check wajib — PS-05 · **blocked** (private repo + Free → butuh public atau Pro)
 
-**Kesimpulan PG-1:** implementasi Phase 1 **selesai di repo**; gate **formal terbuka** sampai Actions runner jalan dan branch protection dapat diaktifkan.
+**Kesimpulan PG-1:** implementasi Phase 1 **selesai di repo**; paritas lokal **`npm run ci:local`** (2026-09-30 PASS); gate formal terbuka sampai Actions runner + `./scripts/apply-branch-protection.sh`.
 
 ---
 

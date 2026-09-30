@@ -106,7 +106,7 @@ Gap yang **disadari** — dokumen menyebut perilaku target; kode belum. Tutup se
 | G-03 | Format nomor | Setting `invoiceNumberFormat` dipakai | Selalu `INV-YYYY-NNNN` | Should |
 | G-04 | FR-05 provider | Resend + `EMAIL_API_KEY`, `EMAIL_FROM` | Log adapter default | Must (pre-prod) |
 | G-05 | Keamanan | CSRF form web, rate limit `/i/:token`, `noindex` | CSRF `_csrf`, rate limit web+API public, `noindex` halaman `/i/` | Must (pre-prod) · **Implemented** |
-| G-06 | Observability | JSON log + `requestId` | API pakai `remix/middleware/logger`; web belum; tanpa requestId | Should |
+| G-06 | Observability | JSON log + `requestId` | `@invoicing/platform` `requestLogging()` di web & API | Should · **Implemented** |
 | G-07 | Design di app | Token §13.1 + nav aktif dinamis + wordmark | `app.css` hanya `--color-brand`; nav aktif hard-coded Dashboard | Should |
 | G-08 | BR-06 web | Aksi hapus draft di web | `POST /invoices/:id/delete-draft` + tombol draft | Should · **Implemented** |
 | G-09 | CI | + `css:build`, `npm test` (web) | `npm run verify` di CI (termasuk css, web test, gate) | Should · **Implemented** |

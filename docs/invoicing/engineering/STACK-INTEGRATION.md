@@ -70,6 +70,8 @@ Langkah individual masih tersedia: `npm run test:domain`, `npm run typecheck`, `
 
 **Release (Phase 6):** `npm run release:check` · [RELEASE-READINESS.md](./RELEASE-READINESS.md).
 
+**CI parity (PG-1):** `npm run ci:local` · **Email smoke (G-04):** `npm run email:smoke` (butuh Resend env).
+
 **Database:** SQLite semua env ([ADR-0001](../../0000_platform_setup/adr/ADR-0001-sqlite-postgresql.md)) · `npm run verify` = parity staging/prod.
 
 ---

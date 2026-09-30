@@ -193,7 +193,7 @@ npm run gate
 ### Definition of Done
 
 - [x] `.github/workflows/ci.yml`: `npm run verify` (+ gate summary artifact)
-- [ ] CI hijau di GitHub (G6.1)
+- [ ] CI hijau di GitHub (G6.1) · fallback: `npm run ci:local`
 - [ ] [legal/](../legal/) reviewed sebelum prod
 - [ ] Semua Must FR UAT Pass
 - [ ] Node ≥ 24.3 di CI (selaras engines)
@@ -203,7 +203,7 @@ npm run gate
 | Check | Metode | Pass jika |
 |-------|--------|-----------|
 | G6.1 | CI green | All jobs Pass |
-| G6.2 | `npm run gate` full | Phase 0–5 Pass |
+| G6.2 | `npm run gate` / verify | Phase 0–6 Pass |
 | G6.3 | Product sign-off | MVP-SCOPE-LOCK engineering row filled |
 
 ---

@@ -3,7 +3,7 @@
 | Meta | Nilai |
 |------|-------|
 | ID | PRD-0000 |
-| Versi | 2.0 · SQLite-only (ADR-0001) · PostgreSQL dihapus dari repo |
+| Versi | 2.1 · PG-2 checklist · ci:local · email:smoke (G-04) |
 | Development phase | [PRD_platform_setup_development_phase.md](./PRD_platform_setup_development_phase.md) |
 | Tanggal | 2026-09-30 (verifikasi PG-0 & PG-1) |
 | Owner | Product (Cursor, PM) |
@@ -258,9 +258,9 @@ Prioritas: **P0** = wajib sebelum tim mulai kerja paralel / CI aktif · **P1** =
 
 | Milestone | Fase dev | Isi (requirement) | Gate pass |
 |-----------|----------|-------------------|-----------|
-| **M0 — Local baseline** | Phase 0 | PS-01–PS-03, PS-05 (commit/remote), PS-06–PS-07, PS-09, PS-13–PS-14, PS-18, PS-20–PS-21, PS-46 | **PG-0:** ✅ lokal 2026-09-30 (`npm run setup && npm run verify`, satu lockfile, satu `dev.db`) · ⏳ push remote |
-| **M1 — CI** | Phase 1 | PS-05 (branch protection), PS-22–PS-24, PS-43 (via verify) | **PG-1:** ⏳ implementasi ✅ · run CI + proteksi `main` (butuh public/Pro) |
-| **M2 — Staging** | Phase 2 | PS-04, PS-08, PS-10–PS-11, PS-15–PS-16, PS-19, PS-25, PS-27–PS-28, PS-31, PS-33–PS-35, PS-38–PS-42, PS-45, PS-48 | **PG-2:** merge → staging otomatis; `/api/health/ready` 200 di Postgres; gate G0–G5 lulus terhadap staging DB; email sandbox diterima QA |
+| **M0 — Local baseline** | Phase 0 | PS-01–PS-03, PS-05 (commit/remote), PS-06–PS-07, PS-09, PS-13–PS-14, PS-18, PS-20–PS-21, PS-46 | **PG-0:** ✅ lokal + remote 2026-09-30 |
+| **M1 — CI** | Phase 1 | PS-05 (branch protection), PS-22–PS-24, PS-43 (via verify) | **PG-1:** ⏳ CI billing GitHub · fallback `npm run ci:local` · branch protection setelah CI hijau |
+| **M2 — Staging** | Phase 2 | PS-04, PS-08, PS-10–PS-11, PS-15–PS-16, PS-19, PS-25, PS-27–PS-28, PS-31, PS-33–PS-35, PS-38–PS-42, PS-45, PS-48 | **PG-2:** [STAGING-PROVISION-CHECKLIST.md](./STAGING-PROVISION-CHECKLIST.md) · SQLite volume · Resend QA |
 | **M3 — Production readiness** | Phase 3 | PS-12, PS-17, PS-26, PS-29–PS-30, PS-32, PS-36–PS-37, PS-39 (prod), PS-44, PS-47 | **PG-3:** tag `v0.1.0-rc` deploy ke prod-like; restore & rollback teruji; alert teruji |
 
 ### 7.1 Urutan eksekusi task (ringkas)
