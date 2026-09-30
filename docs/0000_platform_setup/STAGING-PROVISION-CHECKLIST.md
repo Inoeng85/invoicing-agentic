@@ -4,9 +4,13 @@ Operator — setelah repo siap (`npm run verify` / `npm run ci:local`).
 
 ## 000005 — Hosting (Railway)
 
-- [ ] Project Railway + service **invoicing-api** + **invoicing-web**
-- [ ] Volume persisten **shared** (mis. `/data`) di kedua service
-- [ ] `DATABASE_URL=file:/data/invoicing.db` (sama di web & api)
+**Opsi B (disarankan SQLite):** satu service · start `npm run start` · volume `/data` · `DATABASE_URL=file:/data/invoicing.db`
+
+**Opsi A:** dua service + volume shared (web + api)
+
+- [ ] Project Railway + service(s) + volume persisten
+- [ ] Env dari [infra/railway/env.staging.example](../../infra/railway/env.staging.example)
+- [ ] `npm run host:check` lulus dengan env staging
 - [ ] Secrets runtime: `SESSION_SECRET`, `APP_URL`, `CORS_ORIGIN`, `API_BASE_URL`, `EMAIL_*`, `TRUST_PROXY=1`
 - [ ] Detail: [infra/railway/README.md](../../infra/railway/README.md)
 

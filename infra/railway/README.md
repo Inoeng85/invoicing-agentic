@@ -1,43 +1,47 @@
-# Railway — staging (ADR-0002, ADR-0003) · SQLite
+# Railway — staging & prod (ADR-0002, ADR-0003) · SQLite
 
-Buat **dua service** (web + API) dengan **volume persisten bersama** agar satu file SQLite dipakai kedua proses.
+## Mode B — recommended (satu service, SQLite)
 
-## Volume (wajib untuk SQLite)
-
-1. Tambah volume Railway (mis. `/data`).
-2. Mount volume yang **sama** ke service `invoicing-api` dan `invoicing-web`.
-3. Set di **kedua** service: `DATABASE_URL=file:/data/invoicing.db`
-
-## Service `invoicing-api`
+Satu process menjalankan web + API → **satu file DB**, tanpa volume shared rumit.
 
 | Setting | Value |
 |---------|--------|
-| Start command | `npm run start:api` |
-| Health check path | `/api/health/ready` |
+| Start command | `npm run start` |
+| Build | `npm ci && npm run css:build` |
+| Volume | mount `/data` |
+| `DATABASE_URL` | `file:/data/invoicing.db` |
+| Health | path `/api/health/ready` on API port (44101 default — set `PORT` per Railway) |
 
-Build: `npm ci && npm run css:build`
+> Railway satu service = satu `PORT` publik. Untuk MVP, expose **web** port; API tetap localhost internal jika web memanggil domain via server actions (current app: domain langsung + API terpisah). **Jika butuh API publik terpisah**, gunakan Mode A.
 
-Variables: `DATABASE_URL`, `SESSION_SECRET`, `NODE_ENV=production`, `APP_URL`, `CORS_ORIGIN`, `EMAIL_*`, `TRUST_PROXY=1`.
+Env template: [env.staging.example](./env.staging.example)
 
-## Service `invoicing-web`
+## Mode A — dua service (subdomain API)
 
-| Setting | Value |
-|---------|--------|
-| Start command | `npm run start:web` |
+Volume **shared** antara `invoicing-api` dan `invoicing-web`, `DATABASE_URL` identik.
 
-Variables: sama `DATABASE_URL` (path volume), `SESSION_SECRET`, `APP_URL`, `API_BASE_URL`, `EMAIL_*`.
+### Service `invoicing-api`
+
+Start: `npm run start:api` · Health: `/api/health/ready`
+
+### Service `invoicing-web`
+
+Start: `npm run start:web`
+
+Variables: lihat env template.
 
 ## Migrate & seed
 
 ```sh
 npm run db:migrate:deploy
-npm run db:seed   # optional, staging QA
+npm run db:seed
 ```
 
-Jalankan dari CI deploy atau Railway one-off (cwd repo, env `DATABASE_URL` sama).
+Pre-deploy: `npm run host:check` dengan env production.
 
-## GitHub Environment `staging`
+## GitHub
 
-Secrets: `RAILWAY_TOKEN`, `RAILWAY_SERVICE_ID_API`, `RAILWAY_SERVICE_ID_WEB`, `DATABASE_URL` (untuk migrate di CI).
+- Environment **staging** → [STAGING-PROVISION-CHECKLIST.md](../../docs/0000_platform_setup/STAGING-PROVISION-CHECKLIST.md)
+- Environment **production** → [PRODUCTION-PROVISION-CHECKLIST.md](../../docs/0000_platform_setup/PRODUCTION-PROVISION-CHECKLIST.md)
 
-Workflow: [.github/workflows/deploy-staging.yml](../../.github/workflows/deploy-staging.yml)
+Workflows: `deploy-staging.yml`, `deploy-production.yml`

@@ -575,13 +575,13 @@ Sama dengan PRD §7.1 — jangan ubah urutan di satu dokumen tanpa mengubah yang
 
 ### Gate PG-2 (PRD M2)
 
-- [ ] ADR-0001…0004 Accepted — PS-48
+- [x] ADR-0001…0004 Accepted — PS-48
 - [ ] Merge ke `main` → staging otomatis, `/api/health/ready` 200 (SQLite) — PS-28, PS-35
 - [x] Gate G0–G5 Pass (SQLite) — PS-16 · `npm run verify`
-- [ ] Env tervalidasi saat boot; log JSON dengan `requestId` — PS-10, PS-33, PS-34
+- [x] Env tervalidasi saat boot; log JSON dengan `requestId` — PS-10, PS-33, PS-34 · `host:check` + boot
 - [ ] Email sandbox staging diterima QA — PS-38, PS-39 (staging)
-- [ ] Prototype & web membangun dari token yang sama — PS-41, PS-42, PS-45
-- [ ] Seed demo tersedia untuk UAT — PS-15
+- [x] Prototype & web membangun dari token yang sama — PS-41, PS-42, PS-45
+- [x] Seed demo tersedia untuk UAT — PS-15 · `npm run db:seed`
 
 ---
 

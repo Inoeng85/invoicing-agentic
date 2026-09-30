@@ -16,6 +16,10 @@ function isProduction(nodeEnv: string) {
   return nodeEnv === 'production'
 }
 
+function isPostgresUrl(url: string) {
+  return url.startsWith('postgres://') || url.startsWith('postgresql://')
+}
+
 function missing(names: string[]): never {
   console.error(`Missing required environment variables: ${names.join(', ')}`)
   process.exit(1)
@@ -46,6 +50,11 @@ export function validateEnvAtBoot(target: AppTarget): ValidatedEnv {
   }
 
   if (required.length) missing(required)
+
+  if (databaseUrl && isPostgresUrl(databaseUrl)) {
+    console.error('DATABASE_URL must be SQLite (file:…) — PostgreSQL is not supported (ADR-0001).')
+    process.exit(1)
+  }
 
   if (emailProvider !== 'log' && emailProvider !== 'resend') {
     console.error(`Invalid EMAIL_PROVIDER="${emailProvider}" (expected log or resend)`)
