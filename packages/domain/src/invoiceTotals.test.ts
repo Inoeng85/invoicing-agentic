@@ -1,7 +1,7 @@
 import * as assert from 'node:assert/strict'
 import { describe, it } from 'node:test'
 
-import { computeInvoiceTotals } from './invoiceTotals.ts'
+import { computeCommissionCents, computeInvoiceTotals } from './invoiceTotals.ts'
 
 describe('computeInvoiceTotals (FR-03 / BR-04)', () => {
   it('UAT-FR-03-a: PPN 11% on subtotal 1_000_000 IDR', () => {
@@ -25,5 +25,20 @@ describe('computeInvoiceTotals (FR-03 / BR-04)', () => {
     assert.equal(totals.subtotalCents, 90_000_000)
     assert.equal(totals.ppnCents, 9_900_000)
     assert.equal(totals.totalCents, 99_900_000)
+  })
+})
+
+describe('computeCommissionCents (BR-08)', () => {
+  it('10% of Rp1.000.000', () => {
+    assert.equal(computeCommissionCents(100_000_000, 0.1), 10_000_000)
+  })
+
+  it('rounds half up to the nearest cent', () => {
+    assert.equal(computeCommissionCents(335, 0.1), 34)
+    assert.equal(computeCommissionCents(333, 0.1), 33)
+  })
+
+  it('rate 0 yields 0', () => {
+    assert.equal(computeCommissionCents(100_000_000, 0), 0)
   })
 })

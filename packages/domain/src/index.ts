@@ -1,5 +1,11 @@
 export { getSystemStatus, type SystemStatus } from './systemStatus.ts'
-export { computeInvoiceTotals, computeLineSubtotalCents, type InvoiceTotals, type LineItemInput } from './invoiceTotals.ts'
+export {
+  computeCommissionCents,
+  computeInvoiceTotals,
+  computeLineSubtotalCents,
+  type InvoiceTotals,
+  type LineItemInput,
+} from './invoiceTotals.ts'
 export { formatIdr } from './money.ts'
 export { DomainError, isDomainError } from './errors.ts'
 export { registerUser, loginUser, getUserById } from './auth.ts'

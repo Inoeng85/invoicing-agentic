@@ -25,3 +25,7 @@ export function computeInvoiceTotals(
   let totalCents = subtotalCents + ppnCents
   return { subtotalCents, ppnCents, totalCents }
 }
+
+export function computeCommissionCents(totalCents: number, rate: number): number {
+  return Math.round(totalCents * rate)
+}
