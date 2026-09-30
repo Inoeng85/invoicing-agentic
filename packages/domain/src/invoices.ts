@@ -1,9 +1,10 @@
 import { randomBytes } from 'node:crypto'
 
 import { prisma } from '@invoicing/database'
-import type { InvoiceStatus } from '@prisma/client'
+import type { InvoiceStatus, Prisma } from '@prisma/client'
 
 import { sendEmail } from './email.ts'
+import { closeActiveAssignmentInTx } from './collections.ts'
 import { DomainError } from './errors.ts'
 import { computeInvoiceTotals, type LineItemInput } from './invoiceTotals.ts'
 import { generateInvoicePdf } from './pdf.ts'
@@ -58,11 +59,22 @@ async function nextInvoiceNumberInTx(tx: InvoiceTx, userId: string, issueDate: D
   return `${prefix}${String(count + 1).padStart(4, '0')}`
 }
 
-export async function listInvoices(userId: string, status?: InvoiceStatus) {
+export async function listInvoices(userId: string, status?: InvoiceStatus, collectorId?: string) {
   await refreshOverdueInvoices(userId)
   return prisma.invoice.findMany({
-    where: { userId, ...(status ? { status } : {}) },
-    include: { client: true, lineItems: { orderBy: { sortOrder: 'asc' }, take: 1 } },
+    where: {
+      userId,
+      ...(status ? { status } : {}),
+      ...(collectorId ? { collectionAssignments: { some: { collectorId, endedAt: null } } } : {}),
+    },
+    include: {
+      client: true,
+      lineItems: { orderBy: { sortOrder: 'asc' }, take: 1 },
+      collectionAssignments: {
+        where: { endedAt: null },
+        include: { collector: { select: { id: true, name: true } } },
+      },
+    },
     orderBy: { updatedAt: 'desc' },
   })
 }
@@ -267,29 +279,53 @@ export async function sendInvoice(
   return getInvoice(userId, invoiceId)
 }
 
-export async function cancelInvoice(userId: string, invoiceId: string) {
-  let invoice = await getInvoice(userId, invoiceId)
-  if (invoice.status !== 'sent' && invoice.status !== 'overdue') {
-    throw new DomainError('Hanya invoice terkirim yang dapat dibatalkan', 'invalid_status', 409)
+// Status check and write share one transaction so a concurrent send/cancel/pay can't slip between them.
+async function closeOutstandingInvoiceInTx(
+  tx: Prisma.TransactionClient,
+  userId: string,
+  invoiceId: string,
+  data: { status: 'paid'; paidAt: Date } | { status: 'cancelled' },
+  invalidMessage: string,
+) {
+  let updated = await tx.invoice.updateMany({
+    where: { id: invoiceId, userId, status: { in: ['sent', 'overdue'] } },
+    data,
+  })
+  if (updated.count === 0) {
+    let exists = await tx.invoice.findFirst({ where: { id: invoiceId, userId }, select: { id: true } })
+    if (!exists) throw new DomainError('Invoice tidak ditemukan', 'not_found', 404)
+    throw new DomainError(invalidMessage, 'invalid_status', 409)
   }
+  let invoice = await tx.invoice.findUniqueOrThrow({ where: { id: invoiceId }, select: { totalCents: true } })
+  await closeActiveAssignmentInTx(tx, invoiceId, data.status, invoice.totalCents)
+}
 
-  return prisma.invoice.update({
-    where: { id: invoiceId },
-    data: { status: 'cancelled' },
-    include: { client: true, lineItems: true },
+export async function cancelInvoice(userId: string, invoiceId: string) {
+  return prisma.$transaction(async (tx) => {
+    await closeOutstandingInvoiceInTx(
+      tx,
+      userId,
+      invoiceId,
+      { status: 'cancelled' },
+      'Hanya invoice terkirim yang dapat dibatalkan',
+    )
+    return tx.invoice.findUniqueOrThrow({
+      where: { id: invoiceId },
+      include: { client: true, lineItems: true },
+    })
   })
 }
 
 export async function markInvoicePaid(userId: string, invoiceId: string) {
-  let invoice = await getInvoice(userId, invoiceId)
-  if (invoice.status !== 'sent' && invoice.status !== 'overdue') {
-    throw new DomainError('Hanya invoice terkirim yang dapat ditandai lunas', 'invalid_status', 409)
-  }
-
-  return prisma.invoice.update({
-    where: { id: invoiceId },
-    data: { status: 'paid', paidAt: new Date() },
-    include: { client: true },
+  return prisma.$transaction(async (tx) => {
+    await closeOutstandingInvoiceInTx(
+      tx,
+      userId,
+      invoiceId,
+      { status: 'paid', paidAt: new Date() },
+      'Hanya invoice terkirim yang dapat ditandai lunas',
+    )
+    return tx.invoice.findUniqueOrThrow({ where: { id: invoiceId }, include: { client: true } })
   })
 }
 
