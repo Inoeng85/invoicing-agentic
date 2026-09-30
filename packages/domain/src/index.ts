@@ -30,6 +30,15 @@ export {
   type CollectorSummary,
 } from './collectors.ts'
 export {
+  COLLECTION_OUTCOMES,
+  assignCollector,
+  unassignCollector,
+  addCollectionActivity,
+  getInvoiceCollection,
+  type CollectionOutcome,
+  type InvoiceCollection,
+} from './collections.ts'
+export {
   listInvoices,
   getInvoice,
   createInvoiceDraft,
