@@ -22,6 +22,7 @@
 | 11 | **0600** | [0600-release-readiness](./0600-release-readiness/) | G6 | UAT, legal, CI, PG formal | 0501 + PG-2 |
 | 12 | **0700** | [0700-debt-collector](./0700-debt-collector/) | G7 | FR-14, BR-07–BR-09 (**Must** MVP) | 0501 |
 | 13 | **0701** | [0701-foto-kolektor](./0701-foto-kolektor/) | G7 | FR-14h foto kolektor (**Must** MVP) | 0700 |
+| 14 | **0702** | [0702-live-tracking](./0702-live-tracking/) | G7 | FR-14i/j live tracking kolektor & pin klien, BR-10–BR-12 | 0701 |
 
 **Canonical platform (detail penuh):** tetap di [0000_platform_setup/prd_platform_setup.md](../0000_platform_setup/prd_platform_setup.md).
 

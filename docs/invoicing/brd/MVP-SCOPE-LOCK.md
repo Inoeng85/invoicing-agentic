@@ -55,6 +55,9 @@ Must have di bawah ini = **sumber teks requirement**; implementasi mengikuti `@i
 | BR-07 | Assign/aktivitas penagihan hanya untuk invoice `sent`/`overdue`; kolektor harus aktif & milik user |
 | BR-08 | Rate komisi di-snapshot saat assign; dikunci saat `paid`, tanpa komisi saat `cancelled` |
 | BR-09 | Kolektor dengan assignment aktif tidak dapat dinonaktifkan |
+| BR-10 | Link tracking hanya untuk penugasan aktif; lokasi hanya diterima selama penugasan aktif & token cocok |
+| BR-11 | Saat penugasan berakhir, token tracking dikosongkan dan jejak lokasi dihapus; hanya posisi terakhir disimpan |
+| BR-12 | Validasi lokasi: lat ±90, lng ±180, akurasi ≤ 1000 m, waktu ≤ sekarang + 5 menit dan ≥ waktu assign |
 
 Kolektor **bukan user** — non-goal multi-user tetap berlaku.
 

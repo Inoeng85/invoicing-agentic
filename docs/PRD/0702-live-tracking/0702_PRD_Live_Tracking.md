@@ -6,8 +6,8 @@
 | Induk | [0700 Debt Collector](../0700-debt-collector/0700_PRD_Debt_Collector.md) |
 | Gate | G7 (domain + web tests) |
 | FR | **FR-14i** (tracking), **FR-14j** (pin lokasi klien) |
-| Status | Draft spec — menunggu review |
-| Development phase | *(dibuat setelah spec disetujui)* |
+| Status | Implemented |
+| Development phase | [0702_PRD_Live_Tracking_Development_phase.md](./0702_PRD_Live_Tracking_Development_phase.md) |
 
 ## Ringkasan
 
