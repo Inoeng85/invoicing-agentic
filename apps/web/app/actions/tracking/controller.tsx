@@ -51,6 +51,7 @@ export default createController(routes.collectorTracking, {
                 dataUrl={null}
                 pollMs={0}
                 heightClass="h-64"
+                showStatus={false}
               />
             ) : null}
             <section class="card gap-3 p-4">

@@ -15,6 +15,7 @@ export interface TrackingMapProps {
   dataUrl: string | null
   pollMs: number
   heightClass: string
+  showStatus: boolean
 }
 
 const INDONESIA: [number, number] = [-2.5, 118]
@@ -106,10 +107,12 @@ export const TrackingMap = clientEntry(import.meta.url, function TrackingMap(han
         class={`${handle.props.heightClass} w-full overflow-hidden rounded-xl border`}
         mix={[ref((node, signal) => void mount(node as HTMLElement, signal))]}
       />
-      <p class="text-sm text-muted-foreground" aria-live="polite">
-        {statusText(data)}
-        {failed ? ' · gagal memperbarui, mencoba lagi…' : ''}
-      </p>
+      {handle.props.showStatus ? (
+        <p class="text-sm text-muted-foreground" aria-live="polite">
+          {statusText(data)}
+          {failed ? ' · gagal memperbarui, mencoba lagi…' : ''}
+        </p>
+      ) : null}
     </div>
   )
 })

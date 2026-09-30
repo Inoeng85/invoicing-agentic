@@ -45,6 +45,7 @@ export default createController(routes.invoiceTracking, {
             dataUrl={view.assignmentActive ? routes.invoiceTracking.data.href({ invoiceId }) : null}
             pollMs={15_000}
             heightClass="h-[60vh]"
+            showStatus
           />
         </AppLayout>,
       )

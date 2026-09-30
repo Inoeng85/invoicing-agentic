@@ -10,6 +10,7 @@ import {
   getClient,
   recordCollectorLocation,
   revokeTrackingLink,
+  setClientLocation,
   setCollectorPhoto,
   updateCollector,
 } from '@invoicing/domain'
@@ -224,6 +225,7 @@ describe('root controller', () => {
   it('collector tracking page shows the destination without invoice money', async () => {
     let user = await makeUser()
     let client = await makeClient(user.id)
+    await setClientLocation(user.id, client.id, { latitude: -6.2, longitude: 106.8 })
     let invoice = await makeInvoice(user.id, client.id, { totalCents: 123_456_700 })
     let collector = await makeCollector(user.id)
     await assignCollector(user.id, invoice.id, collector.id)
@@ -236,6 +238,7 @@ describe('root controller', () => {
     assert.match(html, /Mulai berbagi lokasi/)
     assert.match(html, /noindex/)
     assert.ok(!html.includes('1.234.567') && !html.includes(invoice.number!), 'no invoice money or number')
+    assert.ok(!html.includes('Kolektor belum mulai berbagi lokasi'), 'freelancer status line is not shown to the collector')
 
     await revokeTrackingLink(user.id, invoice.id)
     let dead = await fetchResponse(routes.collectorTracking.page.href({ token }))
