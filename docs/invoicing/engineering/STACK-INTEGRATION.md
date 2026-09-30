@@ -66,6 +66,8 @@ Urutan: `typecheck` → `test:domain` → `test` (web) → `css:build` → `desi
 
 Langkah individual masih tersedia: `npm run test:domain`, `npm run typecheck`, `npm run gate`.
 
+**GitHub Actions:** workflow `.github/workflows/ci.yml` menjalankan `npm run db:migrate:deploy` lalu `npm run verify` di Node dari `.nvmrc`. Branch protection: [.github/BRANCH_PROTECTION.md](../../../.github/BRANCH_PROTECTION.md).
+
 ---
 
 ## Environment

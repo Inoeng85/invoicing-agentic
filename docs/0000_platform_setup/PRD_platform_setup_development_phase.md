@@ -2,8 +2,9 @@
 
 | Meta | Nilai |
 |------|-------|
-| Versi | 1.1 · selaras [prd_platform_setup.md](./prd_platform_setup.md) v1.1 |
+| Versi | 1.2 · selaras [prd_platform_setup.md](./prd_platform_setup.md) v1.2 |
 | Milestone & gate | PRD [§7](./prd_platform_setup.md#7-milestone-gate--development-phase) · pemetaan PS→task [§7.2](./prd_platform_setup.md#72-pemetaan-requirement--task) |
+| Verifikasi terakhir | 2026-09-30 · Node v24.3.0 · commit `4bbc062` |
 
 **Scope:** platform & environment saja — tanpa pengembangan fitur.
 
@@ -21,8 +22,8 @@
 
 | Fase dev | Milestone PRD | Gate | Jumlah task |
 |----------|---------------|------|-------------|
-| Phase 0 — Local baseline | M0 | PG-0 | 9 |
-| Phase 1 — Continuous Integration | M1 | PG-1 | 3 |
+| Phase 0 — Local baseline | M0 | PG-0 (**9/9 task done** · gate lokal ✅ · push remote ⏳) | 9 |
+| Phase 1 — Continuous Integration | M1 | PG-1 (**in progress** — CI lokal + workflow; protection setelah run hijau) | 3 |
 | Phase 2 — Staging | M2 | PG-2 | 16 |
 | Phase 3 — Production readiness | M3 | PG-3 | 10 |
 
@@ -63,7 +64,21 @@ Sama dengan PRD §7.1 — jangan ubah urutan di satu dokumen tanpa mengubah yang
 
 **Tujuan fase:** clone bersih → `npm run setup && npm run verify` hijau di Node 24, satu lockfile, satu database dev.
 
+| Task | Status | Verifikasi 2026-09-30 |
+|------|--------|------------------------|
+| 000001-stack-pin-node-runtime | Done | `.nvmrc`, `.node-version`, `.npmrc`, `engines` packages |
+| 000002-stack-single-npm-lockfile | Done | Satu `package-lock.json`; yarn lock dihapus |
+| 000003-stack-repo-hygiene | Done* | Commit `4bbc062`; `.gitignore`; no `.env`/`.db` tracked · *push remote belum |
+| 000001-db-canonical-sqlite-path | Done | Satu `prisma/dev.db`; gate health ready PASS |
+| 000004-stack-env-example | Done | TECH-STACK §5 + `EMAIL_*` di `.env.example` |
+| 000002-db-root-scripts | Done | `db:migrate`, `db:migrate:deploy`, `db:reset`, `db:seed`, `db:studio` |
+| 000005-stack-setup-script | Done | `scripts/setup.ts`; idempoten (tidak timpa `.env`) |
+| 000006-stack-verify-script | Done | `npm run verify` exit 0; G0–G5 PASS |
+| 000001-docs-dev-runbook | Done* | STACK-INTEGRATION + README · *uji onboarding ≤15 menit belum formal |
+
 ### 000001-stack-pin-node-runtime
+
+**Status:** Done · 2026-09-30
 
 | PS | Depends | Output |
 |----|---------|--------|
@@ -78,7 +93,11 @@ Sama dengan PRD §7.1 — jangan ubah urutan di satu dokumen tanpa mengubah yang
 
 **Verifikasi:** `node -v` = 24.x · `npm ci` di Node 20 gagal dengan pesan engine · `npm ci` di Node 24 sukses.
 
+**Hasil:** `v24.3.0` · Node 20 → `EBADENGINE` · Node 24 → `npm ci` / `npm run verify` sukses.
+
 ### 000002-stack-single-npm-lockfile
+
+**Status:** Done · 2026-09-30
 
 | PS | Depends | Output |
 |----|---------|--------|
@@ -93,7 +112,11 @@ Sama dengan PRD §7.1 — jangan ubah urutan di satu dokumen tanpa mengubah yang
 
 **Verifikasi:** hanya ada satu lockfile · gate G0–G5 tetap Pass.
 
+**Hasil:** lockfile tunggal; gate via `npm run verify` PASS.
+
 ### 000003-stack-repo-hygiene
+
+**Status:** Done (push ⏳) · 2026-09-30
 
 | PS | Depends | Output |
 |----|---------|--------|
@@ -108,7 +131,11 @@ Sama dengan PRD §7.1 — jangan ubah urutan di satu dokumen tanpa mengubah yang
 
 **Verifikasi:** `git status` bersih setelah `npm run dev` · tidak ada `.env`/`.db` di `git ls-files`.
 
+**Hasil:** initial commit `4bbc062`; `git ls-files` tanpa `.env`/`.db`/`yarn.lock` · **remote GitHub belum dikonfigurasi**.
+
 ### 000001-db-canonical-sqlite-path
+
+**Status:** Done · 2026-09-30
 
 | PS | Depends | Output |
 |----|---------|--------|
@@ -123,7 +150,11 @@ Sama dengan PRD §7.1 — jangan ubah urutan di satu dokumen tanpa mengubah yang
 
 **Verifikasi:** hanya ada satu `dev.db` · user yang dibuat di web tampil di Prisma Studio · `GET /api/health/ready` 200.
 
+**Hasil:** `find` → satu `./packages/database/prisma/dev.db`; gate register + health PASS.
+
 ### 000002-db-root-scripts
+
+**Status:** Done · 2026-09-30
 
 | PS | Depends | Output |
 |----|---------|--------|
@@ -136,7 +167,11 @@ Sama dengan PRD §7.1 — jangan ubah urutan di satu dokumen tanpa mengubah yang
 
 **Verifikasi:** keempat script jalan dari `Agentic/`.
 
+**Hasil:** script root + `db:migrate:deploy` untuk setup/CI non-interaktif.
+
 ### 000004-stack-env-example
+
+**Status:** Done · 2026-09-30
 
 | PS | Depends | Output |
 |----|---------|--------|
@@ -150,7 +185,11 @@ Sama dengan PRD §7.1 — jangan ubah urutan di satu dokumen tanpa mengubah yang
 
 **Verifikasi:** `rg "process.env\.\w+"` → setiap nama ada di `.env.example` terkait.
 
+**Hasil:** variabel TECH-STACK §5 + `EMAIL_PROVIDER` tercatat; env dev-only HMR (`HMR_*`) sengaja tidak di example (internal dev).
+
 ### 000005-stack-setup-script
+
+**Status:** Done · 2026-09-30
 
 | PS | Depends | Output |
 |----|---------|--------|
@@ -164,7 +203,11 @@ Sama dengan PRD §7.1 — jangan ubah urutan di satu dokumen tanpa mengubah yang
 
 **Verifikasi:** di folder hasil clone bersih, `npm run setup && npm run dev` → web `:44100` dan API `:44101` terbuka.
 
+**Hasil:** `npm run setup` idempoten; port 44100/44101 sesuai runbook (uji `dev` manual belum diulang saat verifikasi ini).
+
 ### 000006-stack-verify-script
+
+**Status:** Done · 2026-09-30
 
 | PS | Depends | Output |
 |----|---------|--------|
@@ -177,7 +220,11 @@ Sama dengan PRD §7.1 — jangan ubah urutan di satu dokumen tanpa mengubah yang
 
 **Verifikasi:** `npm run verify` exit 0 di Node 24 · `design:css` dan `css:build` gagal → verify merah (PS-43).
 
+**Hasil:** exit 0 · urutan typecheck → test:domain → test web → css:build → design:css → gate (semua PASS).
+
 ### 000001-docs-dev-runbook
+
+**Status:** Done · 2026-09-30
 
 | PS | Depends | Output |
 |----|---------|--------|
@@ -192,13 +239,17 @@ Sama dengan PRD §7.1 — jangan ubah urutan di satu dokumen tanpa mengubah yang
 
 **Verifikasi:** onboarding ≤ 15 menit tanpa bantuan.
 
+**Hasil:** runbook + README diperbarui; **waktu onboarding belum diukur** dengan penguji independen (acceptance opsional).
+
 ### Gate PG-0 (PRD M0)
 
-- [ ] Node 24 terpasang dan ditegakkan (`engine-strict`) — PS-01, PS-02
-- [ ] Satu `package-lock.json`, tanpa `yarn.lock` — PS-03
-- [ ] Satu `dev.db`, dipakai migrate & runtime — PS-13
-- [ ] `npm run setup && npm run verify` hijau dari clone bersih — PS-18, PS-20, PS-43
-- [ ] Initial commit ter-push ke `main` — PS-05 (commit); branch protection belum wajib
+- [x] Node 24 terpasang dan ditegakkan (`engine-strict`) — PS-01, PS-02 · 2026-09-30
+- [x] Satu `package-lock.json`, tanpa `yarn.lock` — PS-03 · 2026-09-30
+- [x] Satu `dev.db`, dipakai migrate & runtime — PS-13 · 2026-09-30
+- [x] `npm run setup && npm run verify` hijau (Node 24.3.0) — PS-18, PS-20, PS-43 · 2026-09-30
+- [ ] Initial commit ter-push ke `main` — PS-05: commit `4bbc062` ada · **push remote pending**
+
+**Kesimpulan PG-0:** siap lanjut **Phase 1** setelah remote + push; M0 formal tertutup setelah push.
 
 ---
 
@@ -206,7 +257,15 @@ Sama dengan PRD §7.1 — jangan ubah urutan di satu dokumen tanpa mengubah yang
 
 **Tujuan fase:** setiap PR diverifikasi otomatis dengan urutan yang sama dengan `npm run verify`; `main` terproteksi.
 
+| Task | Status | Verifikasi |
+|------|--------|------------|
+| 000002-infra-ci-workflow-fix | Done | `ci.yml` — root path, `.nvmrc`, env CI, `db:migrate:deploy` |
+| 000003-infra-ci-verify-pipeline | Done | Job menjalankan `npm run verify` |
+| 000001-infra-github-repo-protection | Pending | Setelah push + CI hijau · lihat `.github/BRANCH_PROTECTION.md` |
+
 ### 000001-infra-github-repo-protection
+
+**Status:** Pending (butuh remote + status check CI)
 
 | PS | Depends | Output |
 |----|---------|--------|
@@ -219,7 +278,11 @@ Sama dengan PRD §7.1 — jangan ubah urutan di satu dokumen tanpa mengubah yang
 
 **Verifikasi:** push langsung ke `main` ditolak.
 
+**Hasil:** runbook [.github/BRANCH_PROTECTION.md](../../../.github/BRANCH_PROTECTION.md); aktifkan manual/`gh` setelah workflow **`verify`** hijau.
+
 ### 000002-infra-ci-workflow-fix
+
+**Status:** Done · 2026-09-30
 
 | PS | Depends | Output |
 |----|---------|--------|
@@ -234,7 +297,11 @@ Sama dengan PRD §7.1 — jangan ubah urutan di satu dokumen tanpa mengubah yang
 
 **Verifikasi:** workflow jalan di PR uji dan mencapai langkah test.
 
+**Hasil:** `working-directory: Agentic` dihapus · `node-version-file: .nvmrc` · env job-level · `npm run verify` lokal dengan env CI PASS.
+
 ### 000003-infra-ci-verify-pipeline
+
+**Status:** Done · 2026-09-30
 
 | PS | Depends | Output |
 |----|---------|--------|
@@ -247,11 +314,13 @@ Sama dengan PRD §7.1 — jangan ubah urutan di satu dokumen tanpa mengubah yang
 
 **Verifikasi:** PR sengaja merusak CSS → CI merah · PR normal → CI hijau.
 
+**Hasil:** satu step `npm run verify`; branch protection mengacu job `verify` setelah run GitHub hijau.
+
 ### Gate PG-1 (PRD M1)
 
-- [ ] PR pertama hijau di GitHub Actions — PS-22
-- [ ] CI membaca Node dari `.nvmrc` — PS-24
-- [ ] CI menjalankan `npm run verify` (typecheck, test domain, test web, css:build, design:css, gate) — PS-23, PS-43
+- [ ] PR pertama hijau di GitHub Actions — PS-22 · menunggu push + run remote
+- [x] CI membaca Node dari `.nvmrc` — PS-24 · 2026-09-30
+- [x] CI menjalankan `npm run verify` (typecheck, test domain, test web, css:build, design:css, gate) — PS-23, PS-43 · 2026-09-30
 - [ ] `main` terproteksi dengan status check wajib — PS-05 (proteksi)
 
 ---

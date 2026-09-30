@@ -3,9 +3,9 @@
 | Meta | Nilai |
 |------|-------|
 | ID | PRD-0000 |
-| Versi | 1.1 · Draft untuk review (selaras development phase) |
+| Versi | 1.2 · Phase 0 selesai (PG-0 lokal); push remote & Phase 1 terbuka |
 | Development phase | [PRD_platform_setup_development_phase.md](./PRD_platform_setup_development_phase.md) |
-| Tanggal | 2026-09-29 |
+| Tanggal | 2026-09-30 (verifikasi PG-0) |
 | Owner | Product (Cursor, PM) |
 | Reviewer | Engineering lead, Design |
 | Sumber | [ARCHITECTURE.md](../invoicing/ARCHITECTURE.md) v1.5 · [TECHNOLOGY-STACK.md](../invoicing/engineering/TECHNOLOGY-STACK.md) v1.2 · [DESIGN-GUIDELINES.md](../invoicing/design/DESIGN-GUIDELINES.md) v1.1 · [ARCHITECTURE-ALIGNMENT.md](../invoicing/brd/ARCHITECTURE-ALIGNMENT.md) v2.0 |
@@ -16,9 +16,9 @@
 
 ## 1. Latar belakang
 
-Kode MVP invoicing (web, API, domain, database) sudah lolos gate otomatis G0–G5, tetapi **platform di bawahnya belum siap dipakai tim maupun untuk deploy**: runtime lokal tidak sesuai `engines`, CI tidak akan jalan di GitHub, konfigurasi env tidak lengkap, dan tidak ada environment staging/produksi. ARCHITECTURE §13–§16 dan TECHNOLOGY-STACK §5–§6 mendefinisikan target, namun belum ada requirement yang bisa dieksekusi dan diverifikasi.
+Kode MVP invoicing (web, API, domain, database) sudah lolos gate otomatis G0–G5. **Milestone M0 (Phase 0)** menutup baseline lokal: Node 24 ter-pin, satu lockfile npm, SQLite canonical, env example lengkap, `npm run setup` / `npm run verify`, dan runbook dev. **CI GitHub, staging/prod, dan validasi env saat boot** masih mengikuti Phase 1–2.
 
-### 1.1 Baseline (hasil pemeriksaan 2026-09-29)
+### 1.1 Baseline awal (hasil pemeriksaan 2026-09-29)
 
 | # | Area | Kondisi saat ini | Dampak |
 |---|------|------------------|--------|
@@ -36,6 +36,20 @@ Kode MVP invoicing (web, API, domain, database) sudah lolos gate otomatis G0–G
 | B-12 | Staging/prod | Belum ada host, domain, TLS, secret store, backup | Phase 6 (release readiness) terblokir |
 
 **Pemetaan baseline → task:** lihat [development phase §Baseline](./PRD_platform_setup_development_phase.md#pemetaan-baseline-prd--task).
+
+### 1.2 Status setelah Phase 0 (verifikasi 2026-09-30)
+
+| # | Area | Status | Bukti / catatan |
+|---|------|--------|-----------------|
+| B-01 | Runtime | **Selesai (Phase 0)** | `.nvmrc` / `.node-version` = 24.3.0 · `.npmrc` `engine-strict=true` · `npm ci` gagal di Node 20 (`EBADENGINE`) · sukses di Node 24.3.0 |
+| B-02 | Package manager | **Selesai (Phase 0)** | Hanya `package-lock.json` di root; `yarn.lock` dihapus |
+| B-03 | CI path | **Selesai (Phase 1)** | `ci.yml` root `Agentic/` · cache `package-lock.json` |
+| B-04 | CI coverage | Sebagian | Workflow memanggil `npm run verify`; **run GitHub** menunggu push |
+| B-05 | Database lokal | **Selesai (Phase 0)** | Satu `packages/database/prisma/dev.db` · `DATABASE_URL=file:./dev.db` di semua `.env.example` |
+| B-06 | Env | Sebagian | `.env.example` lengkap (PS-09); validasi boot = Phase 2 (`000001-be-env-validation`) |
+| B-07–B-12 | Staging/prod, email, observability, design token app | Terbuka | Phase 2–3 |
+
+**Gate PG-0:** lulus di lingkungan dev (lihat [development phase §Gate PG-0](./PRD_platform_setup_development_phase.md#gate-pg-0-prd-m0)). **Sisa M0:** push `main` ke remote GitHub (belum ada `git remote`).
 
 ---
 
@@ -232,8 +246,8 @@ Prioritas: **P0** = wajib sebelum tim mulai kerja paralel / CI aktif · **P1** =
 
 | Milestone | Fase dev | Isi (requirement) | Gate pass |
 |-----------|----------|-------------------|-----------|
-| **M0 — Local baseline** | Phase 0 | PS-01–PS-03, PS-05 (commit/remote), PS-06–PS-07, PS-09, PS-13–PS-14, PS-18, PS-20–PS-21, PS-46 | **PG-0:** clone bersih → `npm run setup && npm run verify` hijau di Node 24; satu `dev.db`; satu lockfile |
-| **M1 — CI** | Phase 1 | PS-05 (branch protection), PS-22–PS-24, PS-43 (via verify) | **PG-1:** PR pertama hijau; `main` terproteksi |
+| **M0 — Local baseline** | Phase 0 | PS-01–PS-03, PS-05 (commit/remote), PS-06–PS-07, PS-09, PS-13–PS-14, PS-18, PS-20–PS-21, PS-46 | **PG-0:** ✅ lokal 2026-09-30 (`npm run setup && npm run verify`, satu lockfile, satu `dev.db`) · ⏳ push remote |
+| **M1 — CI** | Phase 1 | PS-05 (branch protection), PS-22–PS-24, PS-43 (via verify) | **PG-1:** workflow verify siap · PR hijau + branch protection ⏳ |
 | **M2 — Staging** | Phase 2 | PS-04, PS-08, PS-10–PS-11, PS-15–PS-16, PS-19, PS-25, PS-27–PS-28, PS-31, PS-33–PS-35, PS-38–PS-42, PS-45, PS-48 | **PG-2:** merge → staging otomatis; `/api/health/ready` 200 di Postgres; gate G0–G5 lulus terhadap staging DB; email sandbox diterima QA |
 | **M3 — Production readiness** | Phase 3 | PS-12, PS-17, PS-26, PS-29–PS-30, PS-32, PS-36–PS-37, PS-39 (prod), PS-44, PS-47 | **PG-3:** tag `v0.1.0-rc` deploy ke prod-like; restore & rollback teruji; alert teruji |
 
@@ -353,6 +367,6 @@ Tim fitur perlu memperhatikan: G-04 (provider email) memakai PS-38–PS-40; G-05
 
 | Peran | Nama | Tanggal | Status |
 |-------|------|---------|--------|
-| Product | Cursor (PM) | 2026-09-29 | Draft |
+| Product | Cursor (PM) | 2026-09-30 | Phase 0 terverifikasi (PG-0 lokal) |
 | Engineering | _(pending)_ | | |
 | Design | _(pending)_ | | |
