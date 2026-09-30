@@ -6,9 +6,10 @@
     "packages/*"
   ],
   "scripts": {
+    "predev": "node scripts/assert-node.mjs",
     "dev": "concurrently -k -n web,api -c green,blue \"npm run dev -w @invoicing/web\" \"npm run dev -w @invoicing/api\"",
-    "dev:web": "npm run dev -w @invoicing/web",
-    "dev:api": "npm run dev -w @invoicing/api",
+    "dev:web": "node scripts/assert-node.mjs && npm run dev -w @invoicing/web",
+    "dev:api": "node scripts/assert-node.mjs && npm run dev -w @invoicing/api",
     "start": "concurrently -k -n web,api \"npm run start:web\" \"npm run start:api\"",
     "start:web": "npm run start -w @invoicing/web",
     "start:api": "npm run start -w @invoicing/api",

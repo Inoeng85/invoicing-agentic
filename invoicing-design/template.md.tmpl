@@ -1,0 +1,150 @@
+# Design Guidelines — {{PRODUCT_NAME}}
+
+**Versi:** {{VERSION}} · **Tanggal:** {{DATE}}  
+**Indeks:** [../BRD-DEFINITION-OF-DONE.md](../BRD-DEFINITION-OF-DONE.md)  
+**Sumber BRD:** [../brd/PRODUCT-BRIEF.md](../brd/PRODUCT-BRIEF.md) · [../brd/WIREFRAMES.md](../brd/WIREFRAMES.md) · [../brd/MVP-SCOPE-LOCK.md](../brd/MVP-SCOPE-LOCK.md)  
+**Stack:** [../engineering/TECHNOLOGY-STACK.md](../engineering/TECHNOLOGY-STACK.md) · **Routes:** [../ARCHITECTURE.md](../ARCHITECTURE.md)  
+**Alignment:** [../brd/ARCHITECTURE-ALIGNMENT.md](../brd/ARCHITECTURE-ALIGNMENT.md)
+
+Panduan ini mengunci **prinsip desain**, **pola visual**, **pola konten**, dan **pola layar** untuk MVP.
+
+---
+
+## 1. Tujuan & audiens
+
+| Audiens | Pakai guideline untuk |
+|---------|------------------------|
+| Product / PM | {{AUDIENCE_PM}} |
+| Design / FE | {{AUDIENCE_FE}} |
+| QA | {{AUDIENCE_QA}} |
+| Legal | {{AUDIENCE_LEGAL}} |
+
+**Out of scope:** {{DESIGN_OUT_OF_SCOPE}}
+
+---
+
+## 2. Prinsip desain produk
+
+1. {{DESIGN_PRINCIPLE_1}}
+2. {{DESIGN_PRINCIPLE_2}}
+3. {{DESIGN_PRINCIPLE_3}}
+4. {{DESIGN_PRINCIPLE_4}}
+5. {{DESIGN_PRINCIPLE_5}}
+
+---
+
+## 3. Persona & skenario desain
+
+| Persona | Kebutuhan UI | Implikasi |
+|---------|--------------|-----------|
+| {{PERSONA_1}} | {{NEED_1}} | {{UI_IMPL_1}} |
+| {{PERSONA_2}} | {{NEED_2}} | {{UI_IMPL_2}} |
+| {{PERSONA_3}} | {{NEED_3}} | {{UI_IMPL_3}} |
+
+**Time-to-first-value:** {{TTFV_TARGET}}
+
+---
+
+## 4. Arsitektur informasi & navigasi
+
+### 4.1 Navigasi utama (authenticated)
+
+| Label | Route | FR |
+|-------|-------|-----|
+| {{NAV_1_LABEL}} | {{NAV_1_ROUTE}} | {{NAV_1_FR}} |
+| {{NAV_2_LABEL}} | {{NAV_2_ROUTE}} | {{NAV_2_FR}} |
+| {{NAV_3_LABEL}} | {{NAV_3_ROUTE}} | {{NAV_3_FR}} |
+| {{NAV_4_LABEL}} | {{NAV_4_ROUTE}} | {{NAV_4_FR}} |
+
+**Pola:** {{NAV_PATTERN}}
+
+### 4.2 Rute tanpa nav app
+
+| Route | Aktor | Catatan |
+|-------|-------|---------|
+| {{AUTH_ROUTES}} | Freelancer | |
+| {{PUBLIC_ROUTE}} | Klien | {{PUBLIC_NOTES}} |
+
+### 4.3 Hierarki layar MVP
+
+| # | Layar | Route | Wireframe | Prototype |
+|---|--------|-------|-----------|-----------|
+| 1 | {{SCREEN_1}} | {{ROUTE_1}} | {{WF_1}} | {{PROTO_1}} |
+| 2 | {{SCREEN_2}} | {{ROUTE_2}} | {{WF_2}} | {{PROTO_2}} |
+| 3 | {{SCREEN_3}} | {{ROUTE_3}} | {{WF_3}} | {{PROTO_3}} |
+| 4 | {{SCREEN_4}} | {{ROUTE_4}} | {{WF_4}} | {{PROTO_4}} |
+| 5 | {{SCREEN_5}} | {{ROUTE_5}} | {{WF_5}} | {{PROTO_5}} |
+| 6 | {{SCREEN_6}} | {{ROUTE_6}} | {{WF_6}} | {{PROTO_6}} |
+| 7 | {{SCREEN_7}} | {{ROUTE_7}} | {{WF_7}} | {{PROTO_7}} |
+
+---
+
+## 5. Visual language
+
+### 5.1 Warna & token
+
+| Token | Penggunaan | Catatan |
+|-------|------------|---------|
+| `--primary` | CTA utama | {{PRIMARY_NOTE}} |
+| `--accent` | Nav aktif | |
+| `--destructive` | Hapus / batalkan | |
+
+Sumber token: {{TOKEN_FILE_PATH}}
+
+### 5.2 Tipografi & spacing
+
+{{TYPOGRAPHY_RULES}}
+
+### 5.3 Komponen pola
+
+| Pola | Aturan |
+|------|--------|
+| Button primary | {{BTN_PRIMARY}} |
+| Form field | {{FORM_FIELD}} |
+| Data table | {{TABLE}} |
+| Empty state | {{EMPTY}} |
+| Banner locked invoice | {{LOCKED_BANNER}} |
+
+---
+
+## 6. Status invoice (label UI)
+
+| Domain status | Label UI | Warna/badge |
+|---------------|----------|-------------|
+| `draft` | {{LABEL_DRAFT}} | |
+| `sent` | {{LABEL_SENT}} | |
+| `overdue` | {{LABEL_OVERDUE}} | |
+| `paid` | {{LABEL_PAID}} | |
+| `cancelled` | {{LABEL_CANCELLED}} | |
+
+---
+
+## 7. Copy & compliance
+
+- Format mata uang: {{CURRENCY_FORMAT}}
+- PPN disclaimer (wajib jika PPN): {{PPN_DISCLAIMER_COPY}}
+- Link legal footer public: {{LEGAL_FOOTER}}
+
+---
+
+## 8. Aksesibilitas
+
+{{A11Y_RULES}}
+
+---
+
+## 9. Prototype & implementasi
+
+| Artefak | Path |
+|---------|------|
+| Prototype HTML | {{PROTOTYPE_ROOT}} |
+| App CSS | {{APP_CSS_PATH}} |
+| Design serve | {{DESIGN_SERVE_CMD}} |
+
+---
+
+## 10. Maintenance
+
+- Wireframe berubah → update §4.3 + prototype
+- Token berubah → sync `packages/design-tokens/` + app import
+- FR UI baru → baris di ARCHITECTURE-ALIGNMENT §3

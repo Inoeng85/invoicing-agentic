@@ -62,7 +62,7 @@ export async function listInvoices(userId: string, status?: InvoiceStatus) {
   await refreshOverdueInvoices(userId)
   return prisma.invoice.findMany({
     where: { userId, ...(status ? { status } : {}) },
-    include: { client: true },
+    include: { client: true, lineItems: { orderBy: { sortOrder: 'asc' }, take: 1 } },
     orderBy: { updatedAt: 'desc' },
   })
 }
@@ -223,7 +223,7 @@ export async function sendInvoice(
     if (invoice.status !== 'draft') {
       throw new DomainError('Invoice sudah dikirim', 'already_sent', 409)
     }
-    if (!invoice.client.email) throw new DomainError('Email klien wajib', 'missing_client_email')
+    if (!invoice.client.email.includes('@')) throw new DomainError('Email klien wajib', 'missing_client_email')
 
     let number = await nextInvoiceNumberInTx(tx, userId, invoice.issueDate)
     let publicToken = randomBytes(24).toString('base64url')

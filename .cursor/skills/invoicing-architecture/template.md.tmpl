@@ -1,0 +1,144 @@
+# System Architecture — {{SYSTEM_NAME}}
+
+**Versi:** {{VERSION}}  
+**Tanggal:** {{DATE}}  
+**Indeks paket:** [BRD-DEFINITION-OF-DONE.md](./BRD-DEFINITION-OF-DONE.md)  
+**Sumber BRD:** [BRD.md](./BRD.md) · [brd/MVP-SCOPE-LOCK.md](./brd/MVP-SCOPE-LOCK.md) · [brd/ARCHITECTURE-ALIGNMENT.md](./brd/ARCHITECTURE-ALIGNMENT.md)  
+**Design:** [design/DESIGN-GUIDELINES.md](./design/DESIGN-GUIDELINES.md)  
+**Implementasi:** {{APPS_PATH}} — {{DEPLOY_NOTE}}  
+**Detail engineering:** [engineering/TECHNICAL-DESIGN.md](./engineering/TECHNICAL-DESIGN.md), [engineering/API.md](./engineering/API.md), [engineering/STACK-INTEGRATION.md](./engineering/STACK-INTEGRATION.md)
+
+---
+
+## 1. Tujuan dokumen
+
+{{DOC_PURPOSE}}
+
+**Out of scope dokumen ini:** {{ARCH_OUT_OF_SCOPE}}
+
+---
+
+## 2. Konteks produk (ringkas)
+
+| Aspek | Keputusan |
+|-------|-----------|
+| Segmen | {{SEGMENT}} |
+| Masalah | {{PROBLEM_STATEMENT}} |
+| MVP outcome | {{MVP_OUTCOME}} |
+| North Star | {{NORTH_STAR}} |
+| Explicit non-goals MVP | {{NON_GOALS}} |
+
+---
+
+## 3. Stack ringkas
+
+| Lapisan | Pilihan |
+|---------|---------|
+| Runtime | {{RUNTIME}} |
+| Apps | {{APPS_SUMMARY}} |
+| Shared | {{PACKAGES_SUMMARY}} |
+| DB | {{DATABASE}} |
+| Integrasi | {{INTEGRATIONS}} |
+| Auth | {{AUTH_MODEL}} |
+| UI design | {{UI_DESIGN_POINTER}} |
+
+**Dokumen lengkap:** [engineering/TECHNOLOGY-STACK.md](./engineering/TECHNOLOGY-STACK.md)
+
+**Operasi dev:** [engineering/STACK-INTEGRATION.md](./engineering/STACK-INTEGRATION.md)
+
+---
+
+## 4. Prinsip arsitektur
+
+1. {{PRINCIPLE_1}}
+2. {{PRINCIPLE_2}}
+3. {{PRINCIPLE_3}}
+4. {{PRINCIPLE_4}}
+5. {{PRINCIPLE_5}}
+
+---
+
+## 5. Arsitektur konteks (C4 Level 1)
+
+```mermaid
+flowchart LR
+  ActorA[{{ACTOR_PRIMARY}}]
+  ActorB[{{ACTOR_SECONDARY}}]
+  System[{{SYSTEM_BOX}}]
+  External[{{EXTERNAL_SYSTEM}}]
+  ActorA --> System
+  ActorB --> System
+  System --> External
+```
+
+---
+
+## 6. Container & monorepo
+
+| Container | Tanggung jawab | Port / expose |
+|-----------|----------------|---------------|
+| {{WEB_PACKAGE}} | {{WEB_ROLE}} | {{WEB_PORT}} |
+| {{API_PACKAGE}} | {{API_ROLE}} | {{API_PORT}} |
+| {{DOMAIN_PACKAGE}} | {{DOMAIN_ROLE}} | — |
+| {{DB_PACKAGE}} | {{DB_ROLE}} | — |
+
+---
+
+## 7. Pemetaan FR Must → sistem
+
+| FR | Web | API | Domain | Catatan |
+|----|-----|-----|--------|---------|
+| FR-01 | {{FR01_WEB}} | {{FR01_API}} | {{FR01_DOMAIN}} | |
+| FR-02 | {{FR02_WEB}} | {{FR02_API}} | {{FR02_DOMAIN}} | |
+| FR-03 | {{FR03_WEB}} | {{FR03_API}} | {{FR03_DOMAIN}} | |
+| FR-04 | {{FR04_WEB}} | {{FR04_API}} | {{FR04_DOMAIN}} | |
+| FR-05 | {{FR05_WEB}} | {{FR05_API}} | {{FR05_DOMAIN}} | |
+| FR-06 | {{FR06_WEB}} | {{FR06_API}} | {{FR06_DOMAIN}} | |
+| FR-07 | {{FR07_WEB}} | {{FR07_API}} | {{FR07_DOMAIN}} | |
+| FR-08 | {{FR08_WEB}} | {{FR08_API}} | {{FR08_DOMAIN}} | |
+
+---
+
+## 8. Alur kritis (sequence)
+
+### 8.1 {{FLOW_1_TITLE}}
+
+```mermaid
+sequenceDiagram
+  participant U as {{FLOW_1_ACTOR}}
+  participant W as Web
+  participant D as Domain
+  participant DB as Database
+  U->>W: {{FLOW_1_TRIGGER}}
+  W->>D: {{FLOW_1_DOMAIN_CALL}}
+  D->>DB: {{FLOW_1_PERSIST}}
+  D-->>W: {{FLOW_1_RESULT}}
+  W-->>U: {{FLOW_1_UI}}
+```
+
+### 8.2 {{FLOW_2_TITLE}}
+
+{{FLOW_2_DIAGRAM_OR_TBD}}
+
+---
+
+## 9. Keamanan & trust boundaries
+
+| Boundary | Mekanisme |
+|----------|-----------|
+| Freelancer | {{SESSION_MODEL}} |
+| Klien publik | {{PUBLIC_TOKEN_MODEL}} |
+| Data scope | {{TENANCY_MODEL}} |
+
+---
+
+## 10. Observability & operasi (ringkas)
+
+{{OBSERVABILITY_SUMMARY}} — detail platform: {{PLATFORM_PRD_LINK}}
+
+---
+
+## 11. Maintenance
+
+- Perubahan FR/BR → update §7 + [ARCHITECTURE-ALIGNMENT.md](./brd/ARCHITECTURE-ALIGNMENT.md)
+- Gap kode ↔ dokumen → register §6 alignment (G-xx)

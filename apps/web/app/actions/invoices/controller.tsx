@@ -1,295 +1,315 @@
 import { createController } from 'remix/router'
-import type { Handle } from 'remix/ui'
+import type { RenderFunction } from 'remix/middleware/render'
 import { redirect } from 'remix/response/redirect'
 import {
-  buildInvoicePdfBytes,
   createInvoiceDraft,
-  deleteInvoiceDraft,
-  formatIdr,
   getInvoice,
   getUserById,
+  isDomainError,
   listClients,
   listInvoices,
-  markInvoicePaid,
-  sendInvoice,
   updateInvoiceDraft,
 } from '@invoicing/domain'
 
 import { assertCsrf } from '../../lib/csrf.ts'
-import { CsrfInput } from '../../lib/csrf-field.tsx'
 import { requireUserId } from '../../lib/auth.ts'
-import { idrToCents, parseIdrInput } from '../../lib/money.ts'
-import { AppLayout } from '../../ui/layout.tsx'
+import { icon } from '../../ui/icons.tsx'
+import { InvoiceDetail } from '../../ui/invoice-detail.tsx'
+import {
+  EMPTY_LINE,
+  InvoiceEditor,
+  isBlankLine,
+  lineToCents,
+  readEditorValues,
+  type EditorValues,
+} from '../../ui/invoice-editor.tsx'
+import { appUrl, invoiceTable, statusTabs, type StatusFilter } from '../../ui/invoice-table.tsx'
+import {
+  alertBox,
+  formatIdr,
+  isInvoiceStatus,
+  nextInvoiceNumber,
+  pageTitle,
+  parseDateInput,
+  toDateInput,
+} from '../../ui/kit.tsx'
+import { AppLayout, loadShellUser } from '../../ui/layout.tsx'
 import { routes } from '../../routes.ts'
+
+const EDITOR_NOTICES: Record<string, string> = {
+  saved: 'Draft invoice tersimpan',
+}
+
+function centsToIdrInput(cents: number): string {
+  return String(Math.round(cents / 100))
+}
+
+async function renderEditor(
+  context: { render: RenderFunction },
+  userId: string,
+  options: { invoiceId?: string; values: EditorValues; error?: string; notice?: string; status?: number },
+) {
+  let [user, account, clients, invoices] = await Promise.all([
+    loadShellUser(userId),
+    getUserById(userId),
+    listClients(userId),
+    listInvoices(userId),
+  ])
+  let issueYear = parseDateInput(options.values.issueDate)?.getFullYear()
+  return context.render(
+    <InvoiceEditor
+      user={user}
+      action={
+        options.invoiceId
+          ? routes.invoices.update.href({ invoiceId: options.invoiceId })
+          : routes.invoices.create.href()
+      }
+      invoiceId={options.invoiceId}
+      clients={clients}
+      values={options.values}
+      nextNumber={nextInvoiceNumber(
+        invoices.map((i) => i.number),
+        issueYear,
+      )}
+      defaultDueDays={account?.profile?.defaultDueDays ?? 30}
+      error={options.error}
+      notice={options.notice}
+    />,
+    { status: options.status ?? 200 },
+  )
+}
+
+/** Handles save / preview / pdf / send and the no-JS "+ Baris" and remove-row buttons. */
+async function submitEditor(context: { request: Request; render: RenderFunction }, invoiceId?: string) {
+  let userId = requireUserId(context.request)
+  await assertCsrf(context.request, userId)
+  let formData = await context.request.formData()
+  let values = readEditorValues(formData)
+  let intent = String(formData.get('intent') ?? 'save')
+
+  if (intent === 'add-line') {
+    values.lines.push({ ...EMPTY_LINE })
+    return renderEditor(context, userId, { invoiceId, values })
+  }
+  if (intent.startsWith('remove:')) {
+    values.lines.splice(Number(intent.slice('remove:'.length)), 1)
+    if (values.lines.length === 0) values.lines.push({ ...EMPTY_LINE })
+    return renderEditor(context, userId, { invoiceId, values })
+  }
+
+  let lines = values.lines.filter((line) => !isBlankLine(line)).map(lineToCents)
+  let issueDate = parseDateInput(values.issueDate)
+  let dueDate = parseDateInput(values.dueDate)
+  let error: string | undefined
+  if (!values.clientId) error = 'Pilih klien untuk invoice ini.'
+  else if (lines.length === 0) error = 'Tambahkan minimal satu line item.'
+  else if (lines.some((l) => !l.description)) error = 'Setiap baris wajib punya deskripsi.'
+  else if (lines.some((l) => !Number.isFinite(l.quantity) || l.quantity <= 0)) error = 'Qty harus lebih dari 0.'
+  else if (issueDate && dueDate && dueDate < issueDate) error = 'Jatuh tempo tidak boleh sebelum tanggal terbit.'
+
+  if (error) {
+    if (values.lines.length === 0) values.lines.push({ ...EMPTY_LINE })
+    return renderEditor(context, userId, { invoiceId, values, error, status: 422 })
+  }
+
+  let input = {
+    clientId: values.clientId,
+    issueDate,
+    dueDate,
+    ppnEnabled: values.ppnEnabled,
+    footerNote: values.footerNote.trim() || undefined,
+    lines,
+  }
+  let savedId: string
+  try {
+    savedId = invoiceId
+      ? (await updateInvoiceDraft(userId, invoiceId, { ...input, footerNote: input.footerNote ?? null })).id
+      : (await createInvoiceDraft(userId, input)).id
+  } catch (caught) {
+    if (!isDomainError(caught)) throw caught
+    return renderEditor(context, userId, { invoiceId, values, error: caught.message, status: 422 })
+  }
+
+  let target =
+    intent === 'send'
+      ? routes.invoiceSendReview.href({ invoiceId: savedId })
+      : intent === 'pdf'
+        ? routes.invoicePdf.href({ invoiceId: savedId })
+        : intent === 'preview'
+          ? routes.invoices.show.href({ invoiceId: savedId })
+          : `${routes.invoices.edit.href({ invoiceId: savedId })}?notice=saved`
+  throw redirect(target, 303)
+}
 
 export default createController(routes.invoices, {
   actions: {
     async index(context) {
       let userId = requireUserId(context.request)
-      let user = await getUserById(userId)
-      let invoices = await listInvoices(userId)
+      let [user, invoices] = await Promise.all([loadShellUser(userId), listInvoices(userId)])
+      let status = context.url.searchParams.get('status')
+      let active: StatusFilter = isInvoiceStatus(status) ? status : 'all'
+      let q = (context.url.searchParams.get('q') ?? '').trim()
+      let needle = q.toLowerCase()
+      let matches = invoices.filter(
+        (i) =>
+          !needle || i.number?.toLowerCase().includes(needle) || i.client.name.toLowerCase().includes(needle),
+      )
+      let rows = matches.filter((i) => active === 'all' || i.status === active)
+
+      let open = invoices.filter((i) => i.status === 'sent' || i.status === 'overdue')
+      let overdue = invoices.filter((i) => i.status === 'overdue')
+      let now = new Date()
+      let paidThisMonth = invoices.filter(
+        (i) =>
+          i.status === 'paid' &&
+          i.paidAt &&
+          i.paidAt.getFullYear() === now.getFullYear() &&
+          i.paidAt.getMonth() === now.getMonth(),
+      )
+      let monthLabel = new Intl.DateTimeFormat('id-ID', { month: 'short', year: 'numeric' }).format(now)
+      let tabHref = (key: StatusFilter) => {
+        let params = new URLSearchParams()
+        if (key !== 'all') params.set('status', key)
+        if (q) params.set('q', q)
+        let query = params.toString()
+        return query ? `${routes.invoices.index.href()}?${query}` : routes.invoices.index.href()
+      }
+
       return context.render(
-        <AppLayout title="Invoice" userEmail={user?.email}>
-          <div class="flex items-center justify-between">
-            <h2 class="text-lg font-semibold">Invoice</h2>
-            <a href={routes.invoices.new.href()} class="rounded bg-blue-600 px-3 py-2 text-sm text-white">
-              Buat draft
-            </a>
-          </div>
-          <table class="mt-4 w-full text-left text-sm">
-            <thead>
-              <tr class="border-b text-slate-500">
-                <th class="py-2">Nomor</th>
-                <th>Klien</th>
-                <th>Status</th>
-                <th>Total</th>
-              </tr>
-            </thead>
-            <tbody>
-              {invoices.map((inv) => (
-                <tr key={inv.id} class="border-b">
-                  <td class="py-2">
-                    <a href={routes.invoices.show.href({ invoiceId: inv.id })} class="text-blue-700">
-                      {inv.number ?? 'DRAFT'}
-                    </a>
-                  </td>
-                  <td>{inv.client.name}</td>
-                  <td>{inv.status}</td>
-                  <td>{formatIdr(inv.totalCents)}</td>
-                </tr>
-              ))}
-            </tbody>
-          </table>
+        <AppLayout title="Invoice" user={user} active="invoices">
+          {pageTitle(
+            'Invoice',
+            `Semua invoice ${user.legalName}. Filter status dan cari nomor atau klien.`,
+            <a class="btn btn-default" href={routes.invoices.new.href()}>
+              {icon('plus')}
+              Invoice baru
+            </a>,
+          )}
+
+          {context.url.searchParams.get('notice') === 'deleted' ? alertBox('success', 'Draft dihapus') : null}
+
+          <section class="grid gap-4 sm:grid-cols-3" aria-label="Ringkasan">
+            <div class="rounded-xl border bg-card p-4">
+              <p class="text-xs font-medium tracking-wide text-muted-foreground uppercase">Outstanding</p>
+              <p class="mt-1 text-2xl font-bold tabular-nums">
+                {formatIdr(open.reduce((sum, i) => sum + i.totalCents, 0))}
+              </p>
+              <p class="text-xs text-muted-foreground">Terkirim + jatuh tempo</p>
+            </div>
+            <div class="rounded-xl border bg-card p-4">
+              <p class="text-xs font-medium tracking-wide text-muted-foreground uppercase">Jatuh tempo</p>
+              <p class={`mt-1 text-2xl font-bold tabular-nums ${overdue.length ? 'text-warning' : ''}`}>
+                {overdue.length} invoice
+              </p>
+              <p class="text-xs text-muted-foreground">due &lt; hari ini &amp; status terkirim</p>
+            </div>
+            <div class="rounded-xl border bg-card p-4">
+              <p class="text-xs font-medium tracking-wide text-muted-foreground uppercase">Lunas ({monthLabel})</p>
+              <p class="mt-1 text-2xl font-bold text-success tabular-nums">
+                {formatIdr(paidThisMonth.reduce((sum, i) => sum + i.totalCents, 0))}
+              </p>
+              <p class="text-xs text-muted-foreground">{paidThisMonth.length} invoice</p>
+            </div>
+          </section>
+
+          {invoiceTable({
+            invoices: rows,
+            userId,
+            emptyText: invoices.length
+              ? 'Tidak ada invoice yang cocok dengan filter.'
+              : 'Belum ada invoice. Klik "Invoice baru" untuk mulai.',
+            toolbar: (
+              <div class="flex flex-wrap items-center gap-3 border-b p-3">
+                {statusTabs({ invoices: matches, active, href: tabHref })}
+                <form method="get" action={routes.invoices.index.href()} class="relative ml-auto w-full max-w-xs">
+                  {active !== 'all' ? <input type="hidden" name="status" value={active} /> : null}
+                  {icon(
+                    'search',
+                    'pointer-events-none absolute top-1/2 left-3 size-4 -translate-y-1/2 text-muted-foreground',
+                  )}
+                  <input
+                    class="input h-8 pl-9"
+                    type="search"
+                    name="q"
+                    value={q}
+                    placeholder="Cari nomor atau klien…"
+                    aria-label="Cari invoice"
+                  />
+                </form>
+              </div>
+            ),
+          })}
         </AppLayout>,
       )
     },
 
     async new(context) {
       let userId = requireUserId(context.request)
-      let clients = await listClients(userId)
-      return context.render(
-        <InvoiceDraftForm
-          title="Invoice baru"
-          action={routes.invoices.create.href()}
-          clients={clients}
-          userId={userId}
-        />,
-      )
+      let account = await getUserById(userId)
+      let issueDate = new Date()
+      let dueDate = new Date(issueDate)
+      dueDate.setDate(dueDate.getDate() + (account?.profile?.defaultDueDays ?? 30))
+      return renderEditor(context, userId, {
+        values: {
+          clientId: context.url.searchParams.get('clientId') ?? '',
+          issueDate: toDateInput(issueDate),
+          dueDate: toDateInput(dueDate),
+          ppnEnabled: false,
+          footerNote: account?.profile?.footerDefault ?? '',
+          lines: [{ ...EMPTY_LINE }],
+        },
+      })
     },
 
-    async create(context) {
-      let userId = requireUserId(context.request)
-      await assertCsrf(context.request, userId)
-      let formData = await context.request.formData()
-      let invoice = await createInvoiceDraft(userId, {
-        clientId: String(formData.get('clientId') ?? ''),
-        ppnEnabled: formData.get('ppnEnabled') === 'on',
-        lines: [
-          {
-            description: String(formData.get('description') ?? ''),
-            quantity: Number(formData.get('quantity') ?? 1),
-            unitPriceCents: idrToCents(parseIdrInput(String(formData.get('unitPriceIdr') ?? '0'))),
-            discountCents: idrToCents(parseIdrInput(String(formData.get('discountIdr') ?? '0'))),
-          },
-        ],
-      })
-      throw redirect(routes.invoices.show.href({ invoiceId: invoice.id }), 303)
+    create(context) {
+      return submitEditor(context)
     },
 
     async show(context) {
       let userId = requireUserId(context.request)
-      let invoice = await getInvoice(userId, context.params.invoiceId)
-      let linkRevoked = Boolean(invoice.publicTokenRevokedAt)
+      let [user, invoice] = await Promise.all([loadShellUser(userId), getInvoice(userId, context.params.invoiceId)])
       return context.render(
-        <AppLayout title={invoice.number ?? 'Draft'}>
-          <div class="space-y-4 rounded-xl border bg-white p-6">
-            <div class="flex flex-wrap gap-2 text-sm">
-              <span class="rounded bg-slate-100 px-2 py-1">{invoice.status}</span>
-              <span>Klien: {invoice.client.name}</span>
-              {linkRevoked ? <span class="rounded bg-amber-100 px-2 py-1">Link publik dicabut</span> : null}
-            </div>
-            <p>Subtotal: {formatIdr(invoice.subtotalCents)}</p>
-            {invoice.ppnEnabled ? <p>PPN: {formatIdr(invoice.ppnCents)}</p> : null}
-            <p class="font-semibold">Total: {formatIdr(invoice.totalCents)}</p>
-            <ul class="list-disc pl-5 text-sm">
-              {invoice.lineItems.map((line) => (
-                <li key={line.id}>
-                  {line.description} — {line.quantity} × {formatIdr(line.unitPriceCents)}
-                </li>
-              ))}
-            </ul>
-            <p class="text-xs text-slate-500">PPN hanya kalkulator. Bukan e-Faktur DJP.</p>
-            <div class="flex flex-wrap gap-2">
-              {invoice.status === 'draft' ? (
-                <>
-                  <a
-                    href={routes.invoices.edit.href({ invoiceId: invoice.id })}
-                    class="rounded border px-3 py-2 text-sm"
-                  >
-                    Edit
-                  </a>
-                  <form method="post" action={routes.invoiceSend.href({ invoiceId: invoice.id })}>
-                    <CsrfInput userId={userId} />
-                    <button type="submit" class="rounded bg-blue-600 px-3 py-2 text-sm text-white">
-                      Kirim
-                    </button>
-                  </form>
-                  <form method="post" action={routes.invoiceDeleteDraft.href({ invoiceId: invoice.id })}>
-                    <CsrfInput userId={userId} />
-                    <button type="submit" class="rounded border border-red-300 px-3 py-2 text-sm text-red-700">
-                      Hapus draft
-                    </button>
-                  </form>
-                </>
-              ) : null}
-              {invoice.status !== 'draft' && invoice.status !== 'cancelled' ? (
-                <a href={routes.invoicePdf.href({ invoiceId: invoice.id })} class="rounded border px-3 py-2 text-sm">
-                  PDF
-                </a>
-              ) : null}
-              {invoice.status === 'sent' || invoice.status === 'overdue' ? (
-                <>
-                  <form method="post" action={routes.invoiceMarkPaid.href({ invoiceId: invoice.id })}>
-                    <CsrfInput userId={userId} />
-                    <button type="submit" class="rounded bg-emerald-600 px-3 py-2 text-sm text-white">
-                      Tandai lunas
-                    </button>
-                  </form>
-                  {!linkRevoked ? (
-                    <form method="post" action={routes.invoiceRevokeLink.href({ invoiceId: invoice.id })}>
-                      <CsrfInput userId={userId} />
-                      <button type="submit" class="rounded border border-amber-500 px-3 py-2 text-sm text-amber-800">
-                        Cabut link publik
-                      </button>
-                    </form>
-                  ) : null}
-                  <form method="post" action={routes.invoiceCancel.href({ invoiceId: invoice.id })}>
-                    <CsrfInput userId={userId} />
-                    <button type="submit" class="rounded border border-red-300 px-3 py-2 text-sm text-red-700">
-                      Batalkan invoice
-                    </button>
-                  </form>
-                </>
-              ) : null}
-            </div>
-          </div>
-        </AppLayout>,
+        <InvoiceDetail
+          user={user}
+          invoice={invoice}
+          notice={context.url.searchParams.get('notice')}
+          publicUrl={
+            invoice.publicToken ? `${appUrl()}${routes.publicInvoice.href({ token: invoice.publicToken })}` : ''
+          }
+        />,
       )
     },
 
     async edit(context) {
       let userId = requireUserId(context.request)
       let invoice = await getInvoice(userId, context.params.invoiceId)
-      let clients = await listClients(userId)
       if (invoice.status !== 'draft') {
         throw redirect(routes.invoices.show.href({ invoiceId: invoice.id }), 303)
       }
-      let line = invoice.lineItems[0]
-      return context.render(
-        <InvoiceDraftForm
-          title="Edit draft"
-          action={routes.invoices.update.href({ invoiceId: invoice.id })}
-          clients={clients}
-          userId={userId}
-          defaults={{
-            clientId: invoice.clientId,
-            ppnEnabled: invoice.ppnEnabled,
-            description: line?.description ?? '',
-            quantity: line?.quantity ?? 1,
-            unitPriceIdr: String(Math.round((line?.unitPriceCents ?? 0) / 100)),
-            discountIdr: String(Math.round((line?.discountCents ?? 0) / 100)),
-          }}
-        />,
-      )
-    },
-
-    async update(context) {
-      let userId = requireUserId(context.request)
-      await assertCsrf(context.request, userId)
-      let formData = await context.request.formData()
-      await updateInvoiceDraft(userId, context.params.invoiceId, {
-        clientId: String(formData.get('clientId') ?? ''),
-        ppnEnabled: formData.get('ppnEnabled') === 'on',
-        lines: [
-          {
-            description: String(formData.get('description') ?? ''),
-            quantity: Number(formData.get('quantity') ?? 1),
-            unitPriceCents: idrToCents(parseIdrInput(String(formData.get('unitPriceIdr') ?? '0'))),
-            discountCents: idrToCents(parseIdrInput(String(formData.get('discountIdr') ?? '0'))),
-          },
-        ],
+      let notice = EDITOR_NOTICES[context.url.searchParams.get('notice') ?? '']
+      return renderEditor(context, userId, {
+        invoiceId: invoice.id,
+        notice,
+        values: {
+          clientId: invoice.clientId,
+          issueDate: toDateInput(invoice.issueDate),
+          dueDate: toDateInput(invoice.dueDate),
+          ppnEnabled: invoice.ppnEnabled,
+          footerNote: invoice.footerNote ?? '',
+          lines: invoice.lineItems.length
+            ? invoice.lineItems.map((line) => ({
+                description: line.description,
+                quantity: String(line.quantity),
+                unitPriceIdr: centsToIdrInput(line.unitPriceCents),
+                discountIdr: centsToIdrInput(line.discountCents),
+              }))
+            : [{ ...EMPTY_LINE }],
+        },
       })
-      throw redirect(routes.invoices.show.href({ invoiceId: context.params.invoiceId }), 303)
     },
 
+    update(context) {
+      return submitEditor(context, context.params.invoiceId)
+    },
   },
 })
-
-interface ClientOption {
-  id: string
-  name: string
-}
-
-type InvoiceDraftFormProps = {
-  title: string
-  action: string
-  userId: string
-  clients: ClientOption[]
-  defaults?: {
-    clientId: string
-    ppnEnabled: boolean
-    description: string
-    quantity: number
-    unitPriceIdr: string
-    discountIdr: string
-  }
-}
-
-function InvoiceDraftForm(handle: Handle<InvoiceDraftFormProps>) {
-  return () => {
-    let props = handle.props
-    let d = props.defaults
-    return (
-      <AppLayout title={props.title}>
-        <form method="post" action={props.action} class="max-w-lg space-y-3 rounded-xl border bg-white p-6">
-          <CsrfInput userId={props.userId} />
-          <h2 class="text-lg font-semibold">{props.title}</h2>
-          <label class="block text-sm">
-            Klien
-            <select name="clientId" required class="mt-1 w-full rounded border px-3 py-2" defaultValue={d?.clientId}>
-              {props.clients.map((c) => (
-              <option key={c.id} value={c.id}>
-                {c.name}
-              </option>
-            ))}
-          </select>
-        </label>
-        <label class="block text-sm">
-          Deskripsi
-          <input name="description" required defaultValue={d?.description} class="mt-1 w-full rounded border px-3 py-2" />
-        </label>
-        <label class="block text-sm">
-          Qty
-          <input name="quantity" type="number" min="0.01" step="0.01" defaultValue={d?.quantity ?? 1} class="mt-1 w-full rounded border px-3 py-2" />
-        </label>
-        <label class="block text-sm">
-          Harga (IDR)
-          <input name="unitPriceIdr" required defaultValue={d?.unitPriceIdr} class="mt-1 w-full rounded border px-3 py-2" />
-        </label>
-        <label class="block text-sm">
-          Diskon baris (IDR)
-          <input name="discountIdr" defaultValue={d?.discountIdr ?? '0'} class="mt-1 w-full rounded border px-3 py-2" />
-        </label>
-        <label class="flex items-center gap-2 text-sm">
-          <input name="ppnEnabled" type="checkbox" defaultChecked={d?.ppnEnabled} />
-          PPN 11%
-        </label>
-        <p class="text-xs text-slate-500">PPN hanya kalkulator. Bukan e-Faktur DJP.</p>
-          <button type="submit" class="rounded bg-blue-600 px-4 py-2 text-sm text-white">
-            Simpan
-          </button>
-        </form>
-      </AppLayout>
-    )
-  }
-}

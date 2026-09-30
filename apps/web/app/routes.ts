@@ -1,22 +1,14 @@
-import { get, post, resources, route } from 'remix/routes'
+import { form, get, post, resources, route } from 'remix/routes'
 
 export const routes = route({
   assets: get('/assets/*path'),
-  home: '/',
-  login: route({
-    index: '/login',
-    action: post('/login'),
-  }),
-  register: route({
-    index: '/register',
-    action: post('/register'),
-  }),
+  home: get('/'),
+  login: form('/login'),
+  register: form('/register'),
   logout: post('/logout'),
-  settings: route({
-    index: '/settings',
-    action: post('/settings'),
-  }),
+  settings: form('/settings'),
   publicInvoice: get('/i/:token'),
+  publicInvoicePdf: get('/i/:token/pdf'),
   clients: resources('/clients', {
     only: ['index', 'new', 'create', 'show', 'edit', 'update'],
     param: 'clientId',
@@ -25,6 +17,8 @@ export const routes = route({
     only: ['index', 'new', 'create', 'show', 'edit', 'update'],
     param: 'invoiceId',
   }),
+  clientSetActive: post('/clients/:clientId/active'),
+  invoiceSendReview: get('/invoices/:invoiceId/send'),
   invoiceSend: post('/invoices/:invoiceId/send'),
   invoiceMarkPaid: post('/invoices/:invoiceId/mark-paid'),
   invoiceRevokeLink: post('/invoices/:invoiceId/revoke-link'),

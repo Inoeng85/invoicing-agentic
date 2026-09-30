@@ -14,7 +14,19 @@ const hmrProxyPort = process.env.HMR_PROXY_PORT
 const isHmr = process.env.REMIX_NODE_HMR === '1'
 
 const trustProxy = process.env.TRUST_PROXY === '1' || isHmr
-const server = http.createServer(createRequestListener(router.fetch, { trustProxy }))
+
+/** Remix actions use `throw redirect()` — treat thrown Response as the HTTP response. */
+function onRequestError(error: unknown): Response | undefined {
+  if (error instanceof Response) {
+    return error
+  }
+  console.error(error)
+  return undefined
+}
+
+const server = http.createServer(
+  createRequestListener(router.fetch, { trustProxy, onError: onRequestError }),
+)
 
 server.listen(port, () => {
   if (isHmr) {

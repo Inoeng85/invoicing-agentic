@@ -1,0 +1,158 @@
+# Technology Stack — {{PRODUCT_NAME}}
+
+**Versi:** {{VERSION}} · **Tanggal:** {{DATE}}  
+**Sumber:** [BRD.md](../BRD.md) · [ARCHITECTURE.md](../ARCHITECTURE.md) · [brd/MVP-SCOPE-LOCK.md](../brd/MVP-SCOPE-LOCK.md) · [design/DESIGN-GUIDELINES.md](../design/DESIGN-GUIDELINES.md)  
+**Pemetaan FR:** [brd/ARCHITECTURE-ALIGNMENT.md](../brd/ARCHITECTURE-ALIGNMENT.md)
+
+Dokumen ini merangkum **teknologi yang dipilih** untuk {{PRODUCT_SCOPE}}, selaras requirement dan arsitektur {{ARCH_PATTERN}}.
+
+---
+
+## 1. Ringkasan eksekutif
+
+| Dimensi | Pilihan |
+|---------|---------|
+| Bahasa | {{LANGUAGE}} |
+| Runtime | {{RUNTIME}} |
+| Arsitektur app | {{APP_ARCHITECTURE}} |
+| UI | {{UI_STACK}} |
+| API | {{API_STYLE}} |
+| Data | {{DATA_STACK}} |
+| Integrasi | {{INTEGRATION_SUMMARY}} |
+| Deploy | {{DEPLOY_MODEL}} |
+
+**Explicitly out (Won't — BRD):** {{STACK_WONT_LIST}}
+
+### 1.1 Diagram stack
+
+```mermaid
+flowchart TB
+  subgraph client [Client]
+    Browser[Browser]
+  end
+  subgraph presentation [Presentation]
+    UI[{{UI_LAYER}}]
+  end
+  subgraph application [Application]
+    Web[{{WEB_APP}}]
+    Api[{{API_APP}}]
+  end
+  subgraph domainLayer [Domain]
+    Domain[{{DOMAIN_PKG}}]
+  end
+  subgraph dataLayer [Data]
+    ORM[{{ORM}}]
+    DB[("{{DATABASE}}")]
+  end
+  Browser --> UI
+  Browser --> Web
+  Web --> Domain
+  Api --> Domain
+  Domain --> ORM
+  ORM --> DB
+```
+
+---
+
+## 2. Lapisan aplikasi
+
+### 2.1 Web (presentation)
+
+| Aspek | Pilihan | FR terkait |
+|-------|---------|------------|
+| Framework | {{WEB_FRAMEWORK}} | {{WEB_FR}} |
+| Styling | {{CSS_APPROACH}} | |
+| Routing | {{WEB_ROUTING}} | |
+
+### 2.2 API
+
+| Aspek | Pilihan |
+|-------|---------|
+| Style | {{API_STYLE_DETAIL}} |
+| Auth | {{API_AUTH}} |
+| CORS | {{CORS_POLICY}} |
+
+### 2.3 Domain & data
+
+| Package | Peran |
+|---------|-------|
+| {{DOMAIN_PKG}} | {{DOMAIN_ROLE}} |
+| {{DB_PKG}} | {{DB_PKG_ROLE}} |
+
+---
+
+## 3. Integrasi
+
+| Capability | Teknologi | Status | Gap |
+|------------|-----------|--------|-----|
+| PDF | {{PDF_LIB}} | {{PDF_STATUS}} | |
+| Email | {{EMAIL_ADAPTER}} | {{EMAIL_STATUS}} | |
+| Auth | {{AUTH_IMPL}} | {{AUTH_STATUS}} | |
+
+---
+
+## 4. Pemetaan FR → teknologi
+
+| FR | Komponen utama | Catatan |
+|----|----------------|---------|
+| FR-01 | {{FR01_TECH}} | |
+| FR-02 | {{FR02_TECH}} | |
+| FR-03 | {{FR03_TECH}} | |
+| FR-04 | {{FR04_TECH}} | |
+| FR-05 | {{FR05_TECH}} | |
+| FR-06 | {{FR06_TECH}} | |
+| FR-07 | {{FR07_TECH}} | |
+| FR-08 | {{FR08_TECH}} | |
+
+---
+
+## 5. Environment variables
+
+| Variable | Web | API | Database | Wajib prod |
+|----------|-----|-----|----------|------------|
+| `DATABASE_URL` | {{DB_URL_WEB}} | {{DB_URL_API}} | ✓ | ✓ |
+| `SESSION_SECRET` | ✓ | ✓ | | ✓ |
+| `APP_URL` | ✓ | ✓ | | ✓ |
+| `CORS_ORIGIN` | | ✓ | | ✓ |
+| `EMAIL_PROVIDER` | ✓ | ✓ | | {{EMAIL_REQUIRED}} |
+
+Detail: `.env.example` per app · validasi boot: `@invoicing/platform`
+
+---
+
+## 6. Development & CI
+
+| Langkah | Perintah |
+|---------|----------|
+| Setup | {{CMD_SETUP}} |
+| Dev | {{CMD_DEV}} |
+| Verify | {{CMD_VERIFY}} |
+| CI parity | {{CMD_CI_LOCAL}} |
+
+Runbook: [STACK-INTEGRATION.md](./STACK-INTEGRATION.md)
+
+---
+
+## 7. Production & staging
+
+| Topik | Keputusan |
+|-------|-----------|
+| Database | {{PROD_DB}} |
+| Process | {{PROD_PROCESS}} |
+| Secrets | {{SECRETS_POLICY}} |
+
+---
+
+## 8. Trade-offs
+
+| Keputusan | Pro | Con | Alternatif ditolak |
+|-----------|-----|-----|---------------------|
+| {{DECISION_1}} | | | |
+| {{DECISION_2}} | | | |
+
+---
+
+## 9. Maintenance
+
+- Upgrade major → revisi versi dokumen + `npm run verify`
+- Stack baru → update ARCHITECTURE §3 + alignment D-xx

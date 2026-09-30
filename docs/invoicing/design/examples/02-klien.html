@@ -1,0 +1,90 @@
+<!doctype html>
+<html lang="id">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>02 Klien — Design example</title>
+    <link rel="stylesheet" href="../../../design/prototype/assets/ui.css" />
+    <script src="../../../design/prototype/assets/prototype.js" defer></script>
+  </head>
+  <body data-shell="screen" class="min-h-screen">
+    <header class="sticky top-0 z-40 border-b bg-background/90 backdrop-blur">
+      <div class="mx-auto flex h-14 max-w-5xl items-center gap-6 px-4 sm:px-6">
+        <a class="flex items-center gap-2 font-semibold" href="index.html"><span class="grid size-7 place-items-center rounded-md bg-primary text-primary-foreground"><i data-icon="receipt"></i></span>Invoicing</a>
+        <nav class="hidden items-center gap-1 md:flex" aria-label="Utama">
+          <a class="nav-link" href="01-dashboard-collect.html">Dashboard</a>
+          <a class="nav-link" aria-current="page" href="02-klien.html">Klien</a>
+          <a class="nav-link" href="03-invoice-ppn.html">Invoice</a>
+          <a class="nav-link" href="05-auth-pengaturan.html">Pengaturan</a>
+        </nav>
+        <button type="button" class="btn btn-default btn-sm ml-auto" data-dialog-open="dlg-client"><i data-icon="plus"></i>Tambah klien</button>
+      </div>
+    </header>
+
+    <main class="mx-auto max-w-5xl space-y-8 px-4 py-8 sm:px-6">
+      <p class="text-xs text-muted-foreground">Contoh 02 · FR-01 · modules M02 M03 · <a class="underline-offset-4 hover:underline" href="index.html">Indeks</a></p>
+      <div>
+        <h1 class="text-xl font-bold">Klien</h1>
+        <p class="text-sm text-muted-foreground">3 klien aktif · 1 nonaktif · email wajib untuk kirim invoice.</p>
+      </div>
+
+      <div class="relative max-w-sm">
+        <i data-icon="search" class="pointer-events-none absolute top-1/2 left-3 size-4 -translate-y-1/2 text-muted-foreground"></i>
+        <input class="input pl-9" type="search" placeholder="Cari nama/email..." aria-label="Cari klien" />
+      </div>
+
+      <div class="table-container">
+        <table class="table">
+          <thead>
+            <tr><th>Nama</th><th>Email</th><th class="text-right">Invoice</th><th class="text-right">Aksi</th></tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td class="font-medium">PT Arunika Digital</td>
+              <td>billing@arunika.demo</td>
+              <td class="text-right tabular-nums">2</td>
+              <td class="text-right"><button type="button" class="btn btn-ghost btn-sm">Edit</button><button type="button" class="btn btn-ghost btn-sm text-destructive" data-dialog-open="dlg-off">Nonaktifkan</button></td>
+            </tr>
+            <tr>
+              <td class="font-medium">Budi Santoso</td>
+              <td><span class="badge badge-overdue">Email kosong</span></td>
+              <td class="text-right tabular-nums">1</td>
+              <td class="text-right"><button type="button" class="btn btn-ghost btn-sm">Edit</button></td>
+            </tr>
+            <tr class="text-muted-foreground">
+              <td><span class="font-medium">Toko Batik Sekar</span> <span class="badge badge-cancelled ml-1 no-underline">Nonaktif</span></td>
+              <td>admin@batiksekar.id</td>
+              <td class="text-right tabular-nums">1</td>
+              <td class="text-right"><button type="button" class="btn btn-ghost btn-sm">Aktifkan</button></td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </main>
+
+    <dialog id="dlg-client" class="dialog" aria-labelledby="dlg-c-title">
+      <form method="dialog" class="grid gap-5">
+        <div class="dialog-header">
+          <h2 id="dlg-c-title" class="dialog-title">Tambah klien</h2>
+          <p class="dialog-description">Email klien wajib untuk kirim invoice.</p>
+        </div>
+        <div class="field"><label class="label" for="n">Nama klien <span class="text-destructive">*</span></label><input id="n" class="input" required /></div>
+        <div class="field"><label class="label" for="e">Email klien <span class="text-destructive">*</span></label><input id="e" type="email" class="input" required /></div>
+        <div class="dialog-footer">
+          <button type="button" class="btn btn-outline" data-dialog-close>Batal</button>
+          <button type="submit" class="btn btn-default">Simpan</button>
+        </div>
+      </form>
+    </dialog>
+    <dialog id="dlg-off" class="dialog" role="alertdialog">
+      <div class="dialog-header">
+        <h2 class="dialog-title">Nonaktifkan klien?</h2>
+        <p class="dialog-description">Disembunyikan dari editor. Invoice lama tetap tersimpan.</p>
+      </div>
+      <div class="dialog-footer">
+        <button type="button" class="btn btn-outline" data-dialog-close>Batal</button>
+        <button type="button" class="btn btn-destructive" data-dialog-close>Nonaktifkan klien</button>
+      </div>
+    </dialog>
+  </body>
+</html>

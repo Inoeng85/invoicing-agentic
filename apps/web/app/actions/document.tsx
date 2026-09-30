@@ -9,7 +9,7 @@ export interface DocumentProps {
   title?: string
 }
 
-const DEFAULT_TITLE = readAppDisplayName('My%20App')
+const DEFAULT_TITLE = readAppDisplayName('Invoicing')
 
 export function Document(handle: Handle<DocumentProps>) {
   return () => {
@@ -17,11 +17,11 @@ export function Document(handle: Handle<DocumentProps>) {
     let { href, importMap, preloads } = scriptEntry
 
     return (
-      <html lang="en">
+      <html lang="id">
         <head>
           <meta charSet="utf-8" />
           <meta name="viewport" content="width=device-width, initial-scale=1" />
-          <meta name="color-scheme" content="light dark" />
+          <meta name="color-scheme" content="light" />
           <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
           <link rel="stylesheet" href="/app.css" />
           <title>{title}</title>

@@ -10,6 +10,6 @@ describe('root controller', () => {
 
     assert.equal(response.status, 200)
     assert.match(response.headers.get('Content-Type') ?? '', /text\/html/)
-    assert.match(await response.text(), /Login/)
+    assert.match(await response.text(), /Masuk/)
   })
 })

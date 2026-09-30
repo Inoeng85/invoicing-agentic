@@ -9,6 +9,7 @@ import clientsController from './actions/clients/controller.tsx'
 import invoicesController from './actions/invoices/controller.tsx'
 import settingsController from './actions/settings/controller.tsx'
 import { assets } from './assets.ts'
+import { formMethodOverride } from './lib/method-override.ts'
 import { routes } from './routes.ts'
 
 const renderMiddleware = render({ assets })
@@ -39,6 +40,7 @@ export const router = createRouter<AppContext>({
     requestLogging(),
     publicInvoiceRateLimit(),
     staticFiles('./public', { index: false }),
+    formMethodOverride(),
     renderMiddleware,
   ],
 })

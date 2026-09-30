@@ -3,7 +3,7 @@
 **Scope:** `@invoicing/web` saja (SSR + Tailwind). API tidak memiliki layar.  
 **Routes:** [../ARCHITECTURE.md](../ARCHITECTURE.md) §12 · **FR:** [MVP-SCOPE-LOCK.md](./MVP-SCOPE-LOCK.md) · **Keputusan canonical:** [ARCHITECTURE-ALIGNMENT.md](./ARCHITECTURE-ALIGNMENT.md) §2  
 **Prototype hi-fi:** [../../design/prototype/](../../design/prototype/index.html) (`screen-*.html`)  
-**Design guidelines (visual, copy, komponen):** [../design/DESIGN-GUIDELINES.md](../design/DESIGN-GUIDELINES.md)
+**Design guidelines:** [../design/DESIGN-GUIDELINES.md](../design/DESIGN-GUIDELINES.md) · [modules](../design/modules/README.md) · [5 contoh](../design/examples/index.html)
 
 Konvensi: `[ ]` input · `( )` radio · `[Btn]` tombol · `|---|` tabel · `*` navigasi aktif
 
