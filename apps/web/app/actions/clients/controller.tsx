@@ -2,11 +2,20 @@ import { createController } from 'remix/router'
 import type { Handle, RemixNode } from 'remix/ui'
 import type { RenderFunction } from 'remix/middleware/render'
 import { redirect } from 'remix/response/redirect'
-import { createClient, getClient, isDomainError, listClients, listInvoices, updateClient } from '@invoicing/domain'
+import {
+  createClient,
+  getClient,
+  isDomainError,
+  listClients,
+  listInvoices,
+  setClientLocation,
+  updateClient,
+} from '@invoicing/domain'
 
 import { assertCsrf } from '../../lib/csrf.ts'
 import { CsrfInput } from '../../lib/csrf-field.tsx'
 import { requireUserId } from '../../lib/auth.ts'
+import { LocationPicker } from '../public/location-picker.tsx'
 import { icon } from '../../ui/icons.tsx'
 import {
   alertBox,
@@ -68,6 +77,14 @@ interface ClientValues {
 function readClientValues(formData: FormData): ClientValues {
   let text = (name: string) => String(formData.get(name) ?? '').trim()
   return { name: text('name'), email: text('email'), address: text('address'), notes: text('notes') }
+}
+
+function readLocation(formData: FormData): { latitude: number; longitude: number } | null {
+  let lat = String(formData.get('latitude') ?? '').trim()
+  let lng = String(formData.get('longitude') ?? '').trim()
+  if (!lat && !lng) return null
+  // A half-filled pair becomes NaN so the domain rejects it with the same message as garbage input.
+  return { latitude: lat ? Number(lat) : Number.NaN, longitude: lng ? Number(lng) : Number.NaN }
 }
 
 function clientFields(values: Partial<ClientValues>, idPrefix: string) {
@@ -606,11 +623,13 @@ export default createController(routes.clients, {
     async update(context) {
       let userId = requireUserId(context.request)
       await assertCsrf(context.request, userId)
-      let values = readClientValues(await context.request.formData())
+      let formData = await context.request.formData()
+      let values = readClientValues(formData)
       let clientId = context.params.clientId
       let error: string | undefined = values.name ? undefined : 'Nama klien wajib'
       if (!error) {
         try {
+          await setClientLocation(userId, clientId, readLocation(formData))
           await updateClient(userId, clientId, {
             name: values.name,
             email: values.email,
@@ -634,7 +653,7 @@ export default createController(routes.clients, {
 function renderClientForm(
   context: { render: RenderFunction },
   user: ShellUser,
-  options: { client?: { id: string; name: string }; values?: Partial<ClientValues>; error?: string },
+  options: { client?: { id: string; name: string; latitude?: number | null; longitude?: number | null }; values?: Partial<ClientValues>; error?: string },
 ) {
   return context.render(
     <ClientFormPage user={user} client={options.client} values={options.values ?? {}} error={options.error} />,
@@ -645,7 +664,7 @@ function renderClientForm(
 function ClientFormPage(
   handle: Handle<{
     user: ShellUser
-    client?: { id: string; name: string }
+    client?: { id: string; name: string; latitude?: number | null; longitude?: number | null }
     values: Partial<ClientValues>
     error?: string
   }>,
@@ -682,6 +701,7 @@ function ClientFormPage(
           <div class="card-content space-y-4">
             {error ? alertBox('destructive', 'Klien belum tersimpan', <p>{error}</p>) : null}
             {clientFields(values, 'cf')}
+            {client ? <LocationPicker latitude={client.latitude ?? null} longitude={client.longitude ?? null} /> : null}
           </div>
           <div class="card-footer justify-end border-t pt-6">
             <a class="btn btn-outline" href={cancelHref}>

@@ -7,6 +7,7 @@ import {
   assignCollector,
   createSessionToken,
   createTrackingLink,
+  getClient,
   recordCollectorLocation,
   revokeTrackingLink,
   setCollectorPhoto,
@@ -309,5 +310,31 @@ describe('root controller', () => {
     assert.match(revoked.headers.get('Location') ?? '', /notice=tracking_link_revoked/)
     let after = await (await fetchResponse(routes.invoices.show.href({ invoiceId: invoice.id }), { headers: sessionHeaders(user.id) })).text()
     assert.ok(!/\/t\/[A-Za-z0-9_-]{32}/.test(after))
+  })
+  it('saves, clears and validates the client pin from the edit form', async () => {
+    let user = await makeUser()
+    let client = await makeClient(user.id)
+    let submit = (fields: Record<string, string>) =>
+      fetchResponse(routes.clients.update.href({ clientId: client.id }), {
+        method: 'POST',
+        headers: sessionHeaders(user.id),
+        body: new URLSearchParams({ _csrf: createCsrfToken(user.id), _method: 'PUT', name: client.name, email: client.email, ...fields }),
+      })
+
+    let edit = await (await fetchResponse(routes.clients.edit.href({ clientId: client.id }), { headers: sessionHeaders(user.id) })).text()
+    assert.match(edit, /name="latitude"/)
+
+    assert.equal((await submit({ latitude: '-6.2', longitude: '106.8' })).status, 303)
+    let saved = await getClient(user.id, client.id)
+    assert.deepEqual([saved.latitude, saved.longitude], [-6.2, 106.8])
+
+    let invalid = await submit({ latitude: '-6.2', longitude: '' })
+    assert.equal(invalid.status, 422)
+    assert.match(await invalid.text(), /Koordinat tidak valid/)
+    let unchanged = await getClient(user.id, client.id)
+    assert.deepEqual([unchanged.latitude, unchanged.longitude], [-6.2, 106.8])
+
+    assert.equal((await submit({ latitude: '', longitude: '' })).status, 303)
+    assert.equal((await getClient(user.id, client.id)).latitude, null)
   })
 })
