@@ -8,30 +8,32 @@ datasource db {
 }
 
 model User {
-  id           String          @id @default(cuid())
-  email        String          @unique
-  passwordHash String          @map("password_hash")
-  createdAt    DateTime        @default(now()) @map("created_at")
-  updatedAt    DateTime        @updatedAt @map("updated_at")
-  profile      BusinessProfile?
-  clients      Client[]
-  invoices     Invoice[]
+  id                    String                 @id @default(cuid())
+  email                 String                 @unique
+  passwordHash          String                 @map("password_hash")
+  createdAt             DateTime               @default(now()) @map("created_at")
+  updatedAt             DateTime               @updatedAt @map("updated_at")
+  profile               BusinessProfile?
+  clients               Client[]
+  invoices              Invoice[]
+  debtCollectors        DebtCollector[]
+  collectionAssignments CollectionAssignment[]
 
   @@map("users")
 }
 
 model BusinessProfile {
-  userId               String   @id @map("user_id")
-  user                 User     @relation(fields: [userId], references: [id], onDelete: Cascade)
-  legalName            String   @map("legal_name")
-  address              String?
-  npwp                 String?
-  bankDetails          String?  @map("bank_details")
-  footerDefault        String?  @map("footer_default")
-  logoUrl              String?  @map("logo_url")
-  invoiceNumberFormat  String   @default("INV-{YYYY}-{SEQ}") @map("invoice_number_format")
-  defaultDueDays       Int      @default(30) @map("default_due_days")
-  updatedAt            DateTime @updatedAt @map("updated_at")
+  userId              String   @id @map("user_id")
+  user                User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+  legalName           String   @map("legal_name")
+  address             String?
+  npwp                String?
+  bankDetails         String?  @map("bank_details")
+  footerDefault       String?  @map("footer_default")
+  logoUrl             String?  @map("logo_url")
+  invoiceNumberFormat String   @default("INV-{YYYY}-{SEQ}") @map("invoice_number_format")
+  defaultDueDays      Int      @default(30) @map("default_due_days")
+  updatedAt           DateTime @updatedAt @map("updated_at")
 
   @@map("business_profiles")
 }
@@ -62,28 +64,29 @@ enum InvoiceStatus {
 }
 
 model Invoice {
-  id                   String            @id @default(cuid())
-  userId               String            @map("user_id")
-  user                 User              @relation(fields: [userId], references: [id], onDelete: Cascade)
-  clientId             String            @map("client_id")
-  client               Client            @relation(fields: [clientId], references: [id])
-  number               String?
-  status               InvoiceStatus     @default(draft)
-  issueDate            DateTime          @map("issue_date")
-  dueDate              DateTime          @map("due_date")
-  ppnEnabled           Boolean           @default(false) @map("ppn_enabled")
-  ppnRate              Float             @default(0.11) @map("ppn_rate")
-  subtotalCents        Int               @default(0) @map("subtotal_cents")
-  ppnCents             Int               @default(0) @map("ppn_cents")
-  totalCents           Int               @default(0) @map("total_cents")
-  footerNote           String?           @map("footer_note")
-  publicToken          String?           @unique @map("public_token")
-  publicTokenRevokedAt DateTime?         @map("public_token_revoked_at")
-  sentAt               DateTime?         @map("sent_at")
-  paidAt               DateTime?         @map("paid_at")
-  createdAt            DateTime          @default(now()) @map("created_at")
-  updatedAt            DateTime          @updatedAt @map("updated_at")
-  lineItems            InvoiceLineItem[]
+  id                    String                 @id @default(cuid())
+  userId                String                 @map("user_id")
+  user                  User                   @relation(fields: [userId], references: [id], onDelete: Cascade)
+  clientId              String                 @map("client_id")
+  client                Client                 @relation(fields: [clientId], references: [id])
+  number                String?
+  status                InvoiceStatus          @default(draft)
+  issueDate             DateTime               @map("issue_date")
+  dueDate               DateTime               @map("due_date")
+  ppnEnabled            Boolean                @default(false) @map("ppn_enabled")
+  ppnRate               Float                  @default(0.11) @map("ppn_rate")
+  subtotalCents         Int                    @default(0) @map("subtotal_cents")
+  ppnCents              Int                    @default(0) @map("ppn_cents")
+  totalCents            Int                    @default(0) @map("total_cents")
+  footerNote            String?                @map("footer_note")
+  publicToken           String?                @unique @map("public_token")
+  publicTokenRevokedAt  DateTime?              @map("public_token_revoked_at")
+  sentAt                DateTime?              @map("sent_at")
+  paidAt                DateTime?              @map("paid_at")
+  createdAt             DateTime               @default(now()) @map("created_at")
+  updatedAt             DateTime               @updatedAt @map("updated_at")
+  lineItems             InvoiceLineItem[]
+  collectionAssignments CollectionAssignment[]
 
   @@unique([userId, number])
   @@index([userId, status])
@@ -102,4 +105,72 @@ model InvoiceLineItem {
 
   @@index([invoiceId])
   @@map("invoice_line_items")
+}
+
+model DebtCollector {
+  id             String                 @id @default(cuid())
+  userId         String                 @map("user_id")
+  user           User                   @relation(fields: [userId], references: [id], onDelete: Cascade)
+  name           String
+  email          String?
+  phone          String?
+  notes          String?
+  commissionRate Float                  @default(0) @map("commission_rate")
+  active         Boolean                @default(true)
+  createdAt      DateTime               @default(now()) @map("created_at")
+  updatedAt      DateTime               @updatedAt @map("updated_at")
+  assignments    CollectionAssignment[]
+
+  @@index([userId])
+  @@map("debt_collectors")
+}
+
+enum AssignmentEndReason {
+  reassigned
+  unassigned
+  paid
+  cancelled
+}
+
+model CollectionAssignment {
+  id              String               @id @default(cuid())
+  userId          String               @map("user_id")
+  user            User                 @relation(fields: [userId], references: [id], onDelete: Cascade)
+  invoiceId       String               @map("invoice_id")
+  invoice         Invoice              @relation(fields: [invoiceId], references: [id], onDelete: Cascade)
+  collectorId     String               @map("collector_id")
+  collector       DebtCollector        @relation(fields: [collectorId], references: [id])
+  rateSnapshot    Float                @map("rate_snapshot")
+  assignedAt      DateTime             @default(now()) @map("assigned_at")
+  endedAt         DateTime?            @map("ended_at")
+  endReason       AssignmentEndReason? @map("end_reason")
+  commissionCents Int?                 @map("commission_cents")
+  activities      CollectionActivity[]
+
+  @@index([invoiceId, endedAt])
+  @@index([collectorId, endedAt])
+  @@index([userId])
+  @@map("collection_assignments")
+}
+
+enum CollectionOutcome {
+  contacted
+  no_response
+  promised_to_pay
+  partial_payment_reported
+  refused
+  other
+}
+
+model CollectionActivity {
+  id           String               @id @default(cuid())
+  assignmentId String               @map("assignment_id")
+  assignment   CollectionAssignment @relation(fields: [assignmentId], references: [id], onDelete: Cascade)
+  occurredAt   DateTime             @map("occurred_at")
+  outcome      CollectionOutcome
+  note         String?
+  createdAt    DateTime             @default(now()) @map("created_at")
+
+  @@index([assignmentId])
+  @@map("collection_activities")
 }

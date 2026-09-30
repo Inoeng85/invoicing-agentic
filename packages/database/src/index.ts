@@ -7,4 +7,10 @@ export type {
   Invoice,
   InvoiceLineItem,
   InvoiceStatus,
+  DebtCollector,
+  CollectionAssignment,
+  CollectionActivity,
+  AssignmentEndReason,
+  CollectionOutcome,
+  Prisma,
 } from '@prisma/client'
