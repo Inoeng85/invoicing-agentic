@@ -8,6 +8,7 @@ export type {
   InvoiceLineItem,
   InvoiceStatus,
   DebtCollector,
+  DebtCollectorPhoto,
   CollectionAssignment,
   CollectionActivity,
   AssignmentEndReason,

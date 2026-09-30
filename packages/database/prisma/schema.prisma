@@ -120,6 +120,8 @@ model DebtCollector {
   createdAt      DateTime               @default(now()) @map("created_at")
   updatedAt      DateTime               @updatedAt @map("updated_at")
   assignments    CollectionAssignment[]
+  photoUpdatedAt DateTime?              @map("photo_updated_at")
+  photo          DebtCollectorPhoto?
 
   @@index([userId])
   @@map("debt_collectors")
@@ -173,4 +175,14 @@ model CollectionActivity {
 
   @@index([assignmentId])
   @@map("collection_activities")
+}
+
+model DebtCollectorPhoto {
+  collectorId String        @id @map("collector_id")
+  collector   DebtCollector @relation(fields: [collectorId], references: [id], onDelete: Cascade)
+  bytes       Bytes
+  mimeType    String        @map("mime_type")
+  updatedAt   DateTime      @updatedAt @map("updated_at")
+
+  @@map("debt_collector_photos")
 }
