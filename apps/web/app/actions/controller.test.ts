@@ -7,6 +7,7 @@ import {
   assignCollector,
   createSessionToken,
   createTrackingLink,
+  recordCollectorLocation,
   revokeTrackingLink,
   setCollectorPhoto,
   updateCollector,
@@ -260,5 +261,53 @@ describe('root controller', () => {
     assert.equal((await post('x'.repeat(2000))).status, 413)
     await revokeTrackingLink(user.id, invoice.id)
     assert.equal((await post(point)).status, 410)
+  })
+  it('freelancer tracking map and JSON are owner-only', async () => {
+    let user = await makeUser()
+    let client = await makeClient(user.id)
+    let invoice = await makeInvoice(user.id, client.id)
+    let collector = await makeCollector(user.id)
+    await updateCollector(user.id, collector.id, { name: 'Budi <img src=x onerror=alert(1)>' })
+    await assignCollector(user.id, invoice.id, collector.id)
+    let token = await createTrackingLink(user.id, invoice.id)
+    await recordCollectorLocation(token, { latitude: -6.2, longitude: 106.8, recordedAt: new Date() })
+
+    let page = await fetchResponse(routes.invoiceTracking.page.href({ invoiceId: invoice.id }), { headers: sessionHeaders(user.id) })
+    assert.equal(page.status, 200)
+    let html = await page.text()
+    assert.ok(!html.includes('<img src=x onerror'), 'collector name is escaped')
+    assert.match(html, /OpenStreetMap|Diperbarui/)
+
+    let data = await fetchResponse(routes.invoiceTracking.data.href({ invoiceId: invoice.id }), { headers: sessionHeaders(user.id) })
+    assert.equal(data.status, 200)
+    assert.equal(data.headers.get('Cache-Control'), 'no-store')
+    let body = (await data.json()) as { last: { latitude: number } | null }
+    assert.equal(body.last?.latitude, -6.2)
+
+    let other = await makeUser()
+    assert.equal((await fetchResponse(routes.invoiceTracking.data.href({ invoiceId: invoice.id }), { headers: sessionHeaders(other.id) })).status, 404)
+    assert.equal((await fetchResponse(routes.invoiceTracking.data.href({ invoiceId: invoice.id }))).status, 302)
+  })
+
+  it('creates and revokes the tracking link from the collection panel', async () => {
+    let user = await makeUser()
+    let client = await makeClient(user.id)
+    let invoice = await makeInvoice(user.id, client.id)
+    await assignCollector(user.id, invoice.id, (await makeCollector(user.id)).id)
+    let csrf = { method: 'POST', headers: sessionHeaders(user.id), body: new URLSearchParams({ _csrf: createCsrfToken(user.id) }) }
+
+    let created = await fetchResponse(routes.invoiceTracking.createLink.href({ invoiceId: invoice.id }), csrf)
+    assert.match(created.headers.get('Location') ?? '', /notice=tracking_link_created/)
+    let detail = await (await fetchResponse(routes.invoices.show.href({ invoiceId: invoice.id }), { headers: sessionHeaders(user.id) })).text()
+    assert.match(detail, /\/t\/[A-Za-z0-9_-]{32}/)
+    assert.match(detail, /Lihat peta/)
+
+    let revoked = await fetchResponse(routes.invoiceTracking.revokeLink.href({ invoiceId: invoice.id }), {
+      ...csrf,
+      body: new URLSearchParams({ _csrf: createCsrfToken(user.id) }),
+    })
+    assert.match(revoked.headers.get('Location') ?? '', /notice=tracking_link_revoked/)
+    let after = await (await fetchResponse(routes.invoices.show.href({ invoiceId: invoice.id }), { headers: sessionHeaders(user.id) })).text()
+    assert.ok(!/\/t\/[A-Za-z0-9_-]{32}/.test(after))
   })
 })

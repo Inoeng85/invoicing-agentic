@@ -9,6 +9,7 @@ import clientsController from './actions/clients/controller.tsx'
 import collectionController from './actions/collection/controller.tsx'
 import collectorsController, { collectorActionsController } from './actions/collectors/controller.tsx'
 import invoicesController from './actions/invoices/controller.tsx'
+import invoiceTrackingController from './actions/invoice-tracking/controller.tsx'
 import settingsController from './actions/settings/controller.tsx'
 import trackingController from './actions/tracking/controller.tsx'
 import { assets } from './assets.ts'
@@ -57,4 +58,5 @@ router.map(routes.collectors, collectorsController)
 router.map(routes.collectorActions, collectorActionsController)
 router.map(routes.invoiceCollection, collectionController)
 router.map(routes.collectorTracking, trackingController)
+router.map(routes.invoiceTracking, invoiceTrackingController)
 router.map(routes.settings, settingsController)

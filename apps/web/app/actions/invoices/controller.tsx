@@ -317,6 +317,9 @@ export default createController(routes.invoices, {
             collection,
             collectors,
             errorCode: context.url.searchParams.get('code'),
+            trackingUrl: collection.active?.trackingToken
+              ? `${appUrl()}${routes.collectorTracking.page.href({ token: collection.active.trackingToken })}`
+              : null,
           })}
         />,
       )

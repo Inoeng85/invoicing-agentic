@@ -6,6 +6,7 @@ import {
   type InvoiceCollection,
 } from '@invoicing/domain'
 
+import { CopyButton } from '../actions/public/copy-button.tsx'
 import { CsrfInput } from '../lib/csrf-field.tsx'
 import { formatPercentInput } from '../lib/percent.ts'
 import { routes } from '../routes.ts'
@@ -44,10 +45,11 @@ export interface CollectionPanelOptions {
   collection: InvoiceCollection
   collectors: Array<{ id: string; name: string; commissionRate: number }>
   errorCode?: string | null
+  trackingUrl: string | null
 }
 
 export function collectionPanel(options: CollectionPanelOptions): RemixNode {
-  let { userId, invoice, collection, collectors, errorCode } = options
+  let { userId, invoice, collection, collectors, errorCode, trackingUrl } = options
   let isOpen = invoice.status === 'sent' || invoice.status === 'overdue'
   if (!isOpen && collection.history.length === 0) return null
 
@@ -112,6 +114,36 @@ export function collectionPanel(options: CollectionPanelOptions): RemixNode {
 
         {isOpen && active ? (
           <>
+            <div class="space-y-2 border-t pt-4">
+              <p class="text-xs font-medium tracking-wide text-muted-foreground uppercase">Live tracking</p>
+              {trackingUrl ? (
+                <div class="flex gap-2">
+                  <input class="input font-mono text-xs" readonly value={trackingUrl} aria-label="Link tracking kolektor" />
+                  <CopyButton text={trackingUrl} label="Salin" />
+                </div>
+              ) : (
+                <p class="text-sm text-muted-foreground">Buat link lalu kirim ke kolektor (mis. via WhatsApp).</p>
+              )}
+              <div class="flex flex-wrap gap-2">
+                <form method="post" action={routes.invoiceTracking.createLink.href({ invoiceId: invoice.id })}>
+                  <CsrfInput userId={userId} />
+                  <button type="submit" class="btn btn-outline btn-sm">
+                    {trackingUrl ? 'Buat ulang link' : 'Buat link tracking'}
+                  </button>
+                </form>
+                {trackingUrl ? (
+                  <form method="post" action={routes.invoiceTracking.revokeLink.href({ invoiceId: invoice.id })}>
+                    <CsrfInput userId={userId} />
+                    <button type="submit" class="btn btn-ghost btn-sm text-destructive">
+                      Cabut link
+                    </button>
+                  </form>
+                ) : null}
+                <a class="btn btn-link btn-sm" href={routes.invoiceTracking.page.href({ invoiceId: invoice.id })}>
+                  Lihat peta
+                </a>
+              </div>
+            </div>
             <form method="post" action={routes.invoiceCollection.unassign.href({ invoiceId: invoice.id })}>
               <CsrfInput userId={userId} />
               <button type="submit" class="btn btn-ghost btn-sm">

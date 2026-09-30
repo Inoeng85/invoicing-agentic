@@ -24,6 +24,8 @@ const NOTICES: Record<string, { variant: 'success' | 'info'; title: string }> = 
   assigned: { variant: 'success', title: 'Kolektor di-assign' },
   unassigned: { variant: 'info', title: 'Kolektor dilepas dari invoice' },
   activity_added: { variant: 'success', title: 'Aktivitas penagihan dicatat' },
+  tracking_link_created: { variant: 'success', title: 'Link tracking dibuat — kirim ke kolektor' },
+  tracking_link_revoked: { variant: 'info', title: 'Link tracking dicabut' },
 }
 
 interface TimelineEntry {
