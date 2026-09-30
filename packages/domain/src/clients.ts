@@ -1,6 +1,7 @@
 import { prisma } from '@invoicing/database'
 
 import { DomainError } from './errors.ts'
+import { assertValidCoordinates, type GeoPoint } from './geo.ts'
 
 export async function listClients(userId: string, includeInactive = false) {
   return prisma.client.findMany({
@@ -66,4 +67,13 @@ export async function updateClient(
 
 export async function deactivateClient(userId: string, clientId: string) {
   return updateClient(userId, clientId, { active: false })
+}
+
+export async function setClientLocation(userId: string, clientId: string, location: GeoPoint | null) {
+  await getClient(userId, clientId)
+  if (location) assertValidCoordinates(location)
+  return prisma.client.update({
+    where: { id: clientId },
+    data: { latitude: location?.latitude ?? null, longitude: location?.longitude ?? null },
+  })
 }

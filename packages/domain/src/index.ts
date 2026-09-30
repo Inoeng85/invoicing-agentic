@@ -17,6 +17,7 @@ export {
   createClient,
   updateClient,
   deactivateClient,
+  setClientLocation,
 } from './clients.ts'
 export {
   listCollectors,

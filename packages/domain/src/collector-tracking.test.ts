@@ -5,7 +5,7 @@ import { describe, it } from 'node:test'
 
 import { prisma } from '@invoicing/database'
 
-import { assignCollector } from './collections.ts'
+import { assignCollector, unassignCollector } from './collections.ts'
 import {
   createTrackingLink,
   getTrackingSession,
@@ -13,6 +13,7 @@ import {
   recordCollectorLocation,
   revokeTrackingLink,
 } from './collector-tracking.ts'
+import { cancelInvoice, markInvoicePaid } from './invoices.ts'
 import { makeClient, makeCollector, makeInvoice, makeUser } from './test-fixtures.ts'
 
 async function rejectsWith(promise: Promise<unknown>, code: string) {
@@ -134,5 +135,45 @@ describe('getTrackingView (FR-14i-4)', () => {
     await prisma.collectorLocation.create({ data: { assignmentId: assignment.id, ...HOME, recordedAt: yesterday } })
     await recordCollectorLocation(token, { ...NEARBY, recordedAt: new Date() })
     assert.equal((await getTrackingView(user.id, invoice.id)).trail.length, 1)
+  })
+})
+
+describe('ending an assignment clears tracking (BR-11)', () => {
+  let cases: Array<[string, (ctx: Awaited<ReturnType<typeof assigned>>) => Promise<unknown>]> = [
+    ['paid', ({ user, invoice }) => markInvoicePaid(user.id, invoice.id)],
+    ['cancelled', ({ user, invoice }) => cancelInvoice(user.id, invoice.id)],
+    ['unassigned', ({ user, invoice }) => unassignCollector(user.id, invoice.id)],
+    [
+      'reassigned',
+      async ({ user, invoice }) => assignCollector(user.id, invoice.id, (await makeCollector(user.id)).id),
+    ],
+  ]
+  for (let [reason, end] of cases) {
+    it(`${reason}: token dies, trail deleted, last position kept`, async () => {
+      let ctx = await assigned()
+      let token = await createTrackingLink(ctx.user.id, ctx.invoice.id)
+      await recordCollectorLocation(token, { ...NEARBY, recordedAt: new Date() })
+      let assignment = await prisma.collectionAssignment.findFirstOrThrow({ where: { trackingToken: token } })
+      await end(ctx)
+      await rejectsWith(getTrackingSession(token), 'tracking_not_found')
+      await rejectsWith(recordCollectorLocation(token, { ...NEARBY, recordedAt: new Date() }), 'tracking_ended')
+      assert.equal(await prisma.collectorLocation.count({ where: { assignmentId: assignment.id } }), 0)
+      let closed = await prisma.collectionAssignment.findUniqueOrThrow({ where: { id: assignment.id } })
+      assert.equal(closed.trackingToken, null)
+      assert.equal(closed.lastLatitude, NEARBY.latitude)
+    })
+  }
+
+  it('reassign shows the new collector without the old trail', async () => {
+    let ctx = await assigned()
+    let token = await createTrackingLink(ctx.user.id, ctx.invoice.id)
+    await recordCollectorLocation(token, { ...NEARBY, recordedAt: new Date() })
+    let next = await makeCollector(ctx.user.id)
+    await assignCollector(ctx.user.id, ctx.invoice.id, next.id)
+    let view = await getTrackingView(ctx.user.id, ctx.invoice.id)
+    assert.equal(view.collector?.id, next.id)
+    assert.equal(view.trail.length, 0)
+    assert.equal(view.last, null)
+    assert.equal(view.trackingActive, false)
   })
 })

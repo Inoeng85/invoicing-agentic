@@ -1,4 +1,9 @@
-import { prisma, type CollectionOutcome as PrismaCollectionOutcome, type Prisma } from '@invoicing/database'
+import {
+  prisma,
+  type AssignmentEndReason,
+  type CollectionOutcome as PrismaCollectionOutcome,
+  type Prisma,
+} from '@invoicing/database'
 
 import { DomainError } from './errors.ts'
 import { computeCommissionCents } from './invoiceTotals.ts'
@@ -32,6 +37,19 @@ function findActiveAssignmentInTx(tx: Tx, invoiceId: string) {
   return tx.collectionAssignment.findFirst({ where: { invoiceId, endedAt: null } })
 }
 
+// Every way an assignment ends goes through here so its tracking link and location trail go too (BR-11).
+async function endAssignmentInTx(
+  tx: Tx,
+  assignmentId: string,
+  data: { endReason: AssignmentEndReason; commissionCents?: number | null },
+) {
+  await tx.collectorLocation.deleteMany({ where: { assignmentId } })
+  return tx.collectionAssignment.update({
+    where: { id: assignmentId },
+    data: { ...data, endedAt: new Date(), trackingToken: null },
+  })
+}
+
 export async function assignCollector(userId: string, invoiceId: string, collectorId: string) {
   return prisma.$transaction(async (tx) => {
     await requireOutstandingInvoiceInTx(tx, userId, invoiceId)
@@ -44,10 +62,7 @@ export async function assignCollector(userId: string, invoiceId: string, collect
       throw new DomainError('Kolektor sudah di-assign ke invoice ini', 'already_assigned', 409)
     }
     if (current) {
-      await tx.collectionAssignment.update({
-        where: { id: current.id },
-        data: { endedAt: new Date(), endReason: 'reassigned' },
-      })
+      await endAssignmentInTx(tx, current.id, { endReason: 'reassigned' })
     }
     return tx.collectionAssignment.create({
       data: { userId, invoiceId, collectorId, rateSnapshot: collector.commissionRate },
@@ -61,10 +76,7 @@ export async function unassignCollector(userId: string, invoiceId: string) {
     await requireOutstandingInvoiceInTx(tx, userId, invoiceId)
     let current = await findActiveAssignmentInTx(tx, invoiceId)
     if (!current) throw new DomainError('Belum ada kolektor', 'no_active_assignment', 409)
-    return tx.collectionAssignment.update({
-      where: { id: current.id },
-      data: { endedAt: new Date(), endReason: 'unassigned' },
-    })
+    return endAssignmentInTx(tx, current.id, { endReason: 'unassigned' })
   })
 }
 
@@ -121,12 +133,8 @@ export async function closeActiveAssignmentInTx(
 ) {
   let current = await findActiveAssignmentInTx(tx, invoiceId)
   if (!current) return
-  await tx.collectionAssignment.update({
-    where: { id: current.id },
-    data: {
-      endedAt: new Date(),
-      endReason: reason,
-      commissionCents: reason === 'paid' ? computeCommissionCents(totalCents, current.rateSnapshot) : null,
-    },
+  await endAssignmentInTx(tx, current.id, {
+    endReason: reason,
+    commissionCents: reason === 'paid' ? computeCommissionCents(totalCents, current.rateSnapshot) : null,
   })
 }
