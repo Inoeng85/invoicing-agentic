@@ -1,0 +1,848 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Orkestrasi — Kanban board</title>
+  <style>
+    :root {
+      --bg: #f4f5f7;
+      --surface: #ffffff;
+      --ink: #172b4d;
+      --muted: #626f86;
+      --border: #dfe1e6;
+      --blue: #0c66e4;
+      --blue-hover: #0055cc;
+      --column-bg: #f1f2f4;
+      --nav: #1d2125;
+    }
+
+    * { box-sizing: border-box; }
+
+    html, body {
+      margin: 0;
+      min-height: 100%;
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", sans-serif;
+      font-size: 14px;
+      color: var(--ink);
+      background: var(--bg);
+    }
+
+    .global-nav {
+      height: 48px;
+      background: var(--nav);
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      padding: 0 16px;
+    }
+
+    .global-nav .logo {
+      width: 24px;
+      height: 24px;
+      border-radius: 3px;
+      background: #2684ff;
+      color: #fff;
+      font-size: 11px;
+      font-weight: 700;
+      display: grid;
+      place-items: center;
+    }
+
+    .global-nav .search {
+      flex: 1;
+      max-width: 520px;
+      height: 32px;
+      border: 0;
+      border-radius: 4px;
+      padding: 0 12px;
+      background: rgba(255, 255, 255, 0.12);
+      color: #fff;
+      font: inherit;
+    }
+
+    .global-nav .search::placeholder { color: rgba(255, 255, 255, 0.6); }
+
+    .btn-create {
+      height: 32px;
+      padding: 0 12px;
+      border: 0;
+      border-radius: 3px;
+      background: var(--blue);
+      color: #fff;
+      font: inherit;
+      font-weight: 500;
+      cursor: default;
+    }
+
+    .page {
+      padding: 0 24px 24px;
+    }
+
+    .crumb {
+      margin: 16px 0 4px;
+      color: var(--muted);
+      font-size: 12px;
+    }
+
+    .crumb a { color: var(--blue); text-decoration: none; }
+
+    .project-head {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      margin-bottom: 8px;
+    }
+
+    .project-head h1 {
+      margin: 0;
+      font-size: 24px;
+      font-weight: 500;
+    }
+
+    .project-icon {
+      width: 32px;
+      height: 32px;
+      border-radius: 3px;
+      background: #6554c0;
+      color: #fff;
+      display: grid;
+      place-items: center;
+      font-weight: 700;
+      font-size: 14px;
+    }
+
+    .tabs {
+      display: flex;
+      gap: 4px;
+      border-bottom: 2px solid var(--border);
+      margin-bottom: 0;
+      overflow-x: auto;
+    }
+
+    .tabs button {
+      border: 0;
+      background: transparent;
+      padding: 8px 12px 10px;
+      font: inherit;
+      color: var(--muted);
+      cursor: pointer;
+      white-space: nowrap;
+      border-bottom: 2px solid transparent;
+      margin-bottom: -2px;
+    }
+
+    .tabs button[aria-selected="true"] {
+      color: var(--blue);
+      border-bottom-color: var(--blue);
+      font-weight: 500;
+    }
+
+    .toolbar {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      gap: 8px;
+      padding: 12px 0;
+    }
+
+    .toolbar input[type="search"] {
+      width: 180px;
+      height: 32px;
+      border: 1px solid var(--border);
+      border-radius: 3px;
+      padding: 0 8px;
+      font: inherit;
+      background: var(--surface);
+    }
+
+    .chip {
+      height: 32px;
+      padding: 0 10px;
+      border: 1px solid var(--border);
+      border-radius: 3px;
+      background: var(--surface);
+      font: inherit;
+      color: var(--ink);
+      cursor: pointer;
+    }
+
+    .chip[aria-pressed="true"] {
+      background: #e9f2ff;
+      border-color: #85b8ff;
+      color: var(--blue);
+    }
+
+    .chip.stage-active {
+      font-weight: 600;
+    }
+
+    .avatars {
+      display: flex;
+      margin-left: 4px;
+    }
+
+    .avatars span {
+      width: 28px;
+      height: 28px;
+      border-radius: 50%;
+      border: 2px solid var(--surface);
+      margin-left: -6px;
+      background: #6554c0;
+      color: #fff;
+      font-size: 11px;
+      font-weight: 600;
+      display: grid;
+      place-items: center;
+    }
+
+    .avatars span:nth-child(2) { background: #00b8d9; }
+    .avatars span:nth-child(3) { background: #36b37e; }
+
+    .swimlane {
+      margin-top: 8px;
+    }
+
+    .swimlane-toggle {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      width: 100%;
+      border: 0;
+      background: transparent;
+      padding: 8px 0;
+      font: inherit;
+      font-weight: 600;
+      color: var(--ink);
+      cursor: pointer;
+      text-align: left;
+    }
+
+    .swimlane-toggle::before {
+      content: "▾";
+      color: var(--muted);
+      font-size: 10px;
+    }
+
+    .board-wrap {
+      overflow-x: auto;
+      padding-bottom: 8px;
+    }
+
+    .board {
+      display: flex;
+      gap: 0;
+      min-height: 420px;
+      align-items: stretch;
+    }
+
+    .column {
+      width: 280px;
+      flex: none;
+      background: var(--column-bg);
+      border-right: 1px solid var(--border);
+      display: flex;
+      flex-direction: column;
+      min-height: 100%;
+    }
+
+    .column:first-child { border-left: 1px solid var(--border); }
+
+    .column-head {
+      padding: 10px 12px 8px;
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 0.04em;
+      text-transform: uppercase;
+      color: var(--muted);
+    }
+
+    .column-head .count {
+      font-weight: 600;
+      margin-left: 4px;
+    }
+
+    .column-body {
+      flex: 1;
+      padding: 0 8px 8px;
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+      min-height: 120px;
+      border-radius: 3px;
+      transition: background 0.12s ease;
+    }
+
+    .column-body.drag-over {
+      background: #e9f2ff;
+      outline: 2px dashed #85b8ff;
+      outline-offset: -4px;
+    }
+
+    .issue {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 3px;
+      padding: 10px;
+      text-align: left;
+      font: inherit;
+      color: inherit;
+      cursor: grab;
+      width: 100%;
+      touch-action: none;
+    }
+
+    .issue.dragging {
+      opacity: 0.45;
+      cursor: grabbing;
+    }
+
+    .issue:hover {
+      background: #fafbfc;
+      border-color: #c1c7d0;
+    }
+
+    .issue:focus-visible {
+      outline: 2px solid var(--blue);
+      outline-offset: 1px;
+    }
+
+    .issue-title {
+      margin: 0 0 8px;
+      font-size: 14px;
+      font-weight: 400;
+      line-height: 1.35;
+    }
+
+    .issue-tag {
+      display: inline-flex;
+      align-items: center;
+      gap: 4px;
+      max-width: 100%;
+      padding: 2px 6px;
+      border-radius: 3px;
+      background: #dffcf0;
+      color: #216e4e;
+      font-size: 11px;
+      font-weight: 600;
+      margin-bottom: 8px;
+    }
+
+    .issue-tag::before {
+      content: "";
+      width: 8px;
+      height: 8px;
+      border-radius: 2px;
+      background: #36b37e;
+      flex: none;
+    }
+
+    .issue-tag.human { background: #fff7d6; color: #7f5f01; }
+    .issue-tag.human::before { background: #ff991f; }
+    .issue-tag.tester { background: #fff3eb; color: #974f0c; }
+    .issue-tag.tester::before { background: #ff8b00; }
+    .issue-tag.auditor { background: #f3f0ff; color: #5e4db2; }
+    .issue-tag.auditor::before { background: #8777d9; }
+
+    .priority {
+      display: flex;
+      align-items: center;
+      gap: 2px;
+      margin-bottom: 10px;
+    }
+
+    .priority i {
+      width: 4px;
+      height: 4px;
+      border-radius: 50%;
+      background: #ff5630;
+      font-style: normal;
+    }
+
+    .priority b {
+      width: 12px;
+      height: 3px;
+      background: #ff991f;
+      border-radius: 1px;
+      margin-left: 4px;
+    }
+
+    .issue-foot {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .issue-key {
+      display: flex;
+      align-items: center;
+      gap: 4px;
+      color: var(--muted);
+      font-size: 12px;
+    }
+
+    .issue-key svg {
+      width: 14px;
+      height: 14px;
+      fill: #6554c0;
+    }
+
+    .assignee {
+      width: 24px;
+      height: 24px;
+      border-radius: 50%;
+      background: var(--blue);
+      color: #fff;
+      font-size: 10px;
+      font-weight: 700;
+      display: grid;
+      place-items: center;
+    }
+
+    .assignee.you { background: #ff991f; }
+
+    .issue-date {
+      margin-top: 8px;
+      font-size: 11px;
+      color: var(--muted);
+      display: flex;
+      align-items: center;
+      gap: 4px;
+    }
+
+    .issue-date.warn::before {
+      content: "!";
+      width: 14px;
+      height: 14px;
+      border-radius: 2px;
+      background: #ffebe6;
+      color: #ae2a19;
+      font-size: 10px;
+      font-weight: 700;
+      display: grid;
+      place-items: center;
+    }
+
+    .backdrop {
+      position: fixed;
+      inset: 0;
+      background: rgba(9, 30, 66, 0.54);
+      display: none;
+      align-items: flex-start;
+      justify-content: center;
+      padding: 48px 16px;
+      z-index: 100;
+    }
+
+    .backdrop.open { display: flex; }
+
+    .modal {
+      width: min(640px, 100%);
+      background: var(--surface);
+      border-radius: 3px;
+      box-shadow: 0 8px 16px rgba(9, 30, 66, 0.25);
+      padding: 20px 24px 24px;
+    }
+
+    .modal-head {
+      display: flex;
+      justify-content: space-between;
+      gap: 12px;
+    }
+
+    .modal h2 {
+      margin: 0;
+      font-size: 20px;
+      font-weight: 500;
+    }
+
+    .modal .sub {
+      margin: 4px 0 0;
+      color: var(--muted);
+      font-size: 13px;
+    }
+
+    .modal p {
+      margin: 16px 0 0;
+      line-height: 1.5;
+      color: var(--ink);
+    }
+
+    .modal-close {
+      border: 0;
+      background: transparent;
+      font-size: 24px;
+      line-height: 1;
+      color: var(--muted);
+      cursor: pointer;
+      padding: 4px;
+    }
+
+    .dnd-hint {
+      margin: 0 0 8px;
+      color: var(--muted);
+      font-size: 12px;
+    }
+
+    .toast {
+      position: fixed;
+      bottom: 20px;
+      left: 50%;
+      transform: translateX(-50%) translateY(80px);
+      background: var(--nav);
+      color: #fff;
+      padding: 10px 16px;
+      border-radius: 3px;
+      font-size: 13px;
+      max-width: min(480px, 92vw);
+      opacity: 0;
+      pointer-events: none;
+      transition: transform 0.2s ease, opacity 0.2s ease;
+      z-index: 200;
+    }
+
+    .toast.show {
+      opacity: 1;
+      transform: translateX(-50%) translateY(0);
+    }
+
+    @media (max-width: 900px) {
+      .page { padding: 0 12px 16px; }
+      .column { width: 260px; }
+    }
+  </style>
+</head>
+<body>
+  <header class="global-nav">
+    <div class="logo" aria-hidden="true">A</div>
+    <input class="search" type="search" placeholder="Search" disabled aria-label="Search">
+    <button type="button" class="btn-create" disabled>Create</button>
+  </header>
+
+  <div class="page">
+    <p class="crumb"><a href="#">Spaces</a> / <a href="#">Agentic</a></p>
+    <div class="project-head">
+      <div class="project-icon" aria-hidden="true">O</div>
+      <h1 id="project-title">Orkestrasi stage</h1>
+    </div>
+
+    <nav class="tabs" aria-label="Project views">
+      <button type="button" aria-selected="false">Summary</button>
+      <button type="button" aria-selected="false">Timeline</button>
+      <button type="button" aria-selected="true">Kanban board</button>
+      <button type="button" aria-selected="false">Calendar</button>
+      <button type="button" aria-selected="false">Reports</button>
+      <button type="button" aria-selected="false">List</button>
+    </nav>
+
+    <div class="toolbar">
+      <input type="search" placeholder="Search board" disabled aria-label="Search board">
+      <div class="avatars" aria-hidden="true">
+        <span>Or</span><span>Im</span><span>Te</span>
+      </div>
+      <button type="button" class="chip" disabled>Epic</button>
+      <button type="button" class="chip" disabled>Label</button>
+      <button type="button" class="chip" disabled>Quick filters</button>
+      <span style="flex:1"></span>
+      <div class="stage-switch" role="group" aria-label="Papan stage">
+        <button type="button" class="chip" data-stage="intake">Intake</button>
+        <button type="button" class="chip stage-active" data-stage="implement" aria-pressed="true">Implement</button>
+        <button type="button" class="chip" data-stage="test">Test</button>
+        <button type="button" class="chip" data-stage="audit">Audit</button>
+        <button type="button" class="chip" data-stage="accept">Accept</button>
+      </div>
+    </div>
+
+    <div class="swimlane">
+      <button type="button" class="swimlane-toggle" id="swimlane-label">Task 01 — Live tracking (1 work item)</button>
+      <p class="dnd-hint">Geser kartu antar kolom fase. Posisi disimpan di browser. Kolom <strong>Menunggu manusia</strong> untuk keputusan Anda.</p>
+      <div class="board-wrap">
+        <div class="board" id="board"></div>
+      </div>
+    </div>
+  </div>
+
+  <div class="backdrop" id="backdrop">
+    <div class="modal" role="dialog" aria-modal="true" aria-labelledby="dialog-title">
+      <div class="modal-head">
+        <div>
+          <h2 id="dialog-title"></h2>
+          <p class="sub" id="dialog-kicker"></p>
+        </div>
+        <button type="button" class="modal-close" id="close" aria-label="Tutup">×</button>
+      </div>
+      <p id="dialog-body"></p>
+    </div>
+  </div>
+
+  <p class="toast" id="toast" role="status" aria-live="polite"></p>
+
+  <script>
+    var columns = [
+      { id: "acuan", title: "Acuan" },
+      { id: "rencana", title: "Rencana" },
+      { id: "aksi", title: "Aksi" },
+      { id: "hasil", title: "Hasil" },
+      { id: "menunggu", title: "Menunggu manusia" }
+    ];
+
+    var boards = {
+      intake: {
+        column: "menunggu",
+        key: "0800-IN-01",
+        tag: "Human gate",
+        tagClass: "human",
+        actor: "A",
+        actorYou: true,
+        title: "Task pertama epic",
+        foot: "decision.json belum dijawab",
+        date: "Menunggu jawaban",
+        dateWarn: true,
+        kicker: "Kolom Menunggu manusia · papan Intake",
+        body: "Tulis jawaban di decision.json. Orchestrator membuka papan Implement dan meletakkan kartu di Acuan."
+      },
+      implement: {
+        column: "rencana",
+        key: "0702-IMP-01",
+        tag: "Implementer",
+        tagClass: "",
+        actor: "Im",
+        actorYou: false,
+        title: "Rencana file, uji, dan commit",
+        foot: "Orchestrator memeriksa rencana",
+        date: "",
+        dateWarn: false,
+        kicker: "Kolom Rencana · papan Implement",
+        body: "Implementer sudah menulis rencana dan belum mengubah kode. Perpindahan ke Test dilakukan agent setelah orchestrator set running."
+      },
+      test: {
+        column: "aksi",
+        key: "0702-TST-01",
+        tag: "Tester",
+        tagClass: "tester",
+        actor: "Te",
+        actorYou: false,
+        title: "Jalankan perintah uji pada SHA",
+        foot: "nextSkill agentic-tester",
+        date: "",
+        dateWarn: false,
+        kicker: "Kolom Aksi · papan Test",
+        body: "Tester menjalankan perintah persis dari task. Exit code bukan 0 tetap dicatat. Kode produk tidak diperbaiki."
+      },
+      audit: {
+        column: "hasil",
+        key: "0702-AUD-01",
+        tag: "Auditor",
+        tagClass: "auditor",
+        actor: "Au",
+        actorYou: false,
+        title: "Putusan Review Focus",
+        foot: "Orchestrator menerima hasil",
+        date: "",
+        dateWarn: false,
+        kicker: "Kolom Hasil · papan Audit",
+        body: "Setiap butir punya putusan lulus atau gagal. Gagal memindahkan kartu ke Menunggu manusia sebelum perbaikan."
+      },
+      accept: {
+        column: "menunggu",
+        key: "0800-AC-01",
+        tag: "Human gate",
+        tagClass: "human",
+        actor: "A",
+        actorYou: true,
+        title: "Terima task Review Focus",
+        foot: "Lanjut, ulang, atau tanya",
+        date: "Menunggu keputusan",
+        dateWarn: true,
+        kicker: "Kolom Menunggu manusia · papan Accept",
+        body: "Jawaban masuk decision.json. Task mekanis tidak berhenti di kolom ini."
+      }
+    };
+
+    var boardEl = document.getElementById("board");
+    var backdrop = document.getElementById("backdrop");
+    var toastEl = document.getElementById("toast");
+    var current = "implement";
+    var dragMoved = false;
+    var toastTimer = null;
+    var STORAGE_KEY = "agentic-kanban-columns-v1";
+
+    var columnState = loadColumnState();
+
+    function loadColumnState() {
+      var defaults = {};
+      Object.keys(boards).forEach(function (stage) {
+        defaults[stage] = boards[stage].column;
+      });
+      try {
+        var saved = JSON.parse(localStorage.getItem(STORAGE_KEY) || "{}");
+        return Object.assign(defaults, saved);
+      } catch (_) {
+        return defaults;
+      }
+    }
+
+    function saveColumnState() {
+      localStorage.setItem(STORAGE_KEY, JSON.stringify(columnState));
+    }
+
+    function columnTitle(id) {
+      var col = columns.find(function (c) { return c.id === id; });
+      return col ? col.title : id;
+    }
+
+    function showToast(message) {
+      toastEl.textContent = message;
+      toastEl.classList.add("show");
+      clearTimeout(toastTimer);
+      toastTimer = setTimeout(function () {
+        toastEl.classList.remove("show");
+      }, 3200);
+    }
+
+    function buildIssue(board) {
+      var issue = document.createElement("div");
+      issue.className = "issue";
+      issue.draggable = true;
+      issue.setAttribute("role", "button");
+      issue.tabIndex = 0;
+      issue.innerHTML =
+        '<p class="issue-title"></p>' +
+        '<span class="issue-tag"></span>' +
+        '<div class="priority" aria-hidden="true"><i></i><i></i><i></i><i></i><b></b><b></b></div>' +
+        '<div class="issue-foot">' +
+        '<span class="issue-key"><svg viewBox="0 0 16 16"><path d="M11.94 2.94a1.5 1.5 0 0 1 0 2.12l-5.5 5.5a1.5 1.5 0 0 1-2.12 0l-1-1a1.5 1.5 0 0 1 2.12-2.12l.44.44 4.44-4.44a1.5 1.5 0 0 1 2.12 0z"/></svg><span class="key-text"></span></span>' +
+        '<span class="assignee"></span></div>' +
+        '<div class="issue-date"></div>';
+      issue.querySelector(".issue-title").textContent = board.title;
+      var tag = issue.querySelector(".issue-tag");
+      tag.textContent = board.tag;
+      if (board.tagClass) tag.classList.add(board.tagClass);
+      issue.querySelector(".key-text").textContent = board.key;
+      var av = issue.querySelector(".assignee");
+      av.textContent = board.actor;
+      if (board.actorYou) av.classList.add("you");
+      av.title = board.actorYou ? "Anda" : board.tag;
+      var dateEl = issue.querySelector(".issue-date");
+      if (board.date) {
+        dateEl.textContent = board.date;
+        if (board.dateWarn) dateEl.classList.add("warn");
+      } else {
+        dateEl.remove();
+      }
+
+      issue.addEventListener("dragstart", function (e) {
+        dragMoved = false;
+        issue.classList.add("dragging");
+        e.dataTransfer.setData("text/plain", current);
+        e.dataTransfer.effectAllowed = "move";
+      });
+      issue.addEventListener("dragend", function () {
+        issue.classList.remove("dragging");
+        document.querySelectorAll(".column-body.drag-over").forEach(function (el) {
+          el.classList.remove("drag-over");
+        });
+      });
+      issue.addEventListener("click", function () {
+        if (dragMoved) return;
+        openCard();
+      });
+      issue.addEventListener("keydown", function (e) {
+        if (e.key === "Enter" || e.key === " ") {
+          e.preventDefault();
+          openCard();
+        }
+      });
+      return issue;
+    }
+
+    function setupDropZone(body, columnId) {
+      body.dataset.columnId = columnId;
+      body.addEventListener("dragover", function (e) {
+        e.preventDefault();
+        e.dataTransfer.dropEffect = "move";
+        body.classList.add("drag-over");
+      });
+      body.addEventListener("dragleave", function (e) {
+        if (!body.contains(e.relatedTarget)) body.classList.remove("drag-over");
+      });
+      body.addEventListener("drop", function (e) {
+        e.preventDefault();
+        body.classList.remove("drag-over");
+        var from = columnState[current];
+        if (from === columnId) return;
+        dragMoved = true;
+        columnState[current] = columnId;
+        saveColumnState();
+        paint();
+        var board = boards[current];
+        if (columnId === "menunggu" && !board.actorYou) {
+          showToast("Kartu di Menunggu manusia. Di ledger nyata, agent menunggu keputusan Anda.");
+        } else {
+          showToast("Kartu dipindah ke " + columnTitle(columnId) + " · papan " + current + ".");
+        }
+      });
+    }
+
+    function paint() {
+      var board = boards[current];
+      var cardColumn = columnState[current];
+      document.querySelectorAll(".stage-switch .chip").forEach(function (btn) {
+        var on = btn.getAttribute("data-stage") === current;
+        btn.setAttribute("aria-pressed", on ? "true" : "false");
+        btn.classList.toggle("stage-active", on);
+      });
+
+      boardEl.replaceChildren();
+      columns.forEach(function (col) {
+        var hasCard = col.id === cardColumn;
+        var section = document.createElement("section");
+        section.className = "column";
+        section.setAttribute("aria-label", col.title);
+        section.dataset.columnId = col.id;
+        var head = document.createElement("div");
+        head.className = "column-head";
+        head.innerHTML = col.title + '<span class="count">' + (hasCard ? "1/1" : "0/1") + "</span>";
+        var body = document.createElement("div");
+        body.className = "column-body";
+        setupDropZone(body, col.id);
+        if (hasCard) body.appendChild(buildIssue(board));
+        section.append(head, body);
+        boardEl.appendChild(section);
+      });
+    }
+
+    function openCard() {
+      var board = boards[current];
+      document.getElementById("dialog-title").textContent = board.title;
+      document.getElementById("dialog-kicker").textContent = board.kicker;
+      document.getElementById("dialog-body").textContent = board.body;
+      backdrop.classList.add("open");
+      document.getElementById("close").focus();
+    }
+
+    function closeCard() {
+      backdrop.classList.remove("open");
+    }
+
+    document.querySelector(".stage-switch").addEventListener("click", function (e) {
+      var btn = e.target.closest("[data-stage]");
+      if (!btn) return;
+      current = btn.getAttribute("data-stage");
+      closeCard();
+      paint();
+      showToast("Papan " + current + " · kartu di " + columnTitle(columnState[current]) + ".");
+    });
+
+    document.getElementById("close").addEventListener("click", closeCard);
+    backdrop.addEventListener("click", function (e) {
+      if (e.target === backdrop) closeCard();
+    });
+    document.addEventListener("keydown", function (e) {
+      if (e.key === "Escape") closeCard();
+    });
+
+    paint();
+  </script>
+</body>
+</html>

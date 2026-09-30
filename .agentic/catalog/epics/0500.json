@@ -1,0 +1,82 @@
+{
+  "epic": "0500",
+  "gate": "G5",
+  "prdFolder": "docs/PRD/0500-tandai-lunas",
+  "devPhasePath": "docs/PRD/0500-tandai-lunas/0500_PRD_Tandai_Lunas_Development_phase.md",
+  "devPhaseMirror": "docs/PRD/0500-tandai-lunas/0500_PRD_Tandai_Lunas_Development_phase.md",
+  "reviewFocus": [],
+  "taskCount": 5,
+  "agenticReadyCount": 0,
+  "tasks": [
+    {
+      "id": "050001-db-paid-fields",
+      "epic": "0500",
+      "number": "01",
+      "title": "paid_at`, status `paid",
+      "area": "db",
+      "style": "compact",
+      "agenticReady": false,
+      "devPhasePath": "docs/PRD/0500-tandai-lunas/0500_PRD_Tandai_Lunas_Development_phase.md",
+      "files": [],
+      "produces": "`paid_at`, status `paid`",
+      "verify": "npm run typecheck && npm run test:domain && npm test",
+      "note": "Perlu Development phase agentic (Files/Produces) sebelum orchestrator implement."
+    },
+    {
+      "id": "050002-domain-paid-transition",
+      "epic": "0500",
+      "number": "02",
+      "title": "Valid state machine",
+      "area": "domain",
+      "style": "compact",
+      "agenticReady": false,
+      "devPhasePath": "docs/PRD/0500-tandai-lunas/0500_PRD_Tandai_Lunas_Development_phase.md",
+      "files": [],
+      "produces": "Valid state machine",
+      "verify": "npm run typecheck && npm run test:domain && npm test",
+      "note": "Perlu Development phase agentic (Files/Produces) sebelum orchestrator implement."
+    },
+    {
+      "id": "050003-be-mark-paid",
+      "epic": "0500",
+      "number": "03",
+      "title": "PATCH endpoint",
+      "area": "be",
+      "style": "compact",
+      "agenticReady": false,
+      "devPhasePath": "docs/PRD/0500-tandai-lunas/0500_PRD_Tandai_Lunas_Development_phase.md",
+      "files": [],
+      "produces": "PATCH endpoint",
+      "verify": "npm run typecheck && npm run test:domain && npm test",
+      "note": "Perlu Development phase agentic (Files/Produces) sebelum orchestrator implement."
+    },
+    {
+      "id": "050004-fe-mark-paid-button",
+      "epic": "0500",
+      "number": "04",
+      "title": "Invoice detail",
+      "area": "fe",
+      "style": "compact",
+      "agenticReady": false,
+      "devPhasePath": "docs/PRD/0500-tandai-lunas/0500_PRD_Tandai_Lunas_Development_phase.md",
+      "files": [],
+      "produces": "Invoice detail",
+      "verify": "npm run typecheck && npm run test:domain && npm test",
+      "note": "Perlu Development phase agentic (Files/Produces) sebelum orchestrator implement."
+    },
+    {
+      "id": "050005-infra-gate-g5-paid",
+      "epic": "0500",
+      "number": "05",
+      "title": "G5.1",
+      "area": "infra",
+      "style": "compact",
+      "agenticReady": false,
+      "devPhasePath": "docs/PRD/0500-tandai-lunas/0500_PRD_Tandai_Lunas_Development_phase.md",
+      "files": [],
+      "produces": "G5.1",
+      "verify": "npm run typecheck && npm run test:domain && npm test",
+      "note": "Perlu Development phase agentic (Files/Produces) sebelum orchestrator implement."
+    }
+  ]
+}

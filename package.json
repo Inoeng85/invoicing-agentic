@@ -38,7 +38,8 @@
     "db:seed:sample": "node scripts/assert-agentic-root.mjs && npm run db:seed:sample -w @invoicing/database",
     "db:studio": "npm run db:studio -w @invoicing/database",
     "setup": "node --import tsx scripts/setup.ts",
-    "verify": "node --import tsx scripts/verify.ts"
+    "verify": "node --import tsx scripts/verify.ts",
+    "agentic:catalog": "node scripts/assert-agentic-root.mjs && node scripts/agentic/build-catalog.mjs"
   },
   "devDependencies": {
     "@invoicing/platform": "*",

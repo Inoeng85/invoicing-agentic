@@ -1,0 +1,82 @@
+{
+  "epic": "0400",
+  "gate": "G4",
+  "prdFolder": "docs/PRD/0400-pdf-invoice",
+  "devPhasePath": "docs/PRD/0400-pdf-invoice/0400_PRD_PDF_Invoice_Development_phase.md",
+  "devPhaseMirror": "docs/PRD/0400-pdf-invoice/0400_PRD_PDF_Invoice_Development_phase.md",
+  "reviewFocus": [],
+  "taskCount": 5,
+  "agenticReadyCount": 0,
+  "tasks": [
+    {
+      "id": "040001-domain-pdf-layout-data",
+      "epic": "0400",
+      "number": "01",
+      "title": "DTO for PDF renderer",
+      "area": "domain",
+      "style": "compact",
+      "agenticReady": false,
+      "devPhasePath": "docs/PRD/0400-pdf-invoice/0400_PRD_PDF_Invoice_Development_phase.md",
+      "files": [],
+      "produces": "DTO for PDF renderer",
+      "verify": "npm run typecheck && npm run test:domain && npm test",
+      "note": "Perlu Development phase agentic (Files/Produces) sebelum orchestrator implement."
+    },
+    {
+      "id": "040002-be-pdf-generate",
+      "epic": "0400",
+      "number": "02",
+      "title": "pdf-lib` service",
+      "area": "be",
+      "style": "compact",
+      "agenticReady": false,
+      "devPhasePath": "docs/PRD/0400-pdf-invoice/0400_PRD_PDF_Invoice_Development_phase.md",
+      "files": [],
+      "produces": "`pdf-lib` service",
+      "verify": "npm run typecheck && npm run test:domain && npm test",
+      "note": "Perlu Development phase agentic (Files/Produces) sebelum orchestrator implement."
+    },
+    {
+      "id": "040003-be-pdf-download-route",
+      "epic": "0400",
+      "number": "03",
+      "title": "Authenticated download",
+      "area": "be",
+      "style": "compact",
+      "agenticReady": false,
+      "devPhasePath": "docs/PRD/0400-pdf-invoice/0400_PRD_PDF_Invoice_Development_phase.md",
+      "files": [],
+      "produces": "Authenticated download",
+      "verify": "npm run typecheck && npm run test:domain && npm test",
+      "note": "Perlu Development phase agentic (Files/Produces) sebelum orchestrator implement."
+    },
+    {
+      "id": "040004-fe-download-button",
+      "epic": "0400",
+      "number": "04",
+      "title": "Web action",
+      "area": "fe",
+      "style": "compact",
+      "agenticReady": false,
+      "devPhasePath": "docs/PRD/0400-pdf-invoice/0400_PRD_PDF_Invoice_Development_phase.md",
+      "files": [],
+      "produces": "Web action",
+      "verify": "npm run typecheck && npm run test:domain && npm test",
+      "note": "Perlu Development phase agentic (Files/Produces) sebelum orchestrator implement."
+    },
+    {
+      "id": "040005-infra-gate-pdf",
+      "epic": "0400",
+      "number": "05",
+      "title": "Content-Type + size > 0",
+      "area": "infra",
+      "style": "compact",
+      "agenticReady": false,
+      "devPhasePath": "docs/PRD/0400-pdf-invoice/0400_PRD_PDF_Invoice_Development_phase.md",
+      "files": [],
+      "produces": "Content-Type + size > 0",
+      "verify": "npm run typecheck && npm run test:domain && npm test",
+      "note": "Perlu Development phase agentic (Files/Produces) sebelum orchestrator implement."
+    }
+  ]
+}

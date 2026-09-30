@@ -1,0 +1,82 @@
+{
+  "epic": "0800",
+  "gate": "TG-0",
+  "prdFolder": "docs/PRD/0800-orkestrasi-stage",
+  "devPhasePath": "docs/PRD/0800-orkestrasi-stage/0800_PRD_Orkestrasi_Stage_Development_phase.md",
+  "devPhaseMirror": "docs/PRD/0800-orkestrasi-stage/0800_PRD_Orkestrasi_Stage_Development_phase.md",
+  "reviewFocus": [],
+  "taskCount": 5,
+  "agenticReadyCount": 0,
+  "tasks": [
+    {
+      "id": "080001-docs-parse-manifest",
+      "epic": "0800",
+      "number": "01",
+      "title": "Parser satu Development phase → manifes task (OR-01)",
+      "area": "docs",
+      "style": "compact",
+      "agenticReady": false,
+      "devPhasePath": "docs/PRD/0800-orkestrasi-stage/0800_PRD_Orkestrasi_Stage_Development_phase.md",
+      "files": [],
+      "produces": "Parser satu Development phase → manifes task (OR-01)",
+      "verify": "npm run gate",
+      "note": "Perlu Development phase agentic (Files/Produces) sebelum orchestrator implement."
+    },
+    {
+      "id": "080002-stack-run-ledger",
+      "epic": "0800",
+      "number": "02",
+      "title": "CLI `status` / `complete` / `ask` / `answer`; tolak `running` tanpa acuan dan rencana; tolak `complete` bila hasil tidak",
+      "area": "stack",
+      "style": "compact",
+      "agenticReady": false,
+      "devPhasePath": "docs/PRD/0800-orkestrasi-stage/0800_PRD_Orkestrasi_Stage_Development_phase.md",
+      "files": [],
+      "produces": "CLI `status` / `complete` / `ask` / `answer`; tolak `running` tanpa acuan dan rencana; tolak `complete` bila hasil tidak memetakan butir rencana (OR-02, OR-08, OR-09, OR-11, OR-12, OR-16…OR-19)",
+      "verify": "npm run gate",
+      "note": "Perlu Development phase agentic (Files/Produces) sebelum orchestrator implement."
+    },
+    {
+      "id": "080003-docs-worker-skills",
+      "epic": "0800",
+      "number": "03",
+      "title": "Skill implementer/tester dan skill auditor: baca acuan, tulis rencana, baru bertindak, lalu tulis hasil (OR-03…OR-07, OR",
+      "area": "docs",
+      "style": "compact",
+      "agenticReady": false,
+      "devPhasePath": "docs/PRD/0800-orkestrasi-stage/0800_PRD_Orkestrasi_Stage_Development_phase.md",
+      "files": [],
+      "produces": "Skill implementer/tester dan skill auditor: baca acuan, tulis rencana, baru bertindak, lalu tulis hasil (OR-03…OR-07, OR-13, OR-17)",
+      "verify": "npm run gate",
+      "note": "Perlu Development phase agentic (Files/Produces) sebelum orchestrator implement."
+    },
+    {
+      "id": "080004-docs-policy-default",
+      "epic": "0800",
+      "number": "04",
+      "title": "Policy YAML default dan penimpaan per task Review Focus (OR-08, OR-10)",
+      "area": "docs",
+      "style": "compact",
+      "agenticReady": false,
+      "devPhasePath": "docs/PRD/0800-orkestrasi-stage/0800_PRD_Orkestrasi_Stage_Development_phase.md",
+      "files": [],
+      "produces": "Policy YAML default dan penimpaan per task Review Focus (OR-08, OR-10)",
+      "verify": "npm run gate",
+      "note": "Perlu Development phase agentic (Files/Produces) sebelum orchestrator implement."
+    },
+    {
+      "id": "080005-stack-dry-run-intake",
+      "epic": "0800",
+      "number": "05",
+      "title": "Satu task contoh berhenti di `waiting_human` tanpa diff produk (OR-14, OR-15)",
+      "area": "stack",
+      "style": "compact",
+      "agenticReady": false,
+      "devPhasePath": "docs/PRD/0800-orkestrasi-stage/0800_PRD_Orkestrasi_Stage_Development_phase.md",
+      "files": [],
+      "produces": "Satu task contoh berhenti di `waiting_human` tanpa diff produk (OR-14, OR-15)",
+      "verify": "npm run gate",
+      "note": "Perlu Development phase agentic (Files/Produces) sebelum orchestrator implement."
+    }
+  ]
+}

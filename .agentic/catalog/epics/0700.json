@@ -1,0 +1,189 @@
+{
+  "epic": "0700",
+  "gate": null,
+  "prdFolder": "docs/PRD/0700-debt-collector",
+  "devPhasePath": "docs/PRD/0700-debt-collector/0700_PRD_Debt_Collector_Development_phase.md",
+  "devPhaseMirror": "docs/PRD/0700-debt-collector/0700_PRD_Debt_Collector_Development_phase.md",
+  "reviewFocus": [
+    "Double submit / assign kolektor yang sama dua kali",
+    "Rate kolektor diubah setelah assign",
+    "Invoice lunas tanpa kolektor",
+    "Input komisi pakai koma (\"7,5\") atau kosong",
+    "Invoice `overdue` (hasil `refreshOverdueInvoices`)"
+  ],
+  "taskCount": 9,
+  "agenticReadyCount": 9,
+  "tasks": [
+    {
+      "id": "0700-task-01",
+      "epic": "0700",
+      "number": "01",
+      "title": "Prisma schema + migration",
+      "area": "db",
+      "style": "agentic",
+      "agenticReady": true,
+      "devPhasePath": "docs/PRD/0700-debt-collector/0700_PRD_Debt_Collector_Development_phase.md",
+      "files": [
+        "packages/database/prisma/schema.prisma",
+        "packages/database/prisma/migrations/<timestamp>_debt_collector/migration.sql",
+        "packages/database/src/index.ts"
+      ],
+      "produces": "",
+      "verify": "npm run db:migrate -- --name debt_collector"
+    },
+    {
+      "id": "0700-task-02",
+      "epic": "0700",
+      "number": "02",
+      "title": "Domain test harness + `computeCommissionCents`",
+      "area": "domain",
+      "style": "agentic",
+      "agenticReady": true,
+      "devPhasePath": "docs/PRD/0700-debt-collector/0700_PRD_Debt_Collector_Development_phase.md",
+      "files": [
+        "packages/domain/src/test-setup.ts",
+        "packages/domain/src/test-fixtures.ts",
+        "packages/domain/src/invoiceTotals.ts",
+        "packages/domain/src/invoiceTotals.test.ts",
+        "packages/domain/package.json",
+        "packages/domain/src/index.ts"
+      ],
+      "produces": "",
+      "verify": "npm run test:domain"
+    },
+    {
+      "id": "0700-task-03",
+      "epic": "0700",
+      "number": "03",
+      "title": "Domain `collectors.ts`",
+      "area": "domain",
+      "style": "agentic",
+      "agenticReady": true,
+      "devPhasePath": "docs/PRD/0700-debt-collector/0700_PRD_Debt_Collector_Development_phase.md",
+      "files": [
+        "packages/domain/src/collectors.ts",
+        "packages/domain/src/collectors.test.ts",
+        "packages/domain/src/index.ts"
+      ],
+      "produces": "",
+      "verify": "npm run test:domain"
+    },
+    {
+      "id": "0700-task-04",
+      "epic": "0700",
+      "number": "04",
+      "title": "Domain `collections.ts` (assign, unassign, activity)",
+      "area": "domain",
+      "style": "agentic",
+      "agenticReady": true,
+      "devPhasePath": "docs/PRD/0700-debt-collector/0700_PRD_Debt_Collector_Development_phase.md",
+      "files": [
+        "packages/domain/src/collections.ts",
+        "packages/domain/src/collections.test.ts",
+        "packages/domain/src/index.ts"
+      ],
+      "produces": "",
+      "verify": "npm run test:domain"
+    },
+    {
+      "id": "0700-task-05",
+      "epic": "0700",
+      "number": "05",
+      "title": "`invoices.ts` — lunas/batal menutup assignment, filter kolektor",
+      "area": "domain",
+      "style": "agentic",
+      "agenticReady": true,
+      "devPhasePath": "docs/PRD/0700-debt-collector/0700_PRD_Debt_Collector_Development_phase.md",
+      "files": [
+        "packages/domain/src/invoices.ts",
+        "packages/domain/src/invoices-collection.test.ts"
+      ],
+      "produces": "",
+      "verify": "npm run test:domain"
+    },
+    {
+      "id": "0700-task-06",
+      "epic": "0700",
+      "number": "06",
+      "title": "API endpoints + gate Phase 7",
+      "area": "fe",
+      "style": "agentic",
+      "agenticReady": true,
+      "devPhasePath": "docs/PRD/0700-debt-collector/0700_PRD_Debt_Collector_Development_phase.md",
+      "files": [
+        "apps/api/src/routes.ts",
+        "apps/api/src/controllers/collectors.controller.tsx",
+        "apps/api/src/controllers/collection.controller.tsx",
+        "apps/api/src/router.ts",
+        "apps/api/src/controllers/invoices.controller.tsx:21-29",
+        "scripts/gates/run-all.ts"
+      ],
+      "produces": "",
+      "verify": "npm run gate"
+    },
+    {
+      "id": "0700-task-07",
+      "epic": "0700",
+      "number": "07",
+      "title": "Web — halaman Kolektor + navigasi",
+      "area": "fe",
+      "style": "agentic",
+      "agenticReady": true,
+      "devPhasePath": "docs/PRD/0700-debt-collector/0700_PRD_Debt_Collector_Development_phase.md",
+      "files": [
+        "apps/web/app/lib/percent.ts",
+        "apps/web/app/lib/percent.test.ts",
+        "apps/web/app/routes.ts",
+        "apps/web/app/actions/collectors/controller.tsx",
+        "apps/web/app/router.ts",
+        "apps/web/app/ui/layout.tsx:10",
+        "apps/web/app/actions/controller.test.ts"
+      ],
+      "produces": "",
+      "verify": "npm run typecheck"
+    },
+    {
+      "id": "0700-task-08",
+      "epic": "0700",
+      "number": "08",
+      "title": "Web — panel Penagihan di detail invoice + filter list",
+      "area": "fe",
+      "style": "agentic",
+      "agenticReady": true,
+      "devPhasePath": "docs/PRD/0700-debt-collector/0700_PRD_Debt_Collector_Development_phase.md",
+      "files": [
+        "apps/web/app/routes.ts",
+        "apps/web/app/actions/collection/controller.tsx",
+        "apps/web/app/ui/collection-panel.tsx",
+        "apps/web/app/router.ts",
+        "apps/web/app/ui/invoice-detail.tsx",
+        "apps/web/app/actions/invoices/controller.tsx",
+        "apps/web/app/ui/invoice-table.tsx",
+        "apps/web/app/actions/controller.test.ts"
+      ],
+      "produces": "",
+      "verify": "npm run dev"
+    },
+    {
+      "id": "0700-task-09",
+      "epic": "0700",
+      "number": "09",
+      "title": "Dokumentasi",
+      "area": "docs",
+      "style": "agentic",
+      "agenticReady": true,
+      "devPhasePath": "docs/PRD/0700-debt-collector/0700_PRD_Debt_Collector_Development_phase.md",
+      "files": [
+        "docs/PRD/README.md",
+        "docs/invoicing/brd/MVP-SCOPE-LOCK.md",
+        "docs/invoicing/BRD.md",
+        "docs/invoicing/engineering/API.md",
+        "docs/invoicing/ARCHITECTURE.md",
+        "docs/invoicing/legal/LEGAL-REVIEW-CHECKLIST.md",
+        "docs/PRD/0700-debt-collector/0700_PRD_Debt_Collector.md"
+      ],
+      "produces": "",
+      "verify": "npm run typecheck && npm run test:domain && npm test && npm run gate"
+    }
+  ]
+}

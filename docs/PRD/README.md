@@ -27,3 +27,13 @@
 **Canonical platform (detail penuh):** tetap di [0000_platform_setup/prd_platform_setup.md](../0000_platform_setup/prd_platform_setup.md).
 
 **BRD produk:** [invoicing/BRD.md](../invoicing/BRD.md).
+
+## Tooling — di luar urutan produk
+
+Bukan FR invoice dan tidak masuk prioritas 0–14 di atas. Gate-nya lokal (bukan G0–G7).
+
+| ID | Folder | Gate | Scope | Depends |
+|----|--------|------|-------|---------|
+| **0800** | [0800-orkestrasi-stage](./0800-orkestrasi-stage/) | TG-0 | Orkestrasi stage agent dan manusia atas PRD + Development phase | Development phase target sudah ada |
+
+**Katalog task agentic (OR-01):** setelah mengubah Development phase, jalankan `npm run agentic:catalog` dari root `Agentic/`. Keluaran: [`.agentic/catalog/tasks.json`](../../.agentic/catalog/tasks.json) (semua task) dan `.agentic/catalog/epics/{epic}.json` per epic. Task dengan `agenticReady: true` punya **Files** + **Produces** siap orchestrator; task `compact` / `platform` terdaftar dengan catatan perlu rencana agentic penuh.

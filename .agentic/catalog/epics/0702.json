@@ -1,0 +1,171 @@
+{
+  "epic": "0702",
+  "gate": null,
+  "prdFolder": "docs/PRD/0702-live-tracking",
+  "devPhasePath": "docs/PRD/0702-live-tracking/0702_PRD_Live_Tracking_Development_phase.md",
+  "devPhaseMirror": "docs/PRD/0702-live-tracking/0702_PRD_Live_Tracking_Development_phase.md",
+  "reviewFocus": [
+    "Kolektor membuka link setelah penugasan berakhir",
+    "Reassign ke kolektor lain",
+    "Nama klien/kolektor berisi `<img onerror>`",
+    "Klien tanpa pin",
+    "Isian lat/lng hanya satu terisi atau teks"
+  ],
+  "taskCount": 8,
+  "agenticReadyCount": 8,
+  "tasks": [
+    {
+      "id": "0702-task-01",
+      "epic": "0702",
+      "number": "01",
+      "title": "Schema + migration",
+      "area": "db",
+      "style": "agentic",
+      "agenticReady": true,
+      "devPhasePath": "docs/PRD/0702-live-tracking/0702_PRD_Live_Tracking_Development_phase.md",
+      "files": [
+        "packages/database/prisma/schema.prisma",
+        "packages/database/src/index.ts",
+        "packages/database/prisma/migrations/20260930140000_live_tracking/migration.sql"
+      ],
+      "produces": "",
+      "verify": "npm run typecheck && npm run test:domain && npm test"
+    },
+    {
+      "id": "0702-task-02",
+      "epic": "0702",
+      "number": "02",
+      "title": "Domain `geo.ts` + `collector-tracking.ts`",
+      "area": "domain",
+      "style": "agentic",
+      "agenticReady": true,
+      "devPhasePath": "docs/PRD/0702-live-tracking/0702_PRD_Live_Tracking_Development_phase.md",
+      "files": [
+        "packages/domain/src/geo.ts",
+        "packages/domain/src/geo.test.ts",
+        "packages/domain/src/collector-tracking.ts",
+        "packages/domain/src/collector-tracking.test.ts",
+        "packages/domain/src/index.ts"
+      ],
+      "produces": "",
+      "verify": "npm run test:domain"
+    },
+    {
+      "id": "0702-task-03",
+      "epic": "0702",
+      "number": "03",
+      "title": "Penutupan penugasan membersihkan tracking (BR-11) + lokasi klien (FR-14j)",
+      "area": "domain",
+      "style": "agentic",
+      "agenticReady": true,
+      "devPhasePath": "docs/PRD/0702-live-tracking/0702_PRD_Live_Tracking_Development_phase.md",
+      "files": [
+        "packages/domain/src/collections.ts",
+        "packages/domain/src/clients.ts",
+        "packages/domain/src/index.ts",
+        "packages/domain/src/collector-tracking.test.ts",
+        "packages/domain/src/clients-location.test.ts"
+      ],
+      "produces": "",
+      "verify": "npm run test:domain"
+    },
+    {
+      "id": "0702-task-04",
+      "epic": "0702",
+      "number": "04",
+      "title": "Leaflet setup (dependency, assets, CSS, loader)",
+      "area": "fe",
+      "style": "agentic",
+      "agenticReady": true,
+      "devPhasePath": "docs/PRD/0702-live-tracking/0702_PRD_Live_Tracking_Development_phase.md",
+      "files": [
+        "apps/web/package.json",
+        "package-lock.json",
+        "apps/web/app/assets.ts:16",
+        "apps/web/app/styles/app.css",
+        "apps/web/app/actions/public/leaflet.ts",
+        "apps/web/app/types/leaflet-esm.d.ts"
+      ],
+      "produces": "",
+      "verify": "npm run css:build -w @invoicing/web"
+    },
+    {
+      "id": "0702-task-05",
+      "epic": "0702",
+      "number": "05",
+      "title": "Halaman kolektor `/t/:token` + endpoint lokasi + island TrackingSharer",
+      "area": "fe",
+      "style": "agentic",
+      "agenticReady": true,
+      "devPhasePath": "docs/PRD/0702-live-tracking/0702_PRD_Live_Tracking_Development_phase.md",
+      "files": [
+        "apps/web/app/routes.ts",
+        "apps/web/app/router.ts",
+        "apps/web/app/actions/controller.test.ts",
+        "apps/web/app/actions/tracking/controller.tsx",
+        "apps/web/app/actions/public/tracking-sharer.tsx",
+        "apps/web/app/actions/public/tracking-map.tsx"
+      ],
+      "produces": "",
+      "verify": "npm run typecheck && npm run test:domain && npm test"
+    },
+    {
+      "id": "0702-task-06",
+      "epic": "0702",
+      "number": "06",
+      "title": "Peta freelancer + link tracking di panel",
+      "area": "fe",
+      "style": "agentic",
+      "agenticReady": true,
+      "devPhasePath": "docs/PRD/0702-live-tracking/0702_PRD_Live_Tracking_Development_phase.md",
+      "files": [
+        "apps/web/app/routes.ts",
+        "apps/web/app/router.ts",
+        "apps/web/app/ui/collection-panel.tsx",
+        "apps/web/app/actions/invoices/controller.tsx",
+        "apps/web/app/ui/invoice-detail.tsx",
+        "apps/web/app/actions/controller.test.ts",
+        "apps/web/app/actions/invoice-tracking/controller.tsx",
+        "apps/web/app/actions/public/copy-button.tsx",
+        "apps/web/app/ui/tracking-data.ts"
+      ],
+      "produces": "",
+      "verify": "npm run typecheck && npm run test:domain && npm test"
+    },
+    {
+      "id": "0702-task-07",
+      "epic": "0702",
+      "number": "07",
+      "title": "Pin lokasi klien (FR-14j)",
+      "area": "fe",
+      "style": "agentic",
+      "agenticReady": true,
+      "devPhasePath": "docs/PRD/0702-live-tracking/0702_PRD_Live_Tracking_Development_phase.md",
+      "files": [
+        "apps/web/app/actions/clients/controller.tsx",
+        "apps/web/app/actions/controller.test.ts",
+        "apps/web/app/actions/public/location-picker.tsx"
+      ],
+      "produces": "",
+      "verify": "npm run typecheck && npm run test:domain && npm test"
+    },
+    {
+      "id": "0702-task-08",
+      "epic": "0702",
+      "number": "08",
+      "title": "Verifikasi browser + dokumen",
+      "area": "docs",
+      "style": "agentic",
+      "agenticReady": true,
+      "devPhasePath": "docs/PRD/0702-live-tracking/0702_PRD_Live_Tracking_Development_phase.md",
+      "files": [
+        "docs/PRD/README.md",
+        "docs/PRD/0702-live-tracking/0702_PRD_Live_Tracking.md",
+        "docs/invoicing/legal/LEGAL-REVIEW-CHECKLIST.md",
+        "docs/invoicing/brd/MVP-SCOPE-LOCK.md"
+      ],
+      "produces": "",
+      "verify": "npm run dev"
+    }
+  ]
+}

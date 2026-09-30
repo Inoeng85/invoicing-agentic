@@ -1,0 +1,94 @@
+{
+  "epic": "0701",
+  "gate": null,
+  "prdFolder": "docs/PRD/0701-foto-kolektor",
+  "devPhasePath": "docs/PRD/0701-foto-kolektor/0701_PRD_Foto_Kolektor_Development_phase.md",
+  "devPhaseMirror": "docs/PRD/0701-foto-kolektor/0701_PRD_Foto_Kolektor_Development_phase.md",
+  "reviewFocus": [],
+  "taskCount": 5,
+  "agenticReadyCount": 4,
+  "tasks": [
+    {
+      "id": "0701-task-01",
+      "epic": "0701",
+      "number": "01",
+      "title": "Schema + migration",
+      "area": "db",
+      "style": "agentic",
+      "agenticReady": true,
+      "devPhasePath": "docs/PRD/0701-foto-kolektor/0701_PRD_Foto_Kolektor_Development_phase.md",
+      "files": [
+        "packages/database/prisma/schema.prisma",
+        "packages/database/src/index.ts",
+        "packages/database/prisma/migrations/20260930130000_collector_photo/migration.sql"
+      ],
+      "produces": "`prisma.debtCollectorPhoto`; `DebtCollector.photoUpdatedAt: Date | null`; type export `DebtCollectorPhoto`.",
+      "verify": "npm run typecheck"
+    },
+    {
+      "id": "0701-task-02",
+      "epic": "0701",
+      "number": "02",
+      "title": "Domain `collector-photos.ts`",
+      "area": "domain",
+      "style": "agentic",
+      "agenticReady": true,
+      "devPhasePath": "docs/PRD/0701-foto-kolektor/0701_PRD_Foto_Kolektor_Development_phase.md",
+      "files": [
+        "packages/domain/src/collector-photos.ts",
+        "packages/domain/src/collector-photos.test.ts",
+        "packages/domain/src/index.ts",
+        "packages/domain/src/test-fixtures.ts"
+      ],
+      "produces": "`MAX_COLLECTOR_PHOTO_BYTES`, `detectImageType(bytes: Uint8Array): CollectorPhotoMimeType | null`, `setCollectorPhoto(userId, collectorId, bytes: Uint8Array): Promise<DebtCollector>`, `removeCollectorPhoto(userId, collectorId): Promise<DebtCollector>`, `getCollectorPhoto(userId, collectorId): Promise<{ bytes: Uint8Array; mimeType: string; updatedAt: Date }>`.",
+      "verify": "npm run test:domain"
+    },
+    {
+      "id": "0701-task-03",
+      "epic": "0701",
+      "number": "03",
+      "title": "Web upload / serve / delete routes + edit page",
+      "area": "fe",
+      "style": "agentic",
+      "agenticReady": true,
+      "devPhasePath": "docs/PRD/0701-foto-kolektor/0701_PRD_Foto_Kolektor_Development_phase.md",
+      "files": [
+        "apps/web/app/routes.ts",
+        "apps/web/app/actions/collectors/controller.tsx",
+        "apps/web/app/actions/controller.test.ts",
+        "apps/web/app/ui/collector-avatar.tsx"
+      ],
+      "produces": "`collectorAvatar(collector: { id: string; name: string; photoUpdatedAt: Date | null }, sizeClass?: string): RemixNode`.",
+      "verify": "npm run typecheck && npm run test:domain && npm test"
+    },
+    {
+      "id": "0701-task-04",
+      "epic": "0701",
+      "number": "04",
+      "title": "Avatar di panel Penagihan",
+      "area": "fe",
+      "style": "agentic",
+      "agenticReady": true,
+      "devPhasePath": "docs/PRD/0701-foto-kolektor/0701_PRD_Foto_Kolektor_Development_phase.md",
+      "files": [
+        "apps/web/app/ui/collection-panel.tsx",
+        "apps/web/app/actions/controller.test.ts"
+      ],
+      "produces": "",
+      "verify": "npm run typecheck && npm run test:domain && npm test"
+    },
+    {
+      "id": "0701-task-05",
+      "epic": "0701",
+      "number": "05",
+      "title": "Docs",
+      "area": "stack",
+      "style": "agentic",
+      "agenticReady": false,
+      "devPhasePath": "docs/PRD/0701-foto-kolektor/0701_PRD_Foto_Kolektor_Development_phase.md",
+      "files": [],
+      "produces": "",
+      "verify": "npm run typecheck && npm run test:domain && npm test && npm run gate"
+    }
+  ]
+}
