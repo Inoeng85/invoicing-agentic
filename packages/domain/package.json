@@ -6,7 +6,9 @@
     "node": ">=24.3.0"
   },
   "exports": {
-    ".": "./src/index.ts"
+    ".": "./src/index.ts",
+    "./test-setup": "./src/test-setup.ts",
+    "./test-fixtures": "./src/test-fixtures.ts"
   },
   "scripts": {
     "test": "node --import tsx --test \"src/*.test.ts\"",

@@ -78,18 +78,22 @@ export async function updateCollector(userId: string, collectorId: string, input
 }
 
 export async function setCollectorActive(userId: string, collectorId: string, active: boolean) {
-  await getCollector(userId, collectorId)
-  if (!active) {
-    let open = await prisma.collectionAssignment.count({ where: { collectorId, endedAt: null } })
-    if (open > 0) {
-      throw new DomainError(
-        'Kolektor masih menagih invoice aktif',
-        'collector_has_active_assignments',
-        409,
-      )
+  // Same transaction as the check so a concurrent assignCollector can't slip in between (BR-09).
+  return prisma.$transaction(async (tx) => {
+    let collector = await tx.debtCollector.findFirst({ where: { id: collectorId, userId }, select: { id: true } })
+    if (!collector) throw new DomainError('Kolektor tidak ditemukan', 'collector_not_found', 404)
+    if (!active) {
+      let open = await tx.collectionAssignment.count({ where: { collectorId, endedAt: null } })
+      if (open > 0) {
+        throw new DomainError(
+          'Kolektor masih menagih invoice aktif',
+          'collector_has_active_assignments',
+          409,
+        )
+      }
     }
-  }
-  return prisma.debtCollector.update({ where: { id: collectorId }, data: { active } })
+    return tx.debtCollector.update({ where: { id: collectorId }, data: { active } })
+  })
 }
 
 export async function listCollectorSummaries(userId: string): Promise<CollectorSummary[]> {

@@ -13,6 +13,7 @@ import {
   setCollectorActive,
   updateCollector,
 } from './collectors.ts'
+import { assignCollector } from './collections.ts'
 import { makeClient, makeCollector, makeInvoice, makeUser } from './test-fixtures.ts'
 
 async function rejectsWith(promise: Promise<unknown>, code: string) {
@@ -79,6 +80,22 @@ describe('collectors (FR-14a/b, BR-09)', () => {
     })
     let updated = await setCollectorActive(user.id, collector.id, false)
     assert.equal(updated.active, false)
+  })
+
+  it('BR-09 holds when deactivate races an assign', async () => {
+    for (let round = 0; round < 5; round++) {
+      let user = await makeUser()
+      let client = await makeClient(user.id)
+      let invoice = await makeInvoice(user.id, client.id)
+      let collector = await makeCollector(user.id)
+      await Promise.allSettled([
+        setCollectorActive(user.id, collector.id, false),
+        assignCollector(user.id, invoice.id, collector.id),
+      ])
+      let fresh = await getCollector(user.id, collector.id)
+      let open = await prisma.collectionAssignment.count({ where: { collectorId: collector.id, endedAt: null } })
+      assert.ok(fresh.active || open === 0, `round ${round}: inactive collector holds ${open} active assignment(s)`)
+    }
   })
 
   it('summaries count active outstanding and earned commission', async () => {
