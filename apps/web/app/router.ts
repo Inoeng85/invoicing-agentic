@@ -10,6 +10,7 @@ import collectionController from './actions/collection/controller.tsx'
 import collectorsController, { collectorActionsController } from './actions/collectors/controller.tsx'
 import invoicesController from './actions/invoices/controller.tsx'
 import settingsController from './actions/settings/controller.tsx'
+import trackingController from './actions/tracking/controller.tsx'
 import { assets } from './assets.ts'
 import { formMethodOverride } from './lib/method-override.ts'
 import { routes } from './routes.ts'
@@ -19,7 +20,7 @@ const renderMiddleware = render({ assets })
 function publicInvoiceRateLimit() {
   return async (context: { request: Request }, next: () => Promise<Response>) => {
     let path = new URL(context.request.url).pathname
-    if (path.startsWith('/i/')) {
+    if (path.startsWith('/i/') || path.startsWith('/t/')) {
       let ip = clientIp(context.request)
       if (!rateLimitKey(`public:${ip}`, 120, 60_000)) {
         return new Response('Too Many Requests', { status: 429 })
@@ -55,4 +56,5 @@ router.map(routes.invoices, invoicesController)
 router.map(routes.collectors, collectorsController)
 router.map(routes.collectorActions, collectorActionsController)
 router.map(routes.invoiceCollection, collectionController)
+router.map(routes.collectorTracking, trackingController)
 router.map(routes.settings, settingsController)

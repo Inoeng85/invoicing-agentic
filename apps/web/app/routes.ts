@@ -27,6 +27,10 @@ export const routes = route({
     uploadPhoto: post('/collectors/:collectorId/photo'),
     deletePhoto: post('/collectors/:collectorId/photo/delete'),
   },
+  collectorTracking: {
+    page: get('/t/:token'),
+    location: post('/t/:token/location'),
+  },
   invoiceCollection: {
     assign: post('/invoices/:invoiceId/collection/assign'),
     unassign: post('/invoices/:invoiceId/collection/unassign'),

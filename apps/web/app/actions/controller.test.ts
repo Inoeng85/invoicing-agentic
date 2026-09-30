@@ -3,7 +3,14 @@ import '@invoicing/domain/test-setup'
 import * as assert from 'remix/assert'
 import { describe, it } from 'remix/test'
 
-import { assignCollector, createSessionToken, setCollectorPhoto, updateCollector } from '@invoicing/domain'
+import {
+  assignCollector,
+  createSessionToken,
+  createTrackingLink,
+  revokeTrackingLink,
+  setCollectorPhoto,
+  updateCollector,
+} from '@invoicing/domain'
 import { PNG_BYTES, makeClient, makeCollector, makeInvoice, makeUser } from '@invoicing/domain/test-fixtures'
 
 import { createCsrfToken } from '../lib/csrf.ts'
@@ -211,5 +218,47 @@ describe('root controller', () => {
       await fetchResponse(routes.collectors.edit.href({ collectorId: withPhoto.id }), { headers: sessionHeaders(user.id) })
     ).text()
     assert.ok(edit.includes(`popovertarget="${dialogId}"`) && edit.includes(`id="${dialogId}"`), 'edit page preview')
+  })
+  it('collector tracking page shows the destination without invoice money', async () => {
+    let user = await makeUser()
+    let client = await makeClient(user.id)
+    let invoice = await makeInvoice(user.id, client.id, { totalCents: 123_456_700 })
+    let collector = await makeCollector(user.id)
+    await assignCollector(user.id, invoice.id, collector.id)
+    let token = await createTrackingLink(user.id, invoice.id)
+
+    let page = await fetchResponse(routes.collectorTracking.page.href({ token }))
+    assert.equal(page.status, 200)
+    let html = await page.text()
+    assert.match(html, new RegExp(client.name))
+    assert.match(html, /Mulai berbagi lokasi/)
+    assert.match(html, /noindex/)
+    assert.ok(!html.includes('1.234.567') && !html.includes(invoice.number!), 'no invoice money or number')
+
+    await revokeTrackingLink(user.id, invoice.id)
+    let dead = await fetchResponse(routes.collectorTracking.page.href({ token }))
+    assert.equal(dead.status, 404)
+  })
+
+  it('accepts collector locations and rejects dead links and big bodies', async () => {
+    let user = await makeUser()
+    let client = await makeClient(user.id)
+    let invoice = await makeInvoice(user.id, client.id)
+    await assignCollector(user.id, invoice.id, (await makeCollector(user.id)).id)
+    let token = await createTrackingLink(user.id, invoice.id)
+    let href = routes.collectorTracking.location.href({ token })
+    let post = (body: string) =>
+      fetchResponse(href, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json', 'Content-Length': String(Buffer.byteLength(body)) },
+        body,
+      })
+    let point = JSON.stringify({ latitude: -6.2, longitude: 106.8, accuracyM: 10, recordedAt: new Date().toISOString() })
+
+    assert.equal((await post(point)).status, 204)
+    assert.equal((await post(JSON.stringify({ latitude: 200, longitude: 0, recordedAt: new Date().toISOString() }))).status, 400)
+    assert.equal((await post('x'.repeat(2000))).status, 413)
+    await revokeTrackingLink(user.id, invoice.id)
+    assert.equal((await post(point)).status, 410)
   })
 })
