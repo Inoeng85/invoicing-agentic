@@ -11,6 +11,7 @@ export type {
   DebtCollectorPhoto,
   CollectionAssignment,
   CollectionActivity,
+  CollectorLocation,
   AssignmentEndReason,
   CollectionOutcome,
   Prisma,

@@ -47,6 +47,8 @@ model Client {
   address   String?
   notes     String?
   active    Boolean   @default(true)
+  latitude  Float?
+  longitude Float?
   createdAt DateTime  @default(now()) @map("created_at")
   updatedAt DateTime  @updatedAt @map("updated_at")
   invoices  Invoice[]
@@ -148,6 +150,12 @@ model CollectionAssignment {
   endReason       AssignmentEndReason? @map("end_reason")
   commissionCents Int?                 @map("commission_cents")
   activities      CollectionActivity[]
+  trackingToken   String?              @unique @map("tracking_token")
+  lastLatitude    Float?               @map("last_latitude")
+  lastLongitude   Float?               @map("last_longitude")
+  lastAccuracyM   Float?               @map("last_accuracy_m")
+  lastLocationAt  DateTime?            @map("last_location_at")
+  locations       CollectorLocation[]
 
   @@index([invoiceId, endedAt])
   @@index([collectorId, endedAt])
@@ -185,4 +193,18 @@ model DebtCollectorPhoto {
   updatedAt   DateTime      @updatedAt @map("updated_at")
 
   @@map("debt_collector_photos")
+}
+
+model CollectorLocation {
+  id           String               @id @default(cuid())
+  assignmentId String               @map("assignment_id")
+  assignment   CollectionAssignment @relation(fields: [assignmentId], references: [id], onDelete: Cascade)
+  latitude     Float
+  longitude    Float
+  accuracyM    Float?               @map("accuracy_m")
+  recordedAt   DateTime             @map("recorded_at")
+  receivedAt   DateTime             @default(now()) @map("received_at")
+
+  @@index([assignmentId, recordedAt])
+  @@map("collector_locations")
 }
