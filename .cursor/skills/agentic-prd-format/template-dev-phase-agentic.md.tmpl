@@ -1,0 +1,49 @@
+# PRD-{{ID}} — {{TITLE}} · Development Phase (Implementation Plan)
+
+> **For agentic workers:** REQUIRED SUB-SKILL: superpowers:executing-plans. Steps use checkbox (`- [ ]`) syntax.
+
+**Goal:** {{one sentence user-visible outcome}}
+
+**Architecture:** {{layers touched: domain, db, web, api}}
+
+**Tech Stack:** {{Prisma, Remix, node:test, …}}
+
+**Spec:** [{{ID}}_PRD_{{NAME_SNAKE}}.md](./{{ID}}_PRD_{{NAME_SNAKE}}.md)
+
+## Global Constraints
+
+- Branch `feat/{{ID}}-{{slug}}` (or `main` if hotfix).
+- `nvm use` (Node ≥ 24.3); verify = `npm run typecheck && npm run test:domain && npm test` (adjust per scope).
+- {{domain-specific limits, CSRF, migration rules}}
+- Commit per task, conventional commits, `git add` file spesifik.
+
+## Review Focus
+
+1. {{edge case / security / regression}}
+2. {{…}}
+3. {{…}}
+
+---
+
+### Task 1: {{Short title}}
+
+**Files:** {{Create/Modify paths}}
+
+**Produces:** {{exports, routes, UI}}
+
+- [ ] {{test-first or step}}
+- [ ] {{implementation step}}
+- [ ] `npm run test:domain && npm run typecheck` → pass. Commit `{{type(scope): message}}`.
+
+### Task 2: {{Short title}}
+
+**Files:** …
+
+**Produces:** …
+
+- [ ] …
+
+### Task N: Docs
+
+- [ ] `docs/PRD/README.md`: row Pri {{N}} …
+- [ ] {{MVP-SCOPE-LOCK / alignment if FR new}}

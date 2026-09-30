@@ -1,0 +1,67 @@
+# PRD-{{ID}} — {{TITLE}}
+
+| Meta | Nilai |
+|------|-------|
+| ID | **{{ID}}** |
+| Induk | {{PARENT_LINK_OR_DASH}} |
+| Gate | {{GATE}} |
+| FR | **{{FR_IDS}}** |
+| BR | {{BR_IDS_OR_DASH}} |
+| Status | {{Draft \| In progress \| Implemented}} |
+| Development phase | [{{ID}}_PRD_{{NAME_SNAKE}}_Development_phase.md](./{{ID}}_PRD_{{NAME_SNAKE}}_Development_phase.md) |
+
+## Ringkasan
+
+{{2–4 kalimat outcome user + batas scope.}}
+
+## Keputusan desain
+
+| # | Keputusan | Alasan |
+|---|-----------|--------|
+| D-01 | {{keputusan}} | {{alasan}} |
+
+## Requirement
+
+| ID | Requirement | Acceptance |
+|----|-------------|------------|
+| {{FR}}-1 | {{ringkas}} | {{measurable acceptance}} |
+
+## Desain
+
+### Data
+
+{{Prisma snippet atau link ke schema.prisma}}
+
+### Domain (`packages/domain/src/…`)
+
+| Fungsi / modul | Perilaku |
+|----------------|----------|
+| {{name}} | {{guards, errors, BR}} |
+
+### API (`apps/api`) — jika ada
+
+| Method | Path | Perilaku |
+|--------|------|----------|
+| {{METHOD}} | {{path}} | {{status, body}} |
+
+### Web (`apps/web`) — jika ada
+
+| Method | Path | Perilaku |
+|--------|------|----------|
+| {{METHOD}} | {{path}} | {{UI / redirect}} |
+
+## Non-goals
+
+- {{explicit out of scope}}
+
+## Dependensi
+
+| PRD / gate | Butuh |
+|------------|--------|
+| {{0501}} | {{G5 Pass}} |
+
+## Dokumen terkait
+
+- [MVP-SCOPE-LOCK.md](../../invoicing/brd/MVP-SCOPE-LOCK.md)
+- [ARCHITECTURE-ALIGNMENT.md](../../invoicing/brd/ARCHITECTURE-ALIGNMENT.md) §3
+- [DEVELOPMENT-PHASES.md](../../invoicing/engineering/DEVELOPMENT-PHASES.md)

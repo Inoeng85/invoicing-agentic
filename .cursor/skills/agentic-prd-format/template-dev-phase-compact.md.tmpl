@@ -1,0 +1,35 @@
+# PRD-{{ID}} — {{TITLE}} · Development Phase
+
+| Meta | Nilai |
+|------|-------|
+| ID | **{{ID}}** |
+| Gate | **{{Gx}}** |
+| Task ID prefix | `{{ID}}yy-[area]-[slug]` |
+| Spec | [{{ID}}_PRD_{{NAME_SNAKE}}.md](./{{ID}}_PRD_{{NAME_SNAKE}}.md) |
+
+## Ringkasan fase
+
+**Tujuan:** {{one sentence}}
+
+| Task | Area | Output |
+|------|------|--------|
+| {{ID}}001-stack-{{slug}} | stack | {{artifact}} |
+
+## Urutan eksekusi
+
+`{{ID}}001` → `{{ID}}002` → … → `{{ID}}00N`
+
+## Gate {{Gx}} — pass criteria
+
+| Check | Metode | Pass jika |
+|-------|--------|-----------|
+| {{Gx}}.1 | `npm run …` | Exit 0 |
+
+## Definition of Done
+
+- [ ] {{criteria}}
+- [ ] Gate {{Gx}} green in `npm run gate` / `npm run verify`
+
+## Bloker
+
+- {{PRD/PG dependency}} belum lulus → jangan merge epic berikutnya
