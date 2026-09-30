@@ -17,6 +17,13 @@ export const routes = route({
     only: ['index', 'new', 'create', 'show', 'edit', 'update'],
     param: 'invoiceId',
   }),
+  collectors: resources('/collectors', {
+    only: ['index', 'new', 'create', 'show', 'edit', 'update'],
+    param: 'collectorId',
+  }),
+  collectorActions: {
+    setActive: post('/collectors/:collectorId/active'),
+  },
   clientSetActive: post('/clients/:clientId/active'),
   invoiceSendReview: get('/invoices/:invoiceId/send'),
   invoiceSend: post('/invoices/:invoiceId/send'),

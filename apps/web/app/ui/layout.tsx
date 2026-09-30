@@ -7,7 +7,7 @@ import { routes } from '../routes.ts'
 import { icon, type IconName } from './icons.tsx'
 import { initials } from './kit.tsx'
 
-export type NavKey = 'dashboard' | 'clients' | 'invoices' | 'settings'
+export type NavKey = 'dashboard' | 'clients' | 'collectors' | 'invoices' | 'settings'
 
 export interface ShellUser {
   id: string
@@ -27,6 +27,7 @@ export async function loadShellUser(userId: string): Promise<ShellUser> {
 const NAV: Array<{ key: NavKey; label: string; icon: IconName; href: () => string }> = [
   { key: 'dashboard', label: 'Dashboard', icon: 'layout-dashboard', href: () => routes.home.href() },
   { key: 'clients', label: 'Klien', icon: 'users', href: () => routes.clients.index.href() },
+  { key: 'collectors', label: 'Kolektor', icon: 'wallet', href: () => routes.collectors.index.href() },
   { key: 'invoices', label: 'Invoice', icon: 'file-text', href: () => routes.invoices.index.href() },
   { key: 'settings', label: 'Pengaturan', icon: 'settings', href: () => routes.settings.index.href() },
 ]
