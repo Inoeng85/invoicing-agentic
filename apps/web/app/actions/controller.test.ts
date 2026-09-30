@@ -158,4 +158,18 @@ describe('root controller', () => {
     let after = await (await fetchResponse(detailHref, { headers: sessionHeaders(user.id) })).text()
     assert.ok(after.includes(`<img src="${photoPath}?v=`), 'photo avatar rendered')
   })
+
+  it('places the photo upload above the collector edit form', async () => {
+    let user = await makeUser()
+    let collector = await makeCollector(user.id)
+    let response = await fetchResponse(routes.collectors.edit.href({ collectorId: collector.id }), {
+      headers: sessionHeaders(user.id),
+    })
+    assert.equal(response.status, 200)
+    let html = await response.text()
+    let photoCard = html.indexOf('id="col-photo-title"')
+    let dataForm = html.indexOf('name="commissionPercent"')
+    assert.ok(photoCard !== -1 && dataForm !== -1, 'both sections render')
+    assert.ok(photoCard < dataForm, 'photo card comes before the data form')
+  })
 })

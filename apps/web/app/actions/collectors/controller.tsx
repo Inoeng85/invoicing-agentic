@@ -412,6 +412,46 @@ function CollectorFormPage(
           <span class="text-foreground">{title}</span>
         </nav>
         {noticeAlert(notice)}
+        {collector ? (
+          <section class="card mx-auto max-w-xl" aria-labelledby="col-photo-title">
+            <div class="card-header">
+              <h2 id="col-photo-title" class="card-title">
+                Foto
+              </h2>
+              <p class="card-description">JPG, PNG, atau WebP · maksimal 1 MB. Tampil di panel Penagihan invoice.</p>
+            </div>
+            <div class="card-content flex flex-wrap items-center gap-4">
+              {collectorAvatar(collector, 'size-16')}
+              <form
+                method="post"
+                action={routes.collectorActions.uploadPhoto.href({ collectorId: collector.id })}
+                enctype="multipart/form-data"
+                class="flex flex-wrap items-center gap-2"
+              >
+                <CsrfInput userId={user.id} />
+                <input
+                  class="input"
+                  type="file"
+                  name="photo"
+                  accept="image/jpeg,image/png,image/webp"
+                  required
+                  aria-label="File foto"
+                />
+                <button type="submit" class="btn btn-outline btn-sm">
+                  Unggah
+                </button>
+              </form>
+              {collector.photoUpdatedAt ? (
+                <form method="post" action={routes.collectorActions.deletePhoto.href({ collectorId: collector.id })}>
+                  <CsrfInput userId={user.id} />
+                  <button type="submit" class="btn btn-ghost btn-sm text-destructive">
+                    Hapus foto
+                  </button>
+                </form>
+              ) : null}
+            </div>
+          </section>
+        ) : null}
         <form
           method="post"
           action={collector ? routes.collectors.update.href({ collectorId: collector.id }) : routes.collectors.create.href()}
@@ -468,46 +508,6 @@ function CollectorFormPage(
             </button>
           </div>
         </form>
-        {collector ? (
-          <section class="card mx-auto max-w-xl" aria-labelledby="col-photo-title">
-            <div class="card-header">
-              <h2 id="col-photo-title" class="card-title">
-                Foto
-              </h2>
-              <p class="card-description">JPG, PNG, atau WebP · maksimal 1 MB. Tampil di panel Penagihan invoice.</p>
-            </div>
-            <div class="card-content flex flex-wrap items-center gap-4">
-              {collectorAvatar(collector, 'size-16')}
-              <form
-                method="post"
-                action={routes.collectorActions.uploadPhoto.href({ collectorId: collector.id })}
-                enctype="multipart/form-data"
-                class="flex flex-wrap items-center gap-2"
-              >
-                <CsrfInput userId={user.id} />
-                <input
-                  class="input"
-                  type="file"
-                  name="photo"
-                  accept="image/jpeg,image/png,image/webp"
-                  required
-                  aria-label="File foto"
-                />
-                <button type="submit" class="btn btn-outline btn-sm">
-                  Unggah
-                </button>
-              </form>
-              {collector.photoUpdatedAt ? (
-                <form method="post" action={routes.collectorActions.deletePhoto.href({ collectorId: collector.id })}>
-                  <CsrfInput userId={user.id} />
-                  <button type="submit" class="btn btn-ghost btn-sm text-destructive">
-                    Hapus foto
-                  </button>
-                </form>
-              ) : null}
-            </div>
-          </section>
-        ) : null}
       </AppLayout>
     )
   }

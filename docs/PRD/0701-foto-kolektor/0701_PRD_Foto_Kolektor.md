@@ -77,7 +77,7 @@ model DebtCollectorPhoto {
 | POST | `/collectors/:collectorId/photo/delete` | CSRF; hapus; redirect ke edit `?notice=photo_removed` |
 
 - `ui/collector-avatar.tsx` — `collectorAvatar(collector, sizeClass)`: `<img>` bila `photoUpdatedAt`, selain itu lingkaran inisial (`initials()` dari kit).
-- Halaman edit kolektor: kartu "Foto" di bawah form data (form terpisah, `enctype="multipart/form-data"`), preview avatar, input file `accept="image/jpeg,image/png,image/webp"`, tombol "Hapus foto" bila ada.
+- Halaman edit kolektor: kartu "Foto" di atas form data (form terpisah, `enctype="multipart/form-data"`), preview avatar, input file `accept="image/jpeg,image/png,image/webp"`, tombol "Hapus foto" bila ada.
 - Panel Penagihan: blok kolektor aktif memakai avatar `size-10` + nama + kontak + komisi; riwayat memakai avatar `size-6`.
 
 ## Testing
