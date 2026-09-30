@@ -29,5 +29,6 @@ export const routes = route({
   invoiceMarkPaid: post('/invoices/:invoiceId/mark-paid'),
   invoiceRevokeLink: post('/invoices/:invoiceId/revoke-link'),
   invoiceCancel: post('/invoices/:invoiceId/cancel'),
+  invoiceDeleteDraft: post('/invoices/:invoiceId/delete-draft'),
   invoicePdf: get('/invoices/:invoiceId/pdf'),
 })

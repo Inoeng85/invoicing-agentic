@@ -4,7 +4,7 @@
 
 ## Prasyarat akun (verifikasi 2026-09-30)
 
-Repo **private** + akun **GitHub Free**: API branch protection mengembalikan **403** — *Upgrade to GitHub Pro or make this repository public*. Tanpa salah satu opsi ini, rule `main` + required check **tidak bisa** dipasang via API/UI penuh.
+Repo **public** (2026-09-30). Jika billing Actions terkunci, perbaiki billing dulu. Repo **private** + **GitHub Free** dulu mengembalikan **403** — *Upgrade to GitHub Pro or make this repository public*. Tanpa salah satu opsi ini, rule `main` + required check **tidak bisa** dipasang via API/UI penuh.
 
 ## Jika CI `startup_failure` (0 jobs)
 
@@ -23,7 +23,14 @@ Setelah **push pertama** dan workflow CI **hijau** sekali:
    - **Block force pushes**
 3. Default merge: **Squash merge**
 
-Atau via CLI (ganti `OWNER/REPO`):
+Atau jalankan script (setelah CI hijau):
+
+```sh
+chmod +x scripts/apply-branch-protection.sh
+./scripts/apply-branch-protection.sh Inoeng85/invoicing-agentic verify
+```
+
+Manual `gh api` (ganti `OWNER/REPO`):
 
 ```sh
 gh api repos/OWNER/REPO/branches/main/protection -X PUT \

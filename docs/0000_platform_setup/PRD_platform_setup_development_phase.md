@@ -594,7 +594,7 @@ Sama dengan PRD §7.1 — jangan ubah urutan di satu dokumen tanpa mengubah yang
 | 000010-infra-ci-gate-summary | Done | `.gate/*` + artifact CI · `GITHUB_STEP_SUMMARY` |
 | 000003-fe-design-serve | Done | `npm run design:serve` :8765 |
 | 000004-docs-ops-runbook | Done | [RUNBOOK-OPS.md](./RUNBOOK-OPS.md) |
-| 000011-infra-production-cd | Partial | `deploy-production.yml` + env approval |
+| 000011-infra-production-cd | Partial | Railway redeploy + smoke on tag · butuh secrets production |
 | 000009-infra-secret-rotation | Done | Runbook §4 |
 | 000005-db-backup-restore | Done | Runbook §3 (prosedur; uji di host) |
 | 000012-infra-rollback | Done | Runbook §2 |

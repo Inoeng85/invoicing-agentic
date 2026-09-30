@@ -9,6 +9,7 @@ import {
   markInvoicePaid,
   revokePublicLink,
   cancelInvoice,
+  deleteInvoiceDraft,
   sendInvoice,
 } from '@invoicing/domain'
 
@@ -99,6 +100,13 @@ export default createController(routes, {
       await assertCsrf(context.request, userId)
       await cancelInvoice(userId, context.params.invoiceId)
       throw redirect(routes.invoices.show.href({ invoiceId: context.params.invoiceId }), 303)
+    },
+
+    async invoiceDeleteDraft(context) {
+      let userId = requireUserId(context.request)
+      await assertCsrf(context.request, userId)
+      await deleteInvoiceDraft(userId, context.params.invoiceId)
+      throw redirect(routes.invoices.index.href(), 303)
     },
 
     async invoicePdf(context) {

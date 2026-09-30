@@ -108,11 +108,11 @@ Gap yang **disadari** — dokumen menyebut perilaku target; kode belum. Tutup se
 | G-05 | Keamanan | CSRF form web, rate limit `/i/:token`, `noindex` | CSRF `_csrf`, rate limit web+API public, `noindex` halaman `/i/` | Must (pre-prod) · **Implemented** |
 | G-06 | Observability | JSON log + `requestId` | API pakai `remix/middleware/logger`; web belum; tanpa requestId | Should |
 | G-07 | Design di app | Token §13.1 + nav aktif dinamis + wordmark | `app.css` hanya `--color-brand`; nav aktif hard-coded Dashboard | Should |
-| G-08 | BR-06 web | Aksi hapus draft di web | Hanya via API DELETE | Should |
-| G-09 | CI | + `css:build`, `npm test` (web) | `ci.yml`: migrate, test:domain, typecheck, gate | Should |
+| G-08 | BR-06 web | Aksi hapus draft di web | `POST /invoices/:id/delete-draft` + tombol draft | Should · **Implemented** |
+| G-09 | CI | + `css:build`, `npm test` (web) | `npm run verify` di CI (termasuk css, web test, gate) | Should · **Implemented** |
 | G-10 | Klien search | Kolom cari (Wireframes §2) | Belum | Could |
 | G-11 | FR-09, FR-11 | Should backlog | Belum | Sprint 2 |
-| G-12 | Env example | `SESSION_SECRET`, `APP_URL` | Tidak ada di `.env.example` | Should |
+| G-12 | Env example | `SESSION_SECRET`, `APP_URL` | Ada di `apps/*/.env.example` + setup | Should · **Implemented** |
 | G-13 | BR-02 atomik | Nomor + status dalam satu transaksi; email setelah commit (ARCH §9.2) | `$transaction` + email setelah commit; rollback draft jika email gagal | Must (pre-prod) · **Implemented** |
 
 ---

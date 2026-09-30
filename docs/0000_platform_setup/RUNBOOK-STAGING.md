@@ -38,8 +38,6 @@ Smoke lokal/CI: `API_BASE_URL=… npm run staging:smoke`
 ## Verifikasi lokal parity Postgres
 
 ```sh
-# butuh Postgres lokal atau Docker opsional
-export DATABASE_URL=postgresql://postgres:postgres@localhost:5432/invoicing_dev
-npm run db:migrate:deploy:postgres
-npm run verify
+docker compose -f docker-compose.postgres.yml up -d
+npm run verify:postgres
 ```

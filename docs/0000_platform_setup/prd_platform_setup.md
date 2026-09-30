@@ -3,7 +3,7 @@
 | Meta | Nilai |
 |------|-------|
 | ID | PRD-0000 |
-| Versi | 1.8 · PG-2 staging CD (repo) · G6 UAT/legal trace · gate Phase 6 |
+| Versi | 1.9 · PG-3 prod CD (repo) · verify:postgres · G-08 hapus draft web |
 | Development phase | [PRD_platform_setup_development_phase.md](./PRD_platform_setup_development_phase.md) |
 | Tanggal | 2026-09-30 (verifikasi PG-0 & PG-1) |
 | Owner | Product (Cursor, PM) |

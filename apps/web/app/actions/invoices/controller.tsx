@@ -4,6 +4,7 @@ import { redirect } from 'remix/response/redirect'
 import {
   buildInvoicePdfBytes,
   createInvoiceDraft,
+  deleteInvoiceDraft,
   formatIdr,
   getInvoice,
   getUserById,
@@ -131,6 +132,12 @@ export default createController(routes.invoices, {
                     <CsrfInput userId={userId} />
                     <button type="submit" class="rounded bg-blue-600 px-3 py-2 text-sm text-white">
                       Kirim
+                    </button>
+                  </form>
+                  <form method="post" action={routes.invoiceDeleteDraft.href({ invoiceId: invoice.id })}>
+                    <CsrfInput userId={userId} />
+                    <button type="submit" class="rounded border border-red-300 px-3 py-2 text-sm text-red-700">
+                      Hapus draft
                     </button>
                   </form>
                 </>

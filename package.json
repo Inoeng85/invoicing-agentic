@@ -16,6 +16,7 @@
     "doctor": "node --import tsx scripts/doctor.ts",
     "release:check": "node --import tsx scripts/release-readiness.ts",
     "staging:smoke": "node --import tsx scripts/staging-smoke.ts",
+    "verify:postgres": "node --import tsx scripts/verify-postgres.ts",
     "test:domain": "npm run test -w @invoicing/domain",
     "gate": "node --import tsx scripts/gates/run-all.ts",
     "css:build": "npm run css:build -w @invoicing/web",

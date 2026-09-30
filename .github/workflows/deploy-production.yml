@@ -1,9 +1,12 @@
 name: Deploy production
 
+# PG-3: tag SemVer → Environment `production` (approval) — infra/railway/README.md
+
 on:
   push:
     tags:
       - 'v*.*.*'
+  workflow_dispatch:
 
 permissions:
   contents: read
@@ -23,11 +26,45 @@ jobs:
           cache-dependency-path: package-lock.json
       - run: npm ci
       - run: npm run css:build
-      - run: npm run db:migrate:deploy:postgres
+      - name: Prisma migrate (Postgres)
         env:
           DATABASE_URL: ${{ secrets.DATABASE_URL }}
-      - name: Deploy (placeholder)
         run: |
-          echo "Production deploy from tag ${GITHUB_REF_NAME}"
-          echo "Wire host CLI (Railway/Fly). Secrets separate from staging."
-          echo "Smoke: curl -f \"${{ secrets.API_BASE_URL }}/api/health/ready\""
+          if [ -z "$DATABASE_URL" ]; then
+            echo "Migrate skipped (DATABASE_URL not set in production environment)."
+            exit 0
+          fi
+          npm run db:migrate:deploy:postgres
+      - name: Deploy API (Railway)
+        env:
+          RAILWAY_TOKEN: ${{ secrets.RAILWAY_TOKEN }}
+          RAILWAY_SERVICE_ID_API: ${{ secrets.RAILWAY_SERVICE_ID_API }}
+        run: |
+          if [ -z "$RAILWAY_TOKEN" ] || [ -z "$RAILWAY_SERVICE_ID_API" ]; then
+            echo "Railway API deploy skipped (secrets not set)."
+            exit 0
+          fi
+          npm install -g @railway/cli@4
+          railway redeploy --service "$RAILWAY_SERVICE_ID_API" -y
+      - name: Deploy web (Railway)
+        env:
+          RAILWAY_TOKEN: ${{ secrets.RAILWAY_TOKEN }}
+          RAILWAY_SERVICE_ID_WEB: ${{ secrets.RAILWAY_SERVICE_ID_WEB }}
+        run: |
+          if [ -z "$RAILWAY_TOKEN" ] || [ -z "$RAILWAY_SERVICE_ID_WEB" ]; then
+            echo "Railway web deploy skipped (secrets not set)."
+            exit 0
+          fi
+          npm install -g @railway/cli@4
+          railway redeploy --service "$RAILWAY_SERVICE_ID_WEB" -y
+      - name: Smoke health
+        env:
+          API_BASE_URL: ${{ secrets.API_BASE_URL }}
+        run: |
+          if [ -z "$API_BASE_URL" ]; then
+            echo "Smoke skipped (API_BASE_URL not set)."
+            exit 0
+          fi
+          npm run staging:smoke
+      - name: Release tag
+        run: echo "Deployed ${GITHUB_REF_NAME} to production (when host secrets configured)."
