@@ -100,6 +100,7 @@ Daftar referensi: [TECHNOLOGY-STACK.md](./TECHNOLOGY-STACK.md) §5.
 | `npm run db:migrate:deploy` | `prisma migrate deploy` (CI / non-interaktif) |
 | `npm run db:reset` | Reset + migrate ulang |
 | `npm run db:seed` | Demo Studio Kartika (idempoten) |
+| `npm run db:seed:sample` | +100 klien, 100 kolektor, 100 invoice (`@sample.demo` / `SMP-*`) — per modul: `db:seed:clients`, `db:seed:collectors`, `db:seed:invoices` |
 | `npm run db:studio` | Prisma Studio |
 | `npm run doctor` | Diagnosa Node, lockfile, env, DB, port |
 
