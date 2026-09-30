@@ -347,7 +347,7 @@ Sama dengan PRD §7.1 — jangan ubah urutan di satu dokumen tanpa mengubah yang
 | 000004-infra-ci-performance | Done | npm cache di CI (existing) |
 | 000005-infra-hosting-provision | Pending | Butuh akun Railway + secrets |
 | 000006-infra-domain-tls-cors | Pending | Butuh domain staging |
-| 000007-infra-staging-cd | Partial | `deploy-staging.yml` placeholder |
+| 000007-infra-staging-cd | Partial | Railway redeploy + smoke + `workflow_run` setelah CI · butuh secrets |
 | 000008-infra-email-provider-staging | Pending | Butuh Resend staging key |
 
 ### 000002-docs-adr-platform-decisions

@@ -21,9 +21,11 @@ npm run verify          # typecheck, tests, CSS, gate G0–G5
 
 1. UAT: [USER-STORIES-UAT.md](../brd/USER-STORIES-UAT.md)
 2. Legal: [legal/](../legal/)
-3. Gap Must: [ARCHITECTURE-ALIGNMENT.md §6](../brd/ARCHITECTURE-ALIGNMENT.md#6-register-gap-dokumen--kode) (G-01, G-02, G-04, G-05, G-13)
-4. Ops: [RUNBOOK-OPS.md](../../0000_platform_setup/RUNBOOK-OPS.md)
-5. Tag `v0.1.0-rc.1` → workflow `deploy-production.yml`
+3. Gap Must: [ARCHITECTURE-ALIGNMENT.md §6](../brd/ARCHITECTURE-ALIGNMENT.md#6-register-gap-dokumen--kode) — G-01/02/05/13 di kode · **G-04** Resend di host
+4. UAT trace: [UAT-GATE-TRACE.md](./UAT-GATE-TRACE.md)
+5. Legal: [LEGAL-REVIEW-CHECKLIST.md](../legal/LEGAL-REVIEW-CHECKLIST.md)
+6. Ops: [RUNBOOK-OPS.md](../../0000_platform_setup/RUNBOOK-OPS.md)
+7. Tag `v0.1.0-rc.1` → workflow `deploy-production.yml`
 
 ## Traceability
 

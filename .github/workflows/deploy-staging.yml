@@ -1,19 +1,29 @@
 name: Deploy staging
 
-# Requires Railway (or host) secrets — see docs/0000_platform_setup/RUNBOOK-STAGING.md
+# PG-2: GitHub Environment `staging` + Railway — infra/railway/README.md
 
 on:
   workflow_dispatch:
+  workflow_run:
+    workflows: [CI]
+    types: [completed]
+    branches: [main]
 
 permissions:
   contents: read
 
 jobs:
   deploy:
+    if: >-
+      github.event_name == 'workflow_dispatch' ||
+      (github.event.workflow_run.conclusion == 'success' &&
+       github.event.workflow_run.head_branch == 'main')
     runs-on: ubuntu-latest
     environment: staging
     steps:
       - uses: actions/checkout@v4
+        with:
+          ref: ${{ github.event.workflow_run.head_sha || github.sha }}
       - uses: actions/setup-node@v4
         with:
           node-version-file: .nvmrc
@@ -21,10 +31,43 @@ jobs:
           cache-dependency-path: package-lock.json
       - run: npm ci
       - run: npm run css:build
-      - run: npm run db:migrate:deploy:postgres
+      - name: Prisma migrate (Postgres)
         env:
           DATABASE_URL: ${{ secrets.DATABASE_URL }}
-      - name: Deploy (placeholder)
         run: |
-          echo "Wire host CLI here (Railway/Fly). Secrets: DATABASE_URL, SESSION_SECRET, APP_URL, CORS_ORIGIN, API_BASE_URL, EMAIL_*"
-          echo "Smoke after deploy: curl -f \"\$API_BASE_URL/api/health/ready\""
+          if [ -z "$DATABASE_URL" ]; then
+            echo "Migrate skipped (DATABASE_URL not set in staging environment)."
+            exit 0
+          fi
+          npm run db:migrate:deploy:postgres
+      - name: Deploy API (Railway)
+        env:
+          RAILWAY_TOKEN: ${{ secrets.RAILWAY_TOKEN }}
+          RAILWAY_SERVICE_ID_API: ${{ secrets.RAILWAY_SERVICE_ID_API }}
+        run: |
+          if [ -z "$RAILWAY_TOKEN" ] || [ -z "$RAILWAY_SERVICE_ID_API" ]; then
+            echo "Railway API deploy skipped (secrets not set)."
+            exit 0
+          fi
+          npm install -g @railway/cli@4
+          railway redeploy --service "$RAILWAY_SERVICE_ID_API" -y
+      - name: Deploy web (Railway)
+        env:
+          RAILWAY_TOKEN: ${{ secrets.RAILWAY_TOKEN }}
+          RAILWAY_SERVICE_ID_WEB: ${{ secrets.RAILWAY_SERVICE_ID_WEB }}
+        run: |
+          if [ -z "$RAILWAY_TOKEN" ] || [ -z "$RAILWAY_SERVICE_ID_WEB" ]; then
+            echo "Railway web deploy skipped (secrets not set)."
+            exit 0
+          fi
+          npm install -g @railway/cli@4
+          railway redeploy --service "$RAILWAY_SERVICE_ID_WEB" -y
+      - name: Smoke health
+        env:
+          API_BASE_URL: ${{ secrets.API_BASE_URL }}
+        run: |
+          if [ -z "$API_BASE_URL" ]; then
+            echo "Smoke skipped (API_BASE_URL not set)."
+            exit 0
+          fi
+          npm run staging:smoke

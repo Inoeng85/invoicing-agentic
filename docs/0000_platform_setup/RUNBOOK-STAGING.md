@@ -29,7 +29,11 @@ ADR: [ADR-0002](./adr/ADR-0002-hosting.md) · [ADR-0003](./adr/ADR-0003-web-api-
 4. Seed sekali: `npm run db:seed` (user demo Studio Kartika)
 5. Smoke: `GET $API_BASE_URL/api/health/ready` → 200
 
-Workflow manual: [.github/workflows/deploy-staging.yml](../../.github/workflows/deploy-staging.yml)
+Provision detail: [infra/railway/README.md](../../infra/railway/README.md)
+
+Workflow: [.github/workflows/deploy-staging.yml](../../.github/workflows/deploy-staging.yml) (`workflow_dispatch` atau setelah CI hijau)
+
+Smoke lokal/CI: `API_BASE_URL=… npm run staging:smoke`
 
 ## Verifikasi lokal parity Postgres
 

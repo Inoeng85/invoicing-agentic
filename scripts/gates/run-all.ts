@@ -29,7 +29,7 @@ function writeGateReports(failed: boolean) {
   writeFileSync(jsonPath, JSON.stringify({ failed, results }, null, 2), 'utf8')
 
   let lines = [
-    '## Gate G0–G5',
+    '## Gate G0–G6 (release checks in Phase 6 section)',
     '',
     '| Phase | Result | Detail |',
     '|-------|--------|--------|',
@@ -147,8 +147,40 @@ async function gatePhase5(token: string, invoiceId: string) {
   record('Phase 5 — FR-08 dashboard', dash.status === 200, `status ${dash.status}`)
 }
 
-async function gatePhase6() {
-  record('Phase 6 — Domain PPN tests', true, 'run via npm run test:domain (see CI)')
+async function gatePhase6Release(token: string, clientId: string) {
+  let create = await apiFetch('/api/v1/invoices', {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/json', Authorization: `Bearer ${token}` },
+    body: JSON.stringify({
+      clientId,
+      lines: [{ description: 'Release gate', quantity: 1, unitPriceCents: 50_000_00, discountCents: 0 }],
+    }),
+  })
+  record('Phase 6 — draft for revoke/cancel', create.status === 201, `status ${create.status}`)
+  let inv = (await create.json()) as { data: { id: string } }
+  let id = inv.data.id
+
+  let send = await apiFetch(`/api/v1/invoices/${id}/send`, {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/json', Authorization: `Bearer ${token}` },
+  })
+  record('Phase 6 — send (G-13 path)', send.status === 200, `status ${send.status}`)
+  let sent = (await send.json()) as { data: { publicToken: string } }
+
+  let revoke = await apiFetch(`/api/v1/invoices/${id}/revoke-link`, {
+    method: 'POST',
+    headers: { Authorization: `Bearer ${token}` },
+  })
+  record('Phase 6 — G-02 revoke link', revoke.status === 200, `status ${revoke.status}`)
+
+  let pub = await apiFetch(`/api/public/invoices/${sent.data.publicToken}`)
+  record('Phase 6 — public 404 after revoke', pub.status === 404, `status ${pub.status}`)
+
+  let cancel = await apiFetch(`/api/v1/invoices/${id}/cancel`, {
+    method: 'POST',
+    headers: { Authorization: `Bearer ${token}` },
+  })
+  record('Phase 6 — G-01 cancel', cancel.status === 200, `status ${cancel.status}`)
 }
 
 async function main() {
@@ -159,7 +191,7 @@ async function main() {
   let invoiceId = await gatePhase3(token, clientId)
   await gatePhase4(token, invoiceId)
   await gatePhase5(token, invoiceId)
-  await gatePhase6()
+  await gatePhase6Release(token, clientId)
   console.log('\n=== All gates PASS ===')
   writeGateReports(false)
 }

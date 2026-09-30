@@ -3,7 +3,7 @@
 | Meta | Nilai |
 |------|-------|
 | ID | PRD-0000 |
-| Versi | 1.7 · Platform Phase 0–3 repo selesai · lanjut Product Phase 6 (G6) |
+| Versi | 1.8 · PG-2 staging CD (repo) · G6 UAT/legal trace · gate Phase 6 |
 | Development phase | [PRD_platform_setup_development_phase.md](./PRD_platform_setup_development_phase.md) |
 | Tanggal | 2026-09-30 (verifikasi PG-0 & PG-1) |
 | Owner | Product (Cursor, PM) |
@@ -61,7 +61,7 @@ Kode MVP invoicing (web, API, domain, database) sudah lolos gate otomatis G0–G
 | PS-22 run GitHub hijau | **Gagal** | Semua run `startup_failure` (job `verify` tidak start) · contoh run [36661916437](https://github.com/Inoeng85/invoicing-agentic/actions/runs/36661916437) |
 | PS-05 branch protection | **Terblokir** | API: *Upgrade to GitHub Pro or make this repository public* (repo private, akun Free) |
 
-**Gate PG-1:** **belum lulus formal** — 2/3 task Phase 1 selesai di kode; tutup PG-1 dengan (a) repo **public** atau **GitHub Pro**, (b) CI hijau, (c) rule `main` + required check `verify`.
+**Gate PG-1:** **belum lulus formal** — repo sudah **public**; runner Actions terblokir **billing GitHub** (2026-09-30). Tutup PG-1 dengan perbaikan billing, CI hijau, lalu rule `main` + required check `verify`.
 
 ---
 

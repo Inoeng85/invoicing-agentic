@@ -220,7 +220,7 @@ Implementasi gate: [scripts/gates/run-all.ts](../../../scripts/gates/run-all.ts)
 | G3 | `gatePhase3()` + `test:domain` |
 | G4 | `gatePhase4()` |
 | G5 | `gatePhase5()` |
-| G6 | Dokumen + CI (manual/PR) |
+| G6 | Gate Phase 6 (revoke/cancel) + release:check + CI |
 
 ---
 
