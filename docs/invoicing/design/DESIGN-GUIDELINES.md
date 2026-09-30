@@ -1,4 +1,4 @@
-# Design Guidelines — Invoicing Freelancer (Indonesia)
+# Design Guidelines — PuraPuraLupa (Komando)
 
 **Versi:** 2.0 · **Tanggal:** 2026-09-30  
 **Bentuk:** **5 module** + **5 contoh halaman** (feature BRD)
@@ -41,8 +41,9 @@ Implementasi app: `@invoicing/web` · token: `packages/design-tokens/` · requir
 | FR-02 FR-03 | M03 M04 | 03 | `screen-invoice-editor.html` |
 | FR-04 FR-05 FR-06 | M04 | 04 | `screen-invoice-send.html`, `screen-public.html` |
 | FR-07 FR-08 | M01–M03 | 01 | `screen-dashboard.html`, `screen-invoice-list.html` |
+| FR-14 FR-14h | M02 M03 | — (app = sumber) | Nav **Kolektor** · panel Penagihan · avatar foto |
 
-Keputusan D-xx: [ARCHITECTURE-ALIGNMENT.md](../brd/ARCHITECTURE-ALIGNMENT.md) §2.
+Keputusan D-xx: [ARCHITECTURE-ALIGNMENT.md](../brd/ARCHITECTURE-ALIGNMENT.md) §2 (brand **D-14**).
 
 ---
 

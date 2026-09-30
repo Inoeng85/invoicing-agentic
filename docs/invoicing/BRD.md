@@ -1,13 +1,13 @@
-# Business Requirements Document (BRD) — Invoicing Freelancer Indonesia
+# Business Requirements Document (BRD) — PuraPuraLupa (Komando)
 
-**Versi:** 1.2 · **Status:** Approved for MVP  
+**Versi:** 1.3 · **Status:** Approved for MVP  
 **Indeks paket:** [BRD-DEFINITION-OF-DONE.md](./BRD-DEFINITION-OF-DONE.md)  
 **System architecture:** [ARCHITECTURE.md](./ARCHITECTURE.md) · **Tech stack:** [engineering/TECHNOLOGY-STACK.md](./engineering/TECHNOLOGY-STACK.md) · **Design:** [design/DESIGN-GUIDELINES.md](./design/DESIGN-GUIDELINES.md)  
 **Selarasan lintas dokumen:** [brd/ARCHITECTURE-ALIGNMENT.md](./brd/ARCHITECTURE-ALIGNMENT.md) (keputusan canonical D-01…D-13, gap register G-01…G-13)
 
 Dokumen **BRD canonical** — ringkas dan navigasi. Detail di [brd/](./brd/README.md).
 
-> **Fase workspace:** FR-01–FR-08 terimplementasi di monorepo (gate G0–G5 Pass, `npm run gate`). Tersisa Phase 6: UAT manual, review legal, sign-off engineering, dan penutupan gap Must di [alignment §6](./brd/ARCHITECTURE-ALIGNMENT.md#6-register-gap-dokumen--kode).
+> **Fase workspace:** FR-01–FR-08 + **FR-14 / FR-14h** terimplementasi di monorepo (gate **G0–G7** Pass, `npm run gate`). Tersisa Phase 6: UAT manual, review legal (termasuk L-6 kolektor + foto), sign-off engineering, dan gap pre-prod (mis. G-04) di [alignment §6](./brd/ARCHITECTURE-ALIGNMENT.md#6-register-gap-dokumen--kode).
 
 ---
 
@@ -15,8 +15,8 @@ Dokumen **BRD canonical** — ringkas dan navigasi. Detail di [brd/](./brd/READM
 
 | Item | Keputusan |
 |------|-----------|
-| Produk | Invoicing freelancer/solo, **IDR**, Indonesia |
-| MVP | Profil → klien → invoice (+ PPN opsional) → PDF/link → email → lunas → dashboard |
+| Produk | **PuraPuraLupa** — invoicing freelancer/solo, **IDR**, Indonesia (tagline: Komisi Matel Indonesia / Komando) |
+| MVP | Profil → klien → invoice (+ PPN) → PDF/link → email → lunas → dashboard → **penagihan kolektor + foto** |
 | North Star | Invoice **terkirim** / user aktif / minggu |
 | Out of scope MVP | e-Faktur, payment gateway, multi-user, multi-currency |
 
@@ -43,7 +43,7 @@ Validasi: [brd/STAKEHOLDER-VALIDATION.md](./brd/STAKEHOLDER-VALIDATION.md).
 
 ## 4. Functional requirements
 
-**Must (locked):** FR-01 … FR-08 — [brd/MVP-SCOPE-LOCK.md](./brd/MVP-SCOPE-LOCK.md)
+**Must (locked):** FR-01 … FR-08, **FR-14**, **FR-14h** — [brd/MVP-SCOPE-LOCK.md](./brd/MVP-SCOPE-LOCK.md)
 
 | ID | Ringkas |
 |----|---------|
@@ -55,10 +55,10 @@ Validasi: [brd/STAKEHOLDER-VALIDATION.md](./brd/STAKEHOLDER-VALIDATION.md).
 | FR-06 | Public link |
 | FR-07 | Tandai lunas |
 | FR-08 | Dashboard + outstanding |
+| FR-14 | Debt collector — assign, log penagihan, komisi — [PRD-0700](../PRD/0700-debt-collector/0700_PRD_Debt_Collector.md) |
+| FR-14h | Foto kolektor (web) — [PRD-0701](../PRD/0701-foto-kolektor/0701_PRD_Foto_Kolektor.md) |
 
 Should/Could/Won't: file yang sama. FR-10 (default due +30 hari, footer default) sudah ikut terimplementasi; FR-09, FR-11–FR-13 belum.
-
-Post-MVP: FR-14 debt collector — [PRD-0700](../PRD/0700-debt-collector/0700_PRD_Debt_Collector.md).
 
 Status per FR (web · API · domain · layar design): [brd/ARCHITECTURE-ALIGNMENT.md §3](./brd/ARCHITECTURE-ALIGNMENT.md#3-pemetaan-fr-must--arsitektur--stack--design).
 
@@ -66,7 +66,7 @@ Status per FR (web · API · domain · layar design): [brd/ARCHITECTURE-ALIGNMEN
 
 ## 5. Business rules
 
-BR-01 … BR-06 — [brd/MVP-SCOPE-LOCK.md](./brd/MVP-SCOPE-LOCK.md#business-rules-implementasi-wajib).
+BR-01 … BR-09 — [brd/MVP-SCOPE-LOCK.md](./brd/MVP-SCOPE-LOCK.md#business-rules-implementasi-wajib).
 
 ---
 
@@ -75,7 +75,7 @@ BR-01 … BR-06 — [brd/MVP-SCOPE-LOCK.md](./brd/MVP-SCOPE-LOCK.md#business-rul
 | Artefak | Link |
 |---------|------|
 | Story map | [brd/USER-STORY-MAP.md](./brd/USER-STORY-MAP.md) |
-| Wireframes (7 layar) | [brd/WIREFRAMES.md](./brd/WIREFRAMES.md) |
+| Wireframes (+ Kolektor) | [brd/WIREFRAMES.md](./brd/WIREFRAMES.md) |
 | Design guidelines | [design/DESIGN-GUIDELINES.md](./design/DESIGN-GUIDELINES.md) |
 | Prototype HTML | [../design/prototype/index.html](../design/prototype/index.html) |
 | UAT | [brd/USER-STORIES-UAT.md](./brd/USER-STORIES-UAT.md) |

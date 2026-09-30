@@ -19,7 +19,7 @@ import { assertCsrf } from '../../lib/csrf.ts'
 import { CsrfInput } from '../../lib/csrf-field.tsx'
 import { requireUserId } from '../../lib/auth.ts'
 import { formatPercentInput, parsePercentInput } from '../../lib/percent.ts'
-import { collectorAvatar } from '../../ui/collector-avatar.tsx'
+import { collectorAvatar, collectorPhotoDialog } from '../../ui/collector-avatar.tsx'
 import { icon } from '../../ui/icons.tsx'
 import { alertBox, formatDate, formatIdr, pageTitle, statusBadge } from '../../ui/kit.tsx'
 import { AppLayout, loadShellUser, type ShellUser } from '../../ui/layout.tsx'
@@ -421,7 +421,8 @@ function CollectorFormPage(
               <p class="card-description">JPG, PNG, atau WebP · maksimal 1 MB. Tampil di panel Penagihan invoice.</p>
             </div>
             <div class="card-content flex flex-wrap items-center gap-4">
-              {collectorAvatar(collector, 'size-16')}
+              {collectorAvatar(collector, 'size-16', { preview: true })}
+              {collectorPhotoDialog(collector)}
               <form
                 method="post"
                 action={routes.collectorActions.uploadPhoto.href({ collectorId: collector.id })}

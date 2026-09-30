@@ -26,7 +26,7 @@ Basis PPN = subtotal setelah diskon baris. Teks panjang: [PPN-DISCLAIMER.md](../
 ## Legal
 
 - Settings: [Syarat](../../legal/TERMS.md) · [Privasi](../../legal/PRIVACY.md)
-- Public: “Powered by Invoicing · Privasi”
+- Public: “Powered by PuraPuraLupa · Privasi”
 - PDF: footer disclaimer jika PPN aktif
 
 ## Edge case UI

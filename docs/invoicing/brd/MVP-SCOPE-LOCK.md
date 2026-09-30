@@ -1,9 +1,10 @@
 # MVP Scope Lock — MoSCoW
 
 **Status:** LOCKED untuk development MVP  
-**Tanggal lock:** 2026-09-29  
+**Tanggal lock:** 2026-09-30 (perluasan FR-14 / FR-14h)  
 **Referensi validasi:** [STAKEHOLDER-VALIDATION.md](./STAKEHOLDER-VALIDATION.md)  
-**Pemetaan teknis:** [ARCHITECTURE-ALIGNMENT.md](./ARCHITECTURE-ALIGNMENT.md) · [ARCHITECTURE.md](../ARCHITECTURE.md) §7.1
+**Pemetaan teknis:** [ARCHITECTURE-ALIGNMENT.md](./ARCHITECTURE-ALIGNMENT.md) · [ARCHITECTURE.md](../ARCHITECTURE.md) §7.1  
+**Brand produk (UI):** **PuraPuraLupa** · tagline **Komisi Matel Indonesia (Komando)** — [`apps/web/app/lib/brand.ts`](../../../apps/web/app/lib/brand.ts)
 
 ## Must have (development wajib)
 
@@ -17,6 +18,8 @@
 | **FR-06** | Public link | Klien tanpa login; read-only; selaras preview |
 | **FR-07** | Tandai lunas | Manual `paid` + `paid_at` |
 | **FR-08** | Dashboard | List invoice, filter status, jumlah outstanding |
+| **FR-14** | Debt collector | CRUD kontak kolektor, assign/reassign/unassign pada invoice `sent`/`overdue`, log penagihan, komisi terkunci saat lunas — [PRD-0700](../../PRD/0700-debt-collector/0700_PRD_Debt_Collector.md) |
+| **FR-14h** | Foto kolektor | Upload/ganti/hapus foto (JPG/PNG/WebP ≤ 1 MB); avatar di panel Penagihan — [PRD-0701](../../PRD/0701-foto-kolektor/0701_PRD_Foto_Kolektor.md) |
 
 ## Should have (sprint berikutnya jika MVP on-track)
 
@@ -49,25 +52,16 @@ Must have di bawah ini = **sumber teks requirement**; implementasi mengikuti `@i
 | BR-04 | PPN base = subtotal setelah diskon baris |
 | BR-05 | Public link revocable |
 | BR-06 | Hard delete hanya `draft`; lainnya arsip |
-
-## Sign-off
-
-| Peran | Nama | Tanggal | MoSCoW Must |
-|-------|------|---------|-------------|
-| Product | Cursor (PM) | 2026-09-29 | Approved |
-| Engineering | _(sign-off pending)_ | | Pre-release auto: `npm run release:check` + [LEGAL-REVIEW-CHECKLIST.md](../legal/LEGAL-REVIEW-CHECKLIST.md) |
-| Legal (draft) | _(review [../legal/](../legal/))_ | | |
-
-## Post-MVP (disetujui terpisah)
-
-| ID | Requirement | PRD |
-|----|-------------|-----|
-| FR-14 | Debt collector (kontak) + assign ke invoice outstanding + log penagihan + komisi | [0700](../../PRD/0700-debt-collector/0700_PRD_Debt_Collector.md) |
-
-| BR | Aturan |
-|----|--------|
 | BR-07 | Assign/aktivitas penagihan hanya untuk invoice `sent`/`overdue`; kolektor harus aktif & milik user |
 | BR-08 | Rate komisi di-snapshot saat assign; dikunci saat `paid`, tanpa komisi saat `cancelled` |
 | BR-09 | Kolektor dengan assignment aktif tidak dapat dinonaktifkan |
 
 Kolektor **bukan user** — non-goal multi-user tetap berlaku.
+
+## Sign-off
+
+| Peran | Nama | Tanggal | MoSCoW Must |
+|-------|------|---------|-------------|
+| Product | Cursor (PM) | 2026-09-30 | Approved (termasuk FR-14, FR-14h) |
+| Engineering | _(sign-off pending)_ | | Pre-release auto: `npm run release:check` + [LEGAL-REVIEW-CHECKLIST.md](../legal/LEGAL-REVIEW-CHECKLIST.md) |
+| Legal (draft) | _(review [../legal/](../legal/))_ | | L-6 wajib sebelum prod (kolektor + foto) |

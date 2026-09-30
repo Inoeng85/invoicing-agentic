@@ -13,7 +13,7 @@ Konvensi: `[ ]` input · `( )` radio · `[Btn]` tombol · `|---|` tabel · `*` n
 
 ```
 +------------------------------------------------------------------+
-| [Logo] Invoicing   *Dashboard* Klien Invoice Pengaturan [Avatar]|
+| [Logo] PuraPuraLupa   *Dashboard* Klien Kolektor Invoice Pengaturan [Avatar]|
 +------------------------------------------------------------------+
 |  Outstanding (IDR)                                               |
 |  +------------------+  +------------------+  +----------------+ |
@@ -125,7 +125,7 @@ Konvensi: `[ ]` input · `( )` radio · `[Btn]` tombol · `|---|` tabel · `*` n
 |                                                                  |
 |  [Unduh PDF]                                                     |
 +------------------------------------------------------------------+
-|  Powered by Invoicing · Privasi                                  |
+|  Powered by PuraPuraLupa · Privasi                               |
 +------------------------------------------------------------------+
 ```
 
@@ -169,7 +169,7 @@ Konvensi: `[ ]` input · `( )` radio · `[Btn]` tombol · `|---|` tabel · `*` n
 
 ```
 +------------------------------------------------------------------+
-| [Logo] Invoicing    Dashboard  Klien *Invoice* Pengaturan [Avatar]|
+| [Logo] PuraPuraLupa    Dashboard  Klien Kolektor *Invoice* Pengaturan [Avatar]|
 +------------------------------------------------------------------+
 |  Invoice                                          [+ Invoice baru]|
 |  [Semua] [Draft] [Terkirim] [Jatuh tempo] [Lunas]   [Cari...    ] |
@@ -182,14 +182,34 @@ Konvensi: `[ ]` input · `( )` radio · `[Btn]` tombol · `|---|` tabel · `*` n
 +------------------------------------------------------------------+
 ```
 
-**Elemen kunci:** target menu “Invoice”; filter status (FR-08); row action draft → Edit · Hapus draft (BR-06); sent → Tandai lunas (FR-07). Export CSV (FR-11) & Duplikat (FR-09) = Should, di luar MVP.
+**Elemen kunci:** target menu “Invoice”; filter status (FR-08); kolom/filter **Kolektor** (FR-14f); row action draft → Edit · Hapus draft (BR-06); sent → Tandai lunas (FR-07). Export CSV (FR-11) & Duplikat (FR-09) = Should.
+
+---
+
+## 8. Kolektor (`/collectors`) — FR-14 / FR-14h
+
+```
++------------------------------------------------------------------+
+| [Logo] PuraPuraLupa   Dashboard  Klien *Kolektor* Invoice Pengaturan [Avatar]|
++------------------------------------------------------------------+
+|  Kolektor                                      [+ Kolektor baru] |
+|  +--------------------------------------------------------------+|
+|  | Nama        | Kontak           | Komisi | Aktif | Invoice aktif||
+|  | Pak Joko    | joko@… / 08…     | 10%    | Ya    | 2              ||
+|  +--------------------------------------------------------------+|
++------------------------------------------------------------------+
+```
+
+**Edit kolektor:** form kontak + rate komisi + **upload foto** (FR-14h, max 1 MB).  
+**Detail invoice:** panel **Penagihan** — assign kolektor, log aktivitas, avatar + komisi (FR-14c–e).
 
 ---
 
 ## Review wireframe (checklist)
 
-- [x] 7 layar sesuai ARCHITECTURE §12 (6 inti + daftar invoice)
-- [x] Trace ke FR-01 (clients), FR-02–05 (editor/preview), FR-06 (public), FR-07 (mark paid from dashboard/detail — tambah `[Tandai lunas]` di baris detail, implied dashboard row action)
+- [x] Layar inti + daftar invoice + **Kolektor** sesuai ARCHITECTURE §12
+- [x] Trace ke FR-01 (clients), FR-02–05 (editor/preview), FR-06 (public), FR-07 (mark paid), **FR-14 / FR-14h** (kolektor + foto)
 - [x] Disclaimer PPN visible di editor
+- [x] Nav 5 item: Dashboard · Klien · Kolektor · Invoice · Pengaturan (M02)
 
 **Catatan:** Aksi **Tandai lunas** ada di detail invoice (`/invoices/:id`) dan row action dashboard/daftar invoice: `[···] → Tandai lunas`.

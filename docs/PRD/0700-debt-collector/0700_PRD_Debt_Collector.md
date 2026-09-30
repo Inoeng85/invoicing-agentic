@@ -213,7 +213,7 @@ Controller baru `collectors.controller.tsx` dan `collection.controller.tsx`, pol
 
 ## Dampak dokumen
 
-- [MVP-SCOPE-LOCK.md](../../invoicing/brd/MVP-SCOPE-LOCK.md) & [BRD.md](../../invoicing/BRD.md): tambah FR-14 (post-MVP) dan BR-07–BR-09
+- [MVP-SCOPE-LOCK.md](../../invoicing/brd/MVP-SCOPE-LOCK.md) & [BRD.md](../../invoicing/BRD.md): FR-14 (**Must** MVP) dan BR-07–BR-09
 - [PRD README](../README.md): baris prioritas 12 / 0700 / G7
 - [API.md](../../invoicing/engineering/API.md): endpoint §3
 - [ARCHITECTURE.md](../../invoicing/ARCHITECTURE.md): komponen `collectors`, `collections`

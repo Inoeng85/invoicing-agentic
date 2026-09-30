@@ -83,6 +83,7 @@ describe('root controller', () => {
     assert.equal(detail.status, 200)
     let detailHtml = await detail.text()
     assert.match(detailHtml, /id="penagihan"/)
+    assert.match(detailHtml, /<h2 class="card-title">Penagihan Debt Collector<\/h2>/)
     assert.match(detailHtml, new RegExp(collector.name))
     assert.match(detailHtml, /Catat aktivitas/)
   })
@@ -186,5 +187,29 @@ describe('root controller', () => {
     assert.match(page, /© 2026 PuraPuraLupa/)
     assert.match(page, />Komisi Matel Indonesia \(Komando\)</)
     assert.ok(!/\bInvoicing\b/.test(page), 'old app name must not appear')
+  })
+
+  it('opens a photo preview dialog when the collector photo is clicked', async () => {
+    let user = await makeUser()
+    let client = await makeClient(user.id)
+    let invoice = await makeInvoice(user.id, client.id)
+    let withPhoto = await makeCollector(user.id)
+    let initialsOnly = await makeCollector(user.id)
+    await setCollectorPhoto(user.id, withPhoto.id, PNG_BYTES)
+    await assignCollector(user.id, invoice.id, initialsOnly.id)
+    await assignCollector(user.id, invoice.id, withPhoto.id)
+
+    let html = await (
+      await fetchResponse(routes.invoices.show.href({ invoiceId: invoice.id }), { headers: sessionHeaders(user.id) })
+    ).text()
+    let dialogId = `dlg-collector-photo-${withPhoto.id}`
+    assert.ok(html.includes(`popovertarget="${dialogId}"`), 'photo avatar opens the preview')
+    assert.equal(html.split(`id="${dialogId}"`).length - 1, 1, 'exactly one dialog even though the collector is listed twice')
+    assert.ok(!html.includes(`dlg-collector-photo-${initialsOnly.id}`), 'initials avatar has no preview')
+
+    let edit = await (
+      await fetchResponse(routes.collectors.edit.href({ collectorId: withPhoto.id }), { headers: sessionHeaders(user.id) })
+    ).text()
+    assert.ok(edit.includes(`popovertarget="${dialogId}"`) && edit.includes(`id="${dialogId}"`), 'edit page preview')
   })
 })

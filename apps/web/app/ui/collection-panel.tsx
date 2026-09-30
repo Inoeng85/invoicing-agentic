@@ -9,7 +9,7 @@ import {
 import { CsrfInput } from '../lib/csrf-field.tsx'
 import { formatPercentInput } from '../lib/percent.ts'
 import { routes } from '../routes.ts'
-import { collectorAvatar } from './collector-avatar.tsx'
+import { collectorAvatar, collectorPhotoDialog } from './collector-avatar.tsx'
 import { alertBox, formatDate, formatIdr, toDateInput } from './kit.tsx'
 
 const OUTCOME_LABEL: Record<CollectionOutcome, string> = {
@@ -54,11 +54,15 @@ export function collectionPanel(options: CollectionPanelOptions): RemixNode {
   let active = collection.active
   let candidates = collectors.filter((c) => c.id !== active?.collectorId)
   let today = toDateInput(new Date())
+  // History already contains the active assignment; one dialog per collector keeps element ids unique.
+  let photoDialogs = [...new Map(collection.history.map((a) => [a.collector.id, a.collector])).values()].map(
+    collectorPhotoDialog,
+  )
 
   return (
     <section id="penagihan" class="card gap-4">
       <div class="card-header">
-        <h2 class="card-title">Penagihan</h2>
+        <h2 class="card-title">Penagihan Debt Collector</h2>
         <p class="card-description">Catatan internal — tidak tampil ke klien.</p>
       </div>
       <div class="card-content space-y-4">
@@ -66,7 +70,7 @@ export function collectionPanel(options: CollectionPanelOptions): RemixNode {
 
         {active ? (
           <div class="flex items-start gap-3 text-sm">
-            {collectorAvatar(active.collector, 'size-10')}
+            {collectorAvatar(active.collector, 'size-10', { preview: true })}
             <div class="min-w-0 space-y-0.5">
               <p class="font-medium">{active.collector.name}</p>
               {active.collector.email || active.collector.phone ? (
@@ -143,7 +147,7 @@ export function collectionPanel(options: CollectionPanelOptions): RemixNode {
             {collection.history.map((assignment) => (
               <li key={assignment.id} class="space-y-1">
                 <p class="flex items-center gap-2 font-medium">
-                  {collectorAvatar(assignment.collector, 'size-6')}
+                  {collectorAvatar(assignment.collector, 'size-6', { preview: true })}
                   {assignment.collector.name}{' '}
                   <span class="text-xs font-normal text-muted-foreground">
                     {assignment.endedAt
@@ -163,6 +167,7 @@ export function collectionPanel(options: CollectionPanelOptions): RemixNode {
           </ol>
         ) : null}
       </div>
+      {photoDialogs}
     </section>
   )
 }

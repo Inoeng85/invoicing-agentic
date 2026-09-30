@@ -1,6 +1,6 @@
-# Development Phases — MVP Invoicing
+# Development Phases — PuraPuraLupa (Komando)
 
-**Versi:** 1.0 · **Tanggal:** 2026-09-29  
+**Versi:** 1.1 · **Tanggal:** 2026-09-30  
 **Indeks:** [../BRD-DEFINITION-OF-DONE.md](../BRD-DEFINITION-OF-DONE.md)  
 **Sumber requirement:** [../brd/MVP-SCOPE-LOCK.md](../brd/MVP-SCOPE-LOCK.md) · [TECHNICAL-DESIGN.md](./TECHNICAL-DESIGN.md)
 
@@ -18,8 +18,8 @@ npm run gate
 
 | Gate | Otomatis (`npm run gate`) | Manual / UAT |
 |------|---------------------------|--------------|
-| G0–G5 | **Pass** (test:domain 3/3, typecheck, gate) | Pending (G1.2, G1.3, G2.2, G3.3, G4.2, G4.3, G5.2) |
-| G6 | `npm run release:check` · CI `verify` job | G6.1 CI GitHub · legal · UAT · sign-off · G-04 prod Resend |
+| G0–G7 | **Pass** (`npm run gate`, test:domain, typecheck) | Pending manual UAT per fase; G7 = FR-14 + FR-14h |
+| G6 | `npm run release:check` · CI `verify` job | G6.1 CI GitHub · legal (L-6 kolektor+foto) · sign-off · G-04 prod Resend |
 
 ---
 
@@ -34,6 +34,7 @@ npm run gate
 | **4** | PDF, kirim, publik | FR-04, FR-05, FR-06, BR-02 | G4 |
 | **5** | Lunas & dashboard | FR-07, FR-08, BR-03 | G5 |
 | **6** | Release readiness | UAT trace, CI, legal checklist | G6 |
+| **7** | Debt collector + foto | FR-14, FR-14h, BR-07–BR-09 | G7 |
 
 ---
 

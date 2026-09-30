@@ -11,10 +11,13 @@ Backbone: **Setup → Client → Invoice → Send → Collect → Report** ([USE
 |-------|-------|-----|
 | Dashboard | `/` | FR-08 |
 | Klien | `/clients` | FR-01 |
+| Kolektor | `/collectors` | FR-14 · FR-14h |
 | Invoice | `/invoices` | FR-08 list · FR-02–07 |
 | Pengaturan | `/settings` | Profil |
 
-Pola: header `h-14` + `nav-link` + `aria-current="page"`. Wordmark **Invoicing** + “Freelancer Indonesia”. CTA **Invoice baru** (`btn-default btn-sm`).
+Pola: header `h-14` + `nav-link` + `aria-current="page"`. Wordmark **PuraPuraLupa** + tagline **Komisi Matel Indonesia (Komando)**. CTA **Invoice baru** (`btn-default btn-sm`).
+
+Implementasi: `apps/web/app/ui/layout.tsx` (`NavKey`: dashboard · clients · collectors · invoices · settings).
 
 ## Tanpa nav app
 
@@ -26,5 +29,5 @@ Pola: header `h-14` + `nav-link` + `aria-current="page"`. Wordmark **Invoicing**
 
 ## Footer
 
-- App: `© 2026 Invoicing · Dibuat untuk freelancer Indonesia`
-- Publik: `Powered by Invoicing · Privasi`
+- App: `© 2026 PuraPuraLupa · Komisi Matel Indonesia (Komando)`
+- Publik: `Powered by PuraPuraLupa · Privasi`

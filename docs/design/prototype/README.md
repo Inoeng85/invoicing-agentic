@@ -1,6 +1,6 @@
 # UI prototype (HTML) — v2 · Tailwind CSS v4 + shadcn/ui
 
-Prototype statis interaktif untuk design system MVP Invoicing — selaras [invoicing/design/DESIGN-GUIDELINES.md](../../invoicing/design/DESIGN-GUIDELINES.md) dan [invoicing/brd/WIREFRAMES.md](../../invoicing/brd/WIREFRAMES.md).
+Prototype statis interaktif untuk design system **PuraPuraLupa (Komando)** — selaras [invoicing/design/DESIGN-GUIDELINES.md](../../invoicing/design/DESIGN-GUIDELINES.md) dan [invoicing/brd/WIREFRAMES.md](../../invoicing/brd/WIREFRAMES.md).
 
 - **Tailwind CSS v4** (CLI lokal, tanpa CDN) untuk utility & build.
 - **shadcn/ui** sebagai konvensi token (`--background`, `--primary`, `--muted`, …) dan resep komponen (`.btn-{variant}`, `.card-*`, `.badge-*`, `.dialog`, …).
@@ -76,7 +76,7 @@ Kalkulasi mengikuti `computeInvoiceTotals` di `@invoicing/domain`: jumlah baris 
 | §9.3 + §8.1 Editor satu kolom: Klien & tanggal → Line items → PPN + disclaimer → Catatan footer → [Unduh PDF] [Kirim ke klien] | `screen-invoice-editor.html` |
 | §9.2 Klien: tabel + cari, dialog tambah, nonaktifkan; "Email klien wajib untuk kirim" | `screen-clients.html`, `screen-invoice-send.html` |
 | §9.6 + §8.3 Pengaturan: satu formulir (Profil bisnis, Invoice, Akun) | `screen-settings.html` |
-| §7 + §8.3 Copy: "Unduh PDF", "Preview", tanggal "29 Sep 2026", "Powered by Invoicing · Privasi" | Semua halaman |
+| §7 + §8.3 Copy: "Unduh PDF", "Preview", tanggal "29 Sep 2026", "Powered by PuraPuraLupa · Privasi" | Semua halaman |
 
 ## Implementasi produk
 

@@ -1,4 +1,4 @@
-// Prototype behaviour for the Invoicing UI system (vanilla JS, no build step).
+// Prototype behaviour for the PuraPuraLupa UI system (vanilla JS, no build step).
 // Icons are a subset of Lucide (ISC license) — the same set shadcn/ui uses.
 ;(function () {
   'use strict'
@@ -182,7 +182,7 @@
       '<a href="index.html" class="flex items-center gap-2 font-semibold tracking-tight">' +
       '<span class="grid size-7 place-items-center rounded-md bg-primary text-primary-foreground">' +
       icon('receipt', 'size-4') +
-      '</span><span class="hidden sm:inline">Invoicing UI</span>' +
+      '</span><span class="hidden sm:inline">PuraPuraLupa UI</span>' +
       '<span class="badge badge-outline hidden font-mono md:inline-flex">v2 · Tailwind + shadcn</span></a>' +
       '<nav aria-label="Dokumentasi" class="-mx-1 flex min-w-0 flex-1 items-center gap-0.5 overflow-x-auto px-1">' +
       links +
@@ -477,5 +477,5 @@
   if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', boot)
   else boot()
 
-  window.InvoicingProto = { toast: toast, icon: icon }
+  window.PuraPuraLupaProto = { toast: toast, icon: icon }
 })()

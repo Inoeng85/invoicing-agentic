@@ -1,4 +1,6 @@
-# Dokumentasi Invoicing
+# Dokumentasi PuraPuraLupa (Komando)
+
+Monorepo npm tetap `@invoicing/*`; nama produk UI: **PuraPuraLupa** · **Komisi Matel Indonesia (Komando)**.
 
 **Entry point:** [BRD-DEFINITION-OF-DONE.md](./BRD-DEFINITION-OF-DONE.md)
 

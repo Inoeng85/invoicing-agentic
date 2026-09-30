@@ -1,6 +1,6 @@
-# Product Brief — Invoicing Freelancer (Indonesia)
+# Product Brief — PuraPuraLupa (Komando)
 
-**Versi:** 1.1 · **Tanggal:** 2026-09-29 · **Segmen:** Freelancer/solo · **Mata uang:** IDR  
+**Versi:** 1.2 · **Tanggal:** 2026-09-30 · **Segmen:** Freelancer/solo · **Mata uang:** IDR  
 **Arsitektur:** [../ARCHITECTURE.md](../ARCHITECTURE.md) · [ARCHITECTURE-ALIGNMENT.md](./ARCHITECTURE-ALIGNMENT.md)
 
 ## Visi
@@ -18,7 +18,7 @@ Formatting memakan waktu, nomor invoice tidak konsisten, status “sudah bayar?�
 
 ## MVP (8–12 minggu produk)
 
-Daftar → profil bisnis → klien → invoice (line items + PPN opsional) → PDF + link publik → kirim email → tandai lunas → dashboard outstanding.
+Daftar → profil bisnis → klien → invoice (line items + PPN opsional) → PDF + link publik → kirim email → tandai lunas → dashboard outstanding → **kolektor penagihan + foto** (FR-14 / FR-14h).
 
 ## Batas MVP (eksplisit out)
 

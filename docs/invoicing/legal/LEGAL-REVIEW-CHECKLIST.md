@@ -17,4 +17,4 @@ Dokumen draft:
 | L-5 | Counsel sign-off | [ ] |
 | L-6 | FR-14 debt collector: freelancer membagikan data debitur (klien) ke kolektor pihak ketiga di luar aplikasi — tinjau UU PDP (freelancer sebagai pengendali data), termasuk foto kolektor (data pribadi, disimpan di DB) dan klausul di [TERMS.md](./TERMS.md) / [PRIVACY.md](./PRIVACY.md) | [ ] |
 
-Update baris Legal di [MVP-SCOPE-LOCK.md](../brd/MVP-SCOPE-LOCK.md) setelah L-1…L-5.
+Update baris Legal di [MVP-SCOPE-LOCK.md](../brd/MVP-SCOPE-LOCK.md) setelah L-1…L-6. FR-14 / FR-14h = **Must** MVP (2026-09-30).

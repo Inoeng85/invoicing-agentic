@@ -1,7 +1,7 @@
-# System Architecture — Aplikasi Invoicing (Freelancer, Indonesia)
+# System Architecture — PuraPuraLupa (Komando)
 
-**Versi:** 1.5  
-**Tanggal:** 2026-09-29  
+**Versi:** 1.6  
+**Tanggal:** 2026-09-30  
 **Indeks paket:** [BRD-DEFINITION-OF-DONE.md](./BRD-DEFINITION-OF-DONE.md)  
 **Sumber BRD:** [BRD.md](./BRD.md) · [brd/MVP-SCOPE-LOCK.md](./brd/MVP-SCOPE-LOCK.md) · [brd/ARCHITECTURE-ALIGNMENT.md](./brd/ARCHITECTURE-ALIGNMENT.md) (keputusan canonical D-xx, gap G-xx)  
 **Design:** [design/DESIGN-GUIDELINES.md](./design/DESIGN-GUIDELINES.md) · [prototype](../design/prototype/index.html)  
@@ -22,9 +22,10 @@ Dokumen ini menjembatani **requirement bisnis (BRD)** dengan **struktur sistem**
 
 | Aspek | Keputusan |
 |-------|-----------|
+| Nama produk | **PuraPuraLupa** · Komisi Matel Indonesia (Komando) |
 | Segmen | Freelancer/solo, Indonesia, IDR |
 | Masalah | Invoice manual, tracking pembayaran terfragmentasi |
-| MVP outcome | Profil bisnis → klien → invoice → PDF/link → email → lunas → dashboard |
+| MVP outcome | Profil bisnis → klien → invoice → PDF/link → email → lunas → dashboard → penagihan kolektor |
 | North Star | Invoice terkirim / user aktif / minggu |
 | Explicit non-goals MVP | e-Faktur, payment gateway, multi-user, multi-currency |
 
@@ -66,7 +67,7 @@ Dokumen ini menjembatani **requirement bisnis (BRD)** dengan **struktur sistem**
 flowchart LR
   Freelancer[Freelancer]
   Client[KlienPenerimaInvoice]
-  App[SistemInvoicing]
+  App[PuraPuraLupa]
   Email[PenyediaEmail]
   Freelancer -->|HTTPS| App
   Client -->|HTTPS link publik| App
@@ -201,6 +202,8 @@ Selaras [brd/ARCHITECTURE-ALIGNMENT.md](./brd/ARCHITECTURE-ALIGNMENT.md) §3.
 | FR-06 | `/i/:token` | `/api/public/invoices/:token`, `.../revoke-link` | BR-05 |
 | FR-07 | mark paid UI | `POST .../mark-paid` | BR-01 |
 | FR-08 | `/` dashboard, `/invoices` list | `/api/v1/dashboard`, `/api/v1/invoices` | BR-03 overdue |
+| FR-14 | `/collectors`, collection actions on invoice | `/api/v1/collectors`, `/api/v1/invoices/:id/collection/*` | `collectors.ts`, `collections.ts` · BR-07–BR-09 |
+| FR-14h | `/collectors/:id/photo` | — (web only) | `collector-photos.ts` |
 
 Status implementasi per baris + layar design: [brd/ARCHITECTURE-ALIGNMENT.md §3](./brd/ARCHITECTURE-ALIGNMENT.md#3-pemetaan-fr-must--arsitektur--stack--design).
 
@@ -247,10 +250,10 @@ stateDiagram-v2
 
 | Transisi | Guard |
 |----------|--------|
-| → `sent` | Klien email valid; totals fresh; assign `number` (`INV-{YYYY}-{SEQ4}`) + `public_token` dalam satu transaksi, email setelah commit (target — kode saat ini: gap G-13) |
+| → `sent` | Klien email valid; totals fresh; assign `number` (`INV-{YYYY}-{SEQ4}`) + `public_token` dalam satu transaksi, email setelah commit (G-13 implemented) |
 | Edit line items | Hanya `draft` (BR-01) |
-| → `paid` | Manual dari `sent`/`overdue`; set `paid_at` |
-| → `cancelled` | Status ada di schema; aksi cancel belum diimplementasi (gap G-01) |
+| → `paid` | Manual dari `sent`/`overdue`; set `paid_at`; tutup assignment kolektor + komisi (BR-08) |
+| → `cancelled` | `cancelInvoice` dari `sent`/`overdue`; tutup assignment tanpa komisi |
 | Hapus | Hard delete hanya `draft` (BR-06) |
 
 ### 8.2 Kalkulasi uang (FR-03, BR-04)
@@ -352,15 +355,16 @@ sequenceDiagram
 
 ## 12. Arsitektur UI & navigasi
 
-Selaras [brd/WIREFRAMES.md](./brd/WIREFRAMES.md) — 7 layar (6 inti + daftar invoice), route = [apps/web/app/routes.ts](../../apps/web/app/routes.ts):
+Selaras [brd/WIREFRAMES.md](./brd/WIREFRAMES.md) — layar inti + **Kolektor**, route = [apps/web/app/routes.ts](../../apps/web/app/routes.ts):
 
 | Layar | Route | Stack UI | Prototype |
 |-------|-------|----------|-----------|
 | Dashboard | `/` | Tailwind layout + server render | `screen-dashboard.html` |
 | Klien | `/clients`, `/clients/:id` | Forms + tables | `screen-clients.html`, `screen-client-detail.html` |
-| Daftar invoice | `/invoices` | Tabel + filter status | `screen-invoice-list.html` |
+| Kolektor | `/collectors`, `/collectors/new`, `/collectors/:id(/edit)` | CRUD + foto (FR-14h) | Nav selaras app; detail via implementasi web |
+| Daftar invoice | `/invoices` | Tabel + filter status & kolektor | `screen-invoice-list.html` |
 | Editor invoice | `/invoices/new`, `/invoices/:id/edit` | Forms, PPN toggle + disclaimer | `screen-invoice-editor.html` |
-| Detail & preview | `/invoices/:id` (+ `/pdf`, `POST /send`, `POST /mark-paid`) | Mirror PDF | `screen-invoice-preview.html`, `screen-invoice-send.html`, `screen-invoice-locked.html` |
+| Detail & preview | `/invoices/:id` (+ `/pdf`, send, mark-paid, collection panel) | Mirror PDF + Penagihan | `screen-invoice-preview.html`, `screen-invoice-send.html`, `screen-invoice-locked.html` |
 | Public | `/i/:token` | Minimal chrome | `screen-public.html`, `screen-pdf-states.html` |
 | Settings | `/settings` | Profil + invoice defaults | `screen-settings.html` |
 
