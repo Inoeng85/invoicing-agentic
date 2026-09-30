@@ -21,5 +21,14 @@ export const routes = route({
   v1InvoicePdf: get('/api/v1/invoices/:id/pdf'),
   v1InvoiceRevokeLink: post('/api/v1/invoices/:id/revoke-link'),
   v1InvoiceCancel: post('/api/v1/invoices/:id/cancel'),
+  v1Collectors: resources('/api/v1/collectors', {
+    only: ['index', 'show', 'create', 'update', 'destroy'],
+  }),
+  v1InvoiceCollection: {
+    show: get('/api/v1/invoices/:id/collection'),
+    assign: post('/api/v1/invoices/:id/collection/assign'),
+    unassign: post('/api/v1/invoices/:id/collection/unassign'),
+    activities: post('/api/v1/invoices/:id/collection/activities'),
+  },
   publicInvoice: get('/api/public/invoices/:token'),
 })

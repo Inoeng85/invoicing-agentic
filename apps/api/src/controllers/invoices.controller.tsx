@@ -23,7 +23,8 @@ export default createController(routes.v1Invoices, {
         let userId = requireUserId(context.request)
         let url = new URL(context.request.url)
         let status = url.searchParams.get('status') ?? undefined
-        let data = await listInvoices(userId, status as Parameters<typeof listInvoices>[1])
+        let collectorId = url.searchParams.get('collectorId') ?? undefined
+        let data = await listInvoices(userId, status as Parameters<typeof listInvoices>[1], collectorId)
         return json({ data })
       })
     },

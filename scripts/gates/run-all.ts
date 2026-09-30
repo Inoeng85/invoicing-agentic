@@ -29,7 +29,7 @@ function writeGateReports(failed: boolean) {
   writeFileSync(jsonPath, JSON.stringify({ failed, results }, null, 2), 'utf8')
 
   let lines = [
-    '## Gate G0–G6 (release checks in Phase 6 section)',
+    '## Gate G0–G7 (release checks in Phase 6, debt collector in Phase 7)',
     '',
     '| Phase | Result | Detail |',
     '|-------|--------|--------|',
@@ -183,6 +183,52 @@ async function gatePhase6Release(token: string, clientId: string) {
   record('Phase 6 — G-01 cancel', cancel.status === 200, `status ${cancel.status}`)
 }
 
+async function gatePhase7Collection(token: string, clientId: string) {
+  let auth = { 'Content-Type': 'application/json', Authorization: `Bearer ${token}` }
+
+  let collector = await apiFetch('/api/v1/collectors', {
+    method: 'POST',
+    headers: auth,
+    body: JSON.stringify({ name: 'Kolektor Gate', commissionRate: 0.1 }),
+  })
+  record('Phase 7 — FR-14 create collector', collector.status === 201, `status ${collector.status}`)
+  let collectorId = ((await collector.json()) as { data: { id: string } }).data.id
+
+  let create = await apiFetch('/api/v1/invoices', {
+    method: 'POST',
+    headers: auth,
+    body: JSON.stringify({
+      clientId,
+      lines: [{ description: 'Collection gate', quantity: 1, unitPriceCents: 50_000_00, discountCents: 0 }],
+    }),
+  })
+  let invoiceId = ((await create.json()) as { data: { id: string } }).data.id
+  let send = await apiFetch(`/api/v1/invoices/${invoiceId}/send`, { method: 'POST', headers: auth })
+  record('Phase 7 — send for collection', send.status === 200, `status ${send.status}`)
+
+  let assign = await apiFetch(`/api/v1/invoices/${invoiceId}/collection/assign`, {
+    method: 'POST',
+    headers: auth,
+    body: JSON.stringify({ collectorId }),
+  })
+  record('Phase 7 — FR-14 assign', assign.status === 200, `status ${assign.status}`)
+
+  let activity = await apiFetch(`/api/v1/invoices/${invoiceId}/collection/activities`, {
+    method: 'POST',
+    headers: auth,
+    body: JSON.stringify({ occurredAt: new Date().toISOString(), outcome: 'contacted' }),
+  })
+  record('Phase 7 — FR-14 activity', activity.status === 201, `status ${activity.status}`)
+
+  let paid = await apiFetch(`/api/v1/invoices/${invoiceId}/mark-paid`, { method: 'POST', headers: auth })
+  record('Phase 7 — mark paid', paid.status === 200, `status ${paid.status}`)
+
+  let collection = await apiFetch(`/api/v1/invoices/${invoiceId}/collection`, { headers: auth })
+  let body = (await collection.json()) as { data: { history: Array<{ commissionCents: number | null }> } }
+  let commission = body.data.history[0]?.commissionCents
+  record('Phase 7 — BR-08 commission locked', commission === 5_000_00, `commissionCents=${commission}`)
+}
+
 async function main() {
   console.log('=== Development phase gates ===\n')
   await gatePhase0()
@@ -192,6 +238,7 @@ async function main() {
   await gatePhase4(token, invoiceId)
   await gatePhase5(token, invoiceId)
   await gatePhase6Release(token, clientId)
+  await gatePhase7Collection(token, clientId)
   console.log('\n=== All gates PASS ===')
   writeGateReports(false)
 }

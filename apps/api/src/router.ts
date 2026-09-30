@@ -4,6 +4,8 @@ import { clientIp, rateLimitKey, requestLogging } from '@invoicing/platform'
 
 import apiController from './controllers/api.controller.tsx'
 import clientsController from './controllers/clients.controller.tsx'
+import collectionController from './controllers/collection.controller.tsx'
+import collectorsController from './controllers/collectors.controller.tsx'
 import invoicesController from './controllers/invoices.controller.tsx'
 import { routes } from './routes.ts'
 
@@ -37,3 +39,5 @@ export const router = createRouter({
 router.map(routes, apiController)
 router.map(routes.v1Clients, clientsController)
 router.map(routes.v1Invoices, invoicesController)
+router.map(routes.v1Collectors, collectorsController)
+router.map(routes.v1InvoiceCollection, collectionController)
