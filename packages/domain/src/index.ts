@@ -39,6 +39,14 @@ export {
   type InvoiceCollection,
 } from './collections.ts'
 export {
+  MAX_COLLECTOR_PHOTO_BYTES,
+  detectImageType,
+  setCollectorPhoto,
+  removeCollectorPhoto,
+  getCollectorPhoto,
+  type CollectorPhotoMimeType,
+} from './collector-photos.ts'
+export {
   listInvoices,
   getInvoice,
   createInvoiceDraft,
