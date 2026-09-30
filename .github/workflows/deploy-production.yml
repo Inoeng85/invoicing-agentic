@@ -1,0 +1,33 @@
+name: Deploy production
+
+on:
+  push:
+    tags:
+      - 'v*.*.*'
+
+permissions:
+  contents: read
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    environment:
+      name: production
+      url: ${{ vars.APP_URL }}
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version-file: .nvmrc
+          cache: npm
+          cache-dependency-path: package-lock.json
+      - run: npm ci
+      - run: npm run css:build
+      - run: npm run db:migrate:deploy:postgres
+        env:
+          DATABASE_URL: ${{ secrets.DATABASE_URL }}
+      - name: Deploy (placeholder)
+        run: |
+          echo "Production deploy from tag ${GITHUB_REF_NAME}"
+          echo "Wire host CLI (Railway/Fly). Secrets separate from staging."
+          echo "Smoke: curl -f \"${{ secrets.API_BASE_URL }}/api/health/ready\""

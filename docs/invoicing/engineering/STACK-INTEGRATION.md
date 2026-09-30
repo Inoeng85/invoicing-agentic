@@ -104,6 +104,7 @@ Daftar referensi: [TECHNOLOGY-STACK.md](./TECHNOLOGY-STACK.md) §5.
 
 ```sh
 npm run design:css    # → docs/design/prototype/assets/ui.css (gitignored, dibuild ulang)
+npm run design:serve  # static server http://localhost:8765 (setelah design:css)
 ```
 
 ---

@@ -30,6 +30,17 @@ async function sendViaResend(
   return { ok: true, providerId: data.id ?? 'resend' }
 }
 
+function parseAllowlist(): Set<string> | null {
+  let raw = process.env.EMAIL_ALLOWLIST?.trim()
+  if (!raw) return null
+  return new Set(
+    raw
+      .split(',')
+      .map((e) => e.trim().toLowerCase())
+      .filter(Boolean),
+  )
+}
+
 export function configureEmailFromEnv(env: Pick<ValidatedEnv, 'emailProvider' | 'emailApiKey' | 'emailFrom'>) {
   if (env.emailProvider === 'log') {
     return
@@ -43,6 +54,13 @@ export function configureEmailFromEnv(env: Pick<ValidatedEnv, 'emailProvider' | 
       process.exit(1)
     }
 
-    setEmailSender((input) => sendViaResend(input, apiKey, from))
+    let allowlist = parseAllowlist()
+    setEmailSender(async (input) => {
+      if (allowlist && !allowlist.has(input.to.trim().toLowerCase())) {
+        console.info('[email:blocked]', { to: input.to, reason: 'not on EMAIL_ALLOWLIST' })
+        return { ok: false, error: 'Recipient not allowed in this environment' }
+      }
+      return sendViaResend(input, apiKey, from)
+    })
   }
 }

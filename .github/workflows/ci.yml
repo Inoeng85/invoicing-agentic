@@ -46,3 +46,15 @@ jobs:
           APP_URL: "http://localhost:44100"
           CORS_ORIGIN: "http://localhost:44100"
           API_BASE_URL: "http://localhost:44101"
+          GITHUB_STEP_SUMMARY: ${{ github.step_summary }}
+
+      - name: Upload gate summary
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: gate-summary
+          path: |
+            .gate/gate-results.json
+            .gate/gate-summary.md
+            .gate-summary.md
+          if-no-files-found: ignore

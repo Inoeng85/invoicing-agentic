@@ -1,0 +1,18 @@
+# Example — TLS + reverse proxy + rate limit on public invoice paths (PS-32)
+# Set TRUST_PROXY=1 on @invoicing/api when using this proxy.
+
+staging.web.example {
+  @public_invoice path /i/*
+  rate_limit @public_invoice {
+    zone public_invoice {
+      key {remote_host}
+      events 30
+      window 1m
+    }
+  }
+  reverse_proxy localhost:44100
+}
+
+staging.api.example {
+  reverse_proxy localhost:44101
+}

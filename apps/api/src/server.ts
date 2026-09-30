@@ -9,7 +9,8 @@ bootstrapPlatform('api')
 
 const port = process.env.PORT ? Number.parseInt(process.env.PORT, 10) : 44101
 
-const server = http.createServer(createRequestListener(router.fetch))
+const trustProxy = process.env.TRUST_PROXY === '1'
+const server = http.createServer(createRequestListener(router.fetch, { trustProxy }))
 
 server.listen(port, () => {
   console.log(`API listening on http://localhost:${port}`)

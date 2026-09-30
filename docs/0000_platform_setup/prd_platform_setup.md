@@ -3,7 +3,7 @@
 | Meta | Nilai |
 |------|-------|
 | ID | PRD-0000 |
-| Versi | 1.5 · Phase 2 implementasi repo · PG-2 terbuka (host/staging live) |
+| Versi | 1.6 · Phase 3 runbook & CD repo · PG-3 terbuka (prod live & uji) |
 | Development phase | [PRD_platform_setup_development_phase.md](./PRD_platform_setup_development_phase.md) |
 | Tanggal | 2026-09-30 (verifikasi PG-0 & PG-1) |
 | Owner | Product (Cursor, PM) |

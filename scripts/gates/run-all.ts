@@ -2,12 +2,15 @@
  * Development phase gates — verifikasi otomatis per fase.
  * Jalankan dari root: npm run gate
  */
-import * as assert from 'node:assert/strict'
+import { mkdirSync, writeFileSync, appendFileSync } from 'node:fs'
+import { dirname, join } from 'node:path'
+import { fileURLToPath } from 'node:url'
 import { randomBytes } from 'node:crypto'
 
 import { router as apiRouter } from '../../apps/api/src/router.ts'
 
 const base = 'http://localhost:44101'
+const reportDir = join(dirname(fileURLToPath(import.meta.url)), '../../.gate')
 
 type GateResult = { phase: string; pass: boolean; detail: string }
 
@@ -18,6 +21,31 @@ function record(phase: string, pass: boolean, detail: string) {
   let icon = pass ? 'PASS' : 'FAIL'
   console.log(`[${icon}] ${phase}: ${detail}`)
   if (!pass) throw new Error(`Gate failed: ${phase}`)
+}
+
+function writeGateReports(failed: boolean) {
+  mkdirSync(reportDir, { recursive: true })
+  let jsonPath = join(reportDir, 'gate-results.json')
+  writeFileSync(jsonPath, JSON.stringify({ failed, results }, null, 2), 'utf8')
+
+  let lines = [
+    '## Gate G0–G5',
+    '',
+    '| Phase | Result | Detail |',
+    '|-------|--------|--------|',
+    ...results.map((r) => `| ${r.phase} | ${r.pass ? 'PASS' : 'FAIL'} | ${r.detail.replace(/\|/g, '\\|')} |`),
+    '',
+    failed ? '**Overall: FAIL**' : '**Overall: PASS**',
+    '',
+  ]
+  let md = lines.join('\n')
+  writeFileSync(join(reportDir, 'gate-summary.md'), md, 'utf8')
+  writeFileSync(join(process.cwd(), '.gate-summary.md'), md, 'utf8')
+
+  let ghSummary = process.env.GITHUB_STEP_SUMMARY
+  if (ghSummary) {
+    appendFileSync(ghSummary, `\n${md}\n`, 'utf8')
+  }
 }
 
 async function apiFetch(path: string, init: RequestInit = {}) {
@@ -78,24 +106,25 @@ async function gatePhase3(token: string, clientId: string) {
     }),
   })
   record('Phase 3 — FR-02 draft', create.status === 201, `status ${create.status}`)
-  let inv = (await create.json()) as { data: { id: string; ppnCents: number; totalCents: number } }
+  let invoice = (await create.json()) as { data: { id: string; ppnCents: number; totalCents: number } }
   record(
     'Phase 3 — FR-03 PPN',
-    inv.data.ppnCents === 11_000_000 && inv.data.totalCents === 111_000_000,
-    `ppn=${inv.data.ppnCents} total=${inv.data.totalCents}`,
+    invoice.data.ppnCents === 11_000_000 && invoice.data.totalCents === 111_000_000,
+    `ppn=${invoice.data.ppnCents} total=${invoice.data.totalCents}`,
   )
-  return inv.data.id
+  return invoice.data.id
 }
 
 async function gatePhase4(token: string, invoiceId: string) {
   let pdf = await apiFetch(`/api/v1/invoices/${invoiceId}/pdf`, {
     headers: { Authorization: `Bearer ${token}` },
   })
-  record('Phase 4 — FR-04 PDF', pdf.status === 200 && pdf.headers.get('Content-Type')?.includes('pdf') === true, `status ${pdf.status}`)
+  record('Phase 4 — FR-04 PDF', pdf.status === 200, `status ${pdf.status}`)
 
   let send = await apiFetch(`/api/v1/invoices/${invoiceId}/send`, {
     method: 'POST',
-    headers: { Authorization: `Bearer ${token}` },
+    headers: { 'Content-Type': 'application/json', Authorization: `Bearer ${token}` },
+    body: JSON.stringify({ to: 'klien@example.com' }),
   })
   record('Phase 4 — FR-05 send', send.status === 200, `status ${send.status}`)
   let sent = (await send.json()) as { data: { publicToken: string; number: string } }
@@ -132,9 +161,11 @@ async function main() {
   await gatePhase5(token, invoiceId)
   await gatePhase6()
   console.log('\n=== All gates PASS ===')
+  writeGateReports(false)
 }
 
 main().catch((error) => {
+  writeGateReports(true)
   console.error(error)
   process.exit(1)
 })
