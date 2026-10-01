@@ -1,0 +1,64 @@
+# Plan task — 0700-task-05
+
+| Field | Nilai |
+|-------|-------|
+| **Task ID** | 0700-task-05 |
+| **Task** | `invoices.ts` — lunas/batal menutup assignment, filter kolektor |
+| **Phase** | 0700 / phase-01 (0700-P1) |
+| **Status plan** | `defined` |
+
+## Penjelasan
+
+`invoices.ts` — lunas/batal menutup assignment, filter kolektor (PRD epic 0700).
+
+File utama:
+- `packages/domain/src/invoices.ts`
+- `listInvoices`
+- `cancelInvoice`
+- `markInvoicePaid`
+- `packages/domain/src/invoices-collection.test.ts`
+
+## Tujuan
+
+npm run test:domain
+
+## Feature
+
+| Feature ID | Dokumen |
+|------------|---------|
+| `0700-task-05` | [agentic/development/features/0700-task-05.md](../../../../../../agentic/development/features/0700-task-05.md) |
+
+## Development
+
+| Status | `pending` |
+
+## QA
+
+| Status | `pending` |
+
+## Skill yang digunakan
+
+| Skill | File plan |
+|-------|-----------|
+| Backend | [skills/backend.md](./skills/backend.md) |
+| Docs | [skills/docs.md](./skills/docs.md) |
+| QA | [skills/qa.md](./skills/qa.md) |
+
+## Acuan PRD
+
+- Development phase: `docs/PRD/0700-debt-collector/0700_PRD_Debt_Collector_Development_phase.md`
+- **Produces:** —
+- **Verifikasi:** npm run test:domain
+- **Files:**
+- `packages/domain/src/invoices.ts`
+- `packages/domain/src/invoices-collection.test.ts`
+
+## Selesai bila (Plan)
+
+- [ ] Penjelasan, Tujuan, Feature terisi tanpa `[TBD]`
+- [ ] Setiap skill aktif punya file `skills/{skill}.md`
+- [ ] Agent Development dapat mulai tanpa ambigu
+
+## Ambigu / Human Clarify
+
+—

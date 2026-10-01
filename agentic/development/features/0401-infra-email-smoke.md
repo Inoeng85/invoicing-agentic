@@ -1,0 +1,36 @@
+# Feature — 0401-infra-email-smoke
+
+| Field | Nilai |
+|-------|-------|
+| **Feature ID** | 0401-infra-email-smoke |
+| **Nama** | infra email smoke |
+| **Epic** | 0401 |
+| **Task utama** | 040106-infra-email-smoke |
+
+## Ringkasan
+
+Boundary Development untuk task 040106-infra-email-smoke (epic 0401).
+
+## File terkait (session boundary)
+
+### Backend
+
+- 
+
+### Frontend
+
+- 
+
+### Docs / lainnya
+
+- (isi dari plan / PRD Files)
+
+## Task plan yang memakai feature ini
+
+| Task ID | Phase | Status dev |
+|---------|-------|------------|
+| 040106-infra-email-smoke | 0401-P1 | `pending` |
+
+## Out of scope
+
+- Task lain di epic yang tidak memakai feature ID ini.

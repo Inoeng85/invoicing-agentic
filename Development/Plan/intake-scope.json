@@ -1,0 +1,38 @@
+{
+  "version": 1,
+  "instructedBy": "human",
+  "notes": "Scope aktif orkestrasi. Ubah epics/splits lalu jalankan npm run agentic:intake-queue.",
+  "scope": {
+    "prdRoots": [
+      "docs/PRD/0702-live-tracking"
+    ],
+    "developmentPhasePaths": [
+      "docs/PRD/0702-live-tracking/0702_PRD_Live_Tracking_Development_phase.md"
+    ],
+    "epics": [
+      "all"
+    ],
+    "catalogRef": ".agentic/catalog/index.json"
+  },
+  "epicConfig": {
+    "0702": {
+      "splits": [
+        {
+          "phaseId": "0702-P1",
+          "ordinal": 1,
+          "title": "Live tracking — fondasi API & model",
+          "taskNumbers": ["01", "02", "03"]
+        },
+        {
+          "phaseId": "0702-P2",
+          "ordinal": 2,
+          "title": "Live tracking — UI & integrasi",
+          "taskNumbers": ["04", "05", "06", "07", "08"]
+        }
+      ]
+    }
+  },
+  "gates": {
+    "planRequiresPriorPhaseHumanQa": true
+  }
+}

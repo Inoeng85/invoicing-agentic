@@ -1,0 +1,37 @@
+{
+  "phaseId": "0300-P1",
+  "updatedAt": "2026-10-01T07:15:43.117Z",
+  "tasks": [
+    {
+      "taskId": "030001-db-invoice-line-items",
+      "planPath": "Development/Plan/0300/phase-01/tasks/030001-db-invoice-line-items/plan.md",
+      "status": "defined"
+    },
+    {
+      "taskId": "030002-domain-draft-totals-base",
+      "planPath": "Development/Plan/0300/phase-01/tasks/030002-domain-draft-totals-base/plan.md",
+      "status": "defined"
+    },
+    {
+      "taskId": "030003-be-invoice-draft-crud",
+      "planPath": "Development/Plan/0300/phase-01/tasks/030003-be-invoice-draft-crud/plan.md",
+      "status": "defined"
+    },
+    {
+      "taskId": "030004-fe-invoice-editor",
+      "planPath": "Development/Plan/0300/phase-01/tasks/030004-fe-invoice-editor/plan.md",
+      "status": "defined"
+    },
+    {
+      "taskId": "030005-fe-invoice-list-draft",
+      "planPath": "Development/Plan/0300/phase-01/tasks/030005-fe-invoice-list-draft/plan.md",
+      "status": "defined"
+    },
+    {
+      "taskId": "030006-domain-br01-guards",
+      "planPath": "Development/Plan/0300/phase-01/tasks/030006-domain-br01-guards/plan.md",
+      "status": "defined"
+    }
+  ],
+  "allDefined": true
+}

@@ -18,6 +18,91 @@ Manusia masuk untuk klarifikasi dan untuk menerima stage yang berisiko. Agent la
 
 Sebelum bertindak, tiap stage membaca `acuan.md` (daftar dokumen dan bagian) dan menulis `rencana.md` (apa yang akan dilakukan). Sesudah bertindak, `hasil.md` memetakan setiap butir rencana ke bukti.
 
+### Kanban phase (visualisasi)
+
+Papan [kanban-board.html](./kanban-board.html) memetakan **satu kartu = satu phase** Development phase (contoh: Phase 1, Phase 2). Kolom alur:
+
+`Intake` → `Plan` → `Development` → `Test` → `Audit` → `Human Clarify` → `Human QA`
+
+| Kolom | Pelaku | Keluaran utama |
+|-------|--------|----------------|
+| Intake | **Agent Intake** — antrian phase | `Development/Plan/intake-queue.json`, `{epic}/phase-{nn}/intake-summary.md` |
+| Plan | **Agent Plan** — detail task berurutan | `tasks/{task-id}/plan.md` + `skills/*.md`, `plan-manifest.json` |
+| Development | Agent Development | Laporan per task + PR; `Development/Result/.../development/` |
+| Test | Agent QA | Uji per task + rujukan PRD; `Development/Result/.../qa/` |
+| Audit | Agent Audit | Review code, API, frontend, integration seluruh task phase; `Development/Result/.../audit/report.md` |
+| Human Clarify | Manusia | Jawaban untuk tugas ambigu dari agent |
+| Human QA | Manusia | Gate release sebelum deploy |
+
+Skill canonical: `agentic/skill/` (Intake, Plan, Development, QA, Audit) dan `agentic/skill/feature/` (Backend, Frontend, QA, Infra, Docs, …). Ledger per task di `.agentic/runs/` tetap memakai stage `intake` → `implement` → `test` → `audit` → `accept`; kolom kanban adalah tampilan **per phase**, bukan pengganti folder run per task.
+
+**Gate Intake → Plan:** phase `ordinal` *n* hanya `ready_for_plan` jika phase *n−1* sudah **`released`** (Human QA). Phase berikutnya tidak masuk Development–Audit sebelum phase sebelumnya selesai sampai Human QA.
+
+**Gate Plan → Development:** setiap task punya plan (Task, Task ID, Penjelasan, Tujuan, Feature, Skill) dan **satu file per skill**; ambigu → Human Clarify. Spesifikasi: [agentic/skill/intake/SKILL.md](../../../agentic/skill/intake/SKILL.md), [agentic/skill/plan/SKILL.md](../../../agentic/skill/plan/SKILL.md).
+
+**Orkestrasi Intake (berurutan + auto phase):** `npm run agentic:intake-run -- next` · task plan **sequential** per `taskIds` · `tick-intake` / `tick` memajukan antrian · phase selesai plan → Development + trigger intake phase berikutnya bila gate `released` · `sync-gates` setelah Human QA release.
+
+**Agent Development (per task dalam phase):**
+
+| Aturan | Detail |
+|--------|--------|
+| Session | **1 session = 1 feature + 1 task** — tidak campur task/feature |
+| Feature | `agentic/development/features/{feature-id}.md` — semua path backend/frontend/docs session |
+| Masukan | `Development/Plan/.../tasks/{task-id}/plan.md` + `skills/*.md` |
+| Selesai | Laporan `Development/Result/.../development/{task-id}.md` + update section **Development** di `plan.md` |
+| Progress UI | Kanban panel *Progress task dalam phase* · tombol **Dev report** / dialog task (plan, laporan development, pratinjau) · `npm run agentic:kanban-data` |
+| Validasi | `npm run agentic:validate-dev -- --task {id} --epic {epic} --phase {n}` |
+
+Kontrak: [agentic/development/README.md](../../../agentic/development/README.md) · skill: [agentic/skill/development/SKILL.md](../../../agentic/skill/development/SKILL.md).
+
+**Agent QA (per task dalam phase):**
+
+| Aturan | Detail |
+|--------|--------|
+| Session | **1 session = 1 feature + 1 task** — sama dengan Development |
+| Masukan | `plan.md`, `skills/qa.md`, laporan development, acceptance PRD |
+| Uji | Jalankan **setiap uji terkecil** di `skills/qa.md`; bukti di laporan |
+| Selesai | Laporan `Development/Result/.../qa/{task-id}.md` + update section **QA** di `plan.md` |
+| Gagal | Agent QA **boleh memperbaiki kode** dalam boundary feature doc + Files PRD; uji ulang di session yang sama |
+| Ambigu | Instruksi tidak jelas → **Human Clarify** (task/phase), jangan tebak |
+| Phase gate | Semua task phase **QA pass** → kolom **Audit**; ada `needs_clarify` → **Human Clarify** |
+| Progress UI | Panel *Progress task dalam phase* — bar QA pass + status dev/qa per task · `npm run agentic:kanban-data` |
+| Validasi | `npm run agentic:validate-qa -- --task {id} --epic {epic} --phase {n}` |
+
+Skill: [agentic/skill/qa/SKILL.md](../../../agentic/skill/qa/SKILL.md) · feature QA: [agentic/skill/feature/qa/SKILL.md](../../../agentic/skill/feature/qa/SKILL.md).
+
+**Agent Audit (per phase / satu card kanban):**
+
+| Aturan | Detail |
+|--------|--------|
+| Session | **1 session = 1 phase (1 card)** — review & uji seluruh task dalam phase |
+| Masukan | Plan task + laporan dev/QA, `devPhasePath`, PRD epic, `Development/Plan/.../audit.md` |
+| Review | Code review lintas task; uji **backend**, **web**, **integration**, gate/verify PRD phase |
+| Selesai | **Commit git lokal** → `Development/Result/.../audit/report.md` → update **PRD epic**, **PRD development phase**, `audit.md` |
+| Handoff | Audit **`pass`** → **Human QA**; **`needs_clarify`** → **Human Clarify** |
+| Progress UI | Kanban phase + panel progress (status audit phase, link laporan) · `npm run agentic:kanban-data` |
+| Validasi | `npm run agentic:validate-audit -- --epic {epic} --phase {n}` atau `--phase-id {id}` |
+
+Skill: [agentic/skill/audit/SKILL.md](../../../agentic/skill/audit/SKILL.md) · checklist: [agentic/skill/feature/audit/SKILL.md](../../../agentic/skill/feature/audit/SKILL.md).
+
+### Agentic Software Development Framework
+
+Kerangka ini mengunci agent agar **deterministic & traceable** (bukan sekadar prompt → coding):
+
+**Makro:** Requirement (PRD) → Agent Intake → Agent Plan (dekomposisi task) → *Human Clarify gate* → Development → QA (code/test/validate, cabang **Fix**) → Agent Audit (review) → Report → Progress dashboard → task/phase berikutnya → Human QA release.
+
+**Mikro (per task Development/QA):** kerja dalam boundary feature → **validation** → **laporan** → **update plan task** → **refresh progress UI** (`agentic:kanban-data`) → **next task** (orkestrasi `agentic:intake-run` di tahap Plan; validate-* di Dev/QA).
+
+| Prinsip | Implementasi repo |
+|---------|-------------------|
+| Planning gate task-level | Kolom Plan + `plan-manifest.json` `allDefined` sebelum Development |
+| Execution boundary | `agentic/development/features/{feature-id}.md` — 1 session = 1 feature + 1 task |
+| Human decision gate | Kolom Human Clarify · `Development/Plan/clarify/` |
+| Audit trail | `Development/Plan`, `Development/Result`, `intake-queue.json`, commit audit |
+| Progress tracking | [kanban-board.html](./kanban-board.html) · `kanban-board.json` |
+
+Diagram & perintah: [agentic/README.md](../../../agentic/README.md).
+
 ## Latar belakang
 
 Development phase (contoh PRD-0702) sudah memuat Goal, Global Constraints, Review Focus, dan task dengan Files, Produces, langkah, serta perintah verifikasi. `npm run gate` sudah mengunci epic produk (G0–G7).
@@ -201,7 +286,7 @@ Tidak ada model Prisma dan tidak ada tabel baru. Ledger adalah file di `.agentic
 - Satu sesi yang mengerjakan seluruh Development phase sampai selesai.
 - Tester yang memperbaiki kode agar uji hijau.
 - Menyalin task ke pelacak tiket terpisah.
-- UI web untuk ledger pada versi ini.
+- UI web penuh untuk ledger (prototipe kanban HTML saja).
 
 ## Dependensi
 
@@ -216,7 +301,9 @@ Epic produk pertama yang dipakai sebagai bukti OR-14 dipilih saat development ph
 ## Dokumen terkait
 
 - [0800_PRD_Orkestrasi_Stage_Development_phase.md](./0800_PRD_Orkestrasi_Stage_Development_phase.md)
-- Skill peran: [.cursor/skills/agentic-orchestrator/SKILL.md](../../../.cursor/skills/agentic-orchestrator/SKILL.md), [agentic-implementer](../../../.cursor/skills/agentic-implementer/SKILL.md), [agentic-tester](../../../.cursor/skills/agentic-tester/SKILL.md), [agentic-auditor](../../../.cursor/skills/agentic-auditor/SKILL.md). Fase bersama: [.cursor/skills/agentic-stage/LOOP.md](../../../.cursor/skills/agentic-stage/LOOP.md)
+- [kanban-board.html](./kanban-board.html) — alur phase Intake → Human QA
+- Skill repo: [agentic/skill/README.md](../../../agentic/skill/README.md); laporan: [Development/Plan](../../../Development/Plan/README.md), [Development/Result](../../../Development/Result/README.md)
+- Skill Cursor (legacy per task): [.cursor/skills/agentic-orchestrator/SKILL.md](../../../.cursor/skills/agentic-orchestrator/SKILL.md), [agentic-implementer](../../../.cursor/skills/agentic-implementer/SKILL.md), [agentic-tester](../../../.cursor/skills/agentic-tester/SKILL.md), [agentic-auditor](../../../.cursor/skills/agentic-auditor/SKILL.md). Fase bersama: [.cursor/skills/agentic-stage/LOOP.md](../../../.cursor/skills/agentic-stage/LOOP.md)
 - [docs/PRD/README.md](../README.md) — indeks tooling, terpisah dari prioritas produk
 - [DEVELOPMENT-PHASES.md](../../invoicing/engineering/DEVELOPMENT-PHASES.md) — gate produk yang tidak diubah epic ini
 - Contoh rencana yang di-parse: [0702_PRD_Live_Tracking_Development_phase.md](../0702-live-tracking/0702_PRD_Live_Tracking_Development_phase.md)

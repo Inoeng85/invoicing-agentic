@@ -1,0 +1,72 @@
+# Plan task — 0700-task-08
+
+| Field | Nilai |
+|-------|-------|
+| **Task ID** | 0700-task-08 |
+| **Task** | Web — panel Penagihan di detail invoice + filter list |
+| **Phase** | 0700 / phase-01 (0700-P1) |
+| **Status plan** | `defined` |
+
+## Penjelasan
+
+Web — panel Penagihan di detail invoice + filter list (PRD epic 0700).
+
+File utama:
+- `apps/web/app/routes.ts`
+- `apps/web/app/actions/collection/controller.tsx`
+- `apps/web/app/ui/collection-panel.tsx`
+- `apps/web/app/router.ts`
+- `apps/web/app/ui/invoice-detail.tsx`
+- `apps/web/app/actions/invoices/controller.tsx`
+- `index`
+- `show`
+
+## Tujuan
+
+npm run dev
+
+## Feature
+
+| Feature ID | Dokumen |
+|------------|---------|
+| `0700-task-08` | [agentic/development/features/0700-task-08.md](../../../../../../agentic/development/features/0700-task-08.md) |
+
+## Development
+
+| Status | `pending` |
+
+## QA
+
+| Status | `pending` |
+
+## Skill yang digunakan
+
+| Skill | File plan |
+|-------|-----------|
+| Frontend | [skills/frontend.md](./skills/frontend.md) |
+| QA | [skills/qa.md](./skills/qa.md) |
+
+## Acuan PRD
+
+- Development phase: `docs/PRD/0700-debt-collector/0700_PRD_Debt_Collector_Development_phase.md`
+- **Produces:** —
+- **Verifikasi:** npm run dev
+- **Files:**
+- `apps/web/app/routes.ts`
+- `apps/web/app/actions/collection/controller.tsx`
+- `apps/web/app/ui/collection-panel.tsx`
+- `apps/web/app/router.ts`
+- `apps/web/app/ui/invoice-detail.tsx`
+- `apps/web/app/actions/invoices/controller.tsx`
+- `apps/web/app/ui/invoice-table.tsx`
+- `apps/web/app/actions/controller.test.ts`
+
+## Selesai bila (Plan)
+
+- [ ] Penjelasan, Tujuan, Feature terisi tanpa `[TBD]`
+- [ ] Setiap skill aktif punya file `skills/{skill}.md`
+- [ ] Agent Development dapat mulai tanpa ambigu
+
+## Ambigu / Human Clarify
+
+—

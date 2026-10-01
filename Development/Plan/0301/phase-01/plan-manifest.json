@@ -1,0 +1,37 @@
+{
+  "phaseId": "0301-P1",
+  "updatedAt": "2026-10-01T07:15:43.118Z",
+  "tasks": [
+    {
+      "taskId": "030101-domain-compute-invoice-totals",
+      "planPath": "Development/Plan/0301/phase-01/tasks/030101-domain-compute-invoice-totals/plan.md",
+      "status": "defined"
+    },
+    {
+      "taskId": "030102-domain-tests-fr03",
+      "planPath": "Development/Plan/0301/phase-01/tasks/030102-domain-tests-fr03/plan.md",
+      "status": "defined"
+    },
+    {
+      "taskId": "030103-db-invoice-ppn-fields",
+      "planPath": "Development/Plan/0301/phase-01/tasks/030103-db-invoice-ppn-fields/plan.md",
+      "status": "defined"
+    },
+    {
+      "taskId": "030104-be-persist-totals",
+      "planPath": "Development/Plan/0301/phase-01/tasks/030104-be-persist-totals/plan.md",
+      "status": "defined"
+    },
+    {
+      "taskId": "030105-fe-ppn-toggle",
+      "planPath": "Development/Plan/0301/phase-01/tasks/030105-fe-ppn-toggle/plan.md",
+      "status": "defined"
+    },
+    {
+      "taskId": "030106-infra-gate-g3",
+      "planPath": "Development/Plan/0301/phase-01/tasks/030106-infra-gate-g3/plan.md",
+      "status": "defined"
+    }
+  ],
+  "allDefined": true
+}

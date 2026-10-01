@@ -1,0 +1,68 @@
+# Plan task — 0700-task-06
+
+| Field | Nilai |
+|-------|-------|
+| **Task ID** | 0700-task-06 |
+| **Task** | API endpoints + gate Phase 7 |
+| **Phase** | 0700 / phase-01 (0700-P1) |
+| **Status plan** | `defined` |
+
+## Penjelasan
+
+API endpoints + gate Phase 7 (PRD epic 0700).
+
+File utama:
+- `apps/api/src/routes.ts`
+- `apps/api/src/controllers/collectors.controller.tsx`
+- `apps/api/src/controllers/collection.controller.tsx`
+- `apps/api/src/router.ts`
+- `apps/api/src/controllers/invoices.controller.tsx:21-29`
+- `scripts/gates/run-all.ts`
+
+## Tujuan
+
+npm run gate
+
+## Feature
+
+| Feature ID | Dokumen |
+|------------|---------|
+| `0700-task-06` | [agentic/development/features/0700-task-06.md](../../../../../../agentic/development/features/0700-task-06.md) |
+
+## Development
+
+| Status | `pending` |
+
+## QA
+
+| Status | `pending` |
+
+## Skill yang digunakan
+
+| Skill | File plan |
+|-------|-----------|
+| Frontend | [skills/frontend.md](./skills/frontend.md) |
+| QA | [skills/qa.md](./skills/qa.md) |
+
+## Acuan PRD
+
+- Development phase: `docs/PRD/0700-debt-collector/0700_PRD_Debt_Collector_Development_phase.md`
+- **Produces:** —
+- **Verifikasi:** npm run gate
+- **Files:**
+- `apps/api/src/routes.ts`
+- `apps/api/src/controllers/collectors.controller.tsx`
+- `apps/api/src/controllers/collection.controller.tsx`
+- `apps/api/src/router.ts`
+- `apps/api/src/controllers/invoices.controller.tsx:21-29`
+- `scripts/gates/run-all.ts`
+
+## Selesai bila (Plan)
+
+- [ ] Penjelasan, Tujuan, Feature terisi tanpa `[TBD]`
+- [ ] Setiap skill aktif punya file `skills/{skill}.md`
+- [ ] Agent Development dapat mulai tanpa ambigu
+
+## Ambigu / Human Clarify
+
+—

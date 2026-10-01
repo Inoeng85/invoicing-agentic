@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="color-scheme" content="light">
+  <title>Checklist task — Agentic</title>
+  <link rel="stylesheet" href="orchestration.css">
+</head>
+<body>
+  <a class="skip-link" href="#main">Langsung ke checklist</a>
+  <svg aria-hidden="true" style="display:none" xmlns="http://www.w3.org/2000/svg">
+    <symbol id="icon-board" viewBox="0 0 24 24"><rect x="3" y="4" width="18" height="16" rx="3"/><path d="M9 4v16M15 4v16M6 8v4m6-4v7m6-7v3"/></symbol>
+    <symbol id="icon-doc" viewBox="0 0 24 24"><path d="M14 3H6a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V9zM14 3v6h6M8 13h8M8 17h5"/></symbol>
+    <symbol id="icon-layers" viewBox="0 0 24 24"><path d="m12 3 9 5-9 5-9-5 9-5Zm-9 9 9 5 9-5M3 16l9 5 9-5"/></symbol>
+    <symbol id="icon-progress" viewBox="0 0 24 24"><path d="M20 11a8 8 0 1 1-5-7M20 4v5h-5"/></symbol>
+    <symbol id="icon-check" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="m8 12 3 3 5-6"/></symbol>
+    <symbol id="icon-arrow" viewBox="0 0 24 24"><path d="M5 12h14m-5-5 5 5-5 5"/></symbol>
+    <symbol id="icon-search" viewBox="0 0 24 24"><circle cx="10.5" cy="10.5" r="6.5"/><path d="m16 16 5 5"/></symbol>
+    <symbol id="icon-monitor" viewBox="0 0 24 24"><rect x="3" y="4" width="18" height="12" rx="2"/><path d="M8 20h8M12 16v4"/></symbol>
+  </svg>
+  <div class="app">
+    <aside class="sidebar" aria-label="Workspace">
+      <a class="brand" href="kanban-board.html" aria-label="Agentic — kanban board">
+        <svg class="brand-mark" viewBox="0 0 32 34" aria-hidden="true"><path d="m5 26 11-20 11 20M10 18h12M8 28h16" stroke-width="3.5"/></svg>
+        agentic<span style="color:var(--accent)">.</span>
+      </a>
+      <p class="workspace-label">WORKSPACE</p>
+      <nav class="side-nav" aria-label="Navigasi proyek">
+        <a href="kanban-board.html"><svg aria-hidden="true"><use href="#icon-board"/></svg>Kanban board</a>
+        <a href="monitoring.html"><svg aria-hidden="true"><use href="#icon-monitor"/></svg>Monitoring</a>
+        <a href="task-checklist.html" aria-current="page"><svg aria-hidden="true"><use href="#icon-check"/></svg>Checklist task</a>
+        <a href="dokumen-prd.html"><svg aria-hidden="true"><use href="#icon-doc"/></svg>Dokumen PRD</a>
+        <a href="rencana-development.html"><svg aria-hidden="true"><use href="#icon-layers"/></svg>Rencana development</a>
+        <a href="panduan-alur.html"><svg aria-hidden="true"><use href="#icon-progress"/></svg>Panduan alur</a>
+      </nav>
+      <div class="side-project">
+        <p class="eyebrow">138 task PRD</p>
+        <strong>Running &amp; blocker</strong>
+        <span>task-checklist.json</span>
+      </div>
+      <div class="side-footer"><strong>Status dari repo.</strong>Refresh via npm run agentic:task-checklist</div>
+    </aside>
+    <div class="main">
+      <header class="topbar">
+        <div class="breadcrumb"><a href="kanban-board.html">Workspace</a><span aria-hidden="true">/</span><strong>Checklist task</strong></div>
+        <span class="save-status" id="checklist-generated-at">Memuat…</span>
+      </header>
+      <main class="content task-checklist-page" id="main">
+        <div class="page-head">
+          <div>
+            <p class="eyebrow">Orkestrasi · PRD-0800</p>
+            <h1>Checklist task</h1>
+            <p class="page-description">Running, ready, waiting, blocked, dan done — dengan alasan gate atau antrian per task.</p>
+          </div>
+          <a class="button" href="kanban-board.html">Kanban board<svg aria-hidden="true"><use href="#icon-arrow"/></svg></a>
+        </div>
+        <section class="task-checklist-panel task-checklist-panel--page" aria-labelledby="task-checklist-title">
+          <div class="task-checklist-head">
+            <h2 id="task-checklist-title">Semua task</h2>
+            <div class="task-checklist-controls">
+              <button type="button" class="button" id="checklist-reload">Muat ulang</button>
+              <label class="sr-only" for="checklist-phase">Phase</label>
+              <select class="filter-select" id="checklist-phase"><option value="all">Semua phase</option></select>
+              <label class="sr-only" for="checklist-filter">Filter status</label>
+              <select class="filter-select" id="checklist-filter">
+                <option value="all">Semua status</option>
+                <option value="assigned">Assigned (prompt)</option>
+                <option value="running">Running (in_progress)</option>
+                <option value="ready">Ready</option>
+                <option value="waiting">Waiting</option>
+                <option value="blocked">Blocked</option>
+                <option value="done">Done</option>
+                <option value="not-done" selected>Belum done</option>
+              </select>
+              <label class="search-wrap checklist-search"><svg aria-hidden="true"><use href="#icon-search"/></svg><span class="sr-only">Cari task</span><input type="search" id="checklist-search" placeholder="Cari ID atau judul…" autocomplete="off"></label>
+            </div>
+          </div>
+          <p class="task-checklist-summary" id="task-checklist-summary">Memuat checklist…</p>
+          <p class="no-results" id="checklist-load-error" hidden role="alert"></p>
+          <p class="task-checklist-row-count" id="checklist-row-count" aria-live="polite"></p>
+          <div class="task-checklist-table-wrap task-checklist-table-wrap--page">
+            <table class="task-checklist-table" id="task-checklist-table">
+              <thead>
+                <tr>
+                  <th scope="col">#</th>
+                  <th scope="col">Task</th>
+                  <th scope="col">Run</th>
+                  <th scope="col">Stage</th>
+                  <th scope="col">Plan / Dev / QA</th>
+                  <th scope="col">Blocker / catatan</th>
+                </tr>
+              </thead>
+              <tbody id="task-checklist-body"></tbody>
+            </table>
+          </div>
+          <p class="task-checklist-note">Markdown: <code>Development/Plan/TASK_CHECKLIST.md</code> · generate: <code>npm run agentic:task-checklist</code> · polling 15s</p>
+        </section>
+      </main>
+    </div>
+  </div>
+  <script src="task-checklist-app.js?v=20261001-page" defer></script>
+</body>
+</html>

@@ -1,0 +1,37 @@
+{
+  "phaseId": "0501-P1",
+  "updatedAt": "2026-10-01T07:15:43.125Z",
+  "tasks": [
+    {
+      "taskId": "050101-domain-overdue-compute",
+      "planPath": "Development/Plan/0501/phase-01/tasks/050101-domain-overdue-compute/plan.md",
+      "status": "defined"
+    },
+    {
+      "taskId": "050102-be-invoice-list-filters",
+      "planPath": "Development/Plan/0501/phase-01/tasks/050102-be-invoice-list-filters/plan.md",
+      "status": "defined"
+    },
+    {
+      "taskId": "050103-be-outstanding-aggregate",
+      "planPath": "Development/Plan/0501/phase-01/tasks/050103-be-outstanding-aggregate/plan.md",
+      "status": "defined"
+    },
+    {
+      "taskId": "050104-fe-dashboard",
+      "planPath": "Development/Plan/0501/phase-01/tasks/050104-fe-dashboard/plan.md",
+      "status": "defined"
+    },
+    {
+      "taskId": "050105-fe-outstanding-widget",
+      "planPath": "Development/Plan/0501/phase-01/tasks/050105-fe-outstanding-widget/plan.md",
+      "status": "defined"
+    },
+    {
+      "taskId": "050106-infra-gate-g5-dashboard",
+      "planPath": "Development/Plan/0501/phase-01/tasks/050106-infra-gate-g5-dashboard/plan.md",
+      "status": "defined"
+    }
+  ],
+  "allDefined": true
+}

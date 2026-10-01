@@ -1,0 +1,57 @@
+{
+  "phaseId": "0600-P1",
+  "updatedAt": "2026-10-01T07:15:43.128Z",
+  "tasks": [
+    {
+      "taskId": "060001-docs-uat-trace-matrix",
+      "planPath": "Development/Plan/0600/phase-01/tasks/060001-docs-uat-trace-matrix/plan.md",
+      "status": "defined"
+    },
+    {
+      "taskId": "060002-product-gap-g01-revoke-cancel",
+      "planPath": "Development/Plan/0600/phase-01/tasks/060002-product-gap-g01-revoke-cancel/plan.md",
+      "status": "defined"
+    },
+    {
+      "taskId": "060003-product-gap-g02-public-hardening",
+      "planPath": "Development/Plan/0600/phase-01/tasks/060003-product-gap-g02-public-hardening/plan.md",
+      "status": "defined"
+    },
+    {
+      "taskId": "060004-product-gap-g05-legal-copy",
+      "planPath": "Development/Plan/0600/phase-01/tasks/060004-product-gap-g05-legal-copy/plan.md",
+      "status": "defined"
+    },
+    {
+      "taskId": "060005-product-gap-g13-email-errors",
+      "planPath": "Development/Plan/0600/phase-01/tasks/060005-product-gap-g13-email-errors/plan.md",
+      "status": "defined"
+    },
+    {
+      "taskId": "060006-infra-release-check-script",
+      "planPath": "Development/Plan/0600/phase-01/tasks/060006-infra-release-check-script/plan.md",
+      "status": "defined"
+    },
+    {
+      "taskId": "060007-infra-ci-g6",
+      "planPath": "Development/Plan/0600/phase-01/tasks/060007-infra-ci-g6/plan.md",
+      "status": "defined"
+    },
+    {
+      "taskId": "060008-ops-staging-uat-run",
+      "planPath": "Development/Plan/0600/phase-01/tasks/060008-ops-staging-uat-run/plan.md",
+      "status": "defined"
+    },
+    {
+      "taskId": "060009-ops-prod-launch",
+      "planPath": "Development/Plan/0600/phase-01/tasks/060009-ops-prod-launch/plan.md",
+      "status": "defined"
+    },
+    {
+      "taskId": "060010-docs-signoff-mvp-scope",
+      "planPath": "Development/Plan/0600/phase-01/tasks/060010-docs-signoff-mvp-scope/plan.md",
+      "status": "defined"
+    }
+  ],
+  "allDefined": true
+}

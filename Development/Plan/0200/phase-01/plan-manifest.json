@@ -1,0 +1,37 @@
+{
+  "phaseId": "0200-P1",
+  "updatedAt": "2026-10-01T07:15:43.113Z",
+  "tasks": [
+    {
+      "taskId": "020001-db-client-model",
+      "planPath": "Development/Plan/0200/phase-01/tasks/020001-db-client-model/plan.md",
+      "status": "defined"
+    },
+    {
+      "taskId": "020002-domain-client-validation",
+      "planPath": "Development/Plan/0200/phase-01/tasks/020002-domain-client-validation/plan.md",
+      "status": "defined"
+    },
+    {
+      "taskId": "020003-be-client-crud",
+      "planPath": "Development/Plan/0200/phase-01/tasks/020003-be-client-crud/plan.md",
+      "status": "defined"
+    },
+    {
+      "taskId": "020004-fe-clients-list",
+      "planPath": "Development/Plan/0200/phase-01/tasks/020004-fe-clients-list/plan.md",
+      "status": "defined"
+    },
+    {
+      "taskId": "020005-fe-client-form",
+      "planPath": "Development/Plan/0200/phase-01/tasks/020005-fe-client-form/plan.md",
+      "status": "defined"
+    },
+    {
+      "taskId": "020006-infra-gate-phase2",
+      "planPath": "Development/Plan/0200/phase-01/tasks/020006-infra-gate-phase2/plan.md",
+      "status": "defined"
+    }
+  ],
+  "allDefined": true
+}

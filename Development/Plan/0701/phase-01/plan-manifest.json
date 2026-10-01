@@ -1,0 +1,32 @@
+{
+  "phaseId": "0701-P1",
+  "updatedAt": "2026-10-01T07:15:43.134Z",
+  "tasks": [
+    {
+      "taskId": "0701-task-01",
+      "planPath": "Development/Plan/0701/phase-01/tasks/0701-task-01/plan.md",
+      "status": "defined"
+    },
+    {
+      "taskId": "0701-task-02",
+      "planPath": "Development/Plan/0701/phase-01/tasks/0701-task-02/plan.md",
+      "status": "defined"
+    },
+    {
+      "taskId": "0701-task-03",
+      "planPath": "Development/Plan/0701/phase-01/tasks/0701-task-03/plan.md",
+      "status": "defined"
+    },
+    {
+      "taskId": "0701-task-04",
+      "planPath": "Development/Plan/0701/phase-01/tasks/0701-task-04/plan.md",
+      "status": "defined"
+    },
+    {
+      "taskId": "0701-task-05",
+      "planPath": "Development/Plan/0701/phase-01/tasks/0701-task-05/plan.md",
+      "status": "defined"
+    }
+  ],
+  "allDefined": true
+}
