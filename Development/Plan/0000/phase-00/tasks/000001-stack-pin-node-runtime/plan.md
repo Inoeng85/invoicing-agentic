@@ -29,7 +29,16 @@ stack pin node runtime (PRD epic 0000).
 
 ## Development
 
-| Status | `pending` |
+| Field | Nilai |
+|-------|-------|
+| Status | `complete` |
+| Laporan | Development/Result/0000/phase-00/development/000001-stack-pin-node-runtime.md |
+| Commit/PR | `4bbc062` (baseline Phase 0, 2026-09-29) |
+| Selesai | 2026-10-01T14:52:54+07:00 |
+
+### Catatan implementasi
+
+Pin Node `24.3.0` / `engines.node` `>=24.3.0` dan `engine-strict=true` sudah ada di baseline. `nvm install && nvm use` memakai `.nvmrc`. Node 20 → `EBADENGINE`; Node `v24.3.0` → `npm install --dry-run` exit 0.
 
 ## Skill yang digunakan
 

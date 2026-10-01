@@ -28,7 +28,16 @@ start production tanpa `SESSION_SECRET` → exit ≠ 0 dengan nama variabel · d
 
 ## Development
 
-| Status | `pending` |
+| Field | Nilai |
+|-------|-------|
+| Status | `complete` |
+| Laporan | Development/Result/0000/phase-02/development/000001-be-env-validation.md |
+| Commit/PR | `ef84c90` (Phase 2 M2) · `eb44e65` |
+| Selesai | 2026-10-01T14:57:16+07:00 |
+
+### Catatan implementasi
+
+Validasi env ada di `packages/platform/src/env.ts` dan dipanggil `bootstrapPlatform` dari `apps/web/server.ts` serta `apps/api/src/server.ts`. Production tanpa `SESSION_SECRET` exit 1 dengan nama variabel. Development tetap listen bila `DATABASE_URL` ada.
 
 ## QA
 

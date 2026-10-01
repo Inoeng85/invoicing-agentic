@@ -9,27 +9,30 @@
 
 ## Ringkasan
 
-Boundary Development untuk task 000001-be-env-validation (epic 0000).
+Boot web dan API memanggil `bootstrapPlatform`, yang menjalankan `validateEnvAtBoot`. Production berhenti bila variabel wajib hilang; development tetap jalan dengan default selama `DATABASE_URL` ada.
 
 ## File terkait (session boundary)
 
 ### Backend
 
-- 
+- `packages/platform/src/env.ts`
+- `packages/platform/src/bootstrap.ts`
+- `packages/platform/src/index.ts`
+- `apps/api/src/server.ts`
 
 ### Frontend
 
-- 
+- `apps/web/server.ts`
 
 ### Docs / lainnya
 
-- (isi dari plan / PRD Files)
+- —
 
 ## Task plan yang memakai feature ini
 
 | Task ID | Phase | Status dev |
 |---------|-------|------------|
-| 000001-be-env-validation | 0000-P2 | `pending` |
+| 000001-be-env-validation | 0000-P2 | `complete` |
 
 ## Out of scope
 
