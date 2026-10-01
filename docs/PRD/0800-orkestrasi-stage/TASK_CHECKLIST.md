@@ -1,6 +1,6 @@
 # Checklist task — Agentic
 
-Generated: 2026-10-01T07:45:51.149Z
+Generated: 2026-10-01T08:03:06.571Z
 
 ## Ringkasan
 
@@ -14,7 +14,7 @@ Generated: 2026-10-01T07:45:51.149Z
 | Waiting | 10 |
 | Blocked | 126 |
 
-**Berikutnya:** development 000001-stack-pin-node-runtime
+**Berikutnya:** qa 000001-stack-pin-node-runtime
 
 ## Legenda
 
@@ -29,15 +29,15 @@ Generated: 2026-10-01T07:45:51.149Z
 
 | # | Task | Run | Stage | Plan | Dev | QA | Blocker / catatan |
 |---|------|-----|-------|------|-----|-----|-------------------|
-| 1 | `000001-stack-pin-node-runtime` | **assigned** `NEXT` `AUTOPILOT` | development | defined | pending | pending | Autopilot: prompt siap — jalankan Agent Cursor (bukan proses background otomatis) |
-| 2 | `000002-stack-single-npm-lockfile` | **waiting** | development | defined | pending | pending | Development berurutan: menunggu 000001-stack-pin-node-runtime selesai; Development berurutan: menunggu 000001-stack-pin-node-runtime selesai |
-| 3 | `000003-stack-repo-hygiene` | **waiting** | development | defined | pending | pending | Development berurutan: menunggu 000001-stack-pin-node-runtime selesai; Development berurutan: menunggu 000001-stack-pin-node-runtime selesai |
+| 1 | `000001-stack-pin-node-runtime` | **assigned** `NEXT` `AUTOPILOT` | qa | defined | complete | pending | Autopilot: prompt siap — jalankan Agent Cursor (bukan proses background otomatis) |
+| 2 | `000002-stack-single-npm-lockfile` | **waiting** | development | defined | pending | pending | Belum giliran (antrian orkestrasi) |
+| 3 | `000003-stack-repo-hygiene` | **waiting** | development | defined | pending | pending | Development berurutan: menunggu 000002-stack-single-npm-lockfile selesai; Development berurutan: menunggu 000002-stack-single-npm-lockfile selesai |
 | 4 | `000001-db-canonical-sqlite-path` | **done** | audit | defined | complete | pass | — |
-| 5 | `000004-stack-env-example` | **waiting** | development | defined | pending | pending | Development berurutan: menunggu 000001-stack-pin-node-runtime selesai; Development berurutan: menunggu 000001-stack-pin-node-runtime selesai |
-| 6 | `000002-db-root-scripts` | **waiting** | development | defined | pending | pending | Development berurutan: menunggu 000001-stack-pin-node-runtime selesai; Development berurutan: menunggu 000001-stack-pin-node-runtime selesai |
-| 7 | `000005-stack-setup-script` | **waiting** | development | defined | pending | pending | Development berurutan: menunggu 000001-stack-pin-node-runtime selesai; Development berurutan: menunggu 000001-stack-pin-node-runtime selesai |
-| 8 | `000006-stack-verify-script` | **waiting** | development | defined | pending | pending | Development berurutan: menunggu 000001-stack-pin-node-runtime selesai; Development berurutan: menunggu 000001-stack-pin-node-runtime selesai |
-| 9 | `000001-docs-dev-runbook` | **waiting** | development | defined | pending | pending | Development berurutan: menunggu 000001-stack-pin-node-runtime selesai; Development berurutan: menunggu 000001-stack-pin-node-runtime selesai |
+| 5 | `000004-stack-env-example` | **waiting** | development | defined | pending | pending | Development berurutan: menunggu 000002-stack-single-npm-lockfile selesai; Development berurutan: menunggu 000002-stack-single-npm-lockfile selesai |
+| 6 | `000002-db-root-scripts` | **waiting** | development | defined | pending | pending | Development berurutan: menunggu 000002-stack-single-npm-lockfile selesai; Development berurutan: menunggu 000002-stack-single-npm-lockfile selesai |
+| 7 | `000005-stack-setup-script` | **waiting** | development | defined | pending | pending | Development berurutan: menunggu 000002-stack-single-npm-lockfile selesai; Development berurutan: menunggu 000002-stack-single-npm-lockfile selesai |
+| 8 | `000006-stack-verify-script` | **waiting** | development | defined | pending | pending | Development berurutan: menunggu 000002-stack-single-npm-lockfile selesai; Development berurutan: menunggu 000002-stack-single-npm-lockfile selesai |
+| 9 | `000001-docs-dev-runbook` | **waiting** | development | defined | pending | pending | Development berurutan: menunggu 000002-stack-single-npm-lockfile selesai; Development berurutan: menunggu 000002-stack-single-npm-lockfile selesai |
 ## Phase 0000-P1 — Continuous Integration
 
 | # | Task | Run | Stage | Plan | Dev | QA | Blocker / catatan |
@@ -53,7 +53,7 @@ Generated: 2026-10-01T07:45:51.149Z
 | 14 | `000003-docs-branch-commit-convention` | **blocked** | intake | defined | pending | pending | Gate phase: menunggu release Human QA 0000-P1; Intake phase 0000-P2 belum selesai (queued); Development berurutan: menunggu 000002-docs-adr-platform-decisions selesai |
 | 15 | `000007-stack-pin-dev-dependencies` | **blocked** | intake | defined | pending | pending | Gate phase: menunggu release Human QA 0000-P1; Intake phase 0000-P2 belum selesai (queued); Development berurutan: menunggu 000002-docs-adr-platform-decisions selesai |
 | 16 | `000004-db-postgres-strategy` | **blocked** | intake | defined | pending | pending | Gate phase: menunggu release Human QA 0000-P1; Intake phase 0000-P2 belum selesai (queued); Development berurutan: menunggu 000002-docs-adr-platform-decisions selesai |
-| 17 | `000001-be-env-validation` | **blocked** | intake | defined | pending | pending | Gate phase: menunggu release Human QA 0000-P1; Intake phase 0000-P2 belum selesai (queued); Development berurutan: menunggu 000002-docs-adr-platform-decisions selesai |
+| 17 | `000001-be-env-validation` | **blocked** | intake | defined | complete | pending | Gate phase: menunggu release Human QA 0000-P1; Intake phase 0000-P2 belum selesai (queued) |
 | 18 | `000002-be-structured-logging-request-id` | **blocked** | intake | defined | pending | pending | Gate phase: menunggu release Human QA 0000-P1; Intake phase 0000-P2 belum selesai (queued); Development berurutan: menunggu 000002-docs-adr-platform-decisions selesai |
 | 19 | `000003-be-email-adapter-selection` | **blocked** | intake | defined | pending | pending | Gate phase: menunggu release Human QA 0000-P1; Intake phase 0000-P2 belum selesai (queued); Development berurutan: menunggu 000002-docs-adr-platform-decisions selesai |
 | 20 | `000003-db-seed-demo` | **blocked** | intake | defined | pending | pending | Gate phase: menunggu release Human QA 0000-P1; Intake phase 0000-P2 belum selesai (queued); Development berurutan: menunggu 000002-docs-adr-platform-decisions selesai |

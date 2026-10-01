@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "generatedAt": "2026-10-01T07:45:51.149Z",
+  "generatedAt": "2026-10-01T08:03:06.571Z",
   "summary": {
     "total": 138,
     "done": 1,
@@ -10,36 +10,31 @@
     "waiting": 10,
     "blocked": 126,
     "nextTaskId": "000001-stack-pin-node-runtime",
-    "nextKind": "development",
+    "nextKind": "qa",
     "nextPhaseId": "0000-P0",
     "autopilotActive": true,
     "autopilotTaskId": "000001-stack-pin-node-runtime"
   },
   "nextWork": {
-    "kind": "development",
-    "action": "run_development_task",
-    "orchestratorStage": "development",
+    "kind": "qa",
+    "action": "run_qa_task",
     "phaseId": "0000-P0",
     "epic": "0000",
     "ordinal": 0,
     "taskId": "000001-stack-pin-node-runtime",
-    "featureId": "0000-platform-stack",
-    "skill": "agentic/skill/development/SKILL.md",
-    "featurePath": "agentic/development/features/0000-platform-stack.md",
+    "skill": "agentic/skill/qa/SKILL.md",
     "planPath": "Development/Plan/0000/phase-00/tasks/000001-stack-pin-node-runtime/plan.md",
-    "then": [
-      "npm run agentic:validate-dev -- --task 000001-stack-pin-node-runtime --epic 0000 --phase 0",
-      "npm run agentic:kanban-data"
-    ]
+    "hasDevReport": true
   },
   "autopilot": {
     "active": true,
-    "kind": "development",
+    "kind": "qa",
     "taskId": "000001-stack-pin-node-runtime",
     "phaseId": "0000-P0",
     "epic": "0000",
     "ordinal": 0,
-    "assignedAt": "2026-10-01T07:21:14.285Z"
+    "assignedAt": "2026-10-01T07:53:25.866Z",
+    "needsAgent": true
   },
   "items": [
     {
@@ -52,12 +47,12 @@
       "phaseTitle": "Local baseline",
       "phaseOrdinal": 0,
       "runState": "assigned",
-      "stage": "development",
-      "column": "development",
+      "stage": "qa",
+      "column": "test",
       "planStatus": "defined",
-      "developmentStatus": "pending",
+      "developmentStatus": "complete",
       "qaStatus": "pending",
-      "progressPercent": 50,
+      "progressPercent": 75,
       "blockers": [],
       "waitReasons": [],
       "notes": [
@@ -88,11 +83,9 @@
       "qaStatus": "pending",
       "progressPercent": 50,
       "blockers": [],
-      "waitReasons": [
-        "Development berurutan: menunggu 000001-stack-pin-node-runtime selesai"
-      ],
+      "waitReasons": [],
       "notes": [
-        "Development berurutan: menunggu 000001-stack-pin-node-runtime selesai"
+        "Belum giliran (antrian orkestrasi)"
       ],
       "isNext": false,
       "autopilotActive": false,
@@ -120,10 +113,10 @@
       "progressPercent": 50,
       "blockers": [],
       "waitReasons": [
-        "Development berurutan: menunggu 000001-stack-pin-node-runtime selesai"
+        "Development berurutan: menunggu 000002-stack-single-npm-lockfile selesai"
       ],
       "notes": [
-        "Development berurutan: menunggu 000001-stack-pin-node-runtime selesai"
+        "Development berurutan: menunggu 000002-stack-single-npm-lockfile selesai"
       ],
       "isNext": false,
       "autopilotActive": false,
@@ -178,10 +171,10 @@
       "progressPercent": 50,
       "blockers": [],
       "waitReasons": [
-        "Development berurutan: menunggu 000001-stack-pin-node-runtime selesai"
+        "Development berurutan: menunggu 000002-stack-single-npm-lockfile selesai"
       ],
       "notes": [
-        "Development berurutan: menunggu 000001-stack-pin-node-runtime selesai"
+        "Development berurutan: menunggu 000002-stack-single-npm-lockfile selesai"
       ],
       "isNext": false,
       "autopilotActive": false,
@@ -209,10 +202,10 @@
       "progressPercent": 50,
       "blockers": [],
       "waitReasons": [
-        "Development berurutan: menunggu 000001-stack-pin-node-runtime selesai"
+        "Development berurutan: menunggu 000002-stack-single-npm-lockfile selesai"
       ],
       "notes": [
-        "Development berurutan: menunggu 000001-stack-pin-node-runtime selesai"
+        "Development berurutan: menunggu 000002-stack-single-npm-lockfile selesai"
       ],
       "isNext": false,
       "autopilotActive": false,
@@ -240,10 +233,10 @@
       "progressPercent": 50,
       "blockers": [],
       "waitReasons": [
-        "Development berurutan: menunggu 000001-stack-pin-node-runtime selesai"
+        "Development berurutan: menunggu 000002-stack-single-npm-lockfile selesai"
       ],
       "notes": [
-        "Development berurutan: menunggu 000001-stack-pin-node-runtime selesai"
+        "Development berurutan: menunggu 000002-stack-single-npm-lockfile selesai"
       ],
       "isNext": false,
       "autopilotActive": false,
@@ -271,10 +264,10 @@
       "progressPercent": 50,
       "blockers": [],
       "waitReasons": [
-        "Development berurutan: menunggu 000001-stack-pin-node-runtime selesai"
+        "Development berurutan: menunggu 000002-stack-single-npm-lockfile selesai"
       ],
       "notes": [
-        "Development berurutan: menunggu 000001-stack-pin-node-runtime selesai"
+        "Development berurutan: menunggu 000002-stack-single-npm-lockfile selesai"
       ],
       "isNext": false,
       "autopilotActive": false,
@@ -302,10 +295,10 @@
       "progressPercent": 50,
       "blockers": [],
       "waitReasons": [
-        "Development berurutan: menunggu 000001-stack-pin-node-runtime selesai"
+        "Development berurutan: menunggu 000002-stack-single-npm-lockfile selesai"
       ],
       "notes": [
-        "Development berurutan: menunggu 000001-stack-pin-node-runtime selesai"
+        "Development berurutan: menunggu 000002-stack-single-npm-lockfile selesai"
       ],
       "isNext": false,
       "autopilotActive": false,
@@ -545,16 +538,14 @@
       "stage": "intake",
       "column": "intake",
       "planStatus": "defined",
-      "developmentStatus": "pending",
+      "developmentStatus": "complete",
       "qaStatus": "pending",
-      "progressPercent": 50,
+      "progressPercent": 75,
       "blockers": [
         "Gate phase: menunggu release Human QA 0000-P1",
         "Intake phase 0000-P2 belum selesai (queued)"
       ],
-      "waitReasons": [
-        "Development berurutan: menunggu 000002-docs-adr-platform-decisions selesai"
-      ],
+      "waitReasons": [],
       "notes": [],
       "isNext": false,
       "autopilotActive": false,
