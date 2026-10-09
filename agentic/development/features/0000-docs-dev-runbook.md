@@ -23,13 +23,14 @@ Boundary Development untuk task 000001-docs-dev-runbook (epic 0000).
 
 ### Docs / lainnya
 
-- (isi dari plan / PRD Files)
+- `docs/invoicing/engineering/STACK-INTEGRATION.md`
+- `README.md`
 
 ## Task plan yang memakai feature ini
 
 | Task ID | Phase | Status dev |
 |---------|-------|------------|
-| 000001-docs-dev-runbook | 0000-P0 | `pending` |
+| 000001-docs-dev-runbook | 0000-P0 | `complete` |
 
 ## Out of scope
 

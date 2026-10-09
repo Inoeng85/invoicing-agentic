@@ -23,13 +23,13 @@ Boundary Development untuk task 000002-infra-ci-workflow-fix (epic 0000).
 
 ### Docs / lainnya
 
-- (isi dari plan / PRD Files)
+- `.github/workflows/ci.yml`
 
 ## Task plan yang memakai feature ini
 
 | Task ID | Phase | Status dev |
 |---------|-------|------------|
-| 000002-infra-ci-workflow-fix | 0000-P1 | `pending` |
+| 000002-infra-ci-workflow-fix | 0000-P1 | `complete` |
 
 ## Out of scope
 

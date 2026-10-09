@@ -19,6 +19,7 @@ import {
   phaseArtifactPaths,
   phaseQaGate,
   resolvePhaseAuditStatus,
+  readTaskAuditOutcome,
   taskArtifactPaths,
   taskProgressPercent,
 } from './task-progress.mjs'
@@ -121,6 +122,7 @@ function main() {
     const auditPhaseStatus = auditInfo.status
     const developmentStatus = readPlanDevelopmentStatus(ROOT, epic, phaseOrdinal, t.id)
     const qaStatus = resolveQaStatus(ROOT, epic, phaseOrdinal, t.id, artifacts.qa)
+    const taskAuditStatus = readTaskAuditOutcome(ROOT, epic, phaseOrdinal, t.id)
     const phaseRow = phaseQueueById.get(phaseId) || null
     const column = inferTaskColumn(artifacts, {
       phaseReleased: ctx.released,
@@ -128,6 +130,7 @@ function main() {
       auditReady,
       qaStatus,
       auditPhaseStatus,
+      taskAuditStatus,
       phaseRow,
     })
     const progressPercent = taskProgressPercent(artifacts, column, {

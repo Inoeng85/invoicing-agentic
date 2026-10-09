@@ -1,7 +1,7 @@
 {
   "version": 1,
-  "generatedAt": "2026-10-01T08:03:06.514Z",
-  "queueGeneratedAt": "2026-10-01T08:03:06.398Z",
+  "generatedAt": "2026-10-01T18:06:10.423Z",
+  "queueGeneratedAt": "2026-10-01T18:06:10.061Z",
   "summary": {
     "taskCount": 138,
     "phaseCount": 20,
@@ -9,12 +9,12 @@
     "byColumn": {
       "intake": 126,
       "plan": 0,
-      "development": 10,
-      "test": 1,
-      "audit": 1,
+      "development": 0,
+      "test": 0,
+      "audit": 11,
       "human-clarify": 0,
       "human-qa": 0,
-      "done": 0
+      "done": 1
     },
     "agenticReadyCount": 21
   },
@@ -31,27 +31,22 @@
     "terminalExecute": "npm run agentic:trigger-next -- --execute",
     "autopilot": {
       "state": {
-        "active": true,
-        "kind": "qa",
-        "taskId": "000001-stack-pin-node-runtime",
-        "phaseId": "0000-P0",
-        "epic": "0000",
-        "ordinal": 0,
-        "assignedAt": "2026-10-01T07:53:25.866Z",
-        "needsAgent": true
+        "active": false,
+        "idleAt": "2026-10-01T09:09:50.210Z",
+        "last": {
+          "kind": "gate",
+          "phaseId": "0000-P2",
+          "waitFor": "0000-P1",
+          "message": "Menunggu Human QA release phase 0000-P1"
+        }
       },
       "smallestUndone": {
-        "kind": "qa",
-        "action": "run_qa_task",
-        "phaseId": "0000-P0",
-        "epic": "0000",
-        "ordinal": 0,
-        "taskId": "000001-stack-pin-node-runtime",
-        "skill": "agentic/skill/qa/SKILL.md",
-        "planPath": "Development/Plan/0000/phase-00/tasks/000001-stack-pin-node-runtime/plan.md",
-        "hasDevReport": true
+        "kind": "gate",
+        "phaseId": "0000-P2",
+        "waitFor": "0000-P1",
+        "message": "Menunggu Human QA release phase 0000-P1"
       },
-      "prompt": "Agent QA — 1 session = 1 task\nTask: 000001-stack-pin-node-runtime · phase 0000-P0\nPlan: Agentic/Development/Plan/0000/phase-00/tasks/000001-stack-pin-node-runtime/plan.md\nSkill: agentic/skill/qa/SKILL.md\nSelesai: npm run agentic:validate-qa -- --task 000001-stack-pin-node-runtime --epic 0000 --phase 0",
+      "prompt": "Menunggu Human QA release phase 0000-P1",
       "watch": "npm run agentic:autopilot:watch",
       "complete": "npm run agentic:autopilot -- complete --task <id>"
     }
@@ -68,15 +63,15 @@
         "byColumn": {
           "intake": 26,
           "plan": 0,
-          "development": 10,
-          "test": 1,
-          "audit": 1,
+          "development": 0,
+          "test": 0,
+          "audit": 11,
           "human-clarify": 0,
           "human-qa": 0,
-          "done": 0
+          "done": 1
         },
-        "doneCount": 0,
-        "percentDone": 0
+        "doneCount": 1,
+        "percentDone": 3
       }
     },
     {
@@ -452,34 +447,34 @@
         "byColumn": {
           "intake": 0,
           "plan": 0,
-          "development": 7,
-          "test": 1,
-          "audit": 1,
+          "development": 0,
+          "test": 0,
+          "audit": 8,
           "human-clarify": 0,
           "human-qa": 0,
-          "done": 0
+          "done": 1
         },
-        "doneCount": 0,
-        "devCompleteCount": 2,
-        "qaCompleteCount": 1,
-        "qaPhaseComplete": false,
+        "doneCount": 1,
+        "devCompleteCount": 9,
+        "qaCompleteCount": 9,
+        "qaPhaseComplete": true,
         "qaNeedsClarify": false,
         "auditPhaseComplete": false,
         "auditNeedsClarify": false,
         "auditStatus": "pending",
-        "avgProgress": 43,
+        "avgProgress": 87,
         "total": 9,
-        "percentDone": 0,
-        "qaPercent": 11,
+        "percentDone": 11,
+        "qaPercent": 100,
         "auditPercent": 0,
-        "suggestedColumn": "development"
+        "suggestedColumn": "audit"
       },
       "taskProgress": [
         {
           "id": "000001-db-canonical-sqlite-path",
           "title": "db canonical sqlite path",
-          "column": "audit",
-          "progressPercent": 85,
+          "column": "done",
+          "progressPercent": 100,
           "developmentStatus": "complete",
           "qaStatus": "pass",
           "agenticReady": false
@@ -487,73 +482,73 @@
         {
           "id": "000001-docs-dev-runbook",
           "title": "docs dev runbook",
-          "column": "development",
-          "progressPercent": 30,
-          "developmentStatus": "in_progress",
-          "qaStatus": "pending",
+          "column": "audit",
+          "progressPercent": 85,
+          "developmentStatus": "complete",
+          "qaStatus": "pass",
           "agenticReady": false
         },
         {
           "id": "000001-stack-pin-node-runtime",
           "title": "stack pin node runtime",
-          "column": "test",
-          "progressPercent": 55,
+          "column": "audit",
+          "progressPercent": 85,
           "developmentStatus": "complete",
-          "qaStatus": "pending",
+          "qaStatus": "pass",
           "agenticReady": false
         },
         {
           "id": "000002-db-root-scripts",
           "title": "db root scripts",
-          "column": "development",
-          "progressPercent": 68,
-          "developmentStatus": "in_progress",
-          "qaStatus": "in_progress",
+          "column": "audit",
+          "progressPercent": 85,
+          "developmentStatus": "complete",
+          "qaStatus": "pass",
           "agenticReady": false
         },
         {
           "id": "000002-stack-single-npm-lockfile",
           "title": "stack single npm lockfile",
-          "column": "development",
-          "progressPercent": 30,
-          "developmentStatus": "in_progress",
-          "qaStatus": "pending",
+          "column": "audit",
+          "progressPercent": 85,
+          "developmentStatus": "complete",
+          "qaStatus": "pass",
           "agenticReady": false
         },
         {
           "id": "000003-stack-repo-hygiene",
           "title": "stack repo hygiene",
-          "column": "development",
-          "progressPercent": 30,
-          "developmentStatus": "in_progress",
-          "qaStatus": "pending",
+          "column": "audit",
+          "progressPercent": 85,
+          "developmentStatus": "complete",
+          "qaStatus": "pass",
           "agenticReady": false
         },
         {
           "id": "000004-stack-env-example",
           "title": "stack env example",
-          "column": "development",
-          "progressPercent": 30,
-          "developmentStatus": "in_progress",
-          "qaStatus": "pending",
+          "column": "audit",
+          "progressPercent": 85,
+          "developmentStatus": "complete",
+          "qaStatus": "pass",
           "agenticReady": false
         },
         {
           "id": "000005-stack-setup-script",
           "title": "stack setup script",
-          "column": "development",
-          "progressPercent": 30,
-          "developmentStatus": "in_progress",
-          "qaStatus": "pending",
+          "column": "audit",
+          "progressPercent": 85,
+          "developmentStatus": "complete",
+          "qaStatus": "pass",
           "agenticReady": false
         },
         {
           "id": "000006-stack-verify-script",
           "title": "stack verify script",
-          "column": "development",
-          "progressPercent": 30,
-          "developmentStatus": "in_progress",
-          "qaStatus": "pending",
+          "column": "audit",
+          "progressPercent": 85,
+          "developmentStatus": "complete",
+          "qaStatus": "pass",
           "agenticReady": false
         }
       ]
@@ -593,54 +588,54 @@
         "byColumn": {
           "intake": 0,
           "plan": 0,
-          "development": 3,
+          "development": 0,
           "test": 0,
-          "audit": 0,
+          "audit": 3,
           "human-clarify": 0,
           "human-qa": 0,
           "done": 0
         },
         "doneCount": 0,
-        "devCompleteCount": 0,
-        "qaCompleteCount": 0,
-        "qaPhaseComplete": false,
+        "devCompleteCount": 3,
+        "qaCompleteCount": 3,
+        "qaPhaseComplete": true,
         "qaNeedsClarify": false,
         "auditPhaseComplete": false,
         "auditNeedsClarify": false,
         "auditStatus": "pending",
-        "avgProgress": 30,
+        "avgProgress": 85,
         "total": 3,
         "percentDone": 0,
-        "qaPercent": 0,
+        "qaPercent": 100,
         "auditPercent": 0,
-        "suggestedColumn": "development"
+        "suggestedColumn": "audit"
       },
       "taskProgress": [
         {
           "id": "000001-infra-github-repo-protection",
           "title": "infra github repo protection",
-          "column": "development",
-          "progressPercent": 30,
-          "developmentStatus": "in_progress",
-          "qaStatus": "pending",
+          "column": "audit",
+          "progressPercent": 85,
+          "developmentStatus": "complete",
+          "qaStatus": "pass",
           "agenticReady": false
         },
         {
           "id": "000002-infra-ci-workflow-fix",
           "title": "infra ci workflow fix",
-          "column": "development",
-          "progressPercent": 30,
-          "developmentStatus": "in_progress",
-          "qaStatus": "pending",
+          "column": "audit",
+          "progressPercent": 85,
+          "developmentStatus": "complete",
+          "qaStatus": "pass",
           "agenticReady": false
         },
         {
           "id": "000003-infra-ci-verify-pipeline",
           "title": "infra ci verify pipeline",
-          "column": "development",
-          "progressPercent": 30,
-          "developmentStatus": "in_progress",
-          "qaStatus": "pending",
+          "column": "audit",
+          "progressPercent": 85,
+          "developmentStatus": "complete",
+          "qaStatus": "pass",
           "agenticReady": false
         }
       ]
@@ -2981,8 +2976,8 @@
       "devPhasePath": "docs/0000_platform_setup/PRD_platform_setup_development_phase.md",
       "prdFolder": "docs/PRD/0000-platform-setup",
       "gate": null,
-      "column": "audit",
-      "progressPercent": 85,
+      "column": "done",
+      "progressPercent": 100,
       "developmentStatus": "complete",
       "qaStatus": "pass",
       "progress": {
@@ -3017,16 +3012,16 @@
       "devPhasePath": "docs/0000_platform_setup/PRD_platform_setup_development_phase.md",
       "prdFolder": "docs/PRD/0000-platform-setup",
       "gate": null,
-      "column": "development",
-      "progressPercent": 30,
-      "developmentStatus": "in_progress",
-      "qaStatus": "pending",
+      "column": "audit",
+      "progressPercent": 85,
+      "developmentStatus": "complete",
+      "qaStatus": "pass",
       "progress": {
         "plan": true,
         "planComplete": true,
         "skillCount": 1,
-        "development": false,
-        "qa": false,
+        "development": true,
+        "qa": true,
         "auditPhase": false
       },
       "reports": {
@@ -3034,11 +3029,11 @@
         "development": "Development/Result/0000/phase-00/development/000001-docs-dev-runbook.md",
         "qa": "Development/Result/0000/phase-00/qa/000001-docs-dev-runbook.md",
         "hasPlan": true,
-        "hasDevelopment": false,
-        "hasQa": false,
+        "hasDevelopment": true,
+        "hasQa": true,
         "previewPlan": "data/reports/000001-docs-dev-runbook.plan.md",
-        "previewDevelopment": null,
-        "previewQa": null
+        "previewDevelopment": "data/reports/000001-docs-dev-runbook.development.md",
+        "previewQa": "data/reports/000001-docs-dev-runbook.qa.md"
       }
     },
     {
@@ -3089,16 +3084,16 @@
       "devPhasePath": "docs/0000_platform_setup/PRD_platform_setup_development_phase.md",
       "prdFolder": "docs/PRD/0000-platform-setup",
       "gate": null,
-      "column": "development",
-      "progressPercent": 30,
-      "developmentStatus": "in_progress",
-      "qaStatus": "pending",
+      "column": "audit",
+      "progressPercent": 85,
+      "developmentStatus": "complete",
+      "qaStatus": "pass",
       "progress": {
         "plan": true,
         "planComplete": true,
         "skillCount": 2,
-        "development": false,
-        "qa": false,
+        "development": true,
+        "qa": true,
         "auditPhase": false
       },
       "reports": {
@@ -3106,11 +3101,11 @@
         "development": "Development/Result/0000/phase-01/development/000001-infra-github-repo-protection.md",
         "qa": "Development/Result/0000/phase-01/qa/000001-infra-github-repo-protection.md",
         "hasPlan": true,
-        "hasDevelopment": false,
-        "hasQa": false,
+        "hasDevelopment": true,
+        "hasQa": true,
         "previewPlan": "data/reports/000001-infra-github-repo-protection.plan.md",
-        "previewDevelopment": null,
-        "previewQa": null
+        "previewDevelopment": "data/reports/000001-infra-github-repo-protection.development.md",
+        "previewQa": "data/reports/000001-infra-github-repo-protection.qa.md"
       }
     },
     {
@@ -3125,16 +3120,16 @@
       "devPhasePath": "docs/0000_platform_setup/PRD_platform_setup_development_phase.md",
       "prdFolder": "docs/PRD/0000-platform-setup",
       "gate": null,
-      "column": "test",
-      "progressPercent": 55,
+      "column": "audit",
+      "progressPercent": 85,
       "developmentStatus": "complete",
-      "qaStatus": "pending",
+      "qaStatus": "pass",
       "progress": {
         "plan": true,
         "planComplete": true,
         "skillCount": 1,
         "development": true,
-        "qa": false,
+        "qa": true,
         "auditPhase": false
       },
       "reports": {
@@ -3143,10 +3138,10 @@
         "qa": "Development/Result/0000/phase-00/qa/000001-stack-pin-node-runtime.md",
         "hasPlan": true,
         "hasDevelopment": true,
-        "hasQa": false,
+        "hasQa": true,
         "previewPlan": "data/reports/000001-stack-pin-node-runtime.plan.md",
         "previewDevelopment": "data/reports/000001-stack-pin-node-runtime.development.md",
-        "previewQa": null
+        "previewQa": "data/reports/000001-stack-pin-node-runtime.qa.md"
       }
     },
     {
@@ -3197,16 +3192,16 @@
       "devPhasePath": "docs/0000_platform_setup/PRD_platform_setup_development_phase.md",
       "prdFolder": "docs/PRD/0000-platform-setup",
       "gate": null,
-      "column": "development",
-      "progressPercent": 68,
-      "developmentStatus": "in_progress",
-      "qaStatus": "in_progress",
+      "column": "audit",
+      "progressPercent": 85,
+      "developmentStatus": "complete",
+      "qaStatus": "pass",
       "progress": {
         "plan": true,
         "planComplete": true,
         "skillCount": 3,
-        "development": false,
-        "qa": false,
+        "development": true,
+        "qa": true,
         "auditPhase": false
       },
       "reports": {
@@ -3214,11 +3209,11 @@
         "development": "Development/Result/0000/phase-00/development/000002-db-root-scripts.md",
         "qa": "Development/Result/0000/phase-00/qa/000002-db-root-scripts.md",
         "hasPlan": true,
-        "hasDevelopment": false,
-        "hasQa": false,
+        "hasDevelopment": true,
+        "hasQa": true,
         "previewPlan": "data/reports/000002-db-root-scripts.plan.md",
-        "previewDevelopment": null,
-        "previewQa": null
+        "previewDevelopment": "data/reports/000002-db-root-scripts.development.md",
+        "previewQa": "data/reports/000002-db-root-scripts.qa.md"
       }
     },
     {
@@ -3305,16 +3300,16 @@
       "devPhasePath": "docs/0000_platform_setup/PRD_platform_setup_development_phase.md",
       "prdFolder": "docs/PRD/0000-platform-setup",
       "gate": null,
-      "column": "development",
-      "progressPercent": 30,
-      "developmentStatus": "in_progress",
-      "qaStatus": "pending",
+      "column": "audit",
+      "progressPercent": 85,
+      "developmentStatus": "complete",
+      "qaStatus": "pass",
       "progress": {
         "plan": true,
         "planComplete": true,
         "skillCount": 2,
-        "development": false,
-        "qa": false,
+        "development": true,
+        "qa": true,
         "auditPhase": false
       },
       "reports": {
@@ -3322,11 +3317,11 @@
         "development": "Development/Result/0000/phase-01/development/000002-infra-ci-workflow-fix.md",
         "qa": "Development/Result/0000/phase-01/qa/000002-infra-ci-workflow-fix.md",
         "hasPlan": true,
-        "hasDevelopment": false,
-        "hasQa": false,
+        "hasDevelopment": true,
+        "hasQa": true,
         "previewPlan": "data/reports/000002-infra-ci-workflow-fix.plan.md",
-        "previewDevelopment": null,
-        "previewQa": null
+        "previewDevelopment": "data/reports/000002-infra-ci-workflow-fix.development.md",
+        "previewQa": "data/reports/000002-infra-ci-workflow-fix.qa.md"
       }
     },
     {
@@ -3341,16 +3336,16 @@
       "devPhasePath": "docs/0000_platform_setup/PRD_platform_setup_development_phase.md",
       "prdFolder": "docs/PRD/0000-platform-setup",
       "gate": null,
-      "column": "development",
-      "progressPercent": 30,
-      "developmentStatus": "in_progress",
-      "qaStatus": "pending",
+      "column": "audit",
+      "progressPercent": 85,
+      "developmentStatus": "complete",
+      "qaStatus": "pass",
       "progress": {
         "plan": true,
         "planComplete": true,
         "skillCount": 1,
-        "development": false,
-        "qa": false,
+        "development": true,
+        "qa": true,
         "auditPhase": false
       },
       "reports": {
@@ -3358,11 +3353,11 @@
         "development": "Development/Result/0000/phase-00/development/000002-stack-single-npm-lockfile.md",
         "qa": "Development/Result/0000/phase-00/qa/000002-stack-single-npm-lockfile.md",
         "hasPlan": true,
-        "hasDevelopment": false,
-        "hasQa": false,
+        "hasDevelopment": true,
+        "hasQa": true,
         "previewPlan": "data/reports/000002-stack-single-npm-lockfile.plan.md",
-        "previewDevelopment": null,
-        "previewQa": null
+        "previewDevelopment": "data/reports/000002-stack-single-npm-lockfile.development.md",
+        "previewQa": "data/reports/000002-stack-single-npm-lockfile.qa.md"
       }
     },
     {
@@ -3521,16 +3516,16 @@
       "devPhasePath": "docs/0000_platform_setup/PRD_platform_setup_development_phase.md",
       "prdFolder": "docs/PRD/0000-platform-setup",
       "gate": null,
-      "column": "development",
-      "progressPercent": 30,
-      "developmentStatus": "in_progress",
-      "qaStatus": "pending",
+      "column": "audit",
+      "progressPercent": 85,
+      "developmentStatus": "complete",
+      "qaStatus": "pass",
       "progress": {
         "plan": true,
         "planComplete": true,
         "skillCount": 2,
-        "development": false,
-        "qa": false,
+        "development": true,
+        "qa": true,
         "auditPhase": false
       },
       "reports": {
@@ -3538,11 +3533,11 @@
         "development": "Development/Result/0000/phase-01/development/000003-infra-ci-verify-pipeline.md",
         "qa": "Development/Result/0000/phase-01/qa/000003-infra-ci-verify-pipeline.md",
         "hasPlan": true,
-        "hasDevelopment": false,
-        "hasQa": false,
+        "hasDevelopment": true,
+        "hasQa": true,
         "previewPlan": "data/reports/000003-infra-ci-verify-pipeline.plan.md",
-        "previewDevelopment": null,
-        "previewQa": null
+        "previewDevelopment": "data/reports/000003-infra-ci-verify-pipeline.development.md",
+        "previewQa": "data/reports/000003-infra-ci-verify-pipeline.qa.md"
       }
     },
     {
@@ -3557,16 +3552,16 @@
       "devPhasePath": "docs/0000_platform_setup/PRD_platform_setup_development_phase.md",
       "prdFolder": "docs/PRD/0000-platform-setup",
       "gate": null,
-      "column": "development",
-      "progressPercent": 30,
-      "developmentStatus": "in_progress",
-      "qaStatus": "pending",
+      "column": "audit",
+      "progressPercent": 85,
+      "developmentStatus": "complete",
+      "qaStatus": "pass",
       "progress": {
         "plan": true,
         "planComplete": true,
         "skillCount": 1,
-        "development": false,
-        "qa": false,
+        "development": true,
+        "qa": true,
         "auditPhase": false
       },
       "reports": {
@@ -3574,11 +3569,11 @@
         "development": "Development/Result/0000/phase-00/development/000003-stack-repo-hygiene.md",
         "qa": "Development/Result/0000/phase-00/qa/000003-stack-repo-hygiene.md",
         "hasPlan": true,
-        "hasDevelopment": false,
-        "hasQa": false,
+        "hasDevelopment": true,
+        "hasQa": true,
         "previewPlan": "data/reports/000003-stack-repo-hygiene.plan.md",
-        "previewDevelopment": null,
-        "previewQa": null
+        "previewDevelopment": "data/reports/000003-stack-repo-hygiene.development.md",
+        "previewQa": "data/reports/000003-stack-repo-hygiene.qa.md"
       }
     },
     {
@@ -3701,16 +3696,16 @@
       "devPhasePath": "docs/0000_platform_setup/PRD_platform_setup_development_phase.md",
       "prdFolder": "docs/PRD/0000-platform-setup",
       "gate": null,
-      "column": "development",
-      "progressPercent": 30,
-      "developmentStatus": "in_progress",
-      "qaStatus": "pending",
+      "column": "audit",
+      "progressPercent": 85,
+      "developmentStatus": "complete",
+      "qaStatus": "pass",
       "progress": {
         "plan": true,
         "planComplete": true,
         "skillCount": 1,
-        "development": false,
-        "qa": false,
+        "development": true,
+        "qa": true,
         "auditPhase": false
       },
       "reports": {
@@ -3718,11 +3713,11 @@
         "development": "Development/Result/0000/phase-00/development/000004-stack-env-example.md",
         "qa": "Development/Result/0000/phase-00/qa/000004-stack-env-example.md",
         "hasPlan": true,
-        "hasDevelopment": false,
-        "hasQa": false,
+        "hasDevelopment": true,
+        "hasQa": true,
         "previewPlan": "data/reports/000004-stack-env-example.plan.md",
-        "previewDevelopment": null,
-        "previewQa": null
+        "previewDevelopment": "data/reports/000004-stack-env-example.development.md",
+        "previewQa": "data/reports/000004-stack-env-example.qa.md"
       }
     },
     {
@@ -3809,16 +3804,16 @@
       "devPhasePath": "docs/0000_platform_setup/PRD_platform_setup_development_phase.md",
       "prdFolder": "docs/PRD/0000-platform-setup",
       "gate": null,
-      "column": "development",
-      "progressPercent": 30,
-      "developmentStatus": "in_progress",
-      "qaStatus": "pending",
+      "column": "audit",
+      "progressPercent": 85,
+      "developmentStatus": "complete",
+      "qaStatus": "pass",
       "progress": {
         "plan": true,
         "planComplete": true,
         "skillCount": 1,
-        "development": false,
-        "qa": false,
+        "development": true,
+        "qa": true,
         "auditPhase": false
       },
       "reports": {
@@ -3826,11 +3821,11 @@
         "development": "Development/Result/0000/phase-00/development/000005-stack-setup-script.md",
         "qa": "Development/Result/0000/phase-00/qa/000005-stack-setup-script.md",
         "hasPlan": true,
-        "hasDevelopment": false,
-        "hasQa": false,
+        "hasDevelopment": true,
+        "hasQa": true,
         "previewPlan": "data/reports/000005-stack-setup-script.plan.md",
-        "previewDevelopment": null,
-        "previewQa": null
+        "previewDevelopment": "data/reports/000005-stack-setup-script.development.md",
+        "previewQa": "data/reports/000005-stack-setup-script.qa.md"
       }
     },
     {
@@ -3881,16 +3876,16 @@
       "devPhasePath": "docs/0000_platform_setup/PRD_platform_setup_development_phase.md",
       "prdFolder": "docs/PRD/0000-platform-setup",
       "gate": null,
-      "column": "development",
-      "progressPercent": 30,
-      "developmentStatus": "in_progress",
-      "qaStatus": "pending",
+      "column": "audit",
+      "progressPercent": 85,
+      "developmentStatus": "complete",
+      "qaStatus": "pass",
       "progress": {
         "plan": true,
         "planComplete": true,
         "skillCount": 1,
-        "development": false,
-        "qa": false,
+        "development": true,
+        "qa": true,
         "auditPhase": false
       },
       "reports": {
@@ -3898,11 +3893,11 @@
         "development": "Development/Result/0000/phase-00/development/000006-stack-verify-script.md",
         "qa": "Development/Result/0000/phase-00/qa/000006-stack-verify-script.md",
         "hasPlan": true,
-        "hasDevelopment": false,
-        "hasQa": false,
+        "hasDevelopment": true,
+        "hasQa": true,
         "previewPlan": "data/reports/000006-stack-verify-script.plan.md",
-        "previewDevelopment": null,
-        "previewQa": null
+        "previewDevelopment": "data/reports/000006-stack-verify-script.development.md",
+        "previewQa": "data/reports/000006-stack-verify-script.qa.md"
       }
     },
     {

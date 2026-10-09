@@ -29,7 +29,25 @@ onboarding ≤ 15 menit tanpa bantuan.
 
 ## Development
 
-| Status | `pending` |
+| Field | Nilai |
+|-------|-------|
+| Status | `complete` |
+| Laporan | Development/Result/0000/phase-00/development/000001-docs-dev-runbook.md |
+| Commit/PR | belum di-commit |
+| Selesai | 2026-10-01T16:02:54+07:00 |
+
+### Catatan implementasi
+
+Runbook dan README sudah memuat alur onboarding. Diselaraskan: seed setup idempoten, dan `verify` mencakup gate G0–G7. Waktu onboarding penguji baru tidak diukur.
+
+## QA
+
+| Field | Nilai |
+|-------|-------|
+| Status | `pass` |
+| Laporan | Development/Result/0000/phase-00/qa/000001-docs-dev-runbook.md |
+| Fix dalam session | tidak |
+| Selesai | 2026-10-01T16:03:20+07:00 |
 
 ## Skill yang digunakan
 

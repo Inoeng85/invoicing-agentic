@@ -4,6 +4,7 @@ import { assessTaskPlan, loadQueue, priorPhaseReleased } from './intake-pipeline
 import {
   inferTaskColumn,
   readTaskArtifacts,
+  readTaskAuditOutcome,
   taskArtifactPaths,
   taskPlanBase,
 } from './task-progress.mjs'
@@ -160,6 +161,7 @@ function buildOneTask(root, ctx) {
     phaseReleased: ph.released,
     phaseBlocked: !priorOk,
     qaStatus: qaSt,
+    taskAuditStatus: readTaskAuditOutcome(root, epic, ordinal, taskId),
     phaseRow: ph,
   })
 

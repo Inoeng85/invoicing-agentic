@@ -23,13 +23,14 @@ Boundary Development untuk task 000001-infra-github-repo-protection (epic 0000).
 
 ### Docs / lainnya
 
-- (isi dari plan / PRD Files)
+- `docs/operations/BRANCH_PROTECTION.md`
+- `scripts/apply-branch-protection.sh`
 
 ## Task plan yang memakai feature ini
 
 | Task ID | Phase | Status dev |
 |---------|-------|------------|
-| 000001-infra-github-repo-protection | 0000-P1 | `pending` |
+| 000001-infra-github-repo-protection | 0000-P1 | `complete` |
 
 ## Out of scope
 

@@ -28,7 +28,25 @@ stack env example (PRD epic 0000).
 
 ## Development
 
-| Status | `pending` |
+| Field | Nilai |
+|-------|-------|
+| Status | `complete` |
+| Laporan | Development/Result/0000/phase-00/development/000004-stack-env-example.md |
+| Commit/PR | belum di-commit |
+| Selesai | 2026-10-01T15:54:10+07:00 |
+
+### Catatan implementasi
+
+Example web/api/database sudah memuat variabel PS-09 dengan default dev (`EMAIL_PROVIDER=log`, `APP_URL=http://localhost:44100`). Ditambah komentar `TRUST_PROXY` di web dan `NODE_ENV` di database. HMR tetap di luar example.
+
+## QA
+
+| Field | Nilai |
+|-------|-------|
+| Status | `pass` |
+| Laporan | Development/Result/0000/phase-00/qa/000004-stack-env-example.md |
+| Fix dalam session | tidak |
+| Selesai | 2026-10-01T15:55:21+07:00 |
 
 ## Skill yang digunakan
 

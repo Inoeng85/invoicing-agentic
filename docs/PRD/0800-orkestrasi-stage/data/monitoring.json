@@ -1,77 +1,63 @@
 {
   "version": 1,
-  "generatedAt": "2026-10-01T08:03:06.579Z",
+  "generatedAt": "2026-10-01T18:06:10.482Z",
   "summary": {
     "total": 138,
-    "done": 1,
+    "done": 12,
     "running": 0,
-    "assigned": 1,
+    "assigned": 0,
     "ready": 0,
-    "waiting": 10,
+    "waiting": 0,
     "blocked": 126,
-    "nextTaskId": "000001-stack-pin-node-runtime",
-    "nextKind": "qa",
-    "nextPhaseId": "0000-P0",
-    "autopilotActive": true,
-    "autopilotTaskId": "000001-stack-pin-node-runtime",
+    "nextTaskId": null,
+    "nextKind": "gate",
+    "nextPhaseId": "0000-P2",
+    "autopilotActive": false,
+    "autopilotTaskId": null,
     "queuePhases": 20,
-    "queueGeneratedAt": "2026-10-01T08:03:06.398Z",
-    "activeTaskId": "000001-stack-pin-node-runtime",
-    "activeKind": "qa",
-    "runningCount": 1,
+    "queueGeneratedAt": "2026-10-01T18:06:10.061Z",
+    "activeTaskId": "000003-infra-ci-verify-pipeline",
+    "activeKind": null,
+    "runningCount": 0,
     "blockedCount": 126,
-    "logCount": 9
+    "logCount": 89
   },
   "autopilot": {
-    "active": true,
-    "kind": "qa",
-    "taskId": "000001-stack-pin-node-runtime",
-    "phaseId": "0000-P0",
-    "epic": "0000",
-    "ordinal": 0,
-    "assignedAt": "2026-10-01T07:53:25.866Z",
-    "needsAgent": true
+    "active": false,
+    "idleAt": "2026-10-01T09:09:50.210Z",
+    "last": {
+      "kind": "gate",
+      "phaseId": "0000-P2",
+      "waitFor": "0000-P1",
+      "message": "Menunggu Human QA release phase 0000-P1"
+    }
   },
   "sessions": {
     "development": {
-      "requestedAt": "2026-10-01T07:21:14.286Z",
+      "requestedAt": "2026-10-01T09:08:41.673Z",
       "source": "autopilot",
       "action": "run_development_task",
-      "taskId": "000001-stack-pin-node-runtime",
-      "phaseId": "0000-P0",
-      "planPath": "Agentic/Development/Plan/0000/phase-00/tasks/000001-stack-pin-node-runtime/plan.md",
-      "featurePath": "Agentic/agentic/development/features/0000-platform-stack.md",
+      "taskId": "000003-infra-ci-verify-pipeline",
+      "phaseId": "0000-P1",
+      "planPath": "Agentic/Development/Plan/0000/phase-01/tasks/000003-infra-ci-verify-pipeline/plan.md",
+      "featurePath": "Agentic/agentic/development/features/0000-infra-ci-verify-pipeline.md",
       "skill": "agentic/skill/development/SKILL.md",
-      "agentPrompt": "Agent Development — 1 session = 1 feature + 1 task\nTask: 000001-stack-pin-node-runtime · phase 0000-P0\nPlan: Agentic/Development/Plan/0000/phase-00/tasks/000001-stack-pin-node-runtime/plan.md\nFeature: Agentic/agentic/development/features/0000-platform-stack.md\nSkill: agentic/skill/development/SKILL.md\nSelesai: laporan development + update plan.md + npm run agentic:validate-dev -- --task 000001-stack-pin-node-runtime --epic 0000 --phase 0"
+      "agentPrompt": "Agent Development — 1 session = 1 feature + 1 task\nTask: 000003-infra-ci-verify-pipeline · phase 0000-P1\nPlan: Agentic/Development/Plan/0000/phase-01/tasks/000003-infra-ci-verify-pipeline/plan.md\nFeature: Agentic/agentic/development/features/0000-infra-ci-verify-pipeline.md\nSkill: agentic/skill/development/SKILL.md\nSelesai: laporan development + update plan.md + npm run agentic:validate-dev -- --task 000003-infra-ci-verify-pipeline --epic 0000 --phase 1"
     },
     "autopilotWork": {
       "version": 1,
-      "generatedAt": "2026-10-01T07:53:25.866Z",
+      "generatedAt": "2026-10-01T18:05:58.872Z",
       "work": {
-        "kind": "qa",
-        "action": "run_qa_task",
-        "phaseId": "0000-P0",
-        "epic": "0000",
-        "ordinal": 0,
-        "taskId": "000001-stack-pin-node-runtime",
-        "skill": "agentic/skill/qa/SKILL.md",
-        "planPath": "Development/Plan/0000/phase-00/tasks/000001-stack-pin-node-runtime/plan.md",
-        "hasDevReport": true
+        "kind": "gate",
+        "phaseId": "0000-P2",
+        "waitFor": "0000-P1",
+        "message": "Menunggu Human QA release phase 0000-P1"
       },
-      "prompt": "Agent QA — 1 session = 1 task\nTask: 000001-stack-pin-node-runtime · phase 0000-P0\nPlan: Agentic/Development/Plan/0000/phase-00/tasks/000001-stack-pin-node-runtime/plan.md\nSkill: agentic/skill/qa/SKILL.md\nSelesai: npm run agentic:validate-qa -- --task 000001-stack-pin-node-runtime --epic 0000 --phase 0",
-      "active": {
-        "active": true,
-        "kind": "qa",
-        "taskId": "000001-stack-pin-node-runtime",
-        "phaseId": "0000-P0",
-        "epic": "0000",
-        "ordinal": 0,
-        "assignedAt": "2026-10-01T07:53:25.866Z",
-        "needsAgent": true
-      }
+      "prompt": "Menunggu Human QA release phase 0000-P1",
+      "active": false
     },
     "intakeTrigger": {
-      "generatedAt": "2026-10-01T08:03:06.514Z",
+      "generatedAt": "2026-10-01T18:06:10.423Z",
       "targetColumn": null,
       "action": "wait_prior_release"
     }
@@ -81,14 +67,14 @@
       "taskId": "000001-stack-pin-node-runtime",
       "title": "stack pin node runtime",
       "phaseId": "0000-P0",
-      "runState": "assigned",
-      "stage": "qa",
-      "column": "test",
+      "runState": "done",
+      "stage": "audit",
+      "column": "audit",
       "planStatus": "defined",
       "developmentStatus": "complete",
-      "qaStatus": "pending",
-      "isNext": true,
-      "autopilotActive": true,
+      "qaStatus": "pass",
+      "isNext": false,
+      "autopilotActive": false,
       "blockers": [],
       "waitReasons": [],
       "paths": {
@@ -101,12 +87,12 @@
       "taskId": "000002-stack-single-npm-lockfile",
       "title": "stack single npm lockfile",
       "phaseId": "0000-P0",
-      "runState": "waiting",
-      "stage": "development",
-      "column": "development",
+      "runState": "done",
+      "stage": "audit",
+      "column": "audit",
       "planStatus": "defined",
-      "developmentStatus": "pending",
-      "qaStatus": "pending",
+      "developmentStatus": "complete",
+      "qaStatus": "pass",
       "isNext": false,
       "autopilotActive": false,
       "blockers": [],
@@ -121,18 +107,16 @@
       "taskId": "000003-stack-repo-hygiene",
       "title": "stack repo hygiene",
       "phaseId": "0000-P0",
-      "runState": "waiting",
-      "stage": "development",
-      "column": "development",
+      "runState": "done",
+      "stage": "audit",
+      "column": "audit",
       "planStatus": "defined",
-      "developmentStatus": "pending",
-      "qaStatus": "pending",
+      "developmentStatus": "complete",
+      "qaStatus": "pass",
       "isNext": false,
       "autopilotActive": false,
       "blockers": [],
-      "waitReasons": [
-        "Development berurutan: menunggu 000002-stack-single-npm-lockfile selesai"
-      ],
+      "waitReasons": [],
       "paths": {
         "plan": "Development/Plan/0000/phase-00/tasks/000003-stack-repo-hygiene/plan.md",
         "development": "Development/Result/0000/phase-00/development/000003-stack-repo-hygiene.md",
@@ -144,8 +128,8 @@
       "title": "db canonical sqlite path",
       "phaseId": "0000-P0",
       "runState": "done",
-      "stage": "audit",
-      "column": "audit",
+      "stage": "done",
+      "column": "done",
       "planStatus": "defined",
       "developmentStatus": "complete",
       "qaStatus": "pass",
@@ -163,18 +147,16 @@
       "taskId": "000004-stack-env-example",
       "title": "stack env example",
       "phaseId": "0000-P0",
-      "runState": "waiting",
-      "stage": "development",
-      "column": "development",
+      "runState": "done",
+      "stage": "audit",
+      "column": "audit",
       "planStatus": "defined",
-      "developmentStatus": "pending",
-      "qaStatus": "pending",
+      "developmentStatus": "complete",
+      "qaStatus": "pass",
       "isNext": false,
       "autopilotActive": false,
       "blockers": [],
-      "waitReasons": [
-        "Development berurutan: menunggu 000002-stack-single-npm-lockfile selesai"
-      ],
+      "waitReasons": [],
       "paths": {
         "plan": "Development/Plan/0000/phase-00/tasks/000004-stack-env-example/plan.md",
         "development": "Development/Result/0000/phase-00/development/000004-stack-env-example.md",
@@ -185,18 +167,16 @@
       "taskId": "000002-db-root-scripts",
       "title": "db root scripts",
       "phaseId": "0000-P0",
-      "runState": "waiting",
-      "stage": "development",
-      "column": "development",
+      "runState": "done",
+      "stage": "audit",
+      "column": "audit",
       "planStatus": "defined",
-      "developmentStatus": "pending",
-      "qaStatus": "pending",
+      "developmentStatus": "complete",
+      "qaStatus": "pass",
       "isNext": false,
       "autopilotActive": false,
       "blockers": [],
-      "waitReasons": [
-        "Development berurutan: menunggu 000002-stack-single-npm-lockfile selesai"
-      ],
+      "waitReasons": [],
       "paths": {
         "plan": "Development/Plan/0000/phase-00/tasks/000002-db-root-scripts/plan.md",
         "development": "Development/Result/0000/phase-00/development/000002-db-root-scripts.md",
@@ -207,18 +187,16 @@
       "taskId": "000005-stack-setup-script",
       "title": "stack setup script",
       "phaseId": "0000-P0",
-      "runState": "waiting",
-      "stage": "development",
-      "column": "development",
+      "runState": "done",
+      "stage": "audit",
+      "column": "audit",
       "planStatus": "defined",
-      "developmentStatus": "pending",
-      "qaStatus": "pending",
+      "developmentStatus": "complete",
+      "qaStatus": "pass",
       "isNext": false,
       "autopilotActive": false,
       "blockers": [],
-      "waitReasons": [
-        "Development berurutan: menunggu 000002-stack-single-npm-lockfile selesai"
-      ],
+      "waitReasons": [],
       "paths": {
         "plan": "Development/Plan/0000/phase-00/tasks/000005-stack-setup-script/plan.md",
         "development": "Development/Result/0000/phase-00/development/000005-stack-setup-script.md",
@@ -229,18 +207,16 @@
       "taskId": "000006-stack-verify-script",
       "title": "stack verify script",
       "phaseId": "0000-P0",
-      "runState": "waiting",
-      "stage": "development",
-      "column": "development",
+      "runState": "done",
+      "stage": "audit",
+      "column": "audit",
       "planStatus": "defined",
-      "developmentStatus": "pending",
-      "qaStatus": "pending",
+      "developmentStatus": "complete",
+      "qaStatus": "pass",
       "isNext": false,
       "autopilotActive": false,
       "blockers": [],
-      "waitReasons": [
-        "Development berurutan: menunggu 000002-stack-single-npm-lockfile selesai"
-      ],
+      "waitReasons": [],
       "paths": {
         "plan": "Development/Plan/0000/phase-00/tasks/000006-stack-verify-script/plan.md",
         "development": "Development/Result/0000/phase-00/development/000006-stack-verify-script.md",
@@ -251,18 +227,16 @@
       "taskId": "000001-docs-dev-runbook",
       "title": "docs dev runbook",
       "phaseId": "0000-P0",
-      "runState": "waiting",
-      "stage": "development",
-      "column": "development",
+      "runState": "done",
+      "stage": "audit",
+      "column": "audit",
       "planStatus": "defined",
-      "developmentStatus": "pending",
-      "qaStatus": "pending",
+      "developmentStatus": "complete",
+      "qaStatus": "pass",
       "isNext": false,
       "autopilotActive": false,
       "blockers": [],
-      "waitReasons": [
-        "Development berurutan: menunggu 000002-stack-single-npm-lockfile selesai"
-      ],
+      "waitReasons": [],
       "paths": {
         "plan": "Development/Plan/0000/phase-00/tasks/000001-docs-dev-runbook/plan.md",
         "development": "Development/Result/0000/phase-00/development/000001-docs-dev-runbook.md",
@@ -273,12 +247,12 @@
       "taskId": "000001-infra-github-repo-protection",
       "title": "infra github repo protection",
       "phaseId": "0000-P1",
-      "runState": "waiting",
-      "stage": "development",
-      "column": "development",
+      "runState": "done",
+      "stage": "audit",
+      "column": "audit",
       "planStatus": "defined",
-      "developmentStatus": "pending",
-      "qaStatus": "pending",
+      "developmentStatus": "complete",
+      "qaStatus": "pass",
       "isNext": false,
       "autopilotActive": false,
       "blockers": [],
@@ -293,18 +267,16 @@
       "taskId": "000002-infra-ci-workflow-fix",
       "title": "infra ci workflow fix",
       "phaseId": "0000-P1",
-      "runState": "waiting",
-      "stage": "development",
-      "column": "development",
+      "runState": "done",
+      "stage": "audit",
+      "column": "audit",
       "planStatus": "defined",
-      "developmentStatus": "pending",
-      "qaStatus": "pending",
+      "developmentStatus": "complete",
+      "qaStatus": "pass",
       "isNext": false,
       "autopilotActive": false,
       "blockers": [],
-      "waitReasons": [
-        "Development berurutan: menunggu 000001-infra-github-repo-protection selesai"
-      ],
+      "waitReasons": [],
       "paths": {
         "plan": "Development/Plan/0000/phase-01/tasks/000002-infra-ci-workflow-fix/plan.md",
         "development": "Development/Result/0000/phase-01/development/000002-infra-ci-workflow-fix.md",
@@ -315,18 +287,16 @@
       "taskId": "000003-infra-ci-verify-pipeline",
       "title": "infra ci verify pipeline",
       "phaseId": "0000-P1",
-      "runState": "waiting",
-      "stage": "development",
-      "column": "development",
+      "runState": "done",
+      "stage": "audit",
+      "column": "audit",
       "planStatus": "defined",
-      "developmentStatus": "pending",
-      "qaStatus": "pending",
+      "developmentStatus": "complete",
+      "qaStatus": "pass",
       "isNext": false,
       "autopilotActive": false,
       "blockers": [],
-      "waitReasons": [
-        "Development berurutan: menunggu 000001-infra-github-repo-protection selesai"
-      ],
+      "waitReasons": [],
       "paths": {
         "plan": "Development/Plan/0000/phase-01/tasks/000003-infra-ci-verify-pipeline/plan.md",
         "development": "Development/Result/0000/phase-01/development/000003-infra-ci-verify-pipeline.md",
@@ -3353,7 +3323,7 @@
   ],
   "logs": [
     {
-      "at": "2026-10-01T08:03:06.398Z",
+      "at": "2026-10-01T18:06:10.061Z",
       "level": "info",
       "source": "queue",
       "event": "intake_queue",
@@ -3361,6 +3331,1191 @@
       "phaseId": null,
       "message": "intake-queue.json diperbarui (20 phase)",
       "detail": null
+    },
+    {
+      "at": "2026-10-01T09:09:50.210Z",
+      "level": "info",
+      "source": "autopilot",
+      "event": "chain",
+      "taskId": null,
+      "phaseId": null,
+      "message": "Chain (manual_complete): berikutnya gate",
+      "detail": {
+        "at": "2026-10-01T09:09:50.210Z",
+        "event": "chain",
+        "reason": "manual_complete",
+        "nextKind": "gate",
+        "taskId": null
+      }
+    },
+    {
+      "at": "2026-10-01T09:09:50.199Z",
+      "level": "info",
+      "source": "autopilot",
+      "event": "manual_complete",
+      "taskId": "000003-infra-ci-verify-pipeline",
+      "phaseId": null,
+      "message": "Complete manual → chain · 000003-infra-ci-verify-pipeline",
+      "detail": {
+        "at": "2026-10-01T09:09:50.199Z",
+        "event": "manual_complete",
+        "taskId": "000003-infra-ci-verify-pipeline"
+      }
+    },
+    {
+      "at": "2026-10-01T09:09:46.682Z",
+      "level": "info",
+      "source": "autopilot",
+      "event": "chain",
+      "taskId": null,
+      "phaseId": null,
+      "message": "Chain (auto_complete): berikutnya gate",
+      "detail": {
+        "at": "2026-10-01T09:09:46.682Z",
+        "event": "chain",
+        "reason": "auto_complete",
+        "nextKind": "gate",
+        "taskId": null
+      }
+    },
+    {
+      "at": "2026-10-01T09:09:46.670Z",
+      "level": "success",
+      "source": "autopilot",
+      "event": "auto_complete",
+      "taskId": "000003-infra-ci-verify-pipeline",
+      "phaseId": "0000-P1",
+      "message": "Selesai otomatis: qa 000003-infra-ci-verify-pipeline",
+      "detail": {
+        "at": "2026-10-01T09:09:46.670Z",
+        "event": "auto_complete",
+        "kind": "qa",
+        "taskId": "000003-infra-ci-verify-pipeline",
+        "phaseId": "0000-P1"
+      }
+    },
+    {
+      "at": "2026-10-01T09:09:41.035Z",
+      "level": "info",
+      "source": "artifact",
+      "event": "report",
+      "taskId": "000003-infra-ci-verify-pipeline",
+      "phaseId": "0000-P1",
+      "message": "Laporan qa: Development/Result/0000/phase-01/qa/000003-infra-ci-verify-pipeline.md",
+      "detail": {
+        "path": "Development/Result/0000/phase-01/qa/000003-infra-ci-verify-pipeline.md",
+        "kind": "qa"
+      }
+    },
+    {
+      "at": "2026-10-01T09:09:20.708Z",
+      "level": "info",
+      "source": "autopilot",
+      "event": "chain",
+      "taskId": "000003-infra-ci-verify-pipeline",
+      "phaseId": null,
+      "message": "Chain (manual_complete): berikutnya qa · 000003-infra-ci-verify-pipeline",
+      "detail": {
+        "at": "2026-10-01T09:09:20.708Z",
+        "event": "chain",
+        "reason": "manual_complete",
+        "nextKind": "qa",
+        "taskId": "000003-infra-ci-verify-pipeline"
+      }
+    },
+    {
+      "at": "2026-10-01T09:09:20.696Z",
+      "level": "info",
+      "source": "autopilot",
+      "event": "manual_complete",
+      "taskId": "000003-infra-ci-verify-pipeline",
+      "phaseId": null,
+      "message": "Complete manual → chain · 000003-infra-ci-verify-pipeline",
+      "detail": {
+        "at": "2026-10-01T09:09:20.696Z",
+        "event": "manual_complete",
+        "taskId": "000003-infra-ci-verify-pipeline"
+      }
+    },
+    {
+      "at": "2026-10-01T09:09:10.910Z",
+      "level": "info",
+      "source": "artifact",
+      "event": "report",
+      "taskId": "000003-infra-ci-verify-pipeline",
+      "phaseId": "0000-P1",
+      "message": "Laporan development: Development/Result/0000/phase-01/development/000003-infra-ci-verify-pipeline.md",
+      "detail": {
+        "path": "Development/Result/0000/phase-01/development/000003-infra-ci-verify-pipeline.md",
+        "kind": "development"
+      }
+    },
+    {
+      "at": "2026-10-01T09:08:41.673Z",
+      "level": "info",
+      "source": "autopilot",
+      "event": "chain",
+      "taskId": "000003-infra-ci-verify-pipeline",
+      "phaseId": null,
+      "message": "Chain (manual_complete): berikutnya development · 000003-infra-ci-verify-pipeline",
+      "detail": {
+        "at": "2026-10-01T09:08:41.673Z",
+        "event": "chain",
+        "reason": "manual_complete",
+        "nextKind": "development",
+        "taskId": "000003-infra-ci-verify-pipeline"
+      }
+    },
+    {
+      "at": "2026-10-01T09:08:41.673Z",
+      "level": "info",
+      "source": "session",
+      "event": "development_session",
+      "taskId": "000003-infra-ci-verify-pipeline",
+      "phaseId": "0000-P1",
+      "message": "Sesi Development diminta: 000003-infra-ci-verify-pipeline",
+      "detail": {
+        "planPath": "Agentic/Development/Plan/0000/phase-01/tasks/000003-infra-ci-verify-pipeline/plan.md",
+        "source": "autopilot"
+      }
+    },
+    {
+      "at": "2026-10-01T09:08:41.652Z",
+      "level": "info",
+      "source": "autopilot",
+      "event": "manual_complete",
+      "taskId": "000002-infra-ci-workflow-fix",
+      "phaseId": null,
+      "message": "Complete manual → chain · 000002-infra-ci-workflow-fix",
+      "detail": {
+        "at": "2026-10-01T09:08:41.652Z",
+        "event": "manual_complete",
+        "taskId": "000002-infra-ci-workflow-fix"
+      }
+    },
+    {
+      "at": "2026-10-01T09:08:30.519Z",
+      "level": "info",
+      "source": "artifact",
+      "event": "report",
+      "taskId": "000002-infra-ci-workflow-fix",
+      "phaseId": "0000-P1",
+      "message": "Laporan qa: Development/Result/0000/phase-01/qa/000002-infra-ci-workflow-fix.md",
+      "detail": {
+        "path": "Development/Result/0000/phase-01/qa/000002-infra-ci-workflow-fix.md",
+        "kind": "qa"
+      }
+    },
+    {
+      "at": "2026-10-01T09:08:08.185Z",
+      "level": "info",
+      "source": "autopilot",
+      "event": "chain",
+      "taskId": "000002-infra-ci-workflow-fix",
+      "phaseId": null,
+      "message": "Chain (manual_complete): berikutnya qa · 000002-infra-ci-workflow-fix",
+      "detail": {
+        "at": "2026-10-01T09:08:08.185Z",
+        "event": "chain",
+        "reason": "manual_complete",
+        "nextKind": "qa",
+        "taskId": "000002-infra-ci-workflow-fix"
+      }
+    },
+    {
+      "at": "2026-10-01T09:08:08.160Z",
+      "level": "info",
+      "source": "autopilot",
+      "event": "manual_complete",
+      "taskId": "000002-infra-ci-workflow-fix",
+      "phaseId": null,
+      "message": "Complete manual → chain · 000002-infra-ci-workflow-fix",
+      "detail": {
+        "at": "2026-10-01T09:08:08.160Z",
+        "event": "manual_complete",
+        "taskId": "000002-infra-ci-workflow-fix"
+      }
+    },
+    {
+      "at": "2026-10-01T09:08:05.998Z",
+      "level": "info",
+      "source": "autopilot",
+      "event": "chain",
+      "taskId": "000002-infra-ci-workflow-fix",
+      "phaseId": null,
+      "message": "Chain (auto_complete): berikutnya qa · 000002-infra-ci-workflow-fix",
+      "detail": {
+        "at": "2026-10-01T09:08:05.998Z",
+        "event": "chain",
+        "reason": "auto_complete",
+        "nextKind": "qa",
+        "taskId": "000002-infra-ci-workflow-fix"
+      }
+    },
+    {
+      "at": "2026-10-01T09:08:05.984Z",
+      "level": "success",
+      "source": "autopilot",
+      "event": "auto_complete",
+      "taskId": "000002-infra-ci-workflow-fix",
+      "phaseId": "0000-P1",
+      "message": "Selesai otomatis: development 000002-infra-ci-workflow-fix",
+      "detail": {
+        "at": "2026-10-01T09:08:05.984Z",
+        "event": "auto_complete",
+        "kind": "development",
+        "taskId": "000002-infra-ci-workflow-fix",
+        "phaseId": "0000-P1"
+      }
+    },
+    {
+      "at": "2026-10-01T09:07:58.020Z",
+      "level": "info",
+      "source": "artifact",
+      "event": "report",
+      "taskId": "000002-infra-ci-workflow-fix",
+      "phaseId": "0000-P1",
+      "message": "Laporan development: Development/Result/0000/phase-01/development/000002-infra-ci-workflow-fix.md",
+      "detail": {
+        "path": "Development/Result/0000/phase-01/development/000002-infra-ci-workflow-fix.md",
+        "kind": "development"
+      }
+    },
+    {
+      "at": "2026-10-01T09:06:52.100Z",
+      "level": "info",
+      "source": "autopilot",
+      "event": "chain",
+      "taskId": "000002-infra-ci-workflow-fix",
+      "phaseId": null,
+      "message": "Chain (manual_complete): berikutnya development · 000002-infra-ci-workflow-fix",
+      "detail": {
+        "at": "2026-10-01T09:06:52.100Z",
+        "event": "chain",
+        "reason": "manual_complete",
+        "nextKind": "development",
+        "taskId": "000002-infra-ci-workflow-fix"
+      }
+    },
+    {
+      "at": "2026-10-01T09:06:52.087Z",
+      "level": "info",
+      "source": "autopilot",
+      "event": "manual_complete",
+      "taskId": "000001-infra-github-repo-protection",
+      "phaseId": null,
+      "message": "Complete manual → chain · 000001-infra-github-repo-protection",
+      "detail": {
+        "at": "2026-10-01T09:06:52.087Z",
+        "event": "manual_complete",
+        "taskId": "000001-infra-github-repo-protection"
+      }
+    },
+    {
+      "at": "2026-10-01T09:06:45.250Z",
+      "level": "info",
+      "source": "autopilot",
+      "event": "chain",
+      "taskId": "000002-infra-ci-workflow-fix",
+      "phaseId": null,
+      "message": "Chain (auto_complete): berikutnya development · 000002-infra-ci-workflow-fix",
+      "detail": {
+        "at": "2026-10-01T09:06:45.250Z",
+        "event": "chain",
+        "reason": "auto_complete",
+        "nextKind": "development",
+        "taskId": "000002-infra-ci-workflow-fix"
+      }
+    },
+    {
+      "at": "2026-10-01T09:06:45.233Z",
+      "level": "success",
+      "source": "autopilot",
+      "event": "auto_complete",
+      "taskId": "000001-infra-github-repo-protection",
+      "phaseId": "0000-P1",
+      "message": "Selesai otomatis: qa 000001-infra-github-repo-protection",
+      "detail": {
+        "at": "2026-10-01T09:06:45.233Z",
+        "event": "auto_complete",
+        "kind": "qa",
+        "taskId": "000001-infra-github-repo-protection",
+        "phaseId": "0000-P1"
+      }
+    },
+    {
+      "at": "2026-10-01T09:06:41.570Z",
+      "level": "info",
+      "source": "artifact",
+      "event": "report",
+      "taskId": "000001-infra-github-repo-protection",
+      "phaseId": "0000-P1",
+      "message": "Laporan qa: Development/Result/0000/phase-01/qa/000001-infra-github-repo-protection.md",
+      "detail": {
+        "path": "Development/Result/0000/phase-01/qa/000001-infra-github-repo-protection.md",
+        "kind": "qa"
+      }
+    },
+    {
+      "at": "2026-10-01T09:06:08.654Z",
+      "level": "info",
+      "source": "autopilot",
+      "event": "chain",
+      "taskId": "000001-infra-github-repo-protection",
+      "phaseId": null,
+      "message": "Chain (manual_complete): berikutnya qa · 000001-infra-github-repo-protection",
+      "detail": {
+        "at": "2026-10-01T09:06:08.654Z",
+        "event": "chain",
+        "reason": "manual_complete",
+        "nextKind": "qa",
+        "taskId": "000001-infra-github-repo-protection"
+      }
+    },
+    {
+      "at": "2026-10-01T09:06:08.636Z",
+      "level": "info",
+      "source": "autopilot",
+      "event": "manual_complete",
+      "taskId": "000001-infra-github-repo-protection",
+      "phaseId": null,
+      "message": "Complete manual → chain · 000001-infra-github-repo-protection",
+      "detail": {
+        "at": "2026-10-01T09:06:08.636Z",
+        "event": "manual_complete",
+        "taskId": "000001-infra-github-repo-protection"
+      }
+    },
+    {
+      "at": "2026-10-01T09:05:58.276Z",
+      "level": "info",
+      "source": "autopilot",
+      "event": "chain",
+      "taskId": "000001-infra-github-repo-protection",
+      "phaseId": null,
+      "message": "Chain (auto_complete): berikutnya qa · 000001-infra-github-repo-protection",
+      "detail": {
+        "at": "2026-10-01T09:05:58.276Z",
+        "event": "chain",
+        "reason": "auto_complete",
+        "nextKind": "qa",
+        "taskId": "000001-infra-github-repo-protection"
+      }
+    },
+    {
+      "at": "2026-10-01T09:05:57.585Z",
+      "level": "success",
+      "source": "autopilot",
+      "event": "auto_complete",
+      "taskId": "000001-infra-github-repo-protection",
+      "phaseId": "0000-P1",
+      "message": "Selesai otomatis: development 000001-infra-github-repo-protection",
+      "detail": {
+        "at": "2026-10-01T09:05:57.585Z",
+        "event": "auto_complete",
+        "kind": "development",
+        "taskId": "000001-infra-github-repo-protection",
+        "phaseId": "0000-P1"
+      }
+    },
+    {
+      "at": "2026-10-01T09:05:42.137Z",
+      "level": "info",
+      "source": "artifact",
+      "event": "report",
+      "taskId": "000001-infra-github-repo-protection",
+      "phaseId": "0000-P1",
+      "message": "Laporan development: Development/Result/0000/phase-01/development/000001-infra-github-repo-protection.md",
+      "detail": {
+        "path": "Development/Result/0000/phase-01/development/000001-infra-github-repo-protection.md",
+        "kind": "development"
+      }
+    },
+    {
+      "at": "2026-10-01T09:04:18.196Z",
+      "level": "info",
+      "source": "autopilot",
+      "event": "chain",
+      "taskId": "000001-infra-github-repo-protection",
+      "phaseId": null,
+      "message": "Chain (manual_complete): berikutnya development · 000001-infra-github-repo-protection",
+      "detail": {
+        "at": "2026-10-01T09:04:18.196Z",
+        "event": "chain",
+        "reason": "manual_complete",
+        "nextKind": "development",
+        "taskId": "000001-infra-github-repo-protection"
+      }
+    },
+    {
+      "at": "2026-10-01T09:04:18.180Z",
+      "level": "info",
+      "source": "autopilot",
+      "event": "manual_complete",
+      "taskId": "000001-docs-dev-runbook",
+      "phaseId": null,
+      "message": "Complete manual → chain · 000001-docs-dev-runbook",
+      "detail": {
+        "at": "2026-10-01T09:04:18.180Z",
+        "event": "manual_complete",
+        "taskId": "000001-docs-dev-runbook"
+      }
+    },
+    {
+      "at": "2026-10-01T09:04:08.829Z",
+      "level": "info",
+      "source": "artifact",
+      "event": "report",
+      "taskId": "000001-docs-dev-runbook",
+      "phaseId": "0000-P0",
+      "message": "Laporan qa: Development/Result/0000/phase-00/qa/000001-docs-dev-runbook.md",
+      "detail": {
+        "path": "Development/Result/0000/phase-00/qa/000001-docs-dev-runbook.md",
+        "kind": "qa"
+      }
+    },
+    {
+      "at": "2026-10-01T09:03:14.009Z",
+      "level": "info",
+      "source": "autopilot",
+      "event": "chain",
+      "taskId": "000001-docs-dev-runbook",
+      "phaseId": null,
+      "message": "Chain (manual_complete): berikutnya qa · 000001-docs-dev-runbook",
+      "detail": {
+        "at": "2026-10-01T09:03:14.009Z",
+        "event": "chain",
+        "reason": "manual_complete",
+        "nextKind": "qa",
+        "taskId": "000001-docs-dev-runbook"
+      }
+    },
+    {
+      "at": "2026-10-01T09:03:13.996Z",
+      "level": "info",
+      "source": "autopilot",
+      "event": "manual_complete",
+      "taskId": "000001-docs-dev-runbook",
+      "phaseId": null,
+      "message": "Complete manual → chain · 000001-docs-dev-runbook",
+      "detail": {
+        "at": "2026-10-01T09:03:13.996Z",
+        "event": "manual_complete",
+        "taskId": "000001-docs-dev-runbook"
+      }
+    },
+    {
+      "at": "2026-10-01T09:03:04.400Z",
+      "level": "info",
+      "source": "artifact",
+      "event": "report",
+      "taskId": "000001-docs-dev-runbook",
+      "phaseId": "0000-P0",
+      "message": "Laporan development: Development/Result/0000/phase-00/development/000001-docs-dev-runbook.md",
+      "detail": {
+        "path": "Development/Result/0000/phase-00/development/000001-docs-dev-runbook.md",
+        "kind": "development"
+      }
+    },
+    {
+      "at": "2026-10-01T09:02:05.115Z",
+      "level": "info",
+      "source": "autopilot",
+      "event": "chain",
+      "taskId": "000001-docs-dev-runbook",
+      "phaseId": null,
+      "message": "Chain (manual_complete): berikutnya development · 000001-docs-dev-runbook",
+      "detail": {
+        "at": "2026-10-01T09:02:05.115Z",
+        "event": "chain",
+        "reason": "manual_complete",
+        "nextKind": "development",
+        "taskId": "000001-docs-dev-runbook"
+      }
+    },
+    {
+      "at": "2026-10-01T09:02:05.104Z",
+      "level": "info",
+      "source": "autopilot",
+      "event": "manual_complete",
+      "taskId": "000006-stack-verify-script",
+      "phaseId": null,
+      "message": "Complete manual → chain · 000006-stack-verify-script",
+      "detail": {
+        "at": "2026-10-01T09:02:05.104Z",
+        "event": "manual_complete",
+        "taskId": "000006-stack-verify-script"
+      }
+    },
+    {
+      "at": "2026-10-01T09:02:04.009Z",
+      "level": "info",
+      "source": "autopilot",
+      "event": "chain",
+      "taskId": "000001-docs-dev-runbook",
+      "phaseId": null,
+      "message": "Chain (auto_complete): berikutnya development · 000001-docs-dev-runbook",
+      "detail": {
+        "at": "2026-10-01T09:02:04.009Z",
+        "event": "chain",
+        "reason": "auto_complete",
+        "nextKind": "development",
+        "taskId": "000001-docs-dev-runbook"
+      }
+    },
+    {
+      "at": "2026-10-01T09:02:03.978Z",
+      "level": "success",
+      "source": "autopilot",
+      "event": "auto_complete",
+      "taskId": "000006-stack-verify-script",
+      "phaseId": "0000-P0",
+      "message": "Selesai otomatis: qa 000006-stack-verify-script",
+      "detail": {
+        "at": "2026-10-01T09:02:03.978Z",
+        "event": "auto_complete",
+        "kind": "qa",
+        "taskId": "000006-stack-verify-script",
+        "phaseId": "0000-P0"
+      }
+    },
+    {
+      "at": "2026-10-01T09:01:55.234Z",
+      "level": "info",
+      "source": "artifact",
+      "event": "report",
+      "taskId": "000006-stack-verify-script",
+      "phaseId": "0000-P0",
+      "message": "Laporan qa: Development/Result/0000/phase-00/qa/000006-stack-verify-script.md",
+      "detail": {
+        "path": "Development/Result/0000/phase-00/qa/000006-stack-verify-script.md",
+        "kind": "qa"
+      }
+    },
+    {
+      "at": "2026-10-01T09:01:26.131Z",
+      "level": "info",
+      "source": "autopilot",
+      "event": "chain",
+      "taskId": "000006-stack-verify-script",
+      "phaseId": null,
+      "message": "Chain (manual_complete): berikutnya qa · 000006-stack-verify-script",
+      "detail": {
+        "at": "2026-10-01T09:01:26.131Z",
+        "event": "chain",
+        "reason": "manual_complete",
+        "nextKind": "qa",
+        "taskId": "000006-stack-verify-script"
+      }
+    },
+    {
+      "at": "2026-10-01T09:01:26.121Z",
+      "level": "info",
+      "source": "autopilot",
+      "event": "manual_complete",
+      "taskId": "000006-stack-verify-script",
+      "phaseId": null,
+      "message": "Complete manual → chain · 000006-stack-verify-script",
+      "detail": {
+        "at": "2026-10-01T09:01:26.121Z",
+        "event": "manual_complete",
+        "taskId": "000006-stack-verify-script"
+      }
+    },
+    {
+      "at": "2026-10-01T09:01:23.609Z",
+      "level": "info",
+      "source": "autopilot",
+      "event": "chain",
+      "taskId": "000006-stack-verify-script",
+      "phaseId": null,
+      "message": "Chain (auto_complete): berikutnya qa · 000006-stack-verify-script",
+      "detail": {
+        "at": "2026-10-01T09:01:23.609Z",
+        "event": "chain",
+        "reason": "auto_complete",
+        "nextKind": "qa",
+        "taskId": "000006-stack-verify-script"
+      }
+    },
+    {
+      "at": "2026-10-01T09:01:23.596Z",
+      "level": "success",
+      "source": "autopilot",
+      "event": "auto_complete",
+      "taskId": "000006-stack-verify-script",
+      "phaseId": "0000-P0",
+      "message": "Selesai otomatis: development 000006-stack-verify-script",
+      "detail": {
+        "at": "2026-10-01T09:01:23.596Z",
+        "event": "auto_complete",
+        "kind": "development",
+        "taskId": "000006-stack-verify-script",
+        "phaseId": "0000-P0"
+      }
+    },
+    {
+      "at": "2026-10-01T09:01:17.600Z",
+      "level": "info",
+      "source": "artifact",
+      "event": "report",
+      "taskId": "000006-stack-verify-script",
+      "phaseId": "0000-P0",
+      "message": "Laporan development: Development/Result/0000/phase-00/development/000006-stack-verify-script.md",
+      "detail": {
+        "path": "Development/Result/0000/phase-00/development/000006-stack-verify-script.md",
+        "kind": "development"
+      }
+    },
+    {
+      "at": "2026-10-01T09:00:32.885Z",
+      "level": "info",
+      "source": "autopilot",
+      "event": "chain",
+      "taskId": "000006-stack-verify-script",
+      "phaseId": null,
+      "message": "Chain (manual_complete): berikutnya development · 000006-stack-verify-script",
+      "detail": {
+        "at": "2026-10-01T09:00:32.885Z",
+        "event": "chain",
+        "reason": "manual_complete",
+        "nextKind": "development",
+        "taskId": "000006-stack-verify-script"
+      }
+    },
+    {
+      "at": "2026-10-01T09:00:32.875Z",
+      "level": "info",
+      "source": "autopilot",
+      "event": "manual_complete",
+      "taskId": "000005-stack-setup-script",
+      "phaseId": null,
+      "message": "Complete manual → chain · 000005-stack-setup-script",
+      "detail": {
+        "at": "2026-10-01T09:00:32.875Z",
+        "event": "manual_complete",
+        "taskId": "000005-stack-setup-script"
+      }
+    },
+    {
+      "at": "2026-10-01T09:00:22.695Z",
+      "level": "info",
+      "source": "artifact",
+      "event": "report",
+      "taskId": "000005-stack-setup-script",
+      "phaseId": "0000-P0",
+      "message": "Laporan qa: Development/Result/0000/phase-00/qa/000005-stack-setup-script.md",
+      "detail": {
+        "path": "Development/Result/0000/phase-00/qa/000005-stack-setup-script.md",
+        "kind": "qa"
+      }
+    },
+    {
+      "at": "2026-10-01T08:59:54.270Z",
+      "level": "info",
+      "source": "autopilot",
+      "event": "chain",
+      "taskId": "000005-stack-setup-script",
+      "phaseId": null,
+      "message": "Chain (manual_complete): berikutnya qa · 000005-stack-setup-script",
+      "detail": {
+        "at": "2026-10-01T08:59:54.270Z",
+        "event": "chain",
+        "reason": "manual_complete",
+        "nextKind": "qa",
+        "taskId": "000005-stack-setup-script"
+      }
+    },
+    {
+      "at": "2026-10-01T08:59:54.260Z",
+      "level": "info",
+      "source": "autopilot",
+      "event": "manual_complete",
+      "taskId": "000005-stack-setup-script",
+      "phaseId": null,
+      "message": "Complete manual → chain · 000005-stack-setup-script",
+      "detail": {
+        "at": "2026-10-01T08:59:54.260Z",
+        "event": "manual_complete",
+        "taskId": "000005-stack-setup-script"
+      }
+    },
+    {
+      "at": "2026-10-01T08:59:45.931Z",
+      "level": "info",
+      "source": "artifact",
+      "event": "report",
+      "taskId": "000005-stack-setup-script",
+      "phaseId": "0000-P0",
+      "message": "Laporan development: Development/Result/0000/phase-00/development/000005-stack-setup-script.md",
+      "detail": {
+        "path": "Development/Result/0000/phase-00/development/000005-stack-setup-script.md",
+        "kind": "development"
+      }
+    },
+    {
+      "at": "2026-10-01T08:58:58.308Z",
+      "level": "info",
+      "source": "autopilot",
+      "event": "chain",
+      "taskId": "000005-stack-setup-script",
+      "phaseId": null,
+      "message": "Chain (manual_complete): berikutnya development · 000005-stack-setup-script",
+      "detail": {
+        "at": "2026-10-01T08:58:58.308Z",
+        "event": "chain",
+        "reason": "manual_complete",
+        "nextKind": "development",
+        "taskId": "000005-stack-setup-script"
+      }
+    },
+    {
+      "at": "2026-10-01T08:58:58.297Z",
+      "level": "info",
+      "source": "autopilot",
+      "event": "manual_complete",
+      "taskId": "000002-db-root-scripts",
+      "phaseId": null,
+      "message": "Complete manual → chain · 000002-db-root-scripts",
+      "detail": {
+        "at": "2026-10-01T08:58:58.297Z",
+        "event": "manual_complete",
+        "taskId": "000002-db-root-scripts"
+      }
+    },
+    {
+      "at": "2026-10-01T08:58:49.029Z",
+      "level": "info",
+      "source": "artifact",
+      "event": "report",
+      "taskId": "000002-db-root-scripts",
+      "phaseId": "0000-P0",
+      "message": "Laporan qa: Development/Result/0000/phase-00/qa/000002-db-root-scripts.md",
+      "detail": {
+        "path": "Development/Result/0000/phase-00/qa/000002-db-root-scripts.md",
+        "kind": "qa"
+      }
+    },
+    {
+      "at": "2026-10-01T08:57:16.018Z",
+      "level": "info",
+      "source": "autopilot",
+      "event": "chain",
+      "taskId": "000002-db-root-scripts",
+      "phaseId": null,
+      "message": "Chain (manual_complete): berikutnya qa · 000002-db-root-scripts",
+      "detail": {
+        "at": "2026-10-01T08:57:16.018Z",
+        "event": "chain",
+        "reason": "manual_complete",
+        "nextKind": "qa",
+        "taskId": "000002-db-root-scripts"
+      }
+    },
+    {
+      "at": "2026-10-01T08:57:16.006Z",
+      "level": "info",
+      "source": "autopilot",
+      "event": "manual_complete",
+      "taskId": "000002-db-root-scripts",
+      "phaseId": null,
+      "message": "Complete manual → chain · 000002-db-root-scripts",
+      "detail": {
+        "at": "2026-10-01T08:57:16.006Z",
+        "event": "manual_complete",
+        "taskId": "000002-db-root-scripts"
+      }
+    },
+    {
+      "at": "2026-10-01T08:57:07.486Z",
+      "level": "info",
+      "source": "artifact",
+      "event": "report",
+      "taskId": "000002-db-root-scripts",
+      "phaseId": "0000-P0",
+      "message": "Laporan development: Development/Result/0000/phase-00/development/000002-db-root-scripts.md",
+      "detail": {
+        "path": "Development/Result/0000/phase-00/development/000002-db-root-scripts.md",
+        "kind": "development"
+      }
+    },
+    {
+      "at": "2026-10-01T08:55:41.222Z",
+      "level": "info",
+      "source": "autopilot",
+      "event": "chain",
+      "taskId": "000002-db-root-scripts",
+      "phaseId": null,
+      "message": "Chain (manual_complete): berikutnya development · 000002-db-root-scripts",
+      "detail": {
+        "at": "2026-10-01T08:55:41.222Z",
+        "event": "chain",
+        "reason": "manual_complete",
+        "nextKind": "development",
+        "taskId": "000002-db-root-scripts"
+      }
+    },
+    {
+      "at": "2026-10-01T08:55:41.212Z",
+      "level": "info",
+      "source": "autopilot",
+      "event": "manual_complete",
+      "taskId": "000004-stack-env-example",
+      "phaseId": null,
+      "message": "Complete manual → chain · 000004-stack-env-example",
+      "detail": {
+        "at": "2026-10-01T08:55:41.212Z",
+        "event": "manual_complete",
+        "taskId": "000004-stack-env-example"
+      }
+    },
+    {
+      "at": "2026-10-01T08:55:31.871Z",
+      "level": "info",
+      "source": "artifact",
+      "event": "report",
+      "taskId": "000004-stack-env-example",
+      "phaseId": "0000-P0",
+      "message": "Laporan qa: Development/Result/0000/phase-00/qa/000004-stack-env-example.md",
+      "detail": {
+        "path": "Development/Result/0000/phase-00/qa/000004-stack-env-example.md",
+        "kind": "qa"
+      }
+    },
+    {
+      "at": "2026-10-01T08:55:09.865Z",
+      "level": "info",
+      "source": "autopilot",
+      "event": "chain",
+      "taskId": "000004-stack-env-example",
+      "phaseId": null,
+      "message": "Chain (manual_complete): berikutnya qa · 000004-stack-env-example",
+      "detail": {
+        "at": "2026-10-01T08:55:09.865Z",
+        "event": "chain",
+        "reason": "manual_complete",
+        "nextKind": "qa",
+        "taskId": "000004-stack-env-example"
+      }
+    },
+    {
+      "at": "2026-10-01T08:55:09.842Z",
+      "level": "info",
+      "source": "autopilot",
+      "event": "manual_complete",
+      "taskId": "000004-stack-env-example",
+      "phaseId": null,
+      "message": "Complete manual → chain · 000004-stack-env-example",
+      "detail": {
+        "at": "2026-10-01T08:55:09.842Z",
+        "event": "manual_complete",
+        "taskId": "000004-stack-env-example"
+      }
+    },
+    {
+      "at": "2026-10-01T08:55:02.557Z",
+      "level": "info",
+      "source": "autopilot",
+      "event": "chain",
+      "taskId": "000004-stack-env-example",
+      "phaseId": null,
+      "message": "Chain (auto_complete): berikutnya qa · 000004-stack-env-example",
+      "detail": {
+        "at": "2026-10-01T08:55:02.557Z",
+        "event": "chain",
+        "reason": "auto_complete",
+        "nextKind": "qa",
+        "taskId": "000004-stack-env-example"
+      }
+    },
+    {
+      "at": "2026-10-01T08:55:02.551Z",
+      "level": "success",
+      "source": "autopilot",
+      "event": "auto_complete",
+      "taskId": "000004-stack-env-example",
+      "phaseId": "0000-P0",
+      "message": "Selesai otomatis: development 000004-stack-env-example",
+      "detail": {
+        "at": "2026-10-01T08:55:02.551Z",
+        "event": "auto_complete",
+        "kind": "development",
+        "taskId": "000004-stack-env-example",
+        "phaseId": "0000-P0"
+      }
+    },
+    {
+      "at": "2026-10-01T08:54:52.065Z",
+      "level": "info",
+      "source": "artifact",
+      "event": "report",
+      "taskId": "000004-stack-env-example",
+      "phaseId": "0000-P0",
+      "message": "Laporan development: Development/Result/0000/phase-00/development/000004-stack-env-example.md",
+      "detail": {
+        "path": "Development/Result/0000/phase-00/development/000004-stack-env-example.md",
+        "kind": "development"
+      }
+    },
+    {
+      "at": "2026-10-01T08:34:57.728Z",
+      "level": "info",
+      "source": "autopilot",
+      "event": "chain",
+      "taskId": "000004-stack-env-example",
+      "phaseId": null,
+      "message": "Chain (manual_complete): berikutnya development · 000004-stack-env-example",
+      "detail": {
+        "at": "2026-10-01T08:34:57.728Z",
+        "event": "chain",
+        "reason": "manual_complete",
+        "nextKind": "development",
+        "taskId": "000004-stack-env-example"
+      }
+    },
+    {
+      "at": "2026-10-01T08:34:57.716Z",
+      "level": "info",
+      "source": "autopilot",
+      "event": "manual_complete",
+      "taskId": "000003-stack-repo-hygiene",
+      "phaseId": null,
+      "message": "Complete manual → chain · 000003-stack-repo-hygiene",
+      "detail": {
+        "at": "2026-10-01T08:34:57.716Z",
+        "event": "manual_complete",
+        "taskId": "000003-stack-repo-hygiene"
+      }
+    },
+    {
+      "at": "2026-10-01T08:34:49.980Z",
+      "level": "info",
+      "source": "artifact",
+      "event": "report",
+      "taskId": "000003-stack-repo-hygiene",
+      "phaseId": "0000-P0",
+      "message": "Laporan qa: Development/Result/0000/phase-00/qa/000003-stack-repo-hygiene.md",
+      "detail": {
+        "path": "Development/Result/0000/phase-00/qa/000003-stack-repo-hygiene.md",
+        "kind": "qa"
+      }
+    },
+    {
+      "at": "2026-10-01T08:34:25.590Z",
+      "level": "info",
+      "source": "autopilot",
+      "event": "chain",
+      "taskId": "000003-stack-repo-hygiene",
+      "phaseId": null,
+      "message": "Chain (manual_complete): berikutnya qa · 000003-stack-repo-hygiene",
+      "detail": {
+        "at": "2026-10-01T08:34:25.590Z",
+        "event": "chain",
+        "reason": "manual_complete",
+        "nextKind": "qa",
+        "taskId": "000003-stack-repo-hygiene"
+      }
+    },
+    {
+      "at": "2026-10-01T08:34:25.582Z",
+      "level": "info",
+      "source": "autopilot",
+      "event": "manual_complete",
+      "taskId": "000003-stack-repo-hygiene",
+      "phaseId": null,
+      "message": "Complete manual → chain · 000003-stack-repo-hygiene",
+      "detail": {
+        "at": "2026-10-01T08:34:25.582Z",
+        "event": "manual_complete",
+        "taskId": "000003-stack-repo-hygiene"
+      }
+    },
+    {
+      "at": "2026-10-01T08:34:18.466Z",
+      "level": "info",
+      "source": "artifact",
+      "event": "report",
+      "taskId": "000003-stack-repo-hygiene",
+      "phaseId": "0000-P0",
+      "message": "Laporan development: Development/Result/0000/phase-00/development/000003-stack-repo-hygiene.md",
+      "detail": {
+        "path": "Development/Result/0000/phase-00/development/000003-stack-repo-hygiene.md",
+        "kind": "development"
+      }
+    },
+    {
+      "at": "2026-10-01T08:32:43.080Z",
+      "level": "info",
+      "source": "autopilot",
+      "event": "chain",
+      "taskId": "000003-stack-repo-hygiene",
+      "phaseId": null,
+      "message": "Chain (manual_complete): berikutnya development · 000003-stack-repo-hygiene",
+      "detail": {
+        "at": "2026-10-01T08:32:43.080Z",
+        "event": "chain",
+        "reason": "manual_complete",
+        "nextKind": "development",
+        "taskId": "000003-stack-repo-hygiene"
+      }
+    },
+    {
+      "at": "2026-10-01T08:32:43.069Z",
+      "level": "info",
+      "source": "autopilot",
+      "event": "manual_complete",
+      "taskId": "000002-stack-single-npm-lockfile",
+      "phaseId": null,
+      "message": "Complete manual → chain · 000002-stack-single-npm-lockfile",
+      "detail": {
+        "at": "2026-10-01T08:32:43.069Z",
+        "event": "manual_complete",
+        "taskId": "000002-stack-single-npm-lockfile"
+      }
+    },
+    {
+      "at": "2026-10-01T08:32:33.489Z",
+      "level": "info",
+      "source": "artifact",
+      "event": "report",
+      "taskId": "000002-stack-single-npm-lockfile",
+      "phaseId": "0000-P0",
+      "message": "Laporan qa: Development/Result/0000/phase-00/qa/000002-stack-single-npm-lockfile.md",
+      "detail": {
+        "path": "Development/Result/0000/phase-00/qa/000002-stack-single-npm-lockfile.md",
+        "kind": "qa"
+      }
+    },
+    {
+      "at": "2026-10-01T08:32:07.717Z",
+      "level": "info",
+      "source": "autopilot",
+      "event": "chain",
+      "taskId": "000002-stack-single-npm-lockfile",
+      "phaseId": null,
+      "message": "Chain (manual_complete): berikutnya qa · 000002-stack-single-npm-lockfile",
+      "detail": {
+        "at": "2026-10-01T08:32:07.717Z",
+        "event": "chain",
+        "reason": "manual_complete",
+        "nextKind": "qa",
+        "taskId": "000002-stack-single-npm-lockfile"
+      }
+    },
+    {
+      "at": "2026-10-01T08:32:07.707Z",
+      "level": "info",
+      "source": "autopilot",
+      "event": "manual_complete",
+      "taskId": "000002-stack-single-npm-lockfile",
+      "phaseId": null,
+      "message": "Complete manual → chain · 000002-stack-single-npm-lockfile",
+      "detail": {
+        "at": "2026-10-01T08:32:07.707Z",
+        "event": "manual_complete",
+        "taskId": "000002-stack-single-npm-lockfile"
+      }
+    },
+    {
+      "at": "2026-10-01T08:31:57.031Z",
+      "level": "info",
+      "source": "artifact",
+      "event": "report",
+      "taskId": "000002-stack-single-npm-lockfile",
+      "phaseId": "0000-P0",
+      "message": "Laporan development: Development/Result/0000/phase-00/development/000002-stack-single-npm-lockfile.md",
+      "detail": {
+        "path": "Development/Result/0000/phase-00/development/000002-stack-single-npm-lockfile.md",
+        "kind": "development"
+      }
+    },
+    {
+      "at": "2026-10-01T08:30:02.883Z",
+      "level": "info",
+      "source": "autopilot",
+      "event": "chain",
+      "taskId": "000002-stack-single-npm-lockfile",
+      "phaseId": null,
+      "message": "Chain (manual_complete): berikutnya development · 000002-stack-single-npm-lockfile",
+      "detail": {
+        "at": "2026-10-01T08:30:02.883Z",
+        "event": "chain",
+        "reason": "manual_complete",
+        "nextKind": "development",
+        "taskId": "000002-stack-single-npm-lockfile"
+      }
+    },
+    {
+      "at": "2026-10-01T08:30:02.874Z",
+      "level": "info",
+      "source": "autopilot",
+      "event": "manual_complete",
+      "taskId": "000001-stack-pin-node-runtime",
+      "phaseId": null,
+      "message": "Complete manual → chain · 000001-stack-pin-node-runtime",
+      "detail": {
+        "at": "2026-10-01T08:30:02.874Z",
+        "event": "manual_complete",
+        "taskId": "000001-stack-pin-node-runtime"
+      }
+    },
+    {
+      "at": "2026-10-01T08:29:27.542Z",
+      "level": "info",
+      "source": "autopilot",
+      "event": "chain",
+      "taskId": "000002-stack-single-npm-lockfile",
+      "phaseId": null,
+      "message": "Chain (auto_complete): berikutnya development · 000002-stack-single-npm-lockfile",
+      "detail": {
+        "at": "2026-10-01T08:29:27.542Z",
+        "event": "chain",
+        "reason": "auto_complete",
+        "nextKind": "development",
+        "taskId": "000002-stack-single-npm-lockfile"
+      }
+    },
+    {
+      "at": "2026-10-01T08:29:27.526Z",
+      "level": "success",
+      "source": "autopilot",
+      "event": "auto_complete",
+      "taskId": "000001-stack-pin-node-runtime",
+      "phaseId": "0000-P0",
+      "message": "Selesai otomatis: qa 000001-stack-pin-node-runtime",
+      "detail": {
+        "at": "2026-10-01T08:29:27.526Z",
+        "event": "auto_complete",
+        "kind": "qa",
+        "taskId": "000001-stack-pin-node-runtime",
+        "phaseId": "0000-P0"
+      }
+    },
+    {
+      "at": "2026-10-01T08:29:22.688Z",
+      "level": "info",
+      "source": "artifact",
+      "event": "report",
+      "taskId": "000001-stack-pin-node-runtime",
+      "phaseId": "0000-P0",
+      "message": "Laporan qa: Development/Result/0000/phase-00/qa/000001-stack-pin-node-runtime.md",
+      "detail": {
+        "path": "Development/Result/0000/phase-00/qa/000001-stack-pin-node-runtime.md",
+        "kind": "qa"
+      }
+    },
+    {
+      "at": "2026-10-01T08:24:45.360Z",
+      "level": "info",
+      "source": "artifact",
+      "event": "report",
+      "taskId": "000001-db-canonical-sqlite-path",
+      "phaseId": "0000-P0",
+      "message": "Laporan audit: Development/Result/0000/phase-00/audit/000001-db-canonical-sqlite-path.md",
+      "detail": {
+        "path": "Development/Result/0000/phase-00/audit/000001-db-canonical-sqlite-path.md",
+        "kind": "audit"
+      }
     },
     {
       "at": "2026-10-01T07:57:32.021Z",
@@ -3421,19 +4576,6 @@
       }
     },
     {
-      "at": "2026-10-01T07:21:14.286Z",
-      "level": "info",
-      "source": "session",
-      "event": "development_session",
-      "taskId": "000001-stack-pin-node-runtime",
-      "phaseId": "0000-P0",
-      "message": "Sesi Development diminta: 000001-stack-pin-node-runtime",
-      "detail": {
-        "planPath": "Agentic/Development/Plan/0000/phase-00/tasks/000001-stack-pin-node-runtime/plan.md",
-        "source": "autopilot"
-      }
-    },
-    {
       "at": "2026-10-01T07:21:14.284Z",
       "level": "info",
       "source": "autopilot",
@@ -3477,22 +4619,1167 @@
     }
   ],
   "taskLogIndex": {
-    "000001-be-env-validation": [
+    "000003-infra-ci-verify-pipeline": [
       {
-        "at": "2026-10-01T07:57:32.021Z",
+        "at": "2026-10-01T09:09:50.199Z",
+        "level": "info",
+        "source": "autopilot",
+        "event": "manual_complete",
+        "taskId": "000003-infra-ci-verify-pipeline",
+        "phaseId": null,
+        "message": "Complete manual → chain · 000003-infra-ci-verify-pipeline",
+        "detail": {
+          "at": "2026-10-01T09:09:50.199Z",
+          "event": "manual_complete",
+          "taskId": "000003-infra-ci-verify-pipeline"
+        }
+      },
+      {
+        "at": "2026-10-01T09:09:46.670Z",
+        "level": "success",
+        "source": "autopilot",
+        "event": "auto_complete",
+        "taskId": "000003-infra-ci-verify-pipeline",
+        "phaseId": "0000-P1",
+        "message": "Selesai otomatis: qa 000003-infra-ci-verify-pipeline",
+        "detail": {
+          "at": "2026-10-01T09:09:46.670Z",
+          "event": "auto_complete",
+          "kind": "qa",
+          "taskId": "000003-infra-ci-verify-pipeline",
+          "phaseId": "0000-P1"
+        }
+      },
+      {
+        "at": "2026-10-01T09:09:41.035Z",
         "level": "info",
         "source": "artifact",
         "event": "report",
-        "taskId": "000001-be-env-validation",
-        "phaseId": "0000-P2",
-        "message": "Laporan development: Development/Result/0000/phase-02/development/000001-be-env-validation.md",
+        "taskId": "000003-infra-ci-verify-pipeline",
+        "phaseId": "0000-P1",
+        "message": "Laporan qa: Development/Result/0000/phase-01/qa/000003-infra-ci-verify-pipeline.md",
         "detail": {
-          "path": "Development/Result/0000/phase-02/development/000001-be-env-validation.md",
+          "path": "Development/Result/0000/phase-01/qa/000003-infra-ci-verify-pipeline.md",
+          "kind": "qa"
+        }
+      },
+      {
+        "at": "2026-10-01T09:09:20.708Z",
+        "level": "info",
+        "source": "autopilot",
+        "event": "chain",
+        "taskId": "000003-infra-ci-verify-pipeline",
+        "phaseId": null,
+        "message": "Chain (manual_complete): berikutnya qa · 000003-infra-ci-verify-pipeline",
+        "detail": {
+          "at": "2026-10-01T09:09:20.708Z",
+          "event": "chain",
+          "reason": "manual_complete",
+          "nextKind": "qa",
+          "taskId": "000003-infra-ci-verify-pipeline"
+        }
+      },
+      {
+        "at": "2026-10-01T09:09:20.696Z",
+        "level": "info",
+        "source": "autopilot",
+        "event": "manual_complete",
+        "taskId": "000003-infra-ci-verify-pipeline",
+        "phaseId": null,
+        "message": "Complete manual → chain · 000003-infra-ci-verify-pipeline",
+        "detail": {
+          "at": "2026-10-01T09:09:20.696Z",
+          "event": "manual_complete",
+          "taskId": "000003-infra-ci-verify-pipeline"
+        }
+      },
+      {
+        "at": "2026-10-01T09:09:10.910Z",
+        "level": "info",
+        "source": "artifact",
+        "event": "report",
+        "taskId": "000003-infra-ci-verify-pipeline",
+        "phaseId": "0000-P1",
+        "message": "Laporan development: Development/Result/0000/phase-01/development/000003-infra-ci-verify-pipeline.md",
+        "detail": {
+          "path": "Development/Result/0000/phase-01/development/000003-infra-ci-verify-pipeline.md",
           "kind": "development"
+        }
+      },
+      {
+        "at": "2026-10-01T09:08:41.673Z",
+        "level": "info",
+        "source": "autopilot",
+        "event": "chain",
+        "taskId": "000003-infra-ci-verify-pipeline",
+        "phaseId": null,
+        "message": "Chain (manual_complete): berikutnya development · 000003-infra-ci-verify-pipeline",
+        "detail": {
+          "at": "2026-10-01T09:08:41.673Z",
+          "event": "chain",
+          "reason": "manual_complete",
+          "nextKind": "development",
+          "taskId": "000003-infra-ci-verify-pipeline"
+        }
+      },
+      {
+        "at": "2026-10-01T09:08:41.673Z",
+        "level": "info",
+        "source": "session",
+        "event": "development_session",
+        "taskId": "000003-infra-ci-verify-pipeline",
+        "phaseId": "0000-P1",
+        "message": "Sesi Development diminta: 000003-infra-ci-verify-pipeline",
+        "detail": {
+          "planPath": "Agentic/Development/Plan/0000/phase-01/tasks/000003-infra-ci-verify-pipeline/plan.md",
+          "source": "autopilot"
+        }
+      }
+    ],
+    "000002-infra-ci-workflow-fix": [
+      {
+        "at": "2026-10-01T09:08:41.652Z",
+        "level": "info",
+        "source": "autopilot",
+        "event": "manual_complete",
+        "taskId": "000002-infra-ci-workflow-fix",
+        "phaseId": null,
+        "message": "Complete manual → chain · 000002-infra-ci-workflow-fix",
+        "detail": {
+          "at": "2026-10-01T09:08:41.652Z",
+          "event": "manual_complete",
+          "taskId": "000002-infra-ci-workflow-fix"
+        }
+      },
+      {
+        "at": "2026-10-01T09:08:30.519Z",
+        "level": "info",
+        "source": "artifact",
+        "event": "report",
+        "taskId": "000002-infra-ci-workflow-fix",
+        "phaseId": "0000-P1",
+        "message": "Laporan qa: Development/Result/0000/phase-01/qa/000002-infra-ci-workflow-fix.md",
+        "detail": {
+          "path": "Development/Result/0000/phase-01/qa/000002-infra-ci-workflow-fix.md",
+          "kind": "qa"
+        }
+      },
+      {
+        "at": "2026-10-01T09:08:08.185Z",
+        "level": "info",
+        "source": "autopilot",
+        "event": "chain",
+        "taskId": "000002-infra-ci-workflow-fix",
+        "phaseId": null,
+        "message": "Chain (manual_complete): berikutnya qa · 000002-infra-ci-workflow-fix",
+        "detail": {
+          "at": "2026-10-01T09:08:08.185Z",
+          "event": "chain",
+          "reason": "manual_complete",
+          "nextKind": "qa",
+          "taskId": "000002-infra-ci-workflow-fix"
+        }
+      },
+      {
+        "at": "2026-10-01T09:08:08.160Z",
+        "level": "info",
+        "source": "autopilot",
+        "event": "manual_complete",
+        "taskId": "000002-infra-ci-workflow-fix",
+        "phaseId": null,
+        "message": "Complete manual → chain · 000002-infra-ci-workflow-fix",
+        "detail": {
+          "at": "2026-10-01T09:08:08.160Z",
+          "event": "manual_complete",
+          "taskId": "000002-infra-ci-workflow-fix"
+        }
+      },
+      {
+        "at": "2026-10-01T09:08:05.998Z",
+        "level": "info",
+        "source": "autopilot",
+        "event": "chain",
+        "taskId": "000002-infra-ci-workflow-fix",
+        "phaseId": null,
+        "message": "Chain (auto_complete): berikutnya qa · 000002-infra-ci-workflow-fix",
+        "detail": {
+          "at": "2026-10-01T09:08:05.998Z",
+          "event": "chain",
+          "reason": "auto_complete",
+          "nextKind": "qa",
+          "taskId": "000002-infra-ci-workflow-fix"
+        }
+      },
+      {
+        "at": "2026-10-01T09:08:05.984Z",
+        "level": "success",
+        "source": "autopilot",
+        "event": "auto_complete",
+        "taskId": "000002-infra-ci-workflow-fix",
+        "phaseId": "0000-P1",
+        "message": "Selesai otomatis: development 000002-infra-ci-workflow-fix",
+        "detail": {
+          "at": "2026-10-01T09:08:05.984Z",
+          "event": "auto_complete",
+          "kind": "development",
+          "taskId": "000002-infra-ci-workflow-fix",
+          "phaseId": "0000-P1"
+        }
+      },
+      {
+        "at": "2026-10-01T09:07:58.020Z",
+        "level": "info",
+        "source": "artifact",
+        "event": "report",
+        "taskId": "000002-infra-ci-workflow-fix",
+        "phaseId": "0000-P1",
+        "message": "Laporan development: Development/Result/0000/phase-01/development/000002-infra-ci-workflow-fix.md",
+        "detail": {
+          "path": "Development/Result/0000/phase-01/development/000002-infra-ci-workflow-fix.md",
+          "kind": "development"
+        }
+      },
+      {
+        "at": "2026-10-01T09:06:52.100Z",
+        "level": "info",
+        "source": "autopilot",
+        "event": "chain",
+        "taskId": "000002-infra-ci-workflow-fix",
+        "phaseId": null,
+        "message": "Chain (manual_complete): berikutnya development · 000002-infra-ci-workflow-fix",
+        "detail": {
+          "at": "2026-10-01T09:06:52.100Z",
+          "event": "chain",
+          "reason": "manual_complete",
+          "nextKind": "development",
+          "taskId": "000002-infra-ci-workflow-fix"
+        }
+      },
+      {
+        "at": "2026-10-01T09:06:45.250Z",
+        "level": "info",
+        "source": "autopilot",
+        "event": "chain",
+        "taskId": "000002-infra-ci-workflow-fix",
+        "phaseId": null,
+        "message": "Chain (auto_complete): berikutnya development · 000002-infra-ci-workflow-fix",
+        "detail": {
+          "at": "2026-10-01T09:06:45.250Z",
+          "event": "chain",
+          "reason": "auto_complete",
+          "nextKind": "development",
+          "taskId": "000002-infra-ci-workflow-fix"
+        }
+      }
+    ],
+    "000001-infra-github-repo-protection": [
+      {
+        "at": "2026-10-01T09:06:52.087Z",
+        "level": "info",
+        "source": "autopilot",
+        "event": "manual_complete",
+        "taskId": "000001-infra-github-repo-protection",
+        "phaseId": null,
+        "message": "Complete manual → chain · 000001-infra-github-repo-protection",
+        "detail": {
+          "at": "2026-10-01T09:06:52.087Z",
+          "event": "manual_complete",
+          "taskId": "000001-infra-github-repo-protection"
+        }
+      },
+      {
+        "at": "2026-10-01T09:06:45.233Z",
+        "level": "success",
+        "source": "autopilot",
+        "event": "auto_complete",
+        "taskId": "000001-infra-github-repo-protection",
+        "phaseId": "0000-P1",
+        "message": "Selesai otomatis: qa 000001-infra-github-repo-protection",
+        "detail": {
+          "at": "2026-10-01T09:06:45.233Z",
+          "event": "auto_complete",
+          "kind": "qa",
+          "taskId": "000001-infra-github-repo-protection",
+          "phaseId": "0000-P1"
+        }
+      },
+      {
+        "at": "2026-10-01T09:06:41.570Z",
+        "level": "info",
+        "source": "artifact",
+        "event": "report",
+        "taskId": "000001-infra-github-repo-protection",
+        "phaseId": "0000-P1",
+        "message": "Laporan qa: Development/Result/0000/phase-01/qa/000001-infra-github-repo-protection.md",
+        "detail": {
+          "path": "Development/Result/0000/phase-01/qa/000001-infra-github-repo-protection.md",
+          "kind": "qa"
+        }
+      },
+      {
+        "at": "2026-10-01T09:06:08.654Z",
+        "level": "info",
+        "source": "autopilot",
+        "event": "chain",
+        "taskId": "000001-infra-github-repo-protection",
+        "phaseId": null,
+        "message": "Chain (manual_complete): berikutnya qa · 000001-infra-github-repo-protection",
+        "detail": {
+          "at": "2026-10-01T09:06:08.654Z",
+          "event": "chain",
+          "reason": "manual_complete",
+          "nextKind": "qa",
+          "taskId": "000001-infra-github-repo-protection"
+        }
+      },
+      {
+        "at": "2026-10-01T09:06:08.636Z",
+        "level": "info",
+        "source": "autopilot",
+        "event": "manual_complete",
+        "taskId": "000001-infra-github-repo-protection",
+        "phaseId": null,
+        "message": "Complete manual → chain · 000001-infra-github-repo-protection",
+        "detail": {
+          "at": "2026-10-01T09:06:08.636Z",
+          "event": "manual_complete",
+          "taskId": "000001-infra-github-repo-protection"
+        }
+      },
+      {
+        "at": "2026-10-01T09:05:58.276Z",
+        "level": "info",
+        "source": "autopilot",
+        "event": "chain",
+        "taskId": "000001-infra-github-repo-protection",
+        "phaseId": null,
+        "message": "Chain (auto_complete): berikutnya qa · 000001-infra-github-repo-protection",
+        "detail": {
+          "at": "2026-10-01T09:05:58.276Z",
+          "event": "chain",
+          "reason": "auto_complete",
+          "nextKind": "qa",
+          "taskId": "000001-infra-github-repo-protection"
+        }
+      },
+      {
+        "at": "2026-10-01T09:05:57.585Z",
+        "level": "success",
+        "source": "autopilot",
+        "event": "auto_complete",
+        "taskId": "000001-infra-github-repo-protection",
+        "phaseId": "0000-P1",
+        "message": "Selesai otomatis: development 000001-infra-github-repo-protection",
+        "detail": {
+          "at": "2026-10-01T09:05:57.585Z",
+          "event": "auto_complete",
+          "kind": "development",
+          "taskId": "000001-infra-github-repo-protection",
+          "phaseId": "0000-P1"
+        }
+      },
+      {
+        "at": "2026-10-01T09:05:42.137Z",
+        "level": "info",
+        "source": "artifact",
+        "event": "report",
+        "taskId": "000001-infra-github-repo-protection",
+        "phaseId": "0000-P1",
+        "message": "Laporan development: Development/Result/0000/phase-01/development/000001-infra-github-repo-protection.md",
+        "detail": {
+          "path": "Development/Result/0000/phase-01/development/000001-infra-github-repo-protection.md",
+          "kind": "development"
+        }
+      },
+      {
+        "at": "2026-10-01T09:04:18.196Z",
+        "level": "info",
+        "source": "autopilot",
+        "event": "chain",
+        "taskId": "000001-infra-github-repo-protection",
+        "phaseId": null,
+        "message": "Chain (manual_complete): berikutnya development · 000001-infra-github-repo-protection",
+        "detail": {
+          "at": "2026-10-01T09:04:18.196Z",
+          "event": "chain",
+          "reason": "manual_complete",
+          "nextKind": "development",
+          "taskId": "000001-infra-github-repo-protection"
+        }
+      }
+    ],
+    "000001-docs-dev-runbook": [
+      {
+        "at": "2026-10-01T09:04:18.180Z",
+        "level": "info",
+        "source": "autopilot",
+        "event": "manual_complete",
+        "taskId": "000001-docs-dev-runbook",
+        "phaseId": null,
+        "message": "Complete manual → chain · 000001-docs-dev-runbook",
+        "detail": {
+          "at": "2026-10-01T09:04:18.180Z",
+          "event": "manual_complete",
+          "taskId": "000001-docs-dev-runbook"
+        }
+      },
+      {
+        "at": "2026-10-01T09:04:08.829Z",
+        "level": "info",
+        "source": "artifact",
+        "event": "report",
+        "taskId": "000001-docs-dev-runbook",
+        "phaseId": "0000-P0",
+        "message": "Laporan qa: Development/Result/0000/phase-00/qa/000001-docs-dev-runbook.md",
+        "detail": {
+          "path": "Development/Result/0000/phase-00/qa/000001-docs-dev-runbook.md",
+          "kind": "qa"
+        }
+      },
+      {
+        "at": "2026-10-01T09:03:14.009Z",
+        "level": "info",
+        "source": "autopilot",
+        "event": "chain",
+        "taskId": "000001-docs-dev-runbook",
+        "phaseId": null,
+        "message": "Chain (manual_complete): berikutnya qa · 000001-docs-dev-runbook",
+        "detail": {
+          "at": "2026-10-01T09:03:14.009Z",
+          "event": "chain",
+          "reason": "manual_complete",
+          "nextKind": "qa",
+          "taskId": "000001-docs-dev-runbook"
+        }
+      },
+      {
+        "at": "2026-10-01T09:03:13.996Z",
+        "level": "info",
+        "source": "autopilot",
+        "event": "manual_complete",
+        "taskId": "000001-docs-dev-runbook",
+        "phaseId": null,
+        "message": "Complete manual → chain · 000001-docs-dev-runbook",
+        "detail": {
+          "at": "2026-10-01T09:03:13.996Z",
+          "event": "manual_complete",
+          "taskId": "000001-docs-dev-runbook"
+        }
+      },
+      {
+        "at": "2026-10-01T09:03:04.400Z",
+        "level": "info",
+        "source": "artifact",
+        "event": "report",
+        "taskId": "000001-docs-dev-runbook",
+        "phaseId": "0000-P0",
+        "message": "Laporan development: Development/Result/0000/phase-00/development/000001-docs-dev-runbook.md",
+        "detail": {
+          "path": "Development/Result/0000/phase-00/development/000001-docs-dev-runbook.md",
+          "kind": "development"
+        }
+      },
+      {
+        "at": "2026-10-01T09:02:05.115Z",
+        "level": "info",
+        "source": "autopilot",
+        "event": "chain",
+        "taskId": "000001-docs-dev-runbook",
+        "phaseId": null,
+        "message": "Chain (manual_complete): berikutnya development · 000001-docs-dev-runbook",
+        "detail": {
+          "at": "2026-10-01T09:02:05.115Z",
+          "event": "chain",
+          "reason": "manual_complete",
+          "nextKind": "development",
+          "taskId": "000001-docs-dev-runbook"
+        }
+      },
+      {
+        "at": "2026-10-01T09:02:04.009Z",
+        "level": "info",
+        "source": "autopilot",
+        "event": "chain",
+        "taskId": "000001-docs-dev-runbook",
+        "phaseId": null,
+        "message": "Chain (auto_complete): berikutnya development · 000001-docs-dev-runbook",
+        "detail": {
+          "at": "2026-10-01T09:02:04.009Z",
+          "event": "chain",
+          "reason": "auto_complete",
+          "nextKind": "development",
+          "taskId": "000001-docs-dev-runbook"
+        }
+      }
+    ],
+    "000006-stack-verify-script": [
+      {
+        "at": "2026-10-01T09:02:05.104Z",
+        "level": "info",
+        "source": "autopilot",
+        "event": "manual_complete",
+        "taskId": "000006-stack-verify-script",
+        "phaseId": null,
+        "message": "Complete manual → chain · 000006-stack-verify-script",
+        "detail": {
+          "at": "2026-10-01T09:02:05.104Z",
+          "event": "manual_complete",
+          "taskId": "000006-stack-verify-script"
+        }
+      },
+      {
+        "at": "2026-10-01T09:02:03.978Z",
+        "level": "success",
+        "source": "autopilot",
+        "event": "auto_complete",
+        "taskId": "000006-stack-verify-script",
+        "phaseId": "0000-P0",
+        "message": "Selesai otomatis: qa 000006-stack-verify-script",
+        "detail": {
+          "at": "2026-10-01T09:02:03.978Z",
+          "event": "auto_complete",
+          "kind": "qa",
+          "taskId": "000006-stack-verify-script",
+          "phaseId": "0000-P0"
+        }
+      },
+      {
+        "at": "2026-10-01T09:01:55.234Z",
+        "level": "info",
+        "source": "artifact",
+        "event": "report",
+        "taskId": "000006-stack-verify-script",
+        "phaseId": "0000-P0",
+        "message": "Laporan qa: Development/Result/0000/phase-00/qa/000006-stack-verify-script.md",
+        "detail": {
+          "path": "Development/Result/0000/phase-00/qa/000006-stack-verify-script.md",
+          "kind": "qa"
+        }
+      },
+      {
+        "at": "2026-10-01T09:01:26.131Z",
+        "level": "info",
+        "source": "autopilot",
+        "event": "chain",
+        "taskId": "000006-stack-verify-script",
+        "phaseId": null,
+        "message": "Chain (manual_complete): berikutnya qa · 000006-stack-verify-script",
+        "detail": {
+          "at": "2026-10-01T09:01:26.131Z",
+          "event": "chain",
+          "reason": "manual_complete",
+          "nextKind": "qa",
+          "taskId": "000006-stack-verify-script"
+        }
+      },
+      {
+        "at": "2026-10-01T09:01:26.121Z",
+        "level": "info",
+        "source": "autopilot",
+        "event": "manual_complete",
+        "taskId": "000006-stack-verify-script",
+        "phaseId": null,
+        "message": "Complete manual → chain · 000006-stack-verify-script",
+        "detail": {
+          "at": "2026-10-01T09:01:26.121Z",
+          "event": "manual_complete",
+          "taskId": "000006-stack-verify-script"
+        }
+      },
+      {
+        "at": "2026-10-01T09:01:23.609Z",
+        "level": "info",
+        "source": "autopilot",
+        "event": "chain",
+        "taskId": "000006-stack-verify-script",
+        "phaseId": null,
+        "message": "Chain (auto_complete): berikutnya qa · 000006-stack-verify-script",
+        "detail": {
+          "at": "2026-10-01T09:01:23.609Z",
+          "event": "chain",
+          "reason": "auto_complete",
+          "nextKind": "qa",
+          "taskId": "000006-stack-verify-script"
+        }
+      },
+      {
+        "at": "2026-10-01T09:01:23.596Z",
+        "level": "success",
+        "source": "autopilot",
+        "event": "auto_complete",
+        "taskId": "000006-stack-verify-script",
+        "phaseId": "0000-P0",
+        "message": "Selesai otomatis: development 000006-stack-verify-script",
+        "detail": {
+          "at": "2026-10-01T09:01:23.596Z",
+          "event": "auto_complete",
+          "kind": "development",
+          "taskId": "000006-stack-verify-script",
+          "phaseId": "0000-P0"
+        }
+      },
+      {
+        "at": "2026-10-01T09:01:17.600Z",
+        "level": "info",
+        "source": "artifact",
+        "event": "report",
+        "taskId": "000006-stack-verify-script",
+        "phaseId": "0000-P0",
+        "message": "Laporan development: Development/Result/0000/phase-00/development/000006-stack-verify-script.md",
+        "detail": {
+          "path": "Development/Result/0000/phase-00/development/000006-stack-verify-script.md",
+          "kind": "development"
+        }
+      },
+      {
+        "at": "2026-10-01T09:00:32.885Z",
+        "level": "info",
+        "source": "autopilot",
+        "event": "chain",
+        "taskId": "000006-stack-verify-script",
+        "phaseId": null,
+        "message": "Chain (manual_complete): berikutnya development · 000006-stack-verify-script",
+        "detail": {
+          "at": "2026-10-01T09:00:32.885Z",
+          "event": "chain",
+          "reason": "manual_complete",
+          "nextKind": "development",
+          "taskId": "000006-stack-verify-script"
+        }
+      }
+    ],
+    "000005-stack-setup-script": [
+      {
+        "at": "2026-10-01T09:00:32.875Z",
+        "level": "info",
+        "source": "autopilot",
+        "event": "manual_complete",
+        "taskId": "000005-stack-setup-script",
+        "phaseId": null,
+        "message": "Complete manual → chain · 000005-stack-setup-script",
+        "detail": {
+          "at": "2026-10-01T09:00:32.875Z",
+          "event": "manual_complete",
+          "taskId": "000005-stack-setup-script"
+        }
+      },
+      {
+        "at": "2026-10-01T09:00:22.695Z",
+        "level": "info",
+        "source": "artifact",
+        "event": "report",
+        "taskId": "000005-stack-setup-script",
+        "phaseId": "0000-P0",
+        "message": "Laporan qa: Development/Result/0000/phase-00/qa/000005-stack-setup-script.md",
+        "detail": {
+          "path": "Development/Result/0000/phase-00/qa/000005-stack-setup-script.md",
+          "kind": "qa"
+        }
+      },
+      {
+        "at": "2026-10-01T08:59:54.270Z",
+        "level": "info",
+        "source": "autopilot",
+        "event": "chain",
+        "taskId": "000005-stack-setup-script",
+        "phaseId": null,
+        "message": "Chain (manual_complete): berikutnya qa · 000005-stack-setup-script",
+        "detail": {
+          "at": "2026-10-01T08:59:54.270Z",
+          "event": "chain",
+          "reason": "manual_complete",
+          "nextKind": "qa",
+          "taskId": "000005-stack-setup-script"
+        }
+      },
+      {
+        "at": "2026-10-01T08:59:54.260Z",
+        "level": "info",
+        "source": "autopilot",
+        "event": "manual_complete",
+        "taskId": "000005-stack-setup-script",
+        "phaseId": null,
+        "message": "Complete manual → chain · 000005-stack-setup-script",
+        "detail": {
+          "at": "2026-10-01T08:59:54.260Z",
+          "event": "manual_complete",
+          "taskId": "000005-stack-setup-script"
+        }
+      },
+      {
+        "at": "2026-10-01T08:59:45.931Z",
+        "level": "info",
+        "source": "artifact",
+        "event": "report",
+        "taskId": "000005-stack-setup-script",
+        "phaseId": "0000-P0",
+        "message": "Laporan development: Development/Result/0000/phase-00/development/000005-stack-setup-script.md",
+        "detail": {
+          "path": "Development/Result/0000/phase-00/development/000005-stack-setup-script.md",
+          "kind": "development"
+        }
+      },
+      {
+        "at": "2026-10-01T08:58:58.308Z",
+        "level": "info",
+        "source": "autopilot",
+        "event": "chain",
+        "taskId": "000005-stack-setup-script",
+        "phaseId": null,
+        "message": "Chain (manual_complete): berikutnya development · 000005-stack-setup-script",
+        "detail": {
+          "at": "2026-10-01T08:58:58.308Z",
+          "event": "chain",
+          "reason": "manual_complete",
+          "nextKind": "development",
+          "taskId": "000005-stack-setup-script"
+        }
+      }
+    ],
+    "000002-db-root-scripts": [
+      {
+        "at": "2026-10-01T08:58:58.297Z",
+        "level": "info",
+        "source": "autopilot",
+        "event": "manual_complete",
+        "taskId": "000002-db-root-scripts",
+        "phaseId": null,
+        "message": "Complete manual → chain · 000002-db-root-scripts",
+        "detail": {
+          "at": "2026-10-01T08:58:58.297Z",
+          "event": "manual_complete",
+          "taskId": "000002-db-root-scripts"
+        }
+      },
+      {
+        "at": "2026-10-01T08:58:49.029Z",
+        "level": "info",
+        "source": "artifact",
+        "event": "report",
+        "taskId": "000002-db-root-scripts",
+        "phaseId": "0000-P0",
+        "message": "Laporan qa: Development/Result/0000/phase-00/qa/000002-db-root-scripts.md",
+        "detail": {
+          "path": "Development/Result/0000/phase-00/qa/000002-db-root-scripts.md",
+          "kind": "qa"
+        }
+      },
+      {
+        "at": "2026-10-01T08:57:16.018Z",
+        "level": "info",
+        "source": "autopilot",
+        "event": "chain",
+        "taskId": "000002-db-root-scripts",
+        "phaseId": null,
+        "message": "Chain (manual_complete): berikutnya qa · 000002-db-root-scripts",
+        "detail": {
+          "at": "2026-10-01T08:57:16.018Z",
+          "event": "chain",
+          "reason": "manual_complete",
+          "nextKind": "qa",
+          "taskId": "000002-db-root-scripts"
+        }
+      },
+      {
+        "at": "2026-10-01T08:57:16.006Z",
+        "level": "info",
+        "source": "autopilot",
+        "event": "manual_complete",
+        "taskId": "000002-db-root-scripts",
+        "phaseId": null,
+        "message": "Complete manual → chain · 000002-db-root-scripts",
+        "detail": {
+          "at": "2026-10-01T08:57:16.006Z",
+          "event": "manual_complete",
+          "taskId": "000002-db-root-scripts"
+        }
+      },
+      {
+        "at": "2026-10-01T08:57:07.486Z",
+        "level": "info",
+        "source": "artifact",
+        "event": "report",
+        "taskId": "000002-db-root-scripts",
+        "phaseId": "0000-P0",
+        "message": "Laporan development: Development/Result/0000/phase-00/development/000002-db-root-scripts.md",
+        "detail": {
+          "path": "Development/Result/0000/phase-00/development/000002-db-root-scripts.md",
+          "kind": "development"
+        }
+      },
+      {
+        "at": "2026-10-01T08:55:41.222Z",
+        "level": "info",
+        "source": "autopilot",
+        "event": "chain",
+        "taskId": "000002-db-root-scripts",
+        "phaseId": null,
+        "message": "Chain (manual_complete): berikutnya development · 000002-db-root-scripts",
+        "detail": {
+          "at": "2026-10-01T08:55:41.222Z",
+          "event": "chain",
+          "reason": "manual_complete",
+          "nextKind": "development",
+          "taskId": "000002-db-root-scripts"
+        }
+      }
+    ],
+    "000004-stack-env-example": [
+      {
+        "at": "2026-10-01T08:55:41.212Z",
+        "level": "info",
+        "source": "autopilot",
+        "event": "manual_complete",
+        "taskId": "000004-stack-env-example",
+        "phaseId": null,
+        "message": "Complete manual → chain · 000004-stack-env-example",
+        "detail": {
+          "at": "2026-10-01T08:55:41.212Z",
+          "event": "manual_complete",
+          "taskId": "000004-stack-env-example"
+        }
+      },
+      {
+        "at": "2026-10-01T08:55:31.871Z",
+        "level": "info",
+        "source": "artifact",
+        "event": "report",
+        "taskId": "000004-stack-env-example",
+        "phaseId": "0000-P0",
+        "message": "Laporan qa: Development/Result/0000/phase-00/qa/000004-stack-env-example.md",
+        "detail": {
+          "path": "Development/Result/0000/phase-00/qa/000004-stack-env-example.md",
+          "kind": "qa"
+        }
+      },
+      {
+        "at": "2026-10-01T08:55:09.865Z",
+        "level": "info",
+        "source": "autopilot",
+        "event": "chain",
+        "taskId": "000004-stack-env-example",
+        "phaseId": null,
+        "message": "Chain (manual_complete): berikutnya qa · 000004-stack-env-example",
+        "detail": {
+          "at": "2026-10-01T08:55:09.865Z",
+          "event": "chain",
+          "reason": "manual_complete",
+          "nextKind": "qa",
+          "taskId": "000004-stack-env-example"
+        }
+      },
+      {
+        "at": "2026-10-01T08:55:09.842Z",
+        "level": "info",
+        "source": "autopilot",
+        "event": "manual_complete",
+        "taskId": "000004-stack-env-example",
+        "phaseId": null,
+        "message": "Complete manual → chain · 000004-stack-env-example",
+        "detail": {
+          "at": "2026-10-01T08:55:09.842Z",
+          "event": "manual_complete",
+          "taskId": "000004-stack-env-example"
+        }
+      },
+      {
+        "at": "2026-10-01T08:55:02.557Z",
+        "level": "info",
+        "source": "autopilot",
+        "event": "chain",
+        "taskId": "000004-stack-env-example",
+        "phaseId": null,
+        "message": "Chain (auto_complete): berikutnya qa · 000004-stack-env-example",
+        "detail": {
+          "at": "2026-10-01T08:55:02.557Z",
+          "event": "chain",
+          "reason": "auto_complete",
+          "nextKind": "qa",
+          "taskId": "000004-stack-env-example"
+        }
+      },
+      {
+        "at": "2026-10-01T08:55:02.551Z",
+        "level": "success",
+        "source": "autopilot",
+        "event": "auto_complete",
+        "taskId": "000004-stack-env-example",
+        "phaseId": "0000-P0",
+        "message": "Selesai otomatis: development 000004-stack-env-example",
+        "detail": {
+          "at": "2026-10-01T08:55:02.551Z",
+          "event": "auto_complete",
+          "kind": "development",
+          "taskId": "000004-stack-env-example",
+          "phaseId": "0000-P0"
+        }
+      },
+      {
+        "at": "2026-10-01T08:54:52.065Z",
+        "level": "info",
+        "source": "artifact",
+        "event": "report",
+        "taskId": "000004-stack-env-example",
+        "phaseId": "0000-P0",
+        "message": "Laporan development: Development/Result/0000/phase-00/development/000004-stack-env-example.md",
+        "detail": {
+          "path": "Development/Result/0000/phase-00/development/000004-stack-env-example.md",
+          "kind": "development"
+        }
+      },
+      {
+        "at": "2026-10-01T08:34:57.728Z",
+        "level": "info",
+        "source": "autopilot",
+        "event": "chain",
+        "taskId": "000004-stack-env-example",
+        "phaseId": null,
+        "message": "Chain (manual_complete): berikutnya development · 000004-stack-env-example",
+        "detail": {
+          "at": "2026-10-01T08:34:57.728Z",
+          "event": "chain",
+          "reason": "manual_complete",
+          "nextKind": "development",
+          "taskId": "000004-stack-env-example"
+        }
+      }
+    ],
+    "000003-stack-repo-hygiene": [
+      {
+        "at": "2026-10-01T08:34:57.716Z",
+        "level": "info",
+        "source": "autopilot",
+        "event": "manual_complete",
+        "taskId": "000003-stack-repo-hygiene",
+        "phaseId": null,
+        "message": "Complete manual → chain · 000003-stack-repo-hygiene",
+        "detail": {
+          "at": "2026-10-01T08:34:57.716Z",
+          "event": "manual_complete",
+          "taskId": "000003-stack-repo-hygiene"
+        }
+      },
+      {
+        "at": "2026-10-01T08:34:49.980Z",
+        "level": "info",
+        "source": "artifact",
+        "event": "report",
+        "taskId": "000003-stack-repo-hygiene",
+        "phaseId": "0000-P0",
+        "message": "Laporan qa: Development/Result/0000/phase-00/qa/000003-stack-repo-hygiene.md",
+        "detail": {
+          "path": "Development/Result/0000/phase-00/qa/000003-stack-repo-hygiene.md",
+          "kind": "qa"
+        }
+      },
+      {
+        "at": "2026-10-01T08:34:25.590Z",
+        "level": "info",
+        "source": "autopilot",
+        "event": "chain",
+        "taskId": "000003-stack-repo-hygiene",
+        "phaseId": null,
+        "message": "Chain (manual_complete): berikutnya qa · 000003-stack-repo-hygiene",
+        "detail": {
+          "at": "2026-10-01T08:34:25.590Z",
+          "event": "chain",
+          "reason": "manual_complete",
+          "nextKind": "qa",
+          "taskId": "000003-stack-repo-hygiene"
+        }
+      },
+      {
+        "at": "2026-10-01T08:34:25.582Z",
+        "level": "info",
+        "source": "autopilot",
+        "event": "manual_complete",
+        "taskId": "000003-stack-repo-hygiene",
+        "phaseId": null,
+        "message": "Complete manual → chain · 000003-stack-repo-hygiene",
+        "detail": {
+          "at": "2026-10-01T08:34:25.582Z",
+          "event": "manual_complete",
+          "taskId": "000003-stack-repo-hygiene"
+        }
+      },
+      {
+        "at": "2026-10-01T08:34:18.466Z",
+        "level": "info",
+        "source": "artifact",
+        "event": "report",
+        "taskId": "000003-stack-repo-hygiene",
+        "phaseId": "0000-P0",
+        "message": "Laporan development: Development/Result/0000/phase-00/development/000003-stack-repo-hygiene.md",
+        "detail": {
+          "path": "Development/Result/0000/phase-00/development/000003-stack-repo-hygiene.md",
+          "kind": "development"
+        }
+      },
+      {
+        "at": "2026-10-01T08:32:43.080Z",
+        "level": "info",
+        "source": "autopilot",
+        "event": "chain",
+        "taskId": "000003-stack-repo-hygiene",
+        "phaseId": null,
+        "message": "Chain (manual_complete): berikutnya development · 000003-stack-repo-hygiene",
+        "detail": {
+          "at": "2026-10-01T08:32:43.080Z",
+          "event": "chain",
+          "reason": "manual_complete",
+          "nextKind": "development",
+          "taskId": "000003-stack-repo-hygiene"
+        }
+      }
+    ],
+    "000002-stack-single-npm-lockfile": [
+      {
+        "at": "2026-10-01T08:32:43.069Z",
+        "level": "info",
+        "source": "autopilot",
+        "event": "manual_complete",
+        "taskId": "000002-stack-single-npm-lockfile",
+        "phaseId": null,
+        "message": "Complete manual → chain · 000002-stack-single-npm-lockfile",
+        "detail": {
+          "at": "2026-10-01T08:32:43.069Z",
+          "event": "manual_complete",
+          "taskId": "000002-stack-single-npm-lockfile"
+        }
+      },
+      {
+        "at": "2026-10-01T08:32:33.489Z",
+        "level": "info",
+        "source": "artifact",
+        "event": "report",
+        "taskId": "000002-stack-single-npm-lockfile",
+        "phaseId": "0000-P0",
+        "message": "Laporan qa: Development/Result/0000/phase-00/qa/000002-stack-single-npm-lockfile.md",
+        "detail": {
+          "path": "Development/Result/0000/phase-00/qa/000002-stack-single-npm-lockfile.md",
+          "kind": "qa"
+        }
+      },
+      {
+        "at": "2026-10-01T08:32:07.717Z",
+        "level": "info",
+        "source": "autopilot",
+        "event": "chain",
+        "taskId": "000002-stack-single-npm-lockfile",
+        "phaseId": null,
+        "message": "Chain (manual_complete): berikutnya qa · 000002-stack-single-npm-lockfile",
+        "detail": {
+          "at": "2026-10-01T08:32:07.717Z",
+          "event": "chain",
+          "reason": "manual_complete",
+          "nextKind": "qa",
+          "taskId": "000002-stack-single-npm-lockfile"
+        }
+      },
+      {
+        "at": "2026-10-01T08:32:07.707Z",
+        "level": "info",
+        "source": "autopilot",
+        "event": "manual_complete",
+        "taskId": "000002-stack-single-npm-lockfile",
+        "phaseId": null,
+        "message": "Complete manual → chain · 000002-stack-single-npm-lockfile",
+        "detail": {
+          "at": "2026-10-01T08:32:07.707Z",
+          "event": "manual_complete",
+          "taskId": "000002-stack-single-npm-lockfile"
+        }
+      },
+      {
+        "at": "2026-10-01T08:31:57.031Z",
+        "level": "info",
+        "source": "artifact",
+        "event": "report",
+        "taskId": "000002-stack-single-npm-lockfile",
+        "phaseId": "0000-P0",
+        "message": "Laporan development: Development/Result/0000/phase-00/development/000002-stack-single-npm-lockfile.md",
+        "detail": {
+          "path": "Development/Result/0000/phase-00/development/000002-stack-single-npm-lockfile.md",
+          "kind": "development"
+        }
+      },
+      {
+        "at": "2026-10-01T08:30:02.883Z",
+        "level": "info",
+        "source": "autopilot",
+        "event": "chain",
+        "taskId": "000002-stack-single-npm-lockfile",
+        "phaseId": null,
+        "message": "Chain (manual_complete): berikutnya development · 000002-stack-single-npm-lockfile",
+        "detail": {
+          "at": "2026-10-01T08:30:02.883Z",
+          "event": "chain",
+          "reason": "manual_complete",
+          "nextKind": "development",
+          "taskId": "000002-stack-single-npm-lockfile"
+        }
+      },
+      {
+        "at": "2026-10-01T08:29:27.542Z",
+        "level": "info",
+        "source": "autopilot",
+        "event": "chain",
+        "taskId": "000002-stack-single-npm-lockfile",
+        "phaseId": null,
+        "message": "Chain (auto_complete): berikutnya development · 000002-stack-single-npm-lockfile",
+        "detail": {
+          "at": "2026-10-01T08:29:27.542Z",
+          "event": "chain",
+          "reason": "auto_complete",
+          "nextKind": "development",
+          "taskId": "000002-stack-single-npm-lockfile"
         }
       }
     ],
     "000001-stack-pin-node-runtime": [
+      {
+        "at": "2026-10-01T08:30:02.874Z",
+        "level": "info",
+        "source": "autopilot",
+        "event": "manual_complete",
+        "taskId": "000001-stack-pin-node-runtime",
+        "phaseId": null,
+        "message": "Complete manual → chain · 000001-stack-pin-node-runtime",
+        "detail": {
+          "at": "2026-10-01T08:30:02.874Z",
+          "event": "manual_complete",
+          "taskId": "000001-stack-pin-node-runtime"
+        }
+      },
+      {
+        "at": "2026-10-01T08:29:27.526Z",
+        "level": "success",
+        "source": "autopilot",
+        "event": "auto_complete",
+        "taskId": "000001-stack-pin-node-runtime",
+        "phaseId": "0000-P0",
+        "message": "Selesai otomatis: qa 000001-stack-pin-node-runtime",
+        "detail": {
+          "at": "2026-10-01T08:29:27.526Z",
+          "event": "auto_complete",
+          "kind": "qa",
+          "taskId": "000001-stack-pin-node-runtime",
+          "phaseId": "0000-P0"
+        }
+      },
+      {
+        "at": "2026-10-01T08:29:22.688Z",
+        "level": "info",
+        "source": "artifact",
+        "event": "report",
+        "taskId": "000001-stack-pin-node-runtime",
+        "phaseId": "0000-P0",
+        "message": "Laporan qa: Development/Result/0000/phase-00/qa/000001-stack-pin-node-runtime.md",
+        "detail": {
+          "path": "Development/Result/0000/phase-00/qa/000001-stack-pin-node-runtime.md",
+          "kind": "qa"
+        }
+      },
       {
         "at": "2026-10-01T07:53:25.866Z",
         "level": "info",
@@ -3539,19 +5826,6 @@
         }
       },
       {
-        "at": "2026-10-01T07:21:14.286Z",
-        "level": "info",
-        "source": "session",
-        "event": "development_session",
-        "taskId": "000001-stack-pin-node-runtime",
-        "phaseId": "0000-P0",
-        "message": "Sesi Development diminta: 000001-stack-pin-node-runtime",
-        "detail": {
-          "planPath": "Agentic/Development/Plan/0000/phase-00/tasks/000001-stack-pin-node-runtime/plan.md",
-          "source": "autopilot"
-        }
-      },
-      {
         "at": "2026-10-01T07:21:14.284Z",
         "level": "info",
         "source": "autopilot",
@@ -3569,6 +5843,19 @@
       }
     ],
     "000001-db-canonical-sqlite-path": [
+      {
+        "at": "2026-10-01T08:24:45.360Z",
+        "level": "info",
+        "source": "artifact",
+        "event": "report",
+        "taskId": "000001-db-canonical-sqlite-path",
+        "phaseId": "0000-P0",
+        "message": "Laporan audit: Development/Result/0000/phase-00/audit/000001-db-canonical-sqlite-path.md",
+        "detail": {
+          "path": "Development/Result/0000/phase-00/audit/000001-db-canonical-sqlite-path.md",
+          "kind": "audit"
+        }
+      },
       {
         "at": "2026-10-01T06:59:52.970Z",
         "level": "info",
@@ -3593,6 +5880,21 @@
         "detail": {
           "path": "Development/Result/0000/phase-00/qa/000001-db-canonical-sqlite-path.md",
           "kind": "qa"
+        }
+      }
+    ],
+    "000001-be-env-validation": [
+      {
+        "at": "2026-10-01T07:57:32.021Z",
+        "level": "info",
+        "source": "artifact",
+        "event": "report",
+        "taskId": "000001-be-env-validation",
+        "phaseId": "0000-P2",
+        "message": "Laporan development: Development/Result/0000/phase-02/development/000001-be-env-validation.md",
+        "detail": {
+          "path": "Development/Result/0000/phase-02/development/000001-be-env-validation.md",
+          "kind": "development"
         }
       }
     ]

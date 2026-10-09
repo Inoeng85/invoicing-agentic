@@ -1,20 +1,20 @@
 # Checklist task — Agentic
 
-Generated: 2026-10-01T08:03:06.571Z
+Generated: 2026-10-01T18:06:10.476Z
 
 ## Ringkasan
 
 | Metrik | Nilai |
 |--------|-------|
 | Total | 138 |
-| Done | 1 |
+| Done | 12 |
 | Running | 0 |
-| Assigned (prompt) | 1 |
+| Assigned (prompt) | 0 |
 | Ready (giliran) | 0 |
-| Waiting | 10 |
+| Waiting | 0 |
 | Blocked | 126 |
 
-**Berikutnya:** qa 000001-stack-pin-node-runtime
+**Berikutnya:** gate 0000-P2
 
 ## Legenda
 
@@ -29,22 +29,22 @@ Generated: 2026-10-01T08:03:06.571Z
 
 | # | Task | Run | Stage | Plan | Dev | QA | Blocker / catatan |
 |---|------|-----|-------|------|-----|-----|-------------------|
-| 1 | `000001-stack-pin-node-runtime` | **assigned** `NEXT` `AUTOPILOT` | qa | defined | complete | pending | Autopilot: prompt siap — jalankan Agent Cursor (bukan proses background otomatis) |
-| 2 | `000002-stack-single-npm-lockfile` | **waiting** | development | defined | pending | pending | Belum giliran (antrian orkestrasi) |
-| 3 | `000003-stack-repo-hygiene` | **waiting** | development | defined | pending | pending | Development berurutan: menunggu 000002-stack-single-npm-lockfile selesai; Development berurutan: menunggu 000002-stack-single-npm-lockfile selesai |
-| 4 | `000001-db-canonical-sqlite-path` | **done** | audit | defined | complete | pass | — |
-| 5 | `000004-stack-env-example` | **waiting** | development | defined | pending | pending | Development berurutan: menunggu 000002-stack-single-npm-lockfile selesai; Development berurutan: menunggu 000002-stack-single-npm-lockfile selesai |
-| 6 | `000002-db-root-scripts` | **waiting** | development | defined | pending | pending | Development berurutan: menunggu 000002-stack-single-npm-lockfile selesai; Development berurutan: menunggu 000002-stack-single-npm-lockfile selesai |
-| 7 | `000005-stack-setup-script` | **waiting** | development | defined | pending | pending | Development berurutan: menunggu 000002-stack-single-npm-lockfile selesai; Development berurutan: menunggu 000002-stack-single-npm-lockfile selesai |
-| 8 | `000006-stack-verify-script` | **waiting** | development | defined | pending | pending | Development berurutan: menunggu 000002-stack-single-npm-lockfile selesai; Development berurutan: menunggu 000002-stack-single-npm-lockfile selesai |
-| 9 | `000001-docs-dev-runbook` | **waiting** | development | defined | pending | pending | Development berurutan: menunggu 000002-stack-single-npm-lockfile selesai; Development berurutan: menunggu 000002-stack-single-npm-lockfile selesai |
+| 1 | `000001-stack-pin-node-runtime` | **done** | audit | defined | complete | pass | — |
+| 2 | `000002-stack-single-npm-lockfile` | **done** | audit | defined | complete | pass | — |
+| 3 | `000003-stack-repo-hygiene` | **done** | audit | defined | complete | pass | — |
+| 4 | `000001-db-canonical-sqlite-path` | **done** | done | defined | complete | pass | — |
+| 5 | `000004-stack-env-example` | **done** | audit | defined | complete | pass | — |
+| 6 | `000002-db-root-scripts` | **done** | audit | defined | complete | pass | — |
+| 7 | `000005-stack-setup-script` | **done** | audit | defined | complete | pass | — |
+| 8 | `000006-stack-verify-script` | **done** | audit | defined | complete | pass | — |
+| 9 | `000001-docs-dev-runbook` | **done** | audit | defined | complete | pass | — |
 ## Phase 0000-P1 — Continuous Integration
 
 | # | Task | Run | Stage | Plan | Dev | QA | Blocker / catatan |
 |---|------|-----|-------|------|-----|-----|-------------------|
-| 10 | `000001-infra-github-repo-protection` | **waiting** | development | defined | pending | pending | Belum giliran (antrian orkestrasi) |
-| 11 | `000002-infra-ci-workflow-fix` | **waiting** | development | defined | pending | pending | Development berurutan: menunggu 000001-infra-github-repo-protection selesai; Development berurutan: menunggu 000001-infra-github-repo-protection selesai |
-| 12 | `000003-infra-ci-verify-pipeline` | **waiting** | development | defined | pending | pending | Development berurutan: menunggu 000001-infra-github-repo-protection selesai; Development berurutan: menunggu 000001-infra-github-repo-protection selesai |
+| 10 | `000001-infra-github-repo-protection` | **done** | audit | defined | complete | pass | — |
+| 11 | `000002-infra-ci-workflow-fix` | **done** | audit | defined | complete | pass | — |
+| 12 | `000003-infra-ci-verify-pipeline` | **done** | audit | defined | complete | pass | — |
 ## Phase 0000-P2 — Staging
 
 | # | Task | Run | Stage | Plan | Dev | QA | Blocker / catatan |
