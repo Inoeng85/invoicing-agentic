@@ -1,4 +1,4 @@
-import type { Handle } from 'remix/ui'
+import type { Handle } from 'remix/component'
 import { computeLineSubtotalCents, type getInvoiceByPublicToken } from '@invoicing/domain'
 
 import { Document } from '../actions/document.tsx'

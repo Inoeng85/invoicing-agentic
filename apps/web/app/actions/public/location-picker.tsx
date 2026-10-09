@@ -1,4 +1,4 @@
-import { clientEntry, on, ref, type Handle } from 'remix/ui'
+import { clientEntry, on, ref, type Handle } from 'remix/component'
 
 import { loadLeaflet, OSM_ATTRIBUTION, OSM_TILES } from './leaflet.ts'
 
@@ -15,7 +15,7 @@ export const LocationPicker = clientEntry(import.meta.url, function LocationPick
   let setMarker: ((lat: number, lng: number) => void) | null = null
   let clearMarker: (() => void) | null = null
 
-  // remix/ui keeps `value` inputs controlled, so typing must flow back into state or it is reverted.
+  // remix/component keeps `value` inputs controlled, so typing must flow back into state or it is reverted.
   function onCoordinateInput(field: 'latitude' | 'longitude') {
     return on<HTMLInputElement>('input', (event) => {
       let value = event.currentTarget.value

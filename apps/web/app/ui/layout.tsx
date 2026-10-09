@@ -1,4 +1,4 @@
-import type { Handle, RemixNode } from 'remix/ui'
+import type { Handle, RemixNode } from 'remix/component'
 import { getUserById } from '@invoicing/domain'
 
 import { Document } from '../actions/document.tsx'
