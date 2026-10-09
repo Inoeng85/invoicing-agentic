@@ -4,6 +4,7 @@ import { assessTaskPlan, loadQueue, priorPhaseReleased } from './intake-pipeline
 import {
   inferTaskColumn,
   readTaskArtifacts,
+  readTaskAuditOutcome,
   taskArtifactPaths,
   taskPlanBase,
 } from './task-progress.mjs'
@@ -160,6 +161,7 @@ function buildOneTask(root, ctx) {
     phaseReleased: ph.released,
     phaseBlocked: !priorOk,
     qaStatus: qaSt,
+    taskAuditStatus: readTaskAuditOutcome(root, epic, ordinal, taskId),
     phaseRow: ph,
   })
 
@@ -334,7 +336,7 @@ export function checklistToMarkdown(data) {
 
 export function writeTaskChecklistArtifacts(root, data) {
   const jsonRel = 'docs/PRD/0800-orkestrasi-stage/data/task-checklist.json'
-  const mdRel = 'Development/Plan/TASK_CHECKLIST.md'
+  const mdRel = 'docs/development/Plan/TASK_CHECKLIST.md'
   const mdMirror = 'docs/PRD/0800-orkestrasi-stage/TASK_CHECKLIST.md'
   fs.writeFileSync(path.join(root, jsonRel), JSON.stringify(data, null, 2) + '\n')
   const md = checklistToMarkdown(data)

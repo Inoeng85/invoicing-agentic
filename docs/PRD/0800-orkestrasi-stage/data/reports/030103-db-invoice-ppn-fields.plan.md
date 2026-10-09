@@ -19,7 +19,7 @@ npm run test:domain
 
 | Feature ID | Dokumen |
 |------------|---------|
-| `0301-db-invoice-ppn-fields` | [agentic/development/features/0301-db-invoice-ppn-fields.md](../../../../../../agentic/development/features/0301-db-invoice-ppn-fields.md) |
+| `0301-db-invoice-ppn-fields` | [docs/agentic/development/features/0301-db-invoice-ppn-fields.md](../../../../agentic/development/features/0301-db-invoice-ppn-fields.md) |
 
 ## Development
 
@@ -33,9 +33,9 @@ npm run test:domain
 
 | Skill | File plan |
 |-------|-----------|
-| Infra | [skills/infra.md](./skills/infra.md) |
-| Docs | [skills/docs.md](./skills/docs.md) |
-| QA | [skills/qa.md](./skills/qa.md) |
+| Infra | [skills/infra.md](../../../../development/Plan/0301/phase-01/tasks/030103-db-invoice-ppn-fields/skills/infra.md) |
+| Docs | [skills/docs.md](../../../../development/Plan/0301/phase-01/tasks/030103-db-invoice-ppn-fields/skills/docs.md) |
+| QA | [skills/qa.md](../../../../development/Plan/0301/phase-01/tasks/030103-db-invoice-ppn-fields/skills/qa.md) |
 
 ## Acuan PRD
 

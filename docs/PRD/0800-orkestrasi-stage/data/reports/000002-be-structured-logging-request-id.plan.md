@@ -24,7 +24,7 @@ setiap respons punya `X-Request-Id` · log staging bisa difilter per `requestId`
 
 | Feature ID | Dokumen |
 |------------|---------|
-| `0000-be-structured-logging-request-id` | [agentic/development/features/0000-be-structured-logging-request-id.md](../../../../../../agentic/development/features/0000-be-structured-logging-request-id.md) |
+| `0000-be-structured-logging-request-id` | [docs/agentic/development/features/0000-be-structured-logging-request-id.md](../../../../agentic/development/features/0000-be-structured-logging-request-id.md) |
 
 ## Development
 
@@ -38,8 +38,8 @@ setiap respons punya `X-Request-Id` · log staging bisa difilter per `requestId`
 
 | Skill | File plan |
 |-------|-----------|
-| Backend | [skills/backend.md](./skills/backend.md) |
-| QA | [skills/qa.md](./skills/qa.md) |
+| Backend | [skills/backend.md](../../../../development/Plan/0000/phase-02/tasks/000002-be-structured-logging-request-id/skills/backend.md) |
+| QA | [skills/qa.md](../../../../development/Plan/0000/phase-02/tasks/000002-be-structured-logging-request-id/skills/qa.md) |
 
 ## Acuan PRD
 

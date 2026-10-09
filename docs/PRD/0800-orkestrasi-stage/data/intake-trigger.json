@@ -1,7 +1,7 @@
 {
   "version": 1,
-  "generatedAt": "2026-10-01T08:03:06.514Z",
-  "queueGeneratedAt": "2026-10-01T08:03:06.398Z",
+  "generatedAt": "2026-10-01T18:06:10.423Z",
+  "queueGeneratedAt": "2026-10-01T18:06:10.061Z",
   "next": {
     "action": "wait_prior_release",
     "phaseId": "0000-P2",
@@ -14,27 +14,22 @@
   "terminalExecute": "npm run agentic:trigger-next -- --execute",
   "autopilot": {
     "state": {
-      "active": true,
-      "kind": "qa",
-      "taskId": "000001-stack-pin-node-runtime",
-      "phaseId": "0000-P0",
-      "epic": "0000",
-      "ordinal": 0,
-      "assignedAt": "2026-10-01T07:53:25.866Z",
-      "needsAgent": true
+      "active": false,
+      "idleAt": "2026-10-01T09:09:50.210Z",
+      "last": {
+        "kind": "gate",
+        "phaseId": "0000-P2",
+        "waitFor": "0000-P1",
+        "message": "Menunggu Human QA release phase 0000-P1"
+      }
     },
     "smallestUndone": {
-      "kind": "qa",
-      "action": "run_qa_task",
-      "phaseId": "0000-P0",
-      "epic": "0000",
-      "ordinal": 0,
-      "taskId": "000001-stack-pin-node-runtime",
-      "skill": "agentic/skill/qa/SKILL.md",
-      "planPath": "Development/Plan/0000/phase-00/tasks/000001-stack-pin-node-runtime/plan.md",
-      "hasDevReport": true
+      "kind": "gate",
+      "phaseId": "0000-P2",
+      "waitFor": "0000-P1",
+      "message": "Menunggu Human QA release phase 0000-P1"
     },
-    "prompt": "Agent QA — 1 session = 1 task\nTask: 000001-stack-pin-node-runtime · phase 0000-P0\nPlan: Agentic/Development/Plan/0000/phase-00/tasks/000001-stack-pin-node-runtime/plan.md\nSkill: agentic/skill/qa/SKILL.md\nSelesai: npm run agentic:validate-qa -- --task 000001-stack-pin-node-runtime --epic 0000 --phase 0",
+    "prompt": "Menunggu Human QA release phase 0000-P1",
     "watch": "npm run agentic:autopilot:watch",
     "complete": "npm run agentic:autopilot -- complete --task <id>"
   }

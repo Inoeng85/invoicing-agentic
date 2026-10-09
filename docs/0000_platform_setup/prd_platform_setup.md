@@ -62,7 +62,7 @@ Kode MVP invoicing (web, API, domain, database) sudah lolos gate otomatis G0–G
 | PS-22 run GitHub hijau | **Gagal** | Semua run `startup_failure` (job `verify` tidak start) · contoh run [36661916437](https://github.com/Inoeng85/invoicing-agentic/actions/runs/36661916437) |
 | PS-05 branch protection | **Terblokir** | API: *Upgrade to GitHub Pro or make this repository public* (repo private, akun Free) |
 
-**Gate PG-1:** **belum lulus formal** — repo sudah **public**; runner Actions terblokir **billing GitHub** (2026-09-30). Tutup PG-1 dengan perbaikan billing, CI hijau, lalu rule `main` + required check `verify`.
+**Gate PG-1:** **belum lulus formal** — repo sudah **public**; runner Actions terblokir **billing GitHub** (2026-09-30). Tutup PG-1 dengan perbaikan billing, CI hijau, lalu rule `develop` + required check `verify`.
 
 ---
 
@@ -74,7 +74,7 @@ Kode MVP invoicing (web, API, domain, database) sudah lolos gate otomatis G0–G
 |----|--------|---------------------|
 | O-1 | Developer baru bisa menjalankan web + API lokal dengan satu alur | Clone → app jalan di `:44100`/`:44101` **≤ 15 menit**, tanpa Docker |
 | O-2 | Environment deterministik di semua tahap | Node 24.x + satu lockfile npm di lokal, CI, staging, prod |
-| O-3 | Setiap PR terverifikasi otomatis | CI hijau wajib sebelum merge ke `main` |
+| O-3 | Setiap PR terverifikasi otomatis | CI hijau wajib sebelum merge ke `develop` |
 | O-4 | Staging & produksi siap menerima deploy | `GET /api/health/ready` 200 di staging dan prod |
 | O-5 | Satu sumber design token | Prototype dan `apps/web` membangun dari token yang sama |
 
@@ -107,17 +107,17 @@ Kode MVP invoicing (web, API, domain, database) sudah lolos gate otomatis G0–G
 flowchart LR
   Local["Local<br/>Node 24 · SQLite · email log"]
   CI["CI (GitHub Actions)<br/>Node 24 · SQLite test DB"]
-  Staging["Staging<br/>main HEAD · Postgres · email sandbox"]
+  Staging["Staging<br/>develop HEAD · Postgres · email sandbox"]
   Prod["Production<br/>tag v* · Postgres + backup · email verified"]
 
   Local -->|PR| CI
-  CI -->|merge main| Staging
+  CI -->|merge develop| Staging
   Staging -->|tag v*.*.* + approval| Prod
 ```
 
 | Aspek | Local | CI | Staging | Production |
 |-------|-------|----|---------|------------|
-| Sumber | Working copy | PR / push | `main` HEAD | Tag `v*.*.*` |
+| Sumber | Working copy | PR / push | `develop` HEAD | Tag `v*.*.*` |
 | Node | 24.x (`.nvmrc`) | 24.x | 24.x | 24.x |
 | DB | SQLite file | SQLite (volume) | SQLite (volume) | SQLite (volume + backup file) |
 | Migrasi | `prisma migrate dev` | `migrate deploy` ke DB test | `migrate deploy` saat deploy | `migrate deploy` setelah approval |
@@ -147,10 +147,10 @@ Prioritas: **P0** = wajib sebelum tim mulai kerja paralel / CI aktif · **P1** =
 
 | ID | Requirement | Prioritas | Acceptance criteria |
 |----|-------------|-----------|---------------------|
-| PS-05 | Initial commit + remote (Phase 0); branch `main` dilindungi — PR wajib, CI hijau (Phase 1, setelah PG-1) | P0 | Sesuai ARCH §16.2 · task `000003-stack-*` + `000001-infra-github-repo-protection` |
+| PS-05 | Initial commit + remote (Phase 0); branch `develop` dilindungi — PR wajib, CI hijau (Phase 1, setelah PG-1) | P0 | Sesuai ARCH §16.2 · task `000003-stack-*` + `000001-infra-github-repo-protection` |
 | PS-06 | `.gitignore` mencakup `.DS_Store`, `*.db`, `.env*` kecuali `.env.example`, artefak build CSS yang di-generate | P0 | `git status` bersih setelah `npm run setup` + `npm run dev` |
 | PS-07 | Bersihkan artefak tak terpakai (`ui-prototype/` kosong, `prisma/prisma/dev.db`) | P0 | Folder/file hilang; tidak ada referensi tersisa |
-| PS-08 | Konvensi branch & commit terdokumentasi (`feature/*`, `fix/*`, SemVer tag) | P1 | README kontribusi merujuk ARCH §16 |
+| PS-08 | Konvensi branch & commit terdokumentasi (`feat/*`, SemVer tag) | P1 | README kontribusi merujuk ARCH §16 |
 
 ### 5.3 Konfigurasi & secrets
 
@@ -195,7 +195,7 @@ Prioritas: **P0** = wajib sebelum tim mulai kerja paralel / CI aktif · **P1** =
 | ID | Requirement | Prioritas | Acceptance criteria |
 |----|-------------|-----------|---------------------|
 | PS-27 | Pilih host (Q-02) yang mendukung Node 24, dua proses (web, API), Postgres managed, secret store, TLS | P1 | Keputusan tercatat sebagai ADR |
-| PS-28 | Deploy staging otomatis dari `main`: build → `css:build` → `prisma migrate deploy` → start → smoke `GET /api/health/ready` | P1 | Merge ke `main` menghasilkan staging hijau tanpa langkah manual |
+| PS-28 | Deploy staging otomatis dari `develop`: build → `css:build` → `prisma migrate deploy` → start → smoke `GET /api/health/ready` | P1 | Merge ke `develop` menghasilkan staging hijau tanpa langkah manual |
 | PS-29 | Deploy production dari tag `v*.*.*` dengan approval manual | P2 | Sesuai ARCH §15.3 |
 | PS-30 | Rollback: redeploy build sebelumnya; kebijakan migrasi mundur terdokumentasi | P2 | Rollback diuji sekali di staging |
 | PS-31 | Domain & TLS: `APP_URL` staging/prod mengarah ke HTTPS; API di subdomain atau path dengan `CORS_ORIGIN` benar | P1 | Link publik `/i/:token` di email staging bisa dibuka |

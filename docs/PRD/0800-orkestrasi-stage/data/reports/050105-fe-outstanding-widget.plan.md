@@ -19,7 +19,7 @@ npm run typecheck && npm run test:domain && npm test
 
 | Feature ID | Dokumen |
 |------------|---------|
-| `0501-fe-outstanding-widget` | [agentic/development/features/0501-fe-outstanding-widget.md](../../../../../../agentic/development/features/0501-fe-outstanding-widget.md) |
+| `0501-fe-outstanding-widget` | [docs/agentic/development/features/0501-fe-outstanding-widget.md](../../../../agentic/development/features/0501-fe-outstanding-widget.md) |
 
 ## Development
 
@@ -33,8 +33,8 @@ npm run typecheck && npm run test:domain && npm test
 
 | Skill | File plan |
 |-------|-----------|
-| Frontend | [skills/frontend.md](./skills/frontend.md) |
-| QA | [skills/qa.md](./skills/qa.md) |
+| Frontend | [skills/frontend.md](../../../../development/Plan/0501/phase-01/tasks/050105-fe-outstanding-widget/skills/frontend.md) |
+| QA | [skills/qa.md](../../../../development/Plan/0501/phase-01/tasks/050105-fe-outstanding-widget/skills/qa.md) |
 
 ## Acuan PRD
 

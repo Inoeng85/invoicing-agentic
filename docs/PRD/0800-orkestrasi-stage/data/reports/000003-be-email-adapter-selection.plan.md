@@ -24,7 +24,7 @@ local/CI tetap log · staging dengan `resend` mengirim email uji.
 
 | Feature ID | Dokumen |
 |------------|---------|
-| `0000-be-email-adapter-selection` | [agentic/development/features/0000-be-email-adapter-selection.md](../../../../../../agentic/development/features/0000-be-email-adapter-selection.md) |
+| `0000-be-email-adapter-selection` | [docs/agentic/development/features/0000-be-email-adapter-selection.md](../../../../agentic/development/features/0000-be-email-adapter-selection.md) |
 
 ## Development
 
@@ -38,8 +38,8 @@ local/CI tetap log · staging dengan `resend` mengirim email uji.
 
 | Skill | File plan |
 |-------|-----------|
-| Backend | [skills/backend.md](./skills/backend.md) |
-| QA | [skills/qa.md](./skills/qa.md) |
+| Backend | [skills/backend.md](../../../../development/Plan/0000/phase-02/tasks/000003-be-email-adapter-selection/skills/backend.md) |
+| QA | [skills/qa.md](../../../../development/Plan/0000/phase-02/tasks/000003-be-email-adapter-selection/skills/qa.md) |
 
 ## Acuan PRD
 

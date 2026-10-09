@@ -25,17 +25,35 @@ stack repo hygiene (PRD epic 0000).
 
 | Feature ID | Dokumen |
 |------------|---------|
-| `0000-platform-stack` | [agentic/development/features/0000-platform-stack.md](../../../../../../agentic/development/features/0000-platform-stack.md) |
+| `0000-platform-stack` | [docs/agentic/development/features/0000-platform-stack.md](../../../../agentic/development/features/0000-platform-stack.md) |
 
 ## Development
 
-| Status | `pending` |
+| Field | Nilai |
+|-------|-------|
+| Status | `complete` |
+| Laporan | docs/development/Result/0000/phase-00/development/000003-stack-repo-hygiene.md |
+| Commit/PR | tidak ada commit baru · baseline `4bbc062` · remote `origin` sudah ada · tidak di-push |
+| Selesai | 2026-10-01T15:33:37+07:00 |
+
+### Catatan implementasi
+
+`.gitignore` sudah memuat `.DS_Store`, `*.db`, `*.db-journal`, `.env`, `.env.*`, `!.env.example`, dan artefak CSS build. `.DS_Store` lokal dihapus. `git ls-files` hanya memuat `.env.example`. Dev server yang sudah jalan: web 302, API live 200. Tidak commit/push.
+
+## QA
+
+| Field | Nilai |
+|-------|-------|
+| Status | `pass` |
+| Laporan | docs/development/Result/0000/phase-00/qa/000003-stack-repo-hygiene.md |
+| Fix dalam session | tidak |
+| Selesai | 2026-10-01T15:34:34+07:00 |
 
 ## Skill yang digunakan
 
 | Skill | File plan |
 |-------|-----------|
-| Docs | [skills/docs.md](./skills/docs.md) |
+| Docs | [skills/docs.md](../../../../development/Plan/0000/phase-00/tasks/000003-stack-repo-hygiene/skills/docs.md) |
 
 ## Acuan PRD
 

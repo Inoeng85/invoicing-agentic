@@ -19,7 +19,7 @@ npm run typecheck && npm run test:domain && npm test
 
 | Feature ID | Dokumen |
 |------------|---------|
-| `0501-infra-gate-g5-dashboard` | [agentic/development/features/0501-infra-gate-g5-dashboard.md](../../../../../../agentic/development/features/0501-infra-gate-g5-dashboard.md) |
+| `0501-infra-gate-g5-dashboard` | [docs/agentic/development/features/0501-infra-gate-g5-dashboard.md](../../../../agentic/development/features/0501-infra-gate-g5-dashboard.md) |
 
 ## Development
 
@@ -29,8 +29,8 @@ npm run typecheck && npm run test:domain && npm test
 
 | Skill | File plan |
 |-------|-----------|
-| Infra | [skills/infra.md](./skills/infra.md) |
-| Docs | [skills/docs.md](./skills/docs.md) |
+| Infra | [skills/infra.md](../../../../development/Plan/0501/phase-01/tasks/050106-infra-gate-g5-dashboard/skills/infra.md) |
+| Docs | [skills/docs.md](../../../../development/Plan/0501/phase-01/tasks/050106-infra-gate-g5-dashboard/skills/docs.md) |
 
 ## Acuan PRD
 

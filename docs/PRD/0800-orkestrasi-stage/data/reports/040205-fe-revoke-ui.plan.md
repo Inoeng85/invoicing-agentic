@@ -19,7 +19,7 @@ npm run typecheck && npm run test:domain && npm test
 
 | Feature ID | Dokumen |
 |------------|---------|
-| `0402-fe-revoke-ui` | [agentic/development/features/0402-fe-revoke-ui.md](../../../../../../agentic/development/features/0402-fe-revoke-ui.md) |
+| `0402-fe-revoke-ui` | [docs/agentic/development/features/0402-fe-revoke-ui.md](../../../../agentic/development/features/0402-fe-revoke-ui.md) |
 
 ## Development
 
@@ -33,8 +33,8 @@ npm run typecheck && npm run test:domain && npm test
 
 | Skill | File plan |
 |-------|-----------|
-| Frontend | [skills/frontend.md](./skills/frontend.md) |
-| QA | [skills/qa.md](./skills/qa.md) |
+| Frontend | [skills/frontend.md](../../../../development/Plan/0402/phase-01/tasks/040205-fe-revoke-ui/skills/frontend.md) |
+| QA | [skills/qa.md](../../../../development/Plan/0402/phase-01/tasks/040205-fe-revoke-ui/skills/qa.md) |
 
 ## Acuan PRD
 

@@ -19,7 +19,7 @@ npm run typecheck && npm run test:domain && npm test
 
 | Feature ID | Dokumen |
 |------------|---------|
-| `0300-fe-invoice-list-draft` | [agentic/development/features/0300-fe-invoice-list-draft.md](../../../../../../agentic/development/features/0300-fe-invoice-list-draft.md) |
+| `0300-fe-invoice-list-draft` | [docs/agentic/development/features/0300-fe-invoice-list-draft.md](../../../../agentic/development/features/0300-fe-invoice-list-draft.md) |
 
 ## Development
 
@@ -33,8 +33,8 @@ npm run typecheck && npm run test:domain && npm test
 
 | Skill | File plan |
 |-------|-----------|
-| Frontend | [skills/frontend.md](./skills/frontend.md) |
-| QA | [skills/qa.md](./skills/qa.md) |
+| Frontend | [skills/frontend.md](../../../../development/Plan/0300/phase-01/tasks/030005-fe-invoice-list-draft/skills/frontend.md) |
+| QA | [skills/qa.md](../../../../development/Plan/0300/phase-01/tasks/030005-fe-invoice-list-draft/skills/qa.md) |
 
 ## Acuan PRD
 

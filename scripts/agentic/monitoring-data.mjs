@@ -29,7 +29,7 @@ function readJsonl(fp, max = 500) {
 }
 
 function walkReports(root, limit = 120) {
-  const base = path.join(root, 'Development/Result')
+  const base = path.join(root, 'docs/development/Result')
   if (!fs.existsSync(base)) return []
   /** @type {{ path: string, mtime: number, taskId: string, kind: string, epic: string, phase: string }[]} */
   const found = []
@@ -47,7 +47,7 @@ function walkReports(root, limit = 120) {
         const taskId = ent.name.replace(/\.md$/, '')
         if (!/^(development|qa|audit)$/.test(kind)) continue
         const st = fs.statSync(full)
-        found.push({ path: `Development/Result/${rel}`, mtime: st.mtimeMs, taskId, kind, epic, phase })
+        found.push({ path: `docs/development/Result/${rel}`, mtime: st.mtimeMs, taskId, kind, epic, phase })
       }
     }
   }

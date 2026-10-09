@@ -19,7 +19,7 @@ npm run db:migrate
 
 | Feature ID | Dokumen |
 |------------|---------|
-| `0100-be-health-live` | [agentic/development/features/0100-be-health-live.md](../../../../../../agentic/development/features/0100-be-health-live.md) |
+| `0100-be-health-live` | [docs/agentic/development/features/0100-be-health-live.md](../../../../agentic/development/features/0100-be-health-live.md) |
 
 ## Development
 
@@ -33,8 +33,8 @@ npm run db:migrate
 
 | Skill | File plan |
 |-------|-----------|
-| Backend | [skills/backend.md](./skills/backend.md) |
-| QA | [skills/qa.md](./skills/qa.md) |
+| Backend | [skills/backend.md](../../../../development/Plan/0100/phase-01/tasks/010004-be-health-live/skills/backend.md) |
+| QA | [skills/qa.md](../../../../development/Plan/0100/phase-01/tasks/010004-be-health-live/skills/qa.md) |
 
 ## Acuan PRD
 

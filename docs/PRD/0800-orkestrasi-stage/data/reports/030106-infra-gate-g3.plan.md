@@ -19,7 +19,7 @@ npm run test:domain
 
 | Feature ID | Dokumen |
 |------------|---------|
-| `0301-infra-gate-g3` | [agentic/development/features/0301-infra-gate-g3.md](../../../../../../agentic/development/features/0301-infra-gate-g3.md) |
+| `0301-infra-gate-g3` | [docs/agentic/development/features/0301-infra-gate-g3.md](../../../../agentic/development/features/0301-infra-gate-g3.md) |
 
 ## Development
 
@@ -29,8 +29,8 @@ npm run test:domain
 
 | Skill | File plan |
 |-------|-----------|
-| Infra | [skills/infra.md](./skills/infra.md) |
-| Docs | [skills/docs.md](./skills/docs.md) |
+| Infra | [skills/infra.md](../../../../development/Plan/0301/phase-01/tasks/030106-infra-gate-g3/skills/infra.md) |
+| Docs | [skills/docs.md](../../../../development/Plan/0301/phase-01/tasks/030106-infra-gate-g3/skills/docs.md) |
 
 ## Acuan PRD
 

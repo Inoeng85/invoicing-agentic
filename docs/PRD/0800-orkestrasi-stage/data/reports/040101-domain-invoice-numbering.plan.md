@@ -19,7 +19,7 @@ npm run email:smoke
 
 | Feature ID | Dokumen |
 |------------|---------|
-| `0401-domain-invoice-numbering` | [agentic/development/features/0401-domain-invoice-numbering.md](../../../../../../agentic/development/features/0401-domain-invoice-numbering.md) |
+| `0401-domain-invoice-numbering` | [docs/agentic/development/features/0401-domain-invoice-numbering.md](../../../../agentic/development/features/0401-domain-invoice-numbering.md) |
 
 ## Development
 
@@ -33,9 +33,9 @@ npm run email:smoke
 
 | Skill | File plan |
 |-------|-----------|
-| Backend | [skills/backend.md](./skills/backend.md) |
-| Docs | [skills/docs.md](./skills/docs.md) |
-| QA | [skills/qa.md](./skills/qa.md) |
+| Backend | [skills/backend.md](../../../../development/Plan/0401/phase-01/tasks/040101-domain-invoice-numbering/skills/backend.md) |
+| Docs | [skills/docs.md](../../../../development/Plan/0401/phase-01/tasks/040101-domain-invoice-numbering/skills/docs.md) |
+| QA | [skills/qa.md](../../../../development/Plan/0401/phase-01/tasks/040101-domain-invoice-numbering/skills/qa.md) |
 
 ## Acuan PRD
 

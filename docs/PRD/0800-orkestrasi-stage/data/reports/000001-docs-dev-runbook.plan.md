@@ -11,10 +11,10 @@
 
 docs dev runbook (PRD epic 0000).
 
-- Tulis ulang alur di [STACK-INTEGRATION.md](../invoicing/engineering/STACK-INTEGRATION.md): prasyarat (nvm, Node 24), `npm run setup`, `npm run dev`, `npm run verify`, perintah DB, prototype.
+- Tulis ulang alur di [STACK-INTEGRATION.md](../../../../invoicing/engineering/STACK-INTEGRATION.md): prasyarat (nvm, Node 24), `npm run setup`, `npm run dev`, `npm run verify`, perintah DB, prototype.
 - Tabel port & URL: web 44100, API 44101, server prototype.
 - Bagian troubleshooting: engine mismatch, `IMPORT_OUTSIDE_MOUNTS`, DB path.
-- Samakan ringkasan di `README.md` root.
+- Samakan ringkasan di `docs/README.md` root.
 - Uji dengan satu orang yang belum pernah setup; catat waktu.
 
 ## Tujuan
@@ -25,17 +25,35 @@ onboarding ≤ 15 menit tanpa bantuan.
 
 | Feature ID | Dokumen |
 |------------|---------|
-| `0000-docs-dev-runbook` | [agentic/development/features/0000-docs-dev-runbook.md](../../../../../../agentic/development/features/0000-docs-dev-runbook.md) |
+| `0000-docs-dev-runbook` | [docs/agentic/development/features/0000-docs-dev-runbook.md](../../../../agentic/development/features/0000-docs-dev-runbook.md) |
 
 ## Development
 
-| Status | `pending` |
+| Field | Nilai |
+|-------|-------|
+| Status | `complete` |
+| Laporan | docs/development/Result/0000/phase-00/development/000001-docs-dev-runbook.md |
+| Commit/PR | belum di-commit |
+| Selesai | 2026-10-01T16:02:54+07:00 |
+
+### Catatan implementasi
+
+Runbook dan README sudah memuat alur onboarding. Diselaraskan: seed setup idempoten, dan `verify` mencakup gate G0–G7. Waktu onboarding penguji baru tidak diukur.
+
+## QA
+
+| Field | Nilai |
+|-------|-------|
+| Status | `pass` |
+| Laporan | docs/development/Result/0000/phase-00/qa/000001-docs-dev-runbook.md |
+| Fix dalam session | tidak |
+| Selesai | 2026-10-01T16:03:20+07:00 |
 
 ## Skill yang digunakan
 
 | Skill | File plan |
 |-------|-----------|
-| Docs | [skills/docs.md](./skills/docs.md) |
+| Docs | [skills/docs.md](../../../../development/Plan/0000/phase-00/tasks/000001-docs-dev-runbook/skills/docs.md) |
 
 ## Acuan PRD
 

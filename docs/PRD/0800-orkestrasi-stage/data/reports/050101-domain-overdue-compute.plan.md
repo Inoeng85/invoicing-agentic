@@ -19,7 +19,7 @@ npm run typecheck && npm run test:domain && npm test
 
 | Feature ID | Dokumen |
 |------------|---------|
-| `0501-domain-overdue-compute` | [agentic/development/features/0501-domain-overdue-compute.md](../../../../../../agentic/development/features/0501-domain-overdue-compute.md) |
+| `0501-domain-overdue-compute` | [docs/agentic/development/features/0501-domain-overdue-compute.md](../../../../agentic/development/features/0501-domain-overdue-compute.md) |
 
 ## Development
 
@@ -33,9 +33,9 @@ npm run typecheck && npm run test:domain && npm test
 
 | Skill | File plan |
 |-------|-----------|
-| Backend | [skills/backend.md](./skills/backend.md) |
-| Docs | [skills/docs.md](./skills/docs.md) |
-| QA | [skills/qa.md](./skills/qa.md) |
+| Backend | [skills/backend.md](../../../../development/Plan/0501/phase-01/tasks/050101-domain-overdue-compute/skills/backend.md) |
+| Docs | [skills/docs.md](../../../../development/Plan/0501/phase-01/tasks/050101-domain-overdue-compute/skills/docs.md) |
+| QA | [skills/qa.md](../../../../development/Plan/0501/phase-01/tasks/050101-domain-overdue-compute/skills/qa.md) |
 
 ## Acuan PRD
 

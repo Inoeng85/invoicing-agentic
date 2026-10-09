@@ -24,7 +24,7 @@ db postgres strategy (PRD epic 0000).
 
 | Feature ID | Dokumen |
 |------------|---------|
-| `0000-db-postgres-strategy` | [agentic/development/features/0000-db-postgres-strategy.md](../../../../../../agentic/development/features/0000-db-postgres-strategy.md) |
+| `0000-db-postgres-strategy` | [docs/agentic/development/features/0000-db-postgres-strategy.md](../../../../agentic/development/features/0000-db-postgres-strategy.md) |
 
 ## Development
 
@@ -38,9 +38,9 @@ db postgres strategy (PRD epic 0000).
 
 | Skill | File plan |
 |-------|-----------|
-| Infra | [skills/infra.md](./skills/infra.md) |
-| Docs | [skills/docs.md](./skills/docs.md) |
-| QA | [skills/qa.md](./skills/qa.md) |
+| Infra | [skills/infra.md](../../../../development/Plan/0000/phase-02/tasks/000004-db-postgres-strategy/skills/infra.md) |
+| Docs | [skills/docs.md](../../../../development/Plan/0000/phase-02/tasks/000004-db-postgres-strategy/skills/docs.md) |
+| QA | [skills/qa.md](../../../../development/Plan/0000/phase-02/tasks/000004-db-postgres-strategy/skills/qa.md) |
 
 ## Acuan PRD
 

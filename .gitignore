@@ -10,5 +10,5 @@ apps/*/prisma/*.db
 apps/*/prisma/*.db-journal
 apps/web/public/app.css
 docs/design/prototype/assets/ui.css
-.gate/
-.gate-summary.md
+docs/reports/gates/
+docs/reports/gate-summary.md

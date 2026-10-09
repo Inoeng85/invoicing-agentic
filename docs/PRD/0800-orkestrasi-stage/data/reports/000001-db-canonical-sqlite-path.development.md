@@ -3,7 +3,7 @@
 | Field | Nilai |
 |-------|-------|
 | Task ID | 000001-db-canonical-sqlite-path |
-| Feature | [0000-db-canonical-path](../../../../../agentic/development/features/0000-db-canonical-path.md) |
+| Feature | [0000-db-canonical-path](../../../../agentic/development/features/0000-db-canonical-path.md) |
 | Phase | 0000-P0 |
 | Selesai | 2026-10-01T06:54:00+07:00 |
 | Commit / PR | baseline (PS-13 Done 2026-09-30) |

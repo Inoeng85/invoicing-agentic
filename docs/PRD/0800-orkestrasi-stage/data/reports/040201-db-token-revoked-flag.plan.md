@@ -19,7 +19,7 @@ npm run typecheck && npm run test:domain && npm test
 
 | Feature ID | Dokumen |
 |------------|---------|
-| `0402-db-token-revoked-flag` | [agentic/development/features/0402-db-token-revoked-flag.md](../../../../../../agentic/development/features/0402-db-token-revoked-flag.md) |
+| `0402-db-token-revoked-flag` | [docs/agentic/development/features/0402-db-token-revoked-flag.md](../../../../agentic/development/features/0402-db-token-revoked-flag.md) |
 
 ## Development
 
@@ -33,9 +33,9 @@ npm run typecheck && npm run test:domain && npm test
 
 | Skill | File plan |
 |-------|-----------|
-| Infra | [skills/infra.md](./skills/infra.md) |
-| Docs | [skills/docs.md](./skills/docs.md) |
-| QA | [skills/qa.md](./skills/qa.md) |
+| Infra | [skills/infra.md](../../../../development/Plan/0402/phase-01/tasks/040201-db-token-revoked-flag/skills/infra.md) |
+| Docs | [skills/docs.md](../../../../development/Plan/0402/phase-01/tasks/040201-db-token-revoked-flag/skills/docs.md) |
+| QA | [skills/qa.md](../../../../development/Plan/0402/phase-01/tasks/040201-db-token-revoked-flag/skills/qa.md) |
 
 ## Acuan PRD
 

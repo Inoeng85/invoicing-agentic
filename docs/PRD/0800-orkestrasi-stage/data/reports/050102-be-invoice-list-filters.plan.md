@@ -19,7 +19,7 @@ npm run typecheck && npm run test:domain && npm test
 
 | Feature ID | Dokumen |
 |------------|---------|
-| `0501-be-invoice-list-filters` | [agentic/development/features/0501-be-invoice-list-filters.md](../../../../../../agentic/development/features/0501-be-invoice-list-filters.md) |
+| `0501-be-invoice-list-filters` | [docs/agentic/development/features/0501-be-invoice-list-filters.md](../../../../agentic/development/features/0501-be-invoice-list-filters.md) |
 
 ## Development
 
@@ -33,8 +33,8 @@ npm run typecheck && npm run test:domain && npm test
 
 | Skill | File plan |
 |-------|-----------|
-| Backend | [skills/backend.md](./skills/backend.md) |
-| QA | [skills/qa.md](./skills/qa.md) |
+| Backend | [skills/backend.md](../../../../development/Plan/0501/phase-01/tasks/050102-be-invoice-list-filters/skills/backend.md) |
+| QA | [skills/qa.md](../../../../development/Plan/0501/phase-01/tasks/050102-be-invoice-list-filters/skills/qa.md) |
 
 ## Acuan PRD
 

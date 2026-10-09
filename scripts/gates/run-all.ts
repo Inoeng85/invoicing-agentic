@@ -10,7 +10,7 @@ import { randomBytes } from 'node:crypto'
 import { router as apiRouter } from '../../apps/api/src/router.ts'
 
 const base = 'http://localhost:44101'
-const reportDir = join(dirname(fileURLToPath(import.meta.url)), '../../.gate')
+const reportDir = join(dirname(fileURLToPath(import.meta.url)), '../../docs/reports/gates')
 
 type GateResult = { phase: string; pass: boolean; detail: string }
 
@@ -40,7 +40,7 @@ function writeGateReports(failed: boolean) {
   ]
   let md = lines.join('\n')
   writeFileSync(join(reportDir, 'gate-summary.md'), md, 'utf8')
-  writeFileSync(join(process.cwd(), '.gate-summary.md'), md, 'utf8')
+  writeFileSync(join(process.cwd(), 'docs/reports/gate-summary.md'), md, 'utf8')
 
   let ghSummary = process.env.GITHUB_STEP_SUMMARY
   if (ghSummary) {

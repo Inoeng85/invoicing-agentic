@@ -19,7 +19,7 @@ npm run test:domain
 
 | Feature ID | Dokumen |
 |------------|---------|
-| `0301-be-persist-totals` | [agentic/development/features/0301-be-persist-totals.md](../../../../../../agentic/development/features/0301-be-persist-totals.md) |
+| `0301-be-persist-totals` | [docs/agentic/development/features/0301-be-persist-totals.md](../../../../agentic/development/features/0301-be-persist-totals.md) |
 
 ## Development
 
@@ -33,8 +33,8 @@ npm run test:domain
 
 | Skill | File plan |
 |-------|-----------|
-| Backend | [skills/backend.md](./skills/backend.md) |
-| QA | [skills/qa.md](./skills/qa.md) |
+| Backend | [skills/backend.md](../../../../development/Plan/0301/phase-01/tasks/030104-be-persist-totals/skills/backend.md) |
+| QA | [skills/qa.md](../../../../development/Plan/0301/phase-01/tasks/030104-be-persist-totals/skills/qa.md) |
 
 ## Acuan PRD
 

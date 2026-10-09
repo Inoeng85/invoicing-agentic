@@ -3,7 +3,7 @@
 | Field | Nilai |
 |-------|-------|
 | Task ID | 000001-stack-pin-node-runtime |
-| Feature | [0000-platform-stack](../../../../../agentic/development/features/0000-platform-stack.md) |
+| Feature | [0000-platform-stack](../../../../agentic/development/features/0000-platform-stack.md) |
 | Phase | 0000-P0 |
 | Selesai | 2026-10-01T14:52:54+07:00 |
 | Commit / PR | `4bbc062` (Platform setup Phase 0, 2026-09-29) |

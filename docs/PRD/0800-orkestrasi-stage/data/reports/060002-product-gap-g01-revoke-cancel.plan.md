@@ -19,7 +19,7 @@ npm run release:check
 
 | Feature ID | Dokumen |
 |------------|---------|
-| `0600-product-gap-g01-revoke-cancel` | [agentic/development/features/0600-product-gap-g01-revoke-cancel.md](../../../../../../agentic/development/features/0600-product-gap-g01-revoke-cancel.md) |
+| `0600-product-gap-g01-revoke-cancel` | [docs/agentic/development/features/0600-product-gap-g01-revoke-cancel.md](../../../../agentic/development/features/0600-product-gap-g01-revoke-cancel.md) |
 
 ## Development
 
@@ -29,7 +29,7 @@ npm run release:check
 
 | Skill | File plan |
 |-------|-----------|
-| Docs | [skills/docs.md](./skills/docs.md) |
+| Docs | [skills/docs.md](../../../../development/Plan/0600/phase-01/tasks/060002-product-gap-g01-revoke-cancel/skills/docs.md) |
 
 ## Acuan PRD
 

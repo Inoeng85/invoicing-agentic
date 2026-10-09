@@ -19,7 +19,7 @@ npm run typecheck && npm run test:domain && npm test
 
 | Feature ID | Dokumen |
 |------------|---------|
-| `0200-domain-client-validation` | [agentic/development/features/0200-domain-client-validation.md](../../../../../../agentic/development/features/0200-domain-client-validation.md) |
+| `0200-domain-client-validation` | [docs/agentic/development/features/0200-domain-client-validation.md](../../../../agentic/development/features/0200-domain-client-validation.md) |
 
 ## Development
 
@@ -33,9 +33,9 @@ npm run typecheck && npm run test:domain && npm test
 
 | Skill | File plan |
 |-------|-----------|
-| Backend | [skills/backend.md](./skills/backend.md) |
-| Docs | [skills/docs.md](./skills/docs.md) |
-| QA | [skills/qa.md](./skills/qa.md) |
+| Backend | [skills/backend.md](../../../../development/Plan/0200/phase-01/tasks/020002-domain-client-validation/skills/backend.md) |
+| Docs | [skills/docs.md](../../../../development/Plan/0200/phase-01/tasks/020002-domain-client-validation/skills/docs.md) |
+| QA | [skills/qa.md](../../../../development/Plan/0200/phase-01/tasks/020002-domain-client-validation/skills/qa.md) |
 
 ## Acuan PRD
 

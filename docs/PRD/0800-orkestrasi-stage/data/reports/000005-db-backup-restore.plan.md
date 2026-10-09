@@ -23,7 +23,7 @@ restore berhasil; waktu restore tercatat.
 
 | Feature ID | Dokumen |
 |------------|---------|
-| `0000-db-backup-restore` | [agentic/development/features/0000-db-backup-restore.md](../../../../../../agentic/development/features/0000-db-backup-restore.md) |
+| `0000-db-backup-restore` | [docs/agentic/development/features/0000-db-backup-restore.md](../../../../agentic/development/features/0000-db-backup-restore.md) |
 
 ## Development
 
@@ -37,9 +37,9 @@ restore berhasil; waktu restore tercatat.
 
 | Skill | File plan |
 |-------|-----------|
-| Infra | [skills/infra.md](./skills/infra.md) |
-| Docs | [skills/docs.md](./skills/docs.md) |
-| QA | [skills/qa.md](./skills/qa.md) |
+| Infra | [skills/infra.md](../../../../development/Plan/0000/phase-03/tasks/000005-db-backup-restore/skills/infra.md) |
+| Docs | [skills/docs.md](../../../../development/Plan/0000/phase-03/tasks/000005-db-backup-restore/skills/docs.md) |
+| QA | [skills/qa.md](../../../../development/Plan/0000/phase-03/tasks/000005-db-backup-restore/skills/qa.md) |
 
 ## Acuan PRD
 

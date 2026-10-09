@@ -19,7 +19,7 @@ npm run release:check
 
 | Feature ID | Dokumen |
 |------------|---------|
-| `0600-docs-signoff-mvp-scope` | [agentic/development/features/0600-docs-signoff-mvp-scope.md](../../../../../../agentic/development/features/0600-docs-signoff-mvp-scope.md) |
+| `0600-docs-signoff-mvp-scope` | [docs/agentic/development/features/0600-docs-signoff-mvp-scope.md](../../../../agentic/development/features/0600-docs-signoff-mvp-scope.md) |
 
 ## Development
 
@@ -29,7 +29,7 @@ npm run release:check
 
 | Skill | File plan |
 |-------|-----------|
-| Docs | [skills/docs.md](./skills/docs.md) |
+| Docs | [skills/docs.md](../../../../development/Plan/0600/phase-01/tasks/060010-docs-signoff-mvp-scope/skills/docs.md) |
 
 ## Acuan PRD
 

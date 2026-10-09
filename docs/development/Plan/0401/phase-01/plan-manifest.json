@@ -1,0 +1,42 @@
+{
+  "phaseId": "0401-P1",
+  "updatedAt": "2026-10-01T07:15:43.121Z",
+  "tasks": [
+    {
+      "taskId": "040101-domain-invoice-numbering",
+      "planPath": "docs/development/Plan/0401/phase-01/tasks/040101-domain-invoice-numbering/plan.md",
+      "status": "defined"
+    },
+    {
+      "taskId": "040102-db-sent-fields",
+      "planPath": "docs/development/Plan/0401/phase-01/tasks/040102-db-sent-fields/plan.md",
+      "status": "defined"
+    },
+    {
+      "taskId": "040103-be-send-invoice",
+      "planPath": "docs/development/Plan/0401/phase-01/tasks/040103-be-send-invoice/plan.md",
+      "status": "defined"
+    },
+    {
+      "taskId": "040104-be-email-adapter",
+      "planPath": "docs/development/Plan/0401/phase-01/tasks/040104-be-email-adapter/plan.md",
+      "status": "defined"
+    },
+    {
+      "taskId": "040105-fe-send-action",
+      "planPath": "docs/development/Plan/0401/phase-01/tasks/040105-fe-send-action/plan.md",
+      "status": "defined"
+    },
+    {
+      "taskId": "040106-infra-email-smoke",
+      "planPath": "docs/development/Plan/0401/phase-01/tasks/040106-infra-email-smoke/plan.md",
+      "status": "defined"
+    },
+    {
+      "taskId": "040107-infra-gate-g4-send",
+      "planPath": "docs/development/Plan/0401/phase-01/tasks/040107-infra-gate-g4-send/plan.md",
+      "status": "defined"
+    }
+  ],
+  "allDefined": true
+}

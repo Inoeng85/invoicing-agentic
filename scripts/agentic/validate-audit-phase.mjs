@@ -27,7 +27,7 @@ function parseArgs(argv) {
 }
 
 function loadQueue() {
-  const p = path.join(ROOT, 'Development/Plan/intake-queue.json')
+  const p = path.join(ROOT, 'docs/development/Plan/intake-queue.json')
   return JSON.parse(fs.readFileSync(p, 'utf8'))
 }
 
@@ -50,13 +50,13 @@ function main() {
   const phaseNn = phaseDirName(ordinal)
   const reportPath = path.join(
     ROOT,
-    'Development/Result',
+    'docs/development/Result',
     epic,
     phaseNn,
     'audit',
     'report.md',
   )
-  const auditPlanPath = path.join(ROOT, 'Development/Plan', epic, phaseNn, 'audit.md')
+  const auditPlanPath = path.join(ROOT, 'docs/development/Plan', epic, phaseNn, 'audit.md')
 
   const errors = []
   const ok = []
@@ -85,7 +85,7 @@ function main() {
   } else ok.push('audit pass')
 
   if (!fs.existsSync(auditPlanPath)) {
-    errors.push('Development/Plan/.../audit.md belum ada')
+    errors.push('docs/development/Plan/.../audit.md belum ada')
   } else ok.push('audit.md plan phase')
 
   console.log(`Validasi audit ${ph.phaseId} (${epic} ${phaseNn})`)

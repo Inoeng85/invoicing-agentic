@@ -24,7 +24,7 @@ db seed demo (PRD epic 0000).
 
 | Feature ID | Dokumen |
 |------------|---------|
-| `0000-db-seed-demo` | [agentic/development/features/0000-db-seed-demo.md](../../../../../../agentic/development/features/0000-db-seed-demo.md) |
+| `0000-db-seed-demo` | [docs/agentic/development/features/0000-db-seed-demo.md](../../../../agentic/development/features/0000-db-seed-demo.md) |
 
 ## Development
 
@@ -38,9 +38,9 @@ db seed demo (PRD epic 0000).
 
 | Skill | File plan |
 |-------|-----------|
-| Infra | [skills/infra.md](./skills/infra.md) |
-| Docs | [skills/docs.md](./skills/docs.md) |
-| QA | [skills/qa.md](./skills/qa.md) |
+| Infra | [skills/infra.md](../../../../development/Plan/0000/phase-02/tasks/000003-db-seed-demo/skills/infra.md) |
+| Docs | [skills/docs.md](../../../../development/Plan/0000/phase-02/tasks/000003-db-seed-demo/skills/docs.md) |
+| QA | [skills/qa.md](../../../../development/Plan/0000/phase-02/tasks/000003-db-seed-demo/skills/qa.md) |
 
 ## Acuan PRD
 

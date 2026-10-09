@@ -19,7 +19,7 @@ npm run typecheck && npm run test:domain && npm test
 
 | Feature ID | Dokumen |
 |------------|---------|
-| `0300-db-invoice-line-items` | [agentic/development/features/0300-db-invoice-line-items.md](../../../../../../agentic/development/features/0300-db-invoice-line-items.md) |
+| `0300-db-invoice-line-items` | [docs/agentic/development/features/0300-db-invoice-line-items.md](../../../../agentic/development/features/0300-db-invoice-line-items.md) |
 
 ## Development
 
@@ -33,9 +33,9 @@ npm run typecheck && npm run test:domain && npm test
 
 | Skill | File plan |
 |-------|-----------|
-| Infra | [skills/infra.md](./skills/infra.md) |
-| Docs | [skills/docs.md](./skills/docs.md) |
-| QA | [skills/qa.md](./skills/qa.md) |
+| Infra | [skills/infra.md](../../../../development/Plan/0300/phase-01/tasks/030001-db-invoice-line-items/skills/infra.md) |
+| Docs | [skills/docs.md](../../../../development/Plan/0300/phase-01/tasks/030001-db-invoice-line-items/skills/docs.md) |
+| QA | [skills/qa.md](../../../../development/Plan/0300/phase-01/tasks/030001-db-invoice-line-items/skills/qa.md) |
 
 ## Acuan PRD
 

@@ -23,7 +23,7 @@ infra domain tls cors (PRD epic 0000).
 
 | Feature ID | Dokumen |
 |------------|---------|
-| `0000-infra-domain-tls-cors` | [agentic/development/features/0000-infra-domain-tls-cors.md](../../../../../../agentic/development/features/0000-infra-domain-tls-cors.md) |
+| `0000-infra-domain-tls-cors` | [docs/agentic/development/features/0000-infra-domain-tls-cors.md](../../../../agentic/development/features/0000-infra-domain-tls-cors.md) |
 
 ## Development
 
@@ -33,8 +33,8 @@ infra domain tls cors (PRD epic 0000).
 
 | Skill | File plan |
 |-------|-----------|
-| Infra | [skills/infra.md](./skills/infra.md) |
-| Docs | [skills/docs.md](./skills/docs.md) |
+| Infra | [skills/infra.md](../../../../development/Plan/0000/phase-02/tasks/000006-infra-domain-tls-cors/skills/infra.md) |
+| Docs | [skills/docs.md](../../../../development/Plan/0000/phase-02/tasks/000006-infra-domain-tls-cors/skills/docs.md) |
 
 ## Acuan PRD
 

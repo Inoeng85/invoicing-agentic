@@ -1,77 +1,63 @@
 {
   "version": 1,
-  "generatedAt": "2026-10-01T08:03:06.579Z",
+  "generatedAt": "2026-10-01T18:06:10.482Z",
   "summary": {
     "total": 138,
-    "done": 1,
+    "done": 12,
     "running": 0,
-    "assigned": 1,
+    "assigned": 0,
     "ready": 0,
-    "waiting": 10,
+    "waiting": 0,
     "blocked": 126,
-    "nextTaskId": "000001-stack-pin-node-runtime",
-    "nextKind": "qa",
-    "nextPhaseId": "0000-P0",
-    "autopilotActive": true,
-    "autopilotTaskId": "000001-stack-pin-node-runtime",
+    "nextTaskId": null,
+    "nextKind": "gate",
+    "nextPhaseId": "0000-P2",
+    "autopilotActive": false,
+    "autopilotTaskId": null,
     "queuePhases": 20,
-    "queueGeneratedAt": "2026-10-01T08:03:06.398Z",
-    "activeTaskId": "000001-stack-pin-node-runtime",
-    "activeKind": "qa",
-    "runningCount": 1,
+    "queueGeneratedAt": "2026-10-01T18:06:10.061Z",
+    "activeTaskId": "000003-infra-ci-verify-pipeline",
+    "activeKind": null,
+    "runningCount": 0,
     "blockedCount": 126,
-    "logCount": 9
+    "logCount": 89
   },
   "autopilot": {
-    "active": true,
-    "kind": "qa",
-    "taskId": "000001-stack-pin-node-runtime",
-    "phaseId": "0000-P0",
-    "epic": "0000",
-    "ordinal": 0,
-    "assignedAt": "2026-10-01T07:53:25.866Z",
-    "needsAgent": true
+    "active": false,
+    "idleAt": "2026-10-01T09:09:50.210Z",
+    "last": {
+      "kind": "gate",
+      "phaseId": "0000-P2",
+      "waitFor": "0000-P1",
+      "message": "Menunggu Human QA release phase 0000-P1"
+    }
   },
   "sessions": {
     "development": {
-      "requestedAt": "2026-10-01T07:21:14.286Z",
+      "requestedAt": "2026-10-01T09:08:41.673Z",
       "source": "autopilot",
       "action": "run_development_task",
-      "taskId": "000001-stack-pin-node-runtime",
-      "phaseId": "0000-P0",
-      "planPath": "Agentic/Development/Plan/0000/phase-00/tasks/000001-stack-pin-node-runtime/plan.md",
-      "featurePath": "Agentic/agentic/development/features/0000-platform-stack.md",
-      "skill": "agentic/skill/development/SKILL.md",
-      "agentPrompt": "Agent Development — 1 session = 1 feature + 1 task\nTask: 000001-stack-pin-node-runtime · phase 0000-P0\nPlan: Agentic/Development/Plan/0000/phase-00/tasks/000001-stack-pin-node-runtime/plan.md\nFeature: Agentic/agentic/development/features/0000-platform-stack.md\nSkill: agentic/skill/development/SKILL.md\nSelesai: laporan development + update plan.md + npm run agentic:validate-dev -- --task 000001-stack-pin-node-runtime --epic 0000 --phase 0"
+      "taskId": "000003-infra-ci-verify-pipeline",
+      "phaseId": "0000-P1",
+      "planPath": "Agentic/Development/Plan/0000/phase-01/tasks/000003-infra-ci-verify-pipeline/plan.md",
+      "featurePath": "Agentic/agentic/development/features/0000-infra-ci-verify-pipeline.md",
+      "skill": "docs/agentic/skill/development/SKILL.md",
+      "agentPrompt": "Agent Development — 1 session = 1 feature + 1 task\nTask: 000003-infra-ci-verify-pipeline · phase 0000-P1\nPlan: Agentic/Development/Plan/0000/phase-01/tasks/000003-infra-ci-verify-pipeline/plan.md\nFeature: Agentic/agentic/development/features/0000-infra-ci-verify-pipeline.md\nSkill: docs/agentic/skill/development/SKILL.md\nSelesai: laporan development + update plan.md + npm run agentic:validate-dev -- --task 000003-infra-ci-verify-pipeline --epic 0000 --phase 1"
     },
     "autopilotWork": {
       "version": 1,
-      "generatedAt": "2026-10-01T07:53:25.866Z",
+      "generatedAt": "2026-10-01T18:05:58.872Z",
       "work": {
-        "kind": "qa",
-        "action": "run_qa_task",
-        "phaseId": "0000-P0",
-        "epic": "0000",
-        "ordinal": 0,
-        "taskId": "000001-stack-pin-node-runtime",
-        "skill": "agentic/skill/qa/SKILL.md",
-        "planPath": "Development/Plan/0000/phase-00/tasks/000001-stack-pin-node-runtime/plan.md",
-        "hasDevReport": true
+        "kind": "gate",
+        "phaseId": "0000-P2",
+        "waitFor": "0000-P1",
+        "message": "Menunggu Human QA release phase 0000-P1"
       },
-      "prompt": "Agent QA — 1 session = 1 task\nTask: 000001-stack-pin-node-runtime · phase 0000-P0\nPlan: Agentic/Development/Plan/0000/phase-00/tasks/000001-stack-pin-node-runtime/plan.md\nSkill: agentic/skill/qa/SKILL.md\nSelesai: npm run agentic:validate-qa -- --task 000001-stack-pin-node-runtime --epic 0000 --phase 0",
-      "active": {
-        "active": true,
-        "kind": "qa",
-        "taskId": "000001-stack-pin-node-runtime",
-        "phaseId": "0000-P0",
-        "epic": "0000",
-        "ordinal": 0,
-        "assignedAt": "2026-10-01T07:53:25.866Z",
-        "needsAgent": true
-      }
+      "prompt": "Menunggu Human QA release phase 0000-P1",
+      "active": false
     },
     "intakeTrigger": {
-      "generatedAt": "2026-10-01T08:03:06.514Z",
+      "generatedAt": "2026-10-01T18:06:10.423Z",
       "targetColumn": null,
       "action": "wait_prior_release"
     }
@@ -80,68 +66,6 @@
     {
       "taskId": "000001-stack-pin-node-runtime",
       "title": "stack pin node runtime",
-      "phaseId": "0000-P0",
-      "runState": "assigned",
-      "stage": "qa",
-      "column": "test",
-      "planStatus": "defined",
-      "developmentStatus": "complete",
-      "qaStatus": "pending",
-      "isNext": true,
-      "autopilotActive": true,
-      "blockers": [],
-      "waitReasons": [],
-      "paths": {
-        "plan": "Development/Plan/0000/phase-00/tasks/000001-stack-pin-node-runtime/plan.md",
-        "development": "Development/Result/0000/phase-00/development/000001-stack-pin-node-runtime.md",
-        "qa": "Development/Result/0000/phase-00/qa/000001-stack-pin-node-runtime.md"
-      }
-    },
-    {
-      "taskId": "000002-stack-single-npm-lockfile",
-      "title": "stack single npm lockfile",
-      "phaseId": "0000-P0",
-      "runState": "waiting",
-      "stage": "development",
-      "column": "development",
-      "planStatus": "defined",
-      "developmentStatus": "pending",
-      "qaStatus": "pending",
-      "isNext": false,
-      "autopilotActive": false,
-      "blockers": [],
-      "waitReasons": [],
-      "paths": {
-        "plan": "Development/Plan/0000/phase-00/tasks/000002-stack-single-npm-lockfile/plan.md",
-        "development": "Development/Result/0000/phase-00/development/000002-stack-single-npm-lockfile.md",
-        "qa": "Development/Result/0000/phase-00/qa/000002-stack-single-npm-lockfile.md"
-      }
-    },
-    {
-      "taskId": "000003-stack-repo-hygiene",
-      "title": "stack repo hygiene",
-      "phaseId": "0000-P0",
-      "runState": "waiting",
-      "stage": "development",
-      "column": "development",
-      "planStatus": "defined",
-      "developmentStatus": "pending",
-      "qaStatus": "pending",
-      "isNext": false,
-      "autopilotActive": false,
-      "blockers": [],
-      "waitReasons": [
-        "Development berurutan: menunggu 000002-stack-single-npm-lockfile selesai"
-      ],
-      "paths": {
-        "plan": "Development/Plan/0000/phase-00/tasks/000003-stack-repo-hygiene/plan.md",
-        "development": "Development/Result/0000/phase-00/development/000003-stack-repo-hygiene.md",
-        "qa": "Development/Result/0000/phase-00/qa/000003-stack-repo-hygiene.md"
-      }
-    },
-    {
-      "taskId": "000001-db-canonical-sqlite-path",
-      "title": "db canonical sqlite path",
       "phaseId": "0000-P0",
       "runState": "done",
       "stage": "audit",
@@ -154,183 +78,229 @@
       "blockers": [],
       "waitReasons": [],
       "paths": {
-        "plan": "Development/Plan/0000/phase-00/tasks/000001-db-canonical-sqlite-path/plan.md",
-        "development": "Development/Result/0000/phase-00/development/000001-db-canonical-sqlite-path.md",
-        "qa": "Development/Result/0000/phase-00/qa/000001-db-canonical-sqlite-path.md"
+        "plan": "docs/development/Plan/0000/phase-00/tasks/000001-stack-pin-node-runtime/plan.md",
+        "development": "docs/development/Result/0000/phase-00/development/000001-stack-pin-node-runtime.md",
+        "qa": "docs/development/Result/0000/phase-00/qa/000001-stack-pin-node-runtime.md"
+      }
+    },
+    {
+      "taskId": "000002-stack-single-npm-lockfile",
+      "title": "stack single npm lockfile",
+      "phaseId": "0000-P0",
+      "runState": "done",
+      "stage": "audit",
+      "column": "audit",
+      "planStatus": "defined",
+      "developmentStatus": "complete",
+      "qaStatus": "pass",
+      "isNext": false,
+      "autopilotActive": false,
+      "blockers": [],
+      "waitReasons": [],
+      "paths": {
+        "plan": "docs/development/Plan/0000/phase-00/tasks/000002-stack-single-npm-lockfile/plan.md",
+        "development": "docs/development/Result/0000/phase-00/development/000002-stack-single-npm-lockfile.md",
+        "qa": "docs/development/Result/0000/phase-00/qa/000002-stack-single-npm-lockfile.md"
+      }
+    },
+    {
+      "taskId": "000003-stack-repo-hygiene",
+      "title": "stack repo hygiene",
+      "phaseId": "0000-P0",
+      "runState": "done",
+      "stage": "audit",
+      "column": "audit",
+      "planStatus": "defined",
+      "developmentStatus": "complete",
+      "qaStatus": "pass",
+      "isNext": false,
+      "autopilotActive": false,
+      "blockers": [],
+      "waitReasons": [],
+      "paths": {
+        "plan": "docs/development/Plan/0000/phase-00/tasks/000003-stack-repo-hygiene/plan.md",
+        "development": "docs/development/Result/0000/phase-00/development/000003-stack-repo-hygiene.md",
+        "qa": "docs/development/Result/0000/phase-00/qa/000003-stack-repo-hygiene.md"
+      }
+    },
+    {
+      "taskId": "000001-db-canonical-sqlite-path",
+      "title": "db canonical sqlite path",
+      "phaseId": "0000-P0",
+      "runState": "done",
+      "stage": "done",
+      "column": "done",
+      "planStatus": "defined",
+      "developmentStatus": "complete",
+      "qaStatus": "pass",
+      "isNext": false,
+      "autopilotActive": false,
+      "blockers": [],
+      "waitReasons": [],
+      "paths": {
+        "plan": "docs/development/Plan/0000/phase-00/tasks/000001-db-canonical-sqlite-path/plan.md",
+        "development": "docs/development/Result/0000/phase-00/development/000001-db-canonical-sqlite-path.md",
+        "qa": "docs/development/Result/0000/phase-00/qa/000001-db-canonical-sqlite-path.md"
       }
     },
     {
       "taskId": "000004-stack-env-example",
       "title": "stack env example",
       "phaseId": "0000-P0",
-      "runState": "waiting",
-      "stage": "development",
-      "column": "development",
+      "runState": "done",
+      "stage": "audit",
+      "column": "audit",
       "planStatus": "defined",
-      "developmentStatus": "pending",
-      "qaStatus": "pending",
+      "developmentStatus": "complete",
+      "qaStatus": "pass",
       "isNext": false,
       "autopilotActive": false,
       "blockers": [],
-      "waitReasons": [
-        "Development berurutan: menunggu 000002-stack-single-npm-lockfile selesai"
-      ],
+      "waitReasons": [],
       "paths": {
-        "plan": "Development/Plan/0000/phase-00/tasks/000004-stack-env-example/plan.md",
-        "development": "Development/Result/0000/phase-00/development/000004-stack-env-example.md",
-        "qa": "Development/Result/0000/phase-00/qa/000004-stack-env-example.md"
+        "plan": "docs/development/Plan/0000/phase-00/tasks/000004-stack-env-example/plan.md",
+        "development": "docs/development/Result/0000/phase-00/development/000004-stack-env-example.md",
+        "qa": "docs/development/Result/0000/phase-00/qa/000004-stack-env-example.md"
       }
     },
     {
       "taskId": "000002-db-root-scripts",
       "title": "db root scripts",
       "phaseId": "0000-P0",
-      "runState": "waiting",
-      "stage": "development",
-      "column": "development",
+      "runState": "done",
+      "stage": "audit",
+      "column": "audit",
       "planStatus": "defined",
-      "developmentStatus": "pending",
-      "qaStatus": "pending",
+      "developmentStatus": "complete",
+      "qaStatus": "pass",
       "isNext": false,
       "autopilotActive": false,
       "blockers": [],
-      "waitReasons": [
-        "Development berurutan: menunggu 000002-stack-single-npm-lockfile selesai"
-      ],
+      "waitReasons": [],
       "paths": {
-        "plan": "Development/Plan/0000/phase-00/tasks/000002-db-root-scripts/plan.md",
-        "development": "Development/Result/0000/phase-00/development/000002-db-root-scripts.md",
-        "qa": "Development/Result/0000/phase-00/qa/000002-db-root-scripts.md"
+        "plan": "docs/development/Plan/0000/phase-00/tasks/000002-db-root-scripts/plan.md",
+        "development": "docs/development/Result/0000/phase-00/development/000002-db-root-scripts.md",
+        "qa": "docs/development/Result/0000/phase-00/qa/000002-db-root-scripts.md"
       }
     },
     {
       "taskId": "000005-stack-setup-script",
       "title": "stack setup script",
       "phaseId": "0000-P0",
-      "runState": "waiting",
-      "stage": "development",
-      "column": "development",
+      "runState": "done",
+      "stage": "audit",
+      "column": "audit",
       "planStatus": "defined",
-      "developmentStatus": "pending",
-      "qaStatus": "pending",
+      "developmentStatus": "complete",
+      "qaStatus": "pass",
       "isNext": false,
       "autopilotActive": false,
       "blockers": [],
-      "waitReasons": [
-        "Development berurutan: menunggu 000002-stack-single-npm-lockfile selesai"
-      ],
+      "waitReasons": [],
       "paths": {
-        "plan": "Development/Plan/0000/phase-00/tasks/000005-stack-setup-script/plan.md",
-        "development": "Development/Result/0000/phase-00/development/000005-stack-setup-script.md",
-        "qa": "Development/Result/0000/phase-00/qa/000005-stack-setup-script.md"
+        "plan": "docs/development/Plan/0000/phase-00/tasks/000005-stack-setup-script/plan.md",
+        "development": "docs/development/Result/0000/phase-00/development/000005-stack-setup-script.md",
+        "qa": "docs/development/Result/0000/phase-00/qa/000005-stack-setup-script.md"
       }
     },
     {
       "taskId": "000006-stack-verify-script",
       "title": "stack verify script",
       "phaseId": "0000-P0",
-      "runState": "waiting",
-      "stage": "development",
-      "column": "development",
+      "runState": "done",
+      "stage": "audit",
+      "column": "audit",
       "planStatus": "defined",
-      "developmentStatus": "pending",
-      "qaStatus": "pending",
+      "developmentStatus": "complete",
+      "qaStatus": "pass",
       "isNext": false,
       "autopilotActive": false,
       "blockers": [],
-      "waitReasons": [
-        "Development berurutan: menunggu 000002-stack-single-npm-lockfile selesai"
-      ],
+      "waitReasons": [],
       "paths": {
-        "plan": "Development/Plan/0000/phase-00/tasks/000006-stack-verify-script/plan.md",
-        "development": "Development/Result/0000/phase-00/development/000006-stack-verify-script.md",
-        "qa": "Development/Result/0000/phase-00/qa/000006-stack-verify-script.md"
+        "plan": "docs/development/Plan/0000/phase-00/tasks/000006-stack-verify-script/plan.md",
+        "development": "docs/development/Result/0000/phase-00/development/000006-stack-verify-script.md",
+        "qa": "docs/development/Result/0000/phase-00/qa/000006-stack-verify-script.md"
       }
     },
     {
       "taskId": "000001-docs-dev-runbook",
       "title": "docs dev runbook",
       "phaseId": "0000-P0",
-      "runState": "waiting",
-      "stage": "development",
-      "column": "development",
+      "runState": "done",
+      "stage": "audit",
+      "column": "audit",
       "planStatus": "defined",
-      "developmentStatus": "pending",
-      "qaStatus": "pending",
+      "developmentStatus": "complete",
+      "qaStatus": "pass",
       "isNext": false,
       "autopilotActive": false,
       "blockers": [],
-      "waitReasons": [
-        "Development berurutan: menunggu 000002-stack-single-npm-lockfile selesai"
-      ],
+      "waitReasons": [],
       "paths": {
-        "plan": "Development/Plan/0000/phase-00/tasks/000001-docs-dev-runbook/plan.md",
-        "development": "Development/Result/0000/phase-00/development/000001-docs-dev-runbook.md",
-        "qa": "Development/Result/0000/phase-00/qa/000001-docs-dev-runbook.md"
+        "plan": "docs/development/Plan/0000/phase-00/tasks/000001-docs-dev-runbook/plan.md",
+        "development": "docs/development/Result/0000/phase-00/development/000001-docs-dev-runbook.md",
+        "qa": "docs/development/Result/0000/phase-00/qa/000001-docs-dev-runbook.md"
       }
     },
     {
       "taskId": "000001-infra-github-repo-protection",
       "title": "infra github repo protection",
       "phaseId": "0000-P1",
-      "runState": "waiting",
-      "stage": "development",
-      "column": "development",
+      "runState": "done",
+      "stage": "audit",
+      "column": "audit",
       "planStatus": "defined",
-      "developmentStatus": "pending",
-      "qaStatus": "pending",
+      "developmentStatus": "complete",
+      "qaStatus": "pass",
       "isNext": false,
       "autopilotActive": false,
       "blockers": [],
       "waitReasons": [],
       "paths": {
-        "plan": "Development/Plan/0000/phase-01/tasks/000001-infra-github-repo-protection/plan.md",
-        "development": "Development/Result/0000/phase-01/development/000001-infra-github-repo-protection.md",
-        "qa": "Development/Result/0000/phase-01/qa/000001-infra-github-repo-protection.md"
+        "plan": "docs/development/Plan/0000/phase-01/tasks/000001-infra-github-repo-protection/plan.md",
+        "development": "docs/development/Result/0000/phase-01/development/000001-infra-github-repo-protection.md",
+        "qa": "docs/development/Result/0000/phase-01/qa/000001-infra-github-repo-protection.md"
       }
     },
     {
       "taskId": "000002-infra-ci-workflow-fix",
       "title": "infra ci workflow fix",
       "phaseId": "0000-P1",
-      "runState": "waiting",
-      "stage": "development",
-      "column": "development",
+      "runState": "done",
+      "stage": "audit",
+      "column": "audit",
       "planStatus": "defined",
-      "developmentStatus": "pending",
-      "qaStatus": "pending",
+      "developmentStatus": "complete",
+      "qaStatus": "pass",
       "isNext": false,
       "autopilotActive": false,
       "blockers": [],
-      "waitReasons": [
-        "Development berurutan: menunggu 000001-infra-github-repo-protection selesai"
-      ],
+      "waitReasons": [],
       "paths": {
-        "plan": "Development/Plan/0000/phase-01/tasks/000002-infra-ci-workflow-fix/plan.md",
-        "development": "Development/Result/0000/phase-01/development/000002-infra-ci-workflow-fix.md",
-        "qa": "Development/Result/0000/phase-01/qa/000002-infra-ci-workflow-fix.md"
+        "plan": "docs/development/Plan/0000/phase-01/tasks/000002-infra-ci-workflow-fix/plan.md",
+        "development": "docs/development/Result/0000/phase-01/development/000002-infra-ci-workflow-fix.md",
+        "qa": "docs/development/Result/0000/phase-01/qa/000002-infra-ci-workflow-fix.md"
       }
     },
     {
       "taskId": "000003-infra-ci-verify-pipeline",
       "title": "infra ci verify pipeline",
       "phaseId": "0000-P1",
-      "runState": "waiting",
-      "stage": "development",
-      "column": "development",
+      "runState": "done",
+      "stage": "audit",
+      "column": "audit",
       "planStatus": "defined",
-      "developmentStatus": "pending",
-      "qaStatus": "pending",
+      "developmentStatus": "complete",
+      "qaStatus": "pass",
       "isNext": false,
       "autopilotActive": false,
       "blockers": [],
-      "waitReasons": [
-        "Development berurutan: menunggu 000001-infra-github-repo-protection selesai"
-      ],
+      "waitReasons": [],
       "paths": {
-        "plan": "Development/Plan/0000/phase-01/tasks/000003-infra-ci-verify-pipeline/plan.md",
-        "development": "Development/Result/0000/phase-01/development/000003-infra-ci-verify-pipeline.md",
-        "qa": "Development/Result/0000/phase-01/qa/000003-infra-ci-verify-pipeline.md"
+        "plan": "docs/development/Plan/0000/phase-01/tasks/000003-infra-ci-verify-pipeline/plan.md",
+        "development": "docs/development/Result/0000/phase-01/development/000003-infra-ci-verify-pipeline.md",
+        "qa": "docs/development/Result/0000/phase-01/qa/000003-infra-ci-verify-pipeline.md"
       }
     },
     {
@@ -351,9 +321,9 @@
       ],
       "waitReasons": [],
       "paths": {
-        "plan": "Development/Plan/0000/phase-02/tasks/000002-docs-adr-platform-decisions/plan.md",
-        "development": "Development/Result/0000/phase-02/development/000002-docs-adr-platform-decisions.md",
-        "qa": "Development/Result/0000/phase-02/qa/000002-docs-adr-platform-decisions.md"
+        "plan": "docs/development/Plan/0000/phase-02/tasks/000002-docs-adr-platform-decisions/plan.md",
+        "development": "docs/development/Result/0000/phase-02/development/000002-docs-adr-platform-decisions.md",
+        "qa": "docs/development/Result/0000/phase-02/qa/000002-docs-adr-platform-decisions.md"
       }
     },
     {
@@ -376,9 +346,9 @@
         "Development berurutan: menunggu 000002-docs-adr-platform-decisions selesai"
       ],
       "paths": {
-        "plan": "Development/Plan/0000/phase-02/tasks/000003-docs-branch-commit-convention/plan.md",
-        "development": "Development/Result/0000/phase-02/development/000003-docs-branch-commit-convention.md",
-        "qa": "Development/Result/0000/phase-02/qa/000003-docs-branch-commit-convention.md"
+        "plan": "docs/development/Plan/0000/phase-02/tasks/000003-docs-branch-commit-convention/plan.md",
+        "development": "docs/development/Result/0000/phase-02/development/000003-docs-branch-commit-convention.md",
+        "qa": "docs/development/Result/0000/phase-02/qa/000003-docs-branch-commit-convention.md"
       }
     },
     {
@@ -401,9 +371,9 @@
         "Development berurutan: menunggu 000002-docs-adr-platform-decisions selesai"
       ],
       "paths": {
-        "plan": "Development/Plan/0000/phase-02/tasks/000007-stack-pin-dev-dependencies/plan.md",
-        "development": "Development/Result/0000/phase-02/development/000007-stack-pin-dev-dependencies.md",
-        "qa": "Development/Result/0000/phase-02/qa/000007-stack-pin-dev-dependencies.md"
+        "plan": "docs/development/Plan/0000/phase-02/tasks/000007-stack-pin-dev-dependencies/plan.md",
+        "development": "docs/development/Result/0000/phase-02/development/000007-stack-pin-dev-dependencies.md",
+        "qa": "docs/development/Result/0000/phase-02/qa/000007-stack-pin-dev-dependencies.md"
       }
     },
     {
@@ -426,9 +396,9 @@
         "Development berurutan: menunggu 000002-docs-adr-platform-decisions selesai"
       ],
       "paths": {
-        "plan": "Development/Plan/0000/phase-02/tasks/000004-db-postgres-strategy/plan.md",
-        "development": "Development/Result/0000/phase-02/development/000004-db-postgres-strategy.md",
-        "qa": "Development/Result/0000/phase-02/qa/000004-db-postgres-strategy.md"
+        "plan": "docs/development/Plan/0000/phase-02/tasks/000004-db-postgres-strategy/plan.md",
+        "development": "docs/development/Result/0000/phase-02/development/000004-db-postgres-strategy.md",
+        "qa": "docs/development/Result/0000/phase-02/qa/000004-db-postgres-strategy.md"
       }
     },
     {
@@ -449,9 +419,9 @@
       ],
       "waitReasons": [],
       "paths": {
-        "plan": "Development/Plan/0000/phase-02/tasks/000001-be-env-validation/plan.md",
-        "development": "Development/Result/0000/phase-02/development/000001-be-env-validation.md",
-        "qa": "Development/Result/0000/phase-02/qa/000001-be-env-validation.md"
+        "plan": "docs/development/Plan/0000/phase-02/tasks/000001-be-env-validation/plan.md",
+        "development": "docs/development/Result/0000/phase-02/development/000001-be-env-validation.md",
+        "qa": "docs/development/Result/0000/phase-02/qa/000001-be-env-validation.md"
       }
     },
     {
@@ -474,9 +444,9 @@
         "Development berurutan: menunggu 000002-docs-adr-platform-decisions selesai"
       ],
       "paths": {
-        "plan": "Development/Plan/0000/phase-02/tasks/000002-be-structured-logging-request-id/plan.md",
-        "development": "Development/Result/0000/phase-02/development/000002-be-structured-logging-request-id.md",
-        "qa": "Development/Result/0000/phase-02/qa/000002-be-structured-logging-request-id.md"
+        "plan": "docs/development/Plan/0000/phase-02/tasks/000002-be-structured-logging-request-id/plan.md",
+        "development": "docs/development/Result/0000/phase-02/development/000002-be-structured-logging-request-id.md",
+        "qa": "docs/development/Result/0000/phase-02/qa/000002-be-structured-logging-request-id.md"
       }
     },
     {
@@ -499,9 +469,9 @@
         "Development berurutan: menunggu 000002-docs-adr-platform-decisions selesai"
       ],
       "paths": {
-        "plan": "Development/Plan/0000/phase-02/tasks/000003-be-email-adapter-selection/plan.md",
-        "development": "Development/Result/0000/phase-02/development/000003-be-email-adapter-selection.md",
-        "qa": "Development/Result/0000/phase-02/qa/000003-be-email-adapter-selection.md"
+        "plan": "docs/development/Plan/0000/phase-02/tasks/000003-be-email-adapter-selection/plan.md",
+        "development": "docs/development/Result/0000/phase-02/development/000003-be-email-adapter-selection.md",
+        "qa": "docs/development/Result/0000/phase-02/qa/000003-be-email-adapter-selection.md"
       }
     },
     {
@@ -524,9 +494,9 @@
         "Development berurutan: menunggu 000002-docs-adr-platform-decisions selesai"
       ],
       "paths": {
-        "plan": "Development/Plan/0000/phase-02/tasks/000003-db-seed-demo/plan.md",
-        "development": "Development/Result/0000/phase-02/development/000003-db-seed-demo.md",
-        "qa": "Development/Result/0000/phase-02/qa/000003-db-seed-demo.md"
+        "plan": "docs/development/Plan/0000/phase-02/tasks/000003-db-seed-demo/plan.md",
+        "development": "docs/development/Result/0000/phase-02/development/000003-db-seed-demo.md",
+        "qa": "docs/development/Result/0000/phase-02/qa/000003-db-seed-demo.md"
       }
     },
     {
@@ -549,9 +519,9 @@
         "Development berurutan: menunggu 000002-docs-adr-platform-decisions selesai"
       ],
       "paths": {
-        "plan": "Development/Plan/0000/phase-02/tasks/000008-stack-doctor-script/plan.md",
-        "development": "Development/Result/0000/phase-02/development/000008-stack-doctor-script.md",
-        "qa": "Development/Result/0000/phase-02/qa/000008-stack-doctor-script.md"
+        "plan": "docs/development/Plan/0000/phase-02/tasks/000008-stack-doctor-script/plan.md",
+        "development": "docs/development/Result/0000/phase-02/development/000008-stack-doctor-script.md",
+        "qa": "docs/development/Result/0000/phase-02/qa/000008-stack-doctor-script.md"
       }
     },
     {
@@ -574,9 +544,9 @@
         "Development berurutan: menunggu 000002-docs-adr-platform-decisions selesai"
       ],
       "paths": {
-        "plan": "Development/Plan/0000/phase-02/tasks/000005-infra-hosting-provision/plan.md",
-        "development": "Development/Result/0000/phase-02/development/000005-infra-hosting-provision.md",
-        "qa": "Development/Result/0000/phase-02/qa/000005-infra-hosting-provision.md"
+        "plan": "docs/development/Plan/0000/phase-02/tasks/000005-infra-hosting-provision/plan.md",
+        "development": "docs/development/Result/0000/phase-02/development/000005-infra-hosting-provision.md",
+        "qa": "docs/development/Result/0000/phase-02/qa/000005-infra-hosting-provision.md"
       }
     },
     {
@@ -599,9 +569,9 @@
         "Development berurutan: menunggu 000002-docs-adr-platform-decisions selesai"
       ],
       "paths": {
-        "plan": "Development/Plan/0000/phase-02/tasks/000006-infra-domain-tls-cors/plan.md",
-        "development": "Development/Result/0000/phase-02/development/000006-infra-domain-tls-cors.md",
-        "qa": "Development/Result/0000/phase-02/qa/000006-infra-domain-tls-cors.md"
+        "plan": "docs/development/Plan/0000/phase-02/tasks/000006-infra-domain-tls-cors/plan.md",
+        "development": "docs/development/Result/0000/phase-02/development/000006-infra-domain-tls-cors.md",
+        "qa": "docs/development/Result/0000/phase-02/qa/000006-infra-domain-tls-cors.md"
       }
     },
     {
@@ -624,9 +594,9 @@
         "Development berurutan: menunggu 000002-docs-adr-platform-decisions selesai"
       ],
       "paths": {
-        "plan": "Development/Plan/0000/phase-02/tasks/000007-infra-staging-cd/plan.md",
-        "development": "Development/Result/0000/phase-02/development/000007-infra-staging-cd.md",
-        "qa": "Development/Result/0000/phase-02/qa/000007-infra-staging-cd.md"
+        "plan": "docs/development/Plan/0000/phase-02/tasks/000007-infra-staging-cd/plan.md",
+        "development": "docs/development/Result/0000/phase-02/development/000007-infra-staging-cd.md",
+        "qa": "docs/development/Result/0000/phase-02/qa/000007-infra-staging-cd.md"
       }
     },
     {
@@ -649,9 +619,9 @@
         "Development berurutan: menunggu 000002-docs-adr-platform-decisions selesai"
       ],
       "paths": {
-        "plan": "Development/Plan/0000/phase-02/tasks/000008-infra-email-provider-staging/plan.md",
-        "development": "Development/Result/0000/phase-02/development/000008-infra-email-provider-staging.md",
-        "qa": "Development/Result/0000/phase-02/qa/000008-infra-email-provider-staging.md"
+        "plan": "docs/development/Plan/0000/phase-02/tasks/000008-infra-email-provider-staging/plan.md",
+        "development": "docs/development/Result/0000/phase-02/development/000008-infra-email-provider-staging.md",
+        "qa": "docs/development/Result/0000/phase-02/qa/000008-infra-email-provider-staging.md"
       }
     },
     {
@@ -674,9 +644,9 @@
         "Development berurutan: menunggu 000002-docs-adr-platform-decisions selesai"
       ],
       "paths": {
-        "plan": "Development/Plan/0000/phase-02/tasks/000004-infra-ci-performance/plan.md",
-        "development": "Development/Result/0000/phase-02/development/000004-infra-ci-performance.md",
-        "qa": "Development/Result/0000/phase-02/qa/000004-infra-ci-performance.md"
+        "plan": "docs/development/Plan/0000/phase-02/tasks/000004-infra-ci-performance/plan.md",
+        "development": "docs/development/Result/0000/phase-02/development/000004-infra-ci-performance.md",
+        "qa": "docs/development/Result/0000/phase-02/qa/000004-infra-ci-performance.md"
       }
     },
     {
@@ -699,9 +669,9 @@
         "Development berurutan: menunggu 000002-docs-adr-platform-decisions selesai"
       ],
       "paths": {
-        "plan": "Development/Plan/0000/phase-02/tasks/000001-fe-shared-design-tokens/plan.md",
-        "development": "Development/Result/0000/phase-02/development/000001-fe-shared-design-tokens.md",
-        "qa": "Development/Result/0000/phase-02/qa/000001-fe-shared-design-tokens.md"
+        "plan": "docs/development/Plan/0000/phase-02/tasks/000001-fe-shared-design-tokens/plan.md",
+        "development": "docs/development/Result/0000/phase-02/development/000001-fe-shared-design-tokens.md",
+        "qa": "docs/development/Result/0000/phase-02/qa/000001-fe-shared-design-tokens.md"
       }
     },
     {
@@ -724,9 +694,9 @@
         "Development berurutan: menunggu 000002-docs-adr-platform-decisions selesai"
       ],
       "paths": {
-        "plan": "Development/Plan/0000/phase-02/tasks/000002-fe-web-css-token-build/plan.md",
-        "development": "Development/Result/0000/phase-02/development/000002-fe-web-css-token-build.md",
-        "qa": "Development/Result/0000/phase-02/qa/000002-fe-web-css-token-build.md"
+        "plan": "docs/development/Plan/0000/phase-02/tasks/000002-fe-web-css-token-build/plan.md",
+        "development": "docs/development/Result/0000/phase-02/development/000002-fe-web-css-token-build.md",
+        "qa": "docs/development/Result/0000/phase-02/qa/000002-fe-web-css-token-build.md"
       }
     },
     {
@@ -747,9 +717,9 @@
       ],
       "waitReasons": [],
       "paths": {
-        "plan": "Development/Plan/0000/phase-03/tasks/000005-db-backup-restore/plan.md",
-        "development": "Development/Result/0000/phase-03/development/000005-db-backup-restore.md",
-        "qa": "Development/Result/0000/phase-03/qa/000005-db-backup-restore.md"
+        "plan": "docs/development/Plan/0000/phase-03/tasks/000005-db-backup-restore/plan.md",
+        "development": "docs/development/Result/0000/phase-03/development/000005-db-backup-restore.md",
+        "qa": "docs/development/Result/0000/phase-03/qa/000005-db-backup-restore.md"
       }
     },
     {
@@ -772,9 +742,9 @@
         "Development berurutan: menunggu 000005-db-backup-restore selesai"
       ],
       "paths": {
-        "plan": "Development/Plan/0000/phase-03/tasks/000009-infra-secret-rotation/plan.md",
-        "development": "Development/Result/0000/phase-03/development/000009-infra-secret-rotation.md",
-        "qa": "Development/Result/0000/phase-03/qa/000009-infra-secret-rotation.md"
+        "plan": "docs/development/Plan/0000/phase-03/tasks/000009-infra-secret-rotation/plan.md",
+        "development": "docs/development/Result/0000/phase-03/development/000009-infra-secret-rotation.md",
+        "qa": "docs/development/Result/0000/phase-03/qa/000009-infra-secret-rotation.md"
       }
     },
     {
@@ -797,9 +767,9 @@
         "Development berurutan: menunggu 000005-db-backup-restore selesai"
       ],
       "paths": {
-        "plan": "Development/Plan/0000/phase-03/tasks/000010-infra-ci-gate-summary/plan.md",
-        "development": "Development/Result/0000/phase-03/development/000010-infra-ci-gate-summary.md",
-        "qa": "Development/Result/0000/phase-03/qa/000010-infra-ci-gate-summary.md"
+        "plan": "docs/development/Plan/0000/phase-03/tasks/000010-infra-ci-gate-summary/plan.md",
+        "development": "docs/development/Result/0000/phase-03/development/000010-infra-ci-gate-summary.md",
+        "qa": "docs/development/Result/0000/phase-03/qa/000010-infra-ci-gate-summary.md"
       }
     },
     {
@@ -822,9 +792,9 @@
         "Development berurutan: menunggu 000005-db-backup-restore selesai"
       ],
       "paths": {
-        "plan": "Development/Plan/0000/phase-03/tasks/000011-infra-production-cd/plan.md",
-        "development": "Development/Result/0000/phase-03/development/000011-infra-production-cd.md",
-        "qa": "Development/Result/0000/phase-03/qa/000011-infra-production-cd.md"
+        "plan": "docs/development/Plan/0000/phase-03/tasks/000011-infra-production-cd/plan.md",
+        "development": "docs/development/Result/0000/phase-03/development/000011-infra-production-cd.md",
+        "qa": "docs/development/Result/0000/phase-03/qa/000011-infra-production-cd.md"
       }
     },
     {
@@ -847,9 +817,9 @@
         "Development berurutan: menunggu 000005-db-backup-restore selesai"
       ],
       "paths": {
-        "plan": "Development/Plan/0000/phase-03/tasks/000012-infra-rollback/plan.md",
-        "development": "Development/Result/0000/phase-03/development/000012-infra-rollback.md",
-        "qa": "Development/Result/0000/phase-03/qa/000012-infra-rollback.md"
+        "plan": "docs/development/Plan/0000/phase-03/tasks/000012-infra-rollback/plan.md",
+        "development": "docs/development/Result/0000/phase-03/development/000012-infra-rollback.md",
+        "qa": "docs/development/Result/0000/phase-03/qa/000012-infra-rollback.md"
       }
     },
     {
@@ -872,9 +842,9 @@
         "Development berurutan: menunggu 000005-db-backup-restore selesai"
       ],
       "paths": {
-        "plan": "Development/Plan/0000/phase-03/tasks/000013-infra-proxy-rate-limit-ready/plan.md",
-        "development": "Development/Result/0000/phase-03/development/000013-infra-proxy-rate-limit-ready.md",
-        "qa": "Development/Result/0000/phase-03/qa/000013-infra-proxy-rate-limit-ready.md"
+        "plan": "docs/development/Plan/0000/phase-03/tasks/000013-infra-proxy-rate-limit-ready/plan.md",
+        "development": "docs/development/Result/0000/phase-03/development/000013-infra-proxy-rate-limit-ready.md",
+        "qa": "docs/development/Result/0000/phase-03/qa/000013-infra-proxy-rate-limit-ready.md"
       }
     },
     {
@@ -897,9 +867,9 @@
         "Development berurutan: menunggu 000005-db-backup-restore selesai"
       ],
       "paths": {
-        "plan": "Development/Plan/0000/phase-03/tasks/000014-infra-alerting-log-retention/plan.md",
-        "development": "Development/Result/0000/phase-03/development/000014-infra-alerting-log-retention.md",
-        "qa": "Development/Result/0000/phase-03/qa/000014-infra-alerting-log-retention.md"
+        "plan": "docs/development/Plan/0000/phase-03/tasks/000014-infra-alerting-log-retention/plan.md",
+        "development": "docs/development/Result/0000/phase-03/development/000014-infra-alerting-log-retention.md",
+        "qa": "docs/development/Result/0000/phase-03/qa/000014-infra-alerting-log-retention.md"
       }
     },
     {
@@ -922,9 +892,9 @@
         "Development berurutan: menunggu 000005-db-backup-restore selesai"
       ],
       "paths": {
-        "plan": "Development/Plan/0000/phase-03/tasks/000015-infra-email-domain-production/plan.md",
-        "development": "Development/Result/0000/phase-03/development/000015-infra-email-domain-production.md",
-        "qa": "Development/Result/0000/phase-03/qa/000015-infra-email-domain-production.md"
+        "plan": "docs/development/Plan/0000/phase-03/tasks/000015-infra-email-domain-production/plan.md",
+        "development": "docs/development/Result/0000/phase-03/development/000015-infra-email-domain-production.md",
+        "qa": "docs/development/Result/0000/phase-03/qa/000015-infra-email-domain-production.md"
       }
     },
     {
@@ -947,9 +917,9 @@
         "Development berurutan: menunggu 000005-db-backup-restore selesai"
       ],
       "paths": {
-        "plan": "Development/Plan/0000/phase-03/tasks/000003-fe-design-serve/plan.md",
-        "development": "Development/Result/0000/phase-03/development/000003-fe-design-serve.md",
-        "qa": "Development/Result/0000/phase-03/qa/000003-fe-design-serve.md"
+        "plan": "docs/development/Plan/0000/phase-03/tasks/000003-fe-design-serve/plan.md",
+        "development": "docs/development/Result/0000/phase-03/development/000003-fe-design-serve.md",
+        "qa": "docs/development/Result/0000/phase-03/qa/000003-fe-design-serve.md"
       }
     },
     {
@@ -972,9 +942,9 @@
         "Development berurutan: menunggu 000005-db-backup-restore selesai"
       ],
       "paths": {
-        "plan": "Development/Plan/0000/phase-03/tasks/000004-docs-ops-runbook/plan.md",
-        "development": "Development/Result/0000/phase-03/development/000004-docs-ops-runbook.md",
-        "qa": "Development/Result/0000/phase-03/qa/000004-docs-ops-runbook.md"
+        "plan": "docs/development/Plan/0000/phase-03/tasks/000004-docs-ops-runbook/plan.md",
+        "development": "docs/development/Result/0000/phase-03/development/000004-docs-ops-runbook.md",
+        "qa": "docs/development/Result/0000/phase-03/qa/000004-docs-ops-runbook.md"
       }
     },
     {
@@ -994,9 +964,9 @@
       ],
       "waitReasons": [],
       "paths": {
-        "plan": "Development/Plan/0100/phase-01/tasks/010001-stack-workspace-packages/plan.md",
-        "development": "Development/Result/0100/phase-01/development/010001-stack-workspace-packages.md",
-        "qa": "Development/Result/0100/phase-01/qa/010001-stack-workspace-packages.md"
+        "plan": "docs/development/Plan/0100/phase-01/tasks/010001-stack-workspace-packages/plan.md",
+        "development": "docs/development/Result/0100/phase-01/development/010001-stack-workspace-packages.md",
+        "qa": "docs/development/Result/0100/phase-01/qa/010001-stack-workspace-packages.md"
       }
     },
     {
@@ -1018,9 +988,9 @@
         "Development berurutan: menunggu 010001-stack-workspace-packages selesai"
       ],
       "paths": {
-        "plan": "Development/Plan/0100/phase-01/tasks/010002-db-prisma-schema-baseline/plan.md",
-        "development": "Development/Result/0100/phase-01/development/010002-db-prisma-schema-baseline.md",
-        "qa": "Development/Result/0100/phase-01/qa/010002-db-prisma-schema-baseline.md"
+        "plan": "docs/development/Plan/0100/phase-01/tasks/010002-db-prisma-schema-baseline/plan.md",
+        "development": "docs/development/Result/0100/phase-01/development/010002-db-prisma-schema-baseline.md",
+        "qa": "docs/development/Result/0100/phase-01/qa/010002-db-prisma-schema-baseline.md"
       }
     },
     {
@@ -1042,9 +1012,9 @@
         "Development berurutan: menunggu 010001-stack-workspace-packages selesai"
       ],
       "paths": {
-        "plan": "Development/Plan/0100/phase-01/tasks/010003-db-migrate-scripts/plan.md",
-        "development": "Development/Result/0100/phase-01/development/010003-db-migrate-scripts.md",
-        "qa": "Development/Result/0100/phase-01/qa/010003-db-migrate-scripts.md"
+        "plan": "docs/development/Plan/0100/phase-01/tasks/010003-db-migrate-scripts/plan.md",
+        "development": "docs/development/Result/0100/phase-01/development/010003-db-migrate-scripts.md",
+        "qa": "docs/development/Result/0100/phase-01/qa/010003-db-migrate-scripts.md"
       }
     },
     {
@@ -1066,9 +1036,9 @@
         "Development berurutan: menunggu 010001-stack-workspace-packages selesai"
       ],
       "paths": {
-        "plan": "Development/Plan/0100/phase-01/tasks/010004-be-health-live/plan.md",
-        "development": "Development/Result/0100/phase-01/development/010004-be-health-live.md",
-        "qa": "Development/Result/0100/phase-01/qa/010004-be-health-live.md"
+        "plan": "docs/development/Plan/0100/phase-01/tasks/010004-be-health-live/plan.md",
+        "development": "docs/development/Result/0100/phase-01/development/010004-be-health-live.md",
+        "qa": "docs/development/Result/0100/phase-01/qa/010004-be-health-live.md"
       }
     },
     {
@@ -1090,9 +1060,9 @@
         "Development berurutan: menunggu 010001-stack-workspace-packages selesai"
       ],
       "paths": {
-        "plan": "Development/Plan/0100/phase-01/tasks/010005-be-health-ready/plan.md",
-        "development": "Development/Result/0100/phase-01/development/010005-be-health-ready.md",
-        "qa": "Development/Result/0100/phase-01/qa/010005-be-health-ready.md"
+        "plan": "docs/development/Plan/0100/phase-01/tasks/010005-be-health-ready/plan.md",
+        "development": "docs/development/Result/0100/phase-01/development/010005-be-health-ready.md",
+        "qa": "docs/development/Result/0100/phase-01/qa/010005-be-health-ready.md"
       }
     },
     {
@@ -1114,9 +1084,9 @@
         "Development berurutan: menunggu 010001-stack-workspace-packages selesai"
       ],
       "paths": {
-        "plan": "Development/Plan/0100/phase-01/tasks/010006-domain-system-status/plan.md",
-        "development": "Development/Result/0100/phase-01/development/010006-domain-system-status.md",
-        "qa": "Development/Result/0100/phase-01/qa/010006-domain-system-status.md"
+        "plan": "docs/development/Plan/0100/phase-01/tasks/010006-domain-system-status/plan.md",
+        "development": "docs/development/Result/0100/phase-01/development/010006-domain-system-status.md",
+        "qa": "docs/development/Result/0100/phase-01/qa/010006-domain-system-status.md"
       }
     },
     {
@@ -1138,9 +1108,9 @@
         "Development berurutan: menunggu 010001-stack-workspace-packages selesai"
       ],
       "paths": {
-        "plan": "Development/Plan/0100/phase-01/tasks/010007-infra-gate-phase0/plan.md",
-        "development": "Development/Result/0100/phase-01/development/010007-infra-gate-phase0.md",
-        "qa": "Development/Result/0100/phase-01/qa/010007-infra-gate-phase0.md"
+        "plan": "docs/development/Plan/0100/phase-01/tasks/010007-infra-gate-phase0/plan.md",
+        "development": "docs/development/Result/0100/phase-01/development/010007-infra-gate-phase0.md",
+        "qa": "docs/development/Result/0100/phase-01/qa/010007-infra-gate-phase0.md"
       }
     },
     {
@@ -1160,9 +1130,9 @@
       ],
       "waitReasons": [],
       "paths": {
-        "plan": "Development/Plan/0101/phase-01/tasks/010101-db-user-business-profile/plan.md",
-        "development": "Development/Result/0101/phase-01/development/010101-db-user-business-profile.md",
-        "qa": "Development/Result/0101/phase-01/qa/010101-db-user-business-profile.md"
+        "plan": "docs/development/Plan/0101/phase-01/tasks/010101-db-user-business-profile/plan.md",
+        "development": "docs/development/Result/0101/phase-01/development/010101-db-user-business-profile.md",
+        "qa": "docs/development/Result/0101/phase-01/qa/010101-db-user-business-profile.md"
       }
     },
     {
@@ -1184,9 +1154,9 @@
         "Development berurutan: menunggu 010101-db-user-business-profile selesai"
       ],
       "paths": {
-        "plan": "Development/Plan/0101/phase-01/tasks/010102-domain-auth-password/plan.md",
-        "development": "Development/Result/0101/phase-01/development/010102-domain-auth-password.md",
-        "qa": "Development/Result/0101/phase-01/qa/010102-domain-auth-password.md"
+        "plan": "docs/development/Plan/0101/phase-01/tasks/010102-domain-auth-password/plan.md",
+        "development": "docs/development/Result/0101/phase-01/development/010102-domain-auth-password.md",
+        "qa": "docs/development/Result/0101/phase-01/qa/010102-domain-auth-password.md"
       }
     },
     {
@@ -1208,9 +1178,9 @@
         "Development berurutan: menunggu 010101-db-user-business-profile selesai"
       ],
       "paths": {
-        "plan": "Development/Plan/0101/phase-01/tasks/010103-be-register-login/plan.md",
-        "development": "Development/Result/0101/phase-01/development/010103-be-register-login.md",
-        "qa": "Development/Result/0101/phase-01/qa/010103-be-register-login.md"
+        "plan": "docs/development/Plan/0101/phase-01/tasks/010103-be-register-login/plan.md",
+        "development": "docs/development/Result/0101/phase-01/development/010103-be-register-login.md",
+        "qa": "docs/development/Result/0101/phase-01/qa/010103-be-register-login.md"
       }
     },
     {
@@ -1232,9 +1202,9 @@
         "Development berurutan: menunggu 010101-db-user-business-profile selesai"
       ],
       "paths": {
-        "plan": "Development/Plan/0101/phase-01/tasks/010104-be-auth-middleware/plan.md",
-        "development": "Development/Result/0101/phase-01/development/010104-be-auth-middleware.md",
-        "qa": "Development/Result/0101/phase-01/qa/010104-be-auth-middleware.md"
+        "plan": "docs/development/Plan/0101/phase-01/tasks/010104-be-auth-middleware/plan.md",
+        "development": "docs/development/Result/0101/phase-01/development/010104-be-auth-middleware.md",
+        "qa": "docs/development/Result/0101/phase-01/qa/010104-be-auth-middleware.md"
       }
     },
     {
@@ -1256,9 +1226,9 @@
         "Development berurutan: menunggu 010101-db-user-business-profile selesai"
       ],
       "paths": {
-        "plan": "Development/Plan/0101/phase-01/tasks/010105-be-profile-crud/plan.md",
-        "development": "Development/Result/0101/phase-01/development/010105-be-profile-crud.md",
-        "qa": "Development/Result/0101/phase-01/qa/010105-be-profile-crud.md"
+        "plan": "docs/development/Plan/0101/phase-01/tasks/010105-be-profile-crud/plan.md",
+        "development": "docs/development/Result/0101/phase-01/development/010105-be-profile-crud.md",
+        "qa": "docs/development/Result/0101/phase-01/qa/010105-be-profile-crud.md"
       }
     },
     {
@@ -1280,9 +1250,9 @@
         "Development berurutan: menunggu 010101-db-user-business-profile selesai"
       ],
       "paths": {
-        "plan": "Development/Plan/0101/phase-01/tasks/010106-fe-login-register/plan.md",
-        "development": "Development/Result/0101/phase-01/development/010106-fe-login-register.md",
-        "qa": "Development/Result/0101/phase-01/qa/010106-fe-login-register.md"
+        "plan": "docs/development/Plan/0101/phase-01/tasks/010106-fe-login-register/plan.md",
+        "development": "docs/development/Result/0101/phase-01/development/010106-fe-login-register.md",
+        "qa": "docs/development/Result/0101/phase-01/qa/010106-fe-login-register.md"
       }
     },
     {
@@ -1304,9 +1274,9 @@
         "Development berurutan: menunggu 010101-db-user-business-profile selesai"
       ],
       "paths": {
-        "plan": "Development/Plan/0101/phase-01/tasks/010107-fe-settings/plan.md",
-        "development": "Development/Result/0101/phase-01/development/010107-fe-settings.md",
-        "qa": "Development/Result/0101/phase-01/qa/010107-fe-settings.md"
+        "plan": "docs/development/Plan/0101/phase-01/tasks/010107-fe-settings/plan.md",
+        "development": "docs/development/Result/0101/phase-01/development/010107-fe-settings.md",
+        "qa": "docs/development/Result/0101/phase-01/qa/010107-fe-settings.md"
       }
     },
     {
@@ -1328,9 +1298,9 @@
         "Development berurutan: menunggu 010101-db-user-business-profile selesai"
       ],
       "paths": {
-        "plan": "Development/Plan/0101/phase-01/tasks/010108-fe-dashboard-guard/plan.md",
-        "development": "Development/Result/0101/phase-01/development/010108-fe-dashboard-guard.md",
-        "qa": "Development/Result/0101/phase-01/qa/010108-fe-dashboard-guard.md"
+        "plan": "docs/development/Plan/0101/phase-01/tasks/010108-fe-dashboard-guard/plan.md",
+        "development": "docs/development/Result/0101/phase-01/development/010108-fe-dashboard-guard.md",
+        "qa": "docs/development/Result/0101/phase-01/qa/010108-fe-dashboard-guard.md"
       }
     },
     {
@@ -1352,9 +1322,9 @@
         "Development berurutan: menunggu 010101-db-user-business-profile selesai"
       ],
       "paths": {
-        "plan": "Development/Plan/0101/phase-01/tasks/010109-infra-gate-phase1/plan.md",
-        "development": "Development/Result/0101/phase-01/development/010109-infra-gate-phase1.md",
-        "qa": "Development/Result/0101/phase-01/qa/010109-infra-gate-phase1.md"
+        "plan": "docs/development/Plan/0101/phase-01/tasks/010109-infra-gate-phase1/plan.md",
+        "development": "docs/development/Result/0101/phase-01/development/010109-infra-gate-phase1.md",
+        "qa": "docs/development/Result/0101/phase-01/qa/010109-infra-gate-phase1.md"
       }
     },
     {
@@ -1374,9 +1344,9 @@
       ],
       "waitReasons": [],
       "paths": {
-        "plan": "Development/Plan/0200/phase-01/tasks/020001-db-client-model/plan.md",
-        "development": "Development/Result/0200/phase-01/development/020001-db-client-model.md",
-        "qa": "Development/Result/0200/phase-01/qa/020001-db-client-model.md"
+        "plan": "docs/development/Plan/0200/phase-01/tasks/020001-db-client-model/plan.md",
+        "development": "docs/development/Result/0200/phase-01/development/020001-db-client-model.md",
+        "qa": "docs/development/Result/0200/phase-01/qa/020001-db-client-model.md"
       }
     },
     {
@@ -1398,9 +1368,9 @@
         "Development berurutan: menunggu 020001-db-client-model selesai"
       ],
       "paths": {
-        "plan": "Development/Plan/0200/phase-01/tasks/020002-domain-client-validation/plan.md",
-        "development": "Development/Result/0200/phase-01/development/020002-domain-client-validation.md",
-        "qa": "Development/Result/0200/phase-01/qa/020002-domain-client-validation.md"
+        "plan": "docs/development/Plan/0200/phase-01/tasks/020002-domain-client-validation/plan.md",
+        "development": "docs/development/Result/0200/phase-01/development/020002-domain-client-validation.md",
+        "qa": "docs/development/Result/0200/phase-01/qa/020002-domain-client-validation.md"
       }
     },
     {
@@ -1422,9 +1392,9 @@
         "Development berurutan: menunggu 020001-db-client-model selesai"
       ],
       "paths": {
-        "plan": "Development/Plan/0200/phase-01/tasks/020003-be-client-crud/plan.md",
-        "development": "Development/Result/0200/phase-01/development/020003-be-client-crud.md",
-        "qa": "Development/Result/0200/phase-01/qa/020003-be-client-crud.md"
+        "plan": "docs/development/Plan/0200/phase-01/tasks/020003-be-client-crud/plan.md",
+        "development": "docs/development/Result/0200/phase-01/development/020003-be-client-crud.md",
+        "qa": "docs/development/Result/0200/phase-01/qa/020003-be-client-crud.md"
       }
     },
     {
@@ -1446,9 +1416,9 @@
         "Development berurutan: menunggu 020001-db-client-model selesai"
       ],
       "paths": {
-        "plan": "Development/Plan/0200/phase-01/tasks/020004-fe-clients-list/plan.md",
-        "development": "Development/Result/0200/phase-01/development/020004-fe-clients-list.md",
-        "qa": "Development/Result/0200/phase-01/qa/020004-fe-clients-list.md"
+        "plan": "docs/development/Plan/0200/phase-01/tasks/020004-fe-clients-list/plan.md",
+        "development": "docs/development/Result/0200/phase-01/development/020004-fe-clients-list.md",
+        "qa": "docs/development/Result/0200/phase-01/qa/020004-fe-clients-list.md"
       }
     },
     {
@@ -1470,9 +1440,9 @@
         "Development berurutan: menunggu 020001-db-client-model selesai"
       ],
       "paths": {
-        "plan": "Development/Plan/0200/phase-01/tasks/020005-fe-client-form/plan.md",
-        "development": "Development/Result/0200/phase-01/development/020005-fe-client-form.md",
-        "qa": "Development/Result/0200/phase-01/qa/020005-fe-client-form.md"
+        "plan": "docs/development/Plan/0200/phase-01/tasks/020005-fe-client-form/plan.md",
+        "development": "docs/development/Result/0200/phase-01/development/020005-fe-client-form.md",
+        "qa": "docs/development/Result/0200/phase-01/qa/020005-fe-client-form.md"
       }
     },
     {
@@ -1494,9 +1464,9 @@
         "Development berurutan: menunggu 020001-db-client-model selesai"
       ],
       "paths": {
-        "plan": "Development/Plan/0200/phase-01/tasks/020006-infra-gate-phase2/plan.md",
-        "development": "Development/Result/0200/phase-01/development/020006-infra-gate-phase2.md",
-        "qa": "Development/Result/0200/phase-01/qa/020006-infra-gate-phase2.md"
+        "plan": "docs/development/Plan/0200/phase-01/tasks/020006-infra-gate-phase2/plan.md",
+        "development": "docs/development/Result/0200/phase-01/development/020006-infra-gate-phase2.md",
+        "qa": "docs/development/Result/0200/phase-01/qa/020006-infra-gate-phase2.md"
       }
     },
     {
@@ -1516,9 +1486,9 @@
       ],
       "waitReasons": [],
       "paths": {
-        "plan": "Development/Plan/0300/phase-01/tasks/030001-db-invoice-line-items/plan.md",
-        "development": "Development/Result/0300/phase-01/development/030001-db-invoice-line-items.md",
-        "qa": "Development/Result/0300/phase-01/qa/030001-db-invoice-line-items.md"
+        "plan": "docs/development/Plan/0300/phase-01/tasks/030001-db-invoice-line-items/plan.md",
+        "development": "docs/development/Result/0300/phase-01/development/030001-db-invoice-line-items.md",
+        "qa": "docs/development/Result/0300/phase-01/qa/030001-db-invoice-line-items.md"
       }
     },
     {
@@ -1540,9 +1510,9 @@
         "Development berurutan: menunggu 030001-db-invoice-line-items selesai"
       ],
       "paths": {
-        "plan": "Development/Plan/0300/phase-01/tasks/030002-domain-draft-totals-base/plan.md",
-        "development": "Development/Result/0300/phase-01/development/030002-domain-draft-totals-base.md",
-        "qa": "Development/Result/0300/phase-01/qa/030002-domain-draft-totals-base.md"
+        "plan": "docs/development/Plan/0300/phase-01/tasks/030002-domain-draft-totals-base/plan.md",
+        "development": "docs/development/Result/0300/phase-01/development/030002-domain-draft-totals-base.md",
+        "qa": "docs/development/Result/0300/phase-01/qa/030002-domain-draft-totals-base.md"
       }
     },
     {
@@ -1564,9 +1534,9 @@
         "Development berurutan: menunggu 030001-db-invoice-line-items selesai"
       ],
       "paths": {
-        "plan": "Development/Plan/0300/phase-01/tasks/030003-be-invoice-draft-crud/plan.md",
-        "development": "Development/Result/0300/phase-01/development/030003-be-invoice-draft-crud.md",
-        "qa": "Development/Result/0300/phase-01/qa/030003-be-invoice-draft-crud.md"
+        "plan": "docs/development/Plan/0300/phase-01/tasks/030003-be-invoice-draft-crud/plan.md",
+        "development": "docs/development/Result/0300/phase-01/development/030003-be-invoice-draft-crud.md",
+        "qa": "docs/development/Result/0300/phase-01/qa/030003-be-invoice-draft-crud.md"
       }
     },
     {
@@ -1588,9 +1558,9 @@
         "Development berurutan: menunggu 030001-db-invoice-line-items selesai"
       ],
       "paths": {
-        "plan": "Development/Plan/0300/phase-01/tasks/030004-fe-invoice-editor/plan.md",
-        "development": "Development/Result/0300/phase-01/development/030004-fe-invoice-editor.md",
-        "qa": "Development/Result/0300/phase-01/qa/030004-fe-invoice-editor.md"
+        "plan": "docs/development/Plan/0300/phase-01/tasks/030004-fe-invoice-editor/plan.md",
+        "development": "docs/development/Result/0300/phase-01/development/030004-fe-invoice-editor.md",
+        "qa": "docs/development/Result/0300/phase-01/qa/030004-fe-invoice-editor.md"
       }
     },
     {
@@ -1612,9 +1582,9 @@
         "Development berurutan: menunggu 030001-db-invoice-line-items selesai"
       ],
       "paths": {
-        "plan": "Development/Plan/0300/phase-01/tasks/030005-fe-invoice-list-draft/plan.md",
-        "development": "Development/Result/0300/phase-01/development/030005-fe-invoice-list-draft.md",
-        "qa": "Development/Result/0300/phase-01/qa/030005-fe-invoice-list-draft.md"
+        "plan": "docs/development/Plan/0300/phase-01/tasks/030005-fe-invoice-list-draft/plan.md",
+        "development": "docs/development/Result/0300/phase-01/development/030005-fe-invoice-list-draft.md",
+        "qa": "docs/development/Result/0300/phase-01/qa/030005-fe-invoice-list-draft.md"
       }
     },
     {
@@ -1636,9 +1606,9 @@
         "Development berurutan: menunggu 030001-db-invoice-line-items selesai"
       ],
       "paths": {
-        "plan": "Development/Plan/0300/phase-01/tasks/030006-domain-br01-guards/plan.md",
-        "development": "Development/Result/0300/phase-01/development/030006-domain-br01-guards.md",
-        "qa": "Development/Result/0300/phase-01/qa/030006-domain-br01-guards.md"
+        "plan": "docs/development/Plan/0300/phase-01/tasks/030006-domain-br01-guards/plan.md",
+        "development": "docs/development/Result/0300/phase-01/development/030006-domain-br01-guards.md",
+        "qa": "docs/development/Result/0300/phase-01/qa/030006-domain-br01-guards.md"
       }
     },
     {
@@ -1658,9 +1628,9 @@
       ],
       "waitReasons": [],
       "paths": {
-        "plan": "Development/Plan/0301/phase-01/tasks/030101-domain-compute-invoice-totals/plan.md",
-        "development": "Development/Result/0301/phase-01/development/030101-domain-compute-invoice-totals.md",
-        "qa": "Development/Result/0301/phase-01/qa/030101-domain-compute-invoice-totals.md"
+        "plan": "docs/development/Plan/0301/phase-01/tasks/030101-domain-compute-invoice-totals/plan.md",
+        "development": "docs/development/Result/0301/phase-01/development/030101-domain-compute-invoice-totals.md",
+        "qa": "docs/development/Result/0301/phase-01/qa/030101-domain-compute-invoice-totals.md"
       }
     },
     {
@@ -1682,9 +1652,9 @@
         "Development berurutan: menunggu 030101-domain-compute-invoice-totals selesai"
       ],
       "paths": {
-        "plan": "Development/Plan/0301/phase-01/tasks/030102-domain-tests-fr03/plan.md",
-        "development": "Development/Result/0301/phase-01/development/030102-domain-tests-fr03.md",
-        "qa": "Development/Result/0301/phase-01/qa/030102-domain-tests-fr03.md"
+        "plan": "docs/development/Plan/0301/phase-01/tasks/030102-domain-tests-fr03/plan.md",
+        "development": "docs/development/Result/0301/phase-01/development/030102-domain-tests-fr03.md",
+        "qa": "docs/development/Result/0301/phase-01/qa/030102-domain-tests-fr03.md"
       }
     },
     {
@@ -1706,9 +1676,9 @@
         "Development berurutan: menunggu 030101-domain-compute-invoice-totals selesai"
       ],
       "paths": {
-        "plan": "Development/Plan/0301/phase-01/tasks/030103-db-invoice-ppn-fields/plan.md",
-        "development": "Development/Result/0301/phase-01/development/030103-db-invoice-ppn-fields.md",
-        "qa": "Development/Result/0301/phase-01/qa/030103-db-invoice-ppn-fields.md"
+        "plan": "docs/development/Plan/0301/phase-01/tasks/030103-db-invoice-ppn-fields/plan.md",
+        "development": "docs/development/Result/0301/phase-01/development/030103-db-invoice-ppn-fields.md",
+        "qa": "docs/development/Result/0301/phase-01/qa/030103-db-invoice-ppn-fields.md"
       }
     },
     {
@@ -1730,9 +1700,9 @@
         "Development berurutan: menunggu 030101-domain-compute-invoice-totals selesai"
       ],
       "paths": {
-        "plan": "Development/Plan/0301/phase-01/tasks/030104-be-persist-totals/plan.md",
-        "development": "Development/Result/0301/phase-01/development/030104-be-persist-totals.md",
-        "qa": "Development/Result/0301/phase-01/qa/030104-be-persist-totals.md"
+        "plan": "docs/development/Plan/0301/phase-01/tasks/030104-be-persist-totals/plan.md",
+        "development": "docs/development/Result/0301/phase-01/development/030104-be-persist-totals.md",
+        "qa": "docs/development/Result/0301/phase-01/qa/030104-be-persist-totals.md"
       }
     },
     {
@@ -1754,9 +1724,9 @@
         "Development berurutan: menunggu 030101-domain-compute-invoice-totals selesai"
       ],
       "paths": {
-        "plan": "Development/Plan/0301/phase-01/tasks/030105-fe-ppn-toggle/plan.md",
-        "development": "Development/Result/0301/phase-01/development/030105-fe-ppn-toggle.md",
-        "qa": "Development/Result/0301/phase-01/qa/030105-fe-ppn-toggle.md"
+        "plan": "docs/development/Plan/0301/phase-01/tasks/030105-fe-ppn-toggle/plan.md",
+        "development": "docs/development/Result/0301/phase-01/development/030105-fe-ppn-toggle.md",
+        "qa": "docs/development/Result/0301/phase-01/qa/030105-fe-ppn-toggle.md"
       }
     },
     {
@@ -1778,9 +1748,9 @@
         "Development berurutan: menunggu 030101-domain-compute-invoice-totals selesai"
       ],
       "paths": {
-        "plan": "Development/Plan/0301/phase-01/tasks/030106-infra-gate-g3/plan.md",
-        "development": "Development/Result/0301/phase-01/development/030106-infra-gate-g3.md",
-        "qa": "Development/Result/0301/phase-01/qa/030106-infra-gate-g3.md"
+        "plan": "docs/development/Plan/0301/phase-01/tasks/030106-infra-gate-g3/plan.md",
+        "development": "docs/development/Result/0301/phase-01/development/030106-infra-gate-g3.md",
+        "qa": "docs/development/Result/0301/phase-01/qa/030106-infra-gate-g3.md"
       }
     },
     {
@@ -1800,9 +1770,9 @@
       ],
       "waitReasons": [],
       "paths": {
-        "plan": "Development/Plan/0400/phase-01/tasks/040001-domain-pdf-layout-data/plan.md",
-        "development": "Development/Result/0400/phase-01/development/040001-domain-pdf-layout-data.md",
-        "qa": "Development/Result/0400/phase-01/qa/040001-domain-pdf-layout-data.md"
+        "plan": "docs/development/Plan/0400/phase-01/tasks/040001-domain-pdf-layout-data/plan.md",
+        "development": "docs/development/Result/0400/phase-01/development/040001-domain-pdf-layout-data.md",
+        "qa": "docs/development/Result/0400/phase-01/qa/040001-domain-pdf-layout-data.md"
       }
     },
     {
@@ -1824,9 +1794,9 @@
         "Development berurutan: menunggu 040001-domain-pdf-layout-data selesai"
       ],
       "paths": {
-        "plan": "Development/Plan/0400/phase-01/tasks/040002-be-pdf-generate/plan.md",
-        "development": "Development/Result/0400/phase-01/development/040002-be-pdf-generate.md",
-        "qa": "Development/Result/0400/phase-01/qa/040002-be-pdf-generate.md"
+        "plan": "docs/development/Plan/0400/phase-01/tasks/040002-be-pdf-generate/plan.md",
+        "development": "docs/development/Result/0400/phase-01/development/040002-be-pdf-generate.md",
+        "qa": "docs/development/Result/0400/phase-01/qa/040002-be-pdf-generate.md"
       }
     },
     {
@@ -1848,9 +1818,9 @@
         "Development berurutan: menunggu 040001-domain-pdf-layout-data selesai"
       ],
       "paths": {
-        "plan": "Development/Plan/0400/phase-01/tasks/040003-be-pdf-download-route/plan.md",
-        "development": "Development/Result/0400/phase-01/development/040003-be-pdf-download-route.md",
-        "qa": "Development/Result/0400/phase-01/qa/040003-be-pdf-download-route.md"
+        "plan": "docs/development/Plan/0400/phase-01/tasks/040003-be-pdf-download-route/plan.md",
+        "development": "docs/development/Result/0400/phase-01/development/040003-be-pdf-download-route.md",
+        "qa": "docs/development/Result/0400/phase-01/qa/040003-be-pdf-download-route.md"
       }
     },
     {
@@ -1872,9 +1842,9 @@
         "Development berurutan: menunggu 040001-domain-pdf-layout-data selesai"
       ],
       "paths": {
-        "plan": "Development/Plan/0400/phase-01/tasks/040004-fe-download-button/plan.md",
-        "development": "Development/Result/0400/phase-01/development/040004-fe-download-button.md",
-        "qa": "Development/Result/0400/phase-01/qa/040004-fe-download-button.md"
+        "plan": "docs/development/Plan/0400/phase-01/tasks/040004-fe-download-button/plan.md",
+        "development": "docs/development/Result/0400/phase-01/development/040004-fe-download-button.md",
+        "qa": "docs/development/Result/0400/phase-01/qa/040004-fe-download-button.md"
       }
     },
     {
@@ -1896,9 +1866,9 @@
         "Development berurutan: menunggu 040001-domain-pdf-layout-data selesai"
       ],
       "paths": {
-        "plan": "Development/Plan/0400/phase-01/tasks/040005-infra-gate-pdf/plan.md",
-        "development": "Development/Result/0400/phase-01/development/040005-infra-gate-pdf.md",
-        "qa": "Development/Result/0400/phase-01/qa/040005-infra-gate-pdf.md"
+        "plan": "docs/development/Plan/0400/phase-01/tasks/040005-infra-gate-pdf/plan.md",
+        "development": "docs/development/Result/0400/phase-01/development/040005-infra-gate-pdf.md",
+        "qa": "docs/development/Result/0400/phase-01/qa/040005-infra-gate-pdf.md"
       }
     },
     {
@@ -1918,9 +1888,9 @@
       ],
       "waitReasons": [],
       "paths": {
-        "plan": "Development/Plan/0401/phase-01/tasks/040101-domain-invoice-numbering/plan.md",
-        "development": "Development/Result/0401/phase-01/development/040101-domain-invoice-numbering.md",
-        "qa": "Development/Result/0401/phase-01/qa/040101-domain-invoice-numbering.md"
+        "plan": "docs/development/Plan/0401/phase-01/tasks/040101-domain-invoice-numbering/plan.md",
+        "development": "docs/development/Result/0401/phase-01/development/040101-domain-invoice-numbering.md",
+        "qa": "docs/development/Result/0401/phase-01/qa/040101-domain-invoice-numbering.md"
       }
     },
     {
@@ -1942,9 +1912,9 @@
         "Development berurutan: menunggu 040101-domain-invoice-numbering selesai"
       ],
       "paths": {
-        "plan": "Development/Plan/0401/phase-01/tasks/040102-db-sent-fields/plan.md",
-        "development": "Development/Result/0401/phase-01/development/040102-db-sent-fields.md",
-        "qa": "Development/Result/0401/phase-01/qa/040102-db-sent-fields.md"
+        "plan": "docs/development/Plan/0401/phase-01/tasks/040102-db-sent-fields/plan.md",
+        "development": "docs/development/Result/0401/phase-01/development/040102-db-sent-fields.md",
+        "qa": "docs/development/Result/0401/phase-01/qa/040102-db-sent-fields.md"
       }
     },
     {
@@ -1966,9 +1936,9 @@
         "Development berurutan: menunggu 040101-domain-invoice-numbering selesai"
       ],
       "paths": {
-        "plan": "Development/Plan/0401/phase-01/tasks/040103-be-send-invoice/plan.md",
-        "development": "Development/Result/0401/phase-01/development/040103-be-send-invoice.md",
-        "qa": "Development/Result/0401/phase-01/qa/040103-be-send-invoice.md"
+        "plan": "docs/development/Plan/0401/phase-01/tasks/040103-be-send-invoice/plan.md",
+        "development": "docs/development/Result/0401/phase-01/development/040103-be-send-invoice.md",
+        "qa": "docs/development/Result/0401/phase-01/qa/040103-be-send-invoice.md"
       }
     },
     {
@@ -1990,9 +1960,9 @@
         "Development berurutan: menunggu 040101-domain-invoice-numbering selesai"
       ],
       "paths": {
-        "plan": "Development/Plan/0401/phase-01/tasks/040104-be-email-adapter/plan.md",
-        "development": "Development/Result/0401/phase-01/development/040104-be-email-adapter.md",
-        "qa": "Development/Result/0401/phase-01/qa/040104-be-email-adapter.md"
+        "plan": "docs/development/Plan/0401/phase-01/tasks/040104-be-email-adapter/plan.md",
+        "development": "docs/development/Result/0401/phase-01/development/040104-be-email-adapter.md",
+        "qa": "docs/development/Result/0401/phase-01/qa/040104-be-email-adapter.md"
       }
     },
     {
@@ -2014,9 +1984,9 @@
         "Development berurutan: menunggu 040101-domain-invoice-numbering selesai"
       ],
       "paths": {
-        "plan": "Development/Plan/0401/phase-01/tasks/040105-fe-send-action/plan.md",
-        "development": "Development/Result/0401/phase-01/development/040105-fe-send-action.md",
-        "qa": "Development/Result/0401/phase-01/qa/040105-fe-send-action.md"
+        "plan": "docs/development/Plan/0401/phase-01/tasks/040105-fe-send-action/plan.md",
+        "development": "docs/development/Result/0401/phase-01/development/040105-fe-send-action.md",
+        "qa": "docs/development/Result/0401/phase-01/qa/040105-fe-send-action.md"
       }
     },
     {
@@ -2038,9 +2008,9 @@
         "Development berurutan: menunggu 040101-domain-invoice-numbering selesai"
       ],
       "paths": {
-        "plan": "Development/Plan/0401/phase-01/tasks/040106-infra-email-smoke/plan.md",
-        "development": "Development/Result/0401/phase-01/development/040106-infra-email-smoke.md",
-        "qa": "Development/Result/0401/phase-01/qa/040106-infra-email-smoke.md"
+        "plan": "docs/development/Plan/0401/phase-01/tasks/040106-infra-email-smoke/plan.md",
+        "development": "docs/development/Result/0401/phase-01/development/040106-infra-email-smoke.md",
+        "qa": "docs/development/Result/0401/phase-01/qa/040106-infra-email-smoke.md"
       }
     },
     {
@@ -2062,9 +2032,9 @@
         "Development berurutan: menunggu 040101-domain-invoice-numbering selesai"
       ],
       "paths": {
-        "plan": "Development/Plan/0401/phase-01/tasks/040107-infra-gate-g4-send/plan.md",
-        "development": "Development/Result/0401/phase-01/development/040107-infra-gate-g4-send.md",
-        "qa": "Development/Result/0401/phase-01/qa/040107-infra-gate-g4-send.md"
+        "plan": "docs/development/Plan/0401/phase-01/tasks/040107-infra-gate-g4-send/plan.md",
+        "development": "docs/development/Result/0401/phase-01/development/040107-infra-gate-g4-send.md",
+        "qa": "docs/development/Result/0401/phase-01/qa/040107-infra-gate-g4-send.md"
       }
     },
     {
@@ -2084,9 +2054,9 @@
       ],
       "waitReasons": [],
       "paths": {
-        "plan": "Development/Plan/0402/phase-01/tasks/040201-db-token-revoked-flag/plan.md",
-        "development": "Development/Result/0402/phase-01/development/040201-db-token-revoked-flag.md",
-        "qa": "Development/Result/0402/phase-01/qa/040201-db-token-revoked-flag.md"
+        "plan": "docs/development/Plan/0402/phase-01/tasks/040201-db-token-revoked-flag/plan.md",
+        "development": "docs/development/Result/0402/phase-01/development/040201-db-token-revoked-flag.md",
+        "qa": "docs/development/Result/0402/phase-01/qa/040201-db-token-revoked-flag.md"
       }
     },
     {
@@ -2108,9 +2078,9 @@
         "Development berurutan: menunggu 040201-db-token-revoked-flag selesai"
       ],
       "paths": {
-        "plan": "Development/Plan/0402/phase-01/tasks/040202-be-public-invoice-api/plan.md",
-        "development": "Development/Result/0402/phase-01/development/040202-be-public-invoice-api.md",
-        "qa": "Development/Result/0402/phase-01/qa/040202-be-public-invoice-api.md"
+        "plan": "docs/development/Plan/0402/phase-01/tasks/040202-be-public-invoice-api/plan.md",
+        "development": "docs/development/Result/0402/phase-01/development/040202-be-public-invoice-api.md",
+        "qa": "docs/development/Result/0402/phase-01/qa/040202-be-public-invoice-api.md"
       }
     },
     {
@@ -2132,9 +2102,9 @@
         "Development berurutan: menunggu 040201-db-token-revoked-flag selesai"
       ],
       "paths": {
-        "plan": "Development/Plan/0402/phase-01/tasks/040203-be-revoke-link/plan.md",
-        "development": "Development/Result/0402/phase-01/development/040203-be-revoke-link.md",
-        "qa": "Development/Result/0402/phase-01/qa/040203-be-revoke-link.md"
+        "plan": "docs/development/Plan/0402/phase-01/tasks/040203-be-revoke-link/plan.md",
+        "development": "docs/development/Result/0402/phase-01/development/040203-be-revoke-link.md",
+        "qa": "docs/development/Result/0402/phase-01/qa/040203-be-revoke-link.md"
       }
     },
     {
@@ -2156,9 +2126,9 @@
         "Development berurutan: menunggu 040201-db-token-revoked-flag selesai"
       ],
       "paths": {
-        "plan": "Development/Plan/0402/phase-01/tasks/040204-fe-public-page/plan.md",
-        "development": "Development/Result/0402/phase-01/development/040204-fe-public-page.md",
-        "qa": "Development/Result/0402/phase-01/qa/040204-fe-public-page.md"
+        "plan": "docs/development/Plan/0402/phase-01/tasks/040204-fe-public-page/plan.md",
+        "development": "docs/development/Result/0402/phase-01/development/040204-fe-public-page.md",
+        "qa": "docs/development/Result/0402/phase-01/qa/040204-fe-public-page.md"
       }
     },
     {
@@ -2180,9 +2150,9 @@
         "Development berurutan: menunggu 040201-db-token-revoked-flag selesai"
       ],
       "paths": {
-        "plan": "Development/Plan/0402/phase-01/tasks/040205-fe-revoke-ui/plan.md",
-        "development": "Development/Result/0402/phase-01/development/040205-fe-revoke-ui.md",
-        "qa": "Development/Result/0402/phase-01/qa/040205-fe-revoke-ui.md"
+        "plan": "docs/development/Plan/0402/phase-01/tasks/040205-fe-revoke-ui/plan.md",
+        "development": "docs/development/Result/0402/phase-01/development/040205-fe-revoke-ui.md",
+        "qa": "docs/development/Result/0402/phase-01/qa/040205-fe-revoke-ui.md"
       }
     },
     {
@@ -2204,9 +2174,9 @@
         "Development berurutan: menunggu 040201-db-token-revoked-flag selesai"
       ],
       "paths": {
-        "plan": "Development/Plan/0402/phase-01/tasks/040206-infra-gate-g4-public/plan.md",
-        "development": "Development/Result/0402/phase-01/development/040206-infra-gate-g4-public.md",
-        "qa": "Development/Result/0402/phase-01/qa/040206-infra-gate-g4-public.md"
+        "plan": "docs/development/Plan/0402/phase-01/tasks/040206-infra-gate-g4-public/plan.md",
+        "development": "docs/development/Result/0402/phase-01/development/040206-infra-gate-g4-public.md",
+        "qa": "docs/development/Result/0402/phase-01/qa/040206-infra-gate-g4-public.md"
       }
     },
     {
@@ -2226,9 +2196,9 @@
       ],
       "waitReasons": [],
       "paths": {
-        "plan": "Development/Plan/0500/phase-01/tasks/050001-db-paid-fields/plan.md",
-        "development": "Development/Result/0500/phase-01/development/050001-db-paid-fields.md",
-        "qa": "Development/Result/0500/phase-01/qa/050001-db-paid-fields.md"
+        "plan": "docs/development/Plan/0500/phase-01/tasks/050001-db-paid-fields/plan.md",
+        "development": "docs/development/Result/0500/phase-01/development/050001-db-paid-fields.md",
+        "qa": "docs/development/Result/0500/phase-01/qa/050001-db-paid-fields.md"
       }
     },
     {
@@ -2250,9 +2220,9 @@
         "Development berurutan: menunggu 050001-db-paid-fields selesai"
       ],
       "paths": {
-        "plan": "Development/Plan/0500/phase-01/tasks/050002-domain-paid-transition/plan.md",
-        "development": "Development/Result/0500/phase-01/development/050002-domain-paid-transition.md",
-        "qa": "Development/Result/0500/phase-01/qa/050002-domain-paid-transition.md"
+        "plan": "docs/development/Plan/0500/phase-01/tasks/050002-domain-paid-transition/plan.md",
+        "development": "docs/development/Result/0500/phase-01/development/050002-domain-paid-transition.md",
+        "qa": "docs/development/Result/0500/phase-01/qa/050002-domain-paid-transition.md"
       }
     },
     {
@@ -2274,9 +2244,9 @@
         "Development berurutan: menunggu 050001-db-paid-fields selesai"
       ],
       "paths": {
-        "plan": "Development/Plan/0500/phase-01/tasks/050003-be-mark-paid/plan.md",
-        "development": "Development/Result/0500/phase-01/development/050003-be-mark-paid.md",
-        "qa": "Development/Result/0500/phase-01/qa/050003-be-mark-paid.md"
+        "plan": "docs/development/Plan/0500/phase-01/tasks/050003-be-mark-paid/plan.md",
+        "development": "docs/development/Result/0500/phase-01/development/050003-be-mark-paid.md",
+        "qa": "docs/development/Result/0500/phase-01/qa/050003-be-mark-paid.md"
       }
     },
     {
@@ -2298,9 +2268,9 @@
         "Development berurutan: menunggu 050001-db-paid-fields selesai"
       ],
       "paths": {
-        "plan": "Development/Plan/0500/phase-01/tasks/050004-fe-mark-paid-button/plan.md",
-        "development": "Development/Result/0500/phase-01/development/050004-fe-mark-paid-button.md",
-        "qa": "Development/Result/0500/phase-01/qa/050004-fe-mark-paid-button.md"
+        "plan": "docs/development/Plan/0500/phase-01/tasks/050004-fe-mark-paid-button/plan.md",
+        "development": "docs/development/Result/0500/phase-01/development/050004-fe-mark-paid-button.md",
+        "qa": "docs/development/Result/0500/phase-01/qa/050004-fe-mark-paid-button.md"
       }
     },
     {
@@ -2322,9 +2292,9 @@
         "Development berurutan: menunggu 050001-db-paid-fields selesai"
       ],
       "paths": {
-        "plan": "Development/Plan/0500/phase-01/tasks/050005-infra-gate-g5-paid/plan.md",
-        "development": "Development/Result/0500/phase-01/development/050005-infra-gate-g5-paid.md",
-        "qa": "Development/Result/0500/phase-01/qa/050005-infra-gate-g5-paid.md"
+        "plan": "docs/development/Plan/0500/phase-01/tasks/050005-infra-gate-g5-paid/plan.md",
+        "development": "docs/development/Result/0500/phase-01/development/050005-infra-gate-g5-paid.md",
+        "qa": "docs/development/Result/0500/phase-01/qa/050005-infra-gate-g5-paid.md"
       }
     },
     {
@@ -2344,9 +2314,9 @@
       ],
       "waitReasons": [],
       "paths": {
-        "plan": "Development/Plan/0501/phase-01/tasks/050101-domain-overdue-compute/plan.md",
-        "development": "Development/Result/0501/phase-01/development/050101-domain-overdue-compute.md",
-        "qa": "Development/Result/0501/phase-01/qa/050101-domain-overdue-compute.md"
+        "plan": "docs/development/Plan/0501/phase-01/tasks/050101-domain-overdue-compute/plan.md",
+        "development": "docs/development/Result/0501/phase-01/development/050101-domain-overdue-compute.md",
+        "qa": "docs/development/Result/0501/phase-01/qa/050101-domain-overdue-compute.md"
       }
     },
     {
@@ -2368,9 +2338,9 @@
         "Development berurutan: menunggu 050101-domain-overdue-compute selesai"
       ],
       "paths": {
-        "plan": "Development/Plan/0501/phase-01/tasks/050102-be-invoice-list-filters/plan.md",
-        "development": "Development/Result/0501/phase-01/development/050102-be-invoice-list-filters.md",
-        "qa": "Development/Result/0501/phase-01/qa/050102-be-invoice-list-filters.md"
+        "plan": "docs/development/Plan/0501/phase-01/tasks/050102-be-invoice-list-filters/plan.md",
+        "development": "docs/development/Result/0501/phase-01/development/050102-be-invoice-list-filters.md",
+        "qa": "docs/development/Result/0501/phase-01/qa/050102-be-invoice-list-filters.md"
       }
     },
     {
@@ -2392,9 +2362,9 @@
         "Development berurutan: menunggu 050101-domain-overdue-compute selesai"
       ],
       "paths": {
-        "plan": "Development/Plan/0501/phase-01/tasks/050103-be-outstanding-aggregate/plan.md",
-        "development": "Development/Result/0501/phase-01/development/050103-be-outstanding-aggregate.md",
-        "qa": "Development/Result/0501/phase-01/qa/050103-be-outstanding-aggregate.md"
+        "plan": "docs/development/Plan/0501/phase-01/tasks/050103-be-outstanding-aggregate/plan.md",
+        "development": "docs/development/Result/0501/phase-01/development/050103-be-outstanding-aggregate.md",
+        "qa": "docs/development/Result/0501/phase-01/qa/050103-be-outstanding-aggregate.md"
       }
     },
     {
@@ -2416,9 +2386,9 @@
         "Development berurutan: menunggu 050101-domain-overdue-compute selesai"
       ],
       "paths": {
-        "plan": "Development/Plan/0501/phase-01/tasks/050104-fe-dashboard/plan.md",
-        "development": "Development/Result/0501/phase-01/development/050104-fe-dashboard.md",
-        "qa": "Development/Result/0501/phase-01/qa/050104-fe-dashboard.md"
+        "plan": "docs/development/Plan/0501/phase-01/tasks/050104-fe-dashboard/plan.md",
+        "development": "docs/development/Result/0501/phase-01/development/050104-fe-dashboard.md",
+        "qa": "docs/development/Result/0501/phase-01/qa/050104-fe-dashboard.md"
       }
     },
     {
@@ -2440,9 +2410,9 @@
         "Development berurutan: menunggu 050101-domain-overdue-compute selesai"
       ],
       "paths": {
-        "plan": "Development/Plan/0501/phase-01/tasks/050105-fe-outstanding-widget/plan.md",
-        "development": "Development/Result/0501/phase-01/development/050105-fe-outstanding-widget.md",
-        "qa": "Development/Result/0501/phase-01/qa/050105-fe-outstanding-widget.md"
+        "plan": "docs/development/Plan/0501/phase-01/tasks/050105-fe-outstanding-widget/plan.md",
+        "development": "docs/development/Result/0501/phase-01/development/050105-fe-outstanding-widget.md",
+        "qa": "docs/development/Result/0501/phase-01/qa/050105-fe-outstanding-widget.md"
       }
     },
     {
@@ -2464,9 +2434,9 @@
         "Development berurutan: menunggu 050101-domain-overdue-compute selesai"
       ],
       "paths": {
-        "plan": "Development/Plan/0501/phase-01/tasks/050106-infra-gate-g5-dashboard/plan.md",
-        "development": "Development/Result/0501/phase-01/development/050106-infra-gate-g5-dashboard.md",
-        "qa": "Development/Result/0501/phase-01/qa/050106-infra-gate-g5-dashboard.md"
+        "plan": "docs/development/Plan/0501/phase-01/tasks/050106-infra-gate-g5-dashboard/plan.md",
+        "development": "docs/development/Result/0501/phase-01/development/050106-infra-gate-g5-dashboard.md",
+        "qa": "docs/development/Result/0501/phase-01/qa/050106-infra-gate-g5-dashboard.md"
       }
     },
     {
@@ -2486,9 +2456,9 @@
       ],
       "waitReasons": [],
       "paths": {
-        "plan": "Development/Plan/0600/phase-01/tasks/060001-docs-uat-trace-matrix/plan.md",
-        "development": "Development/Result/0600/phase-01/development/060001-docs-uat-trace-matrix.md",
-        "qa": "Development/Result/0600/phase-01/qa/060001-docs-uat-trace-matrix.md"
+        "plan": "docs/development/Plan/0600/phase-01/tasks/060001-docs-uat-trace-matrix/plan.md",
+        "development": "docs/development/Result/0600/phase-01/development/060001-docs-uat-trace-matrix.md",
+        "qa": "docs/development/Result/0600/phase-01/qa/060001-docs-uat-trace-matrix.md"
       }
     },
     {
@@ -2510,9 +2480,9 @@
         "Development berurutan: menunggu 060001-docs-uat-trace-matrix selesai"
       ],
       "paths": {
-        "plan": "Development/Plan/0600/phase-01/tasks/060002-product-gap-g01-revoke-cancel/plan.md",
-        "development": "Development/Result/0600/phase-01/development/060002-product-gap-g01-revoke-cancel.md",
-        "qa": "Development/Result/0600/phase-01/qa/060002-product-gap-g01-revoke-cancel.md"
+        "plan": "docs/development/Plan/0600/phase-01/tasks/060002-product-gap-g01-revoke-cancel/plan.md",
+        "development": "docs/development/Result/0600/phase-01/development/060002-product-gap-g01-revoke-cancel.md",
+        "qa": "docs/development/Result/0600/phase-01/qa/060002-product-gap-g01-revoke-cancel.md"
       }
     },
     {
@@ -2534,9 +2504,9 @@
         "Development berurutan: menunggu 060001-docs-uat-trace-matrix selesai"
       ],
       "paths": {
-        "plan": "Development/Plan/0600/phase-01/tasks/060003-product-gap-g02-public-hardening/plan.md",
-        "development": "Development/Result/0600/phase-01/development/060003-product-gap-g02-public-hardening.md",
-        "qa": "Development/Result/0600/phase-01/qa/060003-product-gap-g02-public-hardening.md"
+        "plan": "docs/development/Plan/0600/phase-01/tasks/060003-product-gap-g02-public-hardening/plan.md",
+        "development": "docs/development/Result/0600/phase-01/development/060003-product-gap-g02-public-hardening.md",
+        "qa": "docs/development/Result/0600/phase-01/qa/060003-product-gap-g02-public-hardening.md"
       }
     },
     {
@@ -2558,9 +2528,9 @@
         "Development berurutan: menunggu 060001-docs-uat-trace-matrix selesai"
       ],
       "paths": {
-        "plan": "Development/Plan/0600/phase-01/tasks/060004-product-gap-g05-legal-copy/plan.md",
-        "development": "Development/Result/0600/phase-01/development/060004-product-gap-g05-legal-copy.md",
-        "qa": "Development/Result/0600/phase-01/qa/060004-product-gap-g05-legal-copy.md"
+        "plan": "docs/development/Plan/0600/phase-01/tasks/060004-product-gap-g05-legal-copy/plan.md",
+        "development": "docs/development/Result/0600/phase-01/development/060004-product-gap-g05-legal-copy.md",
+        "qa": "docs/development/Result/0600/phase-01/qa/060004-product-gap-g05-legal-copy.md"
       }
     },
     {
@@ -2582,9 +2552,9 @@
         "Development berurutan: menunggu 060001-docs-uat-trace-matrix selesai"
       ],
       "paths": {
-        "plan": "Development/Plan/0600/phase-01/tasks/060005-product-gap-g13-email-errors/plan.md",
-        "development": "Development/Result/0600/phase-01/development/060005-product-gap-g13-email-errors.md",
-        "qa": "Development/Result/0600/phase-01/qa/060005-product-gap-g13-email-errors.md"
+        "plan": "docs/development/Plan/0600/phase-01/tasks/060005-product-gap-g13-email-errors/plan.md",
+        "development": "docs/development/Result/0600/phase-01/development/060005-product-gap-g13-email-errors.md",
+        "qa": "docs/development/Result/0600/phase-01/qa/060005-product-gap-g13-email-errors.md"
       }
     },
     {
@@ -2606,9 +2576,9 @@
         "Development berurutan: menunggu 060001-docs-uat-trace-matrix selesai"
       ],
       "paths": {
-        "plan": "Development/Plan/0600/phase-01/tasks/060006-infra-release-check-script/plan.md",
-        "development": "Development/Result/0600/phase-01/development/060006-infra-release-check-script.md",
-        "qa": "Development/Result/0600/phase-01/qa/060006-infra-release-check-script.md"
+        "plan": "docs/development/Plan/0600/phase-01/tasks/060006-infra-release-check-script/plan.md",
+        "development": "docs/development/Result/0600/phase-01/development/060006-infra-release-check-script.md",
+        "qa": "docs/development/Result/0600/phase-01/qa/060006-infra-release-check-script.md"
       }
     },
     {
@@ -2630,9 +2600,9 @@
         "Development berurutan: menunggu 060001-docs-uat-trace-matrix selesai"
       ],
       "paths": {
-        "plan": "Development/Plan/0600/phase-01/tasks/060007-infra-ci-g6/plan.md",
-        "development": "Development/Result/0600/phase-01/development/060007-infra-ci-g6.md",
-        "qa": "Development/Result/0600/phase-01/qa/060007-infra-ci-g6.md"
+        "plan": "docs/development/Plan/0600/phase-01/tasks/060007-infra-ci-g6/plan.md",
+        "development": "docs/development/Result/0600/phase-01/development/060007-infra-ci-g6.md",
+        "qa": "docs/development/Result/0600/phase-01/qa/060007-infra-ci-g6.md"
       }
     },
     {
@@ -2654,9 +2624,9 @@
         "Development berurutan: menunggu 060001-docs-uat-trace-matrix selesai"
       ],
       "paths": {
-        "plan": "Development/Plan/0600/phase-01/tasks/060008-ops-staging-uat-run/plan.md",
-        "development": "Development/Result/0600/phase-01/development/060008-ops-staging-uat-run.md",
-        "qa": "Development/Result/0600/phase-01/qa/060008-ops-staging-uat-run.md"
+        "plan": "docs/development/Plan/0600/phase-01/tasks/060008-ops-staging-uat-run/plan.md",
+        "development": "docs/development/Result/0600/phase-01/development/060008-ops-staging-uat-run.md",
+        "qa": "docs/development/Result/0600/phase-01/qa/060008-ops-staging-uat-run.md"
       }
     },
     {
@@ -2678,9 +2648,9 @@
         "Development berurutan: menunggu 060001-docs-uat-trace-matrix selesai"
       ],
       "paths": {
-        "plan": "Development/Plan/0600/phase-01/tasks/060009-ops-prod-launch/plan.md",
-        "development": "Development/Result/0600/phase-01/development/060009-ops-prod-launch.md",
-        "qa": "Development/Result/0600/phase-01/qa/060009-ops-prod-launch.md"
+        "plan": "docs/development/Plan/0600/phase-01/tasks/060009-ops-prod-launch/plan.md",
+        "development": "docs/development/Result/0600/phase-01/development/060009-ops-prod-launch.md",
+        "qa": "docs/development/Result/0600/phase-01/qa/060009-ops-prod-launch.md"
       }
     },
     {
@@ -2702,9 +2672,9 @@
         "Development berurutan: menunggu 060001-docs-uat-trace-matrix selesai"
       ],
       "paths": {
-        "plan": "Development/Plan/0600/phase-01/tasks/060010-docs-signoff-mvp-scope/plan.md",
-        "development": "Development/Result/0600/phase-01/development/060010-docs-signoff-mvp-scope.md",
-        "qa": "Development/Result/0600/phase-01/qa/060010-docs-signoff-mvp-scope.md"
+        "plan": "docs/development/Plan/0600/phase-01/tasks/060010-docs-signoff-mvp-scope/plan.md",
+        "development": "docs/development/Result/0600/phase-01/development/060010-docs-signoff-mvp-scope.md",
+        "qa": "docs/development/Result/0600/phase-01/qa/060010-docs-signoff-mvp-scope.md"
       }
     },
     {
@@ -2724,9 +2694,9 @@
       ],
       "waitReasons": [],
       "paths": {
-        "plan": "Development/Plan/0700/phase-01/tasks/0700-task-01/plan.md",
-        "development": "Development/Result/0700/phase-01/development/0700-task-01.md",
-        "qa": "Development/Result/0700/phase-01/qa/0700-task-01.md"
+        "plan": "docs/development/Plan/0700/phase-01/tasks/0700-task-01/plan.md",
+        "development": "docs/development/Result/0700/phase-01/development/0700-task-01.md",
+        "qa": "docs/development/Result/0700/phase-01/qa/0700-task-01.md"
       }
     },
     {
@@ -2748,9 +2718,9 @@
         "Development berurutan: menunggu 0700-task-01 selesai"
       ],
       "paths": {
-        "plan": "Development/Plan/0700/phase-01/tasks/0700-task-02/plan.md",
-        "development": "Development/Result/0700/phase-01/development/0700-task-02.md",
-        "qa": "Development/Result/0700/phase-01/qa/0700-task-02.md"
+        "plan": "docs/development/Plan/0700/phase-01/tasks/0700-task-02/plan.md",
+        "development": "docs/development/Result/0700/phase-01/development/0700-task-02.md",
+        "qa": "docs/development/Result/0700/phase-01/qa/0700-task-02.md"
       }
     },
     {
@@ -2772,9 +2742,9 @@
         "Development berurutan: menunggu 0700-task-01 selesai"
       ],
       "paths": {
-        "plan": "Development/Plan/0700/phase-01/tasks/0700-task-03/plan.md",
-        "development": "Development/Result/0700/phase-01/development/0700-task-03.md",
-        "qa": "Development/Result/0700/phase-01/qa/0700-task-03.md"
+        "plan": "docs/development/Plan/0700/phase-01/tasks/0700-task-03/plan.md",
+        "development": "docs/development/Result/0700/phase-01/development/0700-task-03.md",
+        "qa": "docs/development/Result/0700/phase-01/qa/0700-task-03.md"
       }
     },
     {
@@ -2796,9 +2766,9 @@
         "Development berurutan: menunggu 0700-task-01 selesai"
       ],
       "paths": {
-        "plan": "Development/Plan/0700/phase-01/tasks/0700-task-04/plan.md",
-        "development": "Development/Result/0700/phase-01/development/0700-task-04.md",
-        "qa": "Development/Result/0700/phase-01/qa/0700-task-04.md"
+        "plan": "docs/development/Plan/0700/phase-01/tasks/0700-task-04/plan.md",
+        "development": "docs/development/Result/0700/phase-01/development/0700-task-04.md",
+        "qa": "docs/development/Result/0700/phase-01/qa/0700-task-04.md"
       }
     },
     {
@@ -2820,9 +2790,9 @@
         "Development berurutan: menunggu 0700-task-01 selesai"
       ],
       "paths": {
-        "plan": "Development/Plan/0700/phase-01/tasks/0700-task-05/plan.md",
-        "development": "Development/Result/0700/phase-01/development/0700-task-05.md",
-        "qa": "Development/Result/0700/phase-01/qa/0700-task-05.md"
+        "plan": "docs/development/Plan/0700/phase-01/tasks/0700-task-05/plan.md",
+        "development": "docs/development/Result/0700/phase-01/development/0700-task-05.md",
+        "qa": "docs/development/Result/0700/phase-01/qa/0700-task-05.md"
       }
     },
     {
@@ -2844,9 +2814,9 @@
         "Development berurutan: menunggu 0700-task-01 selesai"
       ],
       "paths": {
-        "plan": "Development/Plan/0700/phase-01/tasks/0700-task-06/plan.md",
-        "development": "Development/Result/0700/phase-01/development/0700-task-06.md",
-        "qa": "Development/Result/0700/phase-01/qa/0700-task-06.md"
+        "plan": "docs/development/Plan/0700/phase-01/tasks/0700-task-06/plan.md",
+        "development": "docs/development/Result/0700/phase-01/development/0700-task-06.md",
+        "qa": "docs/development/Result/0700/phase-01/qa/0700-task-06.md"
       }
     },
     {
@@ -2868,9 +2838,9 @@
         "Development berurutan: menunggu 0700-task-01 selesai"
       ],
       "paths": {
-        "plan": "Development/Plan/0700/phase-01/tasks/0700-task-07/plan.md",
-        "development": "Development/Result/0700/phase-01/development/0700-task-07.md",
-        "qa": "Development/Result/0700/phase-01/qa/0700-task-07.md"
+        "plan": "docs/development/Plan/0700/phase-01/tasks/0700-task-07/plan.md",
+        "development": "docs/development/Result/0700/phase-01/development/0700-task-07.md",
+        "qa": "docs/development/Result/0700/phase-01/qa/0700-task-07.md"
       }
     },
     {
@@ -2892,9 +2862,9 @@
         "Development berurutan: menunggu 0700-task-01 selesai"
       ],
       "paths": {
-        "plan": "Development/Plan/0700/phase-01/tasks/0700-task-08/plan.md",
-        "development": "Development/Result/0700/phase-01/development/0700-task-08.md",
-        "qa": "Development/Result/0700/phase-01/qa/0700-task-08.md"
+        "plan": "docs/development/Plan/0700/phase-01/tasks/0700-task-08/plan.md",
+        "development": "docs/development/Result/0700/phase-01/development/0700-task-08.md",
+        "qa": "docs/development/Result/0700/phase-01/qa/0700-task-08.md"
       }
     },
     {
@@ -2916,9 +2886,9 @@
         "Development berurutan: menunggu 0700-task-01 selesai"
       ],
       "paths": {
-        "plan": "Development/Plan/0700/phase-01/tasks/0700-task-09/plan.md",
-        "development": "Development/Result/0700/phase-01/development/0700-task-09.md",
-        "qa": "Development/Result/0700/phase-01/qa/0700-task-09.md"
+        "plan": "docs/development/Plan/0700/phase-01/tasks/0700-task-09/plan.md",
+        "development": "docs/development/Result/0700/phase-01/development/0700-task-09.md",
+        "qa": "docs/development/Result/0700/phase-01/qa/0700-task-09.md"
       }
     },
     {
@@ -2938,9 +2908,9 @@
       ],
       "waitReasons": [],
       "paths": {
-        "plan": "Development/Plan/0701/phase-01/tasks/0701-task-01/plan.md",
-        "development": "Development/Result/0701/phase-01/development/0701-task-01.md",
-        "qa": "Development/Result/0701/phase-01/qa/0701-task-01.md"
+        "plan": "docs/development/Plan/0701/phase-01/tasks/0701-task-01/plan.md",
+        "development": "docs/development/Result/0701/phase-01/development/0701-task-01.md",
+        "qa": "docs/development/Result/0701/phase-01/qa/0701-task-01.md"
       }
     },
     {
@@ -2962,9 +2932,9 @@
         "Development berurutan: menunggu 0701-task-01 selesai"
       ],
       "paths": {
-        "plan": "Development/Plan/0701/phase-01/tasks/0701-task-02/plan.md",
-        "development": "Development/Result/0701/phase-01/development/0701-task-02.md",
-        "qa": "Development/Result/0701/phase-01/qa/0701-task-02.md"
+        "plan": "docs/development/Plan/0701/phase-01/tasks/0701-task-02/plan.md",
+        "development": "docs/development/Result/0701/phase-01/development/0701-task-02.md",
+        "qa": "docs/development/Result/0701/phase-01/qa/0701-task-02.md"
       }
     },
     {
@@ -2986,9 +2956,9 @@
         "Development berurutan: menunggu 0701-task-01 selesai"
       ],
       "paths": {
-        "plan": "Development/Plan/0701/phase-01/tasks/0701-task-03/plan.md",
-        "development": "Development/Result/0701/phase-01/development/0701-task-03.md",
-        "qa": "Development/Result/0701/phase-01/qa/0701-task-03.md"
+        "plan": "docs/development/Plan/0701/phase-01/tasks/0701-task-03/plan.md",
+        "development": "docs/development/Result/0701/phase-01/development/0701-task-03.md",
+        "qa": "docs/development/Result/0701/phase-01/qa/0701-task-03.md"
       }
     },
     {
@@ -3010,9 +2980,9 @@
         "Development berurutan: menunggu 0701-task-01 selesai"
       ],
       "paths": {
-        "plan": "Development/Plan/0701/phase-01/tasks/0701-task-04/plan.md",
-        "development": "Development/Result/0701/phase-01/development/0701-task-04.md",
-        "qa": "Development/Result/0701/phase-01/qa/0701-task-04.md"
+        "plan": "docs/development/Plan/0701/phase-01/tasks/0701-task-04/plan.md",
+        "development": "docs/development/Result/0701/phase-01/development/0701-task-04.md",
+        "qa": "docs/development/Result/0701/phase-01/qa/0701-task-04.md"
       }
     },
     {
@@ -3034,9 +3004,9 @@
         "Development berurutan: menunggu 0701-task-01 selesai"
       ],
       "paths": {
-        "plan": "Development/Plan/0701/phase-01/tasks/0701-task-05/plan.md",
-        "development": "Development/Result/0701/phase-01/development/0701-task-05.md",
-        "qa": "Development/Result/0701/phase-01/qa/0701-task-05.md"
+        "plan": "docs/development/Plan/0701/phase-01/tasks/0701-task-05/plan.md",
+        "development": "docs/development/Result/0701/phase-01/development/0701-task-05.md",
+        "qa": "docs/development/Result/0701/phase-01/qa/0701-task-05.md"
       }
     },
     {
@@ -3056,9 +3026,9 @@
       ],
       "waitReasons": [],
       "paths": {
-        "plan": "Development/Plan/0702/phase-01/tasks/0702-task-01/plan.md",
-        "development": "Development/Result/0702/phase-01/development/0702-task-01.md",
-        "qa": "Development/Result/0702/phase-01/qa/0702-task-01.md"
+        "plan": "docs/development/Plan/0702/phase-01/tasks/0702-task-01/plan.md",
+        "development": "docs/development/Result/0702/phase-01/development/0702-task-01.md",
+        "qa": "docs/development/Result/0702/phase-01/qa/0702-task-01.md"
       }
     },
     {
@@ -3080,9 +3050,9 @@
         "Development berurutan: menunggu 0702-task-01 selesai"
       ],
       "paths": {
-        "plan": "Development/Plan/0702/phase-01/tasks/0702-task-02/plan.md",
-        "development": "Development/Result/0702/phase-01/development/0702-task-02.md",
-        "qa": "Development/Result/0702/phase-01/qa/0702-task-02.md"
+        "plan": "docs/development/Plan/0702/phase-01/tasks/0702-task-02/plan.md",
+        "development": "docs/development/Result/0702/phase-01/development/0702-task-02.md",
+        "qa": "docs/development/Result/0702/phase-01/qa/0702-task-02.md"
       }
     },
     {
@@ -3104,9 +3074,9 @@
         "Development berurutan: menunggu 0702-task-01 selesai"
       ],
       "paths": {
-        "plan": "Development/Plan/0702/phase-01/tasks/0702-task-03/plan.md",
-        "development": "Development/Result/0702/phase-01/development/0702-task-03.md",
-        "qa": "Development/Result/0702/phase-01/qa/0702-task-03.md"
+        "plan": "docs/development/Plan/0702/phase-01/tasks/0702-task-03/plan.md",
+        "development": "docs/development/Result/0702/phase-01/development/0702-task-03.md",
+        "qa": "docs/development/Result/0702/phase-01/qa/0702-task-03.md"
       }
     },
     {
@@ -3127,9 +3097,9 @@
       ],
       "waitReasons": [],
       "paths": {
-        "plan": "Development/Plan/0702/phase-02/tasks/0702-task-04/plan.md",
-        "development": "Development/Result/0702/phase-02/development/0702-task-04.md",
-        "qa": "Development/Result/0702/phase-02/qa/0702-task-04.md"
+        "plan": "docs/development/Plan/0702/phase-02/tasks/0702-task-04/plan.md",
+        "development": "docs/development/Result/0702/phase-02/development/0702-task-04.md",
+        "qa": "docs/development/Result/0702/phase-02/qa/0702-task-04.md"
       }
     },
     {
@@ -3152,9 +3122,9 @@
         "Development berurutan: menunggu 0702-task-04 selesai"
       ],
       "paths": {
-        "plan": "Development/Plan/0702/phase-02/tasks/0702-task-05/plan.md",
-        "development": "Development/Result/0702/phase-02/development/0702-task-05.md",
-        "qa": "Development/Result/0702/phase-02/qa/0702-task-05.md"
+        "plan": "docs/development/Plan/0702/phase-02/tasks/0702-task-05/plan.md",
+        "development": "docs/development/Result/0702/phase-02/development/0702-task-05.md",
+        "qa": "docs/development/Result/0702/phase-02/qa/0702-task-05.md"
       }
     },
     {
@@ -3177,9 +3147,9 @@
         "Development berurutan: menunggu 0702-task-04 selesai"
       ],
       "paths": {
-        "plan": "Development/Plan/0702/phase-02/tasks/0702-task-06/plan.md",
-        "development": "Development/Result/0702/phase-02/development/0702-task-06.md",
-        "qa": "Development/Result/0702/phase-02/qa/0702-task-06.md"
+        "plan": "docs/development/Plan/0702/phase-02/tasks/0702-task-06/plan.md",
+        "development": "docs/development/Result/0702/phase-02/development/0702-task-06.md",
+        "qa": "docs/development/Result/0702/phase-02/qa/0702-task-06.md"
       }
     },
     {
@@ -3202,9 +3172,9 @@
         "Development berurutan: menunggu 0702-task-04 selesai"
       ],
       "paths": {
-        "plan": "Development/Plan/0702/phase-02/tasks/0702-task-07/plan.md",
-        "development": "Development/Result/0702/phase-02/development/0702-task-07.md",
-        "qa": "Development/Result/0702/phase-02/qa/0702-task-07.md"
+        "plan": "docs/development/Plan/0702/phase-02/tasks/0702-task-07/plan.md",
+        "development": "docs/development/Result/0702/phase-02/development/0702-task-07.md",
+        "qa": "docs/development/Result/0702/phase-02/qa/0702-task-07.md"
       }
     },
     {
@@ -3227,9 +3197,9 @@
         "Development berurutan: menunggu 0702-task-04 selesai"
       ],
       "paths": {
-        "plan": "Development/Plan/0702/phase-02/tasks/0702-task-08/plan.md",
-        "development": "Development/Result/0702/phase-02/development/0702-task-08.md",
-        "qa": "Development/Result/0702/phase-02/qa/0702-task-08.md"
+        "plan": "docs/development/Plan/0702/phase-02/tasks/0702-task-08/plan.md",
+        "development": "docs/development/Result/0702/phase-02/development/0702-task-08.md",
+        "qa": "docs/development/Result/0702/phase-02/qa/0702-task-08.md"
       }
     },
     {
@@ -3249,9 +3219,9 @@
       ],
       "waitReasons": [],
       "paths": {
-        "plan": "Development/Plan/0800/phase-01/tasks/080001-docs-parse-manifest/plan.md",
-        "development": "Development/Result/0800/phase-01/development/080001-docs-parse-manifest.md",
-        "qa": "Development/Result/0800/phase-01/qa/080001-docs-parse-manifest.md"
+        "plan": "docs/development/Plan/0800/phase-01/tasks/080001-docs-parse-manifest/plan.md",
+        "development": "docs/development/Result/0800/phase-01/development/080001-docs-parse-manifest.md",
+        "qa": "docs/development/Result/0800/phase-01/qa/080001-docs-parse-manifest.md"
       }
     },
     {
@@ -3273,9 +3243,9 @@
         "Development berurutan: menunggu 080001-docs-parse-manifest selesai"
       ],
       "paths": {
-        "plan": "Development/Plan/0800/phase-01/tasks/080002-stack-run-ledger/plan.md",
-        "development": "Development/Result/0800/phase-01/development/080002-stack-run-ledger.md",
-        "qa": "Development/Result/0800/phase-01/qa/080002-stack-run-ledger.md"
+        "plan": "docs/development/Plan/0800/phase-01/tasks/080002-stack-run-ledger/plan.md",
+        "development": "docs/development/Result/0800/phase-01/development/080002-stack-run-ledger.md",
+        "qa": "docs/development/Result/0800/phase-01/qa/080002-stack-run-ledger.md"
       }
     },
     {
@@ -3297,9 +3267,9 @@
         "Development berurutan: menunggu 080001-docs-parse-manifest selesai"
       ],
       "paths": {
-        "plan": "Development/Plan/0800/phase-01/tasks/080003-docs-worker-skills/plan.md",
-        "development": "Development/Result/0800/phase-01/development/080003-docs-worker-skills.md",
-        "qa": "Development/Result/0800/phase-01/qa/080003-docs-worker-skills.md"
+        "plan": "docs/development/Plan/0800/phase-01/tasks/080003-docs-worker-skills/plan.md",
+        "development": "docs/development/Result/0800/phase-01/development/080003-docs-worker-skills.md",
+        "qa": "docs/development/Result/0800/phase-01/qa/080003-docs-worker-skills.md"
       }
     },
     {
@@ -3321,9 +3291,9 @@
         "Development berurutan: menunggu 080001-docs-parse-manifest selesai"
       ],
       "paths": {
-        "plan": "Development/Plan/0800/phase-01/tasks/080004-docs-policy-default/plan.md",
-        "development": "Development/Result/0800/phase-01/development/080004-docs-policy-default.md",
-        "qa": "Development/Result/0800/phase-01/qa/080004-docs-policy-default.md"
+        "plan": "docs/development/Plan/0800/phase-01/tasks/080004-docs-policy-default/plan.md",
+        "development": "docs/development/Result/0800/phase-01/development/080004-docs-policy-default.md",
+        "qa": "docs/development/Result/0800/phase-01/qa/080004-docs-policy-default.md"
       }
     },
     {
@@ -3345,15 +3315,15 @@
         "Development berurutan: menunggu 080001-docs-parse-manifest selesai"
       ],
       "paths": {
-        "plan": "Development/Plan/0800/phase-01/tasks/080005-stack-dry-run-intake/plan.md",
-        "development": "Development/Result/0800/phase-01/development/080005-stack-dry-run-intake.md",
-        "qa": "Development/Result/0800/phase-01/qa/080005-stack-dry-run-intake.md"
+        "plan": "docs/development/Plan/0800/phase-01/tasks/080005-stack-dry-run-intake/plan.md",
+        "development": "docs/development/Result/0800/phase-01/development/080005-stack-dry-run-intake.md",
+        "qa": "docs/development/Result/0800/phase-01/qa/080005-stack-dry-run-intake.md"
       }
     }
   ],
   "logs": [
     {
-      "at": "2026-10-01T08:03:06.398Z",
+      "at": "2026-10-01T18:06:10.061Z",
       "level": "info",
       "source": "queue",
       "event": "intake_queue",
@@ -3363,15 +3333,1200 @@
       "detail": null
     },
     {
+      "at": "2026-10-01T09:09:50.210Z",
+      "level": "info",
+      "source": "autopilot",
+      "event": "chain",
+      "taskId": null,
+      "phaseId": null,
+      "message": "Chain (manual_complete): berikutnya gate",
+      "detail": {
+        "at": "2026-10-01T09:09:50.210Z",
+        "event": "chain",
+        "reason": "manual_complete",
+        "nextKind": "gate",
+        "taskId": null
+      }
+    },
+    {
+      "at": "2026-10-01T09:09:50.199Z",
+      "level": "info",
+      "source": "autopilot",
+      "event": "manual_complete",
+      "taskId": "000003-infra-ci-verify-pipeline",
+      "phaseId": null,
+      "message": "Complete manual → chain · 000003-infra-ci-verify-pipeline",
+      "detail": {
+        "at": "2026-10-01T09:09:50.199Z",
+        "event": "manual_complete",
+        "taskId": "000003-infra-ci-verify-pipeline"
+      }
+    },
+    {
+      "at": "2026-10-01T09:09:46.682Z",
+      "level": "info",
+      "source": "autopilot",
+      "event": "chain",
+      "taskId": null,
+      "phaseId": null,
+      "message": "Chain (auto_complete): berikutnya gate",
+      "detail": {
+        "at": "2026-10-01T09:09:46.682Z",
+        "event": "chain",
+        "reason": "auto_complete",
+        "nextKind": "gate",
+        "taskId": null
+      }
+    },
+    {
+      "at": "2026-10-01T09:09:46.670Z",
+      "level": "success",
+      "source": "autopilot",
+      "event": "auto_complete",
+      "taskId": "000003-infra-ci-verify-pipeline",
+      "phaseId": "0000-P1",
+      "message": "Selesai otomatis: qa 000003-infra-ci-verify-pipeline",
+      "detail": {
+        "at": "2026-10-01T09:09:46.670Z",
+        "event": "auto_complete",
+        "kind": "qa",
+        "taskId": "000003-infra-ci-verify-pipeline",
+        "phaseId": "0000-P1"
+      }
+    },
+    {
+      "at": "2026-10-01T09:09:41.035Z",
+      "level": "info",
+      "source": "artifact",
+      "event": "report",
+      "taskId": "000003-infra-ci-verify-pipeline",
+      "phaseId": "0000-P1",
+      "message": "Laporan qa: docs/development/Result/0000/phase-01/qa/000003-infra-ci-verify-pipeline.md",
+      "detail": {
+        "path": "docs/development/Result/0000/phase-01/qa/000003-infra-ci-verify-pipeline.md",
+        "kind": "qa"
+      }
+    },
+    {
+      "at": "2026-10-01T09:09:20.708Z",
+      "level": "info",
+      "source": "autopilot",
+      "event": "chain",
+      "taskId": "000003-infra-ci-verify-pipeline",
+      "phaseId": null,
+      "message": "Chain (manual_complete): berikutnya qa · 000003-infra-ci-verify-pipeline",
+      "detail": {
+        "at": "2026-10-01T09:09:20.708Z",
+        "event": "chain",
+        "reason": "manual_complete",
+        "nextKind": "qa",
+        "taskId": "000003-infra-ci-verify-pipeline"
+      }
+    },
+    {
+      "at": "2026-10-01T09:09:20.696Z",
+      "level": "info",
+      "source": "autopilot",
+      "event": "manual_complete",
+      "taskId": "000003-infra-ci-verify-pipeline",
+      "phaseId": null,
+      "message": "Complete manual → chain · 000003-infra-ci-verify-pipeline",
+      "detail": {
+        "at": "2026-10-01T09:09:20.696Z",
+        "event": "manual_complete",
+        "taskId": "000003-infra-ci-verify-pipeline"
+      }
+    },
+    {
+      "at": "2026-10-01T09:09:10.910Z",
+      "level": "info",
+      "source": "artifact",
+      "event": "report",
+      "taskId": "000003-infra-ci-verify-pipeline",
+      "phaseId": "0000-P1",
+      "message": "Laporan development: docs/development/Result/0000/phase-01/development/000003-infra-ci-verify-pipeline.md",
+      "detail": {
+        "path": "docs/development/Result/0000/phase-01/development/000003-infra-ci-verify-pipeline.md",
+        "kind": "development"
+      }
+    },
+    {
+      "at": "2026-10-01T09:08:41.673Z",
+      "level": "info",
+      "source": "autopilot",
+      "event": "chain",
+      "taskId": "000003-infra-ci-verify-pipeline",
+      "phaseId": null,
+      "message": "Chain (manual_complete): berikutnya development · 000003-infra-ci-verify-pipeline",
+      "detail": {
+        "at": "2026-10-01T09:08:41.673Z",
+        "event": "chain",
+        "reason": "manual_complete",
+        "nextKind": "development",
+        "taskId": "000003-infra-ci-verify-pipeline"
+      }
+    },
+    {
+      "at": "2026-10-01T09:08:41.673Z",
+      "level": "info",
+      "source": "session",
+      "event": "development_session",
+      "taskId": "000003-infra-ci-verify-pipeline",
+      "phaseId": "0000-P1",
+      "message": "Sesi Development diminta: 000003-infra-ci-verify-pipeline",
+      "detail": {
+        "planPath": "Agentic/Development/Plan/0000/phase-01/tasks/000003-infra-ci-verify-pipeline/plan.md",
+        "source": "autopilot"
+      }
+    },
+    {
+      "at": "2026-10-01T09:08:41.652Z",
+      "level": "info",
+      "source": "autopilot",
+      "event": "manual_complete",
+      "taskId": "000002-infra-ci-workflow-fix",
+      "phaseId": null,
+      "message": "Complete manual → chain · 000002-infra-ci-workflow-fix",
+      "detail": {
+        "at": "2026-10-01T09:08:41.652Z",
+        "event": "manual_complete",
+        "taskId": "000002-infra-ci-workflow-fix"
+      }
+    },
+    {
+      "at": "2026-10-01T09:08:30.519Z",
+      "level": "info",
+      "source": "artifact",
+      "event": "report",
+      "taskId": "000002-infra-ci-workflow-fix",
+      "phaseId": "0000-P1",
+      "message": "Laporan qa: docs/development/Result/0000/phase-01/qa/000002-infra-ci-workflow-fix.md",
+      "detail": {
+        "path": "docs/development/Result/0000/phase-01/qa/000002-infra-ci-workflow-fix.md",
+        "kind": "qa"
+      }
+    },
+    {
+      "at": "2026-10-01T09:08:08.185Z",
+      "level": "info",
+      "source": "autopilot",
+      "event": "chain",
+      "taskId": "000002-infra-ci-workflow-fix",
+      "phaseId": null,
+      "message": "Chain (manual_complete): berikutnya qa · 000002-infra-ci-workflow-fix",
+      "detail": {
+        "at": "2026-10-01T09:08:08.185Z",
+        "event": "chain",
+        "reason": "manual_complete",
+        "nextKind": "qa",
+        "taskId": "000002-infra-ci-workflow-fix"
+      }
+    },
+    {
+      "at": "2026-10-01T09:08:08.160Z",
+      "level": "info",
+      "source": "autopilot",
+      "event": "manual_complete",
+      "taskId": "000002-infra-ci-workflow-fix",
+      "phaseId": null,
+      "message": "Complete manual → chain · 000002-infra-ci-workflow-fix",
+      "detail": {
+        "at": "2026-10-01T09:08:08.160Z",
+        "event": "manual_complete",
+        "taskId": "000002-infra-ci-workflow-fix"
+      }
+    },
+    {
+      "at": "2026-10-01T09:08:05.998Z",
+      "level": "info",
+      "source": "autopilot",
+      "event": "chain",
+      "taskId": "000002-infra-ci-workflow-fix",
+      "phaseId": null,
+      "message": "Chain (auto_complete): berikutnya qa · 000002-infra-ci-workflow-fix",
+      "detail": {
+        "at": "2026-10-01T09:08:05.998Z",
+        "event": "chain",
+        "reason": "auto_complete",
+        "nextKind": "qa",
+        "taskId": "000002-infra-ci-workflow-fix"
+      }
+    },
+    {
+      "at": "2026-10-01T09:08:05.984Z",
+      "level": "success",
+      "source": "autopilot",
+      "event": "auto_complete",
+      "taskId": "000002-infra-ci-workflow-fix",
+      "phaseId": "0000-P1",
+      "message": "Selesai otomatis: development 000002-infra-ci-workflow-fix",
+      "detail": {
+        "at": "2026-10-01T09:08:05.984Z",
+        "event": "auto_complete",
+        "kind": "development",
+        "taskId": "000002-infra-ci-workflow-fix",
+        "phaseId": "0000-P1"
+      }
+    },
+    {
+      "at": "2026-10-01T09:07:58.020Z",
+      "level": "info",
+      "source": "artifact",
+      "event": "report",
+      "taskId": "000002-infra-ci-workflow-fix",
+      "phaseId": "0000-P1",
+      "message": "Laporan development: docs/development/Result/0000/phase-01/development/000002-infra-ci-workflow-fix.md",
+      "detail": {
+        "path": "docs/development/Result/0000/phase-01/development/000002-infra-ci-workflow-fix.md",
+        "kind": "development"
+      }
+    },
+    {
+      "at": "2026-10-01T09:06:52.100Z",
+      "level": "info",
+      "source": "autopilot",
+      "event": "chain",
+      "taskId": "000002-infra-ci-workflow-fix",
+      "phaseId": null,
+      "message": "Chain (manual_complete): berikutnya development · 000002-infra-ci-workflow-fix",
+      "detail": {
+        "at": "2026-10-01T09:06:52.100Z",
+        "event": "chain",
+        "reason": "manual_complete",
+        "nextKind": "development",
+        "taskId": "000002-infra-ci-workflow-fix"
+      }
+    },
+    {
+      "at": "2026-10-01T09:06:52.087Z",
+      "level": "info",
+      "source": "autopilot",
+      "event": "manual_complete",
+      "taskId": "000001-infra-github-repo-protection",
+      "phaseId": null,
+      "message": "Complete manual → chain · 000001-infra-github-repo-protection",
+      "detail": {
+        "at": "2026-10-01T09:06:52.087Z",
+        "event": "manual_complete",
+        "taskId": "000001-infra-github-repo-protection"
+      }
+    },
+    {
+      "at": "2026-10-01T09:06:45.250Z",
+      "level": "info",
+      "source": "autopilot",
+      "event": "chain",
+      "taskId": "000002-infra-ci-workflow-fix",
+      "phaseId": null,
+      "message": "Chain (auto_complete): berikutnya development · 000002-infra-ci-workflow-fix",
+      "detail": {
+        "at": "2026-10-01T09:06:45.250Z",
+        "event": "chain",
+        "reason": "auto_complete",
+        "nextKind": "development",
+        "taskId": "000002-infra-ci-workflow-fix"
+      }
+    },
+    {
+      "at": "2026-10-01T09:06:45.233Z",
+      "level": "success",
+      "source": "autopilot",
+      "event": "auto_complete",
+      "taskId": "000001-infra-github-repo-protection",
+      "phaseId": "0000-P1",
+      "message": "Selesai otomatis: qa 000001-infra-github-repo-protection",
+      "detail": {
+        "at": "2026-10-01T09:06:45.233Z",
+        "event": "auto_complete",
+        "kind": "qa",
+        "taskId": "000001-infra-github-repo-protection",
+        "phaseId": "0000-P1"
+      }
+    },
+    {
+      "at": "2026-10-01T09:06:41.570Z",
+      "level": "info",
+      "source": "artifact",
+      "event": "report",
+      "taskId": "000001-infra-github-repo-protection",
+      "phaseId": "0000-P1",
+      "message": "Laporan qa: docs/development/Result/0000/phase-01/qa/000001-infra-github-repo-protection.md",
+      "detail": {
+        "path": "docs/development/Result/0000/phase-01/qa/000001-infra-github-repo-protection.md",
+        "kind": "qa"
+      }
+    },
+    {
+      "at": "2026-10-01T09:06:08.654Z",
+      "level": "info",
+      "source": "autopilot",
+      "event": "chain",
+      "taskId": "000001-infra-github-repo-protection",
+      "phaseId": null,
+      "message": "Chain (manual_complete): berikutnya qa · 000001-infra-github-repo-protection",
+      "detail": {
+        "at": "2026-10-01T09:06:08.654Z",
+        "event": "chain",
+        "reason": "manual_complete",
+        "nextKind": "qa",
+        "taskId": "000001-infra-github-repo-protection"
+      }
+    },
+    {
+      "at": "2026-10-01T09:06:08.636Z",
+      "level": "info",
+      "source": "autopilot",
+      "event": "manual_complete",
+      "taskId": "000001-infra-github-repo-protection",
+      "phaseId": null,
+      "message": "Complete manual → chain · 000001-infra-github-repo-protection",
+      "detail": {
+        "at": "2026-10-01T09:06:08.636Z",
+        "event": "manual_complete",
+        "taskId": "000001-infra-github-repo-protection"
+      }
+    },
+    {
+      "at": "2026-10-01T09:05:58.276Z",
+      "level": "info",
+      "source": "autopilot",
+      "event": "chain",
+      "taskId": "000001-infra-github-repo-protection",
+      "phaseId": null,
+      "message": "Chain (auto_complete): berikutnya qa · 000001-infra-github-repo-protection",
+      "detail": {
+        "at": "2026-10-01T09:05:58.276Z",
+        "event": "chain",
+        "reason": "auto_complete",
+        "nextKind": "qa",
+        "taskId": "000001-infra-github-repo-protection"
+      }
+    },
+    {
+      "at": "2026-10-01T09:05:57.585Z",
+      "level": "success",
+      "source": "autopilot",
+      "event": "auto_complete",
+      "taskId": "000001-infra-github-repo-protection",
+      "phaseId": "0000-P1",
+      "message": "Selesai otomatis: development 000001-infra-github-repo-protection",
+      "detail": {
+        "at": "2026-10-01T09:05:57.585Z",
+        "event": "auto_complete",
+        "kind": "development",
+        "taskId": "000001-infra-github-repo-protection",
+        "phaseId": "0000-P1"
+      }
+    },
+    {
+      "at": "2026-10-01T09:05:42.137Z",
+      "level": "info",
+      "source": "artifact",
+      "event": "report",
+      "taskId": "000001-infra-github-repo-protection",
+      "phaseId": "0000-P1",
+      "message": "Laporan development: docs/development/Result/0000/phase-01/development/000001-infra-github-repo-protection.md",
+      "detail": {
+        "path": "docs/development/Result/0000/phase-01/development/000001-infra-github-repo-protection.md",
+        "kind": "development"
+      }
+    },
+    {
+      "at": "2026-10-01T09:04:18.196Z",
+      "level": "info",
+      "source": "autopilot",
+      "event": "chain",
+      "taskId": "000001-infra-github-repo-protection",
+      "phaseId": null,
+      "message": "Chain (manual_complete): berikutnya development · 000001-infra-github-repo-protection",
+      "detail": {
+        "at": "2026-10-01T09:04:18.196Z",
+        "event": "chain",
+        "reason": "manual_complete",
+        "nextKind": "development",
+        "taskId": "000001-infra-github-repo-protection"
+      }
+    },
+    {
+      "at": "2026-10-01T09:04:18.180Z",
+      "level": "info",
+      "source": "autopilot",
+      "event": "manual_complete",
+      "taskId": "000001-docs-dev-runbook",
+      "phaseId": null,
+      "message": "Complete manual → chain · 000001-docs-dev-runbook",
+      "detail": {
+        "at": "2026-10-01T09:04:18.180Z",
+        "event": "manual_complete",
+        "taskId": "000001-docs-dev-runbook"
+      }
+    },
+    {
+      "at": "2026-10-01T09:04:08.829Z",
+      "level": "info",
+      "source": "artifact",
+      "event": "report",
+      "taskId": "000001-docs-dev-runbook",
+      "phaseId": "0000-P0",
+      "message": "Laporan qa: docs/development/Result/0000/phase-00/qa/000001-docs-dev-runbook.md",
+      "detail": {
+        "path": "docs/development/Result/0000/phase-00/qa/000001-docs-dev-runbook.md",
+        "kind": "qa"
+      }
+    },
+    {
+      "at": "2026-10-01T09:03:14.009Z",
+      "level": "info",
+      "source": "autopilot",
+      "event": "chain",
+      "taskId": "000001-docs-dev-runbook",
+      "phaseId": null,
+      "message": "Chain (manual_complete): berikutnya qa · 000001-docs-dev-runbook",
+      "detail": {
+        "at": "2026-10-01T09:03:14.009Z",
+        "event": "chain",
+        "reason": "manual_complete",
+        "nextKind": "qa",
+        "taskId": "000001-docs-dev-runbook"
+      }
+    },
+    {
+      "at": "2026-10-01T09:03:13.996Z",
+      "level": "info",
+      "source": "autopilot",
+      "event": "manual_complete",
+      "taskId": "000001-docs-dev-runbook",
+      "phaseId": null,
+      "message": "Complete manual → chain · 000001-docs-dev-runbook",
+      "detail": {
+        "at": "2026-10-01T09:03:13.996Z",
+        "event": "manual_complete",
+        "taskId": "000001-docs-dev-runbook"
+      }
+    },
+    {
+      "at": "2026-10-01T09:03:04.400Z",
+      "level": "info",
+      "source": "artifact",
+      "event": "report",
+      "taskId": "000001-docs-dev-runbook",
+      "phaseId": "0000-P0",
+      "message": "Laporan development: docs/development/Result/0000/phase-00/development/000001-docs-dev-runbook.md",
+      "detail": {
+        "path": "docs/development/Result/0000/phase-00/development/000001-docs-dev-runbook.md",
+        "kind": "development"
+      }
+    },
+    {
+      "at": "2026-10-01T09:02:05.115Z",
+      "level": "info",
+      "source": "autopilot",
+      "event": "chain",
+      "taskId": "000001-docs-dev-runbook",
+      "phaseId": null,
+      "message": "Chain (manual_complete): berikutnya development · 000001-docs-dev-runbook",
+      "detail": {
+        "at": "2026-10-01T09:02:05.115Z",
+        "event": "chain",
+        "reason": "manual_complete",
+        "nextKind": "development",
+        "taskId": "000001-docs-dev-runbook"
+      }
+    },
+    {
+      "at": "2026-10-01T09:02:05.104Z",
+      "level": "info",
+      "source": "autopilot",
+      "event": "manual_complete",
+      "taskId": "000006-stack-verify-script",
+      "phaseId": null,
+      "message": "Complete manual → chain · 000006-stack-verify-script",
+      "detail": {
+        "at": "2026-10-01T09:02:05.104Z",
+        "event": "manual_complete",
+        "taskId": "000006-stack-verify-script"
+      }
+    },
+    {
+      "at": "2026-10-01T09:02:04.009Z",
+      "level": "info",
+      "source": "autopilot",
+      "event": "chain",
+      "taskId": "000001-docs-dev-runbook",
+      "phaseId": null,
+      "message": "Chain (auto_complete): berikutnya development · 000001-docs-dev-runbook",
+      "detail": {
+        "at": "2026-10-01T09:02:04.009Z",
+        "event": "chain",
+        "reason": "auto_complete",
+        "nextKind": "development",
+        "taskId": "000001-docs-dev-runbook"
+      }
+    },
+    {
+      "at": "2026-10-01T09:02:03.978Z",
+      "level": "success",
+      "source": "autopilot",
+      "event": "auto_complete",
+      "taskId": "000006-stack-verify-script",
+      "phaseId": "0000-P0",
+      "message": "Selesai otomatis: qa 000006-stack-verify-script",
+      "detail": {
+        "at": "2026-10-01T09:02:03.978Z",
+        "event": "auto_complete",
+        "kind": "qa",
+        "taskId": "000006-stack-verify-script",
+        "phaseId": "0000-P0"
+      }
+    },
+    {
+      "at": "2026-10-01T09:01:55.234Z",
+      "level": "info",
+      "source": "artifact",
+      "event": "report",
+      "taskId": "000006-stack-verify-script",
+      "phaseId": "0000-P0",
+      "message": "Laporan qa: docs/development/Result/0000/phase-00/qa/000006-stack-verify-script.md",
+      "detail": {
+        "path": "docs/development/Result/0000/phase-00/qa/000006-stack-verify-script.md",
+        "kind": "qa"
+      }
+    },
+    {
+      "at": "2026-10-01T09:01:26.131Z",
+      "level": "info",
+      "source": "autopilot",
+      "event": "chain",
+      "taskId": "000006-stack-verify-script",
+      "phaseId": null,
+      "message": "Chain (manual_complete): berikutnya qa · 000006-stack-verify-script",
+      "detail": {
+        "at": "2026-10-01T09:01:26.131Z",
+        "event": "chain",
+        "reason": "manual_complete",
+        "nextKind": "qa",
+        "taskId": "000006-stack-verify-script"
+      }
+    },
+    {
+      "at": "2026-10-01T09:01:26.121Z",
+      "level": "info",
+      "source": "autopilot",
+      "event": "manual_complete",
+      "taskId": "000006-stack-verify-script",
+      "phaseId": null,
+      "message": "Complete manual → chain · 000006-stack-verify-script",
+      "detail": {
+        "at": "2026-10-01T09:01:26.121Z",
+        "event": "manual_complete",
+        "taskId": "000006-stack-verify-script"
+      }
+    },
+    {
+      "at": "2026-10-01T09:01:23.609Z",
+      "level": "info",
+      "source": "autopilot",
+      "event": "chain",
+      "taskId": "000006-stack-verify-script",
+      "phaseId": null,
+      "message": "Chain (auto_complete): berikutnya qa · 000006-stack-verify-script",
+      "detail": {
+        "at": "2026-10-01T09:01:23.609Z",
+        "event": "chain",
+        "reason": "auto_complete",
+        "nextKind": "qa",
+        "taskId": "000006-stack-verify-script"
+      }
+    },
+    {
+      "at": "2026-10-01T09:01:23.596Z",
+      "level": "success",
+      "source": "autopilot",
+      "event": "auto_complete",
+      "taskId": "000006-stack-verify-script",
+      "phaseId": "0000-P0",
+      "message": "Selesai otomatis: development 000006-stack-verify-script",
+      "detail": {
+        "at": "2026-10-01T09:01:23.596Z",
+        "event": "auto_complete",
+        "kind": "development",
+        "taskId": "000006-stack-verify-script",
+        "phaseId": "0000-P0"
+      }
+    },
+    {
+      "at": "2026-10-01T09:01:17.600Z",
+      "level": "info",
+      "source": "artifact",
+      "event": "report",
+      "taskId": "000006-stack-verify-script",
+      "phaseId": "0000-P0",
+      "message": "Laporan development: docs/development/Result/0000/phase-00/development/000006-stack-verify-script.md",
+      "detail": {
+        "path": "docs/development/Result/0000/phase-00/development/000006-stack-verify-script.md",
+        "kind": "development"
+      }
+    },
+    {
+      "at": "2026-10-01T09:00:32.885Z",
+      "level": "info",
+      "source": "autopilot",
+      "event": "chain",
+      "taskId": "000006-stack-verify-script",
+      "phaseId": null,
+      "message": "Chain (manual_complete): berikutnya development · 000006-stack-verify-script",
+      "detail": {
+        "at": "2026-10-01T09:00:32.885Z",
+        "event": "chain",
+        "reason": "manual_complete",
+        "nextKind": "development",
+        "taskId": "000006-stack-verify-script"
+      }
+    },
+    {
+      "at": "2026-10-01T09:00:32.875Z",
+      "level": "info",
+      "source": "autopilot",
+      "event": "manual_complete",
+      "taskId": "000005-stack-setup-script",
+      "phaseId": null,
+      "message": "Complete manual → chain · 000005-stack-setup-script",
+      "detail": {
+        "at": "2026-10-01T09:00:32.875Z",
+        "event": "manual_complete",
+        "taskId": "000005-stack-setup-script"
+      }
+    },
+    {
+      "at": "2026-10-01T09:00:22.695Z",
+      "level": "info",
+      "source": "artifact",
+      "event": "report",
+      "taskId": "000005-stack-setup-script",
+      "phaseId": "0000-P0",
+      "message": "Laporan qa: docs/development/Result/0000/phase-00/qa/000005-stack-setup-script.md",
+      "detail": {
+        "path": "docs/development/Result/0000/phase-00/qa/000005-stack-setup-script.md",
+        "kind": "qa"
+      }
+    },
+    {
+      "at": "2026-10-01T08:59:54.270Z",
+      "level": "info",
+      "source": "autopilot",
+      "event": "chain",
+      "taskId": "000005-stack-setup-script",
+      "phaseId": null,
+      "message": "Chain (manual_complete): berikutnya qa · 000005-stack-setup-script",
+      "detail": {
+        "at": "2026-10-01T08:59:54.270Z",
+        "event": "chain",
+        "reason": "manual_complete",
+        "nextKind": "qa",
+        "taskId": "000005-stack-setup-script"
+      }
+    },
+    {
+      "at": "2026-10-01T08:59:54.260Z",
+      "level": "info",
+      "source": "autopilot",
+      "event": "manual_complete",
+      "taskId": "000005-stack-setup-script",
+      "phaseId": null,
+      "message": "Complete manual → chain · 000005-stack-setup-script",
+      "detail": {
+        "at": "2026-10-01T08:59:54.260Z",
+        "event": "manual_complete",
+        "taskId": "000005-stack-setup-script"
+      }
+    },
+    {
+      "at": "2026-10-01T08:59:45.931Z",
+      "level": "info",
+      "source": "artifact",
+      "event": "report",
+      "taskId": "000005-stack-setup-script",
+      "phaseId": "0000-P0",
+      "message": "Laporan development: docs/development/Result/0000/phase-00/development/000005-stack-setup-script.md",
+      "detail": {
+        "path": "docs/development/Result/0000/phase-00/development/000005-stack-setup-script.md",
+        "kind": "development"
+      }
+    },
+    {
+      "at": "2026-10-01T08:58:58.308Z",
+      "level": "info",
+      "source": "autopilot",
+      "event": "chain",
+      "taskId": "000005-stack-setup-script",
+      "phaseId": null,
+      "message": "Chain (manual_complete): berikutnya development · 000005-stack-setup-script",
+      "detail": {
+        "at": "2026-10-01T08:58:58.308Z",
+        "event": "chain",
+        "reason": "manual_complete",
+        "nextKind": "development",
+        "taskId": "000005-stack-setup-script"
+      }
+    },
+    {
+      "at": "2026-10-01T08:58:58.297Z",
+      "level": "info",
+      "source": "autopilot",
+      "event": "manual_complete",
+      "taskId": "000002-db-root-scripts",
+      "phaseId": null,
+      "message": "Complete manual → chain · 000002-db-root-scripts",
+      "detail": {
+        "at": "2026-10-01T08:58:58.297Z",
+        "event": "manual_complete",
+        "taskId": "000002-db-root-scripts"
+      }
+    },
+    {
+      "at": "2026-10-01T08:58:49.029Z",
+      "level": "info",
+      "source": "artifact",
+      "event": "report",
+      "taskId": "000002-db-root-scripts",
+      "phaseId": "0000-P0",
+      "message": "Laporan qa: docs/development/Result/0000/phase-00/qa/000002-db-root-scripts.md",
+      "detail": {
+        "path": "docs/development/Result/0000/phase-00/qa/000002-db-root-scripts.md",
+        "kind": "qa"
+      }
+    },
+    {
+      "at": "2026-10-01T08:57:16.018Z",
+      "level": "info",
+      "source": "autopilot",
+      "event": "chain",
+      "taskId": "000002-db-root-scripts",
+      "phaseId": null,
+      "message": "Chain (manual_complete): berikutnya qa · 000002-db-root-scripts",
+      "detail": {
+        "at": "2026-10-01T08:57:16.018Z",
+        "event": "chain",
+        "reason": "manual_complete",
+        "nextKind": "qa",
+        "taskId": "000002-db-root-scripts"
+      }
+    },
+    {
+      "at": "2026-10-01T08:57:16.006Z",
+      "level": "info",
+      "source": "autopilot",
+      "event": "manual_complete",
+      "taskId": "000002-db-root-scripts",
+      "phaseId": null,
+      "message": "Complete manual → chain · 000002-db-root-scripts",
+      "detail": {
+        "at": "2026-10-01T08:57:16.006Z",
+        "event": "manual_complete",
+        "taskId": "000002-db-root-scripts"
+      }
+    },
+    {
+      "at": "2026-10-01T08:57:07.486Z",
+      "level": "info",
+      "source": "artifact",
+      "event": "report",
+      "taskId": "000002-db-root-scripts",
+      "phaseId": "0000-P0",
+      "message": "Laporan development: docs/development/Result/0000/phase-00/development/000002-db-root-scripts.md",
+      "detail": {
+        "path": "docs/development/Result/0000/phase-00/development/000002-db-root-scripts.md",
+        "kind": "development"
+      }
+    },
+    {
+      "at": "2026-10-01T08:55:41.222Z",
+      "level": "info",
+      "source": "autopilot",
+      "event": "chain",
+      "taskId": "000002-db-root-scripts",
+      "phaseId": null,
+      "message": "Chain (manual_complete): berikutnya development · 000002-db-root-scripts",
+      "detail": {
+        "at": "2026-10-01T08:55:41.222Z",
+        "event": "chain",
+        "reason": "manual_complete",
+        "nextKind": "development",
+        "taskId": "000002-db-root-scripts"
+      }
+    },
+    {
+      "at": "2026-10-01T08:55:41.212Z",
+      "level": "info",
+      "source": "autopilot",
+      "event": "manual_complete",
+      "taskId": "000004-stack-env-example",
+      "phaseId": null,
+      "message": "Complete manual → chain · 000004-stack-env-example",
+      "detail": {
+        "at": "2026-10-01T08:55:41.212Z",
+        "event": "manual_complete",
+        "taskId": "000004-stack-env-example"
+      }
+    },
+    {
+      "at": "2026-10-01T08:55:31.871Z",
+      "level": "info",
+      "source": "artifact",
+      "event": "report",
+      "taskId": "000004-stack-env-example",
+      "phaseId": "0000-P0",
+      "message": "Laporan qa: docs/development/Result/0000/phase-00/qa/000004-stack-env-example.md",
+      "detail": {
+        "path": "docs/development/Result/0000/phase-00/qa/000004-stack-env-example.md",
+        "kind": "qa"
+      }
+    },
+    {
+      "at": "2026-10-01T08:55:09.865Z",
+      "level": "info",
+      "source": "autopilot",
+      "event": "chain",
+      "taskId": "000004-stack-env-example",
+      "phaseId": null,
+      "message": "Chain (manual_complete): berikutnya qa · 000004-stack-env-example",
+      "detail": {
+        "at": "2026-10-01T08:55:09.865Z",
+        "event": "chain",
+        "reason": "manual_complete",
+        "nextKind": "qa",
+        "taskId": "000004-stack-env-example"
+      }
+    },
+    {
+      "at": "2026-10-01T08:55:09.842Z",
+      "level": "info",
+      "source": "autopilot",
+      "event": "manual_complete",
+      "taskId": "000004-stack-env-example",
+      "phaseId": null,
+      "message": "Complete manual → chain · 000004-stack-env-example",
+      "detail": {
+        "at": "2026-10-01T08:55:09.842Z",
+        "event": "manual_complete",
+        "taskId": "000004-stack-env-example"
+      }
+    },
+    {
+      "at": "2026-10-01T08:55:02.557Z",
+      "level": "info",
+      "source": "autopilot",
+      "event": "chain",
+      "taskId": "000004-stack-env-example",
+      "phaseId": null,
+      "message": "Chain (auto_complete): berikutnya qa · 000004-stack-env-example",
+      "detail": {
+        "at": "2026-10-01T08:55:02.557Z",
+        "event": "chain",
+        "reason": "auto_complete",
+        "nextKind": "qa",
+        "taskId": "000004-stack-env-example"
+      }
+    },
+    {
+      "at": "2026-10-01T08:55:02.551Z",
+      "level": "success",
+      "source": "autopilot",
+      "event": "auto_complete",
+      "taskId": "000004-stack-env-example",
+      "phaseId": "0000-P0",
+      "message": "Selesai otomatis: development 000004-stack-env-example",
+      "detail": {
+        "at": "2026-10-01T08:55:02.551Z",
+        "event": "auto_complete",
+        "kind": "development",
+        "taskId": "000004-stack-env-example",
+        "phaseId": "0000-P0"
+      }
+    },
+    {
+      "at": "2026-10-01T08:54:52.065Z",
+      "level": "info",
+      "source": "artifact",
+      "event": "report",
+      "taskId": "000004-stack-env-example",
+      "phaseId": "0000-P0",
+      "message": "Laporan development: docs/development/Result/0000/phase-00/development/000004-stack-env-example.md",
+      "detail": {
+        "path": "docs/development/Result/0000/phase-00/development/000004-stack-env-example.md",
+        "kind": "development"
+      }
+    },
+    {
+      "at": "2026-10-01T08:34:57.728Z",
+      "level": "info",
+      "source": "autopilot",
+      "event": "chain",
+      "taskId": "000004-stack-env-example",
+      "phaseId": null,
+      "message": "Chain (manual_complete): berikutnya development · 000004-stack-env-example",
+      "detail": {
+        "at": "2026-10-01T08:34:57.728Z",
+        "event": "chain",
+        "reason": "manual_complete",
+        "nextKind": "development",
+        "taskId": "000004-stack-env-example"
+      }
+    },
+    {
+      "at": "2026-10-01T08:34:57.716Z",
+      "level": "info",
+      "source": "autopilot",
+      "event": "manual_complete",
+      "taskId": "000003-stack-repo-hygiene",
+      "phaseId": null,
+      "message": "Complete manual → chain · 000003-stack-repo-hygiene",
+      "detail": {
+        "at": "2026-10-01T08:34:57.716Z",
+        "event": "manual_complete",
+        "taskId": "000003-stack-repo-hygiene"
+      }
+    },
+    {
+      "at": "2026-10-01T08:34:49.980Z",
+      "level": "info",
+      "source": "artifact",
+      "event": "report",
+      "taskId": "000003-stack-repo-hygiene",
+      "phaseId": "0000-P0",
+      "message": "Laporan qa: docs/development/Result/0000/phase-00/qa/000003-stack-repo-hygiene.md",
+      "detail": {
+        "path": "docs/development/Result/0000/phase-00/qa/000003-stack-repo-hygiene.md",
+        "kind": "qa"
+      }
+    },
+    {
+      "at": "2026-10-01T08:34:25.590Z",
+      "level": "info",
+      "source": "autopilot",
+      "event": "chain",
+      "taskId": "000003-stack-repo-hygiene",
+      "phaseId": null,
+      "message": "Chain (manual_complete): berikutnya qa · 000003-stack-repo-hygiene",
+      "detail": {
+        "at": "2026-10-01T08:34:25.590Z",
+        "event": "chain",
+        "reason": "manual_complete",
+        "nextKind": "qa",
+        "taskId": "000003-stack-repo-hygiene"
+      }
+    },
+    {
+      "at": "2026-10-01T08:34:25.582Z",
+      "level": "info",
+      "source": "autopilot",
+      "event": "manual_complete",
+      "taskId": "000003-stack-repo-hygiene",
+      "phaseId": null,
+      "message": "Complete manual → chain · 000003-stack-repo-hygiene",
+      "detail": {
+        "at": "2026-10-01T08:34:25.582Z",
+        "event": "manual_complete",
+        "taskId": "000003-stack-repo-hygiene"
+      }
+    },
+    {
+      "at": "2026-10-01T08:34:18.466Z",
+      "level": "info",
+      "source": "artifact",
+      "event": "report",
+      "taskId": "000003-stack-repo-hygiene",
+      "phaseId": "0000-P0",
+      "message": "Laporan development: docs/development/Result/0000/phase-00/development/000003-stack-repo-hygiene.md",
+      "detail": {
+        "path": "docs/development/Result/0000/phase-00/development/000003-stack-repo-hygiene.md",
+        "kind": "development"
+      }
+    },
+    {
+      "at": "2026-10-01T08:32:43.080Z",
+      "level": "info",
+      "source": "autopilot",
+      "event": "chain",
+      "taskId": "000003-stack-repo-hygiene",
+      "phaseId": null,
+      "message": "Chain (manual_complete): berikutnya development · 000003-stack-repo-hygiene",
+      "detail": {
+        "at": "2026-10-01T08:32:43.080Z",
+        "event": "chain",
+        "reason": "manual_complete",
+        "nextKind": "development",
+        "taskId": "000003-stack-repo-hygiene"
+      }
+    },
+    {
+      "at": "2026-10-01T08:32:43.069Z",
+      "level": "info",
+      "source": "autopilot",
+      "event": "manual_complete",
+      "taskId": "000002-stack-single-npm-lockfile",
+      "phaseId": null,
+      "message": "Complete manual → chain · 000002-stack-single-npm-lockfile",
+      "detail": {
+        "at": "2026-10-01T08:32:43.069Z",
+        "event": "manual_complete",
+        "taskId": "000002-stack-single-npm-lockfile"
+      }
+    },
+    {
+      "at": "2026-10-01T08:32:33.489Z",
+      "level": "info",
+      "source": "artifact",
+      "event": "report",
+      "taskId": "000002-stack-single-npm-lockfile",
+      "phaseId": "0000-P0",
+      "message": "Laporan qa: docs/development/Result/0000/phase-00/qa/000002-stack-single-npm-lockfile.md",
+      "detail": {
+        "path": "docs/development/Result/0000/phase-00/qa/000002-stack-single-npm-lockfile.md",
+        "kind": "qa"
+      }
+    },
+    {
+      "at": "2026-10-01T08:32:07.717Z",
+      "level": "info",
+      "source": "autopilot",
+      "event": "chain",
+      "taskId": "000002-stack-single-npm-lockfile",
+      "phaseId": null,
+      "message": "Chain (manual_complete): berikutnya qa · 000002-stack-single-npm-lockfile",
+      "detail": {
+        "at": "2026-10-01T08:32:07.717Z",
+        "event": "chain",
+        "reason": "manual_complete",
+        "nextKind": "qa",
+        "taskId": "000002-stack-single-npm-lockfile"
+      }
+    },
+    {
+      "at": "2026-10-01T08:32:07.707Z",
+      "level": "info",
+      "source": "autopilot",
+      "event": "manual_complete",
+      "taskId": "000002-stack-single-npm-lockfile",
+      "phaseId": null,
+      "message": "Complete manual → chain · 000002-stack-single-npm-lockfile",
+      "detail": {
+        "at": "2026-10-01T08:32:07.707Z",
+        "event": "manual_complete",
+        "taskId": "000002-stack-single-npm-lockfile"
+      }
+    },
+    {
+      "at": "2026-10-01T08:31:57.031Z",
+      "level": "info",
+      "source": "artifact",
+      "event": "report",
+      "taskId": "000002-stack-single-npm-lockfile",
+      "phaseId": "0000-P0",
+      "message": "Laporan development: docs/development/Result/0000/phase-00/development/000002-stack-single-npm-lockfile.md",
+      "detail": {
+        "path": "docs/development/Result/0000/phase-00/development/000002-stack-single-npm-lockfile.md",
+        "kind": "development"
+      }
+    },
+    {
+      "at": "2026-10-01T08:30:02.883Z",
+      "level": "info",
+      "source": "autopilot",
+      "event": "chain",
+      "taskId": "000002-stack-single-npm-lockfile",
+      "phaseId": null,
+      "message": "Chain (manual_complete): berikutnya development · 000002-stack-single-npm-lockfile",
+      "detail": {
+        "at": "2026-10-01T08:30:02.883Z",
+        "event": "chain",
+        "reason": "manual_complete",
+        "nextKind": "development",
+        "taskId": "000002-stack-single-npm-lockfile"
+      }
+    },
+    {
+      "at": "2026-10-01T08:30:02.874Z",
+      "level": "info",
+      "source": "autopilot",
+      "event": "manual_complete",
+      "taskId": "000001-stack-pin-node-runtime",
+      "phaseId": null,
+      "message": "Complete manual → chain · 000001-stack-pin-node-runtime",
+      "detail": {
+        "at": "2026-10-01T08:30:02.874Z",
+        "event": "manual_complete",
+        "taskId": "000001-stack-pin-node-runtime"
+      }
+    },
+    {
+      "at": "2026-10-01T08:29:27.542Z",
+      "level": "info",
+      "source": "autopilot",
+      "event": "chain",
+      "taskId": "000002-stack-single-npm-lockfile",
+      "phaseId": null,
+      "message": "Chain (auto_complete): berikutnya development · 000002-stack-single-npm-lockfile",
+      "detail": {
+        "at": "2026-10-01T08:29:27.542Z",
+        "event": "chain",
+        "reason": "auto_complete",
+        "nextKind": "development",
+        "taskId": "000002-stack-single-npm-lockfile"
+      }
+    },
+    {
+      "at": "2026-10-01T08:29:27.526Z",
+      "level": "success",
+      "source": "autopilot",
+      "event": "auto_complete",
+      "taskId": "000001-stack-pin-node-runtime",
+      "phaseId": "0000-P0",
+      "message": "Selesai otomatis: qa 000001-stack-pin-node-runtime",
+      "detail": {
+        "at": "2026-10-01T08:29:27.526Z",
+        "event": "auto_complete",
+        "kind": "qa",
+        "taskId": "000001-stack-pin-node-runtime",
+        "phaseId": "0000-P0"
+      }
+    },
+    {
+      "at": "2026-10-01T08:29:22.688Z",
+      "level": "info",
+      "source": "artifact",
+      "event": "report",
+      "taskId": "000001-stack-pin-node-runtime",
+      "phaseId": "0000-P0",
+      "message": "Laporan qa: docs/development/Result/0000/phase-00/qa/000001-stack-pin-node-runtime.md",
+      "detail": {
+        "path": "docs/development/Result/0000/phase-00/qa/000001-stack-pin-node-runtime.md",
+        "kind": "qa"
+      }
+    },
+    {
+      "at": "2026-10-01T08:24:45.360Z",
+      "level": "info",
+      "source": "artifact",
+      "event": "report",
+      "taskId": "000001-db-canonical-sqlite-path",
+      "phaseId": "0000-P0",
+      "message": "Laporan audit: docs/development/Result/0000/phase-00/audit/000001-db-canonical-sqlite-path.md",
+      "detail": {
+        "path": "docs/development/Result/0000/phase-00/audit/000001-db-canonical-sqlite-path.md",
+        "kind": "audit"
+      }
+    },
+    {
       "at": "2026-10-01T07:57:32.021Z",
       "level": "info",
       "source": "artifact",
       "event": "report",
       "taskId": "000001-be-env-validation",
       "phaseId": "0000-P2",
-      "message": "Laporan development: Development/Result/0000/phase-02/development/000001-be-env-validation.md",
+      "message": "Laporan development: docs/development/Result/0000/phase-02/development/000001-be-env-validation.md",
       "detail": {
-        "path": "Development/Result/0000/phase-02/development/000001-be-env-validation.md",
+        "path": "docs/development/Result/0000/phase-02/development/000001-be-env-validation.md",
         "kind": "development"
       }
     },
@@ -3414,23 +4569,10 @@
       "event": "report",
       "taskId": "000001-stack-pin-node-runtime",
       "phaseId": "0000-P0",
-      "message": "Laporan development: Development/Result/0000/phase-00/development/000001-stack-pin-node-runtime.md",
+      "message": "Laporan development: docs/development/Result/0000/phase-00/development/000001-stack-pin-node-runtime.md",
       "detail": {
-        "path": "Development/Result/0000/phase-00/development/000001-stack-pin-node-runtime.md",
+        "path": "docs/development/Result/0000/phase-00/development/000001-stack-pin-node-runtime.md",
         "kind": "development"
-      }
-    },
-    {
-      "at": "2026-10-01T07:21:14.286Z",
-      "level": "info",
-      "source": "session",
-      "event": "development_session",
-      "taskId": "000001-stack-pin-node-runtime",
-      "phaseId": "0000-P0",
-      "message": "Sesi Development diminta: 000001-stack-pin-node-runtime",
-      "detail": {
-        "planPath": "Agentic/Development/Plan/0000/phase-00/tasks/000001-stack-pin-node-runtime/plan.md",
-        "source": "autopilot"
       }
     },
     {
@@ -3456,9 +4598,9 @@
       "event": "report",
       "taskId": "000001-db-canonical-sqlite-path",
       "phaseId": "0000-P0",
-      "message": "Laporan development: Development/Result/0000/phase-00/development/000001-db-canonical-sqlite-path.md",
+      "message": "Laporan development: docs/development/Result/0000/phase-00/development/000001-db-canonical-sqlite-path.md",
       "detail": {
-        "path": "Development/Result/0000/phase-00/development/000001-db-canonical-sqlite-path.md",
+        "path": "docs/development/Result/0000/phase-00/development/000001-db-canonical-sqlite-path.md",
         "kind": "development"
       }
     },
@@ -3469,30 +4611,1175 @@
       "event": "report",
       "taskId": "000001-db-canonical-sqlite-path",
       "phaseId": "0000-P0",
-      "message": "Laporan qa: Development/Result/0000/phase-00/qa/000001-db-canonical-sqlite-path.md",
+      "message": "Laporan qa: docs/development/Result/0000/phase-00/qa/000001-db-canonical-sqlite-path.md",
       "detail": {
-        "path": "Development/Result/0000/phase-00/qa/000001-db-canonical-sqlite-path.md",
+        "path": "docs/development/Result/0000/phase-00/qa/000001-db-canonical-sqlite-path.md",
         "kind": "qa"
       }
     }
   ],
   "taskLogIndex": {
-    "000001-be-env-validation": [
+    "000003-infra-ci-verify-pipeline": [
       {
-        "at": "2026-10-01T07:57:32.021Z",
+        "at": "2026-10-01T09:09:50.199Z",
+        "level": "info",
+        "source": "autopilot",
+        "event": "manual_complete",
+        "taskId": "000003-infra-ci-verify-pipeline",
+        "phaseId": null,
+        "message": "Complete manual → chain · 000003-infra-ci-verify-pipeline",
+        "detail": {
+          "at": "2026-10-01T09:09:50.199Z",
+          "event": "manual_complete",
+          "taskId": "000003-infra-ci-verify-pipeline"
+        }
+      },
+      {
+        "at": "2026-10-01T09:09:46.670Z",
+        "level": "success",
+        "source": "autopilot",
+        "event": "auto_complete",
+        "taskId": "000003-infra-ci-verify-pipeline",
+        "phaseId": "0000-P1",
+        "message": "Selesai otomatis: qa 000003-infra-ci-verify-pipeline",
+        "detail": {
+          "at": "2026-10-01T09:09:46.670Z",
+          "event": "auto_complete",
+          "kind": "qa",
+          "taskId": "000003-infra-ci-verify-pipeline",
+          "phaseId": "0000-P1"
+        }
+      },
+      {
+        "at": "2026-10-01T09:09:41.035Z",
         "level": "info",
         "source": "artifact",
         "event": "report",
-        "taskId": "000001-be-env-validation",
-        "phaseId": "0000-P2",
-        "message": "Laporan development: Development/Result/0000/phase-02/development/000001-be-env-validation.md",
+        "taskId": "000003-infra-ci-verify-pipeline",
+        "phaseId": "0000-P1",
+        "message": "Laporan qa: docs/development/Result/0000/phase-01/qa/000003-infra-ci-verify-pipeline.md",
         "detail": {
-          "path": "Development/Result/0000/phase-02/development/000001-be-env-validation.md",
+          "path": "docs/development/Result/0000/phase-01/qa/000003-infra-ci-verify-pipeline.md",
+          "kind": "qa"
+        }
+      },
+      {
+        "at": "2026-10-01T09:09:20.708Z",
+        "level": "info",
+        "source": "autopilot",
+        "event": "chain",
+        "taskId": "000003-infra-ci-verify-pipeline",
+        "phaseId": null,
+        "message": "Chain (manual_complete): berikutnya qa · 000003-infra-ci-verify-pipeline",
+        "detail": {
+          "at": "2026-10-01T09:09:20.708Z",
+          "event": "chain",
+          "reason": "manual_complete",
+          "nextKind": "qa",
+          "taskId": "000003-infra-ci-verify-pipeline"
+        }
+      },
+      {
+        "at": "2026-10-01T09:09:20.696Z",
+        "level": "info",
+        "source": "autopilot",
+        "event": "manual_complete",
+        "taskId": "000003-infra-ci-verify-pipeline",
+        "phaseId": null,
+        "message": "Complete manual → chain · 000003-infra-ci-verify-pipeline",
+        "detail": {
+          "at": "2026-10-01T09:09:20.696Z",
+          "event": "manual_complete",
+          "taskId": "000003-infra-ci-verify-pipeline"
+        }
+      },
+      {
+        "at": "2026-10-01T09:09:10.910Z",
+        "level": "info",
+        "source": "artifact",
+        "event": "report",
+        "taskId": "000003-infra-ci-verify-pipeline",
+        "phaseId": "0000-P1",
+        "message": "Laporan development: docs/development/Result/0000/phase-01/development/000003-infra-ci-verify-pipeline.md",
+        "detail": {
+          "path": "docs/development/Result/0000/phase-01/development/000003-infra-ci-verify-pipeline.md",
           "kind": "development"
+        }
+      },
+      {
+        "at": "2026-10-01T09:08:41.673Z",
+        "level": "info",
+        "source": "autopilot",
+        "event": "chain",
+        "taskId": "000003-infra-ci-verify-pipeline",
+        "phaseId": null,
+        "message": "Chain (manual_complete): berikutnya development · 000003-infra-ci-verify-pipeline",
+        "detail": {
+          "at": "2026-10-01T09:08:41.673Z",
+          "event": "chain",
+          "reason": "manual_complete",
+          "nextKind": "development",
+          "taskId": "000003-infra-ci-verify-pipeline"
+        }
+      },
+      {
+        "at": "2026-10-01T09:08:41.673Z",
+        "level": "info",
+        "source": "session",
+        "event": "development_session",
+        "taskId": "000003-infra-ci-verify-pipeline",
+        "phaseId": "0000-P1",
+        "message": "Sesi Development diminta: 000003-infra-ci-verify-pipeline",
+        "detail": {
+          "planPath": "Agentic/Development/Plan/0000/phase-01/tasks/000003-infra-ci-verify-pipeline/plan.md",
+          "source": "autopilot"
+        }
+      }
+    ],
+    "000002-infra-ci-workflow-fix": [
+      {
+        "at": "2026-10-01T09:08:41.652Z",
+        "level": "info",
+        "source": "autopilot",
+        "event": "manual_complete",
+        "taskId": "000002-infra-ci-workflow-fix",
+        "phaseId": null,
+        "message": "Complete manual → chain · 000002-infra-ci-workflow-fix",
+        "detail": {
+          "at": "2026-10-01T09:08:41.652Z",
+          "event": "manual_complete",
+          "taskId": "000002-infra-ci-workflow-fix"
+        }
+      },
+      {
+        "at": "2026-10-01T09:08:30.519Z",
+        "level": "info",
+        "source": "artifact",
+        "event": "report",
+        "taskId": "000002-infra-ci-workflow-fix",
+        "phaseId": "0000-P1",
+        "message": "Laporan qa: docs/development/Result/0000/phase-01/qa/000002-infra-ci-workflow-fix.md",
+        "detail": {
+          "path": "docs/development/Result/0000/phase-01/qa/000002-infra-ci-workflow-fix.md",
+          "kind": "qa"
+        }
+      },
+      {
+        "at": "2026-10-01T09:08:08.185Z",
+        "level": "info",
+        "source": "autopilot",
+        "event": "chain",
+        "taskId": "000002-infra-ci-workflow-fix",
+        "phaseId": null,
+        "message": "Chain (manual_complete): berikutnya qa · 000002-infra-ci-workflow-fix",
+        "detail": {
+          "at": "2026-10-01T09:08:08.185Z",
+          "event": "chain",
+          "reason": "manual_complete",
+          "nextKind": "qa",
+          "taskId": "000002-infra-ci-workflow-fix"
+        }
+      },
+      {
+        "at": "2026-10-01T09:08:08.160Z",
+        "level": "info",
+        "source": "autopilot",
+        "event": "manual_complete",
+        "taskId": "000002-infra-ci-workflow-fix",
+        "phaseId": null,
+        "message": "Complete manual → chain · 000002-infra-ci-workflow-fix",
+        "detail": {
+          "at": "2026-10-01T09:08:08.160Z",
+          "event": "manual_complete",
+          "taskId": "000002-infra-ci-workflow-fix"
+        }
+      },
+      {
+        "at": "2026-10-01T09:08:05.998Z",
+        "level": "info",
+        "source": "autopilot",
+        "event": "chain",
+        "taskId": "000002-infra-ci-workflow-fix",
+        "phaseId": null,
+        "message": "Chain (auto_complete): berikutnya qa · 000002-infra-ci-workflow-fix",
+        "detail": {
+          "at": "2026-10-01T09:08:05.998Z",
+          "event": "chain",
+          "reason": "auto_complete",
+          "nextKind": "qa",
+          "taskId": "000002-infra-ci-workflow-fix"
+        }
+      },
+      {
+        "at": "2026-10-01T09:08:05.984Z",
+        "level": "success",
+        "source": "autopilot",
+        "event": "auto_complete",
+        "taskId": "000002-infra-ci-workflow-fix",
+        "phaseId": "0000-P1",
+        "message": "Selesai otomatis: development 000002-infra-ci-workflow-fix",
+        "detail": {
+          "at": "2026-10-01T09:08:05.984Z",
+          "event": "auto_complete",
+          "kind": "development",
+          "taskId": "000002-infra-ci-workflow-fix",
+          "phaseId": "0000-P1"
+        }
+      },
+      {
+        "at": "2026-10-01T09:07:58.020Z",
+        "level": "info",
+        "source": "artifact",
+        "event": "report",
+        "taskId": "000002-infra-ci-workflow-fix",
+        "phaseId": "0000-P1",
+        "message": "Laporan development: docs/development/Result/0000/phase-01/development/000002-infra-ci-workflow-fix.md",
+        "detail": {
+          "path": "docs/development/Result/0000/phase-01/development/000002-infra-ci-workflow-fix.md",
+          "kind": "development"
+        }
+      },
+      {
+        "at": "2026-10-01T09:06:52.100Z",
+        "level": "info",
+        "source": "autopilot",
+        "event": "chain",
+        "taskId": "000002-infra-ci-workflow-fix",
+        "phaseId": null,
+        "message": "Chain (manual_complete): berikutnya development · 000002-infra-ci-workflow-fix",
+        "detail": {
+          "at": "2026-10-01T09:06:52.100Z",
+          "event": "chain",
+          "reason": "manual_complete",
+          "nextKind": "development",
+          "taskId": "000002-infra-ci-workflow-fix"
+        }
+      },
+      {
+        "at": "2026-10-01T09:06:45.250Z",
+        "level": "info",
+        "source": "autopilot",
+        "event": "chain",
+        "taskId": "000002-infra-ci-workflow-fix",
+        "phaseId": null,
+        "message": "Chain (auto_complete): berikutnya development · 000002-infra-ci-workflow-fix",
+        "detail": {
+          "at": "2026-10-01T09:06:45.250Z",
+          "event": "chain",
+          "reason": "auto_complete",
+          "nextKind": "development",
+          "taskId": "000002-infra-ci-workflow-fix"
+        }
+      }
+    ],
+    "000001-infra-github-repo-protection": [
+      {
+        "at": "2026-10-01T09:06:52.087Z",
+        "level": "info",
+        "source": "autopilot",
+        "event": "manual_complete",
+        "taskId": "000001-infra-github-repo-protection",
+        "phaseId": null,
+        "message": "Complete manual → chain · 000001-infra-github-repo-protection",
+        "detail": {
+          "at": "2026-10-01T09:06:52.087Z",
+          "event": "manual_complete",
+          "taskId": "000001-infra-github-repo-protection"
+        }
+      },
+      {
+        "at": "2026-10-01T09:06:45.233Z",
+        "level": "success",
+        "source": "autopilot",
+        "event": "auto_complete",
+        "taskId": "000001-infra-github-repo-protection",
+        "phaseId": "0000-P1",
+        "message": "Selesai otomatis: qa 000001-infra-github-repo-protection",
+        "detail": {
+          "at": "2026-10-01T09:06:45.233Z",
+          "event": "auto_complete",
+          "kind": "qa",
+          "taskId": "000001-infra-github-repo-protection",
+          "phaseId": "0000-P1"
+        }
+      },
+      {
+        "at": "2026-10-01T09:06:41.570Z",
+        "level": "info",
+        "source": "artifact",
+        "event": "report",
+        "taskId": "000001-infra-github-repo-protection",
+        "phaseId": "0000-P1",
+        "message": "Laporan qa: docs/development/Result/0000/phase-01/qa/000001-infra-github-repo-protection.md",
+        "detail": {
+          "path": "docs/development/Result/0000/phase-01/qa/000001-infra-github-repo-protection.md",
+          "kind": "qa"
+        }
+      },
+      {
+        "at": "2026-10-01T09:06:08.654Z",
+        "level": "info",
+        "source": "autopilot",
+        "event": "chain",
+        "taskId": "000001-infra-github-repo-protection",
+        "phaseId": null,
+        "message": "Chain (manual_complete): berikutnya qa · 000001-infra-github-repo-protection",
+        "detail": {
+          "at": "2026-10-01T09:06:08.654Z",
+          "event": "chain",
+          "reason": "manual_complete",
+          "nextKind": "qa",
+          "taskId": "000001-infra-github-repo-protection"
+        }
+      },
+      {
+        "at": "2026-10-01T09:06:08.636Z",
+        "level": "info",
+        "source": "autopilot",
+        "event": "manual_complete",
+        "taskId": "000001-infra-github-repo-protection",
+        "phaseId": null,
+        "message": "Complete manual → chain · 000001-infra-github-repo-protection",
+        "detail": {
+          "at": "2026-10-01T09:06:08.636Z",
+          "event": "manual_complete",
+          "taskId": "000001-infra-github-repo-protection"
+        }
+      },
+      {
+        "at": "2026-10-01T09:05:58.276Z",
+        "level": "info",
+        "source": "autopilot",
+        "event": "chain",
+        "taskId": "000001-infra-github-repo-protection",
+        "phaseId": null,
+        "message": "Chain (auto_complete): berikutnya qa · 000001-infra-github-repo-protection",
+        "detail": {
+          "at": "2026-10-01T09:05:58.276Z",
+          "event": "chain",
+          "reason": "auto_complete",
+          "nextKind": "qa",
+          "taskId": "000001-infra-github-repo-protection"
+        }
+      },
+      {
+        "at": "2026-10-01T09:05:57.585Z",
+        "level": "success",
+        "source": "autopilot",
+        "event": "auto_complete",
+        "taskId": "000001-infra-github-repo-protection",
+        "phaseId": "0000-P1",
+        "message": "Selesai otomatis: development 000001-infra-github-repo-protection",
+        "detail": {
+          "at": "2026-10-01T09:05:57.585Z",
+          "event": "auto_complete",
+          "kind": "development",
+          "taskId": "000001-infra-github-repo-protection",
+          "phaseId": "0000-P1"
+        }
+      },
+      {
+        "at": "2026-10-01T09:05:42.137Z",
+        "level": "info",
+        "source": "artifact",
+        "event": "report",
+        "taskId": "000001-infra-github-repo-protection",
+        "phaseId": "0000-P1",
+        "message": "Laporan development: docs/development/Result/0000/phase-01/development/000001-infra-github-repo-protection.md",
+        "detail": {
+          "path": "docs/development/Result/0000/phase-01/development/000001-infra-github-repo-protection.md",
+          "kind": "development"
+        }
+      },
+      {
+        "at": "2026-10-01T09:04:18.196Z",
+        "level": "info",
+        "source": "autopilot",
+        "event": "chain",
+        "taskId": "000001-infra-github-repo-protection",
+        "phaseId": null,
+        "message": "Chain (manual_complete): berikutnya development · 000001-infra-github-repo-protection",
+        "detail": {
+          "at": "2026-10-01T09:04:18.196Z",
+          "event": "chain",
+          "reason": "manual_complete",
+          "nextKind": "development",
+          "taskId": "000001-infra-github-repo-protection"
+        }
+      }
+    ],
+    "000001-docs-dev-runbook": [
+      {
+        "at": "2026-10-01T09:04:18.180Z",
+        "level": "info",
+        "source": "autopilot",
+        "event": "manual_complete",
+        "taskId": "000001-docs-dev-runbook",
+        "phaseId": null,
+        "message": "Complete manual → chain · 000001-docs-dev-runbook",
+        "detail": {
+          "at": "2026-10-01T09:04:18.180Z",
+          "event": "manual_complete",
+          "taskId": "000001-docs-dev-runbook"
+        }
+      },
+      {
+        "at": "2026-10-01T09:04:08.829Z",
+        "level": "info",
+        "source": "artifact",
+        "event": "report",
+        "taskId": "000001-docs-dev-runbook",
+        "phaseId": "0000-P0",
+        "message": "Laporan qa: docs/development/Result/0000/phase-00/qa/000001-docs-dev-runbook.md",
+        "detail": {
+          "path": "docs/development/Result/0000/phase-00/qa/000001-docs-dev-runbook.md",
+          "kind": "qa"
+        }
+      },
+      {
+        "at": "2026-10-01T09:03:14.009Z",
+        "level": "info",
+        "source": "autopilot",
+        "event": "chain",
+        "taskId": "000001-docs-dev-runbook",
+        "phaseId": null,
+        "message": "Chain (manual_complete): berikutnya qa · 000001-docs-dev-runbook",
+        "detail": {
+          "at": "2026-10-01T09:03:14.009Z",
+          "event": "chain",
+          "reason": "manual_complete",
+          "nextKind": "qa",
+          "taskId": "000001-docs-dev-runbook"
+        }
+      },
+      {
+        "at": "2026-10-01T09:03:13.996Z",
+        "level": "info",
+        "source": "autopilot",
+        "event": "manual_complete",
+        "taskId": "000001-docs-dev-runbook",
+        "phaseId": null,
+        "message": "Complete manual → chain · 000001-docs-dev-runbook",
+        "detail": {
+          "at": "2026-10-01T09:03:13.996Z",
+          "event": "manual_complete",
+          "taskId": "000001-docs-dev-runbook"
+        }
+      },
+      {
+        "at": "2026-10-01T09:03:04.400Z",
+        "level": "info",
+        "source": "artifact",
+        "event": "report",
+        "taskId": "000001-docs-dev-runbook",
+        "phaseId": "0000-P0",
+        "message": "Laporan development: docs/development/Result/0000/phase-00/development/000001-docs-dev-runbook.md",
+        "detail": {
+          "path": "docs/development/Result/0000/phase-00/development/000001-docs-dev-runbook.md",
+          "kind": "development"
+        }
+      },
+      {
+        "at": "2026-10-01T09:02:05.115Z",
+        "level": "info",
+        "source": "autopilot",
+        "event": "chain",
+        "taskId": "000001-docs-dev-runbook",
+        "phaseId": null,
+        "message": "Chain (manual_complete): berikutnya development · 000001-docs-dev-runbook",
+        "detail": {
+          "at": "2026-10-01T09:02:05.115Z",
+          "event": "chain",
+          "reason": "manual_complete",
+          "nextKind": "development",
+          "taskId": "000001-docs-dev-runbook"
+        }
+      },
+      {
+        "at": "2026-10-01T09:02:04.009Z",
+        "level": "info",
+        "source": "autopilot",
+        "event": "chain",
+        "taskId": "000001-docs-dev-runbook",
+        "phaseId": null,
+        "message": "Chain (auto_complete): berikutnya development · 000001-docs-dev-runbook",
+        "detail": {
+          "at": "2026-10-01T09:02:04.009Z",
+          "event": "chain",
+          "reason": "auto_complete",
+          "nextKind": "development",
+          "taskId": "000001-docs-dev-runbook"
+        }
+      }
+    ],
+    "000006-stack-verify-script": [
+      {
+        "at": "2026-10-01T09:02:05.104Z",
+        "level": "info",
+        "source": "autopilot",
+        "event": "manual_complete",
+        "taskId": "000006-stack-verify-script",
+        "phaseId": null,
+        "message": "Complete manual → chain · 000006-stack-verify-script",
+        "detail": {
+          "at": "2026-10-01T09:02:05.104Z",
+          "event": "manual_complete",
+          "taskId": "000006-stack-verify-script"
+        }
+      },
+      {
+        "at": "2026-10-01T09:02:03.978Z",
+        "level": "success",
+        "source": "autopilot",
+        "event": "auto_complete",
+        "taskId": "000006-stack-verify-script",
+        "phaseId": "0000-P0",
+        "message": "Selesai otomatis: qa 000006-stack-verify-script",
+        "detail": {
+          "at": "2026-10-01T09:02:03.978Z",
+          "event": "auto_complete",
+          "kind": "qa",
+          "taskId": "000006-stack-verify-script",
+          "phaseId": "0000-P0"
+        }
+      },
+      {
+        "at": "2026-10-01T09:01:55.234Z",
+        "level": "info",
+        "source": "artifact",
+        "event": "report",
+        "taskId": "000006-stack-verify-script",
+        "phaseId": "0000-P0",
+        "message": "Laporan qa: docs/development/Result/0000/phase-00/qa/000006-stack-verify-script.md",
+        "detail": {
+          "path": "docs/development/Result/0000/phase-00/qa/000006-stack-verify-script.md",
+          "kind": "qa"
+        }
+      },
+      {
+        "at": "2026-10-01T09:01:26.131Z",
+        "level": "info",
+        "source": "autopilot",
+        "event": "chain",
+        "taskId": "000006-stack-verify-script",
+        "phaseId": null,
+        "message": "Chain (manual_complete): berikutnya qa · 000006-stack-verify-script",
+        "detail": {
+          "at": "2026-10-01T09:01:26.131Z",
+          "event": "chain",
+          "reason": "manual_complete",
+          "nextKind": "qa",
+          "taskId": "000006-stack-verify-script"
+        }
+      },
+      {
+        "at": "2026-10-01T09:01:26.121Z",
+        "level": "info",
+        "source": "autopilot",
+        "event": "manual_complete",
+        "taskId": "000006-stack-verify-script",
+        "phaseId": null,
+        "message": "Complete manual → chain · 000006-stack-verify-script",
+        "detail": {
+          "at": "2026-10-01T09:01:26.121Z",
+          "event": "manual_complete",
+          "taskId": "000006-stack-verify-script"
+        }
+      },
+      {
+        "at": "2026-10-01T09:01:23.609Z",
+        "level": "info",
+        "source": "autopilot",
+        "event": "chain",
+        "taskId": "000006-stack-verify-script",
+        "phaseId": null,
+        "message": "Chain (auto_complete): berikutnya qa · 000006-stack-verify-script",
+        "detail": {
+          "at": "2026-10-01T09:01:23.609Z",
+          "event": "chain",
+          "reason": "auto_complete",
+          "nextKind": "qa",
+          "taskId": "000006-stack-verify-script"
+        }
+      },
+      {
+        "at": "2026-10-01T09:01:23.596Z",
+        "level": "success",
+        "source": "autopilot",
+        "event": "auto_complete",
+        "taskId": "000006-stack-verify-script",
+        "phaseId": "0000-P0",
+        "message": "Selesai otomatis: development 000006-stack-verify-script",
+        "detail": {
+          "at": "2026-10-01T09:01:23.596Z",
+          "event": "auto_complete",
+          "kind": "development",
+          "taskId": "000006-stack-verify-script",
+          "phaseId": "0000-P0"
+        }
+      },
+      {
+        "at": "2026-10-01T09:01:17.600Z",
+        "level": "info",
+        "source": "artifact",
+        "event": "report",
+        "taskId": "000006-stack-verify-script",
+        "phaseId": "0000-P0",
+        "message": "Laporan development: docs/development/Result/0000/phase-00/development/000006-stack-verify-script.md",
+        "detail": {
+          "path": "docs/development/Result/0000/phase-00/development/000006-stack-verify-script.md",
+          "kind": "development"
+        }
+      },
+      {
+        "at": "2026-10-01T09:00:32.885Z",
+        "level": "info",
+        "source": "autopilot",
+        "event": "chain",
+        "taskId": "000006-stack-verify-script",
+        "phaseId": null,
+        "message": "Chain (manual_complete): berikutnya development · 000006-stack-verify-script",
+        "detail": {
+          "at": "2026-10-01T09:00:32.885Z",
+          "event": "chain",
+          "reason": "manual_complete",
+          "nextKind": "development",
+          "taskId": "000006-stack-verify-script"
+        }
+      }
+    ],
+    "000005-stack-setup-script": [
+      {
+        "at": "2026-10-01T09:00:32.875Z",
+        "level": "info",
+        "source": "autopilot",
+        "event": "manual_complete",
+        "taskId": "000005-stack-setup-script",
+        "phaseId": null,
+        "message": "Complete manual → chain · 000005-stack-setup-script",
+        "detail": {
+          "at": "2026-10-01T09:00:32.875Z",
+          "event": "manual_complete",
+          "taskId": "000005-stack-setup-script"
+        }
+      },
+      {
+        "at": "2026-10-01T09:00:22.695Z",
+        "level": "info",
+        "source": "artifact",
+        "event": "report",
+        "taskId": "000005-stack-setup-script",
+        "phaseId": "0000-P0",
+        "message": "Laporan qa: docs/development/Result/0000/phase-00/qa/000005-stack-setup-script.md",
+        "detail": {
+          "path": "docs/development/Result/0000/phase-00/qa/000005-stack-setup-script.md",
+          "kind": "qa"
+        }
+      },
+      {
+        "at": "2026-10-01T08:59:54.270Z",
+        "level": "info",
+        "source": "autopilot",
+        "event": "chain",
+        "taskId": "000005-stack-setup-script",
+        "phaseId": null,
+        "message": "Chain (manual_complete): berikutnya qa · 000005-stack-setup-script",
+        "detail": {
+          "at": "2026-10-01T08:59:54.270Z",
+          "event": "chain",
+          "reason": "manual_complete",
+          "nextKind": "qa",
+          "taskId": "000005-stack-setup-script"
+        }
+      },
+      {
+        "at": "2026-10-01T08:59:54.260Z",
+        "level": "info",
+        "source": "autopilot",
+        "event": "manual_complete",
+        "taskId": "000005-stack-setup-script",
+        "phaseId": null,
+        "message": "Complete manual → chain · 000005-stack-setup-script",
+        "detail": {
+          "at": "2026-10-01T08:59:54.260Z",
+          "event": "manual_complete",
+          "taskId": "000005-stack-setup-script"
+        }
+      },
+      {
+        "at": "2026-10-01T08:59:45.931Z",
+        "level": "info",
+        "source": "artifact",
+        "event": "report",
+        "taskId": "000005-stack-setup-script",
+        "phaseId": "0000-P0",
+        "message": "Laporan development: docs/development/Result/0000/phase-00/development/000005-stack-setup-script.md",
+        "detail": {
+          "path": "docs/development/Result/0000/phase-00/development/000005-stack-setup-script.md",
+          "kind": "development"
+        }
+      },
+      {
+        "at": "2026-10-01T08:58:58.308Z",
+        "level": "info",
+        "source": "autopilot",
+        "event": "chain",
+        "taskId": "000005-stack-setup-script",
+        "phaseId": null,
+        "message": "Chain (manual_complete): berikutnya development · 000005-stack-setup-script",
+        "detail": {
+          "at": "2026-10-01T08:58:58.308Z",
+          "event": "chain",
+          "reason": "manual_complete",
+          "nextKind": "development",
+          "taskId": "000005-stack-setup-script"
+        }
+      }
+    ],
+    "000002-db-root-scripts": [
+      {
+        "at": "2026-10-01T08:58:58.297Z",
+        "level": "info",
+        "source": "autopilot",
+        "event": "manual_complete",
+        "taskId": "000002-db-root-scripts",
+        "phaseId": null,
+        "message": "Complete manual → chain · 000002-db-root-scripts",
+        "detail": {
+          "at": "2026-10-01T08:58:58.297Z",
+          "event": "manual_complete",
+          "taskId": "000002-db-root-scripts"
+        }
+      },
+      {
+        "at": "2026-10-01T08:58:49.029Z",
+        "level": "info",
+        "source": "artifact",
+        "event": "report",
+        "taskId": "000002-db-root-scripts",
+        "phaseId": "0000-P0",
+        "message": "Laporan qa: docs/development/Result/0000/phase-00/qa/000002-db-root-scripts.md",
+        "detail": {
+          "path": "docs/development/Result/0000/phase-00/qa/000002-db-root-scripts.md",
+          "kind": "qa"
+        }
+      },
+      {
+        "at": "2026-10-01T08:57:16.018Z",
+        "level": "info",
+        "source": "autopilot",
+        "event": "chain",
+        "taskId": "000002-db-root-scripts",
+        "phaseId": null,
+        "message": "Chain (manual_complete): berikutnya qa · 000002-db-root-scripts",
+        "detail": {
+          "at": "2026-10-01T08:57:16.018Z",
+          "event": "chain",
+          "reason": "manual_complete",
+          "nextKind": "qa",
+          "taskId": "000002-db-root-scripts"
+        }
+      },
+      {
+        "at": "2026-10-01T08:57:16.006Z",
+        "level": "info",
+        "source": "autopilot",
+        "event": "manual_complete",
+        "taskId": "000002-db-root-scripts",
+        "phaseId": null,
+        "message": "Complete manual → chain · 000002-db-root-scripts",
+        "detail": {
+          "at": "2026-10-01T08:57:16.006Z",
+          "event": "manual_complete",
+          "taskId": "000002-db-root-scripts"
+        }
+      },
+      {
+        "at": "2026-10-01T08:57:07.486Z",
+        "level": "info",
+        "source": "artifact",
+        "event": "report",
+        "taskId": "000002-db-root-scripts",
+        "phaseId": "0000-P0",
+        "message": "Laporan development: docs/development/Result/0000/phase-00/development/000002-db-root-scripts.md",
+        "detail": {
+          "path": "docs/development/Result/0000/phase-00/development/000002-db-root-scripts.md",
+          "kind": "development"
+        }
+      },
+      {
+        "at": "2026-10-01T08:55:41.222Z",
+        "level": "info",
+        "source": "autopilot",
+        "event": "chain",
+        "taskId": "000002-db-root-scripts",
+        "phaseId": null,
+        "message": "Chain (manual_complete): berikutnya development · 000002-db-root-scripts",
+        "detail": {
+          "at": "2026-10-01T08:55:41.222Z",
+          "event": "chain",
+          "reason": "manual_complete",
+          "nextKind": "development",
+          "taskId": "000002-db-root-scripts"
+        }
+      }
+    ],
+    "000004-stack-env-example": [
+      {
+        "at": "2026-10-01T08:55:41.212Z",
+        "level": "info",
+        "source": "autopilot",
+        "event": "manual_complete",
+        "taskId": "000004-stack-env-example",
+        "phaseId": null,
+        "message": "Complete manual → chain · 000004-stack-env-example",
+        "detail": {
+          "at": "2026-10-01T08:55:41.212Z",
+          "event": "manual_complete",
+          "taskId": "000004-stack-env-example"
+        }
+      },
+      {
+        "at": "2026-10-01T08:55:31.871Z",
+        "level": "info",
+        "source": "artifact",
+        "event": "report",
+        "taskId": "000004-stack-env-example",
+        "phaseId": "0000-P0",
+        "message": "Laporan qa: docs/development/Result/0000/phase-00/qa/000004-stack-env-example.md",
+        "detail": {
+          "path": "docs/development/Result/0000/phase-00/qa/000004-stack-env-example.md",
+          "kind": "qa"
+        }
+      },
+      {
+        "at": "2026-10-01T08:55:09.865Z",
+        "level": "info",
+        "source": "autopilot",
+        "event": "chain",
+        "taskId": "000004-stack-env-example",
+        "phaseId": null,
+        "message": "Chain (manual_complete): berikutnya qa · 000004-stack-env-example",
+        "detail": {
+          "at": "2026-10-01T08:55:09.865Z",
+          "event": "chain",
+          "reason": "manual_complete",
+          "nextKind": "qa",
+          "taskId": "000004-stack-env-example"
+        }
+      },
+      {
+        "at": "2026-10-01T08:55:09.842Z",
+        "level": "info",
+        "source": "autopilot",
+        "event": "manual_complete",
+        "taskId": "000004-stack-env-example",
+        "phaseId": null,
+        "message": "Complete manual → chain · 000004-stack-env-example",
+        "detail": {
+          "at": "2026-10-01T08:55:09.842Z",
+          "event": "manual_complete",
+          "taskId": "000004-stack-env-example"
+        }
+      },
+      {
+        "at": "2026-10-01T08:55:02.557Z",
+        "level": "info",
+        "source": "autopilot",
+        "event": "chain",
+        "taskId": "000004-stack-env-example",
+        "phaseId": null,
+        "message": "Chain (auto_complete): berikutnya qa · 000004-stack-env-example",
+        "detail": {
+          "at": "2026-10-01T08:55:02.557Z",
+          "event": "chain",
+          "reason": "auto_complete",
+          "nextKind": "qa",
+          "taskId": "000004-stack-env-example"
+        }
+      },
+      {
+        "at": "2026-10-01T08:55:02.551Z",
+        "level": "success",
+        "source": "autopilot",
+        "event": "auto_complete",
+        "taskId": "000004-stack-env-example",
+        "phaseId": "0000-P0",
+        "message": "Selesai otomatis: development 000004-stack-env-example",
+        "detail": {
+          "at": "2026-10-01T08:55:02.551Z",
+          "event": "auto_complete",
+          "kind": "development",
+          "taskId": "000004-stack-env-example",
+          "phaseId": "0000-P0"
+        }
+      },
+      {
+        "at": "2026-10-01T08:54:52.065Z",
+        "level": "info",
+        "source": "artifact",
+        "event": "report",
+        "taskId": "000004-stack-env-example",
+        "phaseId": "0000-P0",
+        "message": "Laporan development: docs/development/Result/0000/phase-00/development/000004-stack-env-example.md",
+        "detail": {
+          "path": "docs/development/Result/0000/phase-00/development/000004-stack-env-example.md",
+          "kind": "development"
+        }
+      },
+      {
+        "at": "2026-10-01T08:34:57.728Z",
+        "level": "info",
+        "source": "autopilot",
+        "event": "chain",
+        "taskId": "000004-stack-env-example",
+        "phaseId": null,
+        "message": "Chain (manual_complete): berikutnya development · 000004-stack-env-example",
+        "detail": {
+          "at": "2026-10-01T08:34:57.728Z",
+          "event": "chain",
+          "reason": "manual_complete",
+          "nextKind": "development",
+          "taskId": "000004-stack-env-example"
+        }
+      }
+    ],
+    "000003-stack-repo-hygiene": [
+      {
+        "at": "2026-10-01T08:34:57.716Z",
+        "level": "info",
+        "source": "autopilot",
+        "event": "manual_complete",
+        "taskId": "000003-stack-repo-hygiene",
+        "phaseId": null,
+        "message": "Complete manual → chain · 000003-stack-repo-hygiene",
+        "detail": {
+          "at": "2026-10-01T08:34:57.716Z",
+          "event": "manual_complete",
+          "taskId": "000003-stack-repo-hygiene"
+        }
+      },
+      {
+        "at": "2026-10-01T08:34:49.980Z",
+        "level": "info",
+        "source": "artifact",
+        "event": "report",
+        "taskId": "000003-stack-repo-hygiene",
+        "phaseId": "0000-P0",
+        "message": "Laporan qa: docs/development/Result/0000/phase-00/qa/000003-stack-repo-hygiene.md",
+        "detail": {
+          "path": "docs/development/Result/0000/phase-00/qa/000003-stack-repo-hygiene.md",
+          "kind": "qa"
+        }
+      },
+      {
+        "at": "2026-10-01T08:34:25.590Z",
+        "level": "info",
+        "source": "autopilot",
+        "event": "chain",
+        "taskId": "000003-stack-repo-hygiene",
+        "phaseId": null,
+        "message": "Chain (manual_complete): berikutnya qa · 000003-stack-repo-hygiene",
+        "detail": {
+          "at": "2026-10-01T08:34:25.590Z",
+          "event": "chain",
+          "reason": "manual_complete",
+          "nextKind": "qa",
+          "taskId": "000003-stack-repo-hygiene"
+        }
+      },
+      {
+        "at": "2026-10-01T08:34:25.582Z",
+        "level": "info",
+        "source": "autopilot",
+        "event": "manual_complete",
+        "taskId": "000003-stack-repo-hygiene",
+        "phaseId": null,
+        "message": "Complete manual → chain · 000003-stack-repo-hygiene",
+        "detail": {
+          "at": "2026-10-01T08:34:25.582Z",
+          "event": "manual_complete",
+          "taskId": "000003-stack-repo-hygiene"
+        }
+      },
+      {
+        "at": "2026-10-01T08:34:18.466Z",
+        "level": "info",
+        "source": "artifact",
+        "event": "report",
+        "taskId": "000003-stack-repo-hygiene",
+        "phaseId": "0000-P0",
+        "message": "Laporan development: docs/development/Result/0000/phase-00/development/000003-stack-repo-hygiene.md",
+        "detail": {
+          "path": "docs/development/Result/0000/phase-00/development/000003-stack-repo-hygiene.md",
+          "kind": "development"
+        }
+      },
+      {
+        "at": "2026-10-01T08:32:43.080Z",
+        "level": "info",
+        "source": "autopilot",
+        "event": "chain",
+        "taskId": "000003-stack-repo-hygiene",
+        "phaseId": null,
+        "message": "Chain (manual_complete): berikutnya development · 000003-stack-repo-hygiene",
+        "detail": {
+          "at": "2026-10-01T08:32:43.080Z",
+          "event": "chain",
+          "reason": "manual_complete",
+          "nextKind": "development",
+          "taskId": "000003-stack-repo-hygiene"
+        }
+      }
+    ],
+    "000002-stack-single-npm-lockfile": [
+      {
+        "at": "2026-10-01T08:32:43.069Z",
+        "level": "info",
+        "source": "autopilot",
+        "event": "manual_complete",
+        "taskId": "000002-stack-single-npm-lockfile",
+        "phaseId": null,
+        "message": "Complete manual → chain · 000002-stack-single-npm-lockfile",
+        "detail": {
+          "at": "2026-10-01T08:32:43.069Z",
+          "event": "manual_complete",
+          "taskId": "000002-stack-single-npm-lockfile"
+        }
+      },
+      {
+        "at": "2026-10-01T08:32:33.489Z",
+        "level": "info",
+        "source": "artifact",
+        "event": "report",
+        "taskId": "000002-stack-single-npm-lockfile",
+        "phaseId": "0000-P0",
+        "message": "Laporan qa: docs/development/Result/0000/phase-00/qa/000002-stack-single-npm-lockfile.md",
+        "detail": {
+          "path": "docs/development/Result/0000/phase-00/qa/000002-stack-single-npm-lockfile.md",
+          "kind": "qa"
+        }
+      },
+      {
+        "at": "2026-10-01T08:32:07.717Z",
+        "level": "info",
+        "source": "autopilot",
+        "event": "chain",
+        "taskId": "000002-stack-single-npm-lockfile",
+        "phaseId": null,
+        "message": "Chain (manual_complete): berikutnya qa · 000002-stack-single-npm-lockfile",
+        "detail": {
+          "at": "2026-10-01T08:32:07.717Z",
+          "event": "chain",
+          "reason": "manual_complete",
+          "nextKind": "qa",
+          "taskId": "000002-stack-single-npm-lockfile"
+        }
+      },
+      {
+        "at": "2026-10-01T08:32:07.707Z",
+        "level": "info",
+        "source": "autopilot",
+        "event": "manual_complete",
+        "taskId": "000002-stack-single-npm-lockfile",
+        "phaseId": null,
+        "message": "Complete manual → chain · 000002-stack-single-npm-lockfile",
+        "detail": {
+          "at": "2026-10-01T08:32:07.707Z",
+          "event": "manual_complete",
+          "taskId": "000002-stack-single-npm-lockfile"
+        }
+      },
+      {
+        "at": "2026-10-01T08:31:57.031Z",
+        "level": "info",
+        "source": "artifact",
+        "event": "report",
+        "taskId": "000002-stack-single-npm-lockfile",
+        "phaseId": "0000-P0",
+        "message": "Laporan development: docs/development/Result/0000/phase-00/development/000002-stack-single-npm-lockfile.md",
+        "detail": {
+          "path": "docs/development/Result/0000/phase-00/development/000002-stack-single-npm-lockfile.md",
+          "kind": "development"
+        }
+      },
+      {
+        "at": "2026-10-01T08:30:02.883Z",
+        "level": "info",
+        "source": "autopilot",
+        "event": "chain",
+        "taskId": "000002-stack-single-npm-lockfile",
+        "phaseId": null,
+        "message": "Chain (manual_complete): berikutnya development · 000002-stack-single-npm-lockfile",
+        "detail": {
+          "at": "2026-10-01T08:30:02.883Z",
+          "event": "chain",
+          "reason": "manual_complete",
+          "nextKind": "development",
+          "taskId": "000002-stack-single-npm-lockfile"
+        }
+      },
+      {
+        "at": "2026-10-01T08:29:27.542Z",
+        "level": "info",
+        "source": "autopilot",
+        "event": "chain",
+        "taskId": "000002-stack-single-npm-lockfile",
+        "phaseId": null,
+        "message": "Chain (auto_complete): berikutnya development · 000002-stack-single-npm-lockfile",
+        "detail": {
+          "at": "2026-10-01T08:29:27.542Z",
+          "event": "chain",
+          "reason": "auto_complete",
+          "nextKind": "development",
+          "taskId": "000002-stack-single-npm-lockfile"
         }
       }
     ],
     "000001-stack-pin-node-runtime": [
+      {
+        "at": "2026-10-01T08:30:02.874Z",
+        "level": "info",
+        "source": "autopilot",
+        "event": "manual_complete",
+        "taskId": "000001-stack-pin-node-runtime",
+        "phaseId": null,
+        "message": "Complete manual → chain · 000001-stack-pin-node-runtime",
+        "detail": {
+          "at": "2026-10-01T08:30:02.874Z",
+          "event": "manual_complete",
+          "taskId": "000001-stack-pin-node-runtime"
+        }
+      },
+      {
+        "at": "2026-10-01T08:29:27.526Z",
+        "level": "success",
+        "source": "autopilot",
+        "event": "auto_complete",
+        "taskId": "000001-stack-pin-node-runtime",
+        "phaseId": "0000-P0",
+        "message": "Selesai otomatis: qa 000001-stack-pin-node-runtime",
+        "detail": {
+          "at": "2026-10-01T08:29:27.526Z",
+          "event": "auto_complete",
+          "kind": "qa",
+          "taskId": "000001-stack-pin-node-runtime",
+          "phaseId": "0000-P0"
+        }
+      },
+      {
+        "at": "2026-10-01T08:29:22.688Z",
+        "level": "info",
+        "source": "artifact",
+        "event": "report",
+        "taskId": "000001-stack-pin-node-runtime",
+        "phaseId": "0000-P0",
+        "message": "Laporan qa: docs/development/Result/0000/phase-00/qa/000001-stack-pin-node-runtime.md",
+        "detail": {
+          "path": "docs/development/Result/0000/phase-00/qa/000001-stack-pin-node-runtime.md",
+          "kind": "qa"
+        }
+      },
       {
         "at": "2026-10-01T07:53:25.866Z",
         "level": "info",
@@ -3532,23 +5819,10 @@
         "event": "report",
         "taskId": "000001-stack-pin-node-runtime",
         "phaseId": "0000-P0",
-        "message": "Laporan development: Development/Result/0000/phase-00/development/000001-stack-pin-node-runtime.md",
+        "message": "Laporan development: docs/development/Result/0000/phase-00/development/000001-stack-pin-node-runtime.md",
         "detail": {
-          "path": "Development/Result/0000/phase-00/development/000001-stack-pin-node-runtime.md",
+          "path": "docs/development/Result/0000/phase-00/development/000001-stack-pin-node-runtime.md",
           "kind": "development"
-        }
-      },
-      {
-        "at": "2026-10-01T07:21:14.286Z",
-        "level": "info",
-        "source": "session",
-        "event": "development_session",
-        "taskId": "000001-stack-pin-node-runtime",
-        "phaseId": "0000-P0",
-        "message": "Sesi Development diminta: 000001-stack-pin-node-runtime",
-        "detail": {
-          "planPath": "Agentic/Development/Plan/0000/phase-00/tasks/000001-stack-pin-node-runtime/plan.md",
-          "source": "autopilot"
         }
       },
       {
@@ -3570,15 +5844,28 @@
     ],
     "000001-db-canonical-sqlite-path": [
       {
+        "at": "2026-10-01T08:24:45.360Z",
+        "level": "info",
+        "source": "artifact",
+        "event": "report",
+        "taskId": "000001-db-canonical-sqlite-path",
+        "phaseId": "0000-P0",
+        "message": "Laporan audit: docs/development/Result/0000/phase-00/audit/000001-db-canonical-sqlite-path.md",
+        "detail": {
+          "path": "docs/development/Result/0000/phase-00/audit/000001-db-canonical-sqlite-path.md",
+          "kind": "audit"
+        }
+      },
+      {
         "at": "2026-10-01T06:59:52.970Z",
         "level": "info",
         "source": "artifact",
         "event": "report",
         "taskId": "000001-db-canonical-sqlite-path",
         "phaseId": "0000-P0",
-        "message": "Laporan development: Development/Result/0000/phase-00/development/000001-db-canonical-sqlite-path.md",
+        "message": "Laporan development: docs/development/Result/0000/phase-00/development/000001-db-canonical-sqlite-path.md",
         "detail": {
-          "path": "Development/Result/0000/phase-00/development/000001-db-canonical-sqlite-path.md",
+          "path": "docs/development/Result/0000/phase-00/development/000001-db-canonical-sqlite-path.md",
           "kind": "development"
         }
       },
@@ -3589,10 +5876,25 @@
         "event": "report",
         "taskId": "000001-db-canonical-sqlite-path",
         "phaseId": "0000-P0",
-        "message": "Laporan qa: Development/Result/0000/phase-00/qa/000001-db-canonical-sqlite-path.md",
+        "message": "Laporan qa: docs/development/Result/0000/phase-00/qa/000001-db-canonical-sqlite-path.md",
         "detail": {
-          "path": "Development/Result/0000/phase-00/qa/000001-db-canonical-sqlite-path.md",
+          "path": "docs/development/Result/0000/phase-00/qa/000001-db-canonical-sqlite-path.md",
           "kind": "qa"
+        }
+      }
+    ],
+    "000001-be-env-validation": [
+      {
+        "at": "2026-10-01T07:57:32.021Z",
+        "level": "info",
+        "source": "artifact",
+        "event": "report",
+        "taskId": "000001-be-env-validation",
+        "phaseId": "0000-P2",
+        "message": "Laporan development: docs/development/Result/0000/phase-02/development/000001-be-env-validation.md",
+        "detail": {
+          "path": "docs/development/Result/0000/phase-02/development/000001-be-env-validation.md",
+          "kind": "development"
         }
       }
     ]

@@ -25,7 +25,7 @@ fe web css token build (PRD epic 0000).
 
 | Feature ID | Dokumen |
 |------------|---------|
-| `0000-fe-web-css-token-build` | [agentic/development/features/0000-fe-web-css-token-build.md](../../../../../../agentic/development/features/0000-fe-web-css-token-build.md) |
+| `0000-fe-web-css-token-build` | [docs/agentic/development/features/0000-fe-web-css-token-build.md](../../../../agentic/development/features/0000-fe-web-css-token-build.md) |
 
 ## Development
 
@@ -39,8 +39,8 @@ fe web css token build (PRD epic 0000).
 
 | Skill | File plan |
 |-------|-----------|
-| Frontend | [skills/frontend.md](./skills/frontend.md) |
-| QA | [skills/qa.md](./skills/qa.md) |
+| Frontend | [skills/frontend.md](../../../../development/Plan/0000/phase-02/tasks/000002-fe-web-css-token-build/skills/frontend.md) |
+| QA | [skills/qa.md](../../../../development/Plan/0000/phase-02/tasks/000002-fe-web-css-token-build/skills/qa.md) |
 
 ## Acuan PRD
 

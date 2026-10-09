@@ -23,7 +23,7 @@ rollback staging kembali ke versi sebelumnya dan health ready.
 
 | Feature ID | Dokumen |
 |------------|---------|
-| `0000-infra-rollback` | [agentic/development/features/0000-infra-rollback.md](../../../../../../agentic/development/features/0000-infra-rollback.md) |
+| `0000-infra-rollback` | [docs/agentic/development/features/0000-infra-rollback.md](../../../../agentic/development/features/0000-infra-rollback.md) |
 
 ## Development
 
@@ -33,8 +33,8 @@ rollback staging kembali ke versi sebelumnya dan health ready.
 
 | Skill | File plan |
 |-------|-----------|
-| Infra | [skills/infra.md](./skills/infra.md) |
-| Docs | [skills/docs.md](./skills/docs.md) |
+| Infra | [skills/infra.md](../../../../development/Plan/0000/phase-03/tasks/000012-infra-rollback/skills/infra.md) |
+| Docs | [skills/docs.md](../../../../development/Plan/0000/phase-03/tasks/000012-infra-rollback/skills/docs.md) |
 
 ## Acuan PRD
 

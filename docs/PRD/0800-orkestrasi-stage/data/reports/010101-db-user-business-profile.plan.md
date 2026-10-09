@@ -19,7 +19,7 @@ npm run gate
 
 | Feature ID | Dokumen |
 |------------|---------|
-| `0101-db-user-business-profile` | [agentic/development/features/0101-db-user-business-profile.md](../../../../../../agentic/development/features/0101-db-user-business-profile.md) |
+| `0101-db-user-business-profile` | [docs/agentic/development/features/0101-db-user-business-profile.md](../../../../agentic/development/features/0101-db-user-business-profile.md) |
 
 ## Development
 
@@ -29,7 +29,7 @@ npm run gate
 
 | Skill | File plan |
 |-------|-----------|
-| Docs | [skills/docs.md](./skills/docs.md) |
+| Docs | [skills/docs.md](../../../../development/Plan/0101/phase-01/tasks/010101-db-user-business-profile/skills/docs.md) |
 
 ## Acuan PRD
 

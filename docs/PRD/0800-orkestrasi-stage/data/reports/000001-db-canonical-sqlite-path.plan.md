@@ -25,14 +25,14 @@ hanya ada satu `dev.db` · user yang dibuat di web tampil di Prisma Studio · `G
 
 | Feature ID | Dokumen |
 |------------|---------|
-| `0000-db-canonical-path` | [agentic/development/features/0000-db-canonical-path.md](../../../../../../agentic/development/features/0000-db-canonical-path.md) |
+| `0000-db-canonical-path` | [docs/agentic/development/features/0000-db-canonical-path.md](../../../../agentic/development/features/0000-db-canonical-path.md) |
 
 ## Development
 
 | Field | Nilai |
 |-------|-------|
 | Status | `complete` |
-| Laporan | Development/Result/0000/phase-00/development/000001-db-canonical-sqlite-path.md |
+| Laporan | docs/development/Result/0000/phase-00/development/000001-db-canonical-sqlite-path.md |
 | Commit/PR | baseline repo (PS-13 Done 2026-09-30) |
 | Selesai | 2026-10-01T06:54:00+07:00 |
 
@@ -41,7 +41,7 @@ hanya ada satu `dev.db` · user yang dibuat di web tampil di Prisma Studio · `G
 | Field | Nilai |
 |-------|-------|
 | Status | `pass` |
-| Laporan | Development/Result/0000/phase-00/qa/000001-db-canonical-sqlite-path.md |
+| Laporan | docs/development/Result/0000/phase-00/qa/000001-db-canonical-sqlite-path.md |
 | Fix dalam session | tidak |
 | Selesai | 2026-10-01T07:00:00+07:00 |
 
@@ -49,9 +49,9 @@ hanya ada satu `dev.db` · user yang dibuat di web tampil di Prisma Studio · `G
 
 | Skill | File plan |
 |-------|-----------|
-| Infra | [skills/infra.md](./skills/infra.md) |
-| Docs | [skills/docs.md](./skills/docs.md) |
-| QA | [skills/qa.md](./skills/qa.md) |
+| Infra | [skills/infra.md](../../../../development/Plan/0000/phase-00/tasks/000001-db-canonical-sqlite-path/skills/infra.md) |
+| Docs | [skills/docs.md](../../../../development/Plan/0000/phase-00/tasks/000001-db-canonical-sqlite-path/skills/docs.md) |
+| QA | [skills/qa.md](../../../../development/Plan/0000/phase-00/tasks/000001-db-canonical-sqlite-path/skills/qa.md) |
 
 ## Acuan PRD
 

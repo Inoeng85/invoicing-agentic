@@ -4,10 +4,10 @@ Skill + template untuk menghasilkan dokumen pilar produk. Sumber canonical di ro
 
 | Dokumen | Folder skill | Template output default |
 |---------|--------------|-------------------------|
-| BRD | [invoicing-brd/](../../invoicing-brd/Skill.md) | `docs/invoicing/BRD.md` |
-| Architecture | [invoicing-architecture/](../../invoicing-architecture/Skill.md) | `docs/invoicing/ARCHITECTURE.md` |
-| Stack | [invoicing-stack/](../../invoicing-stack/Skill.md) | `docs/invoicing/engineering/TECHNOLOGY-STACK.md` |
-| Design | [invoicing-design/](../../invoicing-design/Skill.md) | `docs/invoicing/design/DESIGN-GUIDELINES.md` |
+| BRD | [invoicing-brd/](../skills/invoicing-brd/Skill.md) | `docs/invoicing/BRD.md` |
+| Architecture | [invoicing-architecture/](../skills/invoicing-architecture/Skill.md) | `docs/invoicing/ARCHITECTURE.md` |
+| Stack | [invoicing-stack/](../skills/invoicing-stack/Skill.md) | `docs/invoicing/engineering/TECHNOLOGY-STACK.md` |
+| Design | [invoicing-design/](../skills/invoicing-design/Skill.md) | `docs/invoicing/design/DESIGN-GUIDELINES.md` |
 
 ## Cara pakai (agent / human)
 

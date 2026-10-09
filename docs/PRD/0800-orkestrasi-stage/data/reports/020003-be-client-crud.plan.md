@@ -19,7 +19,7 @@ npm run typecheck && npm run test:domain && npm test
 
 | Feature ID | Dokumen |
 |------------|---------|
-| `0200-be-client-crud` | [agentic/development/features/0200-be-client-crud.md](../../../../../../agentic/development/features/0200-be-client-crud.md) |
+| `0200-be-client-crud` | [docs/agentic/development/features/0200-be-client-crud.md](../../../../agentic/development/features/0200-be-client-crud.md) |
 
 ## Development
 
@@ -33,8 +33,8 @@ npm run typecheck && npm run test:domain && npm test
 
 | Skill | File plan |
 |-------|-----------|
-| Backend | [skills/backend.md](./skills/backend.md) |
-| QA | [skills/qa.md](./skills/qa.md) |
+| Backend | [skills/backend.md](../../../../development/Plan/0200/phase-01/tasks/020003-be-client-crud/skills/backend.md) |
+| QA | [skills/qa.md](../../../../development/Plan/0200/phase-01/tasks/020003-be-client-crud/skills/qa.md) |
 
 ## Acuan PRD
 

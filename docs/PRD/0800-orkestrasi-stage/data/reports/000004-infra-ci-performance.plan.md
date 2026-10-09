@@ -23,7 +23,7 @@ median < 10 menit.
 
 | Feature ID | Dokumen |
 |------------|---------|
-| `0000-infra-ci-performance` | [agentic/development/features/0000-infra-ci-performance.md](../../../../../../agentic/development/features/0000-infra-ci-performance.md) |
+| `0000-infra-ci-performance` | [docs/agentic/development/features/0000-infra-ci-performance.md](../../../../agentic/development/features/0000-infra-ci-performance.md) |
 
 ## Development
 
@@ -33,8 +33,8 @@ median < 10 menit.
 
 | Skill | File plan |
 |-------|-----------|
-| Infra | [skills/infra.md](./skills/infra.md) |
-| Docs | [skills/docs.md](./skills/docs.md) |
+| Infra | [skills/infra.md](../../../../development/Plan/0000/phase-02/tasks/000004-infra-ci-performance/skills/infra.md) |
+| Docs | [skills/docs.md](../../../../development/Plan/0000/phase-02/tasks/000004-infra-ci-performance/skills/docs.md) |
 
 ## Acuan PRD
 

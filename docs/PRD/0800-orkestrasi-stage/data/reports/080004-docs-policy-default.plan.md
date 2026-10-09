@@ -19,7 +19,7 @@ npm run gate
 
 | Feature ID | Dokumen |
 |------------|---------|
-| `0800-docs-policy-default` | [agentic/development/features/0800-docs-policy-default.md](../../../../../../agentic/development/features/0800-docs-policy-default.md) |
+| `0800-docs-policy-default` | [docs/agentic/development/features/0800-docs-policy-default.md](../../../../agentic/development/features/0800-docs-policy-default.md) |
 
 ## Development
 
@@ -29,7 +29,7 @@ npm run gate
 
 | Skill | File plan |
 |-------|-----------|
-| Docs | [skills/docs.md](./skills/docs.md) |
+| Docs | [skills/docs.md](../../../../development/Plan/0800/phase-01/tasks/080004-docs-policy-default/skills/docs.md) |
 
 ## Acuan PRD
 

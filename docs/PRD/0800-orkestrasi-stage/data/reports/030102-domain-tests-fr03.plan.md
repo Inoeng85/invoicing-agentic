@@ -19,7 +19,7 @@ npm run test:domain
 
 | Feature ID | Dokumen |
 |------------|---------|
-| `0301-domain-tests-fr03` | [agentic/development/features/0301-domain-tests-fr03.md](../../../../../../agentic/development/features/0301-domain-tests-fr03.md) |
+| `0301-domain-tests-fr03` | [docs/agentic/development/features/0301-domain-tests-fr03.md](../../../../agentic/development/features/0301-domain-tests-fr03.md) |
 
 ## Development
 
@@ -33,9 +33,9 @@ npm run test:domain
 
 | Skill | File plan |
 |-------|-----------|
-| Backend | [skills/backend.md](./skills/backend.md) |
-| Docs | [skills/docs.md](./skills/docs.md) |
-| QA | [skills/qa.md](./skills/qa.md) |
+| Backend | [skills/backend.md](../../../../development/Plan/0301/phase-01/tasks/030102-domain-tests-fr03/skills/backend.md) |
+| Docs | [skills/docs.md](../../../../development/Plan/0301/phase-01/tasks/030102-domain-tests-fr03/skills/docs.md) |
+| QA | [skills/qa.md](../../../../development/Plan/0301/phase-01/tasks/030102-domain-tests-fr03/skills/qa.md) |
 
 ## Acuan PRD
 

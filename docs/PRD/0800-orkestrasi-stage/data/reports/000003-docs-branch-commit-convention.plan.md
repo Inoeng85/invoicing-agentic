@@ -24,7 +24,7 @@ PR berikutnya memakai template.
 
 | Feature ID | Dokumen |
 |------------|---------|
-| `0000-docs-branch-commit-convention` | [agentic/development/features/0000-docs-branch-commit-convention.md](../../../../../../agentic/development/features/0000-docs-branch-commit-convention.md) |
+| `0000-docs-branch-commit-convention` | [docs/agentic/development/features/0000-docs-branch-commit-convention.md](../../../../agentic/development/features/0000-docs-branch-commit-convention.md) |
 
 ## Development
 
@@ -34,7 +34,7 @@ PR berikutnya memakai template.
 
 | Skill | File plan |
 |-------|-----------|
-| Docs | [skills/docs.md](./skills/docs.md) |
+| Docs | [skills/docs.md](../../../../development/Plan/0000/phase-02/tasks/000003-docs-branch-commit-convention/skills/docs.md) |
 
 ## Acuan PRD
 

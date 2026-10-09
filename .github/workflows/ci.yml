@@ -2,7 +2,7 @@ name: CI
 
 on:
   push:
-    branches: [main, master]
+    branches: [develop]
   pull_request:
   workflow_dispatch:
 
@@ -54,7 +54,7 @@ jobs:
         with:
           name: gate-summary
           path: |
-            .gate/gate-results.json
-            .gate/gate-summary.md
-            .gate-summary.md
+            docs/reports/gates/gate-results.json
+            docs/reports/gates/gate-summary.md
+            docs/reports/gate-summary.md
           if-no-files-found: ignore

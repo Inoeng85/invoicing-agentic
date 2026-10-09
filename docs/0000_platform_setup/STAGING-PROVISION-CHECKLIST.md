@@ -12,7 +12,7 @@ Operator — setelah repo siap (`npm run verify` / `npm run ci:local`).
 - [ ] Env dari [infra/railway/env.staging.example](../../infra/railway/env.staging.example)
 - [ ] `npm run host:check` lulus dengan env staging
 - [ ] Secrets runtime: `SESSION_SECRET`, `APP_URL`, `CORS_ORIGIN`, `API_BASE_URL`, `EMAIL_*`, `TRUST_PROXY=1`
-- [ ] Detail: [infra/railway/README.md](../../infra/railway/README.md)
+- [ ] Detail: [infra/railway/README.md](../infra/railway/README.md)
 
 ## 000006 — Domain & TLS
 

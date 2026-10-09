@@ -24,7 +24,7 @@ audit `git grep` & isi image tanpa secret.
 
 | Feature ID | Dokumen |
 |------------|---------|
-| `0000-infra-hosting-provision` | [agentic/development/features/0000-infra-hosting-provision.md](../../../../../../agentic/development/features/0000-infra-hosting-provision.md) |
+| `0000-infra-hosting-provision` | [docs/agentic/development/features/0000-infra-hosting-provision.md](../../../../agentic/development/features/0000-infra-hosting-provision.md) |
 
 ## Development
 
@@ -34,8 +34,8 @@ audit `git grep` & isi image tanpa secret.
 
 | Skill | File plan |
 |-------|-----------|
-| Infra | [skills/infra.md](./skills/infra.md) |
-| Docs | [skills/docs.md](./skills/docs.md) |
+| Infra | [skills/infra.md](../../../../development/Plan/0000/phase-02/tasks/000005-infra-hosting-provision/skills/infra.md) |
+| Docs | [skills/docs.md](../../../../development/Plan/0000/phase-02/tasks/000005-infra-hosting-provision/skills/docs.md) |
 
 ## Acuan PRD
 

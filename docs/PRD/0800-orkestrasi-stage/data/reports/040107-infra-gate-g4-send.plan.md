@@ -19,7 +19,7 @@ npm run email:smoke
 
 | Feature ID | Dokumen |
 |------------|---------|
-| `0401-infra-gate-g4-send` | [agentic/development/features/0401-infra-gate-g4-send.md](../../../../../../agentic/development/features/0401-infra-gate-g4-send.md) |
+| `0401-infra-gate-g4-send` | [docs/agentic/development/features/0401-infra-gate-g4-send.md](../../../../agentic/development/features/0401-infra-gate-g4-send.md) |
 
 ## Development
 
@@ -29,8 +29,8 @@ npm run email:smoke
 
 | Skill | File plan |
 |-------|-----------|
-| Infra | [skills/infra.md](./skills/infra.md) |
-| Docs | [skills/docs.md](./skills/docs.md) |
+| Infra | [skills/infra.md](../../../../development/Plan/0401/phase-01/tasks/040107-infra-gate-g4-send/skills/infra.md) |
+| Docs | [skills/docs.md](../../../../development/Plan/0401/phase-01/tasks/040107-infra-gate-g4-send/skills/docs.md) |
 
 ## Acuan PRD
 

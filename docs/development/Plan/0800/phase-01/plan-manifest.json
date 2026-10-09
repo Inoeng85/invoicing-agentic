@@ -1,0 +1,32 @@
+{
+  "phaseId": "0800-P1",
+  "updatedAt": "2026-10-01T07:15:43.139Z",
+  "tasks": [
+    {
+      "taskId": "080001-docs-parse-manifest",
+      "planPath": "docs/development/Plan/0800/phase-01/tasks/080001-docs-parse-manifest/plan.md",
+      "status": "defined"
+    },
+    {
+      "taskId": "080002-stack-run-ledger",
+      "planPath": "docs/development/Plan/0800/phase-01/tasks/080002-stack-run-ledger/plan.md",
+      "status": "defined"
+    },
+    {
+      "taskId": "080003-docs-worker-skills",
+      "planPath": "docs/development/Plan/0800/phase-01/tasks/080003-docs-worker-skills/plan.md",
+      "status": "defined"
+    },
+    {
+      "taskId": "080004-docs-policy-default",
+      "planPath": "docs/development/Plan/0800/phase-01/tasks/080004-docs-policy-default/plan.md",
+      "status": "defined"
+    },
+    {
+      "taskId": "080005-stack-dry-run-intake",
+      "planPath": "docs/development/Plan/0800/phase-01/tasks/080005-stack-dry-run-intake/plan.md",
+      "status": "defined"
+    }
+  ],
+  "allDefined": true
+}

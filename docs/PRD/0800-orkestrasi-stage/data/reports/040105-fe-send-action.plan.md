@@ -19,7 +19,7 @@ npm run email:smoke
 
 | Feature ID | Dokumen |
 |------------|---------|
-| `0401-fe-send-action` | [agentic/development/features/0401-fe-send-action.md](../../../../../../agentic/development/features/0401-fe-send-action.md) |
+| `0401-fe-send-action` | [docs/agentic/development/features/0401-fe-send-action.md](../../../../agentic/development/features/0401-fe-send-action.md) |
 
 ## Development
 
@@ -33,8 +33,8 @@ npm run email:smoke
 
 | Skill | File plan |
 |-------|-----------|
-| Frontend | [skills/frontend.md](./skills/frontend.md) |
-| QA | [skills/qa.md](./skills/qa.md) |
+| Frontend | [skills/frontend.md](../../../../development/Plan/0401/phase-01/tasks/040105-fe-send-action/skills/frontend.md) |
+| QA | [skills/qa.md](../../../../development/Plan/0401/phase-01/tasks/040105-fe-send-action/skills/qa.md) |
 
 ## Acuan PRD
 

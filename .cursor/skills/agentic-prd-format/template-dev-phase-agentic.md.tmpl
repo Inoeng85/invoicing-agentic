@@ -12,7 +12,7 @@
 
 ## Global Constraints
 
-- Branch `feat/{{ID}}-{{slug}}` (or `main` if hotfix).
+- Branch `feat/{{ID}}-{{slug}}` from the latest `develop`, including hotfixes; merge back into `develop` after verification.
 - `nvm use` (Node ≥ 24.3); verify = `npm run typecheck && npm run test:domain && npm test` (adjust per scope).
 - {{domain-specific limits, CSRF, migration rules}}
 - Commit per task, conventional commits, `git add` file spesifik.

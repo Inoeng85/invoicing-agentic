@@ -19,7 +19,7 @@ npm run gate
 
 | Feature ID | Dokumen |
 |------------|---------|
-| `0800-stack-run-ledger` | [agentic/development/features/0800-stack-run-ledger.md](../../../../../../agentic/development/features/0800-stack-run-ledger.md) |
+| `0800-stack-run-ledger` | [docs/agentic/development/features/0800-stack-run-ledger.md](../../../../agentic/development/features/0800-stack-run-ledger.md) |
 
 ## Development
 
@@ -29,7 +29,7 @@ npm run gate
 
 | Skill | File plan |
 |-------|-----------|
-| Docs | [skills/docs.md](./skills/docs.md) |
+| Docs | [skills/docs.md](../../../../development/Plan/0800/phase-01/tasks/080002-stack-run-ledger/skills/docs.md) |
 
 ## Acuan PRD
 

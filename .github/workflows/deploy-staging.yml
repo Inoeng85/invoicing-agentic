@@ -1,13 +1,13 @@
 name: Deploy staging
 
-# PG-2: GitHub Environment `staging` + Railway — infra/railway/README.md
+# PG-2: GitHub Environment `staging` + Railway — docs/infra/railway/README.md
 
 on:
   workflow_dispatch:
   workflow_run:
     workflows: [CI]
     types: [completed]
-    branches: [main]
+    branches: [develop]
 
 permissions:
   contents: read
@@ -17,7 +17,7 @@ jobs:
     if: >-
       github.event_name == 'workflow_dispatch' ||
       (github.event.workflow_run.conclusion == 'success' &&
-       github.event.workflow_run.head_branch == 'main')
+       github.event.workflow_run.head_branch == 'develop')
     runs-on: ubuntu-latest
     environment: staging
     steps:

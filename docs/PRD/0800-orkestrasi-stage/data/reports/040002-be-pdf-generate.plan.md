@@ -19,7 +19,7 @@ npm run typecheck && npm run test:domain && npm test
 
 | Feature ID | Dokumen |
 |------------|---------|
-| `0400-be-pdf-generate` | [agentic/development/features/0400-be-pdf-generate.md](../../../../../../agentic/development/features/0400-be-pdf-generate.md) |
+| `0400-be-pdf-generate` | [docs/agentic/development/features/0400-be-pdf-generate.md](../../../../agentic/development/features/0400-be-pdf-generate.md) |
 
 ## Development
 
@@ -33,8 +33,8 @@ npm run typecheck && npm run test:domain && npm test
 
 | Skill | File plan |
 |-------|-----------|
-| Backend | [skills/backend.md](./skills/backend.md) |
-| QA | [skills/qa.md](./skills/qa.md) |
+| Backend | [skills/backend.md](../../../../development/Plan/0400/phase-01/tasks/040002-be-pdf-generate/skills/backend.md) |
+| QA | [skills/qa.md](../../../../development/Plan/0400/phase-01/tasks/040002-be-pdf-generate/skills/qa.md) |
 
 ## Acuan PRD
 

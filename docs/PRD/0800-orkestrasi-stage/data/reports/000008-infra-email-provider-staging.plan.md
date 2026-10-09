@@ -23,7 +23,7 @@ kirim invoice demo di staging → email tiba di inbox QA; alamat di luar allowli
 
 | Feature ID | Dokumen |
 |------------|---------|
-| `0000-infra-email-provider-staging` | [agentic/development/features/0000-infra-email-provider-staging.md](../../../../../../agentic/development/features/0000-infra-email-provider-staging.md) |
+| `0000-infra-email-provider-staging` | [docs/agentic/development/features/0000-infra-email-provider-staging.md](../../../../agentic/development/features/0000-infra-email-provider-staging.md) |
 
 ## Development
 
@@ -33,8 +33,8 @@ kirim invoice demo di staging → email tiba di inbox QA; alamat di luar allowli
 
 | Skill | File plan |
 |-------|-----------|
-| Infra | [skills/infra.md](./skills/infra.md) |
-| Docs | [skills/docs.md](./skills/docs.md) |
+| Infra | [skills/infra.md](../../../../development/Plan/0000/phase-02/tasks/000008-infra-email-provider-staging/skills/infra.md) |
+| Docs | [skills/docs.md](../../../../development/Plan/0000/phase-02/tasks/000008-infra-email-provider-staging/skills/docs.md) |
 
 ## Acuan PRD
 

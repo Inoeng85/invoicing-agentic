@@ -2,7 +2,7 @@ import fs from 'node:fs'
 import path from 'node:path'
 import { phaseDirName, readPlanDevelopmentStatus, taskPlanBase } from './task-progress.mjs'
 
-export const QUEUE_PATH_REL = 'Development/Plan/intake-queue.json'
+export const QUEUE_PATH_REL = 'docs/development/Plan/intake-queue.json'
 export const KANBAN_MIRROR_REL = 'docs/PRD/0800-orkestrasi-stage/data/intake-queue.json'
 
 export function loadQueue(root) {
@@ -49,13 +49,13 @@ export function assessTaskPlan(root, epic, phaseOrdinal, taskId) {
 
 export function writePlanManifest(root, phaseRow) {
   const phaseNn = phaseDirName(phaseRow.ordinal)
-  const dir = path.join(root, 'Development/Plan', phaseRow.epic, phaseNn)
+  const dir = path.join(root, 'docs/development/Plan', phaseRow.epic, phaseNn)
   fs.mkdirSync(dir, { recursive: true })
   const tasks = (phaseRow.taskIds || []).map((taskId) => {
     const a = assessTaskPlan(root, phaseRow.epic, phaseRow.ordinal, taskId)
     return {
       taskId,
-      planPath: `Development/Plan/${phaseRow.epic}/${phaseNn}/tasks/${taskId}/plan.md`,
+      planPath: `docs/development/Plan/${phaseRow.epic}/${phaseNn}/tasks/${taskId}/plan.md`,
       status: a.needsClarify ? 'needs_human_clarify' : a.complete ? 'defined' : a.status === 'missing' ? 'draft' : a.status,
     }
   })
@@ -122,7 +122,7 @@ export function ensureIntakeQueueComplete(root, phaseRow) {
   const phaseNn = phaseDirName(phaseRow.ordinal)
   const summaryPath = path.join(
     root,
-    'Development/Plan',
+    'docs/development/Plan',
     phaseRow.epic,
     phaseNn,
     'intake-summary.md',
@@ -262,7 +262,7 @@ export function buildNextAction(root, queue) {
       phaseId: phase.phaseId,
       epic: phase.epic,
       ordinal: phase.ordinal,
-      skill: 'agentic/skill/plan/SKILL.md',
+      skill: 'docs/agentic/skill/plan/SKILL.md',
     }
   }
 
@@ -284,7 +284,7 @@ export function buildNextAction(root, queue) {
       epic: phase.epic,
       ordinal: phase.ordinal,
       taskIds: phase.taskIds,
-      skill: 'agentic/skill/intake/SKILL.md',
+      skill: 'docs/agentic/skill/intake/SKILL.md',
       then: 'npm run agentic:intake-run -- tick-intake',
     }
   }
@@ -312,14 +312,14 @@ export function buildNextAction(root, queue) {
     taskIndex: idx + 1,
     taskTotal: (phase.taskIds || []).length,
     planStatus: next.assessment.status,
-    skill: 'agentic/skill/plan/SKILL.md',
+    skill: 'docs/agentic/skill/plan/SKILL.md',
     planPath: taskArtifactRel(phase.epic, phase.ordinal, next.taskId),
     then: `npm run agentic:intake-run -- tick --task ${next.taskId} --phase-id ${phase.phaseId}`,
   }
 }
 
 function taskArtifactRel(epic, ordinal, taskId) {
-  return `Development/Plan/${epic}/${phaseDirName(ordinal)}/tasks/${taskId}/plan.md`
+  return `docs/development/Plan/${epic}/${phaseDirName(ordinal)}/tasks/${taskId}/plan.md`
 }
 
 function readFeatureIdFromPlan(root, epic, ordinal, taskId) {
@@ -354,8 +354,8 @@ export function nextDevelopmentTask(root, queue) {
         ordinal: ph.ordinal,
         taskId,
         featureId,
-        skill: 'agentic/skill/development/SKILL.md',
-        featurePath: featureId ? `agentic/development/features/${featureId}.md` : null,
+        skill: 'docs/agentic/skill/development/SKILL.md',
+        featurePath: featureId ? `docs/agentic/development/features/${featureId}.md` : null,
         planPath,
         then: [
           `npm run agentic:validate-dev -- --task ${taskId} --epic ${ph.epic} --phase ${ph.ordinal}`,
@@ -394,7 +394,7 @@ export function buildAgentPrompt(orch) {
   if (orch.action === 'run_intake') {
     return [
       'Agent Intake — phase ' + orch.phaseId,
-      'Skill: agentic/skill/intake/SKILL.md',
+      'Skill: docs/agentic/skill/intake/SKILL.md',
       'Setelah antrian valid: npm run agentic:intake-run -- tick-intake --phase-id ' + orch.phaseId,
     ].join('\n')
   }
@@ -403,7 +403,7 @@ export function buildAgentPrompt(orch) {
       'Agent Plan — 1 task, urutan phase',
       'Task: ' + orch.taskId + ' (' + orch.taskIndex + '/' + orch.taskTotal + ')',
       'Plan: Agentic/' + orch.planPath,
-      'Skill: agentic/skill/plan/SKILL.md',
+      'Skill: docs/agentic/skill/plan/SKILL.md',
       'Selesai: npm run agentic:intake-run -- tick --task ' + orch.taskId + ' --phase-id ' + orch.phaseId,
     ].join('\n')
   }
@@ -416,7 +416,7 @@ export function buildAgentPrompt(orch) {
       'Task: ' + orch.taskId + ' · phase ' + orch.phaseId,
       'Plan: Agentic/' + orch.planPath,
       orch.featurePath ? 'Feature: Agentic/' + orch.featurePath : '',
-      'Skill: agentic/skill/development/SKILL.md',
+      'Skill: docs/agentic/skill/development/SKILL.md',
       'Selesai: laporan development + update plan.md + ' + (orch.then && orch.then[0] ? orch.then[0] : 'validate-dev'),
     ]
       .filter(Boolean)

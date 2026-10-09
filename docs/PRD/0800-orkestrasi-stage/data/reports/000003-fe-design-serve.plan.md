@@ -23,7 +23,7 @@ fe design serve (PRD epic 0000).
 
 | Feature ID | Dokumen |
 |------------|---------|
-| `0000-fe-design-serve` | [agentic/development/features/0000-fe-design-serve.md](../../../../../../agentic/development/features/0000-fe-design-serve.md) |
+| `0000-fe-design-serve` | [docs/agentic/development/features/0000-fe-design-serve.md](../../../../agentic/development/features/0000-fe-design-serve.md) |
 
 ## Development
 
@@ -37,8 +37,8 @@ fe design serve (PRD epic 0000).
 
 | Skill | File plan |
 |-------|-----------|
-| Frontend | [skills/frontend.md](./skills/frontend.md) |
-| QA | [skills/qa.md](./skills/qa.md) |
+| Frontend | [skills/frontend.md](../../../../development/Plan/0000/phase-03/tasks/000003-fe-design-serve/skills/frontend.md) |
+| QA | [skills/qa.md](../../../../development/Plan/0000/phase-03/tasks/000003-fe-design-serve/skills/qa.md) |
 
 ## Acuan PRD
 

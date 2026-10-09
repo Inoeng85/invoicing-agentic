@@ -19,7 +19,7 @@ npm run release:check
 
 | Feature ID | Dokumen |
 |------------|---------|
-| `0600-infra-release-check-script` | [agentic/development/features/0600-infra-release-check-script.md](../../../../../../agentic/development/features/0600-infra-release-check-script.md) |
+| `0600-infra-release-check-script` | [docs/agentic/development/features/0600-infra-release-check-script.md](../../../../agentic/development/features/0600-infra-release-check-script.md) |
 
 ## Development
 
@@ -29,8 +29,8 @@ npm run release:check
 
 | Skill | File plan |
 |-------|-----------|
-| Infra | [skills/infra.md](./skills/infra.md) |
-| Docs | [skills/docs.md](./skills/docs.md) |
+| Infra | [skills/infra.md](../../../../development/Plan/0600/phase-01/tasks/060006-infra-release-check-script/skills/infra.md) |
+| Docs | [skills/docs.md](../../../../development/Plan/0600/phase-01/tasks/060006-infra-release-check-script/skills/docs.md) |
 
 ## Acuan PRD
 

@@ -3,7 +3,7 @@
 | Field | Nilai |
 |-------|-------|
 | Task ID | 000001-be-env-validation |
-| Feature | [0000-be-env-validation](../../../../../agentic/development/features/0000-be-env-validation.md) |
+| Feature | [0000-be-env-validation](../../../../agentic/development/features/0000-be-env-validation.md) |
 | Phase | 0000-P2 |
 | Selesai | 2026-10-01T14:57:16+07:00 |
 | Commit / PR | `ef84c90` (Phase 2 M2) · sentuhan `eb44e65` |

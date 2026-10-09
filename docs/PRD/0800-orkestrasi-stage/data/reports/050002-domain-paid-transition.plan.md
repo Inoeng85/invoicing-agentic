@@ -19,7 +19,7 @@ npm run typecheck && npm run test:domain && npm test
 
 | Feature ID | Dokumen |
 |------------|---------|
-| `0500-domain-paid-transition` | [agentic/development/features/0500-domain-paid-transition.md](../../../../../../agentic/development/features/0500-domain-paid-transition.md) |
+| `0500-domain-paid-transition` | [docs/agentic/development/features/0500-domain-paid-transition.md](../../../../agentic/development/features/0500-domain-paid-transition.md) |
 
 ## Development
 
@@ -33,9 +33,9 @@ npm run typecheck && npm run test:domain && npm test
 
 | Skill | File plan |
 |-------|-----------|
-| Backend | [skills/backend.md](./skills/backend.md) |
-| Docs | [skills/docs.md](./skills/docs.md) |
-| QA | [skills/qa.md](./skills/qa.md) |
+| Backend | [skills/backend.md](../../../../development/Plan/0500/phase-01/tasks/050002-domain-paid-transition/skills/backend.md) |
+| Docs | [skills/docs.md](../../../../development/Plan/0500/phase-01/tasks/050002-domain-paid-transition/skills/docs.md) |
+| QA | [skills/qa.md](../../../../development/Plan/0500/phase-01/tasks/050002-domain-paid-transition/skills/qa.md) |
 
 ## Acuan PRD
 

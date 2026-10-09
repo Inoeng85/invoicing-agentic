@@ -19,7 +19,7 @@ npm run release:check
 
 | Feature ID | Dokumen |
 |------------|---------|
-| `0600-ops-staging-uat-run` | [agentic/development/features/0600-ops-staging-uat-run.md](../../../../../../agentic/development/features/0600-ops-staging-uat-run.md) |
+| `0600-ops-staging-uat-run` | [docs/agentic/development/features/0600-ops-staging-uat-run.md](../../../../agentic/development/features/0600-ops-staging-uat-run.md) |
 
 ## Development
 
@@ -29,7 +29,7 @@ npm run release:check
 
 | Skill | File plan |
 |-------|-----------|
-| Docs | [skills/docs.md](./skills/docs.md) |
+| Docs | [skills/docs.md](../../../../development/Plan/0600/phase-01/tasks/060008-ops-staging-uat-run/skills/docs.md) |
 
 ## Acuan PRD
 

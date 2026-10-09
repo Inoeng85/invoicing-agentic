@@ -24,7 +24,7 @@ prototype tampil identik sebelum/sesudah ekstraksi.
 
 | Feature ID | Dokumen |
 |------------|---------|
-| `0000-fe-shared-design-tokens` | [agentic/development/features/0000-fe-shared-design-tokens.md](../../../../../../agentic/development/features/0000-fe-shared-design-tokens.md) |
+| `0000-fe-shared-design-tokens` | [docs/agentic/development/features/0000-fe-shared-design-tokens.md](../../../../agentic/development/features/0000-fe-shared-design-tokens.md) |
 
 ## Development
 
@@ -38,8 +38,8 @@ prototype tampil identik sebelum/sesudah ekstraksi.
 
 | Skill | File plan |
 |-------|-----------|
-| Frontend | [skills/frontend.md](./skills/frontend.md) |
-| QA | [skills/qa.md](./skills/qa.md) |
+| Frontend | [skills/frontend.md](../../../../development/Plan/0000/phase-02/tasks/000001-fe-shared-design-tokens/skills/frontend.md) |
+| QA | [skills/qa.md](../../../../development/Plan/0000/phase-02/tasks/000001-fe-shared-design-tokens/skills/qa.md) |
 
 ## Acuan PRD
 

@@ -23,7 +23,7 @@ rotasi staging sukses; app kembali health ready.
 
 | Feature ID | Dokumen |
 |------------|---------|
-| `0000-infra-secret-rotation` | [agentic/development/features/0000-infra-secret-rotation.md](../../../../../../agentic/development/features/0000-infra-secret-rotation.md) |
+| `0000-infra-secret-rotation` | [docs/agentic/development/features/0000-infra-secret-rotation.md](../../../../agentic/development/features/0000-infra-secret-rotation.md) |
 
 ## Development
 
@@ -33,8 +33,8 @@ rotasi staging sukses; app kembali health ready.
 
 | Skill | File plan |
 |-------|-----------|
-| Infra | [skills/infra.md](./skills/infra.md) |
-| Docs | [skills/docs.md](./skills/docs.md) |
+| Infra | [skills/infra.md](../../../../development/Plan/0000/phase-03/tasks/000009-infra-secret-rotation/skills/infra.md) |
+| Docs | [skills/docs.md](../../../../development/Plan/0000/phase-03/tasks/000009-infra-secret-rotation/skills/docs.md) |
 
 ## Acuan PRD
 

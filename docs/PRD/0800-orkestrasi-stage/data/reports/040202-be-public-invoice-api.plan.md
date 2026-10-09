@@ -19,7 +19,7 @@ npm run typecheck && npm run test:domain && npm test
 
 | Feature ID | Dokumen |
 |------------|---------|
-| `0402-be-public-invoice-api` | [agentic/development/features/0402-be-public-invoice-api.md](../../../../../../agentic/development/features/0402-be-public-invoice-api.md) |
+| `0402-be-public-invoice-api` | [docs/agentic/development/features/0402-be-public-invoice-api.md](../../../../agentic/development/features/0402-be-public-invoice-api.md) |
 
 ## Development
 
@@ -33,8 +33,8 @@ npm run typecheck && npm run test:domain && npm test
 
 | Skill | File plan |
 |-------|-----------|
-| Backend | [skills/backend.md](./skills/backend.md) |
-| QA | [skills/qa.md](./skills/qa.md) |
+| Backend | [skills/backend.md](../../../../development/Plan/0402/phase-01/tasks/040202-be-public-invoice-api/skills/backend.md) |
+| QA | [skills/qa.md](../../../../development/Plan/0402/phase-01/tasks/040202-be-public-invoice-api/skills/qa.md) |
 
 ## Acuan PRD
 

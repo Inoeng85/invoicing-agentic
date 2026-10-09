@@ -19,7 +19,7 @@ npm run email:smoke
 
 | Feature ID | Dokumen |
 |------------|---------|
-| `0401-be-send-invoice` | [agentic/development/features/0401-be-send-invoice.md](../../../../../../agentic/development/features/0401-be-send-invoice.md) |
+| `0401-be-send-invoice` | [docs/agentic/development/features/0401-be-send-invoice.md](../../../../agentic/development/features/0401-be-send-invoice.md) |
 
 ## Development
 
@@ -33,8 +33,8 @@ npm run email:smoke
 
 | Skill | File plan |
 |-------|-----------|
-| Backend | [skills/backend.md](./skills/backend.md) |
-| QA | [skills/qa.md](./skills/qa.md) |
+| Backend | [skills/backend.md](../../../../development/Plan/0401/phase-01/tasks/040103-be-send-invoice/skills/backend.md) |
+| QA | [skills/qa.md](../../../../development/Plan/0401/phase-01/tasks/040103-be-send-invoice/skills/qa.md) |
 
 ## Acuan PRD
 

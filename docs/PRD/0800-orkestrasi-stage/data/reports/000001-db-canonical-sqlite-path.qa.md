@@ -3,7 +3,7 @@
 | Field | Nilai |
 |-------|-------|
 | Task ID | 000001-db-canonical-sqlite-path |
-| Feature | [0000-db-canonical-path](../../../../../agentic/development/features/0000-db-canonical-path.md) |
+| Feature | [0000-db-canonical-path](../../../../agentic/development/features/0000-db-canonical-path.md) |
 | Phase | 0000-P0 |
 | **Hasil** | `pass` |
 | Selesai | 2026-10-01T07:00:00+07:00 |

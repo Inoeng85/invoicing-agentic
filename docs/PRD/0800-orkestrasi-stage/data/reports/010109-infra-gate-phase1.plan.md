@@ -19,7 +19,7 @@ npm run gate
 
 | Feature ID | Dokumen |
 |------------|---------|
-| `0101-infra-gate-phase1` | [agentic/development/features/0101-infra-gate-phase1.md](../../../../../../agentic/development/features/0101-infra-gate-phase1.md) |
+| `0101-infra-gate-phase1` | [docs/agentic/development/features/0101-infra-gate-phase1.md](../../../../agentic/development/features/0101-infra-gate-phase1.md) |
 
 ## Development
 
@@ -29,7 +29,7 @@ npm run gate
 
 | Skill | File plan |
 |-------|-----------|
-| Docs | [skills/docs.md](./skills/docs.md) |
+| Docs | [skills/docs.md](../../../../development/Plan/0101/phase-01/tasks/010109-infra-gate-phase1/skills/docs.md) |
 
 ## Acuan PRD
 

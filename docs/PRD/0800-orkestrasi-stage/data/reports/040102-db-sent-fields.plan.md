@@ -19,7 +19,7 @@ npm run email:smoke
 
 | Feature ID | Dokumen |
 |------------|---------|
-| `0401-db-sent-fields` | [agentic/development/features/0401-db-sent-fields.md](../../../../../../agentic/development/features/0401-db-sent-fields.md) |
+| `0401-db-sent-fields` | [docs/agentic/development/features/0401-db-sent-fields.md](../../../../agentic/development/features/0401-db-sent-fields.md) |
 
 ## Development
 
@@ -33,9 +33,9 @@ npm run email:smoke
 
 | Skill | File plan |
 |-------|-----------|
-| Infra | [skills/infra.md](./skills/infra.md) |
-| Docs | [skills/docs.md](./skills/docs.md) |
-| QA | [skills/qa.md](./skills/qa.md) |
+| Infra | [skills/infra.md](../../../../development/Plan/0401/phase-01/tasks/040102-db-sent-fields/skills/infra.md) |
+| Docs | [skills/docs.md](../../../../development/Plan/0401/phase-01/tasks/040102-db-sent-fields/skills/docs.md) |
+| QA | [skills/qa.md](../../../../development/Plan/0401/phase-01/tasks/040102-db-sent-fields/skills/qa.md) |
 
 ## Acuan PRD
 

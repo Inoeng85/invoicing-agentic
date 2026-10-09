@@ -19,7 +19,7 @@ npm run typecheck && npm run test:domain && npm test
 
 | Feature ID | Dokumen |
 |------------|---------|
-| `0400-be-pdf-download-route` | [agentic/development/features/0400-be-pdf-download-route.md](../../../../../../agentic/development/features/0400-be-pdf-download-route.md) |
+| `0400-be-pdf-download-route` | [docs/agentic/development/features/0400-be-pdf-download-route.md](../../../../agentic/development/features/0400-be-pdf-download-route.md) |
 
 ## Development
 
@@ -33,8 +33,8 @@ npm run typecheck && npm run test:domain && npm test
 
 | Skill | File plan |
 |-------|-----------|
-| Backend | [skills/backend.md](./skills/backend.md) |
-| QA | [skills/qa.md](./skills/qa.md) |
+| Backend | [skills/backend.md](../../../../development/Plan/0400/phase-01/tasks/040003-be-pdf-download-route/skills/backend.md) |
+| QA | [skills/qa.md](../../../../development/Plan/0400/phase-01/tasks/040003-be-pdf-download-route/skills/qa.md) |
 
 ## Acuan PRD
 

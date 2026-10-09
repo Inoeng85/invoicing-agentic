@@ -19,7 +19,7 @@ npm run db:migrate
 
 | Feature ID | Dokumen |
 |------------|---------|
-| `0100-infra-gate-phase0` | [agentic/development/features/0100-infra-gate-phase0.md](../../../../../../agentic/development/features/0100-infra-gate-phase0.md) |
+| `0100-infra-gate-phase0` | [docs/agentic/development/features/0100-infra-gate-phase0.md](../../../../agentic/development/features/0100-infra-gate-phase0.md) |
 
 ## Development
 
@@ -29,8 +29,8 @@ npm run db:migrate
 
 | Skill | File plan |
 |-------|-----------|
-| Infra | [skills/infra.md](./skills/infra.md) |
-| Docs | [skills/docs.md](./skills/docs.md) |
+| Infra | [skills/infra.md](../../../../development/Plan/0100/phase-01/tasks/010007-infra-gate-phase0/skills/infra.md) |
+| Docs | [skills/docs.md](../../../../development/Plan/0100/phase-01/tasks/010007-infra-gate-phase0/skills/docs.md) |
 
 ## Acuan PRD
 

@@ -19,7 +19,7 @@ npm run typecheck && npm run test:domain && npm test
 
 | Feature ID | Dokumen |
 |------------|---------|
-| `0200-infra-gate-phase2` | [agentic/development/features/0200-infra-gate-phase2.md](../../../../../../agentic/development/features/0200-infra-gate-phase2.md) |
+| `0200-infra-gate-phase2` | [docs/agentic/development/features/0200-infra-gate-phase2.md](../../../../agentic/development/features/0200-infra-gate-phase2.md) |
 
 ## Development
 
@@ -29,8 +29,8 @@ npm run typecheck && npm run test:domain && npm test
 
 | Skill | File plan |
 |-------|-----------|
-| Infra | [skills/infra.md](./skills/infra.md) |
-| Docs | [skills/docs.md](./skills/docs.md) |
+| Infra | [skills/infra.md](../../../../development/Plan/0200/phase-01/tasks/020006-infra-gate-phase2/skills/infra.md) |
+| Docs | [skills/docs.md](../../../../development/Plan/0200/phase-01/tasks/020006-infra-gate-phase2/skills/docs.md) |
 
 ## Acuan PRD
 

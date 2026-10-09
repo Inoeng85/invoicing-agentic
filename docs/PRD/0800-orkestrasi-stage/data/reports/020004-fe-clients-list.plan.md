@@ -19,7 +19,7 @@ npm run typecheck && npm run test:domain && npm test
 
 | Feature ID | Dokumen |
 |------------|---------|
-| `0200-fe-clients-list` | [agentic/development/features/0200-fe-clients-list.md](../../../../../../agentic/development/features/0200-fe-clients-list.md) |
+| `0200-fe-clients-list` | [docs/agentic/development/features/0200-fe-clients-list.md](../../../../agentic/development/features/0200-fe-clients-list.md) |
 
 ## Development
 
@@ -33,8 +33,8 @@ npm run typecheck && npm run test:domain && npm test
 
 | Skill | File plan |
 |-------|-----------|
-| Frontend | [skills/frontend.md](./skills/frontend.md) |
-| QA | [skills/qa.md](./skills/qa.md) |
+| Frontend | [skills/frontend.md](../../../../development/Plan/0200/phase-01/tasks/020004-fe-clients-list/skills/frontend.md) |
+| QA | [skills/qa.md](../../../../development/Plan/0200/phase-01/tasks/020004-fe-clients-list/skills/qa.md) |
 
 ## Acuan PRD
 

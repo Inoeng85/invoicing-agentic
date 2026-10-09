@@ -234,7 +234,7 @@ Sama dengan PRD §7.1 — jangan ubah urutan di satu dokumen tanpa mengubah yang
 1. Tulis ulang alur di [STACK-INTEGRATION.md](../invoicing/engineering/STACK-INTEGRATION.md): prasyarat (nvm, Node 24), `npm run setup`, `npm run dev`, `npm run verify`, perintah DB, prototype.
 2. Tabel port & URL: web 44100, API 44101, server prototype.
 3. Bagian troubleshooting: engine mismatch, `IMPORT_OUTSIDE_MOUNTS`, DB path.
-4. Samakan ringkasan di `README.md` root.
+4. Samakan ringkasan di `docs/README.md` root.
 5. Uji dengan satu orang yang belum pernah setup; catat waktu.
 
 **Verifikasi:** onboarding ≤ 15 menit tanpa bantuan.
@@ -278,7 +278,7 @@ Sama dengan PRD §7.1 — jangan ubah urutan di satu dokumen tanpa mengubah yang
 
 **Verifikasi:** push langsung ke `main` ditolak.
 
-**Hasil:** [.github/BRANCH_PROTECTION.md](../../../.github/BRANCH_PROTECTION.md) + `scripts/apply-branch-protection.sh`. CI GitHub terblokir **billing** (2026-09-30); fallback **`npm run ci:local`** PASS.
+**Hasil:** [docs/governance/BRANCH_PROTECTION.md](../governance/BRANCH_PROTECTION.md) + `scripts/apply-branch-protection.sh`. CI GitHub terblokir **billing** (2026-09-30); fallback **`npm run ci:local`** PASS.
 
 ### 000002-infra-ci-workflow-fix
 
@@ -334,7 +334,7 @@ Sama dengan PRD §7.1 — jangan ubah urutan di satu dokumen tanpa mengubah yang
 | Task | Status | Catatan |
 |------|--------|---------|
 | 000002-docs-adr-platform-decisions | Done | `docs/0000_platform_setup/adr/ADR-0001…0004` Accepted |
-| 000003-docs-branch-commit-convention | Done | `CONTRIBUTING.md` + PR template |
+| 000003-docs-branch-commit-convention | Done | `docs/CONTRIBUTING.md` + PR template |
 | 000007-stack-pin-dev-dependencies | Done | TS 7.0.2 · @types/node 22.15.30 · tailwind 4.3.3 |
 | 000004-db-postgres-strategy | Superseded | SQLite-only · ADR-0001 revised · Postgres dihapus |
 | 000001-be-env-validation | Done | `@invoicing/platform` bootstrap web/api |
@@ -369,7 +369,7 @@ Sama dengan PRD §7.1 — jangan ubah urutan di satu dokumen tanpa mengubah yang
 
 | PS | Depends | Output |
 |----|---------|--------|
-| PS-08 | 000001-infra | `CONTRIBUTING.md` |
+| PS-08 | 000001-infra | `docs/CONTRIBUTING.md` |
 
 **Tahapan**
 1. Tulis konvensi branch `feature/*`, `fix/*`, `release/*` (ARCH §16.1).
@@ -591,7 +591,7 @@ Sama dengan PRD §7.1 — jangan ubah urutan di satu dokumen tanpa mengubah yang
 
 | Task | Status | Catatan |
 |------|--------|---------|
-| 000010-infra-ci-gate-summary | Done | `.gate/*` + artifact CI · `GITHUB_STEP_SUMMARY` |
+| 000010-infra-ci-gate-summary | Done | `docs/reports/gates/*` + artifact CI · `GITHUB_STEP_SUMMARY` |
 | 000003-fe-design-serve | Done | `npm run design:serve` :8765 |
 | 000004-docs-ops-runbook | Done | [RUNBOOK-OPS.md](./RUNBOOK-OPS.md) |
 | 000011-infra-production-cd | Partial | Railway redeploy + smoke on tag · butuh secrets production |

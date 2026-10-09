@@ -19,7 +19,7 @@ npm run typecheck && npm run test:domain && npm test
 
 | Feature ID | Dokumen |
 |------------|---------|
-| `0200-db-client-model` | [agentic/development/features/0200-db-client-model.md](../../../../../../agentic/development/features/0200-db-client-model.md) |
+| `0200-db-client-model` | [docs/agentic/development/features/0200-db-client-model.md](../../../../agentic/development/features/0200-db-client-model.md) |
 
 ## Development
 
@@ -33,9 +33,9 @@ npm run typecheck && npm run test:domain && npm test
 
 | Skill | File plan |
 |-------|-----------|
-| Infra | [skills/infra.md](./skills/infra.md) |
-| Docs | [skills/docs.md](./skills/docs.md) |
-| QA | [skills/qa.md](./skills/qa.md) |
+| Infra | [skills/infra.md](../../../../development/Plan/0200/phase-01/tasks/020001-db-client-model/skills/infra.md) |
+| Docs | [skills/docs.md](../../../../development/Plan/0200/phase-01/tasks/020001-db-client-model/skills/docs.md) |
+| QA | [skills/qa.md](../../../../development/Plan/0200/phase-01/tasks/020001-db-client-model/skills/qa.md) |
 
 ## Acuan PRD
 

@@ -19,7 +19,7 @@ npm run db:migrate
 
 | Feature ID | Dokumen |
 |------------|---------|
-| `0100-stack-workspace-packages` | [agentic/development/features/0100-stack-workspace-packages.md](../../../../../../agentic/development/features/0100-stack-workspace-packages.md) |
+| `0100-stack-workspace-packages` | [docs/agentic/development/features/0100-stack-workspace-packages.md](../../../../agentic/development/features/0100-stack-workspace-packages.md) |
 
 ## Development
 
@@ -29,7 +29,7 @@ npm run db:migrate
 
 | Skill | File plan |
 |-------|-----------|
-| Docs | [skills/docs.md](./skills/docs.md) |
+| Docs | [skills/docs.md](../../../../development/Plan/0100/phase-01/tasks/010001-stack-workspace-packages/skills/docs.md) |
 
 ## Acuan PRD
 

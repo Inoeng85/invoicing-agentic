@@ -19,7 +19,7 @@ npm run gate
 
 | Feature ID | Dokumen |
 |------------|---------|
-| `0101-be-register-login` | [agentic/development/features/0101-be-register-login.md](../../../../../../agentic/development/features/0101-be-register-login.md) |
+| `0101-be-register-login` | [docs/agentic/development/features/0101-be-register-login.md](../../../../agentic/development/features/0101-be-register-login.md) |
 
 ## Development
 
@@ -29,7 +29,7 @@ npm run gate
 
 | Skill | File plan |
 |-------|-----------|
-| Docs | [skills/docs.md](./skills/docs.md) |
+| Docs | [skills/docs.md](../../../../development/Plan/0101/phase-01/tasks/010103-be-register-login/skills/docs.md) |
 
 ## Acuan PRD
 

@@ -23,23 +23,37 @@ keempat script jalan dari `Agentic/`.
 
 | Feature ID | Dokumen |
 |------------|---------|
-| `0000-db-root-scripts` | [agentic/development/features/0000-db-root-scripts.md](../../../../../../agentic/development/features/0000-db-root-scripts.md) |
+| `0000-db-root-scripts` | [docs/agentic/development/features/0000-db-root-scripts.md](../../../../agentic/development/features/0000-db-root-scripts.md) |
 
 ## Development
 
-| Status | `pending` |
+| Field | Nilai |
+|-------|-------|
+| Status | `complete` |
+| Laporan | docs/development/Result/0000/phase-00/development/000002-db-root-scripts.md |
+| Commit/PR | baseline sudah di tree · tidak ada commit baru |
+| Selesai | 2026-10-01T15:56:38+07:00 |
+
+### Catatan implementasi
+
+Empat script root sudah meneruskan ke `@invoicing/database`: `db:migrate` (`prisma migrate dev`), `db:reset` (`prisma migrate reset --force`), `db:seed`, `db:studio`. CI non-interaktif memakai `db:migrate:deploy` (`prisma migrate deploy`). `db:reset` tidak dijalankan karena menghapus `dev.db` yang sedang dipakai server dev.
 
 ## QA
 
-| Status | `pending` |
+| Field | Nilai |
+|-------|-------|
+| Status | `pass` |
+| Laporan | docs/development/Result/0000/phase-00/qa/000002-db-root-scripts.md |
+| Fix dalam session | tidak |
+| Selesai | 2026-10-01T15:58:38+07:00 |
 
 ## Skill yang digunakan
 
 | Skill | File plan |
 |-------|-----------|
-| Infra | [skills/infra.md](./skills/infra.md) |
-| Docs | [skills/docs.md](./skills/docs.md) |
-| QA | [skills/qa.md](./skills/qa.md) |
+| Infra | [skills/infra.md](../../../../development/Plan/0000/phase-00/tasks/000002-db-root-scripts/skills/infra.md) |
+| Docs | [skills/docs.md](../../../../development/Plan/0000/phase-00/tasks/000002-db-root-scripts/skills/docs.md) |
+| QA | [skills/qa.md](../../../../development/Plan/0000/phase-00/tasks/000002-db-root-scripts/skills/qa.md) |
 
 ## Acuan PRD
 

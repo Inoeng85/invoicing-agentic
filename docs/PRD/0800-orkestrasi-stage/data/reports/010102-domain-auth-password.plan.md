@@ -19,7 +19,7 @@ npm run gate
 
 | Feature ID | Dokumen |
 |------------|---------|
-| `0101-domain-auth-password` | [agentic/development/features/0101-domain-auth-password.md](../../../../../../agentic/development/features/0101-domain-auth-password.md) |
+| `0101-domain-auth-password` | [docs/agentic/development/features/0101-domain-auth-password.md](../../../../agentic/development/features/0101-domain-auth-password.md) |
 
 ## Development
 
@@ -29,7 +29,7 @@ npm run gate
 
 | Skill | File plan |
 |-------|-----------|
-| Docs | [skills/docs.md](./skills/docs.md) |
+| Docs | [skills/docs.md](../../../../development/Plan/0101/phase-01/tasks/010102-domain-auth-password/skills/docs.md) |
 
 ## Acuan PRD
 

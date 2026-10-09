@@ -19,7 +19,7 @@ npm run gate
 
 | Feature ID | Dokumen |
 |------------|---------|
-| `0800-docs-parse-manifest` | [agentic/development/features/0800-docs-parse-manifest.md](../../../../../../agentic/development/features/0800-docs-parse-manifest.md) |
+| `0800-docs-parse-manifest` | [docs/agentic/development/features/0800-docs-parse-manifest.md](../../../../agentic/development/features/0800-docs-parse-manifest.md) |
 
 ## Development
 
@@ -29,7 +29,7 @@ npm run gate
 
 | Skill | File plan |
 |-------|-----------|
-| Docs | [skills/docs.md](./skills/docs.md) |
+| Docs | [skills/docs.md](../../../../development/Plan/0800/phase-01/tasks/080001-docs-parse-manifest/skills/docs.md) |
 
 ## Acuan PRD
 

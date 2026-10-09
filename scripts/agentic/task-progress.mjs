@@ -22,29 +22,29 @@ export function phaseDirName(ordinal) {
 }
 
 export function taskPlanBase(root, epic, phaseOrdinal, taskId) {
-  return path.join(root, 'Development/Plan', epic, phaseDirName(phaseOrdinal), 'tasks', taskId)
+  return path.join(root, 'docs/development/Plan', epic, phaseDirName(phaseOrdinal), 'tasks', taskId)
 }
 
 /** Repo-relative paths for kanban / IDE links */
 export function taskArtifactPaths(epic, phaseOrdinal, taskId) {
   const phase = phaseDirName(phaseOrdinal)
   return {
-    plan: `Development/Plan/${epic}/${phase}/tasks/${taskId}/plan.md`,
-    development: `Development/Result/${epic}/${phase}/development/${taskId}.md`,
-    qa: `Development/Result/${epic}/${phase}/qa/${taskId}.md`,
+    plan: `docs/development/Plan/${epic}/${phase}/tasks/${taskId}/plan.md`,
+    development: `docs/development/Result/${epic}/${phase}/development/${taskId}.md`,
+    qa: `docs/development/Result/${epic}/${phase}/qa/${taskId}.md`,
   }
 }
 
 export function phasePlanBase(root, epic, phaseOrdinal) {
-  return path.join(root, 'Development/Plan', epic, phaseDirName(phaseOrdinal))
+  return path.join(root, 'docs/development/Plan', epic, phaseDirName(phaseOrdinal))
 }
 
 /** Repo-relative paths for phase audit */
 export function phaseArtifactPaths(epic, phaseOrdinal) {
   const phase = phaseDirName(phaseOrdinal)
   return {
-    auditPlan: `Development/Plan/${epic}/${phase}/audit.md`,
-    auditReport: `Development/Result/${epic}/${phase}/audit/report.md`,
+    auditPlan: `docs/development/Plan/${epic}/${phase}/audit.md`,
+    auditReport: `docs/development/Result/${epic}/${phase}/audit/report.md`,
   }
 }
 
@@ -68,6 +68,17 @@ export function readPhaseAuditReportOutcome(root, epic, phaseOrdinal) {
     'audit',
     'report.md',
   )
+  if (!fs.existsSync(reportPath)) return null
+  const text = fs.readFileSync(reportPath, 'utf8')
+  if (/\*\*Hasil\*\*[^\n]*`pass`/i.test(text) || /Hasil:\s*pass/i.test(text)) return 'pass'
+  if (/\*\*Hasil\*\*[^\n]*`needs_clarify`/i.test(text)) return 'needs_clarify'
+  if (/\*\*Hasil\*\*[^\n]*`fail`/i.test(text) || /Hasil:\s*fail/i.test(text)) return 'fail'
+  return null
+}
+
+/** Laporan audit satu task: docs/development/Result/{epic}/phase-{nn}/audit/{taskId}.md */
+export function readTaskAuditOutcome(root, epic, phaseOrdinal, taskId) {
+  const reportPath = path.join(taskResultBase(root, epic, phaseOrdinal), 'audit', `${taskId}.md`)
   if (!fs.existsSync(reportPath)) return null
   const text = fs.readFileSync(reportPath, 'utf8')
   if (/\*\*Hasil\*\*[^\n]*`pass`/i.test(text) || /Hasil:\s*pass/i.test(text)) return 'pass'
@@ -149,7 +160,7 @@ export function readQaReportOutcome(root, epic, phaseOrdinal, taskId) {
 }
 
 export function taskResultBase(root, epic, phaseOrdinal) {
-  return path.join(root, 'Development/Result', epic, phaseDirName(phaseOrdinal))
+  return path.join(root, 'docs/development/Result', epic, phaseDirName(phaseOrdinal))
 }
 
 export function readTaskArtifacts(root, epic, phaseOrdinal, taskId) {
@@ -195,14 +206,17 @@ export function inferColumnFromIntakeQueue(phaseRow, artifacts) {
 
 /**
  * @param {ReturnType<typeof readTaskArtifacts>} artifacts
- * @param {{ phaseReleased?: boolean, phaseBlocked?: boolean, auditReady?: boolean, qaStatus?: string, auditPhaseStatus?: string, phaseRow?: object }} ctx
+ * @param {{ phaseReleased?: boolean, phaseBlocked?: boolean, auditReady?: boolean, qaStatus?: string, auditPhaseStatus?: string, taskAuditStatus?: string | null, phaseRow?: object }} ctx
  */
 export function inferTaskColumn(artifacts, ctx = {}) {
   const qa = ctx.qaStatus || ctx.qaOutcome
   const audit = ctx.auditPhaseStatus || 'pending'
   if (ctx.phaseReleased) return 'done'
   if (ctx.phaseBlocked) return 'intake'
-  if (qa === 'needs_clarify' || audit === 'needs_clarify') return 'human-clarify'
+  if (qa === 'needs_clarify' || audit === 'needs_clarify' || ctx.taskAuditStatus === 'needs_clarify') {
+    return 'human-clarify'
+  }
+  if (ctx.taskAuditStatus === 'pass' && qa === 'pass') return 'done'
   if (audit === 'pass') return 'human-qa'
   if (qa === 'pass') return 'audit'
   if (qa === 'fail' || qa === 'in_progress' || qa === 'pending') {
