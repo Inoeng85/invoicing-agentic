@@ -1,6 +1,6 @@
 # Launch lane — urutan penutupan gate
 
-Satu alur dari repo siap → staging → production. **Tanpa Docker** · **SQLite** ([ADR-0001](../adr/ADR-0001-sqlite-postgresql.md)).
+Satu alur dari repo siap → staging → production. **Tanpa Docker** · **SQLite** ([ADR-0001](../architecture/decisions/ADR-0001-sqlite-postgresql.md)).
 
 ## 0. Repo siap (developer)
 
@@ -24,12 +24,12 @@ Ikuti [STAGING-PROVISION-CHECKLIST.md](./STAGING-PROVISION-CHECKLIST.md):
 - `npm run host:check` dengan env staging
 - Deploy workflow · `npm run staging:smoke`
 - Resend + `npm run email:smoke`
-- UAT web: [UAT-GATE-TRACE.md](../invoicing/engineering/UAT-GATE-TRACE.md)
+- UAT web: [UAT-GATE-TRACE.md](../engineering/UAT-GATE-TRACE.md)
 
 ## 3. G6 — Release readiness
 
-- [ ] UAT manual · legal [LEGAL-REVIEW-CHECKLIST.md](../invoicing/legal/LEGAL-REVIEW-CHECKLIST.md)
-- [ ] Sign-off [MVP-SCOPE-LOCK.md](../invoicing/brd/MVP-SCOPE-LOCK.md)
+- [ ] UAT manual · legal [LEGAL-REVIEW-CHECKLIST.md](../product/legal/LEGAL-REVIEW-CHECKLIST.md)
+- [ ] Sign-off [MVP-SCOPE-LOCK.md](../product/brd/MVP-SCOPE-LOCK.md)
 
 ## 4. PG-3 — Production
 

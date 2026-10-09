@@ -1,0 +1,82 @@
+<!doctype html>
+<html lang="id">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>04 Kirim, PDF, publik — Design example</title>
+    <link rel="stylesheet" href="../prototype/assets/ui.css" />
+    <script src="../prototype/assets/prototype.js" defer></script>
+  </head>
+  <body data-shell="screen" class="min-h-screen">
+    <header class="sticky top-0 z-40 border-b bg-background/90 backdrop-blur">
+      <div class="mx-auto flex h-14 max-w-5xl items-center gap-3 px-4 sm:px-6">
+        <a class="btn btn-ghost btn-icon btn-sm" href="03-invoice-ppn.html" aria-label="Kembali"><i data-icon="arrow-left"></i></a>
+        <div class="min-w-0">
+          <p class="truncate text-sm font-semibold">Kirim invoice ke klien</p>
+          <p class="truncate text-xs text-muted-foreground">Draft · PT Arunika Digital · Rp 5.550.000</p>
+        </div>
+      </div>
+    </header>
+
+    <main class="mx-auto max-w-5xl space-y-8 px-4 py-8 sm:px-6">
+      <p class="text-xs text-muted-foreground">Contoh 04 · FR-04 FR-05 FR-06 BR-02 BR-05 · module M04 · <a class="underline-offset-4 hover:underline" href="index.html">Indeks</a></p>
+
+      <div class="grid gap-6 lg:grid-cols-2">
+        <section class="card gap-0 overflow-hidden py-0" aria-label="Preview email">
+          <div class="border-b bg-muted/40 px-6 py-3 text-sm">
+            <p><span class="text-muted-foreground">Kepada</span> billing@arunika.demo</p>
+            <p><span class="text-muted-foreground">Subjek</span> Invoice INV-2026-0014 dari Studio Kartika</p>
+          </div>
+          <div class="bg-page p-6">
+            <div class="space-y-3 rounded-xl border bg-card p-6 text-sm">
+              <p class="font-semibold">Studio Kartika</p>
+              <p class="text-muted-foreground">Berikut invoice untuk desain UI. Terima kasih.</p>
+              <div class="rounded-lg bg-muted/60 p-4">
+                <p class="text-xs text-muted-foreground">Jumlah tagihan</p>
+                <p class="text-2xl font-bold tabular-nums">Rp 5.550.000</p>
+              </div>
+              <span class="btn btn-default w-full" aria-disabled="true">Lihat invoice</span>
+            </div>
+          </div>
+        </section>
+
+        <aside class="space-y-4">
+          <div class="alert alert-info">
+            <i data-icon="lock"></i>
+            <p class="alert-title">Nomor dikunci setelah kirim</p>
+            <p class="alert-description">Invoice mendapat <span class="font-mono">INV-2026-0014</span> (BR-02). Email gagal → tetap draft.</p>
+          </div>
+          <section class="card gap-4">
+            <div class="card-header"><h2 class="card-title">Checklist</h2></div>
+            <div class="card-content text-sm">
+              <ul class="grid gap-2">
+                <li class="flex items-center gap-2"><i data-icon="circle-check" class="size-4 text-success"></i>Klien punya email</li>
+                <li class="flex items-center gap-2"><i data-icon="circle-check" class="size-4 text-success"></i>1 item, total &gt; 0</li>
+                <li class="flex items-center gap-2"><i data-icon="circle-check" class="size-4 text-success"></i>Rekening di profil</li>
+              </ul>
+            </div>
+          </section>
+          <button type="button" class="btn btn-default w-full"><i data-icon="send"></i>Kirim ke klien</button>
+          <button type="button" class="btn btn-outline w-full"><i data-icon="download"></i>Unduh PDF</button>
+        </aside>
+      </div>
+
+      <section class="card overflow-hidden py-0" aria-labelledby="pub-title">
+        <div class="bg-primary/5 px-6 py-6 sm:px-10">
+          <h2 id="pub-title" class="sr-only">Tampilan publik klien</h2>
+          <span class="badge badge-sent"><span class="badge-dot"></span>Menunggu pembayaran</span>
+          <p class="mt-2 text-sm text-muted-foreground">Jumlah tagihan · FR-06 tanpa login</p>
+          <p class="text-4xl font-semibold tabular-nums">Rp 5.550.000</p>
+        </div>
+        <div class="flex flex-wrap items-center justify-between gap-3 px-6 py-4 sm:px-10">
+          <p class="font-mono text-sm">https://app.example/i/7fK2qP9</p>
+          <div class="flex gap-2">
+            <button type="button" class="btn btn-outline btn-sm">Salin tautan</button>
+            <button type="button" class="btn btn-ghost btn-sm text-destructive">Cabut tautan</button>
+          </div>
+        </div>
+        <p class="border-t px-6 py-3 text-xs text-muted-foreground sm:px-10">Powered by PuraPuraLupa · Privasi · tautan dicabut → 404 (BR-05)</p>
+      </section>
+    </main>
+  </body>
+</html>

@@ -23,7 +23,7 @@ description: >-
 
 ## Output
 
-1. Salin [template.md.tmpl](./template.md.tmpl) → `docs/invoicing/engineering/TECHNOLOGY-STACK.md`
+1. Salin [template.md.tmpl](./template.md.tmpl) → `docs/engineering/TECHNOLOGY-STACK.md`
 2. Isi tabel ringkasan + minimal 1 diagram mermaid (lapisan + monorepo)
 3. Section env vars (web, api, database) selaras `.env.example`
 4. Update `STACK-INTEGRATION.md` jika workflow dev berubah
@@ -50,5 +50,5 @@ description: >-
 
 ## Referensi
 
-- [docs/invoicing/engineering/TECHNOLOGY-STACK.md](../docs/invoicing/engineering/TECHNOLOGY-STACK.md)
-- [docs/invoicing/engineering/STACK-INTEGRATION.md](../docs/invoicing/engineering/STACK-INTEGRATION.md)
+- [docs/engineering/TECHNOLOGY-STACK.md](../../../docs/engineering/TECHNOLOGY-STACK.md)
+- [docs/engineering/STACK-INTEGRATION.md](../../../docs/engineering/STACK-INTEGRATION.md)

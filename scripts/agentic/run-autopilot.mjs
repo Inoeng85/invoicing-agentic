@@ -89,7 +89,7 @@ function cmdOnce(opts) {
   }
   const result = chainNextWork(ROOT, 'once', { autoMechanical: opts.autoMechanical })
   if (!opts.json && result.needsAgent) {
-    console.log('\n⚠ docs/development/Plan: autopilot hanya menyiapkan prompt — jalankan Agent Cursor (lihat AGENT_PROMPT.md).')
+    console.log('\n⚠ docs/workflow/plans: autopilot hanya menyiapkan prompt — jalankan Agent Cursor (lihat AGENT_PROMPT.md).')
     console.log('   Untuk chain otomatis setelah selesai: npm run agentic:autopilot:watch')
   }
   if (opts.json) console.log(JSON.stringify(result, null, 2))

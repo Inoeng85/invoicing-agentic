@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="color-scheme" content="light">
+  <title>Monitoring — Agentic</title>
+  <link rel="stylesheet" href="orchestration.css">
+</head>
+<body>
+  <a class="skip-link" href="#main">Langsung ke monitoring</a>
+  <svg aria-hidden="true" style="display:none" xmlns="http://www.w3.org/2000/svg">
+    <symbol id="icon-board" viewBox="0 0 24 24"><rect x="3" y="4" width="18" height="16" rx="3"/><path d="M9 4v16M15 4v16M6 8v4m6-4v7m6-7v3"/></symbol>
+    <symbol id="icon-doc" viewBox="0 0 24 24"><path d="M14 3H6a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V9zM14 3v6h6M8 13h8M8 17h5"/></symbol>
+    <symbol id="icon-layers" viewBox="0 0 24 24"><path d="m12 3 9 5-9 5-9-5 9-5Zm-9 9 9 5 9-5M3 16l9 5 9-5"/></symbol>
+    <symbol id="icon-progress" viewBox="0 0 24 24"><path d="M20 11a8 8 0 1 1-5-7M20 4v5h-5"/></symbol>
+    <symbol id="icon-check" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="m8 12 3 3 5-6"/></symbol>
+    <symbol id="icon-monitor" viewBox="0 0 24 24"><rect x="3" y="4" width="18" height="12" rx="2"/><path d="M8 20h8M12 16v4"/></symbol>
+    <symbol id="icon-arrow" viewBox="0 0 24 24"><path d="M5 12h14m-5-5 5 5-5 5"/></symbol>
+    <symbol id="icon-search" viewBox="0 0 24 24"><circle cx="10.5" cy="10.5" r="6.5"/><path d="m16 16 5 5"/></symbol>
+  </svg>
+  <div class="app">
+    <aside class="sidebar" aria-label="Workspace">
+      <a class="brand" href="kanban-board.html" aria-label="Agentic">
+        <svg class="brand-mark" viewBox="0 0 32 34" aria-hidden="true"><path d="m5 26 11-20 11 20M10 18h12M8 28h16" stroke-width="3.5"/></svg>
+        agentic<span style="color:var(--accent)">.</span>
+      </a>
+      <p class="workspace-label">WORKSPACE</p>
+      <nav class="side-nav" aria-label="Navigasi proyek">
+        <a href="kanban-board.html"><svg aria-hidden="true"><use href="#icon-board"/></svg>Kanban board</a>
+        <a href="monitoring.html" aria-current="page"><svg aria-hidden="true"><use href="#icon-monitor"/></svg>Monitoring</a>
+        <a href="task-checklist.html"><svg aria-hidden="true"><use href="#icon-check"/></svg>Checklist task</a>
+        <a href="dokumen-prd.html"><svg aria-hidden="true"><use href="#icon-doc"/></svg>Dokumen PRD</a>
+        <a href="rencana-development.html"><svg aria-hidden="true"><use href="#icon-layers"/></svg>Rencana development</a>
+        <a href="panduan-alur.html"><svg aria-hidden="true"><use href="#icon-progress"/></svg>Panduan alur</a>
+      </nav>
+      <div class="side-project">
+        <p class="eyebrow">Live snapshot</p>
+        <strong>Status &amp; log</strong>
+        <span>monitoring.json</span>
+      </div>
+      <div class="side-footer"><strong>Polling 15s.</strong>Generate: npm run agentic:monitoring-data</div>
+    </aside>
+    <div class="main">
+      <header class="topbar">
+        <div class="breadcrumb"><a href="kanban-board.html">Workspace</a><span aria-hidden="true">/</span><strong>Monitoring</strong></div>
+        <span class="save-status" id="monitor-generated-at">Memuat…</span>
+      </header>
+      <main class="content monitoring-page" id="main">
+        <div class="page-head">
+          <div>
+            <p class="eyebrow">Orkestrasi · PRD-0800</p>
+            <h1>Monitoring task &amp; log</h1>
+            <p class="page-description">Ringkasan pipeline, daftar task, aliran log autopilot/laporan, dan sesi agent aktif.</p>
+          </div>
+          <div class="monitor-head-actions">
+            <button type="button" class="button" id="monitor-reload">Muat ulang</button>
+            <a class="button" href="task-checklist.html">Checklist<svg aria-hidden="true"><use href="#icon-arrow"/></svg></a>
+          </div>
+        </div>
+        <p class="no-results" id="monitor-load-error" hidden role="alert"></p>
+        <section class="monitor-metrics-wrap" aria-label="Ringkasan">
+          <div class="monitor-metrics" id="monitor-metrics"></div>
+        </section>
+        <div class="monitor-layout">
+          <section class="monitor-panel" aria-labelledby="monitor-tasks-title">
+            <div class="monitor-panel-head">
+              <h2 id="monitor-tasks-title">Status task</h2>
+              <div class="monitor-panel-controls">
+                <select class="filter-select" id="monitor-task-state">
+                  <option value="not-done" selected>Belum done</option>
+                  <option value="running">Running</option>
+                  <option value="all">Semua</option>
+                </select>
+                <label class="search-wrap"><svg aria-hidden="true"><use href="#icon-search"/></svg><input type="search" id="monitor-task-search" placeholder="Cari task…" autocomplete="off"></label>
+              </div>
+            </div>
+            <div class="monitor-table-wrap">
+              <table class="task-checklist-table monitor-task-table">
+                <thead>
+                  <tr><th>Task</th><th>Run</th><th>Stage</th><th>Plan/Dev/QA</th><th>Phase</th></tr>
+                </thead>
+                <tbody id="monitor-task-body"></tbody>
+              </table>
+            </div>
+            <aside class="monitor-task-detail" id="monitor-task-detail" hidden aria-live="polite">
+              <h3 id="monitor-detail-title">Detail task</h3>
+              <p class="monitor-detail-status" id="monitor-detail-status"></p>
+              <p class="eyebrow">Log task</p>
+              <ul class="monitor-log-list" id="monitor-detail-logs"></ul>
+            </aside>
+          </section>
+          <section class="monitor-panel" aria-labelledby="monitor-log-title">
+            <div class="monitor-panel-head">
+              <h2 id="monitor-log-title">Log orkestrasi</h2>
+              <div class="monitor-panel-controls">
+                <select class="filter-select" id="monitor-log-source">
+                  <option value="all">Semua sumber</option>
+                  <option value="autopilot">autopilot</option>
+                  <option value="artifact">artifact</option>
+                  <option value="session">session</option>
+                  <option value="queue">queue</option>
+                </select>
+                <label class="search-wrap"><input type="search" id="monitor-log-search" placeholder="Filter log…" autocomplete="off"></label>
+              </div>
+            </div>
+            <ul class="monitor-log-stream" id="monitor-log-stream"></ul>
+            <details class="monitor-sessions-wrap">
+              <summary>Sesi aktif (JSON)</summary>
+              <pre class="monitor-sessions-pre" id="monitor-sessions-json"></pre>
+            </details>
+          </section>
+        </div>
+        <p class="task-checklist-note">Data: <code>data/monitoring.json</code> · log mirror: <code>data/monitoring-log.jsonl</code> · sumber: <code>.agentic/trigger/autopilot-events.jsonl</code> + laporan <code>docs/workflow/results/</code></p>
+      </main>
+    </div>
+  </div>
+  <script src="monitoring-app.js?v=20261001" defer></script>
+</body>
+</html>

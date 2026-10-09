@@ -1,6 +1,6 @@
 name: Deploy production
 
-# PG-3: tag SemVer → Environment `production` (approval) — docs/infra/railway/README.md
+# PG-3: tag SemVer → Environment `production` (approval) — docs/operations/deployment/railway/README.md
 
 on:
   push:

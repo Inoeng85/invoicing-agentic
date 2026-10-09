@@ -24,9 +24,9 @@ description: >-
 
 ## Output
 
-1. Salin [template.md.tmpl](./template.md.tmpl) → `docs/invoicing/BRD.md` (atau path yang diminta user)
+1. Salin [template.md.tmpl](./template.md.tmpl) → `docs/product/BRD.md` (atau path yang diminta user)
 2. Ganti semua placeholder `{{...}}`
-3. Buat/arahkan artefak turunan di `docs/invoicing/brd/` bila scope MVP:
+3. Buat/arahkan artefak turunan di `docs/product/brd/` bila scope MVP:
    - `MVP-SCOPE-LOCK.md`, `PRODUCT-BRIEF.md`, `USER-STORIES-UAT.md`, `WIREFRAMES.md`
 4. Tambah baris indeks di `BRD-DEFINITION-OF-DONE.md` jika paket baru
 
@@ -49,5 +49,5 @@ description: >-
 
 ## Referensi canonical (repo ini)
 
-- [docs/invoicing/BRD.md](../docs/invoicing/BRD.md)
-- [docs/invoicing/brd/MVP-SCOPE-LOCK.md](../docs/invoicing/brd/MVP-SCOPE-LOCK.md)
+- [docs/product/BRD.md](../../../docs/product/BRD.md)
+- [docs/product/brd/MVP-SCOPE-LOCK.md](../../../docs/product/brd/MVP-SCOPE-LOCK.md)

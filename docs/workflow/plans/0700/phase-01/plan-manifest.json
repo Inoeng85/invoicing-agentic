@@ -1,0 +1,52 @@
+{
+  "phaseId": "0700-P1",
+  "updatedAt": "2026-10-01T07:15:43.132Z",
+  "tasks": [
+    {
+      "taskId": "0700-task-01",
+      "planPath": "docs/workflow/plans/0700/phase-01/tasks/0700-task-01/plan.md",
+      "status": "defined"
+    },
+    {
+      "taskId": "0700-task-02",
+      "planPath": "docs/workflow/plans/0700/phase-01/tasks/0700-task-02/plan.md",
+      "status": "defined"
+    },
+    {
+      "taskId": "0700-task-03",
+      "planPath": "docs/workflow/plans/0700/phase-01/tasks/0700-task-03/plan.md",
+      "status": "defined"
+    },
+    {
+      "taskId": "0700-task-04",
+      "planPath": "docs/workflow/plans/0700/phase-01/tasks/0700-task-04/plan.md",
+      "status": "defined"
+    },
+    {
+      "taskId": "0700-task-05",
+      "planPath": "docs/workflow/plans/0700/phase-01/tasks/0700-task-05/plan.md",
+      "status": "defined"
+    },
+    {
+      "taskId": "0700-task-06",
+      "planPath": "docs/workflow/plans/0700/phase-01/tasks/0700-task-06/plan.md",
+      "status": "defined"
+    },
+    {
+      "taskId": "0700-task-07",
+      "planPath": "docs/workflow/plans/0700/phase-01/tasks/0700-task-07/plan.md",
+      "status": "defined"
+    },
+    {
+      "taskId": "0700-task-08",
+      "planPath": "docs/workflow/plans/0700/phase-01/tasks/0700-task-08/plan.md",
+      "status": "defined"
+    },
+    {
+      "taskId": "0700-task-09",
+      "planPath": "docs/workflow/plans/0700/phase-01/tasks/0700-task-09/plan.md",
+      "status": "defined"
+    }
+  ],
+  "allDefined": true
+}

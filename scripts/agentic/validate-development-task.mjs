@@ -41,14 +41,14 @@ function main() {
   }
   const epic = opts.epic || inferEpic(taskId)
   const phaseNn = phaseDirName(opts.phase)
-  const planPath = path.join(ROOT, 'docs/development/Plan', epic, phaseNn, 'tasks', taskId, 'plan.md')
+  const planPath = path.join(ROOT, 'docs/workflow/plans', epic, phaseNn, 'tasks', taskId, 'plan.md')
   const featureId = opts.featureId || extractFeatureIdFromPlan(planPath)
   const featurePath = featureId
-    ? path.join(ROOT, 'docs/agentic/development/features', `${featureId}.md`)
+    ? path.join(ROOT, 'docs/workflow/features', `${featureId}.md`)
     : null
   const reportPath = path.join(
     ROOT,
-    'docs/development/Result',
+    'docs/workflow/results',
     epic,
     phaseNn,
     'development',
@@ -61,9 +61,9 @@ function main() {
   if (!fs.existsSync(planPath)) errors.push(`Plan hilang: ${planPath}`)
   else ok.push('plan.md ada')
 
-  if (!featureId) errors.push('Feature ID tidak ditemukan di plan — Agent Plan wajib link ke docs/agentic/development/features/')
+  if (!featureId) errors.push('Feature ID tidak ditemukan di plan — Agent Plan wajib link ke docs/workflow/features/')
   else if (!featurePath || !fs.existsSync(featurePath)) {
-    errors.push(`Feature doc hilang: docs/agentic/development/features/${featureId}.md`)
+    errors.push(`Feature doc hilang: docs/workflow/features/${featureId}.md`)
   } else ok.push('feature doc ada')
 
   const artifacts = readTaskArtifacts(ROOT, epic, opts.phase, taskId)

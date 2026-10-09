@@ -3,7 +3,7 @@
 | Meta | Nilai |
 |------|-------|
 | Staging detail | [RUNBOOK-STAGING.md](./RUNBOOK-STAGING.md) |
-| Branch / CI | [CONTRIBUTING.md](../CONTRIBUTING.md) · `.github/workflows/` |
+| Branch / CI | [CONTRIBUTING.md](../engineering/CONTRIBUTING.md) · `.github/workflows/` |
 
 ---
 

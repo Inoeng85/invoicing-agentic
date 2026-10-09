@@ -45,7 +45,7 @@ Saat menahan manusia, `waiting` = `{ "stage": "intake", "question": "…" }` dan
 
 | # | Path | Bagian | Dipakai untuk |
 |---|------|--------|----------------|
-| 1 | docs/PRD/{folder}/{file}.md | {heading} | {satu kalimat} |
+| 1 | docs/product/requirements/{folder}/{file}.md | {heading} | {satu kalimat} |
 ```
 
 Baris wajib per stage. Ganti path dengan file epic yang sedang dijalankan. Lewati baris "jawaban manusia" bila `decision.json` tidak punya `answer`.

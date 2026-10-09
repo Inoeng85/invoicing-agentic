@@ -1,0 +1,33 @@
+{
+  "version": 1,
+  "instructedBy": "human",
+  "instructedAt": "2026-10-01T00:00:00+07:00",
+  "notes": "Human menyebut satu atau beberapa folder/file di Agentic/docs/product/requirements",
+  "scope": {
+    "prdRoots": [
+      "docs/product/requirements/0702-live-tracking"
+    ],
+    "developmentPhasePaths": [
+      "docs/product/requirements/0702-live-tracking/0702_PRD_Live_Tracking_Development_phase.md"
+    ],
+    "catalogRef": ".agentic/catalog/index.json"
+  },
+  "phases": [
+    {
+      "phaseId": "0702-P1",
+      "epic": "0702",
+      "ordinal": 1,
+      "title": "Live tracking — fondasi",
+      "devPhasePath": "docs/product/requirements/0702-live-tracking/0702_PRD_Live_Tracking_Development_phase.md",
+      "phaseRef": "Human-defined slice of tasks (task id range or heading)",
+      "taskIds": [],
+      "intakeStatus": "queued",
+      "planStatus": "blocked",
+      "kanbanColumn": "intake"
+    }
+  ],
+  "gates": {
+    "planRequiresPriorPhaseHumanQa": true,
+    "description": "phase.planStatus boleh ready_for_plan hanya jika phase sebelumnya intakeStatus=released"
+  }
+}

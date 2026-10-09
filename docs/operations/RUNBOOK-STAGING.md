@@ -1,6 +1,6 @@
 # Runbook — Staging (Phase 2)
 
-ADR: [ADR-0002](../adr/ADR-0002-hosting.md) · [ADR-0003](../adr/ADR-0003-web-api-topology.md) · [ADR-0001](../adr/ADR-0001-sqlite-postgresql.md)
+ADR: [ADR-0002](../architecture/decisions/ADR-0002-hosting.md) · [ADR-0003](../architecture/decisions/ADR-0003-web-api-topology.md) · [ADR-0001](../architecture/decisions/ADR-0001-sqlite-postgresql.md)
 
 ## Prasyarat
 
@@ -29,7 +29,7 @@ ADR: [ADR-0002](../adr/ADR-0002-hosting.md) · [ADR-0003](../adr/ADR-0003-web-ap
 4. Seed sekali: `npm run db:seed` (user demo Studio Kartika)
 5. Smoke: `GET $API_BASE_URL/api/health/ready` → 200
 
-Provision detail: [infra/railway/README.md](../infra/railway/README.md)
+Provision detail: [infra/railway/README.md](deployment/railway/README.md)
 
 Workflow: [.github/workflows/deploy-staging.yml](../../.github/workflows/deploy-staging.yml)
 

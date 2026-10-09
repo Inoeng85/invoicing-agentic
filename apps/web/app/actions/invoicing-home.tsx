@@ -35,7 +35,7 @@ export function InvoicingHome(handle: Handle<InvoicingHomeProps>) {
               <h2 class="text-lg font-semibold text-slate-900">Stack terintegrasi</h2>
               <p class="mt-2 max-w-2xl text-sm leading-6 text-slate-600">
                 Basecode Remix dengan SQLite + Prisma ORM dan Tailwind CSS. Schema mengikuti{' '}
-                <code class="rounded bg-slate-100 px-1.5 py-0.5 text-xs">docs/invoicing</code>.
+                <code class="rounded bg-slate-100 px-1.5 py-0.5 text-xs">docs/product</code>.
               </p>
               <ul class="mt-4 grid gap-3 sm:grid-cols-2 lg:grid-cols-4">
                 <li class="rounded-xl border border-slate-100 bg-slate-50 p-4">

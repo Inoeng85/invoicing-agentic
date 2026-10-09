@@ -1,0 +1,87 @@
+{
+  "phaseId": "0000-P2",
+  "updatedAt": "2026-10-01T07:15:43.104Z",
+  "tasks": [
+    {
+      "taskId": "000002-docs-adr-platform-decisions",
+      "planPath": "docs/workflow/plans/0000/phase-02/tasks/000002-docs-adr-platform-decisions/plan.md",
+      "status": "defined"
+    },
+    {
+      "taskId": "000003-docs-branch-commit-convention",
+      "planPath": "docs/workflow/plans/0000/phase-02/tasks/000003-docs-branch-commit-convention/plan.md",
+      "status": "defined"
+    },
+    {
+      "taskId": "000007-stack-pin-dev-dependencies",
+      "planPath": "docs/workflow/plans/0000/phase-02/tasks/000007-stack-pin-dev-dependencies/plan.md",
+      "status": "defined"
+    },
+    {
+      "taskId": "000004-db-postgres-strategy",
+      "planPath": "docs/workflow/plans/0000/phase-02/tasks/000004-db-postgres-strategy/plan.md",
+      "status": "defined"
+    },
+    {
+      "taskId": "000001-be-env-validation",
+      "planPath": "docs/workflow/plans/0000/phase-02/tasks/000001-be-env-validation/plan.md",
+      "status": "defined"
+    },
+    {
+      "taskId": "000002-be-structured-logging-request-id",
+      "planPath": "docs/workflow/plans/0000/phase-02/tasks/000002-be-structured-logging-request-id/plan.md",
+      "status": "defined"
+    },
+    {
+      "taskId": "000003-be-email-adapter-selection",
+      "planPath": "docs/workflow/plans/0000/phase-02/tasks/000003-be-email-adapter-selection/plan.md",
+      "status": "defined"
+    },
+    {
+      "taskId": "000003-db-seed-demo",
+      "planPath": "docs/workflow/plans/0000/phase-02/tasks/000003-db-seed-demo/plan.md",
+      "status": "defined"
+    },
+    {
+      "taskId": "000008-stack-doctor-script",
+      "planPath": "docs/workflow/plans/0000/phase-02/tasks/000008-stack-doctor-script/plan.md",
+      "status": "defined"
+    },
+    {
+      "taskId": "000005-infra-hosting-provision",
+      "planPath": "docs/workflow/plans/0000/phase-02/tasks/000005-infra-hosting-provision/plan.md",
+      "status": "defined"
+    },
+    {
+      "taskId": "000006-infra-domain-tls-cors",
+      "planPath": "docs/workflow/plans/0000/phase-02/tasks/000006-infra-domain-tls-cors/plan.md",
+      "status": "defined"
+    },
+    {
+      "taskId": "000007-infra-staging-cd",
+      "planPath": "docs/workflow/plans/0000/phase-02/tasks/000007-infra-staging-cd/plan.md",
+      "status": "defined"
+    },
+    {
+      "taskId": "000008-infra-email-provider-staging",
+      "planPath": "docs/workflow/plans/0000/phase-02/tasks/000008-infra-email-provider-staging/plan.md",
+      "status": "defined"
+    },
+    {
+      "taskId": "000004-infra-ci-performance",
+      "planPath": "docs/workflow/plans/0000/phase-02/tasks/000004-infra-ci-performance/plan.md",
+      "status": "defined"
+    },
+    {
+      "taskId": "000001-fe-shared-design-tokens",
+      "planPath": "docs/workflow/plans/0000/phase-02/tasks/000001-fe-shared-design-tokens/plan.md",
+      "status": "defined"
+    },
+    {
+      "taskId": "000002-fe-web-css-token-build",
+      "planPath": "docs/workflow/plans/0000/phase-02/tasks/000002-fe-web-css-token-build/plan.md",
+      "status": "defined"
+    }
+  ],
+  "allDefined": true
+}

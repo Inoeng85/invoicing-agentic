@@ -335,9 +335,9 @@ export function checklistToMarkdown(data) {
 }
 
 export function writeTaskChecklistArtifacts(root, data) {
-  const jsonRel = 'docs/PRD/0800-orkestrasi-stage/data/task-checklist.json'
-  const mdRel = 'docs/development/Plan/TASK_CHECKLIST.md'
-  const mdMirror = 'docs/PRD/0800-orkestrasi-stage/TASK_CHECKLIST.md'
+  const jsonRel = 'docs/workflow/dashboard/data/task-checklist.json'
+  const mdRel = 'docs/workflow/plans/TASK_CHECKLIST.md'
+  const mdMirror = 'docs/workflow/dashboard/TASK_CHECKLIST.md'
   fs.writeFileSync(path.join(root, jsonRel), JSON.stringify(data, null, 2) + '\n')
   const md = checklistToMarkdown(data)
   fs.writeFileSync(path.join(root, mdRel), md)

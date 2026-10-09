@@ -1,59 +1,30 @@
-# Invoicing Workspace (Agentic)
+# Dokumentasi proyek
 
-Monorepo **dokumentasi** + **web** + **backend API** + shared packages. Tanpa Docker · **SQLite** semua environment.
-
-**Dokumentasi:** [docs/invoicing/BRD-DEFINITION-OF-DONE.md](invoicing/BRD-DEFINITION-OF-DONE.md)
-**Launch (PG/G6):** [docs/operations/LAUNCH-LANE.md](operations/LAUNCH-LANE.md)
-
-## Indeks dokumentasi
-
-- [Keputusan arsitektur](adr/) dan [operasional](operations/)
-- [Kontribusi](CONTRIBUTING.md) dan [branch protection](operations/BRANCH_PROTECTION.md)
-- [Requirement dan fase pengembangan](PRD/README.md)
-- [Produk invoicing](invoicing/README.md)
-- [Web](apps/web/README.md), [API](apps/api/README.md), dan [shared packages](packages/README.md)
-- [Seed database](packages/database/seed/README.md) dan [deployment Railway](infra/railway/README.md)
-- [Workflow agentic](agentic/README.md) dan [feature backlog](agentic/development/features/README.md)
-- [Rencana pengembangan](development/Plan/README.md) dan [laporan hasil](development/Result/README.md)
-- Template dokumentasi: [BRD](skills/invoicing-brd/Skill.md), [arsitektur](skills/invoicing-architecture/Skill.md), [stack](skills/invoicing-stack/Skill.md), [desain](skills/invoicing-design/Skill.md)
-
-Semua dokumentasi proyek disimpan di `docs/`. File `AGENTS.md`, skill aktif di `.cursor/skills/`, template pull request di `.github/`, dan state runtime di `.agentic/` tetap di lokasi operasionalnya.
+Dokumentasi PuraPuraLupa / Komando: requirement produk, implementasi invoicing, operasional, dan workflow pengembangan.
 
 ## Struktur
 
-| Path | Package | Port (dev) |
-|------|---------|------------|
-| [apps/web/](../apps/web/) | `@invoicing/web` | 44100 |
-| [apps/api/](../apps/api/) | `@invoicing/api` | 44101 |
-| [packages/database/](../packages/database/) | `@invoicing/database` | — |
-| [packages/domain/](../packages/domain/) | `@invoicing/domain` | — |
+| Folder | Isi | Mulai dari |
+|---|---|---|
+| `product/` | BRD, scope, user stories, legal, dan PRD per epic | [Produk](product/README.md) · [Requirement](product/requirements/README.md) |
+| `architecture/` | Arsitektur sistem dan keputusan teknis | [Arsitektur](architecture/README.md) · [ADR](architecture/decisions/) |
+| `engineering/` | Setup developer, API, desain teknis, aplikasi, dan shared packages | [Engineering](engineering/README.md) |
+| `design/` | Guideline, modul desain, contoh layar, dan prototype | [Desain](design/README.md) · [Prototype](design/prototype/index.html) |
+| `operations/` | Deployment, runbook, provisioning, launch, dan branch protection | [Launch lane](operations/LAUNCH-LANE.md) · [Deployment](operations/deployment/railway/README.md) |
+| `workflow/` | Proses agentic, skills, template, backlog, plan, hasil task, dan dashboard | [Workflow](workflow/README.md) · [Kanban](workflow/dashboard/kanban-board.html) |
+| `reports/` | Output pemeriksaan gate yang dihasilkan otomatis | [Panduan laporan](reports/README.md) |
+| `archive/` | Catatan dan log sesi agent terdahulu | [Panduan arsip](archive/README.md) |
 
-## Dev
+## Jalur baca
 
-Prasyarat: **Node 24.3+** (`nvm use`).
+- **Mulai development:** [kontribusi](engineering/CONTRIBUTING.md) → [setup dan perintah](engineering/STACK-INTEGRATION.md) → [panduan web](engineering/apps/web/README.md) / [API](engineering/apps/api/README.md).
+- **Memahami produk:** [BRD](product/BRD.md) → [scope MVP](product/brd/MVP-SCOPE-LOCK.md) → [PRD per epic](product/requirements/README.md).
+- **Merancang implementasi:** [arsitektur](architecture/README.md) → [keputusan teknis](architecture/decisions/) → [desain teknis](engineering/TECHNICAL-DESIGN.md) → [spesifikasi API](engineering/API.md).
+- **Menjalankan task:** [feature backlog](workflow/features/README.md) → [plan](workflow/plans/README.md) → [hasil task](workflow/results/README.md) → [dashboard](workflow/dashboard/kanban-board.html).
+- **Menyiapkan rilis:** [release readiness](engineering/RELEASE-READINESS.md) → [staging](operations/STAGING-PROVISION-CHECKLIST.md) → [production](operations/PRODUCTION-PROVISION-CHECKLIST.md).
 
-```sh
-npm run setup
-npm run dev       # web + API
-npm run verify    # typecheck, tests, css, gate G0–G7
-```
+## Penempatan dokumen
 
-Runbook: [STACK-INTEGRATION.md](invoicing/engineering/STACK-INTEGRATION.md)
+Gunakan folder sesuai fungsi dokumen. ID epic dan task tetap dipertahankan agar katalog, plan, dan laporan saling terhubung. Saat memindahkan dokumen, perbarui tautan, template, dan skrip yang membaca path tersebut.
 
-## Scripts (platform & release)
-
-| Command | Purpose |
-|---------|---------|
-| `npm run ci:local` | Paritas job CI GitHub (PG-1) |
-| `npm run release:check` | G6 readiness |
-| `npm run host:check` | Env production sebelum deploy |
-| `npm run staging:smoke` | Health API setelah deploy |
-| `npm run email:smoke` | Resend (G-04) |
-| `npm run start` | Production: web + API satu host |
-
-## Dokumen kunci
-
-- [Platform PRD](0000_platform_setup/prd_platform_setup.md)
-- [Architecture](invoicing/ARCHITECTURE.md)
-- [API spec](invoicing/engineering/API.md)
-- [Skills BRD / Arch / Stack / Design](invoicing/SKILLS-DOCUMENTATION.md)
+File `AGENTS.md`, skill aktif di `.cursor/skills/`, template PR di `.github/`, dan state runtime di `.agentic/` tetap berada di lokasi operasionalnya.

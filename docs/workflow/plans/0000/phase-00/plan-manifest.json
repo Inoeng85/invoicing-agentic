@@ -1,0 +1,52 @@
+{
+  "phaseId": "0000-P0",
+  "updatedAt": "2026-10-01T07:15:43.093Z",
+  "tasks": [
+    {
+      "taskId": "000001-stack-pin-node-runtime",
+      "planPath": "docs/workflow/plans/0000/phase-00/tasks/000001-stack-pin-node-runtime/plan.md",
+      "status": "defined"
+    },
+    {
+      "taskId": "000002-stack-single-npm-lockfile",
+      "planPath": "docs/workflow/plans/0000/phase-00/tasks/000002-stack-single-npm-lockfile/plan.md",
+      "status": "defined"
+    },
+    {
+      "taskId": "000003-stack-repo-hygiene",
+      "planPath": "docs/workflow/plans/0000/phase-00/tasks/000003-stack-repo-hygiene/plan.md",
+      "status": "defined"
+    },
+    {
+      "taskId": "000001-db-canonical-sqlite-path",
+      "planPath": "docs/workflow/plans/0000/phase-00/tasks/000001-db-canonical-sqlite-path/plan.md",
+      "status": "defined"
+    },
+    {
+      "taskId": "000004-stack-env-example",
+      "planPath": "docs/workflow/plans/0000/phase-00/tasks/000004-stack-env-example/plan.md",
+      "status": "defined"
+    },
+    {
+      "taskId": "000002-db-root-scripts",
+      "planPath": "docs/workflow/plans/0000/phase-00/tasks/000002-db-root-scripts/plan.md",
+      "status": "defined"
+    },
+    {
+      "taskId": "000005-stack-setup-script",
+      "planPath": "docs/workflow/plans/0000/phase-00/tasks/000005-stack-setup-script/plan.md",
+      "status": "defined"
+    },
+    {
+      "taskId": "000006-stack-verify-script",
+      "planPath": "docs/workflow/plans/0000/phase-00/tasks/000006-stack-verify-script/plan.md",
+      "status": "defined"
+    },
+    {
+      "taskId": "000001-docs-dev-runbook",
+      "planPath": "docs/workflow/plans/0000/phase-00/tasks/000001-docs-dev-runbook/plan.md",
+      "status": "defined"
+    }
+  ],
+  "allDefined": true
+}

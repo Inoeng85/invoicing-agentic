@@ -22,7 +22,7 @@ description: >-
 
 ## Output
 
-1. Salin [template.md.tmpl](./template.md.tmpl) → `docs/invoicing/design/DESIGN-GUIDELINES.md`
+1. Salin [template.md.tmpl](./template.md.tmpl) → `docs/design/DESIGN-GUIDELINES.md`
 2. Isi navigasi, hierarki layar, token §13, komponen pola
 3. Cross-link prototype HTML paths di `docs/design/prototype/`
 4. Tambah keputusan D-xx (label status, token, dark) di ARCHITECTURE-ALIGNMENT
@@ -50,5 +50,5 @@ description: >-
 
 ## Referensi
 
-- [docs/invoicing/design/DESIGN-GUIDELINES.md](../docs/invoicing/design/DESIGN-GUIDELINES.md)
-- [docs/invoicing/brd/WIREFRAMES.md](../docs/invoicing/brd/WIREFRAMES.md)
+- [docs/design/DESIGN-GUIDELINES.md](../../../docs/design/DESIGN-GUIDELINES.md)
+- [docs/product/brd/WIREFRAMES.md](../../../docs/product/brd/WIREFRAMES.md)

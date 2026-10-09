@@ -18,7 +18,7 @@ function parseArgs(argv) {
 }
 
 function resolvePhaseOrdinal(taskId) {
-  const qPath = path.join(ROOT, 'docs/development/Plan/intake-queue.json')
+  const qPath = path.join(ROOT, 'docs/workflow/plans/intake-queue.json')
   const q = JSON.parse(fs.readFileSync(qPath, 'utf8'))
   for (const ph of q.phases || []) {
     if ((ph.taskIds || []).includes(taskId)) return ph.ordinal

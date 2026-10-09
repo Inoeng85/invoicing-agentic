@@ -1,0 +1,4259 @@
+{
+  "version": 1,
+  "generatedAt": "2026-10-09T20:15:29.105Z",
+  "summary": {
+    "total": 138,
+    "done": 12,
+    "running": 0,
+    "assigned": 0,
+    "ready": 0,
+    "waiting": 0,
+    "blocked": 126,
+    "nextTaskId": null,
+    "nextKind": "gate",
+    "nextPhaseId": "0000-P2",
+    "autopilotActive": false,
+    "autopilotTaskId": null
+  },
+  "nextWork": {
+    "kind": "gate",
+    "phaseId": "0000-P2",
+    "waitFor": "0000-P1",
+    "message": "Menunggu Human QA release phase 0000-P1"
+  },
+  "autopilot": {
+    "active": false,
+    "idleAt": "2026-10-01T09:09:50.210Z",
+    "last": {
+      "kind": "gate",
+      "phaseId": "0000-P2",
+      "waitFor": "0000-P1",
+      "message": "Menunggu Human QA release phase 0000-P1"
+    }
+  },
+  "items": [
+    {
+      "seq": 1,
+      "taskId": "000001-stack-pin-node-runtime",
+      "title": "stack pin node runtime",
+      "epic": "0000",
+      "area": "stack",
+      "phaseId": "0000-P0",
+      "phaseTitle": "Local baseline",
+      "phaseOrdinal": 0,
+      "runState": "done",
+      "stage": "audit",
+      "column": "audit",
+      "planStatus": "defined",
+      "developmentStatus": "complete",
+      "qaStatus": "pass",
+      "progressPercent": 100,
+      "blockers": [],
+      "waitReasons": [],
+      "notes": [],
+      "isNext": false,
+      "autopilotActive": false,
+      "paths": {
+        "plan": "docs/workflow/plans/0000/phase-00/tasks/000001-stack-pin-node-runtime/plan.md",
+        "development": "docs/workflow/results/0000/phase-00/development/000001-stack-pin-node-runtime.md",
+        "qa": "docs/workflow/results/0000/phase-00/qa/000001-stack-pin-node-runtime.md"
+      }
+    },
+    {
+      "seq": 2,
+      "taskId": "000002-stack-single-npm-lockfile",
+      "title": "stack single npm lockfile",
+      "epic": "0000",
+      "area": "stack",
+      "phaseId": "0000-P0",
+      "phaseTitle": "Local baseline",
+      "phaseOrdinal": 0,
+      "runState": "done",
+      "stage": "audit",
+      "column": "audit",
+      "planStatus": "defined",
+      "developmentStatus": "complete",
+      "qaStatus": "pass",
+      "progressPercent": 100,
+      "blockers": [],
+      "waitReasons": [],
+      "notes": [],
+      "isNext": false,
+      "autopilotActive": false,
+      "paths": {
+        "plan": "docs/workflow/plans/0000/phase-00/tasks/000002-stack-single-npm-lockfile/plan.md",
+        "development": "docs/workflow/results/0000/phase-00/development/000002-stack-single-npm-lockfile.md",
+        "qa": "docs/workflow/results/0000/phase-00/qa/000002-stack-single-npm-lockfile.md"
+      }
+    },
+    {
+      "seq": 3,
+      "taskId": "000003-stack-repo-hygiene",
+      "title": "stack repo hygiene",
+      "epic": "0000",
+      "area": "stack",
+      "phaseId": "0000-P0",
+      "phaseTitle": "Local baseline",
+      "phaseOrdinal": 0,
+      "runState": "done",
+      "stage": "audit",
+      "column": "audit",
+      "planStatus": "defined",
+      "developmentStatus": "complete",
+      "qaStatus": "pass",
+      "progressPercent": 100,
+      "blockers": [],
+      "waitReasons": [],
+      "notes": [],
+      "isNext": false,
+      "autopilotActive": false,
+      "paths": {
+        "plan": "docs/workflow/plans/0000/phase-00/tasks/000003-stack-repo-hygiene/plan.md",
+        "development": "docs/workflow/results/0000/phase-00/development/000003-stack-repo-hygiene.md",
+        "qa": "docs/workflow/results/0000/phase-00/qa/000003-stack-repo-hygiene.md"
+      }
+    },
+    {
+      "seq": 4,
+      "taskId": "000001-db-canonical-sqlite-path",
+      "title": "db canonical sqlite path",
+      "epic": "0000",
+      "area": "db",
+      "phaseId": "0000-P0",
+      "phaseTitle": "Local baseline",
+      "phaseOrdinal": 0,
+      "runState": "done",
+      "stage": "done",
+      "column": "done",
+      "planStatus": "defined",
+      "developmentStatus": "complete",
+      "qaStatus": "pass",
+      "progressPercent": 100,
+      "blockers": [],
+      "waitReasons": [],
+      "notes": [],
+      "isNext": false,
+      "autopilotActive": false,
+      "paths": {
+        "plan": "docs/workflow/plans/0000/phase-00/tasks/000001-db-canonical-sqlite-path/plan.md",
+        "development": "docs/workflow/results/0000/phase-00/development/000001-db-canonical-sqlite-path.md",
+        "qa": "docs/workflow/results/0000/phase-00/qa/000001-db-canonical-sqlite-path.md"
+      }
+    },
+    {
+      "seq": 5,
+      "taskId": "000004-stack-env-example",
+      "title": "stack env example",
+      "epic": "0000",
+      "area": "stack",
+      "phaseId": "0000-P0",
+      "phaseTitle": "Local baseline",
+      "phaseOrdinal": 0,
+      "runState": "done",
+      "stage": "audit",
+      "column": "audit",
+      "planStatus": "defined",
+      "developmentStatus": "complete",
+      "qaStatus": "pass",
+      "progressPercent": 100,
+      "blockers": [],
+      "waitReasons": [],
+      "notes": [],
+      "isNext": false,
+      "autopilotActive": false,
+      "paths": {
+        "plan": "docs/workflow/plans/0000/phase-00/tasks/000004-stack-env-example/plan.md",
+        "development": "docs/workflow/results/0000/phase-00/development/000004-stack-env-example.md",
+        "qa": "docs/workflow/results/0000/phase-00/qa/000004-stack-env-example.md"
+      }
+    },
+    {
+      "seq": 6,
+      "taskId": "000002-db-root-scripts",
+      "title": "db root scripts",
+      "epic": "0000",
+      "area": "db",
+      "phaseId": "0000-P0",
+      "phaseTitle": "Local baseline",
+      "phaseOrdinal": 0,
+      "runState": "done",
+      "stage": "audit",
+      "column": "audit",
+      "planStatus": "defined",
+      "developmentStatus": "complete",
+      "qaStatus": "pass",
+      "progressPercent": 100,
+      "blockers": [],
+      "waitReasons": [],
+      "notes": [],
+      "isNext": false,
+      "autopilotActive": false,
+      "paths": {
+        "plan": "docs/workflow/plans/0000/phase-00/tasks/000002-db-root-scripts/plan.md",
+        "development": "docs/workflow/results/0000/phase-00/development/000002-db-root-scripts.md",
+        "qa": "docs/workflow/results/0000/phase-00/qa/000002-db-root-scripts.md"
+      }
+    },
+    {
+      "seq": 7,
+      "taskId": "000005-stack-setup-script",
+      "title": "stack setup script",
+      "epic": "0000",
+      "area": "stack",
+      "phaseId": "0000-P0",
+      "phaseTitle": "Local baseline",
+      "phaseOrdinal": 0,
+      "runState": "done",
+      "stage": "audit",
+      "column": "audit",
+      "planStatus": "defined",
+      "developmentStatus": "complete",
+      "qaStatus": "pass",
+      "progressPercent": 100,
+      "blockers": [],
+      "waitReasons": [],
+      "notes": [],
+      "isNext": false,
+      "autopilotActive": false,
+      "paths": {
+        "plan": "docs/workflow/plans/0000/phase-00/tasks/000005-stack-setup-script/plan.md",
+        "development": "docs/workflow/results/0000/phase-00/development/000005-stack-setup-script.md",
+        "qa": "docs/workflow/results/0000/phase-00/qa/000005-stack-setup-script.md"
+      }
+    },
+    {
+      "seq": 8,
+      "taskId": "000006-stack-verify-script",
+      "title": "stack verify script",
+      "epic": "0000",
+      "area": "stack",
+      "phaseId": "0000-P0",
+      "phaseTitle": "Local baseline",
+      "phaseOrdinal": 0,
+      "runState": "done",
+      "stage": "audit",
+      "column": "audit",
+      "planStatus": "defined",
+      "developmentStatus": "complete",
+      "qaStatus": "pass",
+      "progressPercent": 100,
+      "blockers": [],
+      "waitReasons": [],
+      "notes": [],
+      "isNext": false,
+      "autopilotActive": false,
+      "paths": {
+        "plan": "docs/workflow/plans/0000/phase-00/tasks/000006-stack-verify-script/plan.md",
+        "development": "docs/workflow/results/0000/phase-00/development/000006-stack-verify-script.md",
+        "qa": "docs/workflow/results/0000/phase-00/qa/000006-stack-verify-script.md"
+      }
+    },
+    {
+      "seq": 9,
+      "taskId": "000001-docs-dev-runbook",
+      "title": "docs dev runbook",
+      "epic": "0000",
+      "area": "docs",
+      "phaseId": "0000-P0",
+      "phaseTitle": "Local baseline",
+      "phaseOrdinal": 0,
+      "runState": "done",
+      "stage": "audit",
+      "column": "audit",
+      "planStatus": "defined",
+      "developmentStatus": "complete",
+      "qaStatus": "pass",
+      "progressPercent": 100,
+      "blockers": [],
+      "waitReasons": [],
+      "notes": [],
+      "isNext": false,
+      "autopilotActive": false,
+      "paths": {
+        "plan": "docs/workflow/plans/0000/phase-00/tasks/000001-docs-dev-runbook/plan.md",
+        "development": "docs/workflow/results/0000/phase-00/development/000001-docs-dev-runbook.md",
+        "qa": "docs/workflow/results/0000/phase-00/qa/000001-docs-dev-runbook.md"
+      }
+    },
+    {
+      "seq": 10,
+      "taskId": "000001-infra-github-repo-protection",
+      "title": "infra github repo protection",
+      "epic": "0000",
+      "area": "infra",
+      "phaseId": "0000-P1",
+      "phaseTitle": "Continuous Integration",
+      "phaseOrdinal": 1,
+      "runState": "done",
+      "stage": "audit",
+      "column": "audit",
+      "planStatus": "defined",
+      "developmentStatus": "complete",
+      "qaStatus": "pass",
+      "progressPercent": 100,
+      "blockers": [],
+      "waitReasons": [],
+      "notes": [],
+      "isNext": false,
+      "autopilotActive": false,
+      "paths": {
+        "plan": "docs/workflow/plans/0000/phase-01/tasks/000001-infra-github-repo-protection/plan.md",
+        "development": "docs/workflow/results/0000/phase-01/development/000001-infra-github-repo-protection.md",
+        "qa": "docs/workflow/results/0000/phase-01/qa/000001-infra-github-repo-protection.md"
+      }
+    },
+    {
+      "seq": 11,
+      "taskId": "000002-infra-ci-workflow-fix",
+      "title": "infra ci workflow fix",
+      "epic": "0000",
+      "area": "infra",
+      "phaseId": "0000-P1",
+      "phaseTitle": "Continuous Integration",
+      "phaseOrdinal": 1,
+      "runState": "done",
+      "stage": "audit",
+      "column": "audit",
+      "planStatus": "defined",
+      "developmentStatus": "complete",
+      "qaStatus": "pass",
+      "progressPercent": 100,
+      "blockers": [],
+      "waitReasons": [],
+      "notes": [],
+      "isNext": false,
+      "autopilotActive": false,
+      "paths": {
+        "plan": "docs/workflow/plans/0000/phase-01/tasks/000002-infra-ci-workflow-fix/plan.md",
+        "development": "docs/workflow/results/0000/phase-01/development/000002-infra-ci-workflow-fix.md",
+        "qa": "docs/workflow/results/0000/phase-01/qa/000002-infra-ci-workflow-fix.md"
+      }
+    },
+    {
+      "seq": 12,
+      "taskId": "000003-infra-ci-verify-pipeline",
+      "title": "infra ci verify pipeline",
+      "epic": "0000",
+      "area": "infra",
+      "phaseId": "0000-P1",
+      "phaseTitle": "Continuous Integration",
+      "phaseOrdinal": 1,
+      "runState": "done",
+      "stage": "audit",
+      "column": "audit",
+      "planStatus": "defined",
+      "developmentStatus": "complete",
+      "qaStatus": "pass",
+      "progressPercent": 100,
+      "blockers": [],
+      "waitReasons": [],
+      "notes": [],
+      "isNext": false,
+      "autopilotActive": false,
+      "paths": {
+        "plan": "docs/workflow/plans/0000/phase-01/tasks/000003-infra-ci-verify-pipeline/plan.md",
+        "development": "docs/workflow/results/0000/phase-01/development/000003-infra-ci-verify-pipeline.md",
+        "qa": "docs/workflow/results/0000/phase-01/qa/000003-infra-ci-verify-pipeline.md"
+      }
+    },
+    {
+      "seq": 13,
+      "taskId": "000002-docs-adr-platform-decisions",
+      "title": "docs adr platform decisions",
+      "epic": "0000",
+      "area": "docs",
+      "phaseId": "0000-P2",
+      "phaseTitle": "Staging",
+      "phaseOrdinal": 2,
+      "runState": "blocked",
+      "stage": "intake",
+      "column": "intake",
+      "planStatus": "defined",
+      "developmentStatus": "pending",
+      "qaStatus": "pending",
+      "progressPercent": 50,
+      "blockers": [
+        "Gate phase: menunggu release Human QA 0000-P1",
+        "Intake phase 0000-P2 belum selesai (queued)"
+      ],
+      "waitReasons": [],
+      "notes": [],
+      "isNext": false,
+      "autopilotActive": false,
+      "paths": {
+        "plan": "docs/workflow/plans/0000/phase-02/tasks/000002-docs-adr-platform-decisions/plan.md",
+        "development": "docs/workflow/results/0000/phase-02/development/000002-docs-adr-platform-decisions.md",
+        "qa": "docs/workflow/results/0000/phase-02/qa/000002-docs-adr-platform-decisions.md"
+      }
+    },
+    {
+      "seq": 14,
+      "taskId": "000003-docs-branch-commit-convention",
+      "title": "docs branch commit convention",
+      "epic": "0000",
+      "area": "docs",
+      "phaseId": "0000-P2",
+      "phaseTitle": "Staging",
+      "phaseOrdinal": 2,
+      "runState": "blocked",
+      "stage": "intake",
+      "column": "intake",
+      "planStatus": "defined",
+      "developmentStatus": "pending",
+      "qaStatus": "pending",
+      "progressPercent": 50,
+      "blockers": [
+        "Gate phase: menunggu release Human QA 0000-P1",
+        "Intake phase 0000-P2 belum selesai (queued)"
+      ],
+      "waitReasons": [
+        "Development berurutan: menunggu 000002-docs-adr-platform-decisions selesai"
+      ],
+      "notes": [],
+      "isNext": false,
+      "autopilotActive": false,
+      "paths": {
+        "plan": "docs/workflow/plans/0000/phase-02/tasks/000003-docs-branch-commit-convention/plan.md",
+        "development": "docs/workflow/results/0000/phase-02/development/000003-docs-branch-commit-convention.md",
+        "qa": "docs/workflow/results/0000/phase-02/qa/000003-docs-branch-commit-convention.md"
+      }
+    },
+    {
+      "seq": 15,
+      "taskId": "000007-stack-pin-dev-dependencies",
+      "title": "stack pin dev dependencies",
+      "epic": "0000",
+      "area": "stack",
+      "phaseId": "0000-P2",
+      "phaseTitle": "Staging",
+      "phaseOrdinal": 2,
+      "runState": "blocked",
+      "stage": "intake",
+      "column": "intake",
+      "planStatus": "defined",
+      "developmentStatus": "pending",
+      "qaStatus": "pending",
+      "progressPercent": 50,
+      "blockers": [
+        "Gate phase: menunggu release Human QA 0000-P1",
+        "Intake phase 0000-P2 belum selesai (queued)"
+      ],
+      "waitReasons": [
+        "Development berurutan: menunggu 000002-docs-adr-platform-decisions selesai"
+      ],
+      "notes": [],
+      "isNext": false,
+      "autopilotActive": false,
+      "paths": {
+        "plan": "docs/workflow/plans/0000/phase-02/tasks/000007-stack-pin-dev-dependencies/plan.md",
+        "development": "docs/workflow/results/0000/phase-02/development/000007-stack-pin-dev-dependencies.md",
+        "qa": "docs/workflow/results/0000/phase-02/qa/000007-stack-pin-dev-dependencies.md"
+      }
+    },
+    {
+      "seq": 16,
+      "taskId": "000004-db-postgres-strategy",
+      "title": "db postgres strategy",
+      "epic": "0000",
+      "area": "db",
+      "phaseId": "0000-P2",
+      "phaseTitle": "Staging",
+      "phaseOrdinal": 2,
+      "runState": "blocked",
+      "stage": "intake",
+      "column": "intake",
+      "planStatus": "defined",
+      "developmentStatus": "pending",
+      "qaStatus": "pending",
+      "progressPercent": 50,
+      "blockers": [
+        "Gate phase: menunggu release Human QA 0000-P1",
+        "Intake phase 0000-P2 belum selesai (queued)"
+      ],
+      "waitReasons": [
+        "Development berurutan: menunggu 000002-docs-adr-platform-decisions selesai"
+      ],
+      "notes": [],
+      "isNext": false,
+      "autopilotActive": false,
+      "paths": {
+        "plan": "docs/workflow/plans/0000/phase-02/tasks/000004-db-postgres-strategy/plan.md",
+        "development": "docs/workflow/results/0000/phase-02/development/000004-db-postgres-strategy.md",
+        "qa": "docs/workflow/results/0000/phase-02/qa/000004-db-postgres-strategy.md"
+      }
+    },
+    {
+      "seq": 17,
+      "taskId": "000001-be-env-validation",
+      "title": "be env validation",
+      "epic": "0000",
+      "area": "be",
+      "phaseId": "0000-P2",
+      "phaseTitle": "Staging",
+      "phaseOrdinal": 2,
+      "runState": "blocked",
+      "stage": "intake",
+      "column": "intake",
+      "planStatus": "defined",
+      "developmentStatus": "complete",
+      "qaStatus": "pending",
+      "progressPercent": 75,
+      "blockers": [
+        "Gate phase: menunggu release Human QA 0000-P1",
+        "Intake phase 0000-P2 belum selesai (queued)"
+      ],
+      "waitReasons": [],
+      "notes": [],
+      "isNext": false,
+      "autopilotActive": false,
+      "paths": {
+        "plan": "docs/workflow/plans/0000/phase-02/tasks/000001-be-env-validation/plan.md",
+        "development": "docs/workflow/results/0000/phase-02/development/000001-be-env-validation.md",
+        "qa": "docs/workflow/results/0000/phase-02/qa/000001-be-env-validation.md"
+      }
+    },
+    {
+      "seq": 18,
+      "taskId": "000002-be-structured-logging-request-id",
+      "title": "be structured logging request id",
+      "epic": "0000",
+      "area": "be",
+      "phaseId": "0000-P2",
+      "phaseTitle": "Staging",
+      "phaseOrdinal": 2,
+      "runState": "blocked",
+      "stage": "intake",
+      "column": "intake",
+      "planStatus": "defined",
+      "developmentStatus": "pending",
+      "qaStatus": "pending",
+      "progressPercent": 50,
+      "blockers": [
+        "Gate phase: menunggu release Human QA 0000-P1",
+        "Intake phase 0000-P2 belum selesai (queued)"
+      ],
+      "waitReasons": [
+        "Development berurutan: menunggu 000002-docs-adr-platform-decisions selesai"
+      ],
+      "notes": [],
+      "isNext": false,
+      "autopilotActive": false,
+      "paths": {
+        "plan": "docs/workflow/plans/0000/phase-02/tasks/000002-be-structured-logging-request-id/plan.md",
+        "development": "docs/workflow/results/0000/phase-02/development/000002-be-structured-logging-request-id.md",
+        "qa": "docs/workflow/results/0000/phase-02/qa/000002-be-structured-logging-request-id.md"
+      }
+    },
+    {
+      "seq": 19,
+      "taskId": "000003-be-email-adapter-selection",
+      "title": "be email adapter selection",
+      "epic": "0000",
+      "area": "be",
+      "phaseId": "0000-P2",
+      "phaseTitle": "Staging",
+      "phaseOrdinal": 2,
+      "runState": "blocked",
+      "stage": "intake",
+      "column": "intake",
+      "planStatus": "defined",
+      "developmentStatus": "pending",
+      "qaStatus": "pending",
+      "progressPercent": 50,
+      "blockers": [
+        "Gate phase: menunggu release Human QA 0000-P1",
+        "Intake phase 0000-P2 belum selesai (queued)"
+      ],
+      "waitReasons": [
+        "Development berurutan: menunggu 000002-docs-adr-platform-decisions selesai"
+      ],
+      "notes": [],
+      "isNext": false,
+      "autopilotActive": false,
+      "paths": {
+        "plan": "docs/workflow/plans/0000/phase-02/tasks/000003-be-email-adapter-selection/plan.md",
+        "development": "docs/workflow/results/0000/phase-02/development/000003-be-email-adapter-selection.md",
+        "qa": "docs/workflow/results/0000/phase-02/qa/000003-be-email-adapter-selection.md"
+      }
+    },
+    {
+      "seq": 20,
+      "taskId": "000003-db-seed-demo",
+      "title": "db seed demo",
+      "epic": "0000",
+      "area": "db",
+      "phaseId": "0000-P2",
+      "phaseTitle": "Staging",
+      "phaseOrdinal": 2,
+      "runState": "blocked",
+      "stage": "intake",
+      "column": "intake",
+      "planStatus": "defined",
+      "developmentStatus": "pending",
+      "qaStatus": "pending",
+      "progressPercent": 50,
+      "blockers": [
+        "Gate phase: menunggu release Human QA 0000-P1",
+        "Intake phase 0000-P2 belum selesai (queued)"
+      ],
+      "waitReasons": [
+        "Development berurutan: menunggu 000002-docs-adr-platform-decisions selesai"
+      ],
+      "notes": [],
+      "isNext": false,
+      "autopilotActive": false,
+      "paths": {
+        "plan": "docs/workflow/plans/0000/phase-02/tasks/000003-db-seed-demo/plan.md",
+        "development": "docs/workflow/results/0000/phase-02/development/000003-db-seed-demo.md",
+        "qa": "docs/workflow/results/0000/phase-02/qa/000003-db-seed-demo.md"
+      }
+    },
+    {
+      "seq": 21,
+      "taskId": "000008-stack-doctor-script",
+      "title": "stack doctor script",
+      "epic": "0000",
+      "area": "stack",
+      "phaseId": "0000-P2",
+      "phaseTitle": "Staging",
+      "phaseOrdinal": 2,
+      "runState": "blocked",
+      "stage": "intake",
+      "column": "intake",
+      "planStatus": "defined",
+      "developmentStatus": "pending",
+      "qaStatus": "pending",
+      "progressPercent": 50,
+      "blockers": [
+        "Gate phase: menunggu release Human QA 0000-P1",
+        "Intake phase 0000-P2 belum selesai (queued)"
+      ],
+      "waitReasons": [
+        "Development berurutan: menunggu 000002-docs-adr-platform-decisions selesai"
+      ],
+      "notes": [],
+      "isNext": false,
+      "autopilotActive": false,
+      "paths": {
+        "plan": "docs/workflow/plans/0000/phase-02/tasks/000008-stack-doctor-script/plan.md",
+        "development": "docs/workflow/results/0000/phase-02/development/000008-stack-doctor-script.md",
+        "qa": "docs/workflow/results/0000/phase-02/qa/000008-stack-doctor-script.md"
+      }
+    },
+    {
+      "seq": 22,
+      "taskId": "000005-infra-hosting-provision",
+      "title": "infra hosting provision",
+      "epic": "0000",
+      "area": "infra",
+      "phaseId": "0000-P2",
+      "phaseTitle": "Staging",
+      "phaseOrdinal": 2,
+      "runState": "blocked",
+      "stage": "intake",
+      "column": "intake",
+      "planStatus": "defined",
+      "developmentStatus": "pending",
+      "qaStatus": "pending",
+      "progressPercent": 50,
+      "blockers": [
+        "Gate phase: menunggu release Human QA 0000-P1",
+        "Intake phase 0000-P2 belum selesai (queued)"
+      ],
+      "waitReasons": [
+        "Development berurutan: menunggu 000002-docs-adr-platform-decisions selesai"
+      ],
+      "notes": [],
+      "isNext": false,
+      "autopilotActive": false,
+      "paths": {
+        "plan": "docs/workflow/plans/0000/phase-02/tasks/000005-infra-hosting-provision/plan.md",
+        "development": "docs/workflow/results/0000/phase-02/development/000005-infra-hosting-provision.md",
+        "qa": "docs/workflow/results/0000/phase-02/qa/000005-infra-hosting-provision.md"
+      }
+    },
+    {
+      "seq": 23,
+      "taskId": "000006-infra-domain-tls-cors",
+      "title": "infra domain tls cors",
+      "epic": "0000",
+      "area": "infra",
+      "phaseId": "0000-P2",
+      "phaseTitle": "Staging",
+      "phaseOrdinal": 2,
+      "runState": "blocked",
+      "stage": "intake",
+      "column": "intake",
+      "planStatus": "defined",
+      "developmentStatus": "pending",
+      "qaStatus": "pending",
+      "progressPercent": 50,
+      "blockers": [
+        "Gate phase: menunggu release Human QA 0000-P1",
+        "Intake phase 0000-P2 belum selesai (queued)"
+      ],
+      "waitReasons": [
+        "Development berurutan: menunggu 000002-docs-adr-platform-decisions selesai"
+      ],
+      "notes": [],
+      "isNext": false,
+      "autopilotActive": false,
+      "paths": {
+        "plan": "docs/workflow/plans/0000/phase-02/tasks/000006-infra-domain-tls-cors/plan.md",
+        "development": "docs/workflow/results/0000/phase-02/development/000006-infra-domain-tls-cors.md",
+        "qa": "docs/workflow/results/0000/phase-02/qa/000006-infra-domain-tls-cors.md"
+      }
+    },
+    {
+      "seq": 24,
+      "taskId": "000007-infra-staging-cd",
+      "title": "infra staging cd",
+      "epic": "0000",
+      "area": "infra",
+      "phaseId": "0000-P2",
+      "phaseTitle": "Staging",
+      "phaseOrdinal": 2,
+      "runState": "blocked",
+      "stage": "intake",
+      "column": "intake",
+      "planStatus": "defined",
+      "developmentStatus": "pending",
+      "qaStatus": "pending",
+      "progressPercent": 50,
+      "blockers": [
+        "Gate phase: menunggu release Human QA 0000-P1",
+        "Intake phase 0000-P2 belum selesai (queued)"
+      ],
+      "waitReasons": [
+        "Development berurutan: menunggu 000002-docs-adr-platform-decisions selesai"
+      ],
+      "notes": [],
+      "isNext": false,
+      "autopilotActive": false,
+      "paths": {
+        "plan": "docs/workflow/plans/0000/phase-02/tasks/000007-infra-staging-cd/plan.md",
+        "development": "docs/workflow/results/0000/phase-02/development/000007-infra-staging-cd.md",
+        "qa": "docs/workflow/results/0000/phase-02/qa/000007-infra-staging-cd.md"
+      }
+    },
+    {
+      "seq": 25,
+      "taskId": "000008-infra-email-provider-staging",
+      "title": "infra email provider staging",
+      "epic": "0000",
+      "area": "infra",
+      "phaseId": "0000-P2",
+      "phaseTitle": "Staging",
+      "phaseOrdinal": 2,
+      "runState": "blocked",
+      "stage": "intake",
+      "column": "intake",
+      "planStatus": "defined",
+      "developmentStatus": "pending",
+      "qaStatus": "pending",
+      "progressPercent": 50,
+      "blockers": [
+        "Gate phase: menunggu release Human QA 0000-P1",
+        "Intake phase 0000-P2 belum selesai (queued)"
+      ],
+      "waitReasons": [
+        "Development berurutan: menunggu 000002-docs-adr-platform-decisions selesai"
+      ],
+      "notes": [],
+      "isNext": false,
+      "autopilotActive": false,
+      "paths": {
+        "plan": "docs/workflow/plans/0000/phase-02/tasks/000008-infra-email-provider-staging/plan.md",
+        "development": "docs/workflow/results/0000/phase-02/development/000008-infra-email-provider-staging.md",
+        "qa": "docs/workflow/results/0000/phase-02/qa/000008-infra-email-provider-staging.md"
+      }
+    },
+    {
+      "seq": 26,
+      "taskId": "000004-infra-ci-performance",
+      "title": "infra ci performance",
+      "epic": "0000",
+      "area": "infra",
+      "phaseId": "0000-P2",
+      "phaseTitle": "Staging",
+      "phaseOrdinal": 2,
+      "runState": "blocked",
+      "stage": "intake",
+      "column": "intake",
+      "planStatus": "defined",
+      "developmentStatus": "pending",
+      "qaStatus": "pending",
+      "progressPercent": 50,
+      "blockers": [
+        "Gate phase: menunggu release Human QA 0000-P1",
+        "Intake phase 0000-P2 belum selesai (queued)"
+      ],
+      "waitReasons": [
+        "Development berurutan: menunggu 000002-docs-adr-platform-decisions selesai"
+      ],
+      "notes": [],
+      "isNext": false,
+      "autopilotActive": false,
+      "paths": {
+        "plan": "docs/workflow/plans/0000/phase-02/tasks/000004-infra-ci-performance/plan.md",
+        "development": "docs/workflow/results/0000/phase-02/development/000004-infra-ci-performance.md",
+        "qa": "docs/workflow/results/0000/phase-02/qa/000004-infra-ci-performance.md"
+      }
+    },
+    {
+      "seq": 27,
+      "taskId": "000001-fe-shared-design-tokens",
+      "title": "fe shared design tokens",
+      "epic": "0000",
+      "area": "fe",
+      "phaseId": "0000-P2",
+      "phaseTitle": "Staging",
+      "phaseOrdinal": 2,
+      "runState": "blocked",
+      "stage": "intake",
+      "column": "intake",
+      "planStatus": "defined",
+      "developmentStatus": "pending",
+      "qaStatus": "pending",
+      "progressPercent": 50,
+      "blockers": [
+        "Gate phase: menunggu release Human QA 0000-P1",
+        "Intake phase 0000-P2 belum selesai (queued)"
+      ],
+      "waitReasons": [
+        "Development berurutan: menunggu 000002-docs-adr-platform-decisions selesai"
+      ],
+      "notes": [],
+      "isNext": false,
+      "autopilotActive": false,
+      "paths": {
+        "plan": "docs/workflow/plans/0000/phase-02/tasks/000001-fe-shared-design-tokens/plan.md",
+        "development": "docs/workflow/results/0000/phase-02/development/000001-fe-shared-design-tokens.md",
+        "qa": "docs/workflow/results/0000/phase-02/qa/000001-fe-shared-design-tokens.md"
+      }
+    },
+    {
+      "seq": 28,
+      "taskId": "000002-fe-web-css-token-build",
+      "title": "fe web css token build",
+      "epic": "0000",
+      "area": "fe",
+      "phaseId": "0000-P2",
+      "phaseTitle": "Staging",
+      "phaseOrdinal": 2,
+      "runState": "blocked",
+      "stage": "intake",
+      "column": "intake",
+      "planStatus": "defined",
+      "developmentStatus": "pending",
+      "qaStatus": "pending",
+      "progressPercent": 50,
+      "blockers": [
+        "Gate phase: menunggu release Human QA 0000-P1",
+        "Intake phase 0000-P2 belum selesai (queued)"
+      ],
+      "waitReasons": [
+        "Development berurutan: menunggu 000002-docs-adr-platform-decisions selesai"
+      ],
+      "notes": [],
+      "isNext": false,
+      "autopilotActive": false,
+      "paths": {
+        "plan": "docs/workflow/plans/0000/phase-02/tasks/000002-fe-web-css-token-build/plan.md",
+        "development": "docs/workflow/results/0000/phase-02/development/000002-fe-web-css-token-build.md",
+        "qa": "docs/workflow/results/0000/phase-02/qa/000002-fe-web-css-token-build.md"
+      }
+    },
+    {
+      "seq": 29,
+      "taskId": "000005-db-backup-restore",
+      "title": "db backup restore",
+      "epic": "0000",
+      "area": "db",
+      "phaseId": "0000-P3",
+      "phaseTitle": "Production readiness",
+      "phaseOrdinal": 3,
+      "runState": "blocked",
+      "stage": "intake",
+      "column": "intake",
+      "planStatus": "defined",
+      "developmentStatus": "pending",
+      "qaStatus": "pending",
+      "progressPercent": 50,
+      "blockers": [
+        "Gate phase: menunggu release Human QA 0000-P2",
+        "Intake phase 0000-P3 belum selesai (queued)"
+      ],
+      "waitReasons": [],
+      "notes": [],
+      "isNext": false,
+      "autopilotActive": false,
+      "paths": {
+        "plan": "docs/workflow/plans/0000/phase-03/tasks/000005-db-backup-restore/plan.md",
+        "development": "docs/workflow/results/0000/phase-03/development/000005-db-backup-restore.md",
+        "qa": "docs/workflow/results/0000/phase-03/qa/000005-db-backup-restore.md"
+      }
+    },
+    {
+      "seq": 30,
+      "taskId": "000009-infra-secret-rotation",
+      "title": "infra secret rotation",
+      "epic": "0000",
+      "area": "infra",
+      "phaseId": "0000-P3",
+      "phaseTitle": "Production readiness",
+      "phaseOrdinal": 3,
+      "runState": "blocked",
+      "stage": "intake",
+      "column": "intake",
+      "planStatus": "defined",
+      "developmentStatus": "pending",
+      "qaStatus": "pending",
+      "progressPercent": 50,
+      "blockers": [
+        "Gate phase: menunggu release Human QA 0000-P2",
+        "Intake phase 0000-P3 belum selesai (queued)"
+      ],
+      "waitReasons": [
+        "Development berurutan: menunggu 000005-db-backup-restore selesai"
+      ],
+      "notes": [],
+      "isNext": false,
+      "autopilotActive": false,
+      "paths": {
+        "plan": "docs/workflow/plans/0000/phase-03/tasks/000009-infra-secret-rotation/plan.md",
+        "development": "docs/workflow/results/0000/phase-03/development/000009-infra-secret-rotation.md",
+        "qa": "docs/workflow/results/0000/phase-03/qa/000009-infra-secret-rotation.md"
+      }
+    },
+    {
+      "seq": 31,
+      "taskId": "000010-infra-ci-gate-summary",
+      "title": "infra ci gate summary",
+      "epic": "0000",
+      "area": "infra",
+      "phaseId": "0000-P3",
+      "phaseTitle": "Production readiness",
+      "phaseOrdinal": 3,
+      "runState": "blocked",
+      "stage": "intake",
+      "column": "intake",
+      "planStatus": "defined",
+      "developmentStatus": "pending",
+      "qaStatus": "pending",
+      "progressPercent": 50,
+      "blockers": [
+        "Gate phase: menunggu release Human QA 0000-P2",
+        "Intake phase 0000-P3 belum selesai (queued)"
+      ],
+      "waitReasons": [
+        "Development berurutan: menunggu 000005-db-backup-restore selesai"
+      ],
+      "notes": [],
+      "isNext": false,
+      "autopilotActive": false,
+      "paths": {
+        "plan": "docs/workflow/plans/0000/phase-03/tasks/000010-infra-ci-gate-summary/plan.md",
+        "development": "docs/workflow/results/0000/phase-03/development/000010-infra-ci-gate-summary.md",
+        "qa": "docs/workflow/results/0000/phase-03/qa/000010-infra-ci-gate-summary.md"
+      }
+    },
+    {
+      "seq": 32,
+      "taskId": "000011-infra-production-cd",
+      "title": "infra production cd",
+      "epic": "0000",
+      "area": "infra",
+      "phaseId": "0000-P3",
+      "phaseTitle": "Production readiness",
+      "phaseOrdinal": 3,
+      "runState": "blocked",
+      "stage": "intake",
+      "column": "intake",
+      "planStatus": "defined",
+      "developmentStatus": "pending",
+      "qaStatus": "pending",
+      "progressPercent": 50,
+      "blockers": [
+        "Gate phase: menunggu release Human QA 0000-P2",
+        "Intake phase 0000-P3 belum selesai (queued)"
+      ],
+      "waitReasons": [
+        "Development berurutan: menunggu 000005-db-backup-restore selesai"
+      ],
+      "notes": [],
+      "isNext": false,
+      "autopilotActive": false,
+      "paths": {
+        "plan": "docs/workflow/plans/0000/phase-03/tasks/000011-infra-production-cd/plan.md",
+        "development": "docs/workflow/results/0000/phase-03/development/000011-infra-production-cd.md",
+        "qa": "docs/workflow/results/0000/phase-03/qa/000011-infra-production-cd.md"
+      }
+    },
+    {
+      "seq": 33,
+      "taskId": "000012-infra-rollback",
+      "title": "infra rollback",
+      "epic": "0000",
+      "area": "infra",
+      "phaseId": "0000-P3",
+      "phaseTitle": "Production readiness",
+      "phaseOrdinal": 3,
+      "runState": "blocked",
+      "stage": "intake",
+      "column": "intake",
+      "planStatus": "defined",
+      "developmentStatus": "pending",
+      "qaStatus": "pending",
+      "progressPercent": 50,
+      "blockers": [
+        "Gate phase: menunggu release Human QA 0000-P2",
+        "Intake phase 0000-P3 belum selesai (queued)"
+      ],
+      "waitReasons": [
+        "Development berurutan: menunggu 000005-db-backup-restore selesai"
+      ],
+      "notes": [],
+      "isNext": false,
+      "autopilotActive": false,
+      "paths": {
+        "plan": "docs/workflow/plans/0000/phase-03/tasks/000012-infra-rollback/plan.md",
+        "development": "docs/workflow/results/0000/phase-03/development/000012-infra-rollback.md",
+        "qa": "docs/workflow/results/0000/phase-03/qa/000012-infra-rollback.md"
+      }
+    },
+    {
+      "seq": 34,
+      "taskId": "000013-infra-proxy-rate-limit-ready",
+      "title": "infra proxy rate limit ready",
+      "epic": "0000",
+      "area": "infra",
+      "phaseId": "0000-P3",
+      "phaseTitle": "Production readiness",
+      "phaseOrdinal": 3,
+      "runState": "blocked",
+      "stage": "intake",
+      "column": "intake",
+      "planStatus": "defined",
+      "developmentStatus": "pending",
+      "qaStatus": "pending",
+      "progressPercent": 50,
+      "blockers": [
+        "Gate phase: menunggu release Human QA 0000-P2",
+        "Intake phase 0000-P3 belum selesai (queued)"
+      ],
+      "waitReasons": [
+        "Development berurutan: menunggu 000005-db-backup-restore selesai"
+      ],
+      "notes": [],
+      "isNext": false,
+      "autopilotActive": false,
+      "paths": {
+        "plan": "docs/workflow/plans/0000/phase-03/tasks/000013-infra-proxy-rate-limit-ready/plan.md",
+        "development": "docs/workflow/results/0000/phase-03/development/000013-infra-proxy-rate-limit-ready.md",
+        "qa": "docs/workflow/results/0000/phase-03/qa/000013-infra-proxy-rate-limit-ready.md"
+      }
+    },
+    {
+      "seq": 35,
+      "taskId": "000014-infra-alerting-log-retention",
+      "title": "infra alerting log retention",
+      "epic": "0000",
+      "area": "infra",
+      "phaseId": "0000-P3",
+      "phaseTitle": "Production readiness",
+      "phaseOrdinal": 3,
+      "runState": "blocked",
+      "stage": "intake",
+      "column": "intake",
+      "planStatus": "defined",
+      "developmentStatus": "pending",
+      "qaStatus": "pending",
+      "progressPercent": 50,
+      "blockers": [
+        "Gate phase: menunggu release Human QA 0000-P2",
+        "Intake phase 0000-P3 belum selesai (queued)"
+      ],
+      "waitReasons": [
+        "Development berurutan: menunggu 000005-db-backup-restore selesai"
+      ],
+      "notes": [],
+      "isNext": false,
+      "autopilotActive": false,
+      "paths": {
+        "plan": "docs/workflow/plans/0000/phase-03/tasks/000014-infra-alerting-log-retention/plan.md",
+        "development": "docs/workflow/results/0000/phase-03/development/000014-infra-alerting-log-retention.md",
+        "qa": "docs/workflow/results/0000/phase-03/qa/000014-infra-alerting-log-retention.md"
+      }
+    },
+    {
+      "seq": 36,
+      "taskId": "000015-infra-email-domain-production",
+      "title": "infra email domain production",
+      "epic": "0000",
+      "area": "infra",
+      "phaseId": "0000-P3",
+      "phaseTitle": "Production readiness",
+      "phaseOrdinal": 3,
+      "runState": "blocked",
+      "stage": "intake",
+      "column": "intake",
+      "planStatus": "defined",
+      "developmentStatus": "pending",
+      "qaStatus": "pending",
+      "progressPercent": 50,
+      "blockers": [
+        "Gate phase: menunggu release Human QA 0000-P2",
+        "Intake phase 0000-P3 belum selesai (queued)"
+      ],
+      "waitReasons": [
+        "Development berurutan: menunggu 000005-db-backup-restore selesai"
+      ],
+      "notes": [],
+      "isNext": false,
+      "autopilotActive": false,
+      "paths": {
+        "plan": "docs/workflow/plans/0000/phase-03/tasks/000015-infra-email-domain-production/plan.md",
+        "development": "docs/workflow/results/0000/phase-03/development/000015-infra-email-domain-production.md",
+        "qa": "docs/workflow/results/0000/phase-03/qa/000015-infra-email-domain-production.md"
+      }
+    },
+    {
+      "seq": 37,
+      "taskId": "000003-fe-design-serve",
+      "title": "fe design serve",
+      "epic": "0000",
+      "area": "fe",
+      "phaseId": "0000-P3",
+      "phaseTitle": "Production readiness",
+      "phaseOrdinal": 3,
+      "runState": "blocked",
+      "stage": "intake",
+      "column": "intake",
+      "planStatus": "defined",
+      "developmentStatus": "pending",
+      "qaStatus": "pending",
+      "progressPercent": 50,
+      "blockers": [
+        "Gate phase: menunggu release Human QA 0000-P2",
+        "Intake phase 0000-P3 belum selesai (queued)"
+      ],
+      "waitReasons": [
+        "Development berurutan: menunggu 000005-db-backup-restore selesai"
+      ],
+      "notes": [],
+      "isNext": false,
+      "autopilotActive": false,
+      "paths": {
+        "plan": "docs/workflow/plans/0000/phase-03/tasks/000003-fe-design-serve/plan.md",
+        "development": "docs/workflow/results/0000/phase-03/development/000003-fe-design-serve.md",
+        "qa": "docs/workflow/results/0000/phase-03/qa/000003-fe-design-serve.md"
+      }
+    },
+    {
+      "seq": 38,
+      "taskId": "000004-docs-ops-runbook",
+      "title": "docs ops runbook",
+      "epic": "0000",
+      "area": "docs",
+      "phaseId": "0000-P3",
+      "phaseTitle": "Production readiness",
+      "phaseOrdinal": 3,
+      "runState": "blocked",
+      "stage": "intake",
+      "column": "intake",
+      "planStatus": "defined",
+      "developmentStatus": "pending",
+      "qaStatus": "pending",
+      "progressPercent": 50,
+      "blockers": [
+        "Gate phase: menunggu release Human QA 0000-P2",
+        "Intake phase 0000-P3 belum selesai (queued)"
+      ],
+      "waitReasons": [
+        "Development berurutan: menunggu 000005-db-backup-restore selesai"
+      ],
+      "notes": [],
+      "isNext": false,
+      "autopilotActive": false,
+      "paths": {
+        "plan": "docs/workflow/plans/0000/phase-03/tasks/000004-docs-ops-runbook/plan.md",
+        "development": "docs/workflow/results/0000/phase-03/development/000004-docs-ops-runbook.md",
+        "qa": "docs/workflow/results/0000/phase-03/qa/000004-docs-ops-runbook.md"
+      }
+    },
+    {
+      "seq": 39,
+      "taskId": "010001-stack-workspace-packages",
+      "title": "apps/*`, `packages/*` di root `package.json` workspaces",
+      "epic": "0100",
+      "area": "stack",
+      "phaseId": "0100-P1",
+      "phaseTitle": "Epic 0100 — seluruh task",
+      "phaseOrdinal": 1,
+      "runState": "blocked",
+      "stage": "intake",
+      "column": "intake",
+      "planStatus": "defined",
+      "developmentStatus": "pending",
+      "qaStatus": "pending",
+      "progressPercent": 50,
+      "blockers": [
+        "Intake phase 0100-P1 belum selesai (queued)"
+      ],
+      "waitReasons": [],
+      "notes": [],
+      "isNext": false,
+      "autopilotActive": false,
+      "paths": {
+        "plan": "docs/workflow/plans/0100/phase-01/tasks/010001-stack-workspace-packages/plan.md",
+        "development": "docs/workflow/results/0100/phase-01/development/010001-stack-workspace-packages.md",
+        "qa": "docs/workflow/results/0100/phase-01/qa/010001-stack-workspace-packages.md"
+      }
+    },
+    {
+      "seq": 40,
+      "taskId": "010002-db-prisma-schema-baseline",
+      "title": "Schema + migrasi awal",
+      "epic": "0100",
+      "area": "db",
+      "phaseId": "0100-P1",
+      "phaseTitle": "Epic 0100 — seluruh task",
+      "phaseOrdinal": 1,
+      "runState": "blocked",
+      "stage": "intake",
+      "column": "intake",
+      "planStatus": "defined",
+      "developmentStatus": "pending",
+      "qaStatus": "pending",
+      "progressPercent": 50,
+      "blockers": [
+        "Intake phase 0100-P1 belum selesai (queued)"
+      ],
+      "waitReasons": [
+        "Development berurutan: menunggu 010001-stack-workspace-packages selesai"
+      ],
+      "notes": [],
+      "isNext": false,
+      "autopilotActive": false,
+      "paths": {
+        "plan": "docs/workflow/plans/0100/phase-01/tasks/010002-db-prisma-schema-baseline/plan.md",
+        "development": "docs/workflow/results/0100/phase-01/development/010002-db-prisma-schema-baseline.md",
+        "qa": "docs/workflow/results/0100/phase-01/qa/010002-db-prisma-schema-baseline.md"
+      }
+    },
+    {
+      "seq": 41,
+      "taskId": "010003-db-migrate-scripts",
+      "title": "Root scripts selaras TECH-STACK",
+      "epic": "0100",
+      "area": "db",
+      "phaseId": "0100-P1",
+      "phaseTitle": "Epic 0100 — seluruh task",
+      "phaseOrdinal": 1,
+      "runState": "blocked",
+      "stage": "intake",
+      "column": "intake",
+      "planStatus": "defined",
+      "developmentStatus": "pending",
+      "qaStatus": "pending",
+      "progressPercent": 50,
+      "blockers": [
+        "Intake phase 0100-P1 belum selesai (queued)"
+      ],
+      "waitReasons": [
+        "Development berurutan: menunggu 010001-stack-workspace-packages selesai"
+      ],
+      "notes": [],
+      "isNext": false,
+      "autopilotActive": false,
+      "paths": {
+        "plan": "docs/workflow/plans/0100/phase-01/tasks/010003-db-migrate-scripts/plan.md",
+        "development": "docs/workflow/results/0100/phase-01/development/010003-db-migrate-scripts.md",
+        "qa": "docs/workflow/results/0100/phase-01/qa/010003-db-migrate-scripts.md"
+      }
+    },
+    {
+      "seq": 42,
+      "taskId": "010004-be-health-live",
+      "title": "Route live 200",
+      "epic": "0100",
+      "area": "be",
+      "phaseId": "0100-P1",
+      "phaseTitle": "Epic 0100 — seluruh task",
+      "phaseOrdinal": 1,
+      "runState": "blocked",
+      "stage": "intake",
+      "column": "intake",
+      "planStatus": "defined",
+      "developmentStatus": "pending",
+      "qaStatus": "pending",
+      "progressPercent": 50,
+      "blockers": [
+        "Intake phase 0100-P1 belum selesai (queued)"
+      ],
+      "waitReasons": [
+        "Development berurutan: menunggu 010001-stack-workspace-packages selesai"
+      ],
+      "notes": [],
+      "isNext": false,
+      "autopilotActive": false,
+      "paths": {
+        "plan": "docs/workflow/plans/0100/phase-01/tasks/010004-be-health-live/plan.md",
+        "development": "docs/workflow/results/0100/phase-01/development/010004-be-health-live.md",
+        "qa": "docs/workflow/results/0100/phase-01/qa/010004-be-health-live.md"
+      }
+    },
+    {
+      "seq": 43,
+      "taskId": "010005-be-health-ready",
+      "title": "Ready 200 jika DB ok",
+      "epic": "0100",
+      "area": "be",
+      "phaseId": "0100-P1",
+      "phaseTitle": "Epic 0100 — seluruh task",
+      "phaseOrdinal": 1,
+      "runState": "blocked",
+      "stage": "intake",
+      "column": "intake",
+      "planStatus": "defined",
+      "developmentStatus": "pending",
+      "qaStatus": "pending",
+      "progressPercent": 50,
+      "blockers": [
+        "Intake phase 0100-P1 belum selesai (queued)"
+      ],
+      "waitReasons": [
+        "Development berurutan: menunggu 010001-stack-workspace-packages selesai"
+      ],
+      "notes": [],
+      "isNext": false,
+      "autopilotActive": false,
+      "paths": {
+        "plan": "docs/workflow/plans/0100/phase-01/tasks/010005-be-health-ready/plan.md",
+        "development": "docs/workflow/results/0100/phase-01/development/010005-be-health-ready.md",
+        "qa": "docs/workflow/results/0100/phase-01/qa/010005-be-health-ready.md"
+      }
+    },
+    {
+      "seq": 44,
+      "taskId": "010006-domain-system-status",
+      "title": "getSystemStatus()",
+      "epic": "0100",
+      "area": "domain",
+      "phaseId": "0100-P1",
+      "phaseTitle": "Epic 0100 — seluruh task",
+      "phaseOrdinal": 1,
+      "runState": "blocked",
+      "stage": "intake",
+      "column": "intake",
+      "planStatus": "defined",
+      "developmentStatus": "pending",
+      "qaStatus": "pending",
+      "progressPercent": 50,
+      "blockers": [
+        "Intake phase 0100-P1 belum selesai (queued)"
+      ],
+      "waitReasons": [
+        "Development berurutan: menunggu 010001-stack-workspace-packages selesai"
+      ],
+      "notes": [],
+      "isNext": false,
+      "autopilotActive": false,
+      "paths": {
+        "plan": "docs/workflow/plans/0100/phase-01/tasks/010006-domain-system-status/plan.md",
+        "development": "docs/workflow/results/0100/phase-01/development/010006-domain-system-status.md",
+        "qa": "docs/workflow/results/0100/phase-01/qa/010006-domain-system-status.md"
+      }
+    },
+    {
+      "seq": 45,
+      "taskId": "010007-infra-gate-phase0",
+      "title": "Gate script G0.1–G0.3",
+      "epic": "0100",
+      "area": "infra",
+      "phaseId": "0100-P1",
+      "phaseTitle": "Epic 0100 — seluruh task",
+      "phaseOrdinal": 1,
+      "runState": "blocked",
+      "stage": "intake",
+      "column": "intake",
+      "planStatus": "defined",
+      "developmentStatus": "pending",
+      "qaStatus": "pending",
+      "progressPercent": 50,
+      "blockers": [
+        "Intake phase 0100-P1 belum selesai (queued)"
+      ],
+      "waitReasons": [
+        "Development berurutan: menunggu 010001-stack-workspace-packages selesai"
+      ],
+      "notes": [],
+      "isNext": false,
+      "autopilotActive": false,
+      "paths": {
+        "plan": "docs/workflow/plans/0100/phase-01/tasks/010007-infra-gate-phase0/plan.md",
+        "development": "docs/workflow/results/0100/phase-01/development/010007-infra-gate-phase0.md",
+        "qa": "docs/workflow/results/0100/phase-01/qa/010007-infra-gate-phase0.md"
+      }
+    },
+    {
+      "seq": 46,
+      "taskId": "010101-db-user-business-profile",
+      "title": "Prisma models User, BusinessProfile",
+      "epic": "0101",
+      "area": "0100",
+      "phaseId": "0101-P1",
+      "phaseTitle": "Epic 0101 — seluruh task",
+      "phaseOrdinal": 1,
+      "runState": "blocked",
+      "stage": "intake",
+      "column": "intake",
+      "planStatus": "defined",
+      "developmentStatus": "pending",
+      "qaStatus": "pending",
+      "progressPercent": 50,
+      "blockers": [
+        "Intake phase 0101-P1 belum selesai (queued)"
+      ],
+      "waitReasons": [],
+      "notes": [],
+      "isNext": false,
+      "autopilotActive": false,
+      "paths": {
+        "plan": "docs/workflow/plans/0101/phase-01/tasks/010101-db-user-business-profile/plan.md",
+        "development": "docs/workflow/results/0101/phase-01/development/010101-db-user-business-profile.md",
+        "qa": "docs/workflow/results/0101/phase-01/qa/010101-db-user-business-profile.md"
+      }
+    },
+    {
+      "seq": 47,
+      "taskId": "010102-domain-auth-password",
+      "title": "Hash/verify scrypt",
+      "epic": "0101",
+      "area": "010101",
+      "phaseId": "0101-P1",
+      "phaseTitle": "Epic 0101 — seluruh task",
+      "phaseOrdinal": 1,
+      "runState": "blocked",
+      "stage": "intake",
+      "column": "intake",
+      "planStatus": "defined",
+      "developmentStatus": "pending",
+      "qaStatus": "pending",
+      "progressPercent": 50,
+      "blockers": [
+        "Intake phase 0101-P1 belum selesai (queued)"
+      ],
+      "waitReasons": [
+        "Development berurutan: menunggu 010101-db-user-business-profile selesai"
+      ],
+      "notes": [],
+      "isNext": false,
+      "autopilotActive": false,
+      "paths": {
+        "plan": "docs/workflow/plans/0101/phase-01/tasks/010102-domain-auth-password/plan.md",
+        "development": "docs/workflow/results/0101/phase-01/development/010102-domain-auth-password.md",
+        "qa": "docs/workflow/results/0101/phase-01/qa/010102-domain-auth-password.md"
+      }
+    },
+    {
+      "seq": 48,
+      "taskId": "010103-be-register-login",
+      "title": "API routes + session",
+      "epic": "0101",
+      "area": "010102",
+      "phaseId": "0101-P1",
+      "phaseTitle": "Epic 0101 — seluruh task",
+      "phaseOrdinal": 1,
+      "runState": "blocked",
+      "stage": "intake",
+      "column": "intake",
+      "planStatus": "defined",
+      "developmentStatus": "pending",
+      "qaStatus": "pending",
+      "progressPercent": 50,
+      "blockers": [
+        "Intake phase 0101-P1 belum selesai (queued)"
+      ],
+      "waitReasons": [
+        "Development berurutan: menunggu 010101-db-user-business-profile selesai"
+      ],
+      "notes": [],
+      "isNext": false,
+      "autopilotActive": false,
+      "paths": {
+        "plan": "docs/workflow/plans/0101/phase-01/tasks/010103-be-register-login/plan.md",
+        "development": "docs/workflow/results/0101/phase-01/development/010103-be-register-login.md",
+        "qa": "docs/workflow/results/0101/phase-01/qa/010103-be-register-login.md"
+      }
+    },
+    {
+      "seq": 49,
+      "taskId": "010104-be-auth-middleware",
+      "title": "401 on protected routes",
+      "epic": "0101",
+      "area": "010103",
+      "phaseId": "0101-P1",
+      "phaseTitle": "Epic 0101 — seluruh task",
+      "phaseOrdinal": 1,
+      "runState": "blocked",
+      "stage": "intake",
+      "column": "intake",
+      "planStatus": "defined",
+      "developmentStatus": "pending",
+      "qaStatus": "pending",
+      "progressPercent": 50,
+      "blockers": [
+        "Intake phase 0101-P1 belum selesai (queued)"
+      ],
+      "waitReasons": [
+        "Development berurutan: menunggu 010101-db-user-business-profile selesai"
+      ],
+      "notes": [],
+      "isNext": false,
+      "autopilotActive": false,
+      "paths": {
+        "plan": "docs/workflow/plans/0101/phase-01/tasks/010104-be-auth-middleware/plan.md",
+        "development": "docs/workflow/results/0101/phase-01/development/010104-be-auth-middleware.md",
+        "qa": "docs/workflow/results/0101/phase-01/qa/010104-be-auth-middleware.md"
+      }
+    },
+    {
+      "seq": 50,
+      "taskId": "010105-be-profile-crud",
+      "title": "GET/PATCH profile",
+      "epic": "0101",
+      "area": "010103",
+      "phaseId": "0101-P1",
+      "phaseTitle": "Epic 0101 — seluruh task",
+      "phaseOrdinal": 1,
+      "runState": "blocked",
+      "stage": "intake",
+      "column": "intake",
+      "planStatus": "defined",
+      "developmentStatus": "pending",
+      "qaStatus": "pending",
+      "progressPercent": 50,
+      "blockers": [
+        "Intake phase 0101-P1 belum selesai (queued)"
+      ],
+      "waitReasons": [
+        "Development berurutan: menunggu 010101-db-user-business-profile selesai"
+      ],
+      "notes": [],
+      "isNext": false,
+      "autopilotActive": false,
+      "paths": {
+        "plan": "docs/workflow/plans/0101/phase-01/tasks/010105-be-profile-crud/plan.md",
+        "development": "docs/workflow/results/0101/phase-01/development/010105-be-profile-crud.md",
+        "qa": "docs/workflow/results/0101/phase-01/qa/010105-be-profile-crud.md"
+      }
+    },
+    {
+      "seq": 51,
+      "taskId": "010106-fe-login-register",
+      "title": "Remix routes",
+      "epic": "0101",
+      "area": "010103",
+      "phaseId": "0101-P1",
+      "phaseTitle": "Epic 0101 — seluruh task",
+      "phaseOrdinal": 1,
+      "runState": "blocked",
+      "stage": "intake",
+      "column": "intake",
+      "planStatus": "defined",
+      "developmentStatus": "pending",
+      "qaStatus": "pending",
+      "progressPercent": 50,
+      "blockers": [
+        "Intake phase 0101-P1 belum selesai (queued)"
+      ],
+      "waitReasons": [
+        "Development berurutan: menunggu 010101-db-user-business-profile selesai"
+      ],
+      "notes": [],
+      "isNext": false,
+      "autopilotActive": false,
+      "paths": {
+        "plan": "docs/workflow/plans/0101/phase-01/tasks/010106-fe-login-register/plan.md",
+        "development": "docs/workflow/results/0101/phase-01/development/010106-fe-login-register.md",
+        "qa": "docs/workflow/results/0101/phase-01/qa/010106-fe-login-register.md"
+      }
+    },
+    {
+      "seq": 52,
+      "taskId": "010107-fe-settings",
+      "title": "/settings` form",
+      "epic": "0101",
+      "area": "010105",
+      "phaseId": "0101-P1",
+      "phaseTitle": "Epic 0101 — seluruh task",
+      "phaseOrdinal": 1,
+      "runState": "blocked",
+      "stage": "intake",
+      "column": "intake",
+      "planStatus": "defined",
+      "developmentStatus": "pending",
+      "qaStatus": "pending",
+      "progressPercent": 50,
+      "blockers": [
+        "Intake phase 0101-P1 belum selesai (queued)"
+      ],
+      "waitReasons": [
+        "Development berurutan: menunggu 010101-db-user-business-profile selesai"
+      ],
+      "notes": [],
+      "isNext": false,
+      "autopilotActive": false,
+      "paths": {
+        "plan": "docs/workflow/plans/0101/phase-01/tasks/010107-fe-settings/plan.md",
+        "development": "docs/workflow/results/0101/phase-01/development/010107-fe-settings.md",
+        "qa": "docs/workflow/results/0101/phase-01/qa/010107-fe-settings.md"
+      }
+    },
+    {
+      "seq": 53,
+      "taskId": "010108-fe-dashboard-guard",
+      "title": "Auth loader redirect",
+      "epic": "0101",
+      "area": "010106",
+      "phaseId": "0101-P1",
+      "phaseTitle": "Epic 0101 — seluruh task",
+      "phaseOrdinal": 1,
+      "runState": "blocked",
+      "stage": "intake",
+      "column": "intake",
+      "planStatus": "defined",
+      "developmentStatus": "pending",
+      "qaStatus": "pending",
+      "progressPercent": 50,
+      "blockers": [
+        "Intake phase 0101-P1 belum selesai (queued)"
+      ],
+      "waitReasons": [
+        "Development berurutan: menunggu 010101-db-user-business-profile selesai"
+      ],
+      "notes": [],
+      "isNext": false,
+      "autopilotActive": false,
+      "paths": {
+        "plan": "docs/workflow/plans/0101/phase-01/tasks/010108-fe-dashboard-guard/plan.md",
+        "development": "docs/workflow/results/0101/phase-01/development/010108-fe-dashboard-guard.md",
+        "qa": "docs/workflow/results/0101/phase-01/qa/010108-fe-dashboard-guard.md"
+      }
+    },
+    {
+      "seq": 54,
+      "taskId": "010109-infra-gate-phase1",
+      "title": "Gate G1.1",
+      "epic": "0101",
+      "area": "010103–105",
+      "phaseId": "0101-P1",
+      "phaseTitle": "Epic 0101 — seluruh task",
+      "phaseOrdinal": 1,
+      "runState": "blocked",
+      "stage": "intake",
+      "column": "intake",
+      "planStatus": "defined",
+      "developmentStatus": "pending",
+      "qaStatus": "pending",
+      "progressPercent": 50,
+      "blockers": [
+        "Intake phase 0101-P1 belum selesai (queued)"
+      ],
+      "waitReasons": [
+        "Development berurutan: menunggu 010101-db-user-business-profile selesai"
+      ],
+      "notes": [],
+      "isNext": false,
+      "autopilotActive": false,
+      "paths": {
+        "plan": "docs/workflow/plans/0101/phase-01/tasks/010109-infra-gate-phase1/plan.md",
+        "development": "docs/workflow/results/0101/phase-01/development/010109-infra-gate-phase1.md",
+        "qa": "docs/workflow/results/0101/phase-01/qa/010109-infra-gate-phase1.md"
+      }
+    },
+    {
+      "seq": 55,
+      "taskId": "020001-db-client-model",
+      "title": "Prisma Client + relasi User",
+      "epic": "0200",
+      "area": "db",
+      "phaseId": "0200-P1",
+      "phaseTitle": "Epic 0200 — seluruh task",
+      "phaseOrdinal": 1,
+      "runState": "blocked",
+      "stage": "intake",
+      "column": "intake",
+      "planStatus": "defined",
+      "developmentStatus": "pending",
+      "qaStatus": "pending",
+      "progressPercent": 50,
+      "blockers": [
+        "Intake phase 0200-P1 belum selesai (queued)"
+      ],
+      "waitReasons": [],
+      "notes": [],
+      "isNext": false,
+      "autopilotActive": false,
+      "paths": {
+        "plan": "docs/workflow/plans/0200/phase-01/tasks/020001-db-client-model/plan.md",
+        "development": "docs/workflow/results/0200/phase-01/development/020001-db-client-model.md",
+        "qa": "docs/workflow/results/0200/phase-01/qa/020001-db-client-model.md"
+      }
+    },
+    {
+      "seq": 56,
+      "taskId": "020002-domain-client-validation",
+      "title": "Email required rules",
+      "epic": "0200",
+      "area": "domain",
+      "phaseId": "0200-P1",
+      "phaseTitle": "Epic 0200 — seluruh task",
+      "phaseOrdinal": 1,
+      "runState": "blocked",
+      "stage": "intake",
+      "column": "intake",
+      "planStatus": "defined",
+      "developmentStatus": "pending",
+      "qaStatus": "pending",
+      "progressPercent": 50,
+      "blockers": [
+        "Intake phase 0200-P1 belum selesai (queued)"
+      ],
+      "waitReasons": [
+        "Development berurutan: menunggu 020001-db-client-model selesai"
+      ],
+      "notes": [],
+      "isNext": false,
+      "autopilotActive": false,
+      "paths": {
+        "plan": "docs/workflow/plans/0200/phase-01/tasks/020002-domain-client-validation/plan.md",
+        "development": "docs/workflow/results/0200/phase-01/development/020002-domain-client-validation.md",
+        "qa": "docs/workflow/results/0200/phase-01/qa/020002-domain-client-validation.md"
+      }
+    },
+    {
+      "seq": 57,
+      "taskId": "020003-be-client-crud",
+      "title": "REST scoped userId",
+      "epic": "0200",
+      "area": "be",
+      "phaseId": "0200-P1",
+      "phaseTitle": "Epic 0200 — seluruh task",
+      "phaseOrdinal": 1,
+      "runState": "blocked",
+      "stage": "intake",
+      "column": "intake",
+      "planStatus": "defined",
+      "developmentStatus": "pending",
+      "qaStatus": "pending",
+      "progressPercent": 50,
+      "blockers": [
+        "Intake phase 0200-P1 belum selesai (queued)"
+      ],
+      "waitReasons": [
+        "Development berurutan: menunggu 020001-db-client-model selesai"
+      ],
+      "notes": [],
+      "isNext": false,
+      "autopilotActive": false,
+      "paths": {
+        "plan": "docs/workflow/plans/0200/phase-01/tasks/020003-be-client-crud/plan.md",
+        "development": "docs/workflow/results/0200/phase-01/development/020003-be-client-crud.md",
+        "qa": "docs/workflow/results/0200/phase-01/qa/020003-be-client-crud.md"
+      }
+    },
+    {
+      "seq": 58,
+      "taskId": "020004-fe-clients-list",
+      "title": "/clients",
+      "epic": "0200",
+      "area": "fe",
+      "phaseId": "0200-P1",
+      "phaseTitle": "Epic 0200 — seluruh task",
+      "phaseOrdinal": 1,
+      "runState": "blocked",
+      "stage": "intake",
+      "column": "intake",
+      "planStatus": "defined",
+      "developmentStatus": "pending",
+      "qaStatus": "pending",
+      "progressPercent": 50,
+      "blockers": [
+        "Intake phase 0200-P1 belum selesai (queued)"
+      ],
+      "waitReasons": [
+        "Development berurutan: menunggu 020001-db-client-model selesai"
+      ],
+      "notes": [],
+      "isNext": false,
+      "autopilotActive": false,
+      "paths": {
+        "plan": "docs/workflow/plans/0200/phase-01/tasks/020004-fe-clients-list/plan.md",
+        "development": "docs/workflow/results/0200/phase-01/development/020004-fe-clients-list.md",
+        "qa": "docs/workflow/results/0200/phase-01/qa/020004-fe-clients-list.md"
+      }
+    },
+    {
+      "seq": 59,
+      "taskId": "020005-fe-client-form",
+      "title": "Create/edit",
+      "epic": "0200",
+      "area": "fe",
+      "phaseId": "0200-P1",
+      "phaseTitle": "Epic 0200 — seluruh task",
+      "phaseOrdinal": 1,
+      "runState": "blocked",
+      "stage": "intake",
+      "column": "intake",
+      "planStatus": "defined",
+      "developmentStatus": "pending",
+      "qaStatus": "pending",
+      "progressPercent": 50,
+      "blockers": [
+        "Intake phase 0200-P1 belum selesai (queued)"
+      ],
+      "waitReasons": [
+        "Development berurutan: menunggu 020001-db-client-model selesai"
+      ],
+      "notes": [],
+      "isNext": false,
+      "autopilotActive": false,
+      "paths": {
+        "plan": "docs/workflow/plans/0200/phase-01/tasks/020005-fe-client-form/plan.md",
+        "development": "docs/workflow/results/0200/phase-01/development/020005-fe-client-form.md",
+        "qa": "docs/workflow/results/0200/phase-01/qa/020005-fe-client-form.md"
+      }
+    },
+    {
+      "seq": 60,
+      "taskId": "020006-infra-gate-phase2",
+      "title": "G2.1",
+      "epic": "0200",
+      "area": "infra",
+      "phaseId": "0200-P1",
+      "phaseTitle": "Epic 0200 — seluruh task",
+      "phaseOrdinal": 1,
+      "runState": "blocked",
+      "stage": "intake",
+      "column": "intake",
+      "planStatus": "defined",
+      "developmentStatus": "pending",
+      "qaStatus": "pending",
+      "progressPercent": 50,
+      "blockers": [
+        "Intake phase 0200-P1 belum selesai (queued)"
+      ],
+      "waitReasons": [
+        "Development berurutan: menunggu 020001-db-client-model selesai"
+      ],
+      "notes": [],
+      "isNext": false,
+      "autopilotActive": false,
+      "paths": {
+        "plan": "docs/workflow/plans/0200/phase-01/tasks/020006-infra-gate-phase2/plan.md",
+        "development": "docs/workflow/results/0200/phase-01/development/020006-infra-gate-phase2.md",
+        "qa": "docs/workflow/results/0200/phase-01/qa/020006-infra-gate-phase2.md"
+      }
+    },
+    {
+      "seq": 61,
+      "taskId": "030001-db-invoice-line-items",
+      "title": "Invoice, LineItem models",
+      "epic": "0300",
+      "area": "db",
+      "phaseId": "0300-P1",
+      "phaseTitle": "Epic 0300 — seluruh task",
+      "phaseOrdinal": 1,
+      "runState": "blocked",
+      "stage": "intake",
+      "column": "intake",
+      "planStatus": "defined",
+      "developmentStatus": "pending",
+      "qaStatus": "pending",
+      "progressPercent": 50,
+      "blockers": [
+        "Intake phase 0300-P1 belum selesai (queued)"
+      ],
+      "waitReasons": [],
+      "notes": [],
+      "isNext": false,
+      "autopilotActive": false,
+      "paths": {
+        "plan": "docs/workflow/plans/0300/phase-01/tasks/030001-db-invoice-line-items/plan.md",
+        "development": "docs/workflow/results/0300/phase-01/development/030001-db-invoice-line-items.md",
+        "qa": "docs/workflow/results/0300/phase-01/qa/030001-db-invoice-line-items.md"
+      }
+    },
+    {
+      "seq": 62,
+      "taskId": "030002-domain-draft-totals-base",
+      "title": "Subtotal, discount per line (pre-PPN)",
+      "epic": "0300",
+      "area": "domain",
+      "phaseId": "0300-P1",
+      "phaseTitle": "Epic 0300 — seluruh task",
+      "phaseOrdinal": 1,
+      "runState": "blocked",
+      "stage": "intake",
+      "column": "intake",
+      "planStatus": "defined",
+      "developmentStatus": "pending",
+      "qaStatus": "pending",
+      "progressPercent": 50,
+      "blockers": [
+        "Intake phase 0300-P1 belum selesai (queued)"
+      ],
+      "waitReasons": [
+        "Development berurutan: menunggu 030001-db-invoice-line-items selesai"
+      ],
+      "notes": [],
+      "isNext": false,
+      "autopilotActive": false,
+      "paths": {
+        "plan": "docs/workflow/plans/0300/phase-01/tasks/030002-domain-draft-totals-base/plan.md",
+        "development": "docs/workflow/results/0300/phase-01/development/030002-domain-draft-totals-base.md",
+        "qa": "docs/workflow/results/0300/phase-01/qa/030002-domain-draft-totals-base.md"
+      }
+    },
+    {
+      "seq": 63,
+      "taskId": "030003-be-invoice-draft-crud",
+      "title": "API draft CRUD",
+      "epic": "0300",
+      "area": "be",
+      "phaseId": "0300-P1",
+      "phaseTitle": "Epic 0300 — seluruh task",
+      "phaseOrdinal": 1,
+      "runState": "blocked",
+      "stage": "intake",
+      "column": "intake",
+      "planStatus": "defined",
+      "developmentStatus": "pending",
+      "qaStatus": "pending",
+      "progressPercent": 50,
+      "blockers": [
+        "Intake phase 0300-P1 belum selesai (queued)"
+      ],
+      "waitReasons": [
+        "Development berurutan: menunggu 030001-db-invoice-line-items selesai"
+      ],
+      "notes": [],
+      "isNext": false,
+      "autopilotActive": false,
+      "paths": {
+        "plan": "docs/workflow/plans/0300/phase-01/tasks/030003-be-invoice-draft-crud/plan.md",
+        "development": "docs/workflow/results/0300/phase-01/development/030003-be-invoice-draft-crud.md",
+        "qa": "docs/workflow/results/0300/phase-01/qa/030003-be-invoice-draft-crud.md"
+      }
+    },
+    {
+      "seq": 64,
+      "taskId": "030004-fe-invoice-editor",
+      "title": "Web draft UI",
+      "epic": "0300",
+      "area": "fe",
+      "phaseId": "0300-P1",
+      "phaseTitle": "Epic 0300 — seluruh task",
+      "phaseOrdinal": 1,
+      "runState": "blocked",
+      "stage": "intake",
+      "column": "intake",
+      "planStatus": "defined",
+      "developmentStatus": "pending",
+      "qaStatus": "pending",
+      "progressPercent": 50,
+      "blockers": [
+        "Intake phase 0300-P1 belum selesai (queued)"
+      ],
+      "waitReasons": [
+        "Development berurutan: menunggu 030001-db-invoice-line-items selesai"
+      ],
+      "notes": [],
+      "isNext": false,
+      "autopilotActive": false,
+      "paths": {
+        "plan": "docs/workflow/plans/0300/phase-01/tasks/030004-fe-invoice-editor/plan.md",
+        "development": "docs/workflow/results/0300/phase-01/development/030004-fe-invoice-editor.md",
+        "qa": "docs/workflow/results/0300/phase-01/qa/030004-fe-invoice-editor.md"
+      }
+    },
+    {
+      "seq": 65,
+      "taskId": "030005-fe-invoice-list-draft",
+      "title": "List/filter draft",
+      "epic": "0300",
+      "area": "fe",
+      "phaseId": "0300-P1",
+      "phaseTitle": "Epic 0300 — seluruh task",
+      "phaseOrdinal": 1,
+      "runState": "blocked",
+      "stage": "intake",
+      "column": "intake",
+      "planStatus": "defined",
+      "developmentStatus": "pending",
+      "qaStatus": "pending",
+      "progressPercent": 50,
+      "blockers": [
+        "Intake phase 0300-P1 belum selesai (queued)"
+      ],
+      "waitReasons": [
+        "Development berurutan: menunggu 030001-db-invoice-line-items selesai"
+      ],
+      "notes": [],
+      "isNext": false,
+      "autopilotActive": false,
+      "paths": {
+        "plan": "docs/workflow/plans/0300/phase-01/tasks/030005-fe-invoice-list-draft/plan.md",
+        "development": "docs/workflow/results/0300/phase-01/development/030005-fe-invoice-list-draft.md",
+        "qa": "docs/workflow/results/0300/phase-01/qa/030005-fe-invoice-list-draft.md"
+      }
+    },
+    {
+      "seq": 66,
+      "taskId": "030006-domain-br01-guards",
+      "title": "Reject line edit when not draft",
+      "epic": "0300",
+      "area": "domain",
+      "phaseId": "0300-P1",
+      "phaseTitle": "Epic 0300 — seluruh task",
+      "phaseOrdinal": 1,
+      "runState": "blocked",
+      "stage": "intake",
+      "column": "intake",
+      "planStatus": "defined",
+      "developmentStatus": "pending",
+      "qaStatus": "pending",
+      "progressPercent": 50,
+      "blockers": [
+        "Intake phase 0300-P1 belum selesai (queued)"
+      ],
+      "waitReasons": [
+        "Development berurutan: menunggu 030001-db-invoice-line-items selesai"
+      ],
+      "notes": [],
+      "isNext": false,
+      "autopilotActive": false,
+      "paths": {
+        "plan": "docs/workflow/plans/0300/phase-01/tasks/030006-domain-br01-guards/plan.md",
+        "development": "docs/workflow/results/0300/phase-01/development/030006-domain-br01-guards.md",
+        "qa": "docs/workflow/results/0300/phase-01/qa/030006-domain-br01-guards.md"
+      }
+    },
+    {
+      "seq": 67,
+      "taskId": "030101-domain-compute-invoice-totals",
+      "title": "PPN toggle + rate",
+      "epic": "0301",
+      "area": "domain",
+      "phaseId": "0301-P1",
+      "phaseTitle": "Epic 0301 — seluruh task",
+      "phaseOrdinal": 1,
+      "runState": "blocked",
+      "stage": "intake",
+      "column": "intake",
+      "planStatus": "defined",
+      "developmentStatus": "pending",
+      "qaStatus": "pending",
+      "progressPercent": 50,
+      "blockers": [
+        "Intake phase 0301-P1 belum selesai (queued)"
+      ],
+      "waitReasons": [],
+      "notes": [],
+      "isNext": false,
+      "autopilotActive": false,
+      "paths": {
+        "plan": "docs/workflow/plans/0301/phase-01/tasks/030101-domain-compute-invoice-totals/plan.md",
+        "development": "docs/workflow/results/0301/phase-01/development/030101-domain-compute-invoice-totals.md",
+        "qa": "docs/workflow/results/0301/phase-01/qa/030101-domain-compute-invoice-totals.md"
+      }
+    },
+    {
+      "seq": 68,
+      "taskId": "030102-domain-tests-fr03",
+      "title": "3 test scenarios",
+      "epic": "0301",
+      "area": "domain",
+      "phaseId": "0301-P1",
+      "phaseTitle": "Epic 0301 — seluruh task",
+      "phaseOrdinal": 1,
+      "runState": "blocked",
+      "stage": "intake",
+      "column": "intake",
+      "planStatus": "defined",
+      "developmentStatus": "pending",
+      "qaStatus": "pending",
+      "progressPercent": 50,
+      "blockers": [
+        "Intake phase 0301-P1 belum selesai (queued)"
+      ],
+      "waitReasons": [
+        "Development berurutan: menunggu 030101-domain-compute-invoice-totals selesai"
+      ],
+      "notes": [],
+      "isNext": false,
+      "autopilotActive": false,
+      "paths": {
+        "plan": "docs/workflow/plans/0301/phase-01/tasks/030102-domain-tests-fr03/plan.md",
+        "development": "docs/workflow/results/0301/phase-01/development/030102-domain-tests-fr03.md",
+        "qa": "docs/workflow/results/0301/phase-01/qa/030102-domain-tests-fr03.md"
+      }
+    },
+    {
+      "seq": 69,
+      "taskId": "030103-db-invoice-ppn-fields",
+      "title": "ppnEnabled`, `ppnRate`, stored totals",
+      "epic": "0301",
+      "area": "db",
+      "phaseId": "0301-P1",
+      "phaseTitle": "Epic 0301 — seluruh task",
+      "phaseOrdinal": 1,
+      "runState": "blocked",
+      "stage": "intake",
+      "column": "intake",
+      "planStatus": "defined",
+      "developmentStatus": "pending",
+      "qaStatus": "pending",
+      "progressPercent": 50,
+      "blockers": [
+        "Intake phase 0301-P1 belum selesai (queued)"
+      ],
+      "waitReasons": [
+        "Development berurutan: menunggu 030101-domain-compute-invoice-totals selesai"
+      ],
+      "notes": [],
+      "isNext": false,
+      "autopilotActive": false,
+      "paths": {
+        "plan": "docs/workflow/plans/0301/phase-01/tasks/030103-db-invoice-ppn-fields/plan.md",
+        "development": "docs/workflow/results/0301/phase-01/development/030103-db-invoice-ppn-fields.md",
+        "qa": "docs/workflow/results/0301/phase-01/qa/030103-db-invoice-ppn-fields.md"
+      }
+    },
+    {
+      "seq": 70,
+      "taskId": "030104-be-persist-totals",
+      "title": "API save computed totals",
+      "epic": "0301",
+      "area": "be",
+      "phaseId": "0301-P1",
+      "phaseTitle": "Epic 0301 — seluruh task",
+      "phaseOrdinal": 1,
+      "runState": "blocked",
+      "stage": "intake",
+      "column": "intake",
+      "planStatus": "defined",
+      "developmentStatus": "pending",
+      "qaStatus": "pending",
+      "progressPercent": 50,
+      "blockers": [
+        "Intake phase 0301-P1 belum selesai (queued)"
+      ],
+      "waitReasons": [
+        "Development berurutan: menunggu 030101-domain-compute-invoice-totals selesai"
+      ],
+      "notes": [],
+      "isNext": false,
+      "autopilotActive": false,
+      "paths": {
+        "plan": "docs/workflow/plans/0301/phase-01/tasks/030104-be-persist-totals/plan.md",
+        "development": "docs/workflow/results/0301/phase-01/development/030104-be-persist-totals.md",
+        "qa": "docs/workflow/results/0301/phase-01/qa/030104-be-persist-totals.md"
+      }
+    },
+    {
+      "seq": 71,
+      "taskId": "030105-fe-ppn-toggle",
+      "title": "UI toggle + preview totals",
+      "epic": "0301",
+      "area": "fe",
+      "phaseId": "0301-P1",
+      "phaseTitle": "Epic 0301 — seluruh task",
+      "phaseOrdinal": 1,
+      "runState": "blocked",
+      "stage": "intake",
+      "column": "intake",
+      "planStatus": "defined",
+      "developmentStatus": "pending",
+      "qaStatus": "pending",
+      "progressPercent": 50,
+      "blockers": [
+        "Intake phase 0301-P1 belum selesai (queued)"
+      ],
+      "waitReasons": [
+        "Development berurutan: menunggu 030101-domain-compute-invoice-totals selesai"
+      ],
+      "notes": [],
+      "isNext": false,
+      "autopilotActive": false,
+      "paths": {
+        "plan": "docs/workflow/plans/0301/phase-01/tasks/030105-fe-ppn-toggle/plan.md",
+        "development": "docs/workflow/results/0301/phase-01/development/030105-fe-ppn-toggle.md",
+        "qa": "docs/workflow/results/0301/phase-01/qa/030105-fe-ppn-toggle.md"
+      }
+    },
+    {
+      "seq": 72,
+      "taskId": "030106-infra-gate-g3",
+      "title": "G3.1 + G3.2",
+      "epic": "0301",
+      "area": "infra",
+      "phaseId": "0301-P1",
+      "phaseTitle": "Epic 0301 — seluruh task",
+      "phaseOrdinal": 1,
+      "runState": "blocked",
+      "stage": "intake",
+      "column": "intake",
+      "planStatus": "defined",
+      "developmentStatus": "pending",
+      "qaStatus": "pending",
+      "progressPercent": 50,
+      "blockers": [
+        "Intake phase 0301-P1 belum selesai (queued)"
+      ],
+      "waitReasons": [
+        "Development berurutan: menunggu 030101-domain-compute-invoice-totals selesai"
+      ],
+      "notes": [],
+      "isNext": false,
+      "autopilotActive": false,
+      "paths": {
+        "plan": "docs/workflow/plans/0301/phase-01/tasks/030106-infra-gate-g3/plan.md",
+        "development": "docs/workflow/results/0301/phase-01/development/030106-infra-gate-g3.md",
+        "qa": "docs/workflow/results/0301/phase-01/qa/030106-infra-gate-g3.md"
+      }
+    },
+    {
+      "seq": 73,
+      "taskId": "040001-domain-pdf-layout-data",
+      "title": "DTO for PDF renderer",
+      "epic": "0400",
+      "area": "domain",
+      "phaseId": "0400-P1",
+      "phaseTitle": "Epic 0400 — seluruh task",
+      "phaseOrdinal": 1,
+      "runState": "blocked",
+      "stage": "intake",
+      "column": "intake",
+      "planStatus": "defined",
+      "developmentStatus": "pending",
+      "qaStatus": "pending",
+      "progressPercent": 50,
+      "blockers": [
+        "Intake phase 0400-P1 belum selesai (queued)"
+      ],
+      "waitReasons": [],
+      "notes": [],
+      "isNext": false,
+      "autopilotActive": false,
+      "paths": {
+        "plan": "docs/workflow/plans/0400/phase-01/tasks/040001-domain-pdf-layout-data/plan.md",
+        "development": "docs/workflow/results/0400/phase-01/development/040001-domain-pdf-layout-data.md",
+        "qa": "docs/workflow/results/0400/phase-01/qa/040001-domain-pdf-layout-data.md"
+      }
+    },
+    {
+      "seq": 74,
+      "taskId": "040002-be-pdf-generate",
+      "title": "pdf-lib` service",
+      "epic": "0400",
+      "area": "be",
+      "phaseId": "0400-P1",
+      "phaseTitle": "Epic 0400 — seluruh task",
+      "phaseOrdinal": 1,
+      "runState": "blocked",
+      "stage": "intake",
+      "column": "intake",
+      "planStatus": "defined",
+      "developmentStatus": "pending",
+      "qaStatus": "pending",
+      "progressPercent": 50,
+      "blockers": [
+        "Intake phase 0400-P1 belum selesai (queued)"
+      ],
+      "waitReasons": [
+        "Development berurutan: menunggu 040001-domain-pdf-layout-data selesai"
+      ],
+      "notes": [],
+      "isNext": false,
+      "autopilotActive": false,
+      "paths": {
+        "plan": "docs/workflow/plans/0400/phase-01/tasks/040002-be-pdf-generate/plan.md",
+        "development": "docs/workflow/results/0400/phase-01/development/040002-be-pdf-generate.md",
+        "qa": "docs/workflow/results/0400/phase-01/qa/040002-be-pdf-generate.md"
+      }
+    },
+    {
+      "seq": 75,
+      "taskId": "040003-be-pdf-download-route",
+      "title": "Authenticated download",
+      "epic": "0400",
+      "area": "be",
+      "phaseId": "0400-P1",
+      "phaseTitle": "Epic 0400 — seluruh task",
+      "phaseOrdinal": 1,
+      "runState": "blocked",
+      "stage": "intake",
+      "column": "intake",
+      "planStatus": "defined",
+      "developmentStatus": "pending",
+      "qaStatus": "pending",
+      "progressPercent": 50,
+      "blockers": [
+        "Intake phase 0400-P1 belum selesai (queued)"
+      ],
+      "waitReasons": [
+        "Development berurutan: menunggu 040001-domain-pdf-layout-data selesai"
+      ],
+      "notes": [],
+      "isNext": false,
+      "autopilotActive": false,
+      "paths": {
+        "plan": "docs/workflow/plans/0400/phase-01/tasks/040003-be-pdf-download-route/plan.md",
+        "development": "docs/workflow/results/0400/phase-01/development/040003-be-pdf-download-route.md",
+        "qa": "docs/workflow/results/0400/phase-01/qa/040003-be-pdf-download-route.md"
+      }
+    },
+    {
+      "seq": 76,
+      "taskId": "040004-fe-download-button",
+      "title": "Web action",
+      "epic": "0400",
+      "area": "fe",
+      "phaseId": "0400-P1",
+      "phaseTitle": "Epic 0400 — seluruh task",
+      "phaseOrdinal": 1,
+      "runState": "blocked",
+      "stage": "intake",
+      "column": "intake",
+      "planStatus": "defined",
+      "developmentStatus": "pending",
+      "qaStatus": "pending",
+      "progressPercent": 50,
+      "blockers": [
+        "Intake phase 0400-P1 belum selesai (queued)"
+      ],
+      "waitReasons": [
+        "Development berurutan: menunggu 040001-domain-pdf-layout-data selesai"
+      ],
+      "notes": [],
+      "isNext": false,
+      "autopilotActive": false,
+      "paths": {
+        "plan": "docs/workflow/plans/0400/phase-01/tasks/040004-fe-download-button/plan.md",
+        "development": "docs/workflow/results/0400/phase-01/development/040004-fe-download-button.md",
+        "qa": "docs/workflow/results/0400/phase-01/qa/040004-fe-download-button.md"
+      }
+    },
+    {
+      "seq": 77,
+      "taskId": "040005-infra-gate-pdf",
+      "title": "Content-Type + size > 0",
+      "epic": "0400",
+      "area": "infra",
+      "phaseId": "0400-P1",
+      "phaseTitle": "Epic 0400 — seluruh task",
+      "phaseOrdinal": 1,
+      "runState": "blocked",
+      "stage": "intake",
+      "column": "intake",
+      "planStatus": "defined",
+      "developmentStatus": "pending",
+      "qaStatus": "pending",
+      "progressPercent": 50,
+      "blockers": [
+        "Intake phase 0400-P1 belum selesai (queued)"
+      ],
+      "waitReasons": [
+        "Development berurutan: menunggu 040001-domain-pdf-layout-data selesai"
+      ],
+      "notes": [],
+      "isNext": false,
+      "autopilotActive": false,
+      "paths": {
+        "plan": "docs/workflow/plans/0400/phase-01/tasks/040005-infra-gate-pdf/plan.md",
+        "development": "docs/workflow/results/0400/phase-01/development/040005-infra-gate-pdf.md",
+        "qa": "docs/workflow/results/0400/phase-01/qa/040005-infra-gate-pdf.md"
+      }
+    },
+    {
+      "seq": 78,
+      "taskId": "040101-domain-invoice-numbering",
+      "title": "Sequential per user",
+      "epic": "0401",
+      "area": "domain",
+      "phaseId": "0401-P1",
+      "phaseTitle": "Epic 0401 — seluruh task",
+      "phaseOrdinal": 1,
+      "runState": "blocked",
+      "stage": "intake",
+      "column": "intake",
+      "planStatus": "defined",
+      "developmentStatus": "pending",
+      "qaStatus": "pending",
+      "progressPercent": 50,
+      "blockers": [
+        "Intake phase 0401-P1 belum selesai (queued)"
+      ],
+      "waitReasons": [],
+      "notes": [],
+      "isNext": false,
+      "autopilotActive": false,
+      "paths": {
+        "plan": "docs/workflow/plans/0401/phase-01/tasks/040101-domain-invoice-numbering/plan.md",
+        "development": "docs/workflow/results/0401/phase-01/development/040101-domain-invoice-numbering.md",
+        "qa": "docs/workflow/results/0401/phase-01/qa/040101-domain-invoice-numbering.md"
+      }
+    },
+    {
+      "seq": 79,
+      "taskId": "040102-db-sent-fields",
+      "title": "status`, `sent_at`, `number`, `publicToken",
+      "epic": "0401",
+      "area": "db",
+      "phaseId": "0401-P1",
+      "phaseTitle": "Epic 0401 — seluruh task",
+      "phaseOrdinal": 1,
+      "runState": "blocked",
+      "stage": "intake",
+      "column": "intake",
+      "planStatus": "defined",
+      "developmentStatus": "pending",
+      "qaStatus": "pending",
+      "progressPercent": 50,
+      "blockers": [
+        "Intake phase 0401-P1 belum selesai (queued)"
+      ],
+      "waitReasons": [
+        "Development berurutan: menunggu 040101-domain-invoice-numbering selesai"
+      ],
+      "notes": [],
+      "isNext": false,
+      "autopilotActive": false,
+      "paths": {
+        "plan": "docs/workflow/plans/0401/phase-01/tasks/040102-db-sent-fields/plan.md",
+        "development": "docs/workflow/results/0401/phase-01/development/040102-db-sent-fields.md",
+        "qa": "docs/workflow/results/0401/phase-01/qa/040102-db-sent-fields.md"
+      }
+    },
+    {
+      "seq": 80,
+      "taskId": "040103-be-send-invoice",
+      "title": "Transaction: number + token + email",
+      "epic": "0401",
+      "area": "be",
+      "phaseId": "0401-P1",
+      "phaseTitle": "Epic 0401 — seluruh task",
+      "phaseOrdinal": 1,
+      "runState": "blocked",
+      "stage": "intake",
+      "column": "intake",
+      "planStatus": "defined",
+      "developmentStatus": "pending",
+      "qaStatus": "pending",
+      "progressPercent": 50,
+      "blockers": [
+        "Intake phase 0401-P1 belum selesai (queued)"
+      ],
+      "waitReasons": [
+        "Development berurutan: menunggu 040101-domain-invoice-numbering selesai"
+      ],
+      "notes": [],
+      "isNext": false,
+      "autopilotActive": false,
+      "paths": {
+        "plan": "docs/workflow/plans/0401/phase-01/tasks/040103-be-send-invoice/plan.md",
+        "development": "docs/workflow/results/0401/phase-01/development/040103-be-send-invoice.md",
+        "qa": "docs/workflow/results/0401/phase-01/qa/040103-be-send-invoice.md"
+      }
+    },
+    {
+      "seq": 81,
+      "taskId": "040104-be-email-adapter",
+      "title": "Pluggable; fail → no sent",
+      "epic": "0401",
+      "area": "be",
+      "phaseId": "0401-P1",
+      "phaseTitle": "Epic 0401 — seluruh task",
+      "phaseOrdinal": 1,
+      "runState": "blocked",
+      "stage": "intake",
+      "column": "intake",
+      "planStatus": "defined",
+      "developmentStatus": "pending",
+      "qaStatus": "pending",
+      "progressPercent": 50,
+      "blockers": [
+        "Intake phase 0401-P1 belum selesai (queued)"
+      ],
+      "waitReasons": [
+        "Development berurutan: menunggu 040101-domain-invoice-numbering selesai"
+      ],
+      "notes": [],
+      "isNext": false,
+      "autopilotActive": false,
+      "paths": {
+        "plan": "docs/workflow/plans/0401/phase-01/tasks/040104-be-email-adapter/plan.md",
+        "development": "docs/workflow/results/0401/phase-01/development/040104-be-email-adapter.md",
+        "qa": "docs/workflow/results/0401/phase-01/qa/040104-be-email-adapter.md"
+      }
+    },
+    {
+      "seq": 82,
+      "taskId": "040105-fe-send-action",
+      "title": "Confirm + errors",
+      "epic": "0401",
+      "area": "fe",
+      "phaseId": "0401-P1",
+      "phaseTitle": "Epic 0401 — seluruh task",
+      "phaseOrdinal": 1,
+      "runState": "blocked",
+      "stage": "intake",
+      "column": "intake",
+      "planStatus": "defined",
+      "developmentStatus": "pending",
+      "qaStatus": "pending",
+      "progressPercent": 50,
+      "blockers": [
+        "Intake phase 0401-P1 belum selesai (queued)"
+      ],
+      "waitReasons": [
+        "Development berurutan: menunggu 040101-domain-invoice-numbering selesai"
+      ],
+      "notes": [],
+      "isNext": false,
+      "autopilotActive": false,
+      "paths": {
+        "plan": "docs/workflow/plans/0401/phase-01/tasks/040105-fe-send-action/plan.md",
+        "development": "docs/workflow/results/0401/phase-01/development/040105-fe-send-action.md",
+        "qa": "docs/workflow/results/0401/phase-01/qa/040105-fe-send-action.md"
+      }
+    },
+    {
+      "seq": 83,
+      "taskId": "040106-infra-email-smoke",
+      "title": "npm run email:smoke` staging",
+      "epic": "0401",
+      "area": "infra",
+      "phaseId": "0401-P1",
+      "phaseTitle": "Epic 0401 — seluruh task",
+      "phaseOrdinal": 1,
+      "runState": "blocked",
+      "stage": "intake",
+      "column": "intake",
+      "planStatus": "defined",
+      "developmentStatus": "pending",
+      "qaStatus": "pending",
+      "progressPercent": 50,
+      "blockers": [
+        "Intake phase 0401-P1 belum selesai (queued)"
+      ],
+      "waitReasons": [
+        "Development berurutan: menunggu 040101-domain-invoice-numbering selesai"
+      ],
+      "notes": [],
+      "isNext": false,
+      "autopilotActive": false,
+      "paths": {
+        "plan": "docs/workflow/plans/0401/phase-01/tasks/040106-infra-email-smoke/plan.md",
+        "development": "docs/workflow/results/0401/phase-01/development/040106-infra-email-smoke.md",
+        "qa": "docs/workflow/results/0401/phase-01/qa/040106-infra-email-smoke.md"
+      }
+    },
+    {
+      "seq": 84,
+      "taskId": "040107-infra-gate-g4-send",
+      "title": "G4.2",
+      "epic": "0401",
+      "area": "infra",
+      "phaseId": "0401-P1",
+      "phaseTitle": "Epic 0401 — seluruh task",
+      "phaseOrdinal": 1,
+      "runState": "blocked",
+      "stage": "intake",
+      "column": "intake",
+      "planStatus": "defined",
+      "developmentStatus": "pending",
+      "qaStatus": "pending",
+      "progressPercent": 50,
+      "blockers": [
+        "Intake phase 0401-P1 belum selesai (queued)"
+      ],
+      "waitReasons": [
+        "Development berurutan: menunggu 040101-domain-invoice-numbering selesai"
+      ],
+      "notes": [],
+      "isNext": false,
+      "autopilotActive": false,
+      "paths": {
+        "plan": "docs/workflow/plans/0401/phase-01/tasks/040107-infra-gate-g4-send/plan.md",
+        "development": "docs/workflow/results/0401/phase-01/development/040107-infra-gate-g4-send.md",
+        "qa": "docs/workflow/results/0401/phase-01/qa/040107-infra-gate-g4-send.md"
+      }
+    },
+    {
+      "seq": 85,
+      "taskId": "040201-db-token-revoked-flag",
+      "title": "publicTokenRevokedAt` or equivalent",
+      "epic": "0402",
+      "area": "db",
+      "phaseId": "0402-P1",
+      "phaseTitle": "Epic 0402 — seluruh task",
+      "phaseOrdinal": 1,
+      "runState": "blocked",
+      "stage": "intake",
+      "column": "intake",
+      "planStatus": "defined",
+      "developmentStatus": "pending",
+      "qaStatus": "pending",
+      "progressPercent": 50,
+      "blockers": [
+        "Intake phase 0402-P1 belum selesai (queued)"
+      ],
+      "waitReasons": [],
+      "notes": [],
+      "isNext": false,
+      "autopilotActive": false,
+      "paths": {
+        "plan": "docs/workflow/plans/0402/phase-01/tasks/040201-db-token-revoked-flag/plan.md",
+        "development": "docs/workflow/results/0402/phase-01/development/040201-db-token-revoked-flag.md",
+        "qa": "docs/workflow/results/0402/phase-01/qa/040201-db-token-revoked-flag.md"
+      }
+    },
+    {
+      "seq": 86,
+      "taskId": "040202-be-public-invoice-api",
+      "title": "Unauthenticated read",
+      "epic": "0402",
+      "area": "be",
+      "phaseId": "0402-P1",
+      "phaseTitle": "Epic 0402 — seluruh task",
+      "phaseOrdinal": 1,
+      "runState": "blocked",
+      "stage": "intake",
+      "column": "intake",
+      "planStatus": "defined",
+      "developmentStatus": "pending",
+      "qaStatus": "pending",
+      "progressPercent": 50,
+      "blockers": [
+        "Intake phase 0402-P1 belum selesai (queued)"
+      ],
+      "waitReasons": [
+        "Development berurutan: menunggu 040201-db-token-revoked-flag selesai"
+      ],
+      "notes": [],
+      "isNext": false,
+      "autopilotActive": false,
+      "paths": {
+        "plan": "docs/workflow/plans/0402/phase-01/tasks/040202-be-public-invoice-api/plan.md",
+        "development": "docs/workflow/results/0402/phase-01/development/040202-be-public-invoice-api.md",
+        "qa": "docs/workflow/results/0402/phase-01/qa/040202-be-public-invoice-api.md"
+      }
+    },
+    {
+      "seq": 87,
+      "taskId": "040203-be-revoke-link",
+      "title": "Owner revoke",
+      "epic": "0402",
+      "area": "be",
+      "phaseId": "0402-P1",
+      "phaseTitle": "Epic 0402 — seluruh task",
+      "phaseOrdinal": 1,
+      "runState": "blocked",
+      "stage": "intake",
+      "column": "intake",
+      "planStatus": "defined",
+      "developmentStatus": "pending",
+      "qaStatus": "pending",
+      "progressPercent": 50,
+      "blockers": [
+        "Intake phase 0402-P1 belum selesai (queued)"
+      ],
+      "waitReasons": [
+        "Development berurutan: menunggu 040201-db-token-revoked-flag selesai"
+      ],
+      "notes": [],
+      "isNext": false,
+      "autopilotActive": false,
+      "paths": {
+        "plan": "docs/workflow/plans/0402/phase-01/tasks/040203-be-revoke-link/plan.md",
+        "development": "docs/workflow/results/0402/phase-01/development/040203-be-revoke-link.md",
+        "qa": "docs/workflow/results/0402/phase-01/qa/040203-be-revoke-link.md"
+      }
+    },
+    {
+      "seq": 88,
+      "taskId": "040204-fe-public-page",
+      "title": "/i/:token",
+      "epic": "0402",
+      "area": "fe",
+      "phaseId": "0402-P1",
+      "phaseTitle": "Epic 0402 — seluruh task",
+      "phaseOrdinal": 1,
+      "runState": "blocked",
+      "stage": "intake",
+      "column": "intake",
+      "planStatus": "defined",
+      "developmentStatus": "pending",
+      "qaStatus": "pending",
+      "progressPercent": 50,
+      "blockers": [
+        "Intake phase 0402-P1 belum selesai (queued)"
+      ],
+      "waitReasons": [
+        "Development berurutan: menunggu 040201-db-token-revoked-flag selesai"
+      ],
+      "notes": [],
+      "isNext": false,
+      "autopilotActive": false,
+      "paths": {
+        "plan": "docs/workflow/plans/0402/phase-01/tasks/040204-fe-public-page/plan.md",
+        "development": "docs/workflow/results/0402/phase-01/development/040204-fe-public-page.md",
+        "qa": "docs/workflow/results/0402/phase-01/qa/040204-fe-public-page.md"
+      }
+    },
+    {
+      "seq": 89,
+      "taskId": "040205-fe-revoke-ui",
+      "title": "Settings on invoice detail",
+      "epic": "0402",
+      "area": "fe",
+      "phaseId": "0402-P1",
+      "phaseTitle": "Epic 0402 — seluruh task",
+      "phaseOrdinal": 1,
+      "runState": "blocked",
+      "stage": "intake",
+      "column": "intake",
+      "planStatus": "defined",
+      "developmentStatus": "pending",
+      "qaStatus": "pending",
+      "progressPercent": 50,
+      "blockers": [
+        "Intake phase 0402-P1 belum selesai (queued)"
+      ],
+      "waitReasons": [
+        "Development berurutan: menunggu 040201-db-token-revoked-flag selesai"
+      ],
+      "notes": [],
+      "isNext": false,
+      "autopilotActive": false,
+      "paths": {
+        "plan": "docs/workflow/plans/0402/phase-01/tasks/040205-fe-revoke-ui/plan.md",
+        "development": "docs/workflow/results/0402/phase-01/development/040205-fe-revoke-ui.md",
+        "qa": "docs/workflow/results/0402/phase-01/qa/040205-fe-revoke-ui.md"
+      }
+    },
+    {
+      "seq": 90,
+      "taskId": "040206-infra-gate-g4-public",
+      "title": "G4.3",
+      "epic": "0402",
+      "area": "infra",
+      "phaseId": "0402-P1",
+      "phaseTitle": "Epic 0402 — seluruh task",
+      "phaseOrdinal": 1,
+      "runState": "blocked",
+      "stage": "intake",
+      "column": "intake",
+      "planStatus": "defined",
+      "developmentStatus": "pending",
+      "qaStatus": "pending",
+      "progressPercent": 50,
+      "blockers": [
+        "Intake phase 0402-P1 belum selesai (queued)"
+      ],
+      "waitReasons": [
+        "Development berurutan: menunggu 040201-db-token-revoked-flag selesai"
+      ],
+      "notes": [],
+      "isNext": false,
+      "autopilotActive": false,
+      "paths": {
+        "plan": "docs/workflow/plans/0402/phase-01/tasks/040206-infra-gate-g4-public/plan.md",
+        "development": "docs/workflow/results/0402/phase-01/development/040206-infra-gate-g4-public.md",
+        "qa": "docs/workflow/results/0402/phase-01/qa/040206-infra-gate-g4-public.md"
+      }
+    },
+    {
+      "seq": 91,
+      "taskId": "050001-db-paid-fields",
+      "title": "paid_at`, status `paid",
+      "epic": "0500",
+      "area": "db",
+      "phaseId": "0500-P1",
+      "phaseTitle": "Epic 0500 — seluruh task",
+      "phaseOrdinal": 1,
+      "runState": "blocked",
+      "stage": "intake",
+      "column": "intake",
+      "planStatus": "defined",
+      "developmentStatus": "pending",
+      "qaStatus": "pending",
+      "progressPercent": 50,
+      "blockers": [
+        "Intake phase 0500-P1 belum selesai (queued)"
+      ],
+      "waitReasons": [],
+      "notes": [],
+      "isNext": false,
+      "autopilotActive": false,
+      "paths": {
+        "plan": "docs/workflow/plans/0500/phase-01/tasks/050001-db-paid-fields/plan.md",
+        "development": "docs/workflow/results/0500/phase-01/development/050001-db-paid-fields.md",
+        "qa": "docs/workflow/results/0500/phase-01/qa/050001-db-paid-fields.md"
+      }
+    },
+    {
+      "seq": 92,
+      "taskId": "050002-domain-paid-transition",
+      "title": "Valid state machine",
+      "epic": "0500",
+      "area": "domain",
+      "phaseId": "0500-P1",
+      "phaseTitle": "Epic 0500 — seluruh task",
+      "phaseOrdinal": 1,
+      "runState": "blocked",
+      "stage": "intake",
+      "column": "intake",
+      "planStatus": "defined",
+      "developmentStatus": "pending",
+      "qaStatus": "pending",
+      "progressPercent": 50,
+      "blockers": [
+        "Intake phase 0500-P1 belum selesai (queued)"
+      ],
+      "waitReasons": [
+        "Development berurutan: menunggu 050001-db-paid-fields selesai"
+      ],
+      "notes": [],
+      "isNext": false,
+      "autopilotActive": false,
+      "paths": {
+        "plan": "docs/workflow/plans/0500/phase-01/tasks/050002-domain-paid-transition/plan.md",
+        "development": "docs/workflow/results/0500/phase-01/development/050002-domain-paid-transition.md",
+        "qa": "docs/workflow/results/0500/phase-01/qa/050002-domain-paid-transition.md"
+      }
+    },
+    {
+      "seq": 93,
+      "taskId": "050003-be-mark-paid",
+      "title": "PATCH endpoint",
+      "epic": "0500",
+      "area": "be",
+      "phaseId": "0500-P1",
+      "phaseTitle": "Epic 0500 — seluruh task",
+      "phaseOrdinal": 1,
+      "runState": "blocked",
+      "stage": "intake",
+      "column": "intake",
+      "planStatus": "defined",
+      "developmentStatus": "pending",
+      "qaStatus": "pending",
+      "progressPercent": 50,
+      "blockers": [
+        "Intake phase 0500-P1 belum selesai (queued)"
+      ],
+      "waitReasons": [
+        "Development berurutan: menunggu 050001-db-paid-fields selesai"
+      ],
+      "notes": [],
+      "isNext": false,
+      "autopilotActive": false,
+      "paths": {
+        "plan": "docs/workflow/plans/0500/phase-01/tasks/050003-be-mark-paid/plan.md",
+        "development": "docs/workflow/results/0500/phase-01/development/050003-be-mark-paid.md",
+        "qa": "docs/workflow/results/0500/phase-01/qa/050003-be-mark-paid.md"
+      }
+    },
+    {
+      "seq": 94,
+      "taskId": "050004-fe-mark-paid-button",
+      "title": "Invoice detail",
+      "epic": "0500",
+      "area": "fe",
+      "phaseId": "0500-P1",
+      "phaseTitle": "Epic 0500 — seluruh task",
+      "phaseOrdinal": 1,
+      "runState": "blocked",
+      "stage": "intake",
+      "column": "intake",
+      "planStatus": "defined",
+      "developmentStatus": "pending",
+      "qaStatus": "pending",
+      "progressPercent": 50,
+      "blockers": [
+        "Intake phase 0500-P1 belum selesai (queued)"
+      ],
+      "waitReasons": [
+        "Development berurutan: menunggu 050001-db-paid-fields selesai"
+      ],
+      "notes": [],
+      "isNext": false,
+      "autopilotActive": false,
+      "paths": {
+        "plan": "docs/workflow/plans/0500/phase-01/tasks/050004-fe-mark-paid-button/plan.md",
+        "development": "docs/workflow/results/0500/phase-01/development/050004-fe-mark-paid-button.md",
+        "qa": "docs/workflow/results/0500/phase-01/qa/050004-fe-mark-paid-button.md"
+      }
+    },
+    {
+      "seq": 95,
+      "taskId": "050005-infra-gate-g5-paid",
+      "title": "G5.1",
+      "epic": "0500",
+      "area": "infra",
+      "phaseId": "0500-P1",
+      "phaseTitle": "Epic 0500 — seluruh task",
+      "phaseOrdinal": 1,
+      "runState": "blocked",
+      "stage": "intake",
+      "column": "intake",
+      "planStatus": "defined",
+      "developmentStatus": "pending",
+      "qaStatus": "pending",
+      "progressPercent": 50,
+      "blockers": [
+        "Intake phase 0500-P1 belum selesai (queued)"
+      ],
+      "waitReasons": [
+        "Development berurutan: menunggu 050001-db-paid-fields selesai"
+      ],
+      "notes": [],
+      "isNext": false,
+      "autopilotActive": false,
+      "paths": {
+        "plan": "docs/workflow/plans/0500/phase-01/tasks/050005-infra-gate-g5-paid/plan.md",
+        "development": "docs/workflow/results/0500/phase-01/development/050005-infra-gate-g5-paid.md",
+        "qa": "docs/workflow/results/0500/phase-01/qa/050005-infra-gate-g5-paid.md"
+      }
+    },
+    {
+      "seq": 96,
+      "taskId": "050101-domain-overdue-compute",
+      "title": "BR-03 helper",
+      "epic": "0501",
+      "area": "domain",
+      "phaseId": "0501-P1",
+      "phaseTitle": "Epic 0501 — seluruh task",
+      "phaseOrdinal": 1,
+      "runState": "blocked",
+      "stage": "intake",
+      "column": "intake",
+      "planStatus": "defined",
+      "developmentStatus": "pending",
+      "qaStatus": "pending",
+      "progressPercent": 50,
+      "blockers": [
+        "Intake phase 0501-P1 belum selesai (queued)"
+      ],
+      "waitReasons": [],
+      "notes": [],
+      "isNext": false,
+      "autopilotActive": false,
+      "paths": {
+        "plan": "docs/workflow/plans/0501/phase-01/tasks/050101-domain-overdue-compute/plan.md",
+        "development": "docs/workflow/results/0501/phase-01/development/050101-domain-overdue-compute.md",
+        "qa": "docs/workflow/results/0501/phase-01/qa/050101-domain-overdue-compute.md"
+      }
+    },
+    {
+      "seq": 97,
+      "taskId": "050102-be-invoice-list-filters",
+      "title": "Query params status",
+      "epic": "0501",
+      "area": "be",
+      "phaseId": "0501-P1",
+      "phaseTitle": "Epic 0501 — seluruh task",
+      "phaseOrdinal": 1,
+      "runState": "blocked",
+      "stage": "intake",
+      "column": "intake",
+      "planStatus": "defined",
+      "developmentStatus": "pending",
+      "qaStatus": "pending",
+      "progressPercent": 50,
+      "blockers": [
+        "Intake phase 0501-P1 belum selesai (queued)"
+      ],
+      "waitReasons": [
+        "Development berurutan: menunggu 050101-domain-overdue-compute selesai"
+      ],
+      "notes": [],
+      "isNext": false,
+      "autopilotActive": false,
+      "paths": {
+        "plan": "docs/workflow/plans/0501/phase-01/tasks/050102-be-invoice-list-filters/plan.md",
+        "development": "docs/workflow/results/0501/phase-01/development/050102-be-invoice-list-filters.md",
+        "qa": "docs/workflow/results/0501/phase-01/qa/050102-be-invoice-list-filters.md"
+      }
+    },
+    {
+      "seq": 98,
+      "taskId": "050103-be-outstanding-aggregate",
+      "title": "API summary",
+      "epic": "0501",
+      "area": "be",
+      "phaseId": "0501-P1",
+      "phaseTitle": "Epic 0501 — seluruh task",
+      "phaseOrdinal": 1,
+      "runState": "blocked",
+      "stage": "intake",
+      "column": "intake",
+      "planStatus": "defined",
+      "developmentStatus": "pending",
+      "qaStatus": "pending",
+      "progressPercent": 50,
+      "blockers": [
+        "Intake phase 0501-P1 belum selesai (queued)"
+      ],
+      "waitReasons": [
+        "Development berurutan: menunggu 050101-domain-overdue-compute selesai"
+      ],
+      "notes": [],
+      "isNext": false,
+      "autopilotActive": false,
+      "paths": {
+        "plan": "docs/workflow/plans/0501/phase-01/tasks/050103-be-outstanding-aggregate/plan.md",
+        "development": "docs/workflow/results/0501/phase-01/development/050103-be-outstanding-aggregate.md",
+        "qa": "docs/workflow/results/0501/phase-01/qa/050103-be-outstanding-aggregate.md"
+      }
+    },
+    {
+      "seq": 99,
+      "taskId": "050104-fe-dashboard",
+      "title": "Main list + filters",
+      "epic": "0501",
+      "area": "fe",
+      "phaseId": "0501-P1",
+      "phaseTitle": "Epic 0501 — seluruh task",
+      "phaseOrdinal": 1,
+      "runState": "blocked",
+      "stage": "intake",
+      "column": "intake",
+      "planStatus": "defined",
+      "developmentStatus": "pending",
+      "qaStatus": "pending",
+      "progressPercent": 50,
+      "blockers": [
+        "Intake phase 0501-P1 belum selesai (queued)"
+      ],
+      "waitReasons": [
+        "Development berurutan: menunggu 050101-domain-overdue-compute selesai"
+      ],
+      "notes": [],
+      "isNext": false,
+      "autopilotActive": false,
+      "paths": {
+        "plan": "docs/workflow/plans/0501/phase-01/tasks/050104-fe-dashboard/plan.md",
+        "development": "docs/workflow/results/0501/phase-01/development/050104-fe-dashboard.md",
+        "qa": "docs/workflow/results/0501/phase-01/qa/050104-fe-dashboard.md"
+      }
+    },
+    {
+      "seq": 100,
+      "taskId": "050105-fe-outstanding-widget",
+      "title": "KPI card",
+      "epic": "0501",
+      "area": "fe",
+      "phaseId": "0501-P1",
+      "phaseTitle": "Epic 0501 — seluruh task",
+      "phaseOrdinal": 1,
+      "runState": "blocked",
+      "stage": "intake",
+      "column": "intake",
+      "planStatus": "defined",
+      "developmentStatus": "pending",
+      "qaStatus": "pending",
+      "progressPercent": 50,
+      "blockers": [
+        "Intake phase 0501-P1 belum selesai (queued)"
+      ],
+      "waitReasons": [
+        "Development berurutan: menunggu 050101-domain-overdue-compute selesai"
+      ],
+      "notes": [],
+      "isNext": false,
+      "autopilotActive": false,
+      "paths": {
+        "plan": "docs/workflow/plans/0501/phase-01/tasks/050105-fe-outstanding-widget/plan.md",
+        "development": "docs/workflow/results/0501/phase-01/development/050105-fe-outstanding-widget.md",
+        "qa": "docs/workflow/results/0501/phase-01/qa/050105-fe-outstanding-widget.md"
+      }
+    },
+    {
+      "seq": 101,
+      "taskId": "050106-infra-gate-g5-dashboard",
+      "title": "G5.2",
+      "epic": "0501",
+      "area": "infra",
+      "phaseId": "0501-P1",
+      "phaseTitle": "Epic 0501 — seluruh task",
+      "phaseOrdinal": 1,
+      "runState": "blocked",
+      "stage": "intake",
+      "column": "intake",
+      "planStatus": "defined",
+      "developmentStatus": "pending",
+      "qaStatus": "pending",
+      "progressPercent": 50,
+      "blockers": [
+        "Intake phase 0501-P1 belum selesai (queued)"
+      ],
+      "waitReasons": [
+        "Development berurutan: menunggu 050101-domain-overdue-compute selesai"
+      ],
+      "notes": [],
+      "isNext": false,
+      "autopilotActive": false,
+      "paths": {
+        "plan": "docs/workflow/plans/0501/phase-01/tasks/050106-infra-gate-g5-dashboard/plan.md",
+        "development": "docs/workflow/results/0501/phase-01/development/050106-infra-gate-g5-dashboard.md",
+        "qa": "docs/workflow/results/0501/phase-01/qa/050106-infra-gate-g5-dashboard.md"
+      }
+    },
+    {
+      "seq": 102,
+      "taskId": "060001-docs-uat-trace-matrix",
+      "title": "FR ↔ UAT ↔ gate",
+      "epic": "0600",
+      "area": "docs",
+      "phaseId": "0600-P1",
+      "phaseTitle": "Epic 0600 — seluruh task",
+      "phaseOrdinal": 1,
+      "runState": "blocked",
+      "stage": "intake",
+      "column": "intake",
+      "planStatus": "defined",
+      "developmentStatus": "pending",
+      "qaStatus": "pending",
+      "progressPercent": 50,
+      "blockers": [
+        "Intake phase 0600-P1 belum selesai (queued)"
+      ],
+      "waitReasons": [],
+      "notes": [],
+      "isNext": false,
+      "autopilotActive": false,
+      "paths": {
+        "plan": "docs/workflow/plans/0600/phase-01/tasks/060001-docs-uat-trace-matrix/plan.md",
+        "development": "docs/workflow/results/0600/phase-01/development/060001-docs-uat-trace-matrix.md",
+        "qa": "docs/workflow/results/0600/phase-01/qa/060001-docs-uat-trace-matrix.md"
+      }
+    },
+    {
+      "seq": 103,
+      "taskId": "060002-product-gap-g01-revoke-cancel",
+      "title": "Cancel sent + align BR-01",
+      "epic": "0600",
+      "area": "stack",
+      "phaseId": "0600-P1",
+      "phaseTitle": "Epic 0600 — seluruh task",
+      "phaseOrdinal": 1,
+      "runState": "blocked",
+      "stage": "intake",
+      "column": "intake",
+      "planStatus": "defined",
+      "developmentStatus": "pending",
+      "qaStatus": "pending",
+      "progressPercent": 50,
+      "blockers": [
+        "Intake phase 0600-P1 belum selesai (queued)"
+      ],
+      "waitReasons": [
+        "Development berurutan: menunggu 060001-docs-uat-trace-matrix selesai"
+      ],
+      "notes": [],
+      "isNext": false,
+      "autopilotActive": false,
+      "paths": {
+        "plan": "docs/workflow/plans/0600/phase-01/tasks/060002-product-gap-g01-revoke-cancel/plan.md",
+        "development": "docs/workflow/results/0600/phase-01/development/060002-product-gap-g01-revoke-cancel.md",
+        "qa": "docs/workflow/results/0600/phase-01/qa/060002-product-gap-g01-revoke-cancel.md"
+      }
+    },
+    {
+      "seq": 104,
+      "taskId": "060003-product-gap-g02-public-hardening",
+      "title": "Verify 0402 + security review",
+      "epic": "0600",
+      "area": "stack",
+      "phaseId": "0600-P1",
+      "phaseTitle": "Epic 0600 — seluruh task",
+      "phaseOrdinal": 1,
+      "runState": "blocked",
+      "stage": "intake",
+      "column": "intake",
+      "planStatus": "defined",
+      "developmentStatus": "pending",
+      "qaStatus": "pending",
+      "progressPercent": 50,
+      "blockers": [
+        "Intake phase 0600-P1 belum selesai (queued)"
+      ],
+      "waitReasons": [
+        "Development berurutan: menunggu 060001-docs-uat-trace-matrix selesai"
+      ],
+      "notes": [],
+      "isNext": false,
+      "autopilotActive": false,
+      "paths": {
+        "plan": "docs/workflow/plans/0600/phase-01/tasks/060003-product-gap-g02-public-hardening/plan.md",
+        "development": "docs/workflow/results/0600/phase-01/development/060003-product-gap-g02-public-hardening.md",
+        "qa": "docs/workflow/results/0600/phase-01/qa/060003-product-gap-g02-public-hardening.md"
+      }
+    },
+    {
+      "seq": 105,
+      "taskId": "060004-product-gap-g05-legal-copy",
+      "title": "Invoice footer/disclaimer",
+      "epic": "0600",
+      "area": "stack",
+      "phaseId": "0600-P1",
+      "phaseTitle": "Epic 0600 — seluruh task",
+      "phaseOrdinal": 1,
+      "runState": "blocked",
+      "stage": "intake",
+      "column": "intake",
+      "planStatus": "defined",
+      "developmentStatus": "pending",
+      "qaStatus": "pending",
+      "progressPercent": 50,
+      "blockers": [
+        "Intake phase 0600-P1 belum selesai (queued)"
+      ],
+      "waitReasons": [
+        "Development berurutan: menunggu 060001-docs-uat-trace-matrix selesai"
+      ],
+      "notes": [],
+      "isNext": false,
+      "autopilotActive": false,
+      "paths": {
+        "plan": "docs/workflow/plans/0600/phase-01/tasks/060004-product-gap-g05-legal-copy/plan.md",
+        "development": "docs/workflow/results/0600/phase-01/development/060004-product-gap-g05-legal-copy.md",
+        "qa": "docs/workflow/results/0600/phase-01/qa/060004-product-gap-g05-legal-copy.md"
+      }
+    },
+    {
+      "seq": 106,
+      "taskId": "060005-product-gap-g13-email-errors",
+      "title": "UX on send failure",
+      "epic": "0600",
+      "area": "stack",
+      "phaseId": "0600-P1",
+      "phaseTitle": "Epic 0600 — seluruh task",
+      "phaseOrdinal": 1,
+      "runState": "blocked",
+      "stage": "intake",
+      "column": "intake",
+      "planStatus": "defined",
+      "developmentStatus": "pending",
+      "qaStatus": "pending",
+      "progressPercent": 50,
+      "blockers": [
+        "Intake phase 0600-P1 belum selesai (queued)"
+      ],
+      "waitReasons": [
+        "Development berurutan: menunggu 060001-docs-uat-trace-matrix selesai"
+      ],
+      "notes": [],
+      "isNext": false,
+      "autopilotActive": false,
+      "paths": {
+        "plan": "docs/workflow/plans/0600/phase-01/tasks/060005-product-gap-g13-email-errors/plan.md",
+        "development": "docs/workflow/results/0600/phase-01/development/060005-product-gap-g13-email-errors.md",
+        "qa": "docs/workflow/results/0600/phase-01/qa/060005-product-gap-g13-email-errors.md"
+      }
+    },
+    {
+      "seq": 107,
+      "taskId": "060006-infra-release-check-script",
+      "title": "npm run release:check",
+      "epic": "0600",
+      "area": "infra",
+      "phaseId": "0600-P1",
+      "phaseTitle": "Epic 0600 — seluruh task",
+      "phaseOrdinal": 1,
+      "runState": "blocked",
+      "stage": "intake",
+      "column": "intake",
+      "planStatus": "defined",
+      "developmentStatus": "pending",
+      "qaStatus": "pending",
+      "progressPercent": 50,
+      "blockers": [
+        "Intake phase 0600-P1 belum selesai (queued)"
+      ],
+      "waitReasons": [
+        "Development berurutan: menunggu 060001-docs-uat-trace-matrix selesai"
+      ],
+      "notes": [],
+      "isNext": false,
+      "autopilotActive": false,
+      "paths": {
+        "plan": "docs/workflow/plans/0600/phase-01/tasks/060006-infra-release-check-script/plan.md",
+        "development": "docs/workflow/results/0600/phase-01/development/060006-infra-release-check-script.md",
+        "qa": "docs/workflow/results/0600/phase-01/qa/060006-infra-release-check-script.md"
+      }
+    },
+    {
+      "seq": 108,
+      "taskId": "060007-infra-ci-g6",
+      "title": "Required verify on main",
+      "epic": "0600",
+      "area": "infra",
+      "phaseId": "0600-P1",
+      "phaseTitle": "Epic 0600 — seluruh task",
+      "phaseOrdinal": 1,
+      "runState": "blocked",
+      "stage": "intake",
+      "column": "intake",
+      "planStatus": "defined",
+      "developmentStatus": "pending",
+      "qaStatus": "pending",
+      "progressPercent": 50,
+      "blockers": [
+        "Intake phase 0600-P1 belum selesai (queued)"
+      ],
+      "waitReasons": [
+        "Development berurutan: menunggu 060001-docs-uat-trace-matrix selesai"
+      ],
+      "notes": [],
+      "isNext": false,
+      "autopilotActive": false,
+      "paths": {
+        "plan": "docs/workflow/plans/0600/phase-01/tasks/060007-infra-ci-g6/plan.md",
+        "development": "docs/workflow/results/0600/phase-01/development/060007-infra-ci-g6.md",
+        "qa": "docs/workflow/results/0600/phase-01/qa/060007-infra-ci-g6.md"
+      }
+    },
+    {
+      "seq": 109,
+      "taskId": "060008-ops-staging-uat-run",
+      "title": "Checklist signed",
+      "epic": "0600",
+      "area": "stack",
+      "phaseId": "0600-P1",
+      "phaseTitle": "Epic 0600 — seluruh task",
+      "phaseOrdinal": 1,
+      "runState": "blocked",
+      "stage": "intake",
+      "column": "intake",
+      "planStatus": "defined",
+      "developmentStatus": "pending",
+      "qaStatus": "pending",
+      "progressPercent": 50,
+      "blockers": [
+        "Intake phase 0600-P1 belum selesai (queued)"
+      ],
+      "waitReasons": [
+        "Development berurutan: menunggu 060001-docs-uat-trace-matrix selesai"
+      ],
+      "notes": [],
+      "isNext": false,
+      "autopilotActive": false,
+      "paths": {
+        "plan": "docs/workflow/plans/0600/phase-01/tasks/060008-ops-staging-uat-run/plan.md",
+        "development": "docs/workflow/results/0600/phase-01/development/060008-ops-staging-uat-run.md",
+        "qa": "docs/workflow/results/0600/phase-01/qa/060008-ops-staging-uat-run.md"
+      }
+    },
+    {
+      "seq": 110,
+      "taskId": "060009-ops-prod-launch",
+      "title": "LAUNCH-LANE steps",
+      "epic": "0600",
+      "area": "stack",
+      "phaseId": "0600-P1",
+      "phaseTitle": "Epic 0600 — seluruh task",
+      "phaseOrdinal": 1,
+      "runState": "blocked",
+      "stage": "intake",
+      "column": "intake",
+      "planStatus": "defined",
+      "developmentStatus": "pending",
+      "qaStatus": "pending",
+      "progressPercent": 50,
+      "blockers": [
+        "Intake phase 0600-P1 belum selesai (queued)"
+      ],
+      "waitReasons": [
+        "Development berurutan: menunggu 060001-docs-uat-trace-matrix selesai"
+      ],
+      "notes": [],
+      "isNext": false,
+      "autopilotActive": false,
+      "paths": {
+        "plan": "docs/workflow/plans/0600/phase-01/tasks/060009-ops-prod-launch/plan.md",
+        "development": "docs/workflow/results/0600/phase-01/development/060009-ops-prod-launch.md",
+        "qa": "docs/workflow/results/0600/phase-01/qa/060009-ops-prod-launch.md"
+      }
+    },
+    {
+      "seq": 111,
+      "taskId": "060010-docs-signoff-mvp-scope",
+      "title": "MVP-SCOPE-LOCK engineering row",
+      "epic": "0600",
+      "area": "docs",
+      "phaseId": "0600-P1",
+      "phaseTitle": "Epic 0600 — seluruh task",
+      "phaseOrdinal": 1,
+      "runState": "blocked",
+      "stage": "intake",
+      "column": "intake",
+      "planStatus": "defined",
+      "developmentStatus": "pending",
+      "qaStatus": "pending",
+      "progressPercent": 50,
+      "blockers": [
+        "Intake phase 0600-P1 belum selesai (queued)"
+      ],
+      "waitReasons": [
+        "Development berurutan: menunggu 060001-docs-uat-trace-matrix selesai"
+      ],
+      "notes": [],
+      "isNext": false,
+      "autopilotActive": false,
+      "paths": {
+        "plan": "docs/workflow/plans/0600/phase-01/tasks/060010-docs-signoff-mvp-scope/plan.md",
+        "development": "docs/workflow/results/0600/phase-01/development/060010-docs-signoff-mvp-scope.md",
+        "qa": "docs/workflow/results/0600/phase-01/qa/060010-docs-signoff-mvp-scope.md"
+      }
+    },
+    {
+      "seq": 112,
+      "taskId": "0700-task-01",
+      "title": "Prisma schema + migration",
+      "epic": "0700",
+      "area": "db",
+      "phaseId": "0700-P1",
+      "phaseTitle": "Epic 0700 — seluruh task",
+      "phaseOrdinal": 1,
+      "runState": "blocked",
+      "stage": "intake",
+      "column": "intake",
+      "planStatus": "defined",
+      "developmentStatus": "pending",
+      "qaStatus": "pending",
+      "progressPercent": 50,
+      "blockers": [
+        "Intake phase 0700-P1 belum selesai (queued)"
+      ],
+      "waitReasons": [],
+      "notes": [],
+      "isNext": false,
+      "autopilotActive": false,
+      "paths": {
+        "plan": "docs/workflow/plans/0700/phase-01/tasks/0700-task-01/plan.md",
+        "development": "docs/workflow/results/0700/phase-01/development/0700-task-01.md",
+        "qa": "docs/workflow/results/0700/phase-01/qa/0700-task-01.md"
+      }
+    },
+    {
+      "seq": 113,
+      "taskId": "0700-task-02",
+      "title": "Domain test harness + `computeCommissionCents`",
+      "epic": "0700",
+      "area": "domain",
+      "phaseId": "0700-P1",
+      "phaseTitle": "Epic 0700 — seluruh task",
+      "phaseOrdinal": 1,
+      "runState": "blocked",
+      "stage": "intake",
+      "column": "intake",
+      "planStatus": "defined",
+      "developmentStatus": "pending",
+      "qaStatus": "pending",
+      "progressPercent": 50,
+      "blockers": [
+        "Intake phase 0700-P1 belum selesai (queued)"
+      ],
+      "waitReasons": [
+        "Development berurutan: menunggu 0700-task-01 selesai"
+      ],
+      "notes": [],
+      "isNext": false,
+      "autopilotActive": false,
+      "paths": {
+        "plan": "docs/workflow/plans/0700/phase-01/tasks/0700-task-02/plan.md",
+        "development": "docs/workflow/results/0700/phase-01/development/0700-task-02.md",
+        "qa": "docs/workflow/results/0700/phase-01/qa/0700-task-02.md"
+      }
+    },
+    {
+      "seq": 114,
+      "taskId": "0700-task-03",
+      "title": "Domain `collectors.ts`",
+      "epic": "0700",
+      "area": "domain",
+      "phaseId": "0700-P1",
+      "phaseTitle": "Epic 0700 — seluruh task",
+      "phaseOrdinal": 1,
+      "runState": "blocked",
+      "stage": "intake",
+      "column": "intake",
+      "planStatus": "defined",
+      "developmentStatus": "pending",
+      "qaStatus": "pending",
+      "progressPercent": 50,
+      "blockers": [
+        "Intake phase 0700-P1 belum selesai (queued)"
+      ],
+      "waitReasons": [
+        "Development berurutan: menunggu 0700-task-01 selesai"
+      ],
+      "notes": [],
+      "isNext": false,
+      "autopilotActive": false,
+      "paths": {
+        "plan": "docs/workflow/plans/0700/phase-01/tasks/0700-task-03/plan.md",
+        "development": "docs/workflow/results/0700/phase-01/development/0700-task-03.md",
+        "qa": "docs/workflow/results/0700/phase-01/qa/0700-task-03.md"
+      }
+    },
+    {
+      "seq": 115,
+      "taskId": "0700-task-04",
+      "title": "Domain `collections.ts` (assign, unassign, activity)",
+      "epic": "0700",
+      "area": "domain",
+      "phaseId": "0700-P1",
+      "phaseTitle": "Epic 0700 — seluruh task",
+      "phaseOrdinal": 1,
+      "runState": "blocked",
+      "stage": "intake",
+      "column": "intake",
+      "planStatus": "defined",
+      "developmentStatus": "pending",
+      "qaStatus": "pending",
+      "progressPercent": 50,
+      "blockers": [
+        "Intake phase 0700-P1 belum selesai (queued)"
+      ],
+      "waitReasons": [
+        "Development berurutan: menunggu 0700-task-01 selesai"
+      ],
+      "notes": [],
+      "isNext": false,
+      "autopilotActive": false,
+      "paths": {
+        "plan": "docs/workflow/plans/0700/phase-01/tasks/0700-task-04/plan.md",
+        "development": "docs/workflow/results/0700/phase-01/development/0700-task-04.md",
+        "qa": "docs/workflow/results/0700/phase-01/qa/0700-task-04.md"
+      }
+    },
+    {
+      "seq": 116,
+      "taskId": "0700-task-05",
+      "title": "`invoices.ts` — lunas/batal menutup assignment, filter kolektor",
+      "epic": "0700",
+      "area": "domain",
+      "phaseId": "0700-P1",
+      "phaseTitle": "Epic 0700 — seluruh task",
+      "phaseOrdinal": 1,
+      "runState": "blocked",
+      "stage": "intake",
+      "column": "intake",
+      "planStatus": "defined",
+      "developmentStatus": "pending",
+      "qaStatus": "pending",
+      "progressPercent": 50,
+      "blockers": [
+        "Intake phase 0700-P1 belum selesai (queued)"
+      ],
+      "waitReasons": [
+        "Development berurutan: menunggu 0700-task-01 selesai"
+      ],
+      "notes": [],
+      "isNext": false,
+      "autopilotActive": false,
+      "paths": {
+        "plan": "docs/workflow/plans/0700/phase-01/tasks/0700-task-05/plan.md",
+        "development": "docs/workflow/results/0700/phase-01/development/0700-task-05.md",
+        "qa": "docs/workflow/results/0700/phase-01/qa/0700-task-05.md"
+      }
+    },
+    {
+      "seq": 117,
+      "taskId": "0700-task-06",
+      "title": "API endpoints + gate Phase 7",
+      "epic": "0700",
+      "area": "fe",
+      "phaseId": "0700-P1",
+      "phaseTitle": "Epic 0700 — seluruh task",
+      "phaseOrdinal": 1,
+      "runState": "blocked",
+      "stage": "intake",
+      "column": "intake",
+      "planStatus": "defined",
+      "developmentStatus": "pending",
+      "qaStatus": "pending",
+      "progressPercent": 50,
+      "blockers": [
+        "Intake phase 0700-P1 belum selesai (queued)"
+      ],
+      "waitReasons": [
+        "Development berurutan: menunggu 0700-task-01 selesai"
+      ],
+      "notes": [],
+      "isNext": false,
+      "autopilotActive": false,
+      "paths": {
+        "plan": "docs/workflow/plans/0700/phase-01/tasks/0700-task-06/plan.md",
+        "development": "docs/workflow/results/0700/phase-01/development/0700-task-06.md",
+        "qa": "docs/workflow/results/0700/phase-01/qa/0700-task-06.md"
+      }
+    },
+    {
+      "seq": 118,
+      "taskId": "0700-task-07",
+      "title": "Web — halaman Kolektor + navigasi",
+      "epic": "0700",
+      "area": "fe",
+      "phaseId": "0700-P1",
+      "phaseTitle": "Epic 0700 — seluruh task",
+      "phaseOrdinal": 1,
+      "runState": "blocked",
+      "stage": "intake",
+      "column": "intake",
+      "planStatus": "defined",
+      "developmentStatus": "pending",
+      "qaStatus": "pending",
+      "progressPercent": 50,
+      "blockers": [
+        "Intake phase 0700-P1 belum selesai (queued)"
+      ],
+      "waitReasons": [
+        "Development berurutan: menunggu 0700-task-01 selesai"
+      ],
+      "notes": [],
+      "isNext": false,
+      "autopilotActive": false,
+      "paths": {
+        "plan": "docs/workflow/plans/0700/phase-01/tasks/0700-task-07/plan.md",
+        "development": "docs/workflow/results/0700/phase-01/development/0700-task-07.md",
+        "qa": "docs/workflow/results/0700/phase-01/qa/0700-task-07.md"
+      }
+    },
+    {
+      "seq": 119,
+      "taskId": "0700-task-08",
+      "title": "Web — panel Penagihan di detail invoice + filter list",
+      "epic": "0700",
+      "area": "fe",
+      "phaseId": "0700-P1",
+      "phaseTitle": "Epic 0700 — seluruh task",
+      "phaseOrdinal": 1,
+      "runState": "blocked",
+      "stage": "intake",
+      "column": "intake",
+      "planStatus": "defined",
+      "developmentStatus": "pending",
+      "qaStatus": "pending",
+      "progressPercent": 50,
+      "blockers": [
+        "Intake phase 0700-P1 belum selesai (queued)"
+      ],
+      "waitReasons": [
+        "Development berurutan: menunggu 0700-task-01 selesai"
+      ],
+      "notes": [],
+      "isNext": false,
+      "autopilotActive": false,
+      "paths": {
+        "plan": "docs/workflow/plans/0700/phase-01/tasks/0700-task-08/plan.md",
+        "development": "docs/workflow/results/0700/phase-01/development/0700-task-08.md",
+        "qa": "docs/workflow/results/0700/phase-01/qa/0700-task-08.md"
+      }
+    },
+    {
+      "seq": 120,
+      "taskId": "0700-task-09",
+      "title": "Dokumentasi",
+      "epic": "0700",
+      "area": "docs",
+      "phaseId": "0700-P1",
+      "phaseTitle": "Epic 0700 — seluruh task",
+      "phaseOrdinal": 1,
+      "runState": "blocked",
+      "stage": "intake",
+      "column": "intake",
+      "planStatus": "defined",
+      "developmentStatus": "pending",
+      "qaStatus": "pending",
+      "progressPercent": 50,
+      "blockers": [
+        "Intake phase 0700-P1 belum selesai (queued)"
+      ],
+      "waitReasons": [
+        "Development berurutan: menunggu 0700-task-01 selesai"
+      ],
+      "notes": [],
+      "isNext": false,
+      "autopilotActive": false,
+      "paths": {
+        "plan": "docs/workflow/plans/0700/phase-01/tasks/0700-task-09/plan.md",
+        "development": "docs/workflow/results/0700/phase-01/development/0700-task-09.md",
+        "qa": "docs/workflow/results/0700/phase-01/qa/0700-task-09.md"
+      }
+    },
+    {
+      "seq": 121,
+      "taskId": "0701-task-01",
+      "title": "Schema + migration",
+      "epic": "0701",
+      "area": "db",
+      "phaseId": "0701-P1",
+      "phaseTitle": "Epic 0701 — seluruh task",
+      "phaseOrdinal": 1,
+      "runState": "blocked",
+      "stage": "intake",
+      "column": "intake",
+      "planStatus": "defined",
+      "developmentStatus": "pending",
+      "qaStatus": "pending",
+      "progressPercent": 50,
+      "blockers": [
+        "Intake phase 0701-P1 belum selesai (queued)"
+      ],
+      "waitReasons": [],
+      "notes": [],
+      "isNext": false,
+      "autopilotActive": false,
+      "paths": {
+        "plan": "docs/workflow/plans/0701/phase-01/tasks/0701-task-01/plan.md",
+        "development": "docs/workflow/results/0701/phase-01/development/0701-task-01.md",
+        "qa": "docs/workflow/results/0701/phase-01/qa/0701-task-01.md"
+      }
+    },
+    {
+      "seq": 122,
+      "taskId": "0701-task-02",
+      "title": "Domain `collector-photos.ts`",
+      "epic": "0701",
+      "area": "domain",
+      "phaseId": "0701-P1",
+      "phaseTitle": "Epic 0701 — seluruh task",
+      "phaseOrdinal": 1,
+      "runState": "blocked",
+      "stage": "intake",
+      "column": "intake",
+      "planStatus": "defined",
+      "developmentStatus": "pending",
+      "qaStatus": "pending",
+      "progressPercent": 50,
+      "blockers": [
+        "Intake phase 0701-P1 belum selesai (queued)"
+      ],
+      "waitReasons": [
+        "Development berurutan: menunggu 0701-task-01 selesai"
+      ],
+      "notes": [],
+      "isNext": false,
+      "autopilotActive": false,
+      "paths": {
+        "plan": "docs/workflow/plans/0701/phase-01/tasks/0701-task-02/plan.md",
+        "development": "docs/workflow/results/0701/phase-01/development/0701-task-02.md",
+        "qa": "docs/workflow/results/0701/phase-01/qa/0701-task-02.md"
+      }
+    },
+    {
+      "seq": 123,
+      "taskId": "0701-task-03",
+      "title": "Web upload / serve / delete routes + edit page",
+      "epic": "0701",
+      "area": "fe",
+      "phaseId": "0701-P1",
+      "phaseTitle": "Epic 0701 — seluruh task",
+      "phaseOrdinal": 1,
+      "runState": "blocked",
+      "stage": "intake",
+      "column": "intake",
+      "planStatus": "defined",
+      "developmentStatus": "pending",
+      "qaStatus": "pending",
+      "progressPercent": 50,
+      "blockers": [
+        "Intake phase 0701-P1 belum selesai (queued)"
+      ],
+      "waitReasons": [
+        "Development berurutan: menunggu 0701-task-01 selesai"
+      ],
+      "notes": [],
+      "isNext": false,
+      "autopilotActive": false,
+      "paths": {
+        "plan": "docs/workflow/plans/0701/phase-01/tasks/0701-task-03/plan.md",
+        "development": "docs/workflow/results/0701/phase-01/development/0701-task-03.md",
+        "qa": "docs/workflow/results/0701/phase-01/qa/0701-task-03.md"
+      }
+    },
+    {
+      "seq": 124,
+      "taskId": "0701-task-04",
+      "title": "Avatar di panel Penagihan",
+      "epic": "0701",
+      "area": "fe",
+      "phaseId": "0701-P1",
+      "phaseTitle": "Epic 0701 — seluruh task",
+      "phaseOrdinal": 1,
+      "runState": "blocked",
+      "stage": "intake",
+      "column": "intake",
+      "planStatus": "defined",
+      "developmentStatus": "pending",
+      "qaStatus": "pending",
+      "progressPercent": 50,
+      "blockers": [
+        "Intake phase 0701-P1 belum selesai (queued)"
+      ],
+      "waitReasons": [
+        "Development berurutan: menunggu 0701-task-01 selesai"
+      ],
+      "notes": [],
+      "isNext": false,
+      "autopilotActive": false,
+      "paths": {
+        "plan": "docs/workflow/plans/0701/phase-01/tasks/0701-task-04/plan.md",
+        "development": "docs/workflow/results/0701/phase-01/development/0701-task-04.md",
+        "qa": "docs/workflow/results/0701/phase-01/qa/0701-task-04.md"
+      }
+    },
+    {
+      "seq": 125,
+      "taskId": "0701-task-05",
+      "title": "Docs",
+      "epic": "0701",
+      "area": "stack",
+      "phaseId": "0701-P1",
+      "phaseTitle": "Epic 0701 — seluruh task",
+      "phaseOrdinal": 1,
+      "runState": "blocked",
+      "stage": "intake",
+      "column": "intake",
+      "planStatus": "defined",
+      "developmentStatus": "pending",
+      "qaStatus": "pending",
+      "progressPercent": 50,
+      "blockers": [
+        "Intake phase 0701-P1 belum selesai (queued)"
+      ],
+      "waitReasons": [
+        "Development berurutan: menunggu 0701-task-01 selesai"
+      ],
+      "notes": [],
+      "isNext": false,
+      "autopilotActive": false,
+      "paths": {
+        "plan": "docs/workflow/plans/0701/phase-01/tasks/0701-task-05/plan.md",
+        "development": "docs/workflow/results/0701/phase-01/development/0701-task-05.md",
+        "qa": "docs/workflow/results/0701/phase-01/qa/0701-task-05.md"
+      }
+    },
+    {
+      "seq": 126,
+      "taskId": "0702-task-01",
+      "title": "Schema + migration",
+      "epic": "0702",
+      "area": "db",
+      "phaseId": "0702-P1",
+      "phaseTitle": "Live tracking — fondasi API & model",
+      "phaseOrdinal": 1,
+      "runState": "blocked",
+      "stage": "intake",
+      "column": "intake",
+      "planStatus": "defined",
+      "developmentStatus": "pending",
+      "qaStatus": "pending",
+      "progressPercent": 50,
+      "blockers": [
+        "Intake phase 0702-P1 belum selesai (queued)"
+      ],
+      "waitReasons": [],
+      "notes": [],
+      "isNext": false,
+      "autopilotActive": false,
+      "paths": {
+        "plan": "docs/workflow/plans/0702/phase-01/tasks/0702-task-01/plan.md",
+        "development": "docs/workflow/results/0702/phase-01/development/0702-task-01.md",
+        "qa": "docs/workflow/results/0702/phase-01/qa/0702-task-01.md"
+      }
+    },
+    {
+      "seq": 127,
+      "taskId": "0702-task-02",
+      "title": "Domain `geo.ts` + `collector-tracking.ts`",
+      "epic": "0702",
+      "area": "domain",
+      "phaseId": "0702-P1",
+      "phaseTitle": "Live tracking — fondasi API & model",
+      "phaseOrdinal": 1,
+      "runState": "blocked",
+      "stage": "intake",
+      "column": "intake",
+      "planStatus": "defined",
+      "developmentStatus": "pending",
+      "qaStatus": "pending",
+      "progressPercent": 50,
+      "blockers": [
+        "Intake phase 0702-P1 belum selesai (queued)"
+      ],
+      "waitReasons": [
+        "Development berurutan: menunggu 0702-task-01 selesai"
+      ],
+      "notes": [],
+      "isNext": false,
+      "autopilotActive": false,
+      "paths": {
+        "plan": "docs/workflow/plans/0702/phase-01/tasks/0702-task-02/plan.md",
+        "development": "docs/workflow/results/0702/phase-01/development/0702-task-02.md",
+        "qa": "docs/workflow/results/0702/phase-01/qa/0702-task-02.md"
+      }
+    },
+    {
+      "seq": 128,
+      "taskId": "0702-task-03",
+      "title": "Penutupan penugasan membersihkan tracking (BR-11) + lokasi klien (FR-14j)",
+      "epic": "0702",
+      "area": "domain",
+      "phaseId": "0702-P1",
+      "phaseTitle": "Live tracking — fondasi API & model",
+      "phaseOrdinal": 1,
+      "runState": "blocked",
+      "stage": "intake",
+      "column": "intake",
+      "planStatus": "defined",
+      "developmentStatus": "pending",
+      "qaStatus": "pending",
+      "progressPercent": 50,
+      "blockers": [
+        "Intake phase 0702-P1 belum selesai (queued)"
+      ],
+      "waitReasons": [
+        "Development berurutan: menunggu 0702-task-01 selesai"
+      ],
+      "notes": [],
+      "isNext": false,
+      "autopilotActive": false,
+      "paths": {
+        "plan": "docs/workflow/plans/0702/phase-01/tasks/0702-task-03/plan.md",
+        "development": "docs/workflow/results/0702/phase-01/development/0702-task-03.md",
+        "qa": "docs/workflow/results/0702/phase-01/qa/0702-task-03.md"
+      }
+    },
+    {
+      "seq": 129,
+      "taskId": "0702-task-04",
+      "title": "Leaflet setup (dependency, assets, CSS, loader)",
+      "epic": "0702",
+      "area": "fe",
+      "phaseId": "0702-P2",
+      "phaseTitle": "Live tracking — UI & integrasi",
+      "phaseOrdinal": 2,
+      "runState": "blocked",
+      "stage": "intake",
+      "column": "intake",
+      "planStatus": "defined",
+      "developmentStatus": "pending",
+      "qaStatus": "pending",
+      "progressPercent": 50,
+      "blockers": [
+        "Gate phase: menunggu release Human QA 0702-P1",
+        "Intake phase 0702-P2 belum selesai (queued)"
+      ],
+      "waitReasons": [],
+      "notes": [],
+      "isNext": false,
+      "autopilotActive": false,
+      "paths": {
+        "plan": "docs/workflow/plans/0702/phase-02/tasks/0702-task-04/plan.md",
+        "development": "docs/workflow/results/0702/phase-02/development/0702-task-04.md",
+        "qa": "docs/workflow/results/0702/phase-02/qa/0702-task-04.md"
+      }
+    },
+    {
+      "seq": 130,
+      "taskId": "0702-task-05",
+      "title": "Halaman kolektor `/t/:token` + endpoint lokasi + island TrackingSharer",
+      "epic": "0702",
+      "area": "fe",
+      "phaseId": "0702-P2",
+      "phaseTitle": "Live tracking — UI & integrasi",
+      "phaseOrdinal": 2,
+      "runState": "blocked",
+      "stage": "intake",
+      "column": "intake",
+      "planStatus": "defined",
+      "developmentStatus": "pending",
+      "qaStatus": "pending",
+      "progressPercent": 50,
+      "blockers": [
+        "Gate phase: menunggu release Human QA 0702-P1",
+        "Intake phase 0702-P2 belum selesai (queued)"
+      ],
+      "waitReasons": [
+        "Development berurutan: menunggu 0702-task-04 selesai"
+      ],
+      "notes": [],
+      "isNext": false,
+      "autopilotActive": false,
+      "paths": {
+        "plan": "docs/workflow/plans/0702/phase-02/tasks/0702-task-05/plan.md",
+        "development": "docs/workflow/results/0702/phase-02/development/0702-task-05.md",
+        "qa": "docs/workflow/results/0702/phase-02/qa/0702-task-05.md"
+      }
+    },
+    {
+      "seq": 131,
+      "taskId": "0702-task-06",
+      "title": "Peta freelancer + link tracking di panel",
+      "epic": "0702",
+      "area": "fe",
+      "phaseId": "0702-P2",
+      "phaseTitle": "Live tracking — UI & integrasi",
+      "phaseOrdinal": 2,
+      "runState": "blocked",
+      "stage": "intake",
+      "column": "intake",
+      "planStatus": "defined",
+      "developmentStatus": "pending",
+      "qaStatus": "pending",
+      "progressPercent": 50,
+      "blockers": [
+        "Gate phase: menunggu release Human QA 0702-P1",
+        "Intake phase 0702-P2 belum selesai (queued)"
+      ],
+      "waitReasons": [
+        "Development berurutan: menunggu 0702-task-04 selesai"
+      ],
+      "notes": [],
+      "isNext": false,
+      "autopilotActive": false,
+      "paths": {
+        "plan": "docs/workflow/plans/0702/phase-02/tasks/0702-task-06/plan.md",
+        "development": "docs/workflow/results/0702/phase-02/development/0702-task-06.md",
+        "qa": "docs/workflow/results/0702/phase-02/qa/0702-task-06.md"
+      }
+    },
+    {
+      "seq": 132,
+      "taskId": "0702-task-07",
+      "title": "Pin lokasi klien (FR-14j)",
+      "epic": "0702",
+      "area": "fe",
+      "phaseId": "0702-P2",
+      "phaseTitle": "Live tracking — UI & integrasi",
+      "phaseOrdinal": 2,
+      "runState": "blocked",
+      "stage": "intake",
+      "column": "intake",
+      "planStatus": "defined",
+      "developmentStatus": "pending",
+      "qaStatus": "pending",
+      "progressPercent": 50,
+      "blockers": [
+        "Gate phase: menunggu release Human QA 0702-P1",
+        "Intake phase 0702-P2 belum selesai (queued)"
+      ],
+      "waitReasons": [
+        "Development berurutan: menunggu 0702-task-04 selesai"
+      ],
+      "notes": [],
+      "isNext": false,
+      "autopilotActive": false,
+      "paths": {
+        "plan": "docs/workflow/plans/0702/phase-02/tasks/0702-task-07/plan.md",
+        "development": "docs/workflow/results/0702/phase-02/development/0702-task-07.md",
+        "qa": "docs/workflow/results/0702/phase-02/qa/0702-task-07.md"
+      }
+    },
+    {
+      "seq": 133,
+      "taskId": "0702-task-08",
+      "title": "Verifikasi browser + dokumen",
+      "epic": "0702",
+      "area": "docs",
+      "phaseId": "0702-P2",
+      "phaseTitle": "Live tracking — UI & integrasi",
+      "phaseOrdinal": 2,
+      "runState": "blocked",
+      "stage": "intake",
+      "column": "intake",
+      "planStatus": "defined",
+      "developmentStatus": "pending",
+      "qaStatus": "pending",
+      "progressPercent": 50,
+      "blockers": [
+        "Gate phase: menunggu release Human QA 0702-P1",
+        "Intake phase 0702-P2 belum selesai (queued)"
+      ],
+      "waitReasons": [
+        "Development berurutan: menunggu 0702-task-04 selesai"
+      ],
+      "notes": [],
+      "isNext": false,
+      "autopilotActive": false,
+      "paths": {
+        "plan": "docs/workflow/plans/0702/phase-02/tasks/0702-task-08/plan.md",
+        "development": "docs/workflow/results/0702/phase-02/development/0702-task-08.md",
+        "qa": "docs/workflow/results/0702/phase-02/qa/0702-task-08.md"
+      }
+    },
+    {
+      "seq": 134,
+      "taskId": "080001-docs-parse-manifest",
+      "title": "Parser satu Development phase → manifes task (OR-01)",
+      "epic": "0800",
+      "area": "docs",
+      "phaseId": "0800-P1",
+      "phaseTitle": "Epic 0800 — seluruh task",
+      "phaseOrdinal": 1,
+      "runState": "blocked",
+      "stage": "intake",
+      "column": "intake",
+      "planStatus": "defined",
+      "developmentStatus": "pending",
+      "qaStatus": "pending",
+      "progressPercent": 50,
+      "blockers": [
+        "Intake phase 0800-P1 belum selesai (queued)"
+      ],
+      "waitReasons": [],
+      "notes": [],
+      "isNext": false,
+      "autopilotActive": false,
+      "paths": {
+        "plan": "docs/workflow/plans/0800/phase-01/tasks/080001-docs-parse-manifest/plan.md",
+        "development": "docs/workflow/results/0800/phase-01/development/080001-docs-parse-manifest.md",
+        "qa": "docs/workflow/results/0800/phase-01/qa/080001-docs-parse-manifest.md"
+      }
+    },
+    {
+      "seq": 135,
+      "taskId": "080002-stack-run-ledger",
+      "title": "CLI `status` / `complete` / `ask` / `answer`; tolak `running` tanpa acuan dan rencana; tolak `complete` bila hasil tidak",
+      "epic": "0800",
+      "area": "stack",
+      "phaseId": "0800-P1",
+      "phaseTitle": "Epic 0800 — seluruh task",
+      "phaseOrdinal": 1,
+      "runState": "blocked",
+      "stage": "intake",
+      "column": "intake",
+      "planStatus": "defined",
+      "developmentStatus": "pending",
+      "qaStatus": "pending",
+      "progressPercent": 50,
+      "blockers": [
+        "Intake phase 0800-P1 belum selesai (queued)"
+      ],
+      "waitReasons": [
+        "Development berurutan: menunggu 080001-docs-parse-manifest selesai"
+      ],
+      "notes": [],
+      "isNext": false,
+      "autopilotActive": false,
+      "paths": {
+        "plan": "docs/workflow/plans/0800/phase-01/tasks/080002-stack-run-ledger/plan.md",
+        "development": "docs/workflow/results/0800/phase-01/development/080002-stack-run-ledger.md",
+        "qa": "docs/workflow/results/0800/phase-01/qa/080002-stack-run-ledger.md"
+      }
+    },
+    {
+      "seq": 136,
+      "taskId": "080003-docs-worker-skills",
+      "title": "Skill implementer/tester dan skill auditor: baca acuan, tulis rencana, baru bertindak, lalu tulis hasil (OR-03…OR-07, OR",
+      "epic": "0800",
+      "area": "docs",
+      "phaseId": "0800-P1",
+      "phaseTitle": "Epic 0800 — seluruh task",
+      "phaseOrdinal": 1,
+      "runState": "blocked",
+      "stage": "intake",
+      "column": "intake",
+      "planStatus": "defined",
+      "developmentStatus": "pending",
+      "qaStatus": "pending",
+      "progressPercent": 50,
+      "blockers": [
+        "Intake phase 0800-P1 belum selesai (queued)"
+      ],
+      "waitReasons": [
+        "Development berurutan: menunggu 080001-docs-parse-manifest selesai"
+      ],
+      "notes": [],
+      "isNext": false,
+      "autopilotActive": false,
+      "paths": {
+        "plan": "docs/workflow/plans/0800/phase-01/tasks/080003-docs-worker-skills/plan.md",
+        "development": "docs/workflow/results/0800/phase-01/development/080003-docs-worker-skills.md",
+        "qa": "docs/workflow/results/0800/phase-01/qa/080003-docs-worker-skills.md"
+      }
+    },
+    {
+      "seq": 137,
+      "taskId": "080004-docs-policy-default",
+      "title": "Policy YAML default dan penimpaan per task Review Focus (OR-08, OR-10)",
+      "epic": "0800",
+      "area": "docs",
+      "phaseId": "0800-P1",
+      "phaseTitle": "Epic 0800 — seluruh task",
+      "phaseOrdinal": 1,
+      "runState": "blocked",
+      "stage": "intake",
+      "column": "intake",
+      "planStatus": "defined",
+      "developmentStatus": "pending",
+      "qaStatus": "pending",
+      "progressPercent": 50,
+      "blockers": [
+        "Intake phase 0800-P1 belum selesai (queued)"
+      ],
+      "waitReasons": [
+        "Development berurutan: menunggu 080001-docs-parse-manifest selesai"
+      ],
+      "notes": [],
+      "isNext": false,
+      "autopilotActive": false,
+      "paths": {
+        "plan": "docs/workflow/plans/0800/phase-01/tasks/080004-docs-policy-default/plan.md",
+        "development": "docs/workflow/results/0800/phase-01/development/080004-docs-policy-default.md",
+        "qa": "docs/workflow/results/0800/phase-01/qa/080004-docs-policy-default.md"
+      }
+    },
+    {
+      "seq": 138,
+      "taskId": "080005-stack-dry-run-intake",
+      "title": "Satu task contoh berhenti di `waiting_human` tanpa diff produk (OR-14, OR-15)",
+      "epic": "0800",
+      "area": "stack",
+      "phaseId": "0800-P1",
+      "phaseTitle": "Epic 0800 — seluruh task",
+      "phaseOrdinal": 1,
+      "runState": "blocked",
+      "stage": "intake",
+      "column": "intake",
+      "planStatus": "defined",
+      "developmentStatus": "pending",
+      "qaStatus": "pending",
+      "progressPercent": 50,
+      "blockers": [
+        "Intake phase 0800-P1 belum selesai (queued)"
+      ],
+      "waitReasons": [
+        "Development berurutan: menunggu 080001-docs-parse-manifest selesai"
+      ],
+      "notes": [],
+      "isNext": false,
+      "autopilotActive": false,
+      "paths": {
+        "plan": "docs/workflow/plans/0800/phase-01/tasks/080005-stack-dry-run-intake/plan.md",
+        "development": "docs/workflow/results/0800/phase-01/development/080005-stack-dry-run-intake.md",
+        "qa": "docs/workflow/results/0800/phase-01/qa/080005-stack-dry-run-intake.md"
+      }
+    }
+  ]
+}
