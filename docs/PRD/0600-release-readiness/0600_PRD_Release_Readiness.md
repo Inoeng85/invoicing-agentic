@@ -50,5 +50,5 @@ Mengunci kesiapan rilis MVP: trace UAT ke FR, CI/release checks, legal checklist
 
 ## Referensi
 
-- [LAUNCH-LANE.md](../../0000_platform_setup/LAUNCH-LANE.md)
+- [LAUNCH-LANE.md](../../operations/LAUNCH-LANE.md)
 - [STAKEHOLDER-VALIDATION.md](../../invoicing/brd/STAKEHOLDER-VALIDATION.md)

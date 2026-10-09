@@ -66,13 +66,13 @@ Urutan: `typecheck` → `test:domain` → `test` (web) → `css:build` → `desi
 
 Langkah individual masih tersedia: `npm run test:domain`, `npm run typecheck`, `npm run gate`.
 
-**GitHub Actions:** workflow `.github/workflows/ci.yml` menjalankan `npm run db:migrate:deploy` lalu `npm run verify` di Node dari `.nvmrc`. Branch protection: [.github/BRANCH_PROTECTION.md](../../governance/BRANCH_PROTECTION.md).
+**GitHub Actions:** workflow `.github/workflows/ci.yml` menjalankan `npm run db:migrate:deploy` lalu `npm run verify` di Node dari `.nvmrc`. Branch protection: [.github/BRANCH_PROTECTION.md](../../operations/BRANCH_PROTECTION.md).
 
 **Release (Phase 6):** `npm run release:check` · [RELEASE-READINESS.md](./RELEASE-READINESS.md).
 
 **CI parity (PG-1):** `npm run ci:local` · **Host env (PG-2/3):** `npm run host:check` · **Email (G-04):** `npm run email:smoke`.
 
-**Database:** SQLite semua env ([ADR-0001](../../0000_platform_setup/adr/ADR-0001-sqlite-postgresql.md)) · `npm run verify` = parity staging/prod.
+**Database:** SQLite semua env ([ADR-0001](../../adr/ADR-0001-sqlite-postgresql.md)) · `npm run verify` = parity staging/prod.
 
 ---
 

@@ -3,11 +3,12 @@
 Monorepo **dokumentasi** + **web** + **backend API** + shared packages. Tanpa Docker · **SQLite** semua environment.
 
 **Dokumentasi:** [docs/invoicing/BRD-DEFINITION-OF-DONE.md](invoicing/BRD-DEFINITION-OF-DONE.md)
-**Launch (PG/G6):** [docs/0000_platform_setup/LAUNCH-LANE.md](0000_platform_setup/LAUNCH-LANE.md)
+**Launch (PG/G6):** [docs/operations/LAUNCH-LANE.md](operations/LAUNCH-LANE.md)
 
 ## Indeks dokumentasi
 
-- [Kontribusi](CONTRIBUTING.md) dan [branch protection](governance/BRANCH_PROTECTION.md)
+- [Keputusan arsitektur](adr/) dan [operasional](operations/)
+- [Kontribusi](CONTRIBUTING.md) dan [branch protection](operations/BRANCH_PROTECTION.md)
 - [Requirement dan fase pengembangan](PRD/README.md)
 - [Produk invoicing](invoicing/README.md)
 - [Web](apps/web/README.md), [API](apps/api/README.md), dan [shared packages](packages/README.md)

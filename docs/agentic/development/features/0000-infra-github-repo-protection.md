@@ -23,7 +23,7 @@ Boundary Development untuk task 000001-infra-github-repo-protection (epic 0000).
 
 ### Docs / lainnya
 
-- `docs/governance/BRANCH_PROTECTION.md`
+- `docs/operations/BRANCH_PROTECTION.md`
 - `scripts/apply-branch-protection.sh`
 
 ## Task plan yang memakai feature ini
