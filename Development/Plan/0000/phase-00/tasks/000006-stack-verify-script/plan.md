@@ -27,7 +27,25 @@ stack verify script (PRD epic 0000).
 
 ## Development
 
-| Status | `pending` |
+| Field | Nilai |
+|-------|-------|
+| Status | `complete` |
+| Laporan | Development/Result/0000/phase-00/development/000006-stack-verify-script.md |
+| Commit/PR | baseline sudah di tree · tidak ada commit baru |
+| Selesai | 2026-10-01T16:01:05+07:00 |
+
+### Catatan implementasi
+
+`scripts/verify.ts` menjalankan typecheck → test:domain → test web → css:build → design:css → gate dan `process.exit` pada langkah pertama yang gagal (PS-43). `"verify"` ada di root `package.json`. `npm run verify` di Node v24.3.0 exit 0.
+
+## QA
+
+| Field | Nilai |
+|-------|-------|
+| Status | `pass` |
+| Laporan | Development/Result/0000/phase-00/qa/000006-stack-verify-script.md |
+| Fix dalam session | tidak |
+| Selesai | 2026-10-01T16:01:45+07:00 |
 
 ## Skill yang digunakan
 

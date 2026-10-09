@@ -23,13 +23,14 @@ Boundary Development untuk task 000003-infra-ci-verify-pipeline (epic 0000).
 
 ### Docs / lainnya
 
-- (isi dari plan / PRD Files)
+- `.github/workflows/ci.yml`
+- `.github/BRANCH_PROTECTION.md`
 
 ## Task plan yang memakai feature ini
 
 | Task ID | Phase | Status dev |
 |---------|-------|------------|
-| 000003-infra-ci-verify-pipeline | 0000-P1 | `pending` |
+| 000003-infra-ci-verify-pipeline | 0000-P1 | `complete` |
 
 ## Out of scope
 

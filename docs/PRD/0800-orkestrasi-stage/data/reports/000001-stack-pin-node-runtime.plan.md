@@ -40,6 +40,15 @@ stack pin node runtime (PRD epic 0000).
 
 Pin Node `24.3.0` / `engines.node` `>=24.3.0` dan `engine-strict=true` sudah ada di baseline. `nvm install && nvm use` memakai `.nvmrc`. Node 20 → `EBADENGINE`; Node `v24.3.0` → `npm install --dry-run` exit 0.
 
+## QA
+
+| Field | Nilai |
+|-------|-------|
+| Status | `pass` |
+| Laporan | Development/Result/0000/phase-00/qa/000001-stack-pin-node-runtime.md |
+| Fix dalam session | tidak |
+| Selesai | 2026-10-01T15:29:00+07:00 |
+
 ## Skill yang digunakan
 
 | Skill | File plan |

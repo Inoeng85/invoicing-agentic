@@ -27,11 +27,25 @@ keempat script jalan dari `Agentic/`.
 
 ## Development
 
-| Status | `pending` |
+| Field | Nilai |
+|-------|-------|
+| Status | `complete` |
+| Laporan | Development/Result/0000/phase-00/development/000002-db-root-scripts.md |
+| Commit/PR | baseline sudah di tree · tidak ada commit baru |
+| Selesai | 2026-10-01T15:56:38+07:00 |
+
+### Catatan implementasi
+
+Empat script root sudah meneruskan ke `@invoicing/database`: `db:migrate` (`prisma migrate dev`), `db:reset` (`prisma migrate reset --force`), `db:seed`, `db:studio`. CI non-interaktif memakai `db:migrate:deploy` (`prisma migrate deploy`). `db:reset` tidak dijalankan karena menghapus `dev.db` yang sedang dipakai server dev.
 
 ## QA
 
-| Status | `pending` |
+| Field | Nilai |
+|-------|-------|
+| Status | `pass` |
+| Laporan | Development/Result/0000/phase-00/qa/000002-db-root-scripts.md |
+| Fix dalam session | tidak |
+| Selesai | 2026-10-01T15:58:38+07:00 |
 
 ## Skill yang digunakan
 

@@ -27,7 +27,25 @@ push langsung ke `main` ditolak.
 
 ## Development
 
-| Status | `pending` |
+| Field | Nilai |
+|-------|-------|
+| Status | `complete` |
+| Laporan | Development/Result/0000/phase-01/development/000001-infra-github-repo-protection.md |
+| Commit/PR | pengaturan GitHub · tidak ada commit |
+| Selesai | 2026-10-01T16:05:29+07:00 |
+
+### Catatan implementasi
+
+Protection `main`: PR wajib, admin tidak boleh bypass, force push dilarang, hanya squash. Check CI `verify` ditunda sampai workflow hijau. Approval count 0 untuk solo.
+
+## QA
+
+| Field | Nilai |
+|-------|-------|
+| Status | `pass` |
+| Laporan | Development/Result/0000/phase-01/qa/000001-infra-github-repo-protection.md |
+| Fix dalam session | tidak |
+| Selesai | 2026-10-01T16:06:23+07:00 |
 
 ## Skill yang digunakan
 

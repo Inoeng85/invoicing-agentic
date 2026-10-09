@@ -23,13 +23,14 @@ Boundary Development untuk task 000002-db-root-scripts (epic 0000).
 
 ### Docs / lainnya
 
-- (isi dari plan / PRD Files)
+- `package.json` (script root `db:migrate`, `db:migrate:deploy`, `db:reset`, `db:seed`, `db:studio`)
+- `packages/database/package.json`
 
 ## Task plan yang memakai feature ini
 
 | Task ID | Phase | Status dev |
 |---------|-------|------------|
-| 000002-db-root-scripts | 0000-P0 | `pending` |
+| 000002-db-root-scripts | 0000-P0 | `complete` |
 
 ## Out of scope
 

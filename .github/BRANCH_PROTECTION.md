@@ -2,6 +2,17 @@
 
 **Remote:** https://github.com/Inoeng85/invoicing-agentic
 
+## Terpasang 2026-10-01
+
+Rule `main` aktif tanpa required status check (CI terakhir masih gagal di startup, jadi check `verify` menunggu 000003-infra hijau):
+
+- Pull request wajib (`required_approving_review_count=0` agar solo tetap bisa merge)
+- `enforce_admins=true` — push langsung ke `main`, termasuk admin, ditolak
+- Force push dan penghapusan branch dilarang
+- Merge default: squash saja (`allow_merge_commit` dan `allow_rebase_merge` mati)
+
+Setelah CI `verify` hijau sekali, jalankan script di bawah untuk menambah required check.
+
 ## Prasyarat akun (verifikasi 2026-09-30)
 
 Repo **public** (2026-09-30). Jika billing Actions terkunci, perbaiki billing dulu. Repo **private** + **GitHub Free** dulu mengembalikan **403** — *Upgrade to GitHub Pro or make this repository public*. Tanpa salah satu opsi ini, rule `main` + required check **tidak bisa** dipasang via API/UI penuh.

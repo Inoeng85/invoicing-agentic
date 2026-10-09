@@ -21,7 +21,7 @@ Prasyarat: **Node 24.3+** (`nvm use`).
 ```sh
 npm run setup
 npm run dev       # web + API
-npm run verify    # typecheck, tests, gate G0–G6
+npm run verify    # typecheck, tests, css, gate G0–G7
 ```
 
 Runbook: [STACK-INTEGRATION.md](docs/invoicing/engineering/STACK-INTEGRATION.md)

@@ -29,7 +29,25 @@ stack repo hygiene (PRD epic 0000).
 
 ## Development
 
-| Status | `pending` |
+| Field | Nilai |
+|-------|-------|
+| Status | `complete` |
+| Laporan | Development/Result/0000/phase-00/development/000003-stack-repo-hygiene.md |
+| Commit/PR | tidak ada commit baru · baseline `4bbc062` · remote `origin` sudah ada · tidak di-push |
+| Selesai | 2026-10-01T15:33:37+07:00 |
+
+### Catatan implementasi
+
+`.gitignore` sudah memuat `.DS_Store`, `*.db`, `*.db-journal`, `.env`, `.env.*`, `!.env.example`, dan artefak CSS build. `.DS_Store` lokal dihapus. `git ls-files` hanya memuat `.env.example`. Dev server yang sudah jalan: web 302, API live 200. Tidak commit/push.
+
+## QA
+
+| Field | Nilai |
+|-------|-------|
+| Status | `pass` |
+| Laporan | Development/Result/0000/phase-00/qa/000003-stack-repo-hygiene.md |
+| Fix dalam session | tidak |
+| Selesai | 2026-10-01T15:34:34+07:00 |
 
 ## Skill yang digunakan
 

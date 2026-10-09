@@ -28,7 +28,25 @@ di folder hasil clone bersih, `npm run setup && npm run dev` → web `:44100` da
 
 ## Development
 
-| Status | `pending` |
+| Field | Nilai |
+|-------|-------|
+| Status | `complete` |
+| Laporan | Development/Result/0000/phase-00/development/000005-stack-setup-script.md |
+| Commit/PR | baseline sudah di tree · tidak ada commit baru |
+| Selesai | 2026-10-01T15:59:26+07:00 |
+
+### Catatan implementasi
+
+`scripts/setup.ts` dan `"setup"` di root `package.json` sudah ada. `npm run setup` exit 0, tidak menimpa `.env` yang sudah ada (ukuran file tetap), lalu `db:migrate:deploy` dan `db:seed`. Web `:44100` sudah 302 dan API live `:44101` 200, jadi `npm run dev` tidak dijalankan lagi.
+
+## QA
+
+| Field | Nilai |
+|-------|-------|
+| Status | `pass` |
+| Laporan | Development/Result/0000/phase-00/qa/000005-stack-setup-script.md |
+| Fix dalam session | tidak |
+| Selesai | 2026-10-01T16:00:05+07:00 |
 
 ## Skill yang digunakan
 

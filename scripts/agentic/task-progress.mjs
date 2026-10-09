@@ -76,6 +76,17 @@ export function readPhaseAuditReportOutcome(root, epic, phaseOrdinal) {
   return null
 }
 
+/** Laporan audit satu task: Development/Result/{epic}/phase-{nn}/audit/{taskId}.md */
+export function readTaskAuditOutcome(root, epic, phaseOrdinal, taskId) {
+  const reportPath = path.join(taskResultBase(root, epic, phaseOrdinal), 'audit', `${taskId}.md`)
+  if (!fs.existsSync(reportPath)) return null
+  const text = fs.readFileSync(reportPath, 'utf8')
+  if (/\*\*Hasil\*\*[^\n]*`pass`/i.test(text) || /Hasil:\s*pass/i.test(text)) return 'pass'
+  if (/\*\*Hasil\*\*[^\n]*`needs_clarify`/i.test(text)) return 'needs_clarify'
+  if (/\*\*Hasil\*\*[^\n]*`fail`/i.test(text) || /Hasil:\s*fail/i.test(text)) return 'fail'
+  return null
+}
+
 export function resolvePhaseAuditStatus(root, epic, phaseOrdinal, hasAuditReport) {
   const fromPlan = readPhaseAuditPlanStatus(root, epic, phaseOrdinal)
   if (fromPlan !== 'pending' && fromPlan !== 'in_progress') return fromPlan
@@ -195,14 +206,17 @@ export function inferColumnFromIntakeQueue(phaseRow, artifacts) {
 
 /**
  * @param {ReturnType<typeof readTaskArtifacts>} artifacts
- * @param {{ phaseReleased?: boolean, phaseBlocked?: boolean, auditReady?: boolean, qaStatus?: string, auditPhaseStatus?: string, phaseRow?: object }} ctx
+ * @param {{ phaseReleased?: boolean, phaseBlocked?: boolean, auditReady?: boolean, qaStatus?: string, auditPhaseStatus?: string, taskAuditStatus?: string | null, phaseRow?: object }} ctx
  */
 export function inferTaskColumn(artifacts, ctx = {}) {
   const qa = ctx.qaStatus || ctx.qaOutcome
   const audit = ctx.auditPhaseStatus || 'pending'
   if (ctx.phaseReleased) return 'done'
   if (ctx.phaseBlocked) return 'intake'
-  if (qa === 'needs_clarify' || audit === 'needs_clarify') return 'human-clarify'
+  if (qa === 'needs_clarify' || audit === 'needs_clarify' || ctx.taskAuditStatus === 'needs_clarify') {
+    return 'human-clarify'
+  }
+  if (ctx.taskAuditStatus === 'pass' && qa === 'pass') return 'done'
   if (audit === 'pass') return 'human-qa'
   if (qa === 'pass') return 'audit'
   if (qa === 'fail' || qa === 'in_progress' || qa === 'pending') {

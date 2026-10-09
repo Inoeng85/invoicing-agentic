@@ -29,7 +29,25 @@ hanya ada satu lockfile · gate G0–G5 tetap Pass.
 
 ## Development
 
-| Status | `pending` |
+| Field | Nilai |
+|-------|-------|
+| Status | `complete` |
+| Laporan | Development/Result/0000/phase-00/development/000002-stack-single-npm-lockfile.md |
+| Commit/PR | baseline (`package-lock.json` @ `ea6a164`) |
+| Selesai | 2026-10-01T15:31:45+07:00 |
+
+### Catatan implementasi
+
+Satu `package-lock.json` di root sudah ada; tidak ada `yarn.lock` atau lockfile workspace. `node_modules` tidak dihapus (daemon jalan). Versi kunci: remix `3.0.0-rc.4`, prisma / `@prisma/client` `6.19.3`, tailwindcss `4.3.3`, pdf-lib `1.17.1`. `test:domain`, `typecheck`, dan `gate` (G0–G7) exit 0.
+
+## QA
+
+| Field | Nilai |
+|-------|-------|
+| Status | `pass` |
+| Laporan | Development/Result/0000/phase-00/qa/000002-stack-single-npm-lockfile.md |
+| Fix dalam session | tidak |
+| Selesai | 2026-10-01T15:32:25+07:00 |
 
 ## Skill yang digunakan
 

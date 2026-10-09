@@ -39,7 +39,7 @@ node -v        # v24.x
 Dari root `Agentic/` setelah clone:
 
 ```sh
-npm run setup    # Node check, install, .env dari .env.example, migrate, seed no-op
+npm run setup    # Node check, install, .env dari .env.example bila belum ada, migrate, seed idempoten
 npm run dev      # web :44100 + api :44101
 ```
 
@@ -62,7 +62,7 @@ Atau terpisah: `npm run dev:web` · `npm run dev:api`
 npm run verify
 ```
 
-Urutan: `typecheck` → `test:domain` → `test` (web) → `css:build` → `design:css` → `gate` (G0–G5).
+Urutan: `typecheck` → `test:domain` → `test` (web) → `css:build` → `design:css` → `gate` (G0–G7).
 
 Langkah individual masih tersedia: `npm run test:domain`, `npm run typecheck`, `npm run gate`.
 
