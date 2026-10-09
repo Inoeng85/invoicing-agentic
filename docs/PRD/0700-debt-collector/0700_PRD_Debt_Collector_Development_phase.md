@@ -1458,7 +1458,7 @@ git add apps/api/src/routes.ts apps/api/src/router.ts apps/api/src/controllers/c
 git commit -m "feat(api): expose collector and invoice collection endpoints with gate phase 7"
 ```
 
-(Jangan commit `.gate/` — hasil run lokal.)
+(Jangan commit `docs/reports/gates/` — hasil run lokal.)
 
 ---
 
@@ -2453,7 +2453,7 @@ git commit -m "feat(web): add collection panel on invoice detail and collector f
 - [ ] **Step 1: PRD index** — tambahkan baris di tabel `docs/PRD/README.md` setelah baris 0600:
 
 ```markdown
-| 12 | **0700** | [0700-debt-collector](./0700-debt-collector/) | G7 | FR-14, BR-07–BR-09 (post-MVP) | 0501 |
+| 12 | **0700** | [0700-debt-collector](.) | G7 | FR-14, BR-07–BR-09 (post-MVP) | 0501 |
 ```
 
 - [ ] **Step 2: Scope lock & BRD** — di `docs/invoicing/brd/MVP-SCOPE-LOCK.md`, tambahkan section baru di akhir:
@@ -2477,7 +2477,7 @@ Kolektor **bukan user** — non-goal multi-user tetap berlaku.
 Di `docs/invoicing/BRD.md`, setelah baris `Should/Could/Won't: ...` (:59), tambahkan:
 
 ```markdown
-Post-MVP: FR-14 debt collector — [PRD-0700](../PRD/0700-debt-collector/0700_PRD_Debt_Collector.md).
+Post-MVP: FR-14 debt collector — [PRD-0700](0700_PRD_Debt_Collector.md).
 ```
 
 - [ ] **Step 3: API.md** — tambahkan section baru sebelum section endpoint publik:
@@ -2506,7 +2506,7 @@ Sekalian perbaiki drift: baris `POST /api/v1/invoices/:id/cancel` ubah `**Belum*
 - [ ] **Step 5: Legal checklist** — tambahkan baris di `docs/invoicing/legal/LEGAL-REVIEW-CHECKLIST.md`:
 
 ```markdown
-- [ ] **FR-14 debt collector:** freelancer membagikan data debitur (klien) ke kolektor pihak ketiga di luar aplikasi — tinjau UU PDP (freelancer sebagai pengendali data) dan kebutuhan klausul di [TERMS.md](./TERMS.md) / [PRIVACY.md](./PRIVACY.md).
+- [ ] **FR-14 debt collector:** freelancer membagikan data debitur (klien) ke kolektor pihak ketiga di luar aplikasi — tinjau UU PDP (freelancer sebagai pengendali data) dan kebutuhan klausul di [TERMS.md](../../invoicing/legal/TERMS.md) / [PRIVACY.md](../../invoicing/legal/PRIVACY.md).
 ```
 
 - [ ] **Step 6: Status spec** — di `0700_PRD_Debt_Collector.md`, ubah `| Status | Draft spec — menunggu review |` menjadi `| Status | Implemented |` dan `| Development phase | *(dibuat setelah spec disetujui)* |` menjadi `| Development phase | [0700_PRD_Debt_Collector_Development_phase.md](./0700_PRD_Debt_Collector_Development_phase.md) |`.

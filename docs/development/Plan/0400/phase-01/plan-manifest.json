@@ -1,0 +1,32 @@
+{
+  "phaseId": "0400-P1",
+  "updatedAt": "2026-10-01T07:15:43.119Z",
+  "tasks": [
+    {
+      "taskId": "040001-domain-pdf-layout-data",
+      "planPath": "docs/development/Plan/0400/phase-01/tasks/040001-domain-pdf-layout-data/plan.md",
+      "status": "defined"
+    },
+    {
+      "taskId": "040002-be-pdf-generate",
+      "planPath": "docs/development/Plan/0400/phase-01/tasks/040002-be-pdf-generate/plan.md",
+      "status": "defined"
+    },
+    {
+      "taskId": "040003-be-pdf-download-route",
+      "planPath": "docs/development/Plan/0400/phase-01/tasks/040003-be-pdf-download-route/plan.md",
+      "status": "defined"
+    },
+    {
+      "taskId": "040004-fe-download-button",
+      "planPath": "docs/development/Plan/0400/phase-01/tasks/040004-fe-download-button/plan.md",
+      "status": "defined"
+    },
+    {
+      "taskId": "040005-infra-gate-pdf",
+      "planPath": "docs/development/Plan/0400/phase-01/tasks/040005-infra-gate-pdf/plan.md",
+      "status": "defined"
+    }
+  ],
+  "allDefined": true
+}

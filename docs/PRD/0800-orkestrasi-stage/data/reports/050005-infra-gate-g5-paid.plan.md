@@ -19,7 +19,7 @@ npm run typecheck && npm run test:domain && npm test
 
 | Feature ID | Dokumen |
 |------------|---------|
-| `0500-infra-gate-g5-paid` | [agentic/development/features/0500-infra-gate-g5-paid.md](../../../../../../agentic/development/features/0500-infra-gate-g5-paid.md) |
+| `0500-infra-gate-g5-paid` | [docs/agentic/development/features/0500-infra-gate-g5-paid.md](../../../../agentic/development/features/0500-infra-gate-g5-paid.md) |
 
 ## Development
 
@@ -29,8 +29,8 @@ npm run typecheck && npm run test:domain && npm test
 
 | Skill | File plan |
 |-------|-----------|
-| Infra | [skills/infra.md](./skills/infra.md) |
-| Docs | [skills/docs.md](./skills/docs.md) |
+| Infra | [skills/infra.md](../../../../development/Plan/0500/phase-01/tasks/050005-infra-gate-g5-paid/skills/infra.md) |
+| Docs | [skills/docs.md](../../../../development/Plan/0500/phase-01/tasks/050005-infra-gate-g5-paid/skills/docs.md) |
 
 ## Acuan PRD
 

@@ -24,7 +24,7 @@ simulasi insiden di staging diselesaikan hanya dengan runbook.
 
 | Feature ID | Dokumen |
 |------------|---------|
-| `0000-docs-ops-runbook` | [agentic/development/features/0000-docs-ops-runbook.md](../../../../../../agentic/development/features/0000-docs-ops-runbook.md) |
+| `0000-docs-ops-runbook` | [docs/agentic/development/features/0000-docs-ops-runbook.md](../../../../agentic/development/features/0000-docs-ops-runbook.md) |
 
 ## Development
 
@@ -34,7 +34,7 @@ simulasi insiden di staging diselesaikan hanya dengan runbook.
 
 | Skill | File plan |
 |-------|-----------|
-| Docs | [skills/docs.md](./skills/docs.md) |
+| Docs | [skills/docs.md](../../../../development/Plan/0000/phase-03/tasks/000004-docs-ops-runbook/skills/docs.md) |
 
 ## Acuan PRD
 

@@ -1,0 +1,42 @@
+{
+  "phaseId": "0100-P1",
+  "updatedAt": "2026-10-01T07:15:43.109Z",
+  "tasks": [
+    {
+      "taskId": "010001-stack-workspace-packages",
+      "planPath": "docs/development/Plan/0100/phase-01/tasks/010001-stack-workspace-packages/plan.md",
+      "status": "defined"
+    },
+    {
+      "taskId": "010002-db-prisma-schema-baseline",
+      "planPath": "docs/development/Plan/0100/phase-01/tasks/010002-db-prisma-schema-baseline/plan.md",
+      "status": "defined"
+    },
+    {
+      "taskId": "010003-db-migrate-scripts",
+      "planPath": "docs/development/Plan/0100/phase-01/tasks/010003-db-migrate-scripts/plan.md",
+      "status": "defined"
+    },
+    {
+      "taskId": "010004-be-health-live",
+      "planPath": "docs/development/Plan/0100/phase-01/tasks/010004-be-health-live/plan.md",
+      "status": "defined"
+    },
+    {
+      "taskId": "010005-be-health-ready",
+      "planPath": "docs/development/Plan/0100/phase-01/tasks/010005-be-health-ready/plan.md",
+      "status": "defined"
+    },
+    {
+      "taskId": "010006-domain-system-status",
+      "planPath": "docs/development/Plan/0100/phase-01/tasks/010006-domain-system-status/plan.md",
+      "status": "defined"
+    },
+    {
+      "taskId": "010007-infra-gate-phase0",
+      "planPath": "docs/development/Plan/0100/phase-01/tasks/010007-infra-gate-phase0/plan.md",
+      "status": "defined"
+    }
+  ],
+  "allDefined": true
+}

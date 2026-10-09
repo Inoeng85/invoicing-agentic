@@ -19,7 +19,7 @@ npm run release:check
 
 | Feature ID | Dokumen |
 |------------|---------|
-| `0600-product-gap-g05-legal-copy` | [agentic/development/features/0600-product-gap-g05-legal-copy.md](../../../../../../agentic/development/features/0600-product-gap-g05-legal-copy.md) |
+| `0600-product-gap-g05-legal-copy` | [docs/agentic/development/features/0600-product-gap-g05-legal-copy.md](../../../../agentic/development/features/0600-product-gap-g05-legal-copy.md) |
 
 ## Development
 
@@ -29,7 +29,7 @@ npm run release:check
 
 | Skill | File plan |
 |-------|-----------|
-| Docs | [skills/docs.md](./skills/docs.md) |
+| Docs | [skills/docs.md](../../../../development/Plan/0600/phase-01/tasks/060004-product-gap-g05-legal-copy/skills/docs.md) |
 
 ## Acuan PRD
 

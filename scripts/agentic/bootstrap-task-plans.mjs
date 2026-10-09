@@ -13,7 +13,7 @@ import { phaseDirName, taskPlanBase } from './task-progress.mjs'
 
 const ROOT = path.join(path.dirname(fileURLToPath(import.meta.url)), '../..')
 const CATALOG_TASKS = path.join(ROOT, '.agentic/catalog/tasks.json')
-const FEATURE_DIR = path.join(ROOT, 'agentic/development/features')
+const FEATURE_DIR = path.join(ROOT, 'docs/agentic/development/features')
 
 const SKILL_TEMPLATES = {
   Backend: (task, section) => skillBody('Backend', task, section, 'Ubah kode backend/API sesuai Files PRD; jalankan test terkait.'),
@@ -222,7 +222,7 @@ ${tujuan}
 
 | Feature ID | Dokumen |
 |------------|---------|
-| \`${featureId}\` | [agentic/development/features/${featureId}.md](${featureRel}) |
+| \`${featureId}\` | [docs/agentic/development/features/${featureId}.md](${featureRel}) |
 
 ## Development
 

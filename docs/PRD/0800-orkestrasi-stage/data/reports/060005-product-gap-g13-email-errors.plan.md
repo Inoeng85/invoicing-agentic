@@ -19,7 +19,7 @@ npm run release:check
 
 | Feature ID | Dokumen |
 |------------|---------|
-| `0600-product-gap-g13-email-errors` | [agentic/development/features/0600-product-gap-g13-email-errors.md](../../../../../../agentic/development/features/0600-product-gap-g13-email-errors.md) |
+| `0600-product-gap-g13-email-errors` | [docs/agentic/development/features/0600-product-gap-g13-email-errors.md](../../../../agentic/development/features/0600-product-gap-g13-email-errors.md) |
 
 ## Development
 
@@ -29,7 +29,7 @@ npm run release:check
 
 | Skill | File plan |
 |-------|-----------|
-| Docs | [skills/docs.md](./skills/docs.md) |
+| Docs | [skills/docs.md](../../../../development/Plan/0600/phase-01/tasks/060005-product-gap-g13-email-errors/skills/docs.md) |
 
 ## Acuan PRD
 

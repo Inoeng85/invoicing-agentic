@@ -23,7 +23,7 @@ alert uji (matikan DB staging) terkirim ke channel.
 
 | Feature ID | Dokumen |
 |------------|---------|
-| `0000-infra-alerting-log-retention` | [agentic/development/features/0000-infra-alerting-log-retention.md](../../../../../../agentic/development/features/0000-infra-alerting-log-retention.md) |
+| `0000-infra-alerting-log-retention` | [docs/agentic/development/features/0000-infra-alerting-log-retention.md](../../../../agentic/development/features/0000-infra-alerting-log-retention.md) |
 
 ## Development
 
@@ -33,8 +33,8 @@ alert uji (matikan DB staging) terkirim ke channel.
 
 | Skill | File plan |
 |-------|-----------|
-| Infra | [skills/infra.md](./skills/infra.md) |
-| Docs | [skills/docs.md](./skills/docs.md) |
+| Infra | [skills/infra.md](../../../../development/Plan/0000/phase-03/tasks/000014-infra-alerting-log-retention/skills/infra.md) |
+| Docs | [skills/docs.md](../../../../development/Plan/0000/phase-03/tasks/000014-infra-alerting-log-retention/skills/docs.md) |
 
 ## Acuan PRD
 

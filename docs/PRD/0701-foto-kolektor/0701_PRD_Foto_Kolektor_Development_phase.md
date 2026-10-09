@@ -97,7 +97,7 @@ export function detectImageType(bytes: Uint8Array): CollectorPhotoMimeType | nul
 
 ### Task 5: Docs
 
-- [ ] `docs/PRD/README.md`: row `| 13 | **0701** | [0701-foto-kolektor](./0701-foto-kolektor/) | G7 | FR-14h foto kolektor | 0700 |`.
+- [ ] `docs/PRD/README.md`: row `| 13 | **0701** | [0701-foto-kolektor](.) | G7 | FR-14h foto kolektor | 0700 |`.
 - [ ] Spec status → `Implemented`.
 - [ ] `docs/invoicing/legal/LEGAL-REVIEW-CHECKLIST.md` L-6: tambahkan "foto kolektor (data pribadi, disimpan di DB)".
 - [ ] Full verify: `npm run typecheck && npm run test:domain && npm test && npm run gate` → all pass. Commit `docs(prd): document collector photo (PRD-0701)`.

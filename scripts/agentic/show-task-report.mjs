@@ -21,7 +21,7 @@ function parseArgs(argv) {
 
 function resolvePhaseOrdinal(root, taskId, epic, explicit) {
   if (explicit != null && !Number.isNaN(explicit)) return explicit
-  const qPath = path.join(root, 'Development/Plan/intake-queue.json')
+  const qPath = path.join(root, 'docs/development/Plan/intake-queue.json')
   if (fs.existsSync(qPath)) {
     const q = JSON.parse(fs.readFileSync(qPath, 'utf8'))
     for (const ph of q.phases || []) {

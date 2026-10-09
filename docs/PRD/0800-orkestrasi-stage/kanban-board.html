@@ -93,7 +93,7 @@
           <div class="report-actions phase-audit-actions" id="phase-audit-actions"></div>
           <ul class="phase-task-list" id="phase-task-list"></ul>
         </section>
-        <p class="checklist-teaser"><a href="task-checklist.html">Checklist task</a> — running, blocker, dan filter 138 task (halaman dedicated).</p>
+        <p class="checklist-teaser"><a href="task-checklist.html">Checklist task</a> — running, blocker, dan filter <span id="checklist-task-count">semua</span> task (halaman dedicated).</p>
         <section class="intake-trigger-panel" aria-labelledby="intake-trigger-title">
           <div class="intake-trigger-head">
             <h2 id="intake-trigger-title">Trigger task (Intake → Plan → Development)</h2>
@@ -117,23 +117,24 @@
               <button type="button" class="button" id="reload-queue" title="Muat ulang kanban-board.json">Muat ulang</button>
               <button type="button" class="button" id="reset-pins" title="Hapus posisi drag manual">Sync repo</button>
               <label class="sr-only" for="view-mode">Tampilan</label>
-              <select class="filter-select" id="view-mode"><option value="tasks" selected>Task (138)</option><option value="phases">Phase</option></select>
+              <select class="filter-select" id="view-mode"><option value="tasks" selected>Task</option><option value="phases">Phase</option></select>
               <label class="sr-only" for="epic-filter">Epic</label>
               <select class="filter-select" id="epic-filter"><option value="all">Semua epic</option></select>
               <label class="search-wrap"><svg aria-hidden="true"><use href="#icon-search"/></svg><span class="sr-only">Cari task</span><input type="search" id="search" placeholder="Cari task, epic, ID…" autocomplete="off"></label>
               <label class="sr-only" for="actor-filter">Filter penanggung jawab</label>
               <select class="filter-select" id="actor-filter"><option value="all">Semua pelaku</option><option value="agent">Agent</option><option value="human">Manusia</option></select>
               <label class="filter-check"><input type="checkbox" id="agentic-only"> Agentic-ready</label>
+              <label class="filter-check"><input type="checkbox" id="compact-mode"> Ringkas</label>
             </div>
           </div>
           <p class="sr-only" id="filter-status" role="status" aria-live="polite"></p>
-          <p class="no-results" id="queue-load-status" role="status">Memuat Development/Plan/intake-queue.json…</p>
+          <p class="no-results" id="queue-load-status" role="status">Memuat docs/development/Plan/intake-queue.json…</p>
           <p class="no-results" id="no-results" hidden>Tidak ada phase yang cocok. Ubah pencarian atau filter pelaku.</p>
           <div class="board-wrap" tabindex="0" role="region" aria-label="Kolom kanban, geser horizontal untuk melihat semua stage">
             <div class="board" id="board"></div>
           </div>
           <div class="board-footer">
-            <p class="board-note"><svg aria-hidden="true"><use href="#icon-info"/></svg>Geser kartu atau buka detail untuk memindahkan stage.</p>
+            <p class="board-note"><svg aria-hidden="true"><use href="#icon-info"/></svg>Geser kartu atau buka detail untuk memindahkan stage. Kartu berlabel Manual tidak mengikuti repo — klik labelnya untuk melepas.</p>
             <p>Kolom task dari artefak Plan/Result · npm run agentic:kanban-data · agentic:kanban-watch untuk rebuild lokal</p>
           </div>
         </section>
@@ -169,6 +170,6 @@
     </div>
   </dialog>
   <p class="toast" id="toast" role="status" aria-live="polite"></p>
-  <script src="kanban-app.js?v=20261001-page" defer></script>
+  <script src="kanban-app.js?v=20261001-ui" defer></script>
 </body>
 </html>

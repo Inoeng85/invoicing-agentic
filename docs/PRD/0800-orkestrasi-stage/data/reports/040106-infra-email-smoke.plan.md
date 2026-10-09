@@ -19,7 +19,7 @@ npm run email:smoke
 
 | Feature ID | Dokumen |
 |------------|---------|
-| `0401-infra-email-smoke` | [agentic/development/features/0401-infra-email-smoke.md](../../../../../../agentic/development/features/0401-infra-email-smoke.md) |
+| `0401-infra-email-smoke` | [docs/agentic/development/features/0401-infra-email-smoke.md](../../../../agentic/development/features/0401-infra-email-smoke.md) |
 
 ## Development
 
@@ -29,8 +29,8 @@ npm run email:smoke
 
 | Skill | File plan |
 |-------|-----------|
-| Infra | [skills/infra.md](./skills/infra.md) |
-| Docs | [skills/docs.md](./skills/docs.md) |
+| Infra | [skills/infra.md](../../../../development/Plan/0401/phase-01/tasks/040106-infra-email-smoke/skills/infra.md) |
+| Docs | [skills/docs.md](../../../../development/Plan/0401/phase-01/tasks/040106-infra-email-smoke/skills/docs.md) |
 
 ## Acuan PRD
 

@@ -19,7 +19,7 @@ npm run typecheck && npm run test:domain && npm test
 
 | Feature ID | Dokumen |
 |------------|---------|
-| `0501-fe-dashboard` | [agentic/development/features/0501-fe-dashboard.md](../../../../../../agentic/development/features/0501-fe-dashboard.md) |
+| `0501-fe-dashboard` | [docs/agentic/development/features/0501-fe-dashboard.md](../../../../agentic/development/features/0501-fe-dashboard.md) |
 
 ## Development
 
@@ -33,8 +33,8 @@ npm run typecheck && npm run test:domain && npm test
 
 | Skill | File plan |
 |-------|-----------|
-| Frontend | [skills/frontend.md](./skills/frontend.md) |
-| QA | [skills/qa.md](./skills/qa.md) |
+| Frontend | [skills/frontend.md](../../../../development/Plan/0501/phase-01/tasks/050104-fe-dashboard/skills/frontend.md) |
+| QA | [skills/qa.md](../../../../development/Plan/0501/phase-01/tasks/050104-fe-dashboard/skills/qa.md) |
 
 ## Acuan PRD
 

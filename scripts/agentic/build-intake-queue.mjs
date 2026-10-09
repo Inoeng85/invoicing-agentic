@@ -1,6 +1,6 @@
 #!/usr/bin/env node
 /**
- * Build Development/Plan/intake-queue.json from catalog + intake-scope.json + phase heuristics.
+ * Build docs/development/Plan/intake-queue.json from catalog + intake-scope.json + phase heuristics.
  */
 import fs from 'node:fs'
 import path from 'node:path'
@@ -11,13 +11,13 @@ import { discoverPhasesForEpic } from './phase-parse.mjs'
 const ROOT = path.join(path.dirname(fileURLToPath(import.meta.url)), '../..')
 const CATALOG_INDEX = path.join(ROOT, '.agentic/catalog/index.json')
 const CATALOG_TASKS = path.join(ROOT, '.agentic/catalog/tasks.json')
-const DEFAULT_SCOPE = path.join(ROOT, 'Development/Plan/intake-scope.json')
-const OUT_QUEUE = path.join(ROOT, 'Development/Plan/intake-queue.json')
+const DEFAULT_SCOPE = path.join(ROOT, 'docs/development/Plan/intake-scope.json')
+const OUT_QUEUE = path.join(ROOT, 'docs/development/Plan/intake-queue.json')
 const KANBAN_MIRROR = path.join(
   ROOT,
   'docs/PRD/0800-orkestrasi-stage/data/intake-queue.json',
 )
-const PLAN_ROOT = path.join(ROOT, 'Development/Plan')
+const PLAN_ROOT = path.join(ROOT, 'docs/development/Plan')
 
 function rel(p) {
   return path.relative(ROOT, p).split(path.sep).join('/')
@@ -33,7 +33,7 @@ function parseArgs(argv) {
     else if (argv[i] === '--help' || argv[i] === '-h') {
       console.log(`Usage: node scripts/agentic/build-intake-queue.mjs [options]
 
-  --scope <file>   Scope JSON (default: Development/Plan/intake-scope.json)
+  --scope <file>   Scope JSON (default: docs/development/Plan/intake-scope.json)
   --merge          Keep planStatus/intakeStatus/kanbanColumn/released from existing queue
   --catalog        Run build-catalog.mjs first
   --all            Semua epic dari catalog (abaikan daftar epics di scope)

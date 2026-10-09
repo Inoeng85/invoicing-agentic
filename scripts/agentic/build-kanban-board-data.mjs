@@ -19,6 +19,7 @@ import {
   phaseArtifactPaths,
   phaseQaGate,
   resolvePhaseAuditStatus,
+  readTaskAuditOutcome,
   taskArtifactPaths,
   taskProgressPercent,
 } from './task-progress.mjs'
@@ -41,18 +42,28 @@ function resolveQaStatus(root, epic, phaseOrdinal, taskId, hasQaReport) {
 }
 
 const ROOT = path.join(path.dirname(fileURLToPath(import.meta.url)), '../..')
-const QUEUE_PATH = path.join(ROOT, 'Development/Plan/intake-queue.json')
+const QUEUE_PATH = path.join(ROOT, 'docs/development/Plan/intake-queue.json')
 const CATALOG_TASKS = path.join(ROOT, '.agentic/catalog/tasks.json')
 const CATALOG_INDEX = path.join(ROOT, '.agentic/catalog/index.json')
 const OUT_BOARD = path.join(ROOT, 'docs/PRD/0800-orkestrasi-stage/data/kanban-board.json')
-const OUT_MIRROR = path.join(ROOT, 'Development/Plan/kanban-board.json')
+const OUT_MIRROR = path.join(ROOT, 'docs/development/Plan/kanban-board.json')
 const REPORTS_MIRROR_DIR = path.join(ROOT, 'docs/PRD/0800-orkestrasi-stage/data/reports')
 
 function mirrorReportForKanban(repoRelativePath, fileName) {
   const src = path.join(ROOT, repoRelativePath)
   if (!fs.existsSync(src)) return null
   fs.mkdirSync(REPORTS_MIRROR_DIR, { recursive: true })
-  fs.copyFileSync(src, path.join(REPORTS_MIRROR_DIR, fileName))
+  const markdown = fs.readFileSync(src, 'utf8').replace(
+    /(\]\()([^\s)]+)(\))/g,
+    (match, open, href, close) => {
+      if (/^(?:[a-z][a-z\d+.-]*:|[/#])/i.test(href)) return match
+      const [target, ...fragment] = href.split('#')
+      const absolute = path.resolve(path.dirname(src), target)
+      const relative = path.relative(REPORTS_MIRROR_DIR, absolute).split(path.sep).join('/')
+      return `${open}${relative}${fragment.length ? `#${fragment.join('#')}` : ''}${close}`
+    },
+  )
+  fs.writeFileSync(path.join(REPORTS_MIRROR_DIR, fileName), markdown)
   return `data/reports/${fileName}`
 }
 
@@ -121,6 +132,7 @@ function main() {
     const auditPhaseStatus = auditInfo.status
     const developmentStatus = readPlanDevelopmentStatus(ROOT, epic, phaseOrdinal, t.id)
     const qaStatus = resolveQaStatus(ROOT, epic, phaseOrdinal, t.id, artifacts.qa)
+    const taskAuditStatus = readTaskAuditOutcome(ROOT, epic, phaseOrdinal, t.id)
     const phaseRow = phaseQueueById.get(phaseId) || null
     const column = inferTaskColumn(artifacts, {
       phaseReleased: ctx.released,
@@ -128,6 +140,7 @@ function main() {
       auditReady,
       qaStatus,
       auditPhaseStatus,
+      taskAuditStatus,
       phaseRow,
     })
     const progressPercent = taskProgressPercent(artifacts, column, {

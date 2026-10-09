@@ -25,14 +25,14 @@ stack pin node runtime (PRD epic 0000).
 
 | Feature ID | Dokumen |
 |------------|---------|
-| `0000-platform-stack` | [agentic/development/features/0000-platform-stack.md](../../../../../../agentic/development/features/0000-platform-stack.md) |
+| `0000-platform-stack` | [docs/agentic/development/features/0000-platform-stack.md](../../../../agentic/development/features/0000-platform-stack.md) |
 
 ## Development
 
 | Field | Nilai |
 |-------|-------|
 | Status | `complete` |
-| Laporan | Development/Result/0000/phase-00/development/000001-stack-pin-node-runtime.md |
+| Laporan | docs/development/Result/0000/phase-00/development/000001-stack-pin-node-runtime.md |
 | Commit/PR | `4bbc062` (baseline Phase 0, 2026-09-29) |
 | Selesai | 2026-10-01T14:52:54+07:00 |
 
@@ -40,11 +40,20 @@ stack pin node runtime (PRD epic 0000).
 
 Pin Node `24.3.0` / `engines.node` `>=24.3.0` dan `engine-strict=true` sudah ada di baseline. `nvm install && nvm use` memakai `.nvmrc`. Node 20 → `EBADENGINE`; Node `v24.3.0` → `npm install --dry-run` exit 0.
 
+## QA
+
+| Field | Nilai |
+|-------|-------|
+| Status | `pass` |
+| Laporan | docs/development/Result/0000/phase-00/qa/000001-stack-pin-node-runtime.md |
+| Fix dalam session | tidak |
+| Selesai | 2026-10-01T15:29:00+07:00 |
+
 ## Skill yang digunakan
 
 | Skill | File plan |
 |-------|-----------|
-| Docs | [skills/docs.md](./skills/docs.md) |
+| Docs | [skills/docs.md](../../../../development/Plan/0000/phase-00/tasks/000001-stack-pin-node-runtime/skills/docs.md) |
 
 ## Acuan PRD
 

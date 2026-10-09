@@ -1,26 +1,12 @@
 {
   "version": 1,
-  "generatedAt": "2026-10-01T07:53:25.866Z",
+  "generatedAt": "2026-10-01T18:05:58.872Z",
   "work": {
-    "kind": "qa",
-    "action": "run_qa_task",
-    "phaseId": "0000-P0",
-    "epic": "0000",
-    "ordinal": 0,
-    "taskId": "000001-stack-pin-node-runtime",
-    "skill": "agentic/skill/qa/SKILL.md",
-    "planPath": "Development/Plan/0000/phase-00/tasks/000001-stack-pin-node-runtime/plan.md",
-    "hasDevReport": true
+    "kind": "gate",
+    "phaseId": "0000-P2",
+    "waitFor": "0000-P1",
+    "message": "Menunggu Human QA release phase 0000-P1"
   },
-  "prompt": "Agent QA — 1 session = 1 task\nTask: 000001-stack-pin-node-runtime · phase 0000-P0\nPlan: Agentic/Development/Plan/0000/phase-00/tasks/000001-stack-pin-node-runtime/plan.md\nSkill: agentic/skill/qa/SKILL.md\nSelesai: npm run agentic:validate-qa -- --task 000001-stack-pin-node-runtime --epic 0000 --phase 0",
-  "active": {
-    "active": true,
-    "kind": "qa",
-    "taskId": "000001-stack-pin-node-runtime",
-    "phaseId": "0000-P0",
-    "epic": "0000",
-    "ordinal": 0,
-    "assignedAt": "2026-10-01T07:53:25.866Z",
-    "needsAgent": true
-  }
+  "prompt": "Menunggu Human QA release phase 0000-P1",
+  "active": false
 }

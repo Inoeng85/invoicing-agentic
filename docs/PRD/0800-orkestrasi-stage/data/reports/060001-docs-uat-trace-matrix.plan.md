@@ -19,7 +19,7 @@ npm run release:check
 
 | Feature ID | Dokumen |
 |------------|---------|
-| `0600-docs-uat-trace-matrix` | [agentic/development/features/0600-docs-uat-trace-matrix.md](../../../../../../agentic/development/features/0600-docs-uat-trace-matrix.md) |
+| `0600-docs-uat-trace-matrix` | [docs/agentic/development/features/0600-docs-uat-trace-matrix.md](../../../../agentic/development/features/0600-docs-uat-trace-matrix.md) |
 
 ## Development
 
@@ -29,7 +29,7 @@ npm run release:check
 
 | Skill | File plan |
 |-------|-----------|
-| Docs | [skills/docs.md](./skills/docs.md) |
+| Docs | [skills/docs.md](../../../../development/Plan/0600/phase-01/tasks/060001-docs-uat-trace-matrix/skills/docs.md) |
 
 ## Acuan PRD
 

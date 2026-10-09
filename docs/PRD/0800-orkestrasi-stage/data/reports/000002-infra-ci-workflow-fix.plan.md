@@ -25,18 +25,36 @@ workflow jalan di PR uji dan mencapai langkah test.
 
 | Feature ID | Dokumen |
 |------------|---------|
-| `0000-infra-ci-workflow-fix` | [agentic/development/features/0000-infra-ci-workflow-fix.md](../../../../../../agentic/development/features/0000-infra-ci-workflow-fix.md) |
+| `0000-infra-ci-workflow-fix` | [docs/agentic/development/features/0000-infra-ci-workflow-fix.md](../../../../agentic/development/features/0000-infra-ci-workflow-fix.md) |
 
 ## Development
 
-| Status | `pending` |
+| Field | Nilai |
+|-------|-------|
+| Status | `complete` |
+| Laporan | docs/development/Result/0000/phase-01/development/000002-infra-ci-workflow-fix.md |
+| Commit/PR | baseline `.github/workflows/ci.yml` · tidak ada commit baru |
+| Selesai | 2026-10-01T16:07:38+07:00 |
+
+### Catatan implementasi
+
+Workflow sudah memakai `.nvmrc`, `package-lock.json`, `db:migrate:deploy`, dan env CI pada langkah verify. Tidak ada `working-directory: Agentic`. Salinan `.env.example` tetap ada agar Prisma dan app punya file; nilai CI datang dari `env`. `npm ci` tidak diulang (daemon memakai `node_modules`). Run GitHub terakhir gagal startup ~3s.
+
+## QA
+
+| Field | Nilai |
+|-------|-------|
+| Status | `pass` |
+| Laporan | docs/development/Result/0000/phase-01/qa/000002-infra-ci-workflow-fix.md |
+| Fix dalam session | tidak |
+| Selesai | 2026-10-01T16:08:18+07:00 |
 
 ## Skill yang digunakan
 
 | Skill | File plan |
 |-------|-----------|
-| Infra | [skills/infra.md](./skills/infra.md) |
-| Docs | [skills/docs.md](./skills/docs.md) |
+| Infra | [skills/infra.md](../../../../development/Plan/0000/phase-01/tasks/000002-infra-ci-workflow-fix/skills/infra.md) |
+| Docs | [skills/docs.md](../../../../development/Plan/0000/phase-01/tasks/000002-infra-ci-workflow-fix/skills/docs.md) |
 
 ## Acuan PRD
 

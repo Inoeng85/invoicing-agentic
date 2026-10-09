@@ -19,7 +19,7 @@ npm run typecheck && npm run test:domain && npm test
 
 | Feature ID | Dokumen |
 |------------|---------|
-| `0300-domain-draft-totals-base` | [agentic/development/features/0300-domain-draft-totals-base.md](../../../../../../agentic/development/features/0300-domain-draft-totals-base.md) |
+| `0300-domain-draft-totals-base` | [docs/agentic/development/features/0300-domain-draft-totals-base.md](../../../../agentic/development/features/0300-domain-draft-totals-base.md) |
 
 ## Development
 
@@ -33,9 +33,9 @@ npm run typecheck && npm run test:domain && npm test
 
 | Skill | File plan |
 |-------|-----------|
-| Backend | [skills/backend.md](./skills/backend.md) |
-| Docs | [skills/docs.md](./skills/docs.md) |
-| QA | [skills/qa.md](./skills/qa.md) |
+| Backend | [skills/backend.md](../../../../development/Plan/0300/phase-01/tasks/030002-domain-draft-totals-base/skills/backend.md) |
+| Docs | [skills/docs.md](../../../../development/Plan/0300/phase-01/tasks/030002-domain-draft-totals-base/skills/docs.md) |
+| QA | [skills/qa.md](../../../../development/Plan/0300/phase-01/tasks/030002-domain-draft-totals-base/skills/qa.md) |
 
 ## Acuan PRD
 

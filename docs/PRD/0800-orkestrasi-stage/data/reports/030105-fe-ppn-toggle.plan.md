@@ -19,7 +19,7 @@ npm run test:domain
 
 | Feature ID | Dokumen |
 |------------|---------|
-| `0301-fe-ppn-toggle` | [agentic/development/features/0301-fe-ppn-toggle.md](../../../../../../agentic/development/features/0301-fe-ppn-toggle.md) |
+| `0301-fe-ppn-toggle` | [docs/agentic/development/features/0301-fe-ppn-toggle.md](../../../../agentic/development/features/0301-fe-ppn-toggle.md) |
 
 ## Development
 
@@ -33,8 +33,8 @@ npm run test:domain
 
 | Skill | File plan |
 |-------|-----------|
-| Frontend | [skills/frontend.md](./skills/frontend.md) |
-| QA | [skills/qa.md](./skills/qa.md) |
+| Frontend | [skills/frontend.md](../../../../development/Plan/0301/phase-01/tasks/030105-fe-ppn-toggle/skills/frontend.md) |
+| QA | [skills/qa.md](../../../../development/Plan/0301/phase-01/tasks/030105-fe-ppn-toggle/skills/qa.md) |
 
 ## Acuan PRD
 

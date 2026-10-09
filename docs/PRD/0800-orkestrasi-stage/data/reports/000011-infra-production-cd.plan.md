@@ -23,7 +23,7 @@ tag `v0.1.0-rc.1` → menunggu approval → deploy prod-like hijau.
 
 | Feature ID | Dokumen |
 |------------|---------|
-| `0000-infra-production-cd` | [agentic/development/features/0000-infra-production-cd.md](../../../../../../agentic/development/features/0000-infra-production-cd.md) |
+| `0000-infra-production-cd` | [docs/agentic/development/features/0000-infra-production-cd.md](../../../../agentic/development/features/0000-infra-production-cd.md) |
 
 ## Development
 
@@ -33,8 +33,8 @@ tag `v0.1.0-rc.1` → menunggu approval → deploy prod-like hijau.
 
 | Skill | File plan |
 |-------|-----------|
-| Infra | [skills/infra.md](./skills/infra.md) |
-| Docs | [skills/docs.md](./skills/docs.md) |
+| Infra | [skills/infra.md](../../../../development/Plan/0000/phase-03/tasks/000011-infra-production-cd/skills/infra.md) |
+| Docs | [skills/docs.md](../../../../development/Plan/0000/phase-03/tasks/000011-infra-production-cd/skills/docs.md) |
 
 ## Acuan PRD
 

@@ -12,10 +12,12 @@
 
   const BOARD_URLS = [
     new URL("data/kanban-board.json", window.location.href).href,
-    new URL("../../../Development/Plan/kanban-board.json", window.location.href).href
+    new URL("../../development/Plan/kanban-board.json", window.location.href).href
   ];
   const POLL_MS = 15000;
   const storageKey = "agentic-kanban-board-v6";
+  const uiStorageKey = "agentic-kanban-ui-v1";
+  const LANE_COLLAPSE_THRESHOLD = 20;
   /** Agentic repo root from docs/PRD/0800-orkestrasi-stage/ (coba beberapa layout workspace). */
   const REPO_ROOT_BASES = ["../../../", "../../../../Agentic/", "../../../../../Agentic/"];
   const WORKSPACE_PREFIX = "Agentic/";
@@ -27,6 +29,9 @@
   const epicFilter = document.getElementById("epic-filter");
   const viewMode = document.getElementById("view-mode");
   const agenticOnly = document.getElementById("agentic-only");
+  const compactMode = document.getElementById("compact-mode");
+  const phaseProgSel = document.getElementById("phase-progress-select");
+  const resetPinsBtn = document.getElementById("reset-pins");
   const stageSelect = document.getElementById("stage-select");
   const toastEl = document.getElementById("toast");
   const loadStatusEl = document.getElementById("queue-load-status");
@@ -41,9 +46,11 @@
   let taskOverrides = {};
   let phaseOverrides = {};
   let draggedId = null;
-  let dragKind = null;
   let activeCard = null;
   let storageAvailable = true;
+  let uiState = { compact: false, lanes: {} };
+  let wantedEpic = null;
+  let wantedPhase = null;
 
   const validColumnIds = columns.map(function (c) { return c.id; });
 
@@ -179,6 +186,73 @@
     }
   }
 
+  function loadUiState() {
+    try {
+      const saved = JSON.parse(localStorage.getItem(uiStorageKey) || "{}");
+      uiState = { compact: !!saved.compact, lanes: saved.lanes || {} };
+    } catch (_) {
+      storageAvailable = false;
+    }
+  }
+
+  function saveUiState() {
+    try {
+      localStorage.setItem(uiStorageKey, JSON.stringify(uiState));
+    } catch (_) {
+      storageAvailable = false;
+    }
+  }
+
+  function applyHashToControls() {
+    const h = new URLSearchParams(window.location.hash.slice(1));
+    viewMode.value = h.get("view") === "phases" ? "phases" : "tasks";
+    actorFilter.value = ["agent", "human"].includes(h.get("actor")) ? h.get("actor") : "all";
+    search.value = h.get("q") || "";
+    agenticOnly.checked = h.get("agentic") === "1";
+    wantedEpic = h.get("epic");
+    wantedPhase = h.get("phase");
+  }
+
+  function writeHash() {
+    const h = new URLSearchParams();
+    if (viewMode.value !== "tasks") h.set("view", viewMode.value);
+    if (epicFilter.value !== "all") h.set("epic", epicFilter.value);
+    if (actorFilter.value !== "all") h.set("actor", actorFilter.value);
+    if (search.value.trim()) h.set("q", search.value.trim());
+    if (agenticOnly.checked) h.set("agentic", "1");
+    if (phaseProgSel && phaseProgSel.value && phaseProgSel.selectedIndex > 0) h.set("phase", phaseProgSel.value);
+    const str = h.toString();
+    history.replaceState(null, "", str ? "#" + str : window.location.pathname + window.location.search);
+  }
+
+  function repoColumn(id, kind) {
+    if (kind === "task") return tasks[id] ? tasks[id].column : "intake";
+    const row = boardSnapshot && (boardSnapshot.phases || []).find(function (p) { return p.phaseId === id; });
+    return (row && row.progress.suggestedColumn) || "intake";
+  }
+
+  function overridesFor(kind) {
+    return kind === "task" ? taskOverrides : phaseOverrides;
+  }
+
+  function isPinned(id, kind) {
+    const ov = overridesFor(kind)[id];
+    return !!(ov && ov.pinned);
+  }
+
+  function pinnedCount() {
+    return Object.keys(taskOverrides).filter(function (id) { return tasks[id] && isPinned(id, "task"); }).length +
+      Object.keys(phaseOverrides).filter(function (id) { return phases[id] && isPinned(id, "phase"); }).length;
+  }
+
+  function unpin(id, kind) {
+    delete overridesFor(kind)[id];
+    columnState[id] = repoColumn(id, kind);
+    saveOverrides();
+    paint();
+    showToast(id + " kembali ke " + columnMeta(columnState[id]).title + " (posisi repo)");
+  }
+
   function syncSaveStatus() {
     const el = document.getElementById("save-status");
     if (!el) return;
@@ -215,17 +289,10 @@
 
     columnState = {};
     Object.keys(tasks).forEach(function (id) {
-      const t = tasks[id];
-      const ov = taskOverrides[id];
-      columnState[id] = ov && ov.pinned ? ov.column : t.column;
+      columnState[id] = isPinned(id, "task") ? taskOverrides[id].column : repoColumn(id, "task");
     });
     Object.keys(phases).forEach(function (id) {
-      const p = phases[id];
-      const row = data.phases.find(function (x) { return x.phaseId === id; });
-      const ov = phaseOverrides[id];
-      columnState[id] = ov && ov.pinned
-        ? ov.column
-        : (row && row.progress.suggestedColumn) || "intake";
+      columnState[id] = isPinned(id, "phase") ? phaseOverrides[id].column : repoColumn(id, "phase");
     });
 
     if (fromPoll && prevGen !== data.generatedAt && liveStatusEl) {
@@ -246,9 +313,10 @@
   }
 
   function populatePhaseProgressSelect() {
-    const sel = document.getElementById("phase-progress-select");
+    const sel = phaseProgSel;
     if (!sel || !boardSnapshot) return;
-    const current = sel.value;
+    const current = wantedPhase || sel.value;
+    wantedPhase = null;
     const epic = epicFilter ? epicFilter.value : "all";
     const list = (boardSnapshot.phases || []).filter(function (p) {
       return epic === "all" || p.epic === epic;
@@ -265,7 +333,7 @@
   }
 
   function renderPhaseProgressPanel() {
-    const sel = document.getElementById("phase-progress-select");
+    const sel = phaseProgSel;
     const summary = document.getElementById("phase-progress-summary");
     const listEl = document.getElementById("phase-task-list");
     const barWrap = document.getElementById("phase-progress-bar-wrap");
@@ -383,11 +451,13 @@
     document.getElementById("side-project-title").textContent = "Semua PRD · " + (s.epicCount || 0) + " epic";
     document.getElementById("side-project-meta").textContent =
       (s.taskCount || 0) + " task · " + (s.phaseCount || 0) + " phase";
+    document.getElementById("checklist-task-count").textContent = String(s.taskCount || 0);
   }
 
   function populateEpicFilter(data) {
     if (!epicFilter) return;
-    const current = epicFilter.value;
+    const current = wantedEpic || epicFilter.value;
+    wantedEpic = null;
     epicFilter.replaceChildren();
     const all = document.createElement("option");
     all.value = "all";
@@ -480,15 +550,6 @@
       hasDevelopment: r.hasDevelopment != null ? r.hasDevelopment : !!p.development,
       hasQa: r.hasQa != null ? r.hasQa : !!p.qa
     };
-  }
-
-  function showToast(msg) {
-    const el = document.getElementById("toast");
-    if (!el) return;
-    el.textContent = msg;
-    el.classList.add("visible");
-    clearTimeout(showToast._t);
-    showToast._t = setTimeout(function () { el.classList.remove("visible"); }, 3200);
   }
 
   function openRepoFile(repoPath, label, task, previewKind) {
@@ -594,17 +655,30 @@
       '<span class="progress-pct">' + pct + "%</span></span>";
   }
 
+  function cardShell(id, kind, className, title) {
+    const el = document.createElement("article");
+    el.className = "issue " + className + (isPinned(id, kind) ? " is-pinned" : "");
+    el.tabIndex = 0;
+    el.draggable = true;
+    el.dataset.id = id;
+    el.dataset.kind = kind;
+    el.setAttribute("aria-label", title + " (" + id + ") — Enter untuk detail");
+    return el;
+  }
+
+  function pinBadge(id, kind) {
+    return isPinned(id, kind)
+      ? '<button type="button" class="pin-badge" title="Dipindah manual — klik untuk ikut posisi repo">Manual ×</button>'
+      : "";
+  }
+
   function buildTaskCard(task) {
     const col = columnMeta(columnState[task.id]);
-    const btn = document.createElement("button");
-    btn.type = "button";
-    btn.className = "issue issue-task";
-    btn.dataset.taskId = task.id;
-    btn.draggable = true;
+    const btn = cardShell(task.id, "task", "issue-task", task.title);
     const pct = taskProgressPercent(task);
     const prog = task.progress || {};
     btn.innerHTML =
-      '<span class="issue-top"><span class="issue-phase">PRD-' + task.epic + " · " + task.phaseId + '</span></span>' +
+      '<span class="issue-top"><span class="issue-phase">PRD-' + task.epic + " · " + task.phaseId + "</span>" + pinBadge(task.id, "task") + "</span>" +
       progressRow(pct, "Progress task") +
       '<span class="issue-title"></span><span class="issue-summary"></span><span class="issue-tag"></span>' +
       '<span class="issue-foot"><span class="issue-key"></span><span class="assignee"></span>' +
@@ -621,26 +695,15 @@
     const devBtn = btn.querySelector(".issue-report-btn");
     devBtn.disabled = !rep.hasDevelopment;
     devBtn.title = rep.hasDevelopment ? rep.development : "Laporan development belum ada";
-    devBtn.addEventListener("click", function (e) {
-      e.stopPropagation();
-      if (rep.hasDevelopment) openRepoFile(rep.development, "Laporan development", task, "development");
-      else openTaskDialog(task);
-    });
-    bindDrag(btn, task.id, "task");
-    btn.addEventListener("click", function () { if (!draggedId) openTaskDialog(task); });
     return btn;
   }
 
   function buildPhaseCard(phase) {
     const col = columnMeta(columnState[phase.id]);
-    const btn = document.createElement("button");
-    btn.type = "button";
-    btn.className = "issue issue-phase-card";
-    btn.dataset.phaseId = phase.id;
-    btn.draggable = true;
+    const btn = cardShell(phase.id, "phase", "issue-phase-card", phase.title);
     const pct = phase.progress ? phase.progress.percentDone : 0;
     btn.innerHTML =
-      '<span class="issue-top"><span class="issue-phase"></span></span>' +
+      '<span class="issue-top"><span class="issue-phase"></span>' + pinBadge(phase.id, "phase") + "</span>" +
       progressRow(pct, "Progress phase") +
       '<span class="issue-title"></span><span class="issue-summary"></span><span class="issue-tag"></span>' +
       '<span class="issue-foot"><span class="issue-key"></span><span class="assignee"></span></span>';
@@ -650,54 +713,86 @@
     btn.querySelector(".issue-tag").textContent = col.title;
     btn.querySelector(".issue-key").textContent = phase.key;
     btn.querySelector(".assignee").textContent = col.actor;
-    bindDrag(btn, phase.id, "phase");
-    btn.addEventListener("click", function () { if (!draggedId) openPhaseDialog(phase); });
     return btn;
   }
 
-  function bindDrag(el, id, kind) {
-    el.addEventListener("dragstart", function (e) {
-      draggedId = id;
-      dragKind = kind;
-      el.classList.add("dragging");
-      e.dataTransfer.setData("text/plain", kind + ":" + id);
-    });
-    el.addEventListener("dragend", function () {
-      draggedId = null;
-      dragKind = null;
-      el.classList.remove("dragging");
-      document.querySelectorAll(".drag-over").forEach(function (n) { n.classList.remove("drag-over"); });
-    });
+  function openCard(id, kind) {
+    if (kind === "task" && tasks[id]) openTaskDialog(tasks[id]);
+    else if (kind === "phase" && phases[id]) openPhaseDialog(phases[id]);
   }
 
-  function setupDropZone(body, columnId) {
-    body.addEventListener("dragover", function (e) {
-      if (!draggedId) return;
+  function bindBoardEvents() {
+    boardEl.addEventListener("click", function (e) {
+      if (e.target.closest(".column-trigger")) {
+        triggerPrimaryAction();
+        return;
+      }
+      const card = e.target.closest(".issue");
+      if (!card || draggedId) return;
+      const id = card.dataset.id;
+      const kind = card.dataset.kind;
+      if (e.target.closest(".pin-badge")) {
+        unpin(id, kind);
+        return;
+      }
+      if (e.target.closest(".issue-report-btn")) {
+        const rep = taskReports(tasks[id]);
+        if (rep.hasDevelopment) openRepoFile(rep.development, "Laporan development", tasks[id], "development");
+        return;
+      }
+      openCard(id, kind);
+    });
+    boardEl.addEventListener("keydown", function (e) {
+      if ((e.key !== "Enter" && e.key !== " ") || !e.target.classList.contains("issue")) return;
+      e.preventDefault();
+      openCard(e.target.dataset.id, e.target.dataset.kind);
+    });
+    boardEl.addEventListener("dragstart", function (e) {
+      const card = e.target.closest(".issue");
+      if (!card) return;
+      draggedId = card.dataset.id;
+      card.classList.add("dragging");
+      e.dataTransfer.setData("text/plain", card.dataset.kind + ":" + card.dataset.id);
+    });
+    boardEl.addEventListener("dragend", function () {
+      draggedId = null;
+      boardEl.querySelectorAll(".dragging, .drag-over").forEach(function (n) { n.classList.remove("dragging", "drag-over"); });
+    });
+    boardEl.addEventListener("dragover", function (e) {
+      const body = e.target.closest(".column-body");
+      if (!body || !draggedId) return;
       e.preventDefault();
       body.classList.add("drag-over");
     });
-    body.addEventListener("dragleave", function (e) {
-      if (!body.contains(e.relatedTarget)) body.classList.remove("drag-over");
+    boardEl.addEventListener("dragleave", function (e) {
+      const body = e.target.closest(".column-body");
+      if (body && !body.contains(e.relatedTarget)) body.classList.remove("drag-over");
     });
-    body.addEventListener("drop", function (e) {
+    boardEl.addEventListener("drop", function (e) {
+      const body = e.target.closest(".column-body");
+      if (!body) return;
       e.preventDefault();
       body.classList.remove("drag-over");
-      const raw = e.dataTransfer.getData("text/plain");
-      const m = raw.match(/^(task|phase):(.+)$/);
-      if (!m) return;
-      moveCard(m[2], m[1], columnId);
+      const m = e.dataTransfer.getData("text/plain").match(/^(task|phase):(.+)$/);
+      if (m) moveCard(m[2], m[1], body.closest(".column").dataset.stage);
       draggedId = null;
     });
+    // toggle does not bubble; capture it so lane state needs no per-lane listener
+    boardEl.addEventListener("toggle", function (e) {
+      const lane = e.target;
+      if (!lane.classList || !lane.classList.contains("epic-lane")) return;
+      const key = lane.dataset.laneKey;
+      if (lane.open === (lane.dataset.defaultOpen === "true")) delete uiState.lanes[key];
+      else uiState.lanes[key] = lane.open;
+      saveUiState();
+    }, true);
   }
 
   function moveCard(id, kind, columnId) {
     if (!validColumnIds.includes(columnId) || columnState[id] === columnId) return;
     columnState[id] = columnId;
-    if (kind === "task") {
-      taskOverrides[id] = { column: columnId, pinned: true };
-    } else {
-      phaseOverrides[id] = { column: columnId, pinned: true };
-    }
+    if (columnId === repoColumn(id, kind)) delete overridesFor(kind)[id];
+    else overridesFor(kind)[id] = { column: columnId, pinned: true };
     saveOverrides();
     paint();
     showToast(id + " → " + columnMeta(columnId).title);
@@ -713,17 +808,22 @@
     return [...map.entries()].sort(function (a, b) { return a[0].localeCompare(b[0]); });
   }
 
-  function appendEpicLanes(body, items, buildCard, getEpic) {
+  function appendEpicLanes(body, items, buildCard, getEpic, columnId) {
     const groups = groupByEpic(items, getEpic);
+    const defaultOpen = items.length <= LANE_COLLAPSE_THRESHOLD;
     groups.forEach(function (entry) {
       const epic = entry[0];
       const list = entry[1];
-      const lane = document.createElement("div");
+      const key = columnId + ":" + epic;
+      const lane = document.createElement("details");
       lane.className = "epic-lane";
-      const head = document.createElement("div");
+      lane.dataset.laneKey = key;
+      lane.dataset.defaultOpen = String(defaultOpen);
+      lane.open = key in uiState.lanes ? uiState.lanes[key] : defaultOpen;
+      const head = document.createElement("summary");
       head.className = "epic-lane-head";
       const ep = boardSnapshot.epics.find(function (x) { return x.epic === epic; });
-      head.textContent = "PRD-" + epic + (ep ? " · " + ep.progress.percentDone + "%" : "");
+      head.textContent = "PRD-" + epic + " · " + list.length + (ep ? " · " + ep.progress.percentDone + "%" : "");
       lane.appendChild(head);
       list.forEach(function (item) { lane.appendChild(buildCard(item)); });
       body.appendChild(lane);
@@ -739,6 +839,12 @@
     document.getElementById("board-total").textContent = shown + " / " + total + (mode === "tasks" ? " task" : " phase");
     document.getElementById("filter-status").textContent = shown + " dari " + total + " ditampilkan";
     document.getElementById("no-results").hidden = shown > 0;
+    const pins = pinnedCount();
+    resetPinsBtn.textContent = pins ? "Sync repo (" + pins + ")" : "Sync repo";
+    const scrolls = {};
+    boardEl.querySelectorAll(".column").forEach(function (s) {
+      scrolls[s.dataset.stage] = s.querySelector(".column-body").scrollTop;
+    });
     boardEl.replaceChildren();
 
     columns.forEach(function (col) {
@@ -763,19 +869,14 @@
         trig.className = "button primary column-trigger is-next";
         trig.textContent = orch.next && orch.next.action === "run_development_task" ? "▶ Trigger Development" : "▶ Trigger task";
         trig.title = "Salin prompt agent untuk langkah ini";
-        trig.addEventListener("click", function (e) {
-          e.stopPropagation();
-          triggerPrimaryAction();
-        });
         head.appendChild(trig);
       }
       const body = document.createElement("div");
       body.className = "column-body";
-      setupDropZone(body, col.id);
 
       if (inCol.length) {
         if (mode === "tasks") {
-          appendEpicLanes(body, inCol, buildTaskCard, function (t) { return t.epic; });
+          appendEpicLanes(body, inCol, buildTaskCard, function (t) { return t.epic; }, col.id);
         } else {
           inCol.forEach(function (p) { body.appendChild(buildPhaseCard(p)); });
         }
@@ -787,6 +888,7 @@
       }
       section.append(head, body);
       boardEl.appendChild(section);
+      body.scrollTop = scrolls[col.id] || 0;
     });
   }
 
@@ -831,7 +933,7 @@
     document.getElementById("dialog-body").textContent =
       phase.body + (row && row.audit && row.audit.report
         ? "\n\nLaporan audit: " + row.audit.report
-        : "\n\nAudit: 1 session = 1 phase — lihat agentic/skill/audit/SKILL.md");
+        : "\n\nAudit: 1 session = 1 phase — lihat docs/agentic/skill/audit/SKILL.md");
     const list = document.getElementById("dialog-tasks");
     list.replaceChildren();
     list.hidden = false;
@@ -874,7 +976,7 @@
     let err = null;
     for (let i = 0; i < BOARD_URLS.length; i++) {
       try {
-        const res = await fetch(BOARD_URLS[i], { cache: "no-store" });
+        const res = await fetch(BOARD_URLS[i], { cache: "no-cache" });
         if (!res.ok) throw new Error("HTTP " + res.status);
         return res.json();
       } catch (e) {
@@ -887,6 +989,7 @@
   async function refresh(fromPoll) {
     try {
       const data = await fetchBoard();
+      if (fromPoll && boardSnapshot && data.generatedAt === boardSnapshot.generatedAt) return;
       applyBoard(data, fromPoll);
       loadStatusEl.hidden = true;
     } catch (e) {
@@ -910,16 +1013,39 @@
     stageSelect.appendChild(opt);
   });
 
-  [search, actorFilter, epicFilter, viewMode, agenticOnly].forEach(function (el) {
-    el.addEventListener("input", paint);
+  search.addEventListener("input", function () {
+    paint();
+    writeHash();
+  });
+  [actorFilter, epicFilter, viewMode, agenticOnly].forEach(function (el) {
     el.addEventListener("change", function () {
       populatePhaseProgressSelect();
       renderPhaseProgressPanel();
       paint();
+      writeHash();
     });
   });
-  var phaseProgSel = document.getElementById("phase-progress-select");
-  if (phaseProgSel) phaseProgSel.addEventListener("change", renderPhaseProgressPanel);
+  if (phaseProgSel) phaseProgSel.addEventListener("change", function () {
+    renderPhaseProgressPanel();
+    writeHash();
+  });
+  compactMode.addEventListener("change", function () {
+    uiState.compact = compactMode.checked;
+    boardEl.classList.toggle("board-compact", uiState.compact);
+    saveUiState();
+  });
+  // in-page anchors (skip link, sidebar #main) replace the hash; put the filter state back
+  window.addEventListener("hashchange", function () {
+    if (!window.location.hash.includes("=")) writeHash();
+  });
+  document.addEventListener("visibilitychange", function () {
+    if (document.hidden) {
+      clearInterval(pollTimer);
+      return;
+    }
+    refresh(true).then(startPoll);
+  });
+  bindBoardEvents();
 
   document.getElementById("close").addEventListener("click", function () { dialog.close(); });
   document.getElementById("move-form").addEventListener("submit", function (e) {
@@ -943,7 +1069,7 @@
     var cmd = (orch && orch.terminalExecute) || "npm run agentic:trigger-next -- --execute";
     copyText(cmd).then(function () { showToast("Perintah terminal disalin."); }).catch(function () { showToast("Gagal menyalin."); });
   });
-  document.getElementById("reset-pins").addEventListener("click", function () {
+  resetPinsBtn.addEventListener("click", function () {
     taskOverrides = {};
     phaseOverrides = {};
     saveOverrides();
@@ -952,6 +1078,10 @@
   });
 
   loadOverrides();
+  loadUiState();
+  applyHashToControls();
+  compactMode.checked = uiState.compact;
+  boardEl.classList.toggle("board-compact", uiState.compact);
   loadStatusEl.hidden = false;
   liveStatusEl.textContent = "Polling " + POLL_MS / 1000 + "s";
   refresh(false).then(startPoll);

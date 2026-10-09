@@ -19,7 +19,7 @@ npm run gate
 
 | Feature ID | Dokumen |
 |------------|---------|
-| `0800-docs-worker-skills` | [agentic/development/features/0800-docs-worker-skills.md](../../../../../../agentic/development/features/0800-docs-worker-skills.md) |
+| `0800-docs-worker-skills` | [docs/agentic/development/features/0800-docs-worker-skills.md](../../../../agentic/development/features/0800-docs-worker-skills.md) |
 
 ## Development
 
@@ -29,7 +29,7 @@ npm run gate
 
 | Skill | File plan |
 |-------|-----------|
-| Docs | [skills/docs.md](./skills/docs.md) |
+| Docs | [skills/docs.md](../../../../development/Plan/0800/phase-01/tasks/080003-docs-worker-skills/skills/docs.md) |
 
 ## Acuan PRD
 

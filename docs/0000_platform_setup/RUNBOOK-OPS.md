@@ -3,13 +3,13 @@
 | Meta | Nilai |
 |------|-------|
 | Staging detail | [RUNBOOK-STAGING.md](./RUNBOOK-STAGING.md) |
-| Branch / CI | [CONTRIBUTING.md](../../CONTRIBUTING.md) · `.github/workflows/` |
+| Branch / CI | [CONTRIBUTING.md](../CONTRIBUTING.md) · `.github/workflows/` |
 
 ---
 
 ## 1. Deploy
 
-### Staging (merge `main`)
+### Staging (merge `develop`)
 
 1. CI `verify` hijau (lokal: `npm run verify`).
 2. Workflow [deploy-staging.yml](../../.github/workflows/deploy-staging.yml) (`workflow_dispatch`) atau deploy otomatis host.

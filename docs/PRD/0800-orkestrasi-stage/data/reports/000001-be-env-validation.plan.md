@@ -24,14 +24,14 @@ start production tanpa `SESSION_SECRET` → exit ≠ 0 dengan nama variabel · d
 
 | Feature ID | Dokumen |
 |------------|---------|
-| `0000-be-env-validation` | [agentic/development/features/0000-be-env-validation.md](../../../../../../agentic/development/features/0000-be-env-validation.md) |
+| `0000-be-env-validation` | [docs/agentic/development/features/0000-be-env-validation.md](../../../../agentic/development/features/0000-be-env-validation.md) |
 
 ## Development
 
 | Field | Nilai |
 |-------|-------|
 | Status | `complete` |
-| Laporan | Development/Result/0000/phase-02/development/000001-be-env-validation.md |
+| Laporan | docs/development/Result/0000/phase-02/development/000001-be-env-validation.md |
 | Commit/PR | `ef84c90` (Phase 2 M2) · `eb44e65` |
 | Selesai | 2026-10-01T14:57:16+07:00 |
 
@@ -47,8 +47,8 @@ Validasi env ada di `packages/platform/src/env.ts` dan dipanggil `bootstrapPlatf
 
 | Skill | File plan |
 |-------|-----------|
-| Backend | [skills/backend.md](./skills/backend.md) |
-| QA | [skills/qa.md](./skills/qa.md) |
+| Backend | [skills/backend.md](../../../../development/Plan/0000/phase-02/tasks/000001-be-env-validation/skills/backend.md) |
+| QA | [skills/qa.md](../../../../development/Plan/0000/phase-02/tasks/000001-be-env-validation/skills/qa.md) |
 
 ## Acuan PRD
 

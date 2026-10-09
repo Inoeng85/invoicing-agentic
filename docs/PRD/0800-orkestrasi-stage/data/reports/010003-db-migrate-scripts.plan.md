@@ -19,7 +19,7 @@ npm run db:migrate
 
 | Feature ID | Dokumen |
 |------------|---------|
-| `0100-db-migrate-scripts` | [agentic/development/features/0100-db-migrate-scripts.md](../../../../../../agentic/development/features/0100-db-migrate-scripts.md) |
+| `0100-db-migrate-scripts` | [docs/agentic/development/features/0100-db-migrate-scripts.md](../../../../agentic/development/features/0100-db-migrate-scripts.md) |
 
 ## Development
 
@@ -33,9 +33,9 @@ npm run db:migrate
 
 | Skill | File plan |
 |-------|-----------|
-| Infra | [skills/infra.md](./skills/infra.md) |
-| Docs | [skills/docs.md](./skills/docs.md) |
-| QA | [skills/qa.md](./skills/qa.md) |
+| Infra | [skills/infra.md](../../../../development/Plan/0100/phase-01/tasks/010003-db-migrate-scripts/skills/infra.md) |
+| Docs | [skills/docs.md](../../../../development/Plan/0100/phase-01/tasks/010003-db-migrate-scripts/skills/docs.md) |
+| QA | [skills/qa.md](../../../../development/Plan/0100/phase-01/tasks/010003-db-migrate-scripts/skills/qa.md) |
 
 ## Acuan PRD
 

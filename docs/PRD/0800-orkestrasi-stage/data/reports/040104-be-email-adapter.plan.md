@@ -19,7 +19,7 @@ npm run email:smoke
 
 | Feature ID | Dokumen |
 |------------|---------|
-| `0401-be-email-adapter` | [agentic/development/features/0401-be-email-adapter.md](../../../../../../agentic/development/features/0401-be-email-adapter.md) |
+| `0401-be-email-adapter` | [docs/agentic/development/features/0401-be-email-adapter.md](../../../../agentic/development/features/0401-be-email-adapter.md) |
 
 ## Development
 
@@ -33,8 +33,8 @@ npm run email:smoke
 
 | Skill | File plan |
 |-------|-----------|
-| Backend | [skills/backend.md](./skills/backend.md) |
-| QA | [skills/qa.md](./skills/qa.md) |
+| Backend | [skills/backend.md](../../../../development/Plan/0401/phase-01/tasks/040104-be-email-adapter/skills/backend.md) |
+| QA | [skills/qa.md](../../../../development/Plan/0401/phase-01/tasks/040104-be-email-adapter/skills/qa.md) |
 
 ## Acuan PRD
 

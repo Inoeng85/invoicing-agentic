@@ -23,7 +23,7 @@ stack pin dev dependencies (PRD epic 0000).
 
 | Feature ID | Dokumen |
 |------------|---------|
-| `0000-platform-stack` | [agentic/development/features/0000-platform-stack.md](../../../../../../agentic/development/features/0000-platform-stack.md) |
+| `0000-platform-stack` | [docs/agentic/development/features/0000-platform-stack.md](../../../../agentic/development/features/0000-platform-stack.md) |
 
 ## Development
 
@@ -33,7 +33,7 @@ stack pin dev dependencies (PRD epic 0000).
 
 | Skill | File plan |
 |-------|-----------|
-| Docs | [skills/docs.md](./skills/docs.md) |
+| Docs | [skills/docs.md](../../../../development/Plan/0000/phase-02/tasks/000007-stack-pin-dev-dependencies/skills/docs.md) |
 
 ## Acuan PRD
 

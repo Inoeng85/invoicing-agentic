@@ -19,7 +19,7 @@ npm run release:check
 
 | Feature ID | Dokumen |
 |------------|---------|
-| `0600-product-gap-g02-public-hardening` | [agentic/development/features/0600-product-gap-g02-public-hardening.md](../../../../../../agentic/development/features/0600-product-gap-g02-public-hardening.md) |
+| `0600-product-gap-g02-public-hardening` | [docs/agentic/development/features/0600-product-gap-g02-public-hardening.md](../../../../agentic/development/features/0600-product-gap-g02-public-hardening.md) |
 
 ## Development
 
@@ -29,7 +29,7 @@ npm run release:check
 
 | Skill | File plan |
 |-------|-----------|
-| Docs | [skills/docs.md](./skills/docs.md) |
+| Docs | [skills/docs.md](../../../../development/Plan/0600/phase-01/tasks/060003-product-gap-g02-public-hardening/skills/docs.md) |
 
 ## Acuan PRD
 

@@ -1,4 +1,4 @@
-# SQLite single-service deploy (Mode B) — infra/railway/README.md
+# SQLite single-service deploy (Mode B) — docs/infra/railway/README.md
 [build]
 builder = "NIXPACKS"
 buildCommand = "npm ci && npm run css:build"

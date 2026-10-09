@@ -19,7 +19,7 @@ npm run gate
 
 | Feature ID | Dokumen |
 |------------|---------|
-| `0101-fe-dashboard-guard` | [agentic/development/features/0101-fe-dashboard-guard.md](../../../../../../agentic/development/features/0101-fe-dashboard-guard.md) |
+| `0101-fe-dashboard-guard` | [docs/agentic/development/features/0101-fe-dashboard-guard.md](../../../../agentic/development/features/0101-fe-dashboard-guard.md) |
 
 ## Development
 
@@ -29,7 +29,7 @@ npm run gate
 
 | Skill | File plan |
 |-------|-----------|
-| Docs | [skills/docs.md](./skills/docs.md) |
+| Docs | [skills/docs.md](../../../../development/Plan/0101/phase-01/tasks/010108-fe-dashboard-guard/skills/docs.md) |
 
 ## Acuan PRD
 

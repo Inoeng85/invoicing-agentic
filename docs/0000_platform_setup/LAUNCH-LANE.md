@@ -11,7 +11,7 @@ npm run ci:local        # paritas CI (PG-1 fallback)
 npm run release:check   # G6 checklist
 ```
 
-## 1. PG-1 — CI & `main`
+## 1. PG-1 — CI & `develop`
 
 - [ ] Perbaiki billing GitHub Actions (job `verify` hijau) **atau** terima `ci:local` sebagai gate sementara
 - [ ] `./scripts/apply-branch-protection.sh Inoeng85/invoicing-agentic verify`

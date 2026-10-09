@@ -19,7 +19,7 @@ npm run gate
 
 | Feature ID | Dokumen |
 |------------|---------|
-| `0101-fe-settings` | [agentic/development/features/0101-fe-settings.md](../../../../../../agentic/development/features/0101-fe-settings.md) |
+| `0101-fe-settings` | [docs/agentic/development/features/0101-fe-settings.md](../../../../agentic/development/features/0101-fe-settings.md) |
 
 ## Development
 
@@ -29,7 +29,7 @@ npm run gate
 
 | Skill | File plan |
 |-------|-----------|
-| Docs | [skills/docs.md](./skills/docs.md) |
+| Docs | [skills/docs.md](../../../../development/Plan/0101/phase-01/tasks/010107-fe-settings/skills/docs.md) |
 
 ## Acuan PRD
 

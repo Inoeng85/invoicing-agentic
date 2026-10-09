@@ -19,7 +19,7 @@ npm run typecheck && npm run test:domain && npm test
 
 | Feature ID | Dokumen |
 |------------|---------|
-| `0402-be-revoke-link` | [agentic/development/features/0402-be-revoke-link.md](../../../../../../agentic/development/features/0402-be-revoke-link.md) |
+| `0402-be-revoke-link` | [docs/agentic/development/features/0402-be-revoke-link.md](../../../../agentic/development/features/0402-be-revoke-link.md) |
 
 ## Development
 
@@ -33,8 +33,8 @@ npm run typecheck && npm run test:domain && npm test
 
 | Skill | File plan |
 |-------|-----------|
-| Backend | [skills/backend.md](./skills/backend.md) |
-| QA | [skills/qa.md](./skills/qa.md) |
+| Backend | [skills/backend.md](../../../../development/Plan/0402/phase-01/tasks/040203-be-revoke-link/skills/backend.md) |
+| QA | [skills/qa.md](../../../../development/Plan/0402/phase-01/tasks/040203-be-revoke-link/skills/qa.md) |
 
 ## Acuan PRD
 

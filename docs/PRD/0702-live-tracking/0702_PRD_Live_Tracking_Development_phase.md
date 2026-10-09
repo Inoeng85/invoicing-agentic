@@ -1595,5 +1595,5 @@ function readLocation(formData: FormData): { latitude: number; longitude: number
   4. "Lihat peta" → marker kolektor + pin klien + jarak; ganti lokasi sensor → dalam ≤ 45 detik marker berpindah tanpa reload.
   5. Tandai invoice lunas → tab kolektor: pesan "Penugasan sudah selesai".
   6. Atribusi OSM tampil di semua peta; tidak ada error console.
-- [ ] **Step 2: Docs** — README PRD baris `| 14 | **0702** | [0702-live-tracking](./0702-live-tracking/) | G7 | FR-14i/j live tracking | 0701 |`; spec status `Implemented` + link development phase; MVP-SCOPE-LOCK tabel BR tambah BR-10/11/12 (teks dari spec); legal checklist tambah baris `| L-7 | FR-14i live tracking: persetujuan kolektor, tujuan, retensi (hapus saat penugasan selesai) — klausul di PRIVACY.md | [ ] |`.
+- [ ] **Step 2: Docs** — README PRD baris `| 14 | **0702** | [0702-live-tracking](.) | G7 | FR-14i/j live tracking | 0701 |`; spec status `Implemented` + link development phase; MVP-SCOPE-LOCK tabel BR tambah BR-10/11/12 (teks dari spec); legal checklist tambah baris `| L-7 | FR-14i live tracking: persetujuan kolektor, tujuan, retensi (hapus saat penugasan selesai) — klausul di PRIVACY.md | [ ] |`.
 - [ ] **Step 3:** `npm run typecheck && npm run test:domain && npm test && npm run gate` → semua pass. Commit `docs(prd): document live tracking (PRD-0702)`.

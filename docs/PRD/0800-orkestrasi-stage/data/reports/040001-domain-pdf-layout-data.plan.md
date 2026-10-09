@@ -19,7 +19,7 @@ npm run typecheck && npm run test:domain && npm test
 
 | Feature ID | Dokumen |
 |------------|---------|
-| `0400-domain-pdf-layout-data` | [agentic/development/features/0400-domain-pdf-layout-data.md](../../../../../../agentic/development/features/0400-domain-pdf-layout-data.md) |
+| `0400-domain-pdf-layout-data` | [docs/agentic/development/features/0400-domain-pdf-layout-data.md](../../../../agentic/development/features/0400-domain-pdf-layout-data.md) |
 
 ## Development
 
@@ -33,9 +33,9 @@ npm run typecheck && npm run test:domain && npm test
 
 | Skill | File plan |
 |-------|-----------|
-| Backend | [skills/backend.md](./skills/backend.md) |
-| Docs | [skills/docs.md](./skills/docs.md) |
-| QA | [skills/qa.md](./skills/qa.md) |
+| Backend | [skills/backend.md](../../../../development/Plan/0400/phase-01/tasks/040001-domain-pdf-layout-data/skills/backend.md) |
+| Docs | [skills/docs.md](../../../../development/Plan/0400/phase-01/tasks/040001-domain-pdf-layout-data/skills/docs.md) |
+| QA | [skills/qa.md](../../../../development/Plan/0400/phase-01/tasks/040001-domain-pdf-layout-data/skills/qa.md) |
 
 ## Acuan PRD
 

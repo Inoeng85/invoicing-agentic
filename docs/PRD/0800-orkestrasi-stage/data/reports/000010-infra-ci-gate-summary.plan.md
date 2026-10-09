@@ -22,7 +22,7 @@ reviewer melihat tabel hasil gate di halaman run.
 
 | Feature ID | Dokumen |
 |------------|---------|
-| `0000-infra-ci-gate-summary` | [agentic/development/features/0000-infra-ci-gate-summary.md](../../../../../../agentic/development/features/0000-infra-ci-gate-summary.md) |
+| `0000-infra-ci-gate-summary` | [docs/agentic/development/features/0000-infra-ci-gate-summary.md](../../../../agentic/development/features/0000-infra-ci-gate-summary.md) |
 
 ## Development
 
@@ -32,8 +32,8 @@ reviewer melihat tabel hasil gate di halaman run.
 
 | Skill | File plan |
 |-------|-----------|
-| Infra | [skills/infra.md](./skills/infra.md) |
-| Docs | [skills/docs.md](./skills/docs.md) |
+| Infra | [skills/infra.md](../../../../development/Plan/0000/phase-03/tasks/000010-infra-ci-gate-summary/skills/infra.md) |
+| Docs | [skills/docs.md](../../../../development/Plan/0000/phase-03/tasks/000010-infra-ci-gate-summary/skills/docs.md) |
 
 ## Acuan PRD
 

@@ -23,7 +23,7 @@ email uji production lolos SPF/DKIM (cek header) dan tidak masuk spam.
 
 | Feature ID | Dokumen |
 |------------|---------|
-| `0000-infra-email-domain-production` | [agentic/development/features/0000-infra-email-domain-production.md](../../../../../../agentic/development/features/0000-infra-email-domain-production.md) |
+| `0000-infra-email-domain-production` | [docs/agentic/development/features/0000-infra-email-domain-production.md](../../../../agentic/development/features/0000-infra-email-domain-production.md) |
 
 ## Development
 
@@ -33,8 +33,8 @@ email uji production lolos SPF/DKIM (cek header) dan tidak masuk spam.
 
 | Skill | File plan |
 |-------|-----------|
-| Infra | [skills/infra.md](./skills/infra.md) |
-| Docs | [skills/docs.md](./skills/docs.md) |
+| Infra | [skills/infra.md](../../../../development/Plan/0000/phase-03/tasks/000015-infra-email-domain-production/skills/infra.md) |
+| Docs | [skills/docs.md](../../../../development/Plan/0000/phase-03/tasks/000015-infra-email-domain-production/skills/docs.md) |
 
 ## Acuan PRD
 

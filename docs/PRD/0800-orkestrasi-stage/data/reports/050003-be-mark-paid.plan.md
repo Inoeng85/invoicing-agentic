@@ -19,7 +19,7 @@ npm run typecheck && npm run test:domain && npm test
 
 | Feature ID | Dokumen |
 |------------|---------|
-| `0500-be-mark-paid` | [agentic/development/features/0500-be-mark-paid.md](../../../../../../agentic/development/features/0500-be-mark-paid.md) |
+| `0500-be-mark-paid` | [docs/agentic/development/features/0500-be-mark-paid.md](../../../../agentic/development/features/0500-be-mark-paid.md) |
 
 ## Development
 
@@ -33,8 +33,8 @@ npm run typecheck && npm run test:domain && npm test
 
 | Skill | File plan |
 |-------|-----------|
-| Backend | [skills/backend.md](./skills/backend.md) |
-| QA | [skills/qa.md](./skills/qa.md) |
+| Backend | [skills/backend.md](../../../../development/Plan/0500/phase-01/tasks/050003-be-mark-paid/skills/backend.md) |
+| QA | [skills/qa.md](../../../../development/Plan/0500/phase-01/tasks/050003-be-mark-paid/skills/qa.md) |
 
 ## Acuan PRD
 

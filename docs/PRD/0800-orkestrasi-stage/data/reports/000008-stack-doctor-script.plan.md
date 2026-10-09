@@ -24,7 +24,7 @@ matikan DB / ubah Node → doctor FAIL dengan pesan tepat.
 
 | Feature ID | Dokumen |
 |------------|---------|
-| `0000-platform-stack` | [agentic/development/features/0000-platform-stack.md](../../../../../../agentic/development/features/0000-platform-stack.md) |
+| `0000-platform-stack` | [docs/agentic/development/features/0000-platform-stack.md](../../../../agentic/development/features/0000-platform-stack.md) |
 
 ## Development
 
@@ -34,7 +34,7 @@ matikan DB / ubah Node → doctor FAIL dengan pesan tepat.
 
 | Skill | File plan |
 |-------|-----------|
-| Docs | [skills/docs.md](./skills/docs.md) |
+| Docs | [skills/docs.md](../../../../development/Plan/0000/phase-02/tasks/000008-stack-doctor-script/skills/docs.md) |
 
 ## Acuan PRD
 

@@ -19,7 +19,7 @@ npm run typecheck && npm run test:domain && npm test
 
 | Feature ID | Dokumen |
 |------------|---------|
-| `0300-domain-br01-guards` | [agentic/development/features/0300-domain-br01-guards.md](../../../../../../agentic/development/features/0300-domain-br01-guards.md) |
+| `0300-domain-br01-guards` | [docs/agentic/development/features/0300-domain-br01-guards.md](../../../../agentic/development/features/0300-domain-br01-guards.md) |
 
 ## Development
 
@@ -33,9 +33,9 @@ npm run typecheck && npm run test:domain && npm test
 
 | Skill | File plan |
 |-------|-----------|
-| Backend | [skills/backend.md](./skills/backend.md) |
-| Docs | [skills/docs.md](./skills/docs.md) |
-| QA | [skills/qa.md](./skills/qa.md) |
+| Backend | [skills/backend.md](../../../../development/Plan/0300/phase-01/tasks/030006-domain-br01-guards/skills/backend.md) |
+| Docs | [skills/docs.md](../../../../development/Plan/0300/phase-01/tasks/030006-domain-br01-guards/skills/docs.md) |
+| QA | [skills/qa.md](../../../../development/Plan/0300/phase-01/tasks/030006-domain-br01-guards/skills/qa.md) |
 
 ## Acuan PRD
 

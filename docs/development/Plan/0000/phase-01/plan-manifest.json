@@ -1,0 +1,22 @@
+{
+  "phaseId": "0000-P1",
+  "updatedAt": "2026-10-01T07:15:43.095Z",
+  "tasks": [
+    {
+      "taskId": "000001-infra-github-repo-protection",
+      "planPath": "docs/development/Plan/0000/phase-01/tasks/000001-infra-github-repo-protection/plan.md",
+      "status": "defined"
+    },
+    {
+      "taskId": "000002-infra-ci-workflow-fix",
+      "planPath": "docs/development/Plan/0000/phase-01/tasks/000002-infra-ci-workflow-fix/plan.md",
+      "status": "defined"
+    },
+    {
+      "taskId": "000003-infra-ci-verify-pipeline",
+      "planPath": "docs/development/Plan/0000/phase-01/tasks/000003-infra-ci-verify-pipeline/plan.md",
+      "status": "defined"
+    }
+  ],
+  "allDefined": true
+}

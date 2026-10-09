@@ -19,7 +19,7 @@ npm run release:check
 
 | Feature ID | Dokumen |
 |------------|---------|
-| `0600-ops-prod-launch` | [agentic/development/features/0600-ops-prod-launch.md](../../../../../../agentic/development/features/0600-ops-prod-launch.md) |
+| `0600-ops-prod-launch` | [docs/agentic/development/features/0600-ops-prod-launch.md](../../../../agentic/development/features/0600-ops-prod-launch.md) |
 
 ## Development
 
@@ -29,7 +29,7 @@ npm run release:check
 
 | Skill | File plan |
 |-------|-----------|
-| Docs | [skills/docs.md](./skills/docs.md) |
+| Docs | [skills/docs.md](../../../../development/Plan/0600/phase-01/tasks/060009-ops-prod-launch/skills/docs.md) |
 
 ## Acuan PRD
 

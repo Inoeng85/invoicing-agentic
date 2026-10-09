@@ -39,9 +39,9 @@ Agentic/
 
 | App / package | README |
 |---------------|--------|
-| Web | [apps/web/README.md](../../apps/web/README.md) |
-| API | [apps/api/README.md](../../apps/api/README.md) |
-| Packages | [packages/README.md](../../packages/README.md) |
+| Web | [apps/web/README.md](../apps/web/README.md) |
+| API | [apps/api/README.md](../apps/api/README.md) |
+| Packages | [packages/README.md](../packages/README.md) |
 
 Operasi dev: [engineering/STACK-INTEGRATION.md](./engineering/STACK-INTEGRATION.md)
 

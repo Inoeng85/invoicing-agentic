@@ -23,18 +23,36 @@ push langsung ke `main` ditolak.
 
 | Feature ID | Dokumen |
 |------------|---------|
-| `0000-infra-github-repo-protection` | [agentic/development/features/0000-infra-github-repo-protection.md](../../../../../../agentic/development/features/0000-infra-github-repo-protection.md) |
+| `0000-infra-github-repo-protection` | [docs/agentic/development/features/0000-infra-github-repo-protection.md](../../../../agentic/development/features/0000-infra-github-repo-protection.md) |
 
 ## Development
 
-| Status | `pending` |
+| Field | Nilai |
+|-------|-------|
+| Status | `complete` |
+| Laporan | docs/development/Result/0000/phase-01/development/000001-infra-github-repo-protection.md |
+| Commit/PR | pengaturan GitHub · tidak ada commit |
+| Selesai | 2026-10-01T16:05:29+07:00 |
+
+### Catatan implementasi
+
+Protection `main`: PR wajib, admin tidak boleh bypass, force push dilarang, hanya squash. Check CI `verify` ditunda sampai workflow hijau. Approval count 0 untuk solo.
+
+## QA
+
+| Field | Nilai |
+|-------|-------|
+| Status | `pass` |
+| Laporan | docs/development/Result/0000/phase-01/qa/000001-infra-github-repo-protection.md |
+| Fix dalam session | tidak |
+| Selesai | 2026-10-01T16:06:23+07:00 |
 
 ## Skill yang digunakan
 
 | Skill | File plan |
 |-------|-----------|
-| Infra | [skills/infra.md](./skills/infra.md) |
-| Docs | [skills/docs.md](./skills/docs.md) |
+| Infra | [skills/infra.md](../../../../development/Plan/0000/phase-01/tasks/000001-infra-github-repo-protection/skills/infra.md) |
+| Docs | [skills/docs.md](../../../../development/Plan/0000/phase-01/tasks/000001-infra-github-repo-protection/skills/docs.md) |
 
 ## Acuan PRD
 

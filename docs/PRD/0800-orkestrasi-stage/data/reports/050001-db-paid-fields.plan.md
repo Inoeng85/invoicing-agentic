@@ -19,7 +19,7 @@ npm run typecheck && npm run test:domain && npm test
 
 | Feature ID | Dokumen |
 |------------|---------|
-| `0500-db-paid-fields` | [agentic/development/features/0500-db-paid-fields.md](../../../../../../agentic/development/features/0500-db-paid-fields.md) |
+| `0500-db-paid-fields` | [docs/agentic/development/features/0500-db-paid-fields.md](../../../../agentic/development/features/0500-db-paid-fields.md) |
 
 ## Development
 
@@ -33,9 +33,9 @@ npm run typecheck && npm run test:domain && npm test
 
 | Skill | File plan |
 |-------|-----------|
-| Infra | [skills/infra.md](./skills/infra.md) |
-| Docs | [skills/docs.md](./skills/docs.md) |
-| QA | [skills/qa.md](./skills/qa.md) |
+| Infra | [skills/infra.md](../../../../development/Plan/0500/phase-01/tasks/050001-db-paid-fields/skills/infra.md) |
+| Docs | [skills/docs.md](../../../../development/Plan/0500/phase-01/tasks/050001-db-paid-fields/skills/docs.md) |
+| QA | [skills/qa.md](../../../../development/Plan/0500/phase-01/tasks/050001-db-paid-fields/skills/qa.md) |
 
 ## Acuan PRD
 

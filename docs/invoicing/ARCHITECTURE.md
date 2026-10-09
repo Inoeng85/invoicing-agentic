@@ -457,11 +457,11 @@ flowchart LR
   CSS --> Gate
   DB --> Gate
   Test --> Gate
-  Gate -->|main| DeployStaging[Deploy_staging]
+  Gate -->|develop| DeployStaging[Deploy_staging]
   Gate -->|tag| DeployProd[Deploy_production]
 ```
 
-### 15.2 Job CI (setiap PR & push ke `main`)
+### 15.2 Job CI (setiap PR & push ke `develop`)
 
 | Step | Perintah | Gate |
 |------|----------|------|
@@ -479,7 +479,7 @@ flowchart LR
 
 | Trigger | Target | Langkah |
 |---------|--------|---------|
-| Merge `main` | Staging | Build image → deploy → `prisma migrate deploy` → smoke `GET /api/health/ready` |
+| Merge `develop` | Staging | Build image → deploy → `prisma migrate deploy` → smoke `GET /api/health/ready` |
 | Git tag `v*.*.*` | Production | Manual approval gate → deploy → migrate → smoke |
 | Rollback | Prod | Redeploy image sebelumnya; migrate rollback hanya jika `down.sql` aman |
 
@@ -522,16 +522,14 @@ jobs:
 
 | Branch | Durasi hidup | Purpose |
 |--------|--------------|---------|
-| `main` | Permanen | Production-ready; dilindungi |
-| `feature/*` | ≤ 3 hari ideal | Satu FR atau slice kecil (contoh `feature/fr-01-clients`) |
-| `fix/*` | Pendek | Bugfix production atau staging |
-| `release/*` | Opsional | Hanya jika freeze versi; otherwise tag dari `main` |
+| `develop` | Permanen | Production-ready; dilindungi |
+| `feat/*` | Pendek | Semua pekerjaan: fitur, bugfix, dokumentasi, infrastruktur, dan persiapan release |
 
-**Tidak** long-lived `develop` untuk MVP solo/small team — kurangi merge drift.
+Semua pekerjaan dimulai dari `develop` terbaru pada branch `feat/*`, diverifikasi, lalu digabungkan melalui pull request ke `develop`. Commit langsung ke branch utama tidak diperbolehkan.
 
-### 16.2 Aturan `main`
+### 16.2 Aturan `develop`
 
-- PR wajib; **1 approval** (self-review OK untuk solo dev dengan checklist).
+- PR wajib dari `feat/*`; jumlah approval mengikuti proteksi repository (saat ini 0 untuk solo developer).
 - CI hijau sebelum merge.
 - Squash merge disarankan; pesan commit mengacu FR/US jika relevan (`feat(clients): FR-01 list + create`).
 
@@ -545,7 +543,7 @@ jobs:
 | Environment | Source deploy | DB |
 |-------------|---------------|-----|
 | Preview PR | Opsional (PR env) | Ephemeral SQLite / branch DB |
-| Staging | `main` HEAD | Postgres staging |
+| Staging | `develop` HEAD | Postgres staging |
 | Production | Tag `v*` | Postgres prod |
 
 ---
@@ -590,7 +588,7 @@ Sumber kebenaran: [brd/USER-STORIES-UAT.md](./brd/USER-STORIES-UAT.md).
 ### 17.4 Defect workflow
 
 1. Bug ditemukan → issue dengan label `severity` (S1–S3) + FR jika ada.
-2. S1 (kirim invoice broken, auth bypass): hotfix `fix/*` → cherry-pick `main` → deploy.
+2. S1 (kirim invoice broken, auth bypass): hotfix `feat/*` dari `develop` → PR ke `develop` → deploy.
 3. Regresi wajib tes unit/integration sebelum close.
 
 ### 17.5 Non-functional QA

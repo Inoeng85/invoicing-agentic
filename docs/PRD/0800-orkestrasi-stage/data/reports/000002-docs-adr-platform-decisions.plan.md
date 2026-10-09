@@ -25,7 +25,7 @@ empat ADR berstatus Accepted sebelum 000004-db, 000005-infra, 000001-fe dimulai.
 
 | Feature ID | Dokumen |
 |------------|---------|
-| `0000-docs-adr-platform-decisions` | [agentic/development/features/0000-docs-adr-platform-decisions.md](../../../../../../agentic/development/features/0000-docs-adr-platform-decisions.md) |
+| `0000-docs-adr-platform-decisions` | [docs/agentic/development/features/0000-docs-adr-platform-decisions.md](../../../../agentic/development/features/0000-docs-adr-platform-decisions.md) |
 
 ## Development
 
@@ -35,7 +35,7 @@ empat ADR berstatus Accepted sebelum 000004-db, 000005-infra, 000001-fe dimulai.
 
 | Skill | File plan |
 |-------|-----------|
-| Docs | [skills/docs.md](./skills/docs.md) |
+| Docs | [skills/docs.md](../../../../development/Plan/0000/phase-02/tasks/000002-docs-adr-platform-decisions/skills/docs.md) |
 
 ## Acuan PRD
 
