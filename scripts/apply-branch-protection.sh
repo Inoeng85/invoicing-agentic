@@ -4,9 +4,10 @@ set -euo pipefail
 
 REPO="${1:-Inoeng85/invoicing-agentic}"
 CHECK="${2:-verify}"
+BRANCH="${3:-develop}"
 
-echo "Applying protection to $REPO main (required check: $CHECK)"
-gh api "repos/$REPO/branches/main/protection" -X PUT \
+echo "Applying protection to $REPO $BRANCH (required check: $CHECK)"
+gh api "repos/$REPO/branches/$BRANCH/protection" -X PUT \
   -f required_status_checks[strict]=true \
   -f "required_status_checks[checks][][context]=$CHECK" \
   -f enforce_admins=true \

@@ -2,11 +2,21 @@
 
 ## Branch
 
+`develop` = branch utama (default + protected). Semua pekerjaan di branch `feat/*`, lalu merge ke `develop`.
+
 | Pola | Pakai untuk |
 |------|-------------|
-| `feature/*` | Fitur / platform (FR, PS) |
-| `fix/*` | Bugfix |
+| `develop` | Branch utama — integrasi semua pekerjaan, deploy otomatis ke staging |
+| `main` | Cadangan / garis rilis — di-promote dari `develop` |
+| `feat/*` | Semua pekerjaan: fitur, platform (FR, PS), bugfix |
 | `release/*` | Persiapan tag |
+
+```sh
+git switch develop && git pull
+git switch -c feat/<topik>
+# ... kerja, commit ...
+git switch develop && git merge feat/<topik>
+```
 
 ## Commit
 
@@ -23,6 +33,7 @@ Gunakan template PR. Wajib:
 
 ## Release
 
+- Staging deploy otomatis dari `develop` setelah CI hijau
 - Tag SemVer: `v0.1.0`, `v0.1.0-rc.1`
 - Production deploy dari tag (Phase 3)
 
