@@ -3,7 +3,7 @@ import path from 'node:path'
 import { phaseDirName, readPlanDevelopmentStatus, taskPlanBase } from './task-progress.mjs'
 
 export const QUEUE_PATH_REL = 'docs/workflow/plans/intake-queue.json'
-export const KANBAN_MIRROR_REL = 'docs/workflow/dashboard/data/intake-queue.json'
+export const KANBAN_MIRROR_REL = 'docs/reports/workflow/intake-queue.json'
 
 export function loadQueue(root) {
   const p = path.join(root, QUEUE_PATH_REL)

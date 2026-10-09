@@ -42,7 +42,7 @@ npm run typecheck && npm run test:domain && npm test
 
 ## Acuan PRD
 
-- Development phase: `docs/product/requirements/0701-foto-kolektor/0701_PRD_Foto_Kolektor_Development_phase.md`
+- Development phase: `docs/product/requirements/0701-foto-kolektor/0701-prd-foto-kolektor-development-phase.md`
 - **Produces:** —
 - **Verifikasi:** npm run typecheck && npm run test:domain && npm test
 - **Files:**

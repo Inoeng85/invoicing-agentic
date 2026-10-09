@@ -26,12 +26,12 @@ export function taskPlanBase(root, epic, phaseOrdinal, taskId) {
 }
 
 /** Repo-relative paths for kanban / IDE links */
-export function taskArtifactPaths(epic, phaseOrdinal, taskId) {
+export function taskArtifactPaths(root, epic, phaseOrdinal, taskId) {
   const phase = phaseDirName(phaseOrdinal)
   return {
     plan: `docs/workflow/plans/${epic}/${phase}/tasks/${taskId}/plan.md`,
-    development: `docs/workflow/results/${epic}/${phase}/development/${taskId}.md`,
-    qa: `docs/workflow/results/${epic}/${phase}/qa/${taskId}.md`,
+    development: path.relative(root, taskReportPath(root, epic, phaseOrdinal, 'development', taskId)).split(path.sep).join('/'),
+    qa: path.relative(root, taskReportPath(root, epic, phaseOrdinal, 'qa', taskId)).split(path.sep).join('/'),
   }
 }
 
@@ -78,7 +78,7 @@ export function readPhaseAuditReportOutcome(root, epic, phaseOrdinal) {
 
 /** Laporan audit satu task: docs/workflow/results/{epic}/phase-{nn}/audit/{taskId}.md */
 export function readTaskAuditOutcome(root, epic, phaseOrdinal, taskId) {
-  const reportPath = path.join(taskResultBase(root, epic, phaseOrdinal), 'audit', `${taskId}.md`)
+  const reportPath = taskReportPath(root, epic, phaseOrdinal, 'audit', taskId)
   if (!fs.existsSync(reportPath)) return null
   const text = fs.readFileSync(reportPath, 'utf8')
   if (/\*\*Hasil\*\*[^\n]*`pass`/i.test(text) || /Hasil:\s*pass/i.test(text)) return 'pass'
@@ -146,11 +146,7 @@ export function readPlanQaStatus(root, epic, phaseOrdinal, taskId) {
 
 /** @returns {'pass'|'fail'|'needs_clarify'|null} */
 export function readQaReportOutcome(root, epic, phaseOrdinal, taskId) {
-  const reportPath = path.join(
-    taskResultBase(root, epic, phaseOrdinal),
-    'qa',
-    `${taskId}.md`,
-  )
+  const reportPath = taskReportPath(root, epic, phaseOrdinal, 'qa', taskId)
   if (!fs.existsSync(reportPath)) return null
   const text = fs.readFileSync(reportPath, 'utf8')
   if (/\*\*Hasil\*\*[^\n]*`pass`/i.test(text) || /Hasil:\s*pass/i.test(text)) return 'pass'
@@ -163,9 +159,14 @@ export function taskResultBase(root, epic, phaseOrdinal) {
   return path.join(root, 'docs/workflow/results', epic, phaseDirName(phaseOrdinal))
 }
 
+export function taskReportPath(root, epic, phaseOrdinal, kind, taskId) {
+  const active = path.join(taskResultBase(root, epic, phaseOrdinal), kind, `${taskId}.md`)
+  const archived = path.join(root, 'docs/archive/completed-tasks/results', epic, phaseDirName(phaseOrdinal), kind, `${taskId}.md`)
+  return fs.existsSync(active) || !fs.existsSync(archived) ? active : archived
+}
+
 export function readTaskArtifacts(root, epic, phaseOrdinal, taskId) {
   const planBase = taskPlanBase(root, epic, phaseOrdinal, taskId)
-  const resultBase = taskResultBase(root, epic, phaseOrdinal)
   const planPath = path.join(planBase, 'plan.md')
   const skillsDir = path.join(planBase, 'skills')
   let skillFiles = []
@@ -174,8 +175,8 @@ export function readTaskArtifacts(root, epic, phaseOrdinal, taskId) {
   }
   const plan = fs.existsSync(planPath)
   const planComplete = plan && skillFiles.length > 0
-  const development = fs.existsSync(path.join(resultBase, 'development', `${taskId}.md`))
-  const qa = fs.existsSync(path.join(resultBase, 'qa', `${taskId}.md`))
+  const development = fs.existsSync(taskReportPath(root, epic, phaseOrdinal, 'development', taskId))
+  const qa = fs.existsSync(taskReportPath(root, epic, phaseOrdinal, 'qa', taskId))
   return { plan, planComplete, skillCount: skillFiles.length, development, qa }
 }
 

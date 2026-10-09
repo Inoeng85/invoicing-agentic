@@ -3,8 +3,8 @@ import path from 'node:path'
 import { loadQueue } from './intake-pipeline.mjs'
 import { buildTaskChecklist } from './task-checklist.mjs'
 import { loadAutopilotState, EVENTS_LOG, TRIGGER_DIR_REL } from './task-autopilot.mjs'
-const OUT_REL = 'docs/workflow/dashboard/data/monitoring.json'
-const OUT_LOG_MIRROR = 'docs/workflow/dashboard/data/monitoring-log.jsonl'
+const OUT_REL = 'docs/reports/workflow/monitoring.json'
+const OUT_LOG_MIRROR = 'docs/reports/workflow/monitoring-log.jsonl'
 
 function readJsonIfExists(fp) {
   if (!fs.existsSync(fp)) return null
@@ -29,14 +29,12 @@ function readJsonl(fp, max = 500) {
 }
 
 function walkReports(root, limit = 120) {
-  const base = path.join(root, 'docs/workflow/results')
-  if (!fs.existsSync(base)) return []
   /** @type {{ path: string, mtime: number, taskId: string, kind: string, epic: string, phase: string }[]} */
   const found = []
-  function walk(dir) {
+  function walk(dir, base) {
     for (const ent of fs.readdirSync(dir, { withFileTypes: true })) {
       const full = path.join(dir, ent.name)
-      if (ent.isDirectory()) walk(full)
+      if (ent.isDirectory()) walk(full, base)
       else if (ent.name.endsWith('.md')) {
         const rel = path.relative(base, full).split(path.sep).join('/')
         const parts = rel.split('/')
@@ -47,11 +45,14 @@ function walkReports(root, limit = 120) {
         const taskId = ent.name.replace(/\.md$/, '')
         if (!/^(development|qa|audit)$/.test(kind)) continue
         const st = fs.statSync(full)
-        found.push({ path: `docs/workflow/results/${rel}`, mtime: st.mtimeMs, taskId, kind, epic, phase })
+        found.push({ path: path.relative(root, full).split(path.sep).join('/'), mtime: st.mtimeMs, taskId, kind, epic, phase })
       }
     }
   }
-  walk(base)
+  for (const relative of ['docs/workflow/results', 'docs/archive/completed-tasks/results']) {
+    const base = path.join(root, relative)
+    if (fs.existsSync(base)) walk(base, base)
+  }
   found.sort((a, b) => b.mtime - a.mtime)
   return found.slice(0, limit)
 }
@@ -120,7 +121,7 @@ export function buildMonitoringData(root, opts = {}) {
   const devSession = readJsonIfExists(path.join(triggerDir, 'development.json'))
   const autopilotWork = readJsonIfExists(path.join(triggerDir, 'autopilot-work.json'))
   const intakeTrigger = readJsonIfExists(
-    path.join(root, 'docs/workflow/dashboard/data/intake-trigger.json'),
+    path.join(root, 'docs/reports/workflow/intake-trigger.json'),
   )
 
   const autopilotEvents = readJsonl(path.join(triggerDir, EVENTS_LOG), 300)

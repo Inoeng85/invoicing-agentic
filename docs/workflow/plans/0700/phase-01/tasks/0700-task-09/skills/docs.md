@@ -19,9 +19,9 @@ npm run typecheck && npm run test:domain && npm test && npm run gate
 ## Files
 
 - `docs/product/requirements/README.md`
-- `docs/product/brd/MVP-SCOPE-LOCK.md`
-- `docs/product/BRD.md`
-- `docs/engineering/API.md`
+- `docs/product/brd/mvp-scope-lock.md`
+- `docs/product/brd.md`
+- `docs/engineering/api.md`
 - `docs/architecture/README.md`
-- `docs/product/legal/LEGAL-REVIEW-CHECKLIST.md`
-- `docs/product/requirements/0700-debt-collector/0700_PRD_Debt_Collector.md`
+- `docs/product/legal/legal-review-checklist.md`
+- `docs/product/requirements/0700-debt-collector/0700-prd-debt-collector.md`

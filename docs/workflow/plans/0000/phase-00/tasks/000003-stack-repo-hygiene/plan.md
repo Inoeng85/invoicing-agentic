@@ -57,7 +57,7 @@ stack repo hygiene (PRD epic 0000).
 
 ## Acuan PRD
 
-- Development phase: `docs/product/requirements/0000-platform-setup/PRD_platform_setup_development_phase.md`
+- Development phase: `docs/product/requirements/0000-platform-setup/prd-platform-setup-development-phase.md`
 - **Produces:** PS-05 (commit/remote), PS-06, PS-07
 - **Verifikasi:** `git status` bersih setelah `npm run dev` · tidak ada `.env`/`.db` di `git ls-files`.
 - **Files:**

@@ -1,5 +1,5 @@
 (function () {
-  const CHECKLIST_URL = new URL("data/task-checklist.json", window.location.href).href;
+  const CHECKLIST_URL = new URL("../../reports/workflow/task-checklist.json", window.location.href).href;
   const POLL_MS = 15000;
 
   let checklistSnapshot = null;

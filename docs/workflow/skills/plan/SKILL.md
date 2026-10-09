@@ -33,7 +33,7 @@ Template plan: [task-plan.template.md](../../plans/_templates/task-plan.template
 | **Feature** | Nama feature/modul + **Feature ID** (slug) |
 | **Skill yang digunakan** | Daftar: Frontend, Backend, QA, Infra, Docs, … — **masing-masing file sendiri** di `skills/` |
 
-**Feature doc (wajib untuk Development):** `docs/workflow/features/{feature-id}.md` — berisi semua file backend/frontend/docs untuk **satu session**. Template: [FEATURE.template.md](../../features/FEATURE.template.md).
+**Feature doc (wajib untuk Development):** `docs/workflow/features/{feature-id}.md` — berisi semua file backend/frontend/docs untuk **satu session**. Template: [feature.template.md](../../features/feature.template.md).
 
 Skill eksekusi per area: [docs/workflow/skills/feature/](../feature/) (rincian teknis); boundary file ada di feature doc.
 

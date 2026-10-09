@@ -33,14 +33,14 @@ npm run dev
 
 ## Acuan PRD
 
-- Development phase: `docs/product/requirements/0702-live-tracking/0702_PRD_Live_Tracking_Development_phase.md`
+- Development phase: `docs/product/requirements/0702-live-tracking/0702-prd-live-tracking-development-phase.md`
 - **Produces:** —
 - **Verifikasi:** npm run dev
 - **Files:**
 - `docs/product/requirements/README.md`
-- `docs/product/requirements/0702-live-tracking/0702_PRD_Live_Tracking.md`
-- `docs/product/legal/LEGAL-REVIEW-CHECKLIST.md`
-- `docs/product/brd/MVP-SCOPE-LOCK.md`
+- `docs/product/requirements/0702-live-tracking/0702-prd-live-tracking.md`
+- `docs/product/legal/legal-review-checklist.md`
+- `docs/product/brd/mvp-scope-lock.md`
 
 ## Selesai bila (Plan)
 

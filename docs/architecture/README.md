@@ -1,12 +1,19 @@
+---
+status: draft
+owner: repository-maintainers
+reviewed: 2026-10-10
+review-scope: structure-and-links
+---
+
 # System Architecture — PuraPuraLupa (Komando)
 
 **Versi:** 1.6  
 **Tanggal:** 2026-09-30  
-**Indeks paket:** [BRD-DEFINITION-OF-DONE.md](../product/BRD-DEFINITION-OF-DONE.md)\
-**Sumber BRD:** [BRD.md](../product/BRD.md) · [brd/MVP-SCOPE-LOCK.md](../product/brd/MVP-SCOPE-LOCK.md) · [brd/ARCHITECTURE-ALIGNMENT.md](../product/brd/ARCHITECTURE-ALIGNMENT.md) (keputusan canonical D-xx, gap G-xx)\
-**Design:** [design/DESIGN-GUIDELINES.md](../design/DESIGN-GUIDELINES.md) · [prototype](../design/prototype/index.html)\
+**Indeks paket:** [brd-definition-of-done.md](../product/brd-definition-of-done.md)\
+**Sumber BRD:** [brd.md](../product/brd.md) · [brd/mvp-scope-lock.md](../product/brd/mvp-scope-lock.md) · [brd/architecture-alignment.md](../product/brd/architecture-alignment.md) (keputusan canonical D-xx, gap G-xx)\
+**Design:** [design/design-guidelines.md](../design/design-guidelines.md) · [prototype](../design/prototype/index.html)\
 **Implementasi:** [apps/web](../../apps/web/) + [apps/api](../../apps/api/) + [packages/](../../packages/) — tanpa Docker  
-**Detail engineering:** [engineering/TECHNICAL-DESIGN.md](../engineering/TECHNICAL-DESIGN.md), [engineering/API.md](../engineering/API.md), [engineering/STACK-INTEGRATION.md](../engineering/STACK-INTEGRATION.md)
+**Detail engineering:** [engineering/technical-design.md](../engineering/technical-design.md), [engineering/api.md](../engineering/api.md), [engineering/stack-integration.md](../engineering/stack-integration.md)
 
 ---
 
@@ -14,7 +21,7 @@
 
 Dokumen ini menjembatani **requirement bisnis (BRD)** dengan **struktur sistem** yang akan dibangun: batas domain, komponen, alur data, keamanan, dan pemetaan FR/BR ke modul aplikasi. Pembaca target: product, engineering, dan QA.
 
-**Out of scope dokumen ini:** setup environment, build/deploy aplikasi, estimasi sprint detail, desain pixel-perfect (lihat [brd/WIREFRAMES.md](../product/brd/WIREFRAMES.md), [design/DESIGN-GUIDELINES.md](../design/DESIGN-GUIDELINES.md)).
+**Out of scope dokumen ini:** setup environment, build/deploy aplikasi, estimasi sprint detail, desain pixel-perfect (lihat [brd/wireframes.md](../product/brd/wireframes.md), [design/design-guidelines.md](../design/design-guidelines.md)).
 
 ---
 
@@ -41,11 +48,11 @@ Dokumen ini menjembatani **requirement bisnis (BRD)** dengan **struktur sistem**
 | DB | SQLite (dev/staging/prod) · Prisma 6 · volume persisten di host |
 | Integrasi | PDF: **pdf-lib** (implemented) · Email: adapter domain, default log; **Resend** untuk produksi (gap G-04) |
 | Auth | scrypt + session token HMAC (`SESSION_SECRET`), cookie `invoicing_session` / Bearer |
-| UI design | Token semantik [DESIGN-GUIDELINES §13](../design/DESIGN-GUIDELINES.md#13-prototype-html) · light only MVP |
+| UI design | Token semantik [DESIGN-GUIDELINES §13](../design/design-guidelines.md#13-prototype-html) · light only MVP |
 
-**Dokumen lengkap:** [engineering/TECHNOLOGY-STACK.md](../engineering/TECHNOLOGY-STACK.md) (diagram stack §1.1, FR mapping, env, dev/prod, trade-offs).
+**Dokumen lengkap:** [engineering/technology-stack.md](../engineering/technology-stack.md) (diagram stack §1.1, FR mapping, env, dev/prod, trade-offs).
 
-**Operasi dev:** [engineering/STACK-INTEGRATION.md](../engineering/STACK-INTEGRATION.md).
+**Operasi dev:** [engineering/stack-integration.md](../engineering/stack-integration.md).
 
 ---
 
@@ -53,11 +60,11 @@ Dokumen ini menjembatani **requirement bisnis (BRD)** dengan **struktur sistem**
 
 1. **Monorepo modular** — `apps/web` + `apps/api` + `packages/*`; deployable terpisah, tanpa Docker wajib.
 2. **Domain tunggal** — logic bisnis & BR hanya di `@invoicing/domain`; web/API controllers tipis.
-3. **Server-first UI** — Remix render + form mutations di web; islands minimal ([brd/WIREFRAMES.md](../product/brd/WIREFRAMES.md)).
-4. **Single tenant per akun** — satu user = satu bisnis (MVP); query scoped `userId` ([brd/MVP-SCOPE-LOCK.md](../product/brd/MVP-SCOPE-LOCK.md)).
+3. **Server-first UI** — Remix render + form mutations di web; islands minimal ([brd/wireframes.md](../product/brd/wireframes.md)).
+4. **Single tenant per akun** — satu user = satu bisnis (MVP); query scoped `userId` ([brd/mvp-scope-lock.md](../product/brd/mvp-scope-lock.md)).
 5. **Immutable sent invoice** — BR-01/BR-02 di domain layer, bukan hanya UI.
 6. **Trust boundaries** — session freelancer; token opaque klien (FR-06, BR-05).
-7. **Pragmatic compliance** — PPN kalkulator; [legal/PPN-DISCLAIMER.md](../product/legal/PPN-DISCLAIMER.md).
+7. **Pragmatic compliance** — PPN kalkulator; [legal/ppn-disclaimer.md](../product/legal/ppn-disclaimer.md).
 
 ---
 
@@ -122,7 +129,7 @@ flowchart TB
 | Container | Path | Tanggung jawab |
 |-----------|------|----------------|
 | Web UI | `apps/web` | SSR, Tailwind, `/i/:token` HTML |
-| Backend API | `apps/api` | JSON REST — [engineering/API.md](../engineering/API.md) |
+| Backend API | `apps/api` | JSON REST — [engineering/api.md](../engineering/api.md) |
 | Domain | `packages/domain` | Business logic shared |
 | Database | `packages/database` | Prisma schema & client |
 | SQLite | `packages/database/prisma/*.db` | MVP persistence |
@@ -190,7 +197,7 @@ flowchart TB
 
 ### 7.1 Peta modul → FR (MVP Must)
 
-Selaras [brd/ARCHITECTURE-ALIGNMENT.md](../product/brd/ARCHITECTURE-ALIGNMENT.md) §3.
+Selaras [brd/architecture-alignment.md](../product/brd/architecture-alignment.md) §3.
 
 | FR | Web (`apps/web`) | API (`apps/api`) | Domain / BR |
 |----|------------------|------------------|-------------|
@@ -205,7 +212,7 @@ Selaras [brd/ARCHITECTURE-ALIGNMENT.md](../product/brd/ARCHITECTURE-ALIGNMENT.md
 | FR-14 | `/collectors`, collection actions on invoice | `/api/v1/collectors`, `/api/v1/invoices/:id/collection/*` | `collectors.ts`, `collections.ts` · BR-07–BR-09 |
 | FR-14h | `/collectors/:id/photo` | — (web only) | `collector-photos.ts` |
 
-Status implementasi per baris + layar design: [brd/ARCHITECTURE-ALIGNMENT.md §3](../product/brd/ARCHITECTURE-ALIGNMENT.md#3-pemetaan-fr-must--arsitektur--stack--design).
+Status implementasi per baris + layar design: [brd/architecture-alignment.md §3](../product/brd/architecture-alignment.md#3-pemetaan-fr-must--arsitektur--stack--design).
 
 ---
 
@@ -262,7 +269,7 @@ stateDiagram-v2
 - `subtotal` = Σ (qty × unit_price − discount) per baris.
 - `ppn` = round(subtotal × rate) jika `ppn_enabled`.
 - `total` = subtotal + ppn.
-- Single source: `packages/domain` → `invoiceTotals.ts` (unit test 3 skenario [brd/USER-STORIES-UAT.md](../product/brd/USER-STORIES-UAT.md)).
+- Single source: `packages/domain` → `invoiceTotals.ts` (unit test 3 skenario [brd/user-stories-uat.md](../product/brd/user-stories-uat.md)).
 
 ---
 
@@ -333,10 +340,10 @@ sequenceDiagram
 
 | Layer | Kontrol MVP | NFR / legal |
 |-------|-------------|-------------|
-| Autentikasi | Email/password (scrypt), session token HMAC di cookie HttpOnly SameSite=Lax atau Bearer | [engineering/TECHNICAL-DESIGN.md](../engineering/TECHNICAL-DESIGN.md) §6 |
+| Autentikasi | Email/password (scrypt), session token HMAC di cookie HttpOnly SameSite=Lax atau Bearer | [engineering/technical-design.md](../engineering/technical-design.md) §6 |
 | Autorisasi | `userId` on every mutating query | Single-tenant |
 | Public link | Token 24 byte random (base64url), revoke; rate limit + `noindex` planned (G-05) | FR-06, BR-05 |
-| PII | Data klien milik user; [PRIVACY.md](../product/legal/PRIVACY.md) | Retention/hapus akun |
+| PII | Data klien milik user; [privacy.md](../product/legal/privacy.md) | Retention/hapus akun |
 | Transport | TLS di production (reverse proxy) | — |
 | CSRF | Form middleware / token | Planned pre-launch (G-05) |
 
@@ -355,7 +362,7 @@ sequenceDiagram
 
 ## 12. Arsitektur UI & navigasi
 
-Selaras [brd/WIREFRAMES.md](../product/brd/WIREFRAMES.md) — layar inti + **Kolektor**, route = [apps/web/app/routes.ts](../../apps/web/app/routes.ts):
+Selaras [brd/wireframes.md](../product/brd/wireframes.md) — layar inti + **Kolektor**, route = [apps/web/app/routes.ts](../../apps/web/app/routes.ts):
 
 | Layar | Route | Stack UI | Prototype |
 |-------|-------|----------|-----------|
@@ -368,7 +375,7 @@ Selaras [brd/WIREFRAMES.md](../product/brd/WIREFRAMES.md) — layar inti + **Kol
 | Public | `/i/:token` | Minimal chrome | `screen-public.html`, `screen-pdf-states.html` |
 | Settings | `/settings` | Profil + invoice defaults | `screen-settings.html` |
 
-Auth: `/login`, `/register` (`screen-auth.html`). Visual & copy: [design/DESIGN-GUIDELINES.md](../design/DESIGN-GUIDELINES.md).
+Auth: `/login`, `/register` (`screen-auth.html`). Visual & copy: [design/design-guidelines.md](../design/design-guidelines.md).
 
 **Cascade CSS:** `@layer base, rmx, app` di [apps/web/app/styles/app.css](../../apps/web/app/styles/app.css) agar komponen `remix/ui` dan utility Tailwind coexist.
 
@@ -382,7 +389,7 @@ Auth: `/login`, `/register` (`screen-auth.html`). Visual & copy: [design/DESIGN-
 | Staging | Node 24 container | Postgres | Sandbox domain |
 | Production | Node 24 + health check | Postgres + daily backup | Verified domain SPF/DKIM |
 
-Env matrix: [engineering/TECHNOLOGY-STACK.md](../engineering/TECHNOLOGY-STACK.md) §5.
+Env matrix: [engineering/technology-stack.md](../engineering/technology-stack.md) §5.
 
 ---
 
@@ -571,7 +578,7 @@ flowchart TB
 
 ### 17.2 Traceability requirement → QA
 
-Sumber kebenaran: [brd/USER-STORIES-UAT.md](../product/brd/USER-STORIES-UAT.md).
+Sumber kebenaran: [brd/user-stories-uat.md](../product/brd/user-stories-uat.md).
 
 | Fase QA | Input | Output | Gate release |
 |---------|-------|--------|--------------|
@@ -619,16 +626,16 @@ Should/Could FR (09–13) masuk fase 2 tanpa mengubah core domain model.
 
 | Artefak BRD | Refleksi di arsitektur |
 |-------------|------------------------|
-| Selaras BRD ↔ arch ↔ stack ↔ design | [brd/ARCHITECTURE-ALIGNMENT.md](../product/brd/ARCHITECTURE-ALIGNMENT.md) |
+| Selaras BRD ↔ arch ↔ stack ↔ design | [brd/architecture-alignment.md](../product/brd/architecture-alignment.md) |
 | FR-01–FR-08 | §7.1 + alignment §3 |
 | BR-01–BR-06 | §8.1 + alignment §4 |
-| MoSCoW | [brd/MVP-SCOPE-LOCK.md](../product/brd/MVP-SCOPE-LOCK.md) |
+| MoSCoW | [brd/mvp-scope-lock.md](../product/brd/mvp-scope-lock.md) |
 | NFR keamanan/perf | §10, §14, §17.5 |
-| User story map | [brd/USER-STORY-MAP.md](../product/brd/USER-STORY-MAP.md) ↔ §9 |
-| Wireframes + design | [brd/WIREFRAMES.md](../product/brd/WIREFRAMES.md), [design/DESIGN-GUIDELINES.md](../design/DESIGN-GUIDELINES.md) ↔ §12 |
-| Technology stack | [engineering/TECHNOLOGY-STACK.md](../engineering/TECHNOLOGY-STACK.md) ↔ §3 |
-| UAT | [brd/USER-STORIES-UAT.md](../product/brd/USER-STORIES-UAT.md) ↔ §17 |
-| Legal PPN | [legal/PPN-DISCLAIMER.md](../product/legal/PPN-DISCLAIMER.md) ↔ §4 prinsip 7, §12 |
+| User story map | [brd/user-story-map.md](../product/brd/user-story-map.md) ↔ §9 |
+| Wireframes + design | [brd/wireframes.md](../product/brd/wireframes.md), [design/design-guidelines.md](../design/design-guidelines.md) ↔ §12 |
+| Technology stack | [engineering/technology-stack.md](../engineering/technology-stack.md) ↔ §3 |
+| UAT | [brd/user-stories-uat.md](../product/brd/user-stories-uat.md) ↔ §17 |
+| Legal PPN | [legal/ppn-disclaimer.md](../product/legal/ppn-disclaimer.md) ↔ §4 prinsip 7, §12 |
 | CI/CD & branch | §15, §16 |
 
 ---
@@ -644,7 +651,7 @@ Should/Could FR (09–13) masuk fase 2 tanpa mengubah core domain model.
 | Fitur FR-01–FR-08 | UAT siap | Implemented (gate G0–G5 Pass); UAT manual pending |
 | CI | §15 | Implemented (`ci.yml`); CD planned |
 | Security pre-launch (CSRF, rate limit, noindex) | §10 | Planned (G-05) |
-| Gap lain | [alignment §6](../product/brd/ARCHITECTURE-ALIGNMENT.md#6-register-gap-dokumen--kode) | G-01…G-13 |
+| Gap lain | [alignment §6](../product/brd/architecture-alignment.md#6-register-gap-dokumen--kode) | G-01…G-13 |
 
 **Shared rule:** logic bisnis hanya di `@invoicing/domain`; web dan API tidak duplikasi Prisma langsung.
 
@@ -654,16 +661,16 @@ Should/Could FR (09–13) masuk fase 2 tanpa mengubah core domain model.
 
 | Dokumen | Peran |
 |---------|--------|
-| [BRD-DEFINITION-OF-DONE.md](../product/BRD-DEFINITION-OF-DONE.md) | Indeks paket dokumentasi |
-| [BRD.md](../product/BRD.md) | BRD canonical |
-| [brd/PRODUCT-BRIEF.md](../product/brd/PRODUCT-BRIEF.md) | Visi & batas MVP |
-| [brd/MVP-SCOPE-LOCK.md](../product/brd/MVP-SCOPE-LOCK.md) | FR/BR locked |
-| [brd/ARCHITECTURE-ALIGNMENT.md](../product/brd/ARCHITECTURE-ALIGNMENT.md) | Hub selarasan BRD ↔ arch ↔ stack ↔ design |
-| [design/DESIGN-GUIDELINES.md](../design/DESIGN-GUIDELINES.md) | Design guidelines + prototype |
+| [brd-definition-of-done.md](../product/brd-definition-of-done.md) | Indeks paket dokumentasi |
+| [brd.md](../product/brd.md) | BRD canonical |
+| [brd/product-brief.md](../product/brd/product-brief.md) | Visi & batas MVP |
+| [brd/mvp-scope-lock.md](../product/brd/mvp-scope-lock.md) | FR/BR locked |
+| [brd/architecture-alignment.md](../product/brd/architecture-alignment.md) | Hub selarasan BRD ↔ arch ↔ stack ↔ design |
+| [design/design-guidelines.md](../design/design-guidelines.md) | Design guidelines + prototype |
 | [ARCHITECTURE.md](README.md) | **Dokumen ini** — system architecture |
-| [engineering/TECHNICAL-DESIGN.md](../engineering/TECHNICAL-DESIGN.md) | TDD monorepo |
-| [engineering/API.md](../engineering/API.md) | Backend JSON API |
-| [engineering/TECHNOLOGY-STACK.md](../engineering/TECHNOLOGY-STACK.md) | Technology stack |
-| [engineering/STACK-INTEGRATION.md](../engineering/STACK-INTEGRATION.md) | Dev & env |
+| [engineering/technical-design.md](../engineering/technical-design.md) | TDD monorepo |
+| [engineering/api.md](../engineering/api.md) | Backend JSON API |
+| [engineering/technology-stack.md](../engineering/technology-stack.md) | Technology stack |
+| [engineering/stack-integration.md](../engineering/stack-integration.md) | Dev & env |
 
 **Pemeliharaan:** Perbarui §20 saat fase bergeser dari dokumentasi ke implementasi; sinkronkan diagram modul dengan `apps/web/app/actions/*`.

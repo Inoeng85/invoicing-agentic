@@ -9,7 +9,7 @@ description: >-
 
 # Orchestrator — PRD-0800
 
-Spec: [docs/product/requirements/0800-orkestrasi-stage/0800_PRD_Orkestrasi_Stage.md](../../../docs/product/requirements/0800-orkestrasi-stage/0800_PRD_Orkestrasi_Stage.md). Template berkas: [templates.md](templates.md).
+Spec: [docs/product/requirements/0800-orkestrasi-stage/0800-prd-orkestrasi-stage.md](../../../docs/product/requirements/0800-orkestrasi-stage/0800-prd-orkestrasi-stage.md). Template berkas: [templates.md](templates.md).
 
 Orchestrator mengunci perpindahan stage. Ia tidak menulis kode produk, tidak menjalankan uji, tidak mengaudit diff, dan tidak menulis `rencana.md` implementer, tester, atau auditor.
 

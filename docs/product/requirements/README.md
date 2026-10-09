@@ -2,9 +2,9 @@
 
 **Konvensi ID:** `XXYY` — `XX` = feature/epic, `YY` = subfeature (00 = induk bila satu epic).
 
-**Format file:** `docs/product/requirements/{xxyy-namafeature}/{xxyy}_PRD_{Nama}.md` · `{xxyy}_PRD_{Nama}_Development_phase.md`
+**Format file:** `docs/product/requirements/{xxyy-namafeature}/{xxyy}-prd-{nama-fitur}.md` · `{xxyy}-prd-{nama-fitur}-development-phase.md`
 
-**Sumber:** [Detail BRD](../brd/) · [Platform dev phase](0000-platform-setup/PRD_platform_setup_development_phase.md) · [DEVELOPMENT-PHASES](../../engineering/DEVELOPMENT-PHASES.md)
+**Sumber:** [Detail BRD](../brd/) · [Platform dev phase](0000-platform-setup/prd-platform-setup-development-phase.md) · [DEVELOPMENT-PHASES](../../engineering/development-phases.md)
 
 | Pri | ID | Folder | Gate | FR / scope | Depends |
 |-----|-----|--------|------|------------|---------|
@@ -24,9 +24,9 @@
 | 13 | **0701** | [0701-foto-kolektor](0701-foto-kolektor/) | G7 | FR-14h foto kolektor (**Must** MVP) | 0700 |
 | 14 | **0702** | [0702-live-tracking](0702-live-tracking/) | G7 | FR-14i/j live tracking kolektor & pin klien, BR-10–BR-12 | 0701 |
 
-**Canonical platform (detail penuh):** [PRD platform](0000-platform-setup/prd_platform_setup.md).
+**Canonical platform (detail penuh):** [PRD platform](0000-platform-setup/prd-platform-setup.md).
 
-**BRD produk:** [BRD](../BRD.md).
+**BRD produk:** [BRD](../brd.md).
 
 ## Tooling — di luar urutan produk
 

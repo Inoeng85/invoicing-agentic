@@ -13,12 +13,12 @@ Dokumentasi (PRD epic 0700).
 
 File utama:
 - `docs/product/requirements/README.md`
-- `docs/product/brd/MVP-SCOPE-LOCK.md`
-- `docs/product/BRD.md`
-- `docs/engineering/API.md`
+- `docs/product/brd/mvp-scope-lock.md`
+- `docs/product/brd.md`
+- `docs/engineering/api.md`
 - `docs/architecture/README.md`
-- `docs/product/legal/LEGAL-REVIEW-CHECKLIST.md`
-- `docs/product/requirements/0700-debt-collector/0700_PRD_Debt_Collector.md`
+- `docs/product/legal/legal-review-checklist.md`
+- `docs/product/requirements/0700-debt-collector/0700-prd-debt-collector.md`
 
 ## Tujuan
 
@@ -42,17 +42,17 @@ npm run typecheck && npm run test:domain && npm test && npm run gate
 
 ## Acuan PRD
 
-- Development phase: `docs/product/requirements/0700-debt-collector/0700_PRD_Debt_Collector_Development_phase.md`
+- Development phase: `docs/product/requirements/0700-debt-collector/0700-prd-debt-collector-development-phase.md`
 - **Produces:** —
 - **Verifikasi:** npm run typecheck && npm run test:domain && npm test && npm run gate
 - **Files:**
 - `docs/product/requirements/README.md`
-- `docs/product/brd/MVP-SCOPE-LOCK.md`
-- `docs/product/BRD.md`
-- `docs/engineering/API.md`
+- `docs/product/brd/mvp-scope-lock.md`
+- `docs/product/brd.md`
+- `docs/engineering/api.md`
 - `docs/architecture/README.md`
-- `docs/product/legal/LEGAL-REVIEW-CHECKLIST.md`
-- `docs/product/requirements/0700-debt-collector/0700_PRD_Debt_Collector.md`
+- `docs/product/legal/legal-review-checklist.md`
+- `docs/product/requirements/0700-debt-collector/0700-prd-debt-collector.md`
 
 ## Selesai bila (Plan)
 

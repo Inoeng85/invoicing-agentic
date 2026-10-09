@@ -9,7 +9,7 @@ description: >-
 
 # Auditor — stage audit
 
-Spec: [PRD-0800](../../../docs/product/requirements/0800-orkestrasi-stage/0800_PRD_Orkestrasi_Stage.md). Fase: [LOOP.md](../agentic-stage/LOOP.md). Template: [templates.md](templates.md).
+Spec: [PRD-0800](../../../docs/product/requirements/0800-orkestrasi-stage/0800-prd-orkestrasi-stage.md). Fase: [LOOP.md](../agentic-stage/LOOP.md). Template: [templates.md](templates.md).
 
 Auditor membaca diff dan menulis putusan. Ia tidak mengubah kode produk, tidak commit, tidak menjalankan ulang uji, dan tidak mengubah `status` menjadi `passed`.
 

@@ -25,6 +25,12 @@ jobs:
       - name: Install dependencies
         run: npm ci
 
+      - name: Check documentation
+        run: |
+          npm run docs:test
+          npm run design:css
+          npm run docs:check
+
       - name: Prepare environment files
         run: |
           cp packages/database/.env.example packages/database/.env

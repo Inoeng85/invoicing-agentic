@@ -38,7 +38,7 @@ matikan DB / ubah Node → doctor FAIL dengan pesan tepat.
 
 ## Acuan PRD
 
-- Development phase: `docs/product/requirements/0000-platform-setup/PRD_platform_setup_development_phase.md`
+- Development phase: `docs/product/requirements/0000-platform-setup/prd-platform-setup-development-phase.md`
 - **Produces:** PS-19
 - **Verifikasi:** matikan DB / ubah Node → doctor FAIL dengan pesan tepat.
 - **Files:**

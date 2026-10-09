@@ -38,7 +38,7 @@ rotasi staging sukses; app kembali health ready.
 
 ## Acuan PRD
 
-- Development phase: `docs/product/requirements/0000-platform-setup/PRD_platform_setup_development_phase.md`
+- Development phase: `docs/product/requirements/0000-platform-setup/prd-platform-setup-development-phase.md`
 - **Produces:** PS-12
 - **Verifikasi:** rotasi staging sukses; app kembali health ready.
 - **Files:**

@@ -7,6 +7,7 @@ import {
   readPlanDevelopmentStatus,
   readPlanQaStatus,
   readQaReportOutcome,
+  taskReportPath,
 } from './task-progress.mjs'
 
 const ROOT = path.join(path.dirname(fileURLToPath(import.meta.url)), '../..')
@@ -29,14 +30,7 @@ function main() {
   }
   const epic = opts.epic || opts.taskId.slice(0, 4)
   const phaseNn = phaseDirName(opts.phase)
-  const reportPath = path.join(
-    ROOT,
-    'docs/workflow/results',
-    epic,
-    phaseNn,
-    'qa',
-    `${opts.taskId}.md`,
-  )
+  const reportPath = taskReportPath(ROOT, epic, opts.phase, 'qa', opts.taskId)
   const errors = []
   const ok = []
 

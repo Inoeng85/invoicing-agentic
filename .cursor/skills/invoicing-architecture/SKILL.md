@@ -16,7 +16,7 @@ description: >-
 
 ## Input wajib
 
-1. Link atau ringkasan [BRD](../../../docs/product/BRD.md) / MVP-SCOPE-LOCK
+1. Link atau ringkasan [BRD](../../../docs/product/brd.md) / MVP-SCOPE-LOCK
 2. Keputusan deploy (monorepo, tanpa Docker, SQLite, dll.)
 3. Daftar FR Must yang perlu sequence diagram
 
@@ -24,15 +24,15 @@ description: >-
 
 1. Salin [template.md.tmpl](./template.md.tmpl) → `docs/architecture/README.md`
 2. Isi placeholder; tambah mermaid hanya untuk alur non-trivial (auth, send invoice, public link)
-3. Update atau buat `brd/ARCHITECTURE-ALIGNMENT.md` (D-xx keputusan, G-xx gap)
-4. Cross-link `engineering/TECHNICAL-DESIGN.md`, `API.md`, `STACK-INTEGRATION.md`
+3. Update atau buat `brd/architecture-alignment.md` (D-xx keputusan, G-xx gap)
+4. Cross-link `engineering/technical-design.md`, `api.md`, `stack-integration.md`
 
 ## Aturan
 
 - **Domain logic** hanya di `@invoicing/domain`; controllers tipis
 - Setiap FR Must map ke § modul (web route, API route, domain function)
 - Keamanan: session freelancer vs public token; jangan rinci env setup (→ platform PRD)
-- Stack detail ringkas di §3; deep dive → TECHNOLOGY-STACK.md
+- Stack detail ringkas di §3; deep dive → technology-stack.md
 - Prinsip numerik (7±2) — konsisten dengan repo referensi
 
 ## Checklist

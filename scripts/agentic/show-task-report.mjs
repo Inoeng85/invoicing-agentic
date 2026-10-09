@@ -39,7 +39,7 @@ function main() {
   }
   const epic = opts.epic || opts.taskId.slice(0, 4)
   const phaseOrd = resolvePhaseOrdinal(ROOT, opts.taskId, epic, opts.phase)
-  const paths = taskArtifactPaths(epic, phaseOrd, opts.taskId)
+  const paths = taskArtifactPaths(ROOT, epic, phaseOrd, opts.taskId)
   const map = { development: paths.development, qa: paths.qa, plan: paths.plan }
   const rel = map[opts.type] || map.development
   const abs = path.join(ROOT, rel)

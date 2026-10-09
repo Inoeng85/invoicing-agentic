@@ -58,7 +58,9 @@
     "agentic:autopilot:watch": "node scripts/assert-agentic-root.mjs && node scripts/agentic/run-autopilot.mjs watch",
     "agentic:daemon": "node scripts/assert-agentic-root.mjs && node scripts/agentic/run-orchestration-daemon.mjs",
     "agentic:task-checklist": "node scripts/assert-agentic-root.mjs && node scripts/agentic/build-task-checklist.mjs",
-    "agentic:monitoring-data": "node scripts/assert-agentic-root.mjs && node scripts/agentic/build-monitoring-data.mjs"
+    "agentic:monitoring-data": "node scripts/assert-agentic-root.mjs && node scripts/agentic/build-monitoring-data.mjs",
+    "docs:check": "node scripts/check-docs.mjs",
+    "docs:test": "node --test scripts/check-docs.test.mjs scripts/agentic/task-progress.test.mjs"
   },
   "devDependencies": {
     "@invoicing/platform": "*",

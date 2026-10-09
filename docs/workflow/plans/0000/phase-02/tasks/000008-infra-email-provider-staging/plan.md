@@ -38,7 +38,7 @@ kirim invoice demo di staging → email tiba di inbox QA; alamat di luar allowli
 
 ## Acuan PRD
 
-- Development phase: `docs/product/requirements/0000-platform-setup/PRD_platform_setup_development_phase.md`
+- Development phase: `docs/product/requirements/0000-platform-setup/prd-platform-setup-development-phase.md`
 - **Produces:** PS-38, PS-39 (staging)
 - **Verifikasi:** kirim invoice demo di staging → email tiba di inbox QA; alamat di luar allowlist tidak menerima.
 - **Files:**

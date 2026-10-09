@@ -33,7 +33,7 @@ npm run gate
 
 ## Acuan PRD
 
-- Development phase: `docs/product/requirements/0800-orkestrasi-stage/0800_PRD_Orkestrasi_Stage_Development_phase.md`
+- Development phase: `docs/product/requirements/0800-orkestrasi-stage/0800-prd-orkestrasi-stage-development-phase.md`
 - **Produces:** CLI `status` / `complete` / `ask` / `answer`; tolak `running` tanpa acuan dan rencana; tolak `complete` bila hasil tidak memetakan butir rencana (OR-02, OR-08, OR-09, OR-11, OR-12, OR-16…OR-19)
 - **Verifikasi:** npm run gate
 - **Files:**

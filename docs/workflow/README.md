@@ -29,13 +29,13 @@ flowchart TD
 
 | Tahap framework | Agent / gate | Artefak kebenaran |
 |-----------------|--------------|-------------------|
-| Requirement | Human + PRD | `docs/product/requirements/**`, `*_Development_phase.md` |
+| Requirement | Human + PRD | `docs/product/requirements/**`, `*-development-phase.md` |
 | Planner | Agent Intake + Plan | `intake-queue.json`, `plan.md`, `skills/*.md`, feature doc |
 | Human Clarification Gate | Human Clarify | `docs/workflow/plans/clarify/` |
 | Development | Agent Development | `docs/workflow/results/.../development/{task}.md`, section Development di plan |
 | Code / test / validate | Agent QA (+ dev fix) | `docs/workflow/results/.../qa/{task}.md` |
 | Review | Agent Audit (per phase) | `audit/report.md`, update PRD |
-| Progress dashboard | Kanban + scripts | `kanban-board.json`, `agentic:kanban-data` |
+| Progress dashboard | Kanban + scripts | `kanban-board-mirror.json`, `agentic:kanban-data` |
 | Next task | Orchestrator | `agentic:intake-run`, validate-* scripts |
 
 ## Loop mikro per task (Development / QA)
@@ -91,4 +91,4 @@ flowchart TD
 | `npm run agentic:monitoring-data` | Snapshot status task + log (autopilot, laporan Result) → `data/monitoring.json` |
 | UI monitoring | `docs/workflow/dashboard/monitoring.html` |
 
-Spesifikasi lengkap: [docs/product/requirements/0800-orkestrasi-stage/0800_PRD_Orkestrasi_Stage.md](../product/requirements/0800-orkestrasi-stage/0800_PRD_Orkestrasi_Stage.md) · skills: [skill/README.md](skills/README.md).
+Spesifikasi lengkap: [docs/product/requirements/0800-orkestrasi-stage/0800-prd-orkestrasi-stage.md](../product/requirements/0800-orkestrasi-stage/0800-prd-orkestrasi-stage.md) · skills: [skill/README.md](skills/README.md).

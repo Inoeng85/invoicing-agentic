@@ -1,6 +1,6 @@
 #!/usr/bin/env node
 /**
- * Build kanban-board.json — all catalog tasks + phase progress from repo artifacts.
+ * Build kanban-board-mirror.json — all catalog tasks + phase progress from repo artifacts.
  */
 import fs from 'node:fs'
 import path from 'node:path'
@@ -45,9 +45,9 @@ const ROOT = path.join(path.dirname(fileURLToPath(import.meta.url)), '../..')
 const QUEUE_PATH = path.join(ROOT, 'docs/workflow/plans/intake-queue.json')
 const CATALOG_TASKS = path.join(ROOT, '.agentic/catalog/tasks.json')
 const CATALOG_INDEX = path.join(ROOT, '.agentic/catalog/index.json')
-const OUT_BOARD = path.join(ROOT, 'docs/workflow/dashboard/data/kanban-board.json')
-const OUT_MIRROR = path.join(ROOT, 'docs/workflow/plans/kanban-board.json')
-const REPORTS_MIRROR_DIR = path.join(ROOT, 'docs/workflow/dashboard/data/reports')
+const OUT_BOARD = path.join(ROOT, 'docs/reports/workflow/kanban-board.json')
+const OUT_MIRROR = path.join(ROOT, 'docs/reports/workflow/kanban-board-mirror.json')
+const REPORTS_MIRROR_DIR = path.join(ROOT, 'docs/reports/workflow/reports')
 
 function mirrorReportForKanban(repoRelativePath, fileName) {
   const src = path.join(ROOT, repoRelativePath)
@@ -64,7 +64,7 @@ function mirrorReportForKanban(repoRelativePath, fileName) {
     },
   )
   fs.writeFileSync(path.join(REPORTS_MIRROR_DIR, fileName), markdown)
-  return `data/reports/${fileName}`
+  return `../../reports/workflow/reports/${fileName}`
 }
 
 function rel(p) {
@@ -150,7 +150,7 @@ function main() {
       auditPhaseStatus,
     })
     const meta = epicMeta.get(epic)
-    const paths = taskArtifactPaths(epic, phaseOrdinal, t.id)
+    const paths = taskArtifactPaths(ROOT, epic, phaseOrdinal, t.id)
     boardTasks.push({
       id: t.id,
       epic,
@@ -320,7 +320,7 @@ function main() {
     tasks: boardTasks,
   }
 
-  const triggerPath = path.join(ROOT, 'docs/workflow/dashboard/data/intake-trigger.json')
+  const triggerPath = path.join(ROOT, 'docs/reports/workflow/intake-trigger.json')
   fs.writeFileSync(
     triggerPath,
     JSON.stringify(
@@ -347,9 +347,9 @@ function main() {
 
   console.log(`Kanban board: ${summary.taskCount} task, ${summary.phaseCount} phase → ${rel(OUT_BOARD)}`)
   console.log(
-    `  Checklist: running ${checklist.summary.running}, ready ${checklist.summary.ready}, blocked ${checklist.summary.blocked} → docs/workflow/dashboard/data/task-checklist.json`,
+    `  Checklist: running ${checklist.summary.running}, ready ${checklist.summary.ready}, blocked ${checklist.summary.blocked} → docs/reports/workflow/task-checklist.json`,
   )
-  console.log(`  Monitoring: ${monitoring.summary.logCount} log → docs/workflow/dashboard/data/monitoring.json`)
+  console.log(`  Monitoring: ${monitoring.summary.logCount} log → docs/reports/workflow/monitoring.json`)
   console.log(`  Columns: ${JSON.stringify(summary.byColumn)}`)
 }
 

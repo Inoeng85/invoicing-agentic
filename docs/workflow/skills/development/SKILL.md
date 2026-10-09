@@ -61,4 +61,4 @@ description: Agent Development — 1 session = 1 feature + 1 task plan; laporan 
 
 ## UI progress
 
-Progress task dalam phase: kanban board → panel **Progress per phase** atau `npm run agentic:kanban-data` (field `phaseProgress` di `kanban-board.json`).
+Progress task dalam phase: kanban board → panel **Progress per phase** atau `npm run agentic:kanban-data` (field `phaseProgress` di `kanban-board-mirror.json`).

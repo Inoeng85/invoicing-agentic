@@ -22,7 +22,7 @@ export const TRIGGER_DIR_REL = '.agentic/trigger'
 export const STATE_FILE = 'autopilot-state.json'
 export const PROMPT_FILE = 'AGENT_PROMPT.md'
 export const EVENTS_LOG = 'autopilot-events.jsonl'
-export const STATUS_JSON_REL = 'docs/workflow/dashboard/data/autopilot.json'
+export const STATUS_JSON_REL = 'docs/reports/workflow/autopilot.json'
 
 export function sortedPhases(queue) {
   return [...(queue.phases || [])].sort(

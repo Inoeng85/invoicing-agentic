@@ -38,7 +38,7 @@ npm run test:domain
 
 ## Acuan PRD
 
-- Development phase: `docs/product/requirements/0301-ppn-kalkulator/0301_PRD_PPN_Kalkulator_Development_phase.md`
+- Development phase: `docs/product/requirements/0301-ppn-kalkulator/0301-prd-ppn-kalkulator-development-phase.md`
 - **Produces:** API save computed totals
 - **Verifikasi:** npm run test:domain
 - **Files:**

@@ -236,7 +236,7 @@ function buildOneTask(root, ctx) {
     notes,
     isNext,
     autopilotActive: !!autopilotOn,
-    paths: taskArtifactPaths(epic, ordinal, taskId),
+    paths: taskArtifactPaths(root, epic, ordinal, taskId),
   }
 }
 
@@ -335,9 +335,9 @@ export function checklistToMarkdown(data) {
 }
 
 export function writeTaskChecklistArtifacts(root, data) {
-  const jsonRel = 'docs/workflow/dashboard/data/task-checklist.json'
-  const mdRel = 'docs/workflow/plans/TASK_CHECKLIST.md'
-  const mdMirror = 'docs/workflow/dashboard/TASK_CHECKLIST.md'
+  const jsonRel = 'docs/reports/workflow/task-checklist.json'
+  const mdRel = 'docs/reports/workflow/task-checklist.md'
+  const mdMirror = 'docs/reports/workflow/task-checklist-mirror.md'
   fs.writeFileSync(path.join(root, jsonRel), JSON.stringify(data, null, 2) + '\n')
   const md = checklistToMarkdown(data)
   fs.writeFileSync(path.join(root, mdRel), md)

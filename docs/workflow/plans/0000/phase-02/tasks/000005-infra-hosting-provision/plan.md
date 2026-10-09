@@ -39,7 +39,7 @@ audit `git grep` & isi image tanpa secret.
 
 ## Acuan PRD
 
-- Development phase: `docs/product/requirements/0000-platform-setup/PRD_platform_setup_development_phase.md`
+- Development phase: `docs/product/requirements/0000-platform-setup/prd-platform-setup-development-phase.md`
 - **Produces:** PS-27, PS-11
 - **Verifikasi:** audit `git grep` & isi image tanpa secret.
 - **Files:**

@@ -39,7 +39,7 @@ npm run db:migrate
 
 ## Acuan PRD
 
-- Development phase: `docs/product/requirements/0100-foundation/0100_PRD_Foundation_Development_phase.md`
+- Development phase: `docs/product/requirements/0100-foundation/0100-prd-foundation-development-phase.md`
 - **Produces:** Schema + migrasi awal
 - **Verifikasi:** npm run db:migrate
 - **Files:**

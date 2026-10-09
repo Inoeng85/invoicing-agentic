@@ -56,7 +56,7 @@ Job `verify` sudah satu langkah `npm run verify`. Required status check tidak di
 
 ## Acuan PRD
 
-- Development phase: `docs/product/requirements/0000-platform-setup/PRD_platform_setup_development_phase.md`
+- Development phase: `docs/product/requirements/0000-platform-setup/prd-platform-setup-development-phase.md`
 - **Produces:** PS-23, PS-43
 - **Verifikasi:** PR sengaja merusak CSS → CI merah · PR normal → CI hijau.
 - **Files:**

@@ -2,8 +2,8 @@
   "epic": "0700",
   "gate": null,
   "prdFolder": "docs/product/requirements/0700-debt-collector",
-  "devPhasePath": "docs/product/requirements/0700-debt-collector/0700_PRD_Debt_Collector_Development_phase.md",
-  "devPhaseMirror": "docs/product/requirements/0700-debt-collector/0700_PRD_Debt_Collector_Development_phase.md",
+  "devPhasePath": "docs/product/requirements/0700-debt-collector/0700-prd-debt-collector-development-phase.md",
+  "devPhaseMirror": "docs/product/requirements/0700-debt-collector/0700-prd-debt-collector-development-phase.md",
   "reviewFocus": [
     "Double submit / assign kolektor yang sama dua kali",
     "Rate kolektor diubah setelah assign",
@@ -22,7 +22,7 @@
       "area": "db",
       "style": "agentic",
       "agenticReady": true,
-      "devPhasePath": "docs/product/requirements/0700-debt-collector/0700_PRD_Debt_Collector_Development_phase.md",
+      "devPhasePath": "docs/product/requirements/0700-debt-collector/0700-prd-debt-collector-development-phase.md",
       "files": [
         "packages/database/prisma/schema.prisma",
         "packages/database/prisma/migrations/<timestamp>_debt_collector/migration.sql",
@@ -39,7 +39,7 @@
       "area": "domain",
       "style": "agentic",
       "agenticReady": true,
-      "devPhasePath": "docs/product/requirements/0700-debt-collector/0700_PRD_Debt_Collector_Development_phase.md",
+      "devPhasePath": "docs/product/requirements/0700-debt-collector/0700-prd-debt-collector-development-phase.md",
       "files": [
         "packages/domain/src/test-setup.ts",
         "packages/domain/src/test-fixtures.ts",
@@ -59,7 +59,7 @@
       "area": "domain",
       "style": "agentic",
       "agenticReady": true,
-      "devPhasePath": "docs/product/requirements/0700-debt-collector/0700_PRD_Debt_Collector_Development_phase.md",
+      "devPhasePath": "docs/product/requirements/0700-debt-collector/0700-prd-debt-collector-development-phase.md",
       "files": [
         "packages/domain/src/collectors.ts",
         "packages/domain/src/collectors.test.ts",
@@ -76,7 +76,7 @@
       "area": "domain",
       "style": "agentic",
       "agenticReady": true,
-      "devPhasePath": "docs/product/requirements/0700-debt-collector/0700_PRD_Debt_Collector_Development_phase.md",
+      "devPhasePath": "docs/product/requirements/0700-debt-collector/0700-prd-debt-collector-development-phase.md",
       "files": [
         "packages/domain/src/collections.ts",
         "packages/domain/src/collections.test.ts",
@@ -93,7 +93,7 @@
       "area": "domain",
       "style": "agentic",
       "agenticReady": true,
-      "devPhasePath": "docs/product/requirements/0700-debt-collector/0700_PRD_Debt_Collector_Development_phase.md",
+      "devPhasePath": "docs/product/requirements/0700-debt-collector/0700-prd-debt-collector-development-phase.md",
       "files": [
         "packages/domain/src/invoices.ts",
         "packages/domain/src/invoices-collection.test.ts"
@@ -109,7 +109,7 @@
       "area": "fe",
       "style": "agentic",
       "agenticReady": true,
-      "devPhasePath": "docs/product/requirements/0700-debt-collector/0700_PRD_Debt_Collector_Development_phase.md",
+      "devPhasePath": "docs/product/requirements/0700-debt-collector/0700-prd-debt-collector-development-phase.md",
       "files": [
         "apps/api/src/routes.ts",
         "apps/api/src/controllers/collectors.controller.tsx",
@@ -129,7 +129,7 @@
       "area": "fe",
       "style": "agentic",
       "agenticReady": true,
-      "devPhasePath": "docs/product/requirements/0700-debt-collector/0700_PRD_Debt_Collector_Development_phase.md",
+      "devPhasePath": "docs/product/requirements/0700-debt-collector/0700-prd-debt-collector-development-phase.md",
       "files": [
         "apps/web/app/lib/percent.ts",
         "apps/web/app/lib/percent.test.ts",
@@ -150,7 +150,7 @@
       "area": "fe",
       "style": "agentic",
       "agenticReady": true,
-      "devPhasePath": "docs/product/requirements/0700-debt-collector/0700_PRD_Debt_Collector_Development_phase.md",
+      "devPhasePath": "docs/product/requirements/0700-debt-collector/0700-prd-debt-collector-development-phase.md",
       "files": [
         "apps/web/app/routes.ts",
         "apps/web/app/actions/collection/controller.tsx",
@@ -172,15 +172,15 @@
       "area": "docs",
       "style": "agentic",
       "agenticReady": true,
-      "devPhasePath": "docs/product/requirements/0700-debt-collector/0700_PRD_Debt_Collector_Development_phase.md",
+      "devPhasePath": "docs/product/requirements/0700-debt-collector/0700-prd-debt-collector-development-phase.md",
       "files": [
         "docs/product/requirements/README.md",
-        "docs/product/brd/MVP-SCOPE-LOCK.md",
-        "docs/product/BRD.md",
-        "docs/engineering/API.md",
+        "docs/product/brd/mvp-scope-lock.md",
+        "docs/product/brd.md",
+        "docs/engineering/api.md",
         "docs/architecture/README.md",
-        "docs/product/legal/LEGAL-REVIEW-CHECKLIST.md",
-        "docs/product/requirements/0700-debt-collector/0700_PRD_Debt_Collector.md"
+        "docs/product/legal/legal-review-checklist.md",
+        "docs/product/requirements/0700-debt-collector/0700-prd-debt-collector.md"
       ],
       "produces": "",
       "verify": "npm run typecheck && npm run test:domain && npm test && npm run gate"

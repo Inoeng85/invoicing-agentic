@@ -42,7 +42,7 @@ description: Agent Audit — 1 session = 1 phase/card; review code seluruh task 
 
 6. Update dokumen:
    - `docs/workflow/plans/{epic}/phase-{nn}/audit.md` — section **Audit** status `pass` | `fail` | `needs_clarify`.
-   - **PRD development phase** — path dari task catalog `devPhasePath` (contoh `docs/.../PRD_*_development_phase.md`): tambah ringkasan audit + link laporan.
+   - **PRD development phase** — path dari task catalog `devPhasePath` (contoh `docs/.../*-prd-*-development-phase.md`): tambah ringkasan audit + link laporan.
    - **PRD epic** — folder `docs/product/requirements/{epic}-*/` file PRD utama: catatan audit phase (tanggal, hasil, link).
 7. **Git commit lokal** — minimal laporan audit + perubahan doc plan/PRD; jangan commit secret.
 

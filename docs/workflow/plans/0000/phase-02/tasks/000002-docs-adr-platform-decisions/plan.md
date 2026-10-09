@@ -39,7 +39,7 @@ empat ADR berstatus Accepted sebelum 000004-db, 000005-infra, 000001-fe dimulai.
 
 ## Acuan PRD
 
-- Development phase: `docs/product/requirements/0000-platform-setup/PRD_platform_setup_development_phase.md`
+- Development phase: `docs/product/requirements/0000-platform-setup/prd-platform-setup-development-phase.md`
 - **Produces:** PS-48
 - **Verifikasi:** empat ADR berstatus Accepted sebelum 000004-db, 000005-infra, 000001-fe dimulai.
 - **Files:**

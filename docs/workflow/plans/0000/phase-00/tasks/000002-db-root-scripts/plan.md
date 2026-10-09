@@ -57,7 +57,7 @@ Empat script root sudah meneruskan ke `@invoicing/database`: `db:migrate` (`pris
 
 ## Acuan PRD
 
-- Development phase: `docs/product/requirements/0000-platform-setup/PRD_platform_setup_development_phase.md`
+- Development phase: `docs/product/requirements/0000-platform-setup/prd-platform-setup-development-phase.md`
 - **Produces:** PS-14
 - **Verifikasi:** keempat script jalan dari `Agentic/`.
 - **Files:**

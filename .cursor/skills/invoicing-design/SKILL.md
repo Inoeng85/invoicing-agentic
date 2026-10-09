@@ -3,15 +3,15 @@ name: invoicing-design
 description: >-
   Menulis Design Guidelines (token, navigasi, layar MVP, copy PPN) selaras BRD
   dan wireframes. Gunakan saat user minta design system, UI guidelines,
-  DESIGN-GUIDELINES.md, prototype index, atau pola Tailwind/Remix UI.
+  design-guidelines.md, prototype index, atau pola Tailwind/Remix UI.
 ---
 
 # Skill — Design Guidelines
 
 ## Kapan dipakai
 
-- Buat `design/DESIGN-GUIDELINES.md`
-- Selaraskan wireframes (`brd/WIREFRAMES.md`) dengan token & routes
+- Buat `design/design-guidelines.md`
+- Selaraskan wireframes (`brd/wireframes.md`) dengan token & routes
 - Definisikan 7 layar MVP + public view
 
 ## Input wajib
@@ -22,7 +22,7 @@ description: >-
 
 ## Output
 
-1. Salin [template.md.tmpl](./template.md.tmpl) → `docs/design/DESIGN-GUIDELINES.md`
+1. Salin [template.md.tmpl](./template.md.tmpl) → `docs/design/design-guidelines.md`
 2. Isi navigasi, hierarki layar, token §13, komponen pola
 3. Cross-link prototype HTML paths di `docs/design/prototype/`
 4. Tambah keputusan D-xx (label status, token, dark) di ARCHITECTURE-ALIGNMENT
@@ -50,5 +50,5 @@ description: >-
 
 ## Referensi
 
-- [docs/design/DESIGN-GUIDELINES.md](../../../docs/design/DESIGN-GUIDELINES.md)
-- [docs/product/brd/WIREFRAMES.md](../../../docs/product/brd/WIREFRAMES.md)
+- [docs/design/design-guidelines.md](../../../docs/design/design-guidelines.md)
+- [docs/product/brd/wireframes.md](../../../docs/product/brd/wireframes.md)

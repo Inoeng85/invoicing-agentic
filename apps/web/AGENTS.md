@@ -1,12 +1,12 @@
 # @invoicing/web — Agent Guide
 
-Scaffold Remix untuk MVP invoicing. **Prioritas workspace saat ini: dokumentasi** — lihat [docs/product/BRD-DEFINITION-OF-DONE.md](../../docs/product/BRD-DEFINITION-OF-DONE.md).
+Scaffold Remix untuk MVP invoicing. **Prioritas workspace saat ini: dokumentasi** — lihat [docs/product/brd-definition-of-done.md](../../docs/product/brd-definition-of-done.md).
 
-Requirement: [docs/product/BRD.md](../../docs/product/BRD.md) · Architecture: [docs/architecture/README.md](../../docs/architecture/README.md) · TDD: [docs/engineering/TECHNICAL-DESIGN.md](../../docs/engineering/TECHNICAL-DESIGN.md)
+Requirement: [docs/product/brd.md](../../docs/product/brd.md) · Architecture: [docs/architecture/README.md](../../docs/architecture/README.md) · TDD: [docs/engineering/technical-design.md](../../docs/engineering/technical-design.md)
 
 ## Commands *(saat fase implementasi)*
 
-Perintah di [docs/engineering/STACK-INTEGRATION.md](../../docs/engineering/STACK-INTEGRATION.md). Ringkas: `npm run dev` dari root monorepo `Agentic/`.
+Perintah di [docs/engineering/stack-integration.md](../../docs/engineering/stack-integration.md). Ringkas: `npm run dev` dari root monorepo `Agentic/`.
 
 ## Building Features
 
@@ -24,6 +24,6 @@ Refer to ./.agents/skills/remix/SKILL.md for the Remix mental model and how to f
 
 - Shared logic: `@invoicing/domain` · DB: `@invoicing/database` (not in this app)
 - `app/styles/app.css` — Tailwind → `public/app.css`
-- Backend JSON: `@invoicing/api` — [API.md](../../docs/engineering/API.md)
+- Backend JSON: `@invoicing/api` — [api.md](../../docs/engineering/api.md)
 
 This starter intentionally begins small; add `app/middleware/`, `app/ui/`, and `test/` as features grow.

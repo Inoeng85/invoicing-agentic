@@ -33,7 +33,7 @@ npm run gate
 
 ## Acuan PRD
 
-- Development phase: `docs/product/requirements/0101-auth-profil/0101_PRD_Auth_Profil_Development_phase.md`
+- Development phase: `docs/product/requirements/0101-auth-profil/0101-prd-auth-profil-development-phase.md`
 - **Produces:** Prisma models User, BusinessProfile
 - **Verifikasi:** npm run gate
 - **Files:**

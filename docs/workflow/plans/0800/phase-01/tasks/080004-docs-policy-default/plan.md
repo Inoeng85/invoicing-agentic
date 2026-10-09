@@ -33,7 +33,7 @@ npm run gate
 
 ## Acuan PRD
 
-- Development phase: `docs/product/requirements/0800-orkestrasi-stage/0800_PRD_Orkestrasi_Stage_Development_phase.md`
+- Development phase: `docs/product/requirements/0800-orkestrasi-stage/0800-prd-orkestrasi-stage-development-phase.md`
 - **Produces:** Policy YAML default dan penimpaan per task Review Focus (OR-08, OR-10)
 - **Verifikasi:** npm run gate
 - **Files:**

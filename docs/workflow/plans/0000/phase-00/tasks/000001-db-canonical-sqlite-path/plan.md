@@ -32,7 +32,7 @@ hanya ada satu `dev.db` · user yang dibuat di web tampil di Prisma Studio · `G
 | Field | Nilai |
 |-------|-------|
 | Status | `complete` |
-| Laporan | docs/workflow/results/0000/phase-00/development/000001-db-canonical-sqlite-path.md |
+| Laporan | docs/archive/completed-tasks/results/0000/phase-00/development/000001-db-canonical-sqlite-path.md |
 | Commit/PR | baseline repo (PS-13 Done 2026-09-30) |
 | Selesai | 2026-10-01T06:54:00+07:00 |
 
@@ -41,7 +41,7 @@ hanya ada satu `dev.db` · user yang dibuat di web tampil di Prisma Studio · `G
 | Field | Nilai |
 |-------|-------|
 | Status | `pass` |
-| Laporan | docs/workflow/results/0000/phase-00/qa/000001-db-canonical-sqlite-path.md |
+| Laporan | docs/archive/completed-tasks/results/0000/phase-00/qa/000001-db-canonical-sqlite-path.md |
 | Fix dalam session | tidak |
 | Selesai | 2026-10-01T07:00:00+07:00 |
 
@@ -55,7 +55,7 @@ hanya ada satu `dev.db` · user yang dibuat di web tampil di Prisma Studio · `G
 
 ## Acuan PRD
 
-- Development phase: `docs/product/requirements/0000-platform-setup/PRD_platform_setup_development_phase.md`
+- Development phase: `docs/product/requirements/0000-platform-setup/prd-platform-setup-development-phase.md`
 - **Produces:** PS-13
 - **Verifikasi:** hanya ada satu `dev.db` · user yang dibuat di web tampil di Prisma Studio · `GET /api/health/ready` 200.
 - **Files:**

@@ -1,7 +1,7 @@
 ---
 name: invoicing-stack
 description: >-
-  Menulis dokumen Technology Stack dan integrasi dev (TECHNOLOGY-STACK.md,
+  Menulis dokumen Technology Stack dan integrasi dev (technology-stack.md,
   STACK-INTEGRATION) untuk monorepo invoicing Node/Remix/Prisma. Gunakan saat
   user minta stack teknologi, env vars, diagram lapisan, trade-offs, atau
   pemetaan FR ke teknologi.
@@ -11,8 +11,8 @@ description: >-
 
 ## Kapan dipakai
 
-- Buat atau revisi `engineering/TECHNOLOGY-STACK.md`
-- Dokumentasi `STACK-INTEGRATION.md` (setup, verify, scripts)
+- Buat atau revisi `engineering/technology-stack.md`
+- Dokumentasi `stack-integration.md` (setup, verify, scripts)
 - Keputusan teknologi baru (harus selaras ARCHITECTURE)
 
 ## Input wajib
@@ -23,17 +23,17 @@ description: >-
 
 ## Output
 
-1. Salin [template.md.tmpl](./template.md.tmpl) → `docs/engineering/TECHNOLOGY-STACK.md`
+1. Salin [template.md.tmpl](./template.md.tmpl) → `docs/engineering/technology-stack.md`
 2. Isi tabel ringkasan + minimal 1 diagram mermaid (lapisan + monorepo)
 3. Section env vars (web, api, database) selaras `.env.example`
-4. Update `STACK-INTEGRATION.md` jika workflow dev berubah
+4. Update `stack-integration.md` jika workflow dev berubah
 5. Tambah baris D-xx di ARCHITECTURE-ALIGNMENT jika keputusan canonical baru
 
 ## Aturan
 
 - Setiap baris stack map ke FR atau constraint BRD bila relevan
 - Bedakan **dev** vs **staging/prod** (SQLite file, volume, secrets)
-- Jangan duplikasi API endpoint list (→ API.md)
+- Jangan duplikasi API endpoint list (→ api.md)
 - Versi package: pin eksplisit, hindari `latest`
 - Won't stack = explicit (e-Faktur gateway, dll.)
 
@@ -50,5 +50,5 @@ description: >-
 
 ## Referensi
 
-- [docs/engineering/TECHNOLOGY-STACK.md](../../../docs/engineering/TECHNOLOGY-STACK.md)
-- [docs/engineering/STACK-INTEGRATION.md](../../../docs/engineering/STACK-INTEGRATION.md)
+- [docs/engineering/technology-stack.md](../../../docs/engineering/technology-stack.md)
+- [docs/engineering/stack-integration.md](../../../docs/engineering/stack-integration.md)

@@ -11,7 +11,7 @@
 
 docs dev runbook (PRD epic 0000).
 
-- Tulis ulang alur di [STACK-INTEGRATION.md](../../../../../../engineering/STACK-INTEGRATION.md): prasyarat (nvm, Node 24), `npm run setup`, `npm run dev`, `npm run verify`, perintah DB, prototype.
+- Tulis ulang alur di [stack-integration.md](../../../../../../engineering/stack-integration.md): prasyarat (nvm, Node 24), `npm run setup`, `npm run dev`, `npm run verify`, perintah DB, prototype.
 - Tabel port & URL: web 44100, API 44101, server prototype.
 - Bagian troubleshooting: engine mismatch, `IMPORT_OUTSIDE_MOUNTS`, DB path.
 - Samakan ringkasan di `docs/README.md` root.
@@ -57,7 +57,7 @@ Runbook dan README sudah memuat alur onboarding. Diselaraskan: seed setup idempo
 
 ## Acuan PRD
 
-- Development phase: `docs/product/requirements/0000-platform-setup/PRD_platform_setup_development_phase.md`
+- Development phase: `docs/product/requirements/0000-platform-setup/prd-platform-setup-development-phase.md`
 - **Produces:** PS-21, PS-46
 - **Verifikasi:** onboarding ≤ 15 menit tanpa bantuan.
 - **Files:**

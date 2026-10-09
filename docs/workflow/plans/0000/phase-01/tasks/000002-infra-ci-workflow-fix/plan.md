@@ -58,7 +58,7 @@ Workflow sudah memakai `.nvmrc`, `package-lock.json`, `db:migrate:deploy`, dan e
 
 ## Acuan PRD
 
-- Development phase: `docs/product/requirements/0000-platform-setup/PRD_platform_setup_development_phase.md`
+- Development phase: `docs/product/requirements/0000-platform-setup/prd-platform-setup-development-phase.md`
 - **Produces:** PS-22, PS-24
 - **Verifikasi:** workflow jalan di PR uji dan mencapai langkah test.
 - **Files:**

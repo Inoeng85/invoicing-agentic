@@ -41,7 +41,7 @@ Pre-deploy: `npm run host:check` dengan env production.
 
 ## GitHub
 
-- Environment **staging** → [STAGING-PROVISION-CHECKLIST.md](../../STAGING-PROVISION-CHECKLIST.md)
-- Environment **production** → [PRODUCTION-PROVISION-CHECKLIST.md](../../PRODUCTION-PROVISION-CHECKLIST.md)
+- Environment **staging** → [staging-provision-checklist.md](../../staging-provision-checklist.md)
+- Environment **production** → [production-provision-checklist.md](../../production-provision-checklist.md)
 
 Workflows: `deploy-staging.yml`, `deploy-production.yml`

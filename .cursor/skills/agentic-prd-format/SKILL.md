@@ -2,7 +2,7 @@
 name: agentic-prd-format
 description: >-
   Menulis, memformat, atau merevisi PRD produk di docs/product/requirements/ dan development phase
-  platform di docs/product/requirements/0000-platform-setup/PRD_platform_setup_development_phase.md
+  platform di docs/product/requirements/0000-platform-setup/prd-platform-setup-development-phase.md
   untuk monorepo Agentic (PuraPuraLupa). Gunakan saat user minta PRD baru, task
   development phase, PS-xx, PG-x gate, atau selaraskan indeks docs/product/requirements/README.md.
 ---
@@ -20,11 +20,11 @@ description: >-
 
 | Jenis | PRD ringkas | Development phase penuh |
 |-------|-------------|-------------------------|
-| **Platform** | `docs/product/requirements/0000-platform-setup/0000_PRD_Platform_Setup.md` | **`docs/product/requirements/0000-platform-setup/PRD_platform_setup_development_phase.md`** (canonical) |
-| | `docs/product/requirements/0000-platform-setup/prd_platform_setup.md` (PS, milestone §7) | Mirror ringkas: `docs/product/requirements/0000-platform-setup/0000_PRD_Platform_Setup_Development_phase.md` |
-| **Fitur produk** | `docs/product/requirements/{folder}/{xxyy}_PRD_{Nama}.md` | `{xxyy}_PRD_{Nama}_Development_phase.md` (folder sama) |
+| **Platform** | `docs/product/requirements/0000-platform-setup/0000-prd-platform-setup.md` | **`docs/product/requirements/0000-platform-setup/prd-platform-setup-development-phase.md`** (canonical) |
+| | `docs/product/requirements/0000-platform-setup/prd-platform-setup.md` (PS, milestone §7) | Mirror ringkas: `docs/product/requirements/0000-platform-setup/0000-prd-platform-setup-development-phase.md` |
+| **Fitur produk** | `docs/product/requirements/{folder}/{xxyy}-prd-{nama-fitur}.md` | `{xxyy}-prd-{nama-fitur}-development-phase.md` (folder sama) |
 
-**Aturan mirror platform:** detail task per baris hanya di `0000_platform_setup/PRD_platform_setup_development_phase.md`. File di `docs/product/requirements/0000-platform-setup/` = ringkasan + link ke canonical — jangan fork task list.
+**Aturan mirror platform:** detail task per baris hanya di `0000_platform_setup/prd-platform-setup-development-phase.md`. File di `docs/product/requirements/0000-platform-setup/` = ringkasan + link ke canonical — jangan fork task list.
 
 ## Konvensi ID & penamaan
 
@@ -32,8 +32,8 @@ description: >-
 |-------|------|--------|
 | Epic ID | `XXYY` — `XX` epic, `YY` sub (00 = induk) | `0700`, `0701` |
 | Folder | `{xxyy-kebab-case}` | `0701-foto-kolektor` |
-| File PRD | `{xxyy}_PRD_{PascalOrSnake}.md` | `0701_PRD_Foto_Kolektor.md` |
-| File dev phase | `{xxyy}_PRD_{Nama}_Development_phase.md` | suffix **`Development_phase`** (huruf D besar) |
+| File PRD | `{xxyy}-prd-{nama-fitur}.md` | `0701-prd-foto-kolektor.md` |
+| File dev phase | `{xxyy}-prd-{nama-fitur}-development-phase.md` | suffix **`-development-phase.md`** (lowercase) |
 | Requirement fitur | `FR-xx`, sub `FR-xx-n` | `FR-14h-1` |
 | Requirement platform | `PS-xx` | `PS-23` |
 | Gate produk | `G0`…`G7` | `npm run gate` Phase N |
@@ -50,10 +50,10 @@ description: >-
 1. Tentukan ID berikutnya dari [docs/product/requirements/README.md](../../../docs/product/requirements/README.md) (Pri, Depends, Gate).
 2. Salin [template-prd-feature.md.tmpl](./template-prd-feature.md.tmpl) → folder epic.
 3. Isi meta, FR/BR, keputusan `D-xx`, acceptance, desain (data/domain/web/API).
-4. Cross-link wajib: [MVP-SCOPE-LOCK.md](../../../docs/product/brd/MVP-SCOPE-LOCK.md), [ARCHITECTURE-ALIGNMENT §3](../../../docs/product/brd/ARCHITECTURE-ALIGNMENT.md), gate di [DEVELOPMENT-PHASES.md](../../../docs/engineering/DEVELOPMENT-PHASES.md).
+4. Cross-link wajib: [mvp-scope-lock.md](../../../docs/product/brd/mvp-scope-lock.md), [ARCHITECTURE-ALIGNMENT §3](../../../docs/product/brd/architecture-alignment.md), gate di [development-phases.md](../../../docs/engineering/development-phases.md).
 5. Brand UI: **PuraPuraLupa (Komando)** — npm tetap `@invoicing/*`.
 6. Tambah baris tabel di `docs/product/requirements/README.md`.
-7. Jika FR/BR baru: update `MVP-SCOPE-LOCK.md` + alignment §3–§4 (user/product approval implied).
+7. Jika FR/BR baru: update `mvp-scope-lock.md` + alignment §3–§4 (user/product approval implied).
 
 ## Workflow: Development phase fitur
 
@@ -61,7 +61,7 @@ Pilih **satu** gaya (jangan campur struktur dalam satu file):
 
 ### Gaya A — Ringkas (gate & urutan)
 
-Untuk epic kecil atau fase awal (contoh: `0100_PRD_Foundation_Development_phase.md`).
+Untuk epic kecil atau fase awal (contoh: `0100-prd-foundation-development-phase.md`).
 
 Salin [template-dev-phase-compact.md.tmpl](./template-dev-phase-compact.md.tmpl):
 
@@ -74,7 +74,7 @@ Salin [template-dev-phase-compact.md.tmpl](./template-dev-phase-compact.md.tmpl)
 
 ### Gaya B — Agentic implementation plan
 
-Untuk eksekusi agent step-by-step (contoh: `0701_PRD_Foto_Kolektor_Development_phase.md`).
+Untuk eksekusi agent step-by-step (contoh: `0701-prd-foto-kolektor-development-phase.md`).
 
 Salin [template-dev-phase-agentic.md.tmpl](./template-dev-phase-agentic.md.tmpl):
 
@@ -92,11 +92,11 @@ Aturan task agentic:
 
 ## Workflow: Platform PRD & development phase
 
-1. Requirement baru → tambah **PS-xx** di `docs/product/requirements/0000-platform-setup/prd_platform_setup.md` (§3+) dan pemetaan §7.2.
-2. Task baru → tambah di **`PRD_platform_setup_development_phase.md`** mengikuti [reference-platform-task.md](./reference-platform-task.md).
+1. Requirement baru → tambah **PS-xx** di `docs/product/requirements/0000-platform-setup/prd-platform-setup.md` (§3+) dan pemetaan §7.2.
+2. Task baru → tambah di **`prd-platform-setup-development-phase.md`** mengikuti [reference-platform-task.md](./reference-platform-task.md).
 3. Update **Ringkasan fase**, **Urutan eksekusi canonical**, **Pemetaan baseline B-xx → task**, **Matriks task ↔ PS** (§ akhir).
 4. Sinkronkan versi meta di mirror `docs/product/requirements/0000-platform-setup/` (versi + status PG, bukan duplikasi task).
-5. Urutan canonical Phase 0–3 **harus identik** antara `prd_platform_setup.md` §7.1 dan development phase — ubah keduanya jika reorder.
+5. Urutan canonical Phase 0–3 **harus identik** antara `prd-platform-setup.md` §7.1 dan development phase — ubah keduanya jika reorder.
 
 ## Aturan penulisan (semua PRD)
 
@@ -120,8 +120,8 @@ Aturan task agentic:
 ## Referensi
 
 - Indeks: [docs/product/requirements/README.md](../../../docs/product/requirements/README.md)
-- Contoh PRD fitur: [0701_PRD_Foto_Kolektor.md](../../../docs/product/requirements/0701-foto-kolektor/0701_PRD_Foto_Kolektor.md)
-- Contoh dev phase agentic: [0701_PRD_Foto_Kolektor_Development_phase.md](../../../docs/product/requirements/0701-foto-kolektor/0701_PRD_Foto_Kolektor_Development_phase.md)
-- Contoh dev phase ringkas: [0100_PRD_Foundation_Development_phase.md](../../../docs/product/requirements/0100-foundation/0100_PRD_Foundation_Development_phase.md)
-- Platform canonical: [PRD_platform_setup_development_phase.md](../../../docs/product/requirements/0000-platform-setup/PRD_platform_setup_development_phase.md)
+- Contoh PRD fitur: [0701-prd-foto-kolektor.md](../../../docs/product/requirements/0701-foto-kolektor/0701-prd-foto-kolektor.md)
+- Contoh dev phase agentic: [0701-prd-foto-kolektor-development-phase.md](../../../docs/product/requirements/0701-foto-kolektor/0701-prd-foto-kolektor-development-phase.md)
+- Contoh dev phase ringkas: [0100-prd-foundation-development-phase.md](../../../docs/product/requirements/0100-foundation/0100-prd-foundation-development-phase.md)
+- Platform canonical: [prd-platform-setup-development-phase.md](../../../docs/product/requirements/0000-platform-setup/prd-platform-setup-development-phase.md)
 - Template platform task: [reference-platform-task.md](./reference-platform-task.md)

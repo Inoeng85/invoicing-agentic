@@ -34,7 +34,7 @@ npm run typecheck && npm run test:domain && npm test
 
 ## Acuan PRD
 
-- Development phase: `docs/product/requirements/0402-link-publik/0402_PRD_Link_Publik_Development_phase.md`
+- Development phase: `docs/product/requirements/0402-link-publik/0402-prd-link-publik-development-phase.md`
 - **Produces:** G4.3
 - **Verifikasi:** npm run typecheck && npm run test:domain && npm test
 - **Files:**

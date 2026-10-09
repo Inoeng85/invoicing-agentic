@@ -56,7 +56,7 @@ Protection `main`: PR wajib, admin tidak boleh bypass, force push dilarang, hany
 
 ## Acuan PRD
 
-- Development phase: `docs/product/requirements/0000-platform-setup/PRD_platform_setup_development_phase.md`
+- Development phase: `docs/product/requirements/0000-platform-setup/prd-platform-setup-development-phase.md`
 - **Produces:** PS-05 (branch protection)
 - **Verifikasi:** push langsung ke `main` ditolak.
 - **Files:**

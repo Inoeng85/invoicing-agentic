@@ -38,7 +38,7 @@ tag `v0.1.0-rc.1` → menunggu approval → deploy prod-like hijau.
 
 ## Acuan PRD
 
-- Development phase: `docs/product/requirements/0000-platform-setup/PRD_platform_setup_development_phase.md`
+- Development phase: `docs/product/requirements/0000-platform-setup/prd-platform-setup-development-phase.md`
 - **Produces:** PS-29
 - **Verifikasi:** tag `v0.1.0-rc.1` → menunggu approval → deploy prod-like hijau.
 - **Files:**

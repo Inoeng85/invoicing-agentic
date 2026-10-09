@@ -2,8 +2,8 @@
   "epic": "0701",
   "gate": null,
   "prdFolder": "docs/product/requirements/0701-foto-kolektor",
-  "devPhasePath": "docs/product/requirements/0701-foto-kolektor/0701_PRD_Foto_Kolektor_Development_phase.md",
-  "devPhaseMirror": "docs/product/requirements/0701-foto-kolektor/0701_PRD_Foto_Kolektor_Development_phase.md",
+  "devPhasePath": "docs/product/requirements/0701-foto-kolektor/0701-prd-foto-kolektor-development-phase.md",
+  "devPhaseMirror": "docs/product/requirements/0701-foto-kolektor/0701-prd-foto-kolektor-development-phase.md",
   "reviewFocus": [],
   "taskCount": 5,
   "agenticReadyCount": 4,
@@ -16,7 +16,7 @@
       "area": "db",
       "style": "agentic",
       "agenticReady": true,
-      "devPhasePath": "docs/product/requirements/0701-foto-kolektor/0701_PRD_Foto_Kolektor_Development_phase.md",
+      "devPhasePath": "docs/product/requirements/0701-foto-kolektor/0701-prd-foto-kolektor-development-phase.md",
       "files": [
         "packages/database/prisma/schema.prisma",
         "packages/database/src/index.ts",
@@ -33,7 +33,7 @@
       "area": "domain",
       "style": "agentic",
       "agenticReady": true,
-      "devPhasePath": "docs/product/requirements/0701-foto-kolektor/0701_PRD_Foto_Kolektor_Development_phase.md",
+      "devPhasePath": "docs/product/requirements/0701-foto-kolektor/0701-prd-foto-kolektor-development-phase.md",
       "files": [
         "packages/domain/src/collector-photos.ts",
         "packages/domain/src/collector-photos.test.ts",
@@ -51,7 +51,7 @@
       "area": "fe",
       "style": "agentic",
       "agenticReady": true,
-      "devPhasePath": "docs/product/requirements/0701-foto-kolektor/0701_PRD_Foto_Kolektor_Development_phase.md",
+      "devPhasePath": "docs/product/requirements/0701-foto-kolektor/0701-prd-foto-kolektor-development-phase.md",
       "files": [
         "apps/web/app/routes.ts",
         "apps/web/app/actions/collectors/controller.tsx",
@@ -69,7 +69,7 @@
       "area": "fe",
       "style": "agentic",
       "agenticReady": true,
-      "devPhasePath": "docs/product/requirements/0701-foto-kolektor/0701_PRD_Foto_Kolektor_Development_phase.md",
+      "devPhasePath": "docs/product/requirements/0701-foto-kolektor/0701-prd-foto-kolektor-development-phase.md",
       "files": [
         "apps/web/app/ui/collection-panel.tsx",
         "apps/web/app/actions/controller.test.ts"
@@ -85,7 +85,7 @@
       "area": "stack",
       "style": "agentic",
       "agenticReady": false,
-      "devPhasePath": "docs/product/requirements/0701-foto-kolektor/0701_PRD_Foto_Kolektor_Development_phase.md",
+      "devPhasePath": "docs/product/requirements/0701-foto-kolektor/0701-prd-foto-kolektor-development-phase.md",
       "files": [],
       "produces": "",
       "verify": "npm run typecheck && npm run test:domain && npm test && npm run gate"

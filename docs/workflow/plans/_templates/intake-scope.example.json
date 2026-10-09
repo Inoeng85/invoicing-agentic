@@ -8,7 +8,7 @@
       "docs/product/requirements/0702-live-tracking"
     ],
     "developmentPhasePaths": [
-      "docs/product/requirements/0702-live-tracking/0702_PRD_Live_Tracking_Development_phase.md"
+      "docs/product/requirements/0702-live-tracking/0702-prd-live-tracking-development-phase.md"
     ],
     "catalogRef": ".agentic/catalog/index.json"
   },
@@ -18,7 +18,7 @@
       "epic": "0702",
       "ordinal": 1,
       "title": "Live tracking — fondasi",
-      "devPhasePath": "docs/product/requirements/0702-live-tracking/0702_PRD_Live_Tracking_Development_phase.md",
+      "devPhasePath": "docs/product/requirements/0702-live-tracking/0702-prd-live-tracking-development-phase.md",
       "phaseRef": "Human-defined slice of tasks (task id range or heading)",
       "taskIds": [],
       "intakeStatus": "queued",
