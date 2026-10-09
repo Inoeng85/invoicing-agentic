@@ -1,6 +1,6 @@
 # Launch lane — urutan penutupan gate
 
-Satu alur dari repo siap → staging → production. **Tanpa Docker** · **SQLite** ([ADR-0001](./adr/ADR-0001-sqlite-postgresql.md)).
+Satu alur dari repo siap → staging → production. **Tanpa Docker** · **SQLite** ([ADR-0001](../adr/ADR-0001-sqlite-postgresql.md)).
 
 ## 0. Repo siap (developer)
 

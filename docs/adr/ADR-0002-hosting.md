@@ -15,4 +15,4 @@ Alternatif setara: Fly.io — dokumentasi deploy tetap generic Node 24.
 
 - Dua service: `@invoicing/web` dan `@invoicing/api`.
 - Secret disuntikkan runtime (bukan image).
-- Runbook: [RUNBOOK-STAGING.md](../RUNBOOK-STAGING.md).
+- Runbook: [RUNBOOK-STAGING.md](../operations/RUNBOOK-STAGING.md).

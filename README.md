@@ -2,8 +2,8 @@
 
 Monorepo **dokumentasi** + **web** + **backend API** + shared packages. Tanpa Docker · **SQLite** semua environment.
 
-**Dokumentasi:** [docs/invoicing/BRD-DEFINITION-OF-DONE.md](docs/invoicing/BRD-DEFINITION-OF-DONE.md)  
-**Launch (PG/G6):** [docs/0000_platform_setup/LAUNCH-LANE.md](docs/0000_platform_setup/LAUNCH-LANE.md)
+**Dokumentasi:** [docs/README.md](docs/README.md) · [BRD Definition of Done](docs/invoicing/BRD-DEFINITION-OF-DONE.md)  
+**Launch (PG/G6):** [docs/operations/LAUNCH-LANE.md](docs/operations/LAUNCH-LANE.md)
 
 ## Struktur
 
@@ -21,7 +21,7 @@ Prasyarat: **Node 24.3+** (`nvm use`).
 ```sh
 npm run setup
 npm run dev       # web + API
-npm run verify    # typecheck, tests, gate G0–G6
+npm run verify    # typecheck, tests, css, gate G0–G7
 ```
 
 Runbook: [STACK-INTEGRATION.md](docs/invoicing/engineering/STACK-INTEGRATION.md)

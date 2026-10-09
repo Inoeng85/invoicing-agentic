@@ -15,7 +15,7 @@
 ## Konsekuensi
 
 - Satu riwayat migrasi, satu Prisma client (`@prisma/client`).
-- Backup prod = salin file `.db` (bukan snapshot Postgres) — lihat [RUNBOOK-OPS.md](../RUNBOOK-OPS.md).
+- Backup prod = salin file `.db` (bukan snapshot Postgres) — lihat [RUNBOOK-OPS.md](../operations/RUNBOOK-OPS.md).
 - Skala & konkurensi tulis terbatas SQLite; cukup untuk MVP freelancer invoicing.
 
 ## Ditolak

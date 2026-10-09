@@ -278,7 +278,7 @@ Sama dengan PRD §7.1 — jangan ubah urutan di satu dokumen tanpa mengubah yang
 
 **Verifikasi:** push langsung ke `main` ditolak.
 
-**Hasil:** [.github/BRANCH_PROTECTION.md](../../../.github/BRANCH_PROTECTION.md) + `scripts/apply-branch-protection.sh`. CI GitHub terblokir **billing** (2026-09-30); fallback **`npm run ci:local`** PASS.
+**Hasil:** [docs/operations/BRANCH_PROTECTION.md](../operations/BRANCH_PROTECTION.md) + `scripts/apply-branch-protection.sh`. CI GitHub terblokir **billing** (2026-09-30); fallback **`npm run ci:local`** PASS.
 
 ### 000002-infra-ci-workflow-fix
 
@@ -333,7 +333,7 @@ Sama dengan PRD §7.1 — jangan ubah urutan di satu dokumen tanpa mengubah yang
 
 | Task | Status | Catatan |
 |------|--------|---------|
-| 000002-docs-adr-platform-decisions | Done | `docs/0000_platform_setup/adr/ADR-0001…0004` Accepted |
+| 000002-docs-adr-platform-decisions | Done | `docs/adr/ADR-0001…0004` Accepted |
 | 000003-docs-branch-commit-convention | Done | `CONTRIBUTING.md` + PR template |
 | 000007-stack-pin-dev-dependencies | Done | TS 7.0.2 · @types/node 22.15.30 · tailwind 4.3.3 |
 | 000004-db-postgres-strategy | Superseded | SQLite-only · ADR-0001 revised · Postgres dihapus |
@@ -354,7 +354,7 @@ Sama dengan PRD §7.1 — jangan ubah urutan di satu dokumen tanpa mengubah yang
 
 | PS | Depends | Output |
 |----|---------|--------|
-| PS-48 | PG-1 | ADR Q-01…Q-04 di `docs/0000_platform_setup/adr/` |
+| PS-48 | PG-1 | ADR Q-01…Q-04 di `docs/adr/` |
 
 **Tahapan**
 1. ADR-0001 Q-01: strategi SQLite ↔ PostgreSQL dengan satu schema.
@@ -593,7 +593,7 @@ Sama dengan PRD §7.1 — jangan ubah urutan di satu dokumen tanpa mengubah yang
 |------|--------|---------|
 | 000010-infra-ci-gate-summary | Done | `.gate/*` + artifact CI · `GITHUB_STEP_SUMMARY` |
 | 000003-fe-design-serve | Done | `npm run design:serve` :8765 |
-| 000004-docs-ops-runbook | Done | [RUNBOOK-OPS.md](./RUNBOOK-OPS.md) |
+| 000004-docs-ops-runbook | Done | [RUNBOOK-OPS.md](../operations/RUNBOOK-OPS.md) |
 | 000011-infra-production-cd | Partial | Railway redeploy + smoke on tag · butuh secrets production |
 | 000009-infra-secret-rotation | Done | Runbook §4 |
 | 000005-db-backup-restore | Done | Runbook §3 (prosedur; uji di host) |
@@ -722,7 +722,7 @@ Sama dengan PRD §7.1 — jangan ubah urutan di satu dokumen tanpa mengubah yang
 
 | PS | Depends | Output |
 |----|---------|--------|
-| PS-47 | 000009-infra, 000005-db, 000012-infra, 000014-infra | `docs/0000_platform_setup/RUNBOOK-OPS.md` |
+| PS-47 | 000009-infra, 000005-db, 000012-infra, 000014-infra | `docs/operations/RUNBOOK-OPS.md` |
 
 **Tahapan**
 1. Bagian deploy staging & production (alur tag + approval).

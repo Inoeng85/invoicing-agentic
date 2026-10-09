@@ -1,6 +1,6 @@
 # Runbook — Staging (Phase 2)
 
-ADR: [ADR-0002](./adr/ADR-0002-hosting.md) · [ADR-0003](./adr/ADR-0003-web-api-topology.md) · [ADR-0001](./adr/ADR-0001-sqlite-postgresql.md)
+ADR: [ADR-0002](../adr/ADR-0002-hosting.md) · [ADR-0003](../adr/ADR-0003-web-api-topology.md) · [ADR-0001](../adr/ADR-0001-sqlite-postgresql.md)
 
 ## Prasyarat
 

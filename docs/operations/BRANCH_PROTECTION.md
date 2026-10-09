@@ -1,6 +1,21 @@
-# Branch protection — `main` (Phase 1)
+# Branch protection — `develop` (Phase 1)
 
 **Remote:** https://github.com/Inoeng85/invoicing-agentic
+
+## Dipindah ke `develop` 2026-10-10
+
+`develop` jadi branch default dan protected; proteksi `main` dilepas karena `main` turun jadi cadangan/garis rilis. Alur kerja: `feat/*` → `develop`.
+
+## Terpasang 2026-10-01, dipindah 2026-10-10
+
+Rule `develop` aktif tanpa required status check (CI terakhir masih gagal di startup, jadi check `verify` menunggu 000003-infra hijau):
+
+- Pull request wajib (`required_approving_review_count=0` agar solo tetap bisa merge)
+- `enforce_admins=true` — push langsung ke `develop`, termasuk admin, ditolak
+- Force push dan penghapusan branch dilarang
+- Merge default: squash saja (`allow_merge_commit` dan `allow_rebase_merge` mati)
+
+Setelah CI `verify` hijau sekali, jalankan script di bawah untuk menambah required check.
 
 ## Prasyarat akun (verifikasi 2026-09-30)
 
@@ -15,7 +30,7 @@ Repo **public** (2026-09-30). Jika billing Actions terkunci, perbaiki billing du
 
 Setelah **push pertama** dan workflow CI **hijau** sekali:
 
-1. GitHub → **Settings** → **Branches** → **Add rule** untuk `main`
+1. GitHub → **Settings** → **Branches** → **Add rule** untuk `develop`
 2. Aktifkan:
    - **Require a pull request before merging**
    - **Require status checks to pass** → pilih job **`verify`** (workflow CI)
@@ -33,7 +48,7 @@ chmod +x scripts/apply-branch-protection.sh
 Manual `gh api` (ganti `OWNER/REPO`):
 
 ```sh
-gh api repos/OWNER/REPO/branches/main/protection -X PUT \
+gh api repos/OWNER/REPO/branches/develop/protection -X PUT \
   -f required_status_checks[strict]=true \
   -f required_status_checks[checks][][context]=verify \
   -f enforce_admins=true \
