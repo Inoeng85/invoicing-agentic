@@ -31,7 +31,7 @@ function main() {
   const phaseNn = phaseDirName(opts.phase)
   const reportPath = path.join(
     ROOT,
-    'docs/development/Result',
+    'docs/workflow/results',
     epic,
     phaseNn,
     'qa',

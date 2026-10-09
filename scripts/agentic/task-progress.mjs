@@ -22,29 +22,29 @@ export function phaseDirName(ordinal) {
 }
 
 export function taskPlanBase(root, epic, phaseOrdinal, taskId) {
-  return path.join(root, 'docs/development/Plan', epic, phaseDirName(phaseOrdinal), 'tasks', taskId)
+  return path.join(root, 'docs/workflow/plans', epic, phaseDirName(phaseOrdinal), 'tasks', taskId)
 }
 
 /** Repo-relative paths for kanban / IDE links */
 export function taskArtifactPaths(epic, phaseOrdinal, taskId) {
   const phase = phaseDirName(phaseOrdinal)
   return {
-    plan: `docs/development/Plan/${epic}/${phase}/tasks/${taskId}/plan.md`,
-    development: `docs/development/Result/${epic}/${phase}/development/${taskId}.md`,
-    qa: `docs/development/Result/${epic}/${phase}/qa/${taskId}.md`,
+    plan: `docs/workflow/plans/${epic}/${phase}/tasks/${taskId}/plan.md`,
+    development: `docs/workflow/results/${epic}/${phase}/development/${taskId}.md`,
+    qa: `docs/workflow/results/${epic}/${phase}/qa/${taskId}.md`,
   }
 }
 
 export function phasePlanBase(root, epic, phaseOrdinal) {
-  return path.join(root, 'docs/development/Plan', epic, phaseDirName(phaseOrdinal))
+  return path.join(root, 'docs/workflow/plans', epic, phaseDirName(phaseOrdinal))
 }
 
 /** Repo-relative paths for phase audit */
 export function phaseArtifactPaths(epic, phaseOrdinal) {
   const phase = phaseDirName(phaseOrdinal)
   return {
-    auditPlan: `docs/development/Plan/${epic}/${phase}/audit.md`,
-    auditReport: `docs/development/Result/${epic}/${phase}/audit/report.md`,
+    auditPlan: `docs/workflow/plans/${epic}/${phase}/audit.md`,
+    auditReport: `docs/workflow/results/${epic}/${phase}/audit/report.md`,
   }
 }
 
@@ -76,7 +76,7 @@ export function readPhaseAuditReportOutcome(root, epic, phaseOrdinal) {
   return null
 }
 
-/** Laporan audit satu task: docs/development/Result/{epic}/phase-{nn}/audit/{taskId}.md */
+/** Laporan audit satu task: docs/workflow/results/{epic}/phase-{nn}/audit/{taskId}.md */
 export function readTaskAuditOutcome(root, epic, phaseOrdinal, taskId) {
   const reportPath = path.join(taskResultBase(root, epic, phaseOrdinal), 'audit', `${taskId}.md`)
   if (!fs.existsSync(reportPath)) return null
@@ -160,7 +160,7 @@ export function readQaReportOutcome(root, epic, phaseOrdinal, taskId) {
 }
 
 export function taskResultBase(root, epic, phaseOrdinal) {
-  return path.join(root, 'docs/development/Result', epic, phaseDirName(phaseOrdinal))
+  return path.join(root, 'docs/workflow/results', epic, phaseDirName(phaseOrdinal))
 }
 
 export function readTaskArtifacts(root, epic, phaseOrdinal, taskId) {

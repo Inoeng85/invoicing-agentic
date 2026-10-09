@@ -3,8 +3,8 @@ import path from 'node:path'
 import { loadQueue } from './intake-pipeline.mjs'
 import { buildTaskChecklist } from './task-checklist.mjs'
 import { loadAutopilotState, EVENTS_LOG, TRIGGER_DIR_REL } from './task-autopilot.mjs'
-const OUT_REL = 'docs/PRD/0800-orkestrasi-stage/data/monitoring.json'
-const OUT_LOG_MIRROR = 'docs/PRD/0800-orkestrasi-stage/data/monitoring-log.jsonl'
+const OUT_REL = 'docs/workflow/dashboard/data/monitoring.json'
+const OUT_LOG_MIRROR = 'docs/workflow/dashboard/data/monitoring-log.jsonl'
 
 function readJsonIfExists(fp) {
   if (!fs.existsSync(fp)) return null
@@ -29,7 +29,7 @@ function readJsonl(fp, max = 500) {
 }
 
 function walkReports(root, limit = 120) {
-  const base = path.join(root, 'docs/development/Result')
+  const base = path.join(root, 'docs/workflow/results')
   if (!fs.existsSync(base)) return []
   /** @type {{ path: string, mtime: number, taskId: string, kind: string, epic: string, phase: string }[]} */
   const found = []
@@ -47,7 +47,7 @@ function walkReports(root, limit = 120) {
         const taskId = ent.name.replace(/\.md$/, '')
         if (!/^(development|qa|audit)$/.test(kind)) continue
         const st = fs.statSync(full)
-        found.push({ path: `docs/development/Result/${rel}`, mtime: st.mtimeMs, taskId, kind, epic, phase })
+        found.push({ path: `docs/workflow/results/${rel}`, mtime: st.mtimeMs, taskId, kind, epic, phase })
       }
     }
   }
@@ -120,7 +120,7 @@ export function buildMonitoringData(root, opts = {}) {
   const devSession = readJsonIfExists(path.join(triggerDir, 'development.json'))
   const autopilotWork = readJsonIfExists(path.join(triggerDir, 'autopilot-work.json'))
   const intakeTrigger = readJsonIfExists(
-    path.join(root, 'docs/PRD/0800-orkestrasi-stage/data/intake-trigger.json'),
+    path.join(root, 'docs/workflow/dashboard/data/intake-trigger.json'),
   )
 
   const autopilotEvents = readJsonl(path.join(triggerDir, EVENTS_LOG), 300)

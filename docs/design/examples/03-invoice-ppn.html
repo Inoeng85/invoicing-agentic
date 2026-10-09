@@ -1,0 +1,77 @@
+<!doctype html>
+<html lang="id">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>03 Invoice &amp; PPN — Design example</title>
+    <link rel="stylesheet" href="../prototype/assets/ui.css" />
+    <script src="../prototype/assets/prototype.js" defer></script>
+  </head>
+  <body data-shell="screen" class="min-h-screen">
+    <header class="sticky top-0 z-40 border-b bg-background/90 backdrop-blur">
+      <div class="mx-auto flex h-14 max-w-5xl items-center gap-3 px-4 sm:px-6">
+        <a class="btn btn-ghost btn-icon btn-sm" href="01-dashboard-collect.html" aria-label="Kembali"><i data-icon="arrow-left"></i></a>
+        <div class="min-w-0">
+          <p class="truncate text-sm font-semibold">Invoice baru</p>
+          <p class="truncate text-xs text-muted-foreground">Draft · (auto INV-2026-0014 saat kirim)</p>
+        </div>
+        <div class="ml-auto flex gap-2">
+          <button type="button" class="btn btn-outline btn-sm">Simpan draft</button>
+          <a class="btn btn-default btn-sm" href="04-kirim-pdf-publik.html">Kirim ke klien</a>
+        </div>
+      </div>
+    </header>
+
+    <main class="mx-auto max-w-5xl space-y-8 px-4 py-8 sm:px-6">
+      <p class="text-xs text-muted-foreground">Contoh 03 · FR-02 FR-03 BR-01 BR-04 · modules M03 M04 · <a class="underline-offset-4 hover:underline" href="index.html">Indeks</a></p>
+
+      <section class="card">
+        <div class="card-header">
+          <h2 class="text-lg font-semibold">Klien &amp; tanggal</h2>
+          <p class="card-description">Edit hanya saat draft (BR-01).</p>
+        </div>
+        <div class="card-content grid gap-5 sm:grid-cols-3">
+          <div class="field sm:col-span-3">
+            <label class="label" for="c">Klien <span class="text-destructive">*</span></label>
+            <select id="c" class="select">
+              <option>PT Arunika Digital — billing@arunika.demo</option>
+            </select>
+          </div>
+          <div class="field"><label class="label" for="d">Tanggal</label><input id="d" type="date" class="input" value="2026-09-30" /></div>
+          <div class="field"><label class="label" for="due">Jatuh tempo</label><input id="due" type="date" class="input" value="2026-10-30" /><p class="field-description">Default +30 hari.</p></div>
+          <div class="field"><label class="label" for="no">No.</label><input id="no" class="input font-mono text-muted-foreground" disabled value="(auto INV-2026-0014 saat kirim)" /></div>
+        </div>
+      </section>
+
+      <section class="card">
+        <div class="card-header">
+          <h2 class="text-lg font-semibold">Line items</h2>
+          <p class="card-description">Minimal 1 baris · PPN dari subtotal setelah diskon</p>
+        </div>
+        <div class="card-content space-y-4">
+          <div class="hidden gap-3 border-b pb-2 text-xs font-medium text-muted-foreground md:grid md:grid-cols-[1fr_5rem_8rem_8rem]">
+            <span>Deskripsi</span><span>Qty</span><span>Harga</span><span class="text-right">Subtotal</span>
+          </div>
+          <div class="grid gap-3 md:grid-cols-[1fr_5rem_8rem_8rem] md:items-center">
+            <input class="input" value="Desain UI halaman utama" />
+            <input class="input text-right tabular-nums" value="1" />
+            <div class="input-group"><span class="input-addon">Rp</span><input class="input text-right tabular-nums" value="5000000" /></div>
+            <p class="text-right font-medium tabular-nums">Rp 5.000.000</p>
+          </div>
+          <div class="grid gap-6 border-t pt-6 md:grid-cols-2">
+            <div>
+              <label class="flex items-center gap-2 text-sm font-medium"><input type="checkbox" class="checkbox" checked /> PPN 11%</label>
+              <p class="mt-2 text-xs text-muted-foreground">PPN hanya kalkulator. Bukan e-Faktur DJP.</p>
+            </div>
+            <dl class="ml-auto w-full max-w-xs space-y-2 text-sm">
+              <div class="flex justify-between"><dt class="text-muted-foreground">Subtotal</dt><dd class="tabular-nums">Rp 5.000.000</dd></div>
+              <div class="flex justify-between"><dt class="text-muted-foreground">PPN 11%</dt><dd class="tabular-nums">Rp 550.000</dd></div>
+              <div class="separator"></div>
+              <div class="flex justify-between"><dt class="font-medium">Total</dt><dd class="text-2xl font-bold tabular-nums">Rp 5.550.000</dd></div>
+            </dl>
+          </div>
+        </div>
+      </section>
+    </main>
+  </body>
+</html>

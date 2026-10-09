@@ -1,9 +1,9 @@
 {
   "epic": "0702",
   "gate": null,
-  "prdFolder": "docs/PRD/0702-live-tracking",
-  "devPhasePath": "docs/PRD/0702-live-tracking/0702_PRD_Live_Tracking_Development_phase.md",
-  "devPhaseMirror": "docs/PRD/0702-live-tracking/0702_PRD_Live_Tracking_Development_phase.md",
+  "prdFolder": "docs/product/requirements/0702-live-tracking",
+  "devPhasePath": "docs/product/requirements/0702-live-tracking/0702_PRD_Live_Tracking_Development_phase.md",
+  "devPhaseMirror": "docs/product/requirements/0702-live-tracking/0702_PRD_Live_Tracking_Development_phase.md",
   "reviewFocus": [
     "Kolektor membuka link setelah penugasan berakhir",
     "Reassign ke kolektor lain",
@@ -22,7 +22,7 @@
       "area": "db",
       "style": "agentic",
       "agenticReady": true,
-      "devPhasePath": "docs/PRD/0702-live-tracking/0702_PRD_Live_Tracking_Development_phase.md",
+      "devPhasePath": "docs/product/requirements/0702-live-tracking/0702_PRD_Live_Tracking_Development_phase.md",
       "files": [
         "packages/database/prisma/schema.prisma",
         "packages/database/src/index.ts",
@@ -39,7 +39,7 @@
       "area": "domain",
       "style": "agentic",
       "agenticReady": true,
-      "devPhasePath": "docs/PRD/0702-live-tracking/0702_PRD_Live_Tracking_Development_phase.md",
+      "devPhasePath": "docs/product/requirements/0702-live-tracking/0702_PRD_Live_Tracking_Development_phase.md",
       "files": [
         "packages/domain/src/geo.ts",
         "packages/domain/src/geo.test.ts",
@@ -58,7 +58,7 @@
       "area": "domain",
       "style": "agentic",
       "agenticReady": true,
-      "devPhasePath": "docs/PRD/0702-live-tracking/0702_PRD_Live_Tracking_Development_phase.md",
+      "devPhasePath": "docs/product/requirements/0702-live-tracking/0702_PRD_Live_Tracking_Development_phase.md",
       "files": [
         "packages/domain/src/collections.ts",
         "packages/domain/src/clients.ts",
@@ -77,7 +77,7 @@
       "area": "fe",
       "style": "agentic",
       "agenticReady": true,
-      "devPhasePath": "docs/PRD/0702-live-tracking/0702_PRD_Live_Tracking_Development_phase.md",
+      "devPhasePath": "docs/product/requirements/0702-live-tracking/0702_PRD_Live_Tracking_Development_phase.md",
       "files": [
         "apps/web/package.json",
         "package-lock.json",
@@ -97,7 +97,7 @@
       "area": "fe",
       "style": "agentic",
       "agenticReady": true,
-      "devPhasePath": "docs/PRD/0702-live-tracking/0702_PRD_Live_Tracking_Development_phase.md",
+      "devPhasePath": "docs/product/requirements/0702-live-tracking/0702_PRD_Live_Tracking_Development_phase.md",
       "files": [
         "apps/web/app/routes.ts",
         "apps/web/app/router.ts",
@@ -117,7 +117,7 @@
       "area": "fe",
       "style": "agentic",
       "agenticReady": true,
-      "devPhasePath": "docs/PRD/0702-live-tracking/0702_PRD_Live_Tracking_Development_phase.md",
+      "devPhasePath": "docs/product/requirements/0702-live-tracking/0702_PRD_Live_Tracking_Development_phase.md",
       "files": [
         "apps/web/app/routes.ts",
         "apps/web/app/router.ts",
@@ -140,7 +140,7 @@
       "area": "fe",
       "style": "agentic",
       "agenticReady": true,
-      "devPhasePath": "docs/PRD/0702-live-tracking/0702_PRD_Live_Tracking_Development_phase.md",
+      "devPhasePath": "docs/product/requirements/0702-live-tracking/0702_PRD_Live_Tracking_Development_phase.md",
       "files": [
         "apps/web/app/actions/clients/controller.tsx",
         "apps/web/app/actions/controller.test.ts",
@@ -157,12 +157,12 @@
       "area": "docs",
       "style": "agentic",
       "agenticReady": true,
-      "devPhasePath": "docs/PRD/0702-live-tracking/0702_PRD_Live_Tracking_Development_phase.md",
+      "devPhasePath": "docs/product/requirements/0702-live-tracking/0702_PRD_Live_Tracking_Development_phase.md",
       "files": [
-        "docs/PRD/README.md",
-        "docs/PRD/0702-live-tracking/0702_PRD_Live_Tracking.md",
-        "docs/invoicing/legal/LEGAL-REVIEW-CHECKLIST.md",
-        "docs/invoicing/brd/MVP-SCOPE-LOCK.md"
+        "docs/product/requirements/README.md",
+        "docs/product/requirements/0702-live-tracking/0702_PRD_Live_Tracking.md",
+        "docs/product/legal/LEGAL-REVIEW-CHECKLIST.md",
+        "docs/product/brd/MVP-SCOPE-LOCK.md"
       ],
       "produces": "",
       "verify": "npm run dev"

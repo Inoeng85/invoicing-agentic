@@ -22,7 +22,7 @@ export const TRIGGER_DIR_REL = '.agentic/trigger'
 export const STATE_FILE = 'autopilot-state.json'
 export const PROMPT_FILE = 'AGENT_PROMPT.md'
 export const EVENTS_LOG = 'autopilot-events.jsonl'
-export const STATUS_JSON_REL = 'docs/PRD/0800-orkestrasi-stage/data/autopilot.json'
+export const STATUS_JSON_REL = 'docs/workflow/dashboard/data/autopilot.json'
 
 export function sortedPhases(queue) {
   return [...(queue.phases || [])].sort(
@@ -52,7 +52,7 @@ export function findSmallestUndoneWork(root, queue) {
         epic: ph.epic,
         ordinal: ph.ordinal,
         taskIds: ph.taskIds,
-        skill: 'docs/agentic/skill/intake/SKILL.md',
+        skill: 'docs/workflow/skills/intake/SKILL.md',
       }
     }
 
@@ -75,8 +75,8 @@ export function findSmallestUndoneWork(root, queue) {
           taskId,
           taskIndex: idx + 1,
           taskTotal: (ph.taskIds || []).length,
-          planPath: `docs/development/Plan/${ph.epic}/${phaseDirName(ph.ordinal)}/tasks/${taskId}/plan.md`,
-          skill: 'docs/agentic/skill/plan/SKILL.md',
+          planPath: `docs/workflow/plans/${ph.epic}/${phaseDirName(ph.ordinal)}/tasks/${taskId}/plan.md`,
+          skill: 'docs/workflow/skills/plan/SKILL.md',
         }
       }
 
@@ -90,8 +90,8 @@ export function findSmallestUndoneWork(root, queue) {
           epic: ph.epic,
           ordinal: ph.ordinal,
           taskId,
-          planPath: `docs/development/Plan/${ph.epic}/${phaseDirName(ph.ordinal)}/tasks/${taskId}/plan.md`,
-          skill: 'docs/agentic/skill/development/SKILL.md',
+          planPath: `docs/workflow/plans/${ph.epic}/${phaseDirName(ph.ordinal)}/tasks/${taskId}/plan.md`,
+          skill: 'docs/workflow/skills/development/SKILL.md',
         }
       }
 
@@ -103,8 +103,8 @@ export function findSmallestUndoneWork(root, queue) {
           epic: ph.epic,
           ordinal: ph.ordinal,
           taskId,
-          skill: 'docs/agentic/skill/qa/SKILL.md',
-          planPath: `docs/development/Plan/${ph.epic}/${phaseDirName(ph.ordinal)}/tasks/${taskId}/plan.md`,
+          skill: 'docs/workflow/skills/qa/SKILL.md',
+          planPath: `docs/workflow/plans/${ph.epic}/${phaseDirName(ph.ordinal)}/tasks/${taskId}/plan.md`,
           hasDevReport: arts.development,
         }
       }
@@ -122,7 +122,7 @@ export function workItemPrompt(work) {
       'Agent QA — 1 session = 1 task',
       `Task: ${work.taskId} · phase ${work.phaseId}`,
       `Plan: Agentic/${work.planPath}`,
-      'Skill: docs/agentic/skill/qa/SKILL.md',
+      'Skill: docs/workflow/skills/qa/SKILL.md',
       `Selesai: npm run agentic:validate-qa -- --task ${work.taskId} --epic ${work.epic} --phase ${work.ordinal}`,
     ].join('\n')
   }

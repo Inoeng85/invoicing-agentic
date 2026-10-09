@@ -16,13 +16,13 @@ description: >-
 
 ## Input wajib
 
-1. Link atau ringkasan [BRD](../docs/invoicing/BRD.md) / MVP-SCOPE-LOCK
+1. Link atau ringkasan [BRD](../../../docs/product/BRD.md) / MVP-SCOPE-LOCK
 2. Keputusan deploy (monorepo, tanpa Docker, SQLite, dll.)
 3. Daftar FR Must yang perlu sequence diagram
 
 ## Output
 
-1. Salin [template.md.tmpl](./template.md.tmpl) → `docs/invoicing/ARCHITECTURE.md`
+1. Salin [template.md.tmpl](./template.md.tmpl) → `docs/architecture/README.md`
 2. Isi placeholder; tambah mermaid hanya untuk alur non-trivial (auth, send invoice, public link)
 3. Update atau buat `brd/ARCHITECTURE-ALIGNMENT.md` (D-xx keputusan, G-xx gap)
 4. Cross-link `engineering/TECHNICAL-DESIGN.md`, `API.md`, `STACK-INTEGRATION.md`
@@ -49,4 +49,4 @@ description: >-
 
 ## Referensi
 
-- [docs/invoicing/ARCHITECTURE.md](../docs/invoicing/ARCHITECTURE.md)
+- [docs/architecture/README.md](../../../docs/architecture/README.md)

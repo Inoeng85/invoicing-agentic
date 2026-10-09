@@ -1,6 +1,6 @@
 # Branch protection — `develop`
 
-`develop` adalah branch default dan integrasi repository [Inoeng85/invoicing-agentic](https://github.com/Inoeng85/invoicing-agentic). Semua pekerjaan dilakukan di `feat/*`, lalu digabungkan ke `develop` melalui pull request. Lihat [kontribusi](../CONTRIBUTING.md).
+`develop` adalah branch default dan integrasi repository [Inoeng85/invoicing-agentic](https://github.com/Inoeng85/invoicing-agentic). Semua pekerjaan dilakukan di `feat/*`, lalu digabungkan ke `develop` melalui pull request. Lihat [kontribusi](../engineering/CONTRIBUTING.md).
 
 ## Proteksi saat ini
 

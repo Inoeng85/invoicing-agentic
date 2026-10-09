@@ -1,6 +1,6 @@
 # UI prototype (HTML) — v2 · Tailwind CSS v4 + shadcn/ui
 
-Prototype statis interaktif untuk design system **PuraPuraLupa (Komando)** — selaras [invoicing/design/DESIGN-GUIDELINES.md](../../invoicing/design/DESIGN-GUIDELINES.md) dan [invoicing/brd/WIREFRAMES.md](../../invoicing/brd/WIREFRAMES.md).
+Prototype statis interaktif untuk design system **PuraPuraLupa (Komando)** — selaras [invoicing/design/DESIGN-GUIDELINES.md](../DESIGN-GUIDELINES.md) dan [invoicing/brd/WIREFRAMES.md](../../product/brd/WIREFRAMES.md).
 
 - **Tailwind CSS v4** (CLI lokal, tanpa CDN) untuk utility & build.
 - **shadcn/ui** sebagai konvensi token (`--background`, `--primary`, `--muted`, …) dan resep komponen (`.btn-{variant}`, `.card-*`, `.badge-*`, `.dialog`, …).

@@ -12,7 +12,7 @@ Operator — setelah repo siap (`npm run verify` / `npm run ci:local`).
 - [ ] Env dari [infra/railway/env.staging.example](../../infra/railway/env.staging.example)
 - [ ] `npm run host:check` lulus dengan env staging
 - [ ] Secrets runtime: `SESSION_SECRET`, `APP_URL`, `CORS_ORIGIN`, `API_BASE_URL`, `EMAIL_*`, `TRUST_PROXY=1`
-- [ ] Detail: [infra/railway/README.md](../infra/railway/README.md)
+- [ ] Detail: [infra/railway/README.md](deployment/railway/README.md)
 
 ## 000006 — Domain & TLS
 
@@ -35,4 +35,4 @@ Operator — setelah repo siap (`npm run verify` / `npm run ci:local`).
 
 - [ ] `/api/health/ready` 200 on staging
 - [ ] `npm run db:seed` sekali (Studio Kartika demo)
-- [ ] UAT web against staging: [UAT-GATE-TRACE.md](../invoicing/engineering/UAT-GATE-TRACE.md)
+- [ ] UAT web against staging: [UAT-GATE-TRACE.md](../engineering/UAT-GATE-TRACE.md)

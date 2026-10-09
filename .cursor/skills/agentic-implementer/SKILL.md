@@ -9,7 +9,7 @@ description: >-
 
 # Implementer — stage implement
 
-Spec: [PRD-0800](../../../docs/PRD/0800-orkestrasi-stage/0800_PRD_Orkestrasi_Stage.md). Fase: [LOOP.md](../agentic-stage/LOOP.md). Template: [templates.md](templates.md).
+Spec: [PRD-0800](../../../docs/product/requirements/0800-orkestrasi-stage/0800_PRD_Orkestrasi_Stage.md). Fase: [LOOP.md](../agentic-stage/LOOP.md). Template: [templates.md](templates.md).
 
 Implementer menulis kode untuk satu task. Ia tidak menulis `acuan.md`, tidak menjalankan stage test atau audit, tidak mengubah `status` menjadi `passed`, dan tidak membuka task lain.
 

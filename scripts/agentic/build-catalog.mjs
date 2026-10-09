@@ -1,13 +1,13 @@
 #!/usr/bin/env node
 /**
- * OR-01: Parse docs/PRD Development phase → .agentic/catalog/tasks.json
+ * OR-01: Parse docs/product/requirements Development phase → .agentic/catalog/tasks.json
  */
 import fs from 'node:fs'
 import path from 'node:path'
 import { fileURLToPath } from 'node:url'
 
 const ROOT = path.join(path.dirname(fileURLToPath(import.meta.url)), '../..')
-const PRD_ROOT = path.join(ROOT, 'docs/PRD')
+const PRD_ROOT = path.join(ROOT, 'docs/product/requirements')
 const OUT_DIR = path.join(ROOT, '.agentic/catalog')
 
 function walkDevPhases(dir) {
@@ -177,8 +177,8 @@ function inferArea(files, title) {
 
 function resolveDevPhaseSource(filePath, text) {
   if (epicFromPath(filePath) !== '0000') return filePath
-  let link = text.match(/\]\(\.\.\/\.\.\/0000_platform_setup\/PRD_platform_setup_development_phase\.md\)/)
-  if (link) return path.join(ROOT, 'docs/0000_platform_setup/PRD_platform_setup_development_phase.md')
+  let link = text.match(/\]\(([^)\n]*PRD_platform_setup_development_phase\.md)\)/)
+  if (link) return path.resolve(path.dirname(filePath), link[1])
   return filePath
 }
 
@@ -194,7 +194,7 @@ function parseFile(filePath) {
   let reviewFocus = parseReviewFocus(text)
 
   let tasks = []
-  if (epic === '0000' && sourcePath.includes('0000_platform_setup')) {
+  if (epic === '0000' && path.basename(sourcePath) === 'PRD_platform_setup_development_phase.md') {
     tasks = parsePlatformTasks(text, epic, devPhasePath)
   } else if (/^### Task \d+:/m.test(text)) {
     tasks = parseAgenticTasks(text, epic, devPhasePath, verifyDefault)
@@ -251,7 +251,7 @@ function main() {
 
   let index = {
     generatedAt: new Date().toISOString(),
-    source: 'docs/PRD/**/**/*Development_phase.md',
+    source: 'docs/product/requirements/**/**/*Development_phase.md',
     epicCount: epics.length,
     taskCount: allTasks.length,
     agenticReadyCount: allTasks.filter((t) => t.agenticReady).length,

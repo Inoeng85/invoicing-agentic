@@ -1,6 +1,6 @@
 name: Deploy staging
 
-# PG-2: GitHub Environment `staging` + Railway — docs/infra/railway/README.md
+# PG-2: GitHub Environment `staging` + Railway — docs/operations/deployment/railway/README.md
 
 on:
   workflow_dispatch:

@@ -1,6 +1,6 @@
 # Template — task platform (PRD-0000 development phase)
 
-Gunakan struktur ini di `docs/0000_platform_setup/PRD_platform_setup_development_phase.md` untuk setiap task baru.
+Gunakan struktur ini di `docs/product/requirements/0000-platform-setup/PRD_platform_setup_development_phase.md` untuk setiap task baru.
 
 ## Blok dokumen (urutan wajib)
 
@@ -42,7 +42,7 @@ Gunakan struktur ini di `docs/0000_platform_setup/PRD_platform_setup_development
 - **Depends** = task ID lain (bukan PS)
 - **Status** baris fase vs **Status** task: fase boleh agregat (`9/9 task done`); task pakai Done / Partial / Todo
 - Setelah menambah task: update jumlah di **Ringkasan fase**, urutan canonical, dan **Matriks task ↔ PS**
-- Mirror `docs/PRD/0000-platform-setup/0000_PRD_Platform_Setup_Development_phase.md`: hanya ringkasan + link canonical — **tanpa** copy-paste semua `### task`
+- Mirror `docs/product/requirements/0000-platform-setup/0000_PRD_Platform_Setup_Development_phase.md`: hanya ringkasan + link canonical — **tanpa** copy-paste semua `### task`
 
 ## Meta baris verifikasi (contoh)
 

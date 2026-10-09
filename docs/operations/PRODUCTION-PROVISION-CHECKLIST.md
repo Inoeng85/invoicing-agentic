@@ -17,7 +17,7 @@ Setelah **staging PG-2** lulus UAT.
 | Volume | mount `/data` · `DATABASE_URL=file:/data/invoicing.db` |
 | Health | `GET /api/health/ready` (port API internal) |
 
-Atau dua service + volume shared — [infra/railway/README.md](../infra/railway/README.md).
+Atau dua service + volume shared — [infra/railway/README.md](deployment/railway/README.md).
 
 ## Pre-tag
 
@@ -31,7 +31,7 @@ npm run host:check   # dengan env production staging mirror
 1. Tag `v0.1.0-rc.1` on `develop`
 2. Approve GitHub Environment **production**
 3. Smoke: `API_BASE_URL=… npm run staging:smoke`
-4. Legal + sign-off: [RELEASE-READINESS.md](../invoicing/engineering/RELEASE-READINESS.md)
+4. Legal + sign-off: [RELEASE-READINESS.md](../engineering/RELEASE-READINESS.md)
 
 ## PG-3 gates (operator)
 

@@ -42,12 +42,12 @@ function resolveQaStatus(root, epic, phaseOrdinal, taskId, hasQaReport) {
 }
 
 const ROOT = path.join(path.dirname(fileURLToPath(import.meta.url)), '../..')
-const QUEUE_PATH = path.join(ROOT, 'docs/development/Plan/intake-queue.json')
+const QUEUE_PATH = path.join(ROOT, 'docs/workflow/plans/intake-queue.json')
 const CATALOG_TASKS = path.join(ROOT, '.agentic/catalog/tasks.json')
 const CATALOG_INDEX = path.join(ROOT, '.agentic/catalog/index.json')
-const OUT_BOARD = path.join(ROOT, 'docs/PRD/0800-orkestrasi-stage/data/kanban-board.json')
-const OUT_MIRROR = path.join(ROOT, 'docs/development/Plan/kanban-board.json')
-const REPORTS_MIRROR_DIR = path.join(ROOT, 'docs/PRD/0800-orkestrasi-stage/data/reports')
+const OUT_BOARD = path.join(ROOT, 'docs/workflow/dashboard/data/kanban-board.json')
+const OUT_MIRROR = path.join(ROOT, 'docs/workflow/plans/kanban-board.json')
+const REPORTS_MIRROR_DIR = path.join(ROOT, 'docs/workflow/dashboard/data/reports')
 
 function mirrorReportForKanban(repoRelativePath, fileName) {
   const src = path.join(ROOT, repoRelativePath)
@@ -320,7 +320,7 @@ function main() {
     tasks: boardTasks,
   }
 
-  const triggerPath = path.join(ROOT, 'docs/PRD/0800-orkestrasi-stage/data/intake-trigger.json')
+  const triggerPath = path.join(ROOT, 'docs/workflow/dashboard/data/intake-trigger.json')
   fs.writeFileSync(
     triggerPath,
     JSON.stringify(
@@ -347,9 +347,9 @@ function main() {
 
   console.log(`Kanban board: ${summary.taskCount} task, ${summary.phaseCount} phase → ${rel(OUT_BOARD)}`)
   console.log(
-    `  Checklist: running ${checklist.summary.running}, ready ${checklist.summary.ready}, blocked ${checklist.summary.blocked} → docs/PRD/0800-orkestrasi-stage/data/task-checklist.json`,
+    `  Checklist: running ${checklist.summary.running}, ready ${checklist.summary.ready}, blocked ${checklist.summary.blocked} → docs/workflow/dashboard/data/task-checklist.json`,
   )
-  console.log(`  Monitoring: ${monitoring.summary.logCount} log → docs/PRD/0800-orkestrasi-stage/data/monitoring.json`)
+  console.log(`  Monitoring: ${monitoring.summary.logCount} log → docs/workflow/dashboard/data/monitoring.json`)
   console.log(`  Columns: ${JSON.stringify(summary.byColumn)}`)
 }
 
