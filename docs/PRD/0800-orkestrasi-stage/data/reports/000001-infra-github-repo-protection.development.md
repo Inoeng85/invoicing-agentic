@@ -14,7 +14,7 @@
 
 ## File diubah
 
-- `docs/governance/BRANCH_PROTECTION.md` — catatan rule yang terpasang
+- `docs/operations/BRANCH_PROTECTION.md` — catatan rule yang terpasang
 
 ## Verifikasi dijalankan
 

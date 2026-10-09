@@ -1,0 +1,10 @@
+{
+  "active": false,
+  "idleAt": "2026-10-01T09:09:50.210Z",
+  "last": {
+    "kind": "gate",
+    "phaseId": "0000-P2",
+    "waitFor": "0000-P1",
+    "message": "Menunggu Human QA release phase 0000-P1"
+  }
+}

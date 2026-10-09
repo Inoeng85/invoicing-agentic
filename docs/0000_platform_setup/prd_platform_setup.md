@@ -5,7 +5,7 @@
 | ID | PRD-0000 |
 | Versi | 2.3 · LAUNCH-LANE · railway.toml · deploy host:check |
 | Development phase | [PRD_platform_setup_development_phase.md](./PRD_platform_setup_development_phase.md) |
-| Launch | [LAUNCH-LANE.md](./LAUNCH-LANE.md) |
+| Launch | [LAUNCH-LANE.md](../operations/LAUNCH-LANE.md) |
 | Tanggal | 2026-09-30 (verifikasi PG-0 & PG-1) |
 | Owner | Product (Cursor, PM) |
 | Reviewer | Engineering lead, Design |
@@ -261,8 +261,8 @@ Prioritas: **P0** = wajib sebelum tim mulai kerja paralel / CI aktif · **P1** =
 |-----------|----------|-------------------|-----------|
 | **M0 — Local baseline** | Phase 0 | PS-01–PS-03, PS-05 (commit/remote), PS-06–PS-07, PS-09, PS-13–PS-14, PS-18, PS-20–PS-21, PS-46 | **PG-0:** ✅ lokal + remote 2026-09-30 |
 | **M1 — CI** | Phase 1 | PS-05 (branch protection), PS-22–PS-24, PS-43 (via verify) | **PG-1:** ⏳ CI billing GitHub · fallback `npm run ci:local` · branch protection setelah CI hijau |
-| **M2 — Staging** | Phase 2 | PS-04, PS-08, PS-10–PS-11, PS-15–PS-16, PS-19, PS-25, PS-27–PS-28, PS-31, PS-33–PS-35, PS-38–PS-42, PS-45, PS-48 | **PG-2:** [STAGING-PROVISION-CHECKLIST.md](./STAGING-PROVISION-CHECKLIST.md) · SQLite volume · Resend QA |
-| **M3 — Production readiness** | Phase 3 | PS-12, PS-17, PS-26, PS-29–PS-30, PS-32, PS-36–PS-37, PS-39 (prod), PS-44, PS-47 | **PG-3:** [PRODUCTION-PROVISION-CHECKLIST.md](./PRODUCTION-PROVISION-CHECKLIST.md) · tag `v0.1.0-rc` |
+| **M2 — Staging** | Phase 2 | PS-04, PS-08, PS-10–PS-11, PS-15–PS-16, PS-19, PS-25, PS-27–PS-28, PS-31, PS-33–PS-35, PS-38–PS-42, PS-45, PS-48 | **PG-2:** [STAGING-PROVISION-CHECKLIST.md](../operations/STAGING-PROVISION-CHECKLIST.md) · SQLite volume · Resend QA |
+| **M3 — Production readiness** | Phase 3 | PS-12, PS-17, PS-26, PS-29–PS-30, PS-32, PS-36–PS-37, PS-39 (prod), PS-44, PS-47 | **PG-3:** [PRODUCTION-PROVISION-CHECKLIST.md](../operations/PRODUCTION-PROVISION-CHECKLIST.md) · tag `v0.1.0-rc` |
 
 ### 7.1 Urutan eksekusi task (ringkas)
 
@@ -325,7 +325,7 @@ Hubungan dengan fase produk: M0–M1 membuka Phase 6 ([DEVELOPMENT-PHASES](../in
 
 | ID | Pertanyaan | Opsi | Rekomendasi awal |
 |----|------------|------|------------------|
-| Q-01 | Strategi DB dev vs staging/prod | **Decided:** SQLite semua environment · satu schema/migrasi · [ADR-0001](./adr/ADR-0001-sqlite-postgresql.md) |
+| Q-01 | Strategi DB dev vs staging/prod | **Decided:** SQLite semua environment · satu schema/migrasi · [ADR-0001](../adr/ADR-0001-sqlite-postgresql.md) |
 | Q-02 | Host staging/prod | Fly.io · Railway · VPS + reverse proxy (ARCH §14.2 menyebut Fly/Railway/CloudWatch) | Railway/Fly untuk tim kecil (managed Postgres + secret store) |
 | Q-03 | Topologi web & API | Dua service terpisah (sesuai arsitektur) vs satu proses | Dua service, API di subdomain `api.` |
 | Q-04 | Lokasi token design bersama | `packages/design-tokens` vs `docs/design/prototype/src/tokens.css` | `packages/design-tokens` agar bisa di-import app tanpa bergantung pada folder docs |

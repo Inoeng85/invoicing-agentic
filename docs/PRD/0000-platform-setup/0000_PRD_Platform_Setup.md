@@ -59,6 +59,6 @@ Requirement lengkap, baseline B-01–B-12, dan pemetaan PS→task ada di **canon
 ## Referensi
 
 - [PRD_platform_setup_development_phase.md](../../0000_platform_setup/PRD_platform_setup_development_phase.md)
-- [LAUNCH-LANE.md](../../0000_platform_setup/LAUNCH-LANE.md)
+- [LAUNCH-LANE.md](../../operations/LAUNCH-LANE.md)
 - [TECHNOLOGY-STACK.md](../../invoicing/engineering/TECHNOLOGY-STACK.md)
 - [ARCHITECTURE-ALIGNMENT.md](../../invoicing/brd/ARCHITECTURE-ALIGNMENT.md) (gap G-04, G-06, G-07, G-13)

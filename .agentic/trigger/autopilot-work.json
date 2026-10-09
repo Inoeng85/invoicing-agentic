@@ -1,0 +1,12 @@
+{
+  "version": 1,
+  "generatedAt": "2026-10-01T18:05:58.872Z",
+  "work": {
+    "kind": "gate",
+    "phaseId": "0000-P2",
+    "waitFor": "0000-P1",
+    "message": "Menunggu Human QA release phase 0000-P1"
+  },
+  "prompt": "Menunggu Human QA release phase 0000-P1",
+  "active": false
+}
