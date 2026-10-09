@@ -22,7 +22,7 @@ import { workspaceRelative } from './path-resolver.mjs'
 
 const ROOT = path.join(path.dirname(fileURLToPath(import.meta.url)), '../..')
 const TRIGGER_DIR = path.join(ROOT, '.agentic/trigger')
-const OUT_JSON = path.join(ROOT, 'docs/workflow/dashboard/data/intake-trigger.json')
+const OUT_JSON = path.join(ROOT, 'docs/reports/workflow/intake-trigger.json')
 
 function parseArgs(argv) {
   const out = { execute: false, write: false, json: false }

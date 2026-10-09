@@ -39,7 +39,7 @@ npm run typecheck && npm run test:domain && npm test
 
 ## Acuan PRD
 
-- Development phase: `docs/product/requirements/0501-dashboard/0501_PRD_Dashboard_Development_phase.md`
+- Development phase: `docs/product/requirements/0501-dashboard/0501-prd-dashboard-development-phase.md`
 - **Produces:** BR-03 helper
 - **Verifikasi:** npm run typecheck && npm run test:domain && npm test
 - **Files:**

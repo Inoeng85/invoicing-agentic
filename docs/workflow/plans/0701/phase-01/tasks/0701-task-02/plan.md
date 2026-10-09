@@ -50,7 +50,7 @@ npm run test:domain
 
 ## Acuan PRD
 
-- Development phase: `docs/product/requirements/0701-foto-kolektor/0701_PRD_Foto_Kolektor_Development_phase.md`
+- Development phase: `docs/product/requirements/0701-foto-kolektor/0701-prd-foto-kolektor-development-phase.md`
 - **Produces:** `MAX_COLLECTOR_PHOTO_BYTES`, `detectImageType(bytes: Uint8Array): CollectorPhotoMimeType | null`, `setCollectorPhoto(userId, collectorId, bytes: Uint8Array): Promise<DebtCollector>`, `removeCollectorPhoto(userId, collectorId): Promise<DebtCollector>`, `getCollectorPhoto(userId, collectorId): Promise<{ bytes: Uint8Array; mimeType: string; updatedAt: Date }>`.
 - **Verifikasi:** npm run test:domain
 - **Files:**

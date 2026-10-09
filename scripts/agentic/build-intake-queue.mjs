@@ -15,7 +15,7 @@ const DEFAULT_SCOPE = path.join(ROOT, 'docs/workflow/plans/intake-scope.json')
 const OUT_QUEUE = path.join(ROOT, 'docs/workflow/plans/intake-queue.json')
 const KANBAN_MIRROR = path.join(
   ROOT,
-  'docs/workflow/dashboard/data/intake-queue.json',
+  'docs/reports/workflow/intake-queue.json',
 )
 const PLAN_ROOT = path.join(ROOT, 'docs/workflow/plans')
 

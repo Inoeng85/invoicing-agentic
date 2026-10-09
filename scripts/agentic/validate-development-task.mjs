@@ -5,7 +5,7 @@
 import fs from 'node:fs'
 import path from 'node:path'
 import { fileURLToPath } from 'node:url'
-import { phaseDirName, readPlanDevelopmentStatus, readTaskArtifacts } from './task-progress.mjs'
+import { phaseDirName, readPlanDevelopmentStatus, readTaskArtifacts, taskReportPath } from './task-progress.mjs'
 
 const ROOT = path.join(path.dirname(fileURLToPath(import.meta.url)), '../..')
 
@@ -46,14 +46,7 @@ function main() {
   const featurePath = featureId
     ? path.join(ROOT, 'docs/workflow/features', `${featureId}.md`)
     : null
-  const reportPath = path.join(
-    ROOT,
-    'docs/workflow/results',
-    epic,
-    phaseNn,
-    'development',
-    `${taskId}.md`,
-  )
+  const reportPath = taskReportPath(ROOT, epic, opts.phase, 'development', taskId)
 
   const errors = []
   const ok = []

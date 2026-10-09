@@ -23,7 +23,7 @@ Boundary Development untuk task 000001-docs-dev-runbook (epic 0000).
 
 ### Docs / lainnya
 
-- `docs/engineering/STACK-INTEGRATION.md`
+- `docs/engineering/stack-integration.md`
 - `docs/README.md`
 
 ## Task plan yang memakai feature ini

@@ -38,7 +38,7 @@ npm run email:smoke
 
 ## Acuan PRD
 
-- Development phase: `docs/product/requirements/0401-kirim-email/0401_PRD_Kirim_Email_Development_phase.md`
+- Development phase: `docs/product/requirements/0401-kirim-email/0401-prd-kirim-email-development-phase.md`
 - **Produces:** Pluggable; fail → no sent
 - **Verifikasi:** npm run email:smoke
 - **Files:**

@@ -33,7 +33,7 @@ npm run release:check
 
 ## Acuan PRD
 
-- Development phase: `docs/product/requirements/0600-release-readiness/0600_PRD_Release_Readiness_Development_phase.md`
+- Development phase: `docs/product/requirements/0600-release-readiness/0600-prd-release-readiness-development-phase.md`
 - **Produces:** Verify 0402 + security review
 - **Verifikasi:** npm run release:check
 - **Files:**

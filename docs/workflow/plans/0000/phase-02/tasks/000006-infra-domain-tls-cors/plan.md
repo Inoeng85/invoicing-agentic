@@ -38,7 +38,7 @@ infra domain tls cors (PRD epic 0000).
 
 ## Acuan PRD
 
-- Development phase: `docs/product/requirements/0000-platform-setup/PRD_platform_setup_development_phase.md`
+- Development phase: `docs/product/requirements/0000-platform-setup/prd-platform-setup-development-phase.md`
 - **Produces:** PS-31
 - **Verifikasi:** `https://<staging-web>/i/:token` dari email uji bisa dibuka · request web → API lolos CORS.
 - **Files:**

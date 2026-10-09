@@ -11,8 +11,8 @@
   ];
 
   const BOARD_URLS = [
-    new URL("data/kanban-board.json", window.location.href).href,
-    new URL("../plans/kanban-board.json", window.location.href).href
+    new URL("../../reports/workflow/kanban-board.json", window.location.href).href,
+    new URL("../../reports/workflow/kanban-board-mirror.json", window.location.href).href
   ];
   const POLL_MS = 15000;
   const storageKey = "agentic-kanban-board-v6";
@@ -134,7 +134,7 @@
     if (!summaryEl) return;
     var orch = getOrchestrator();
     if (!orch || !orch.next) {
-      summaryEl.textContent = "Orkestrator belum ada di kanban-board.json — npm run agentic:kanban-data";
+      summaryEl.textContent = "Orkestrator belum ada di kanban-board-mirror.json — npm run agentic:kanban-data";
       if (btnPrimary) btnPrimary.disabled = true;
       if (btnCopy) btnCopy.disabled = true;
       if (btnTerm) btnTerm.disabled = true;
@@ -996,7 +996,7 @@
       if (!boardSnapshot) {
         loadStatusEl.hidden = false;
         loadStatusEl.textContent =
-          "Gagal memuat kanban-board.json. Jalankan npm run agentic:kanban-data dan serve via HTTP. " + (e.message || "");
+          "Gagal memuat kanban-board-mirror.json. Jalankan npm run agentic:kanban-data dan serve via HTTP. " + (e.message || "");
       }
     }
   }

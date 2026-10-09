@@ -24,7 +24,7 @@ Boundary Development untuk task 000003-infra-ci-verify-pipeline (epic 0000).
 ### Docs / lainnya
 
 - `.github/workflows/ci.yml`
-- `docs/operations/BRANCH_PROTECTION.md`
+- `docs/operations/branch-protection.md`
 
 ## Task plan yang memakai feature ini
 

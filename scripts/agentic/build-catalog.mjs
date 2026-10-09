@@ -15,7 +15,7 @@ function walkDevPhases(dir) {
   for (let ent of fs.readdirSync(dir, { withFileTypes: true })) {
     let full = path.join(dir, ent.name)
     if (ent.isDirectory()) out.push(...walkDevPhases(full))
-    else if (ent.name.endsWith('_Development_phase.md')) out.push(full)
+    else if (/^\d{4}-prd-.*-development-phase\.md$/.test(ent.name)) out.push(full)
   }
   return out.sort()
 }
@@ -177,7 +177,7 @@ function inferArea(files, title) {
 
 function resolveDevPhaseSource(filePath, text) {
   if (epicFromPath(filePath) !== '0000') return filePath
-  let link = text.match(/\]\(([^)\n]*PRD_platform_setup_development_phase\.md)\)/)
+  let link = text.match(/\]\(([^)\n]*prd-platform-setup-development-phase\.md)\)/)
   if (link) return path.resolve(path.dirname(filePath), link[1])
   return filePath
 }
@@ -194,7 +194,7 @@ function parseFile(filePath) {
   let reviewFocus = parseReviewFocus(text)
 
   let tasks = []
-  if (epic === '0000' && path.basename(sourcePath) === 'PRD_platform_setup_development_phase.md') {
+  if (epic === '0000' && path.basename(sourcePath) === 'prd-platform-setup-development-phase.md') {
     tasks = parsePlatformTasks(text, epic, devPhasePath)
   } else if (/^### Task \d+:/m.test(text)) {
     tasks = parseAgenticTasks(text, epic, devPhasePath, verifyDefault)
@@ -251,7 +251,7 @@ function main() {
 
   let index = {
     generatedAt: new Date().toISOString(),
-    source: 'docs/product/requirements/**/**/*Development_phase.md',
+    source: 'docs/product/requirements/*/*-prd-*-development-phase.md',
     epicCount: epics.length,
     taskCount: allTasks.length,
     agenticReadyCount: allTasks.filter((t) => t.agenticReady).length,

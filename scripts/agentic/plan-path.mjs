@@ -34,7 +34,7 @@ function main() {
   }
   const epic = opts.epic || opts.taskId.slice(0, 4)
   const ord = opts.phase != null ? opts.phase : resolvePhaseOrdinal(opts.taskId)
-  const rel = taskArtifactPaths(epic, ord, opts.taskId).plan
+  const rel = taskArtifactPaths(ROOT, epic, ord, opts.taskId).plan
   const abs = path.join(ROOT, rel)
   console.log('Agentic root:', rel)
   console.log('Workspace (Cursor):', workspaceRelative(rel))

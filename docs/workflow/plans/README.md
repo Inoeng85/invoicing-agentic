@@ -28,13 +28,13 @@ Cek: `npm run agentic:plan-path -- --task 000001-db-canonical-sqlite-path`
 npm run agentic:intake-queue          # baca intake-scope.json + catalog
 npm run agentic:intake-queue:refresh  # catalog ulang, lalu intake-queue
 npm run agentic:intake-queue -- --merge   # pertahankan status plan/intake per phaseId
-npm run agentic:kanban-data               # intake (semua epic) + kanban-board.json untuk HTML
+npm run agentic:kanban-data               # intake (semua epic) + kanban-board-mirror.json untuk HTML
 npm run agentic:kanban-watch              # rebuild kanban-data tiap 10s (terminal terpisah)
 npm run agentic:intake-run -- next          # task/phase intake berikutnya (JSON)
 npm run agentic:validate-plan -- --task …   # gate satu task plan
 ```
 
-Konfigurasi scope: [intake-scope.json](intake-scope.json). Keluaran: [intake-queue.json](intake-queue.json) (+ salinan untuk kanban di `docs/workflow/dashboard/data/intake-queue.json`).
+Konfigurasi scope: [intake-scope.json](intake-scope.json). Keluaran: [intake-queue.json](intake-queue.json) (+ salinan untuk kanban di `docs/reports/workflow/intake-queue.json`).
 
 **Transisi kanban**
 

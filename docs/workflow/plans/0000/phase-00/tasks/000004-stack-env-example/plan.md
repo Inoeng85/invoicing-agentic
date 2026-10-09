@@ -56,7 +56,7 @@ Example web/api/database sudah memuat variabel PS-09 dengan default dev (`EMAIL_
 
 ## Acuan PRD
 
-- Development phase: `docs/product/requirements/0000-platform-setup/PRD_platform_setup_development_phase.md`
+- Development phase: `docs/product/requirements/0000-platform-setup/prd-platform-setup-development-phase.md`
 - **Produces:** PS-09
 - **Verifikasi:** `rg "process.env\.\w+"` → setiap nama ada di `.env.example` terkait.
 - **Files:**

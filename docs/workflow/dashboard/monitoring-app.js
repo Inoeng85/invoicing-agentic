@@ -1,5 +1,5 @@
 (function () {
-  const MONITOR_URL = new URL("data/monitoring.json", window.location.href).href;
+  const MONITOR_URL = new URL("../../reports/workflow/monitoring.json", window.location.href).href;
   const POLL_MS = 15000;
 
   let snapshot = null;

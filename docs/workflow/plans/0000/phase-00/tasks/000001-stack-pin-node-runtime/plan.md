@@ -57,7 +57,7 @@ Pin Node `24.3.0` / `engines.node` `>=24.3.0` dan `engine-strict=true` sudah ada
 
 ## Acuan PRD
 
-- Development phase: `docs/product/requirements/0000-platform-setup/PRD_platform_setup_development_phase.md`
+- Development phase: `docs/product/requirements/0000-platform-setup/prd-platform-setup-development-phase.md`
 - **Produces:** PS-01, PS-02
 - **Verifikasi:** `node -v` = 24.x · `npm ci` di Node 20 gagal dengan pesan engine · `npm ci` di Node 24 sukses.
 - **Files:**

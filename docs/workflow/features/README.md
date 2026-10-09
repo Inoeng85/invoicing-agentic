@@ -15,4 +15,4 @@ Satu **feature** = satu **session** agent. Feature mengelompokkan semua file yan
 3. Hanya ubah path yang tercantum di feature doc dan **Files** task PRD.
 4. Selesai session: tulis laporan + update section **Development** di `plan.md` task.
 
-Template: [FEATURE.template.md](FEATURE.template.md).
+Template: [feature.template.md](feature.template.md).

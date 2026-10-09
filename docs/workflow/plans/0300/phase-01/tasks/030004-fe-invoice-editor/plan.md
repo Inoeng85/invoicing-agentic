@@ -38,7 +38,7 @@ npm run typecheck && npm run test:domain && npm test
 
 ## Acuan PRD
 
-- Development phase: `docs/product/requirements/0300-invoice-draft/0300_PRD_Invoice_Draft_Development_phase.md`
+- Development phase: `docs/product/requirements/0300-invoice-draft/0300-prd-invoice-draft-development-phase.md`
 - **Produces:** Web draft UI
 - **Verifikasi:** npm run typecheck && npm run test:domain && npm test
 - **Files:**

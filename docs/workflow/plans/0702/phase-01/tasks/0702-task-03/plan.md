@@ -49,7 +49,7 @@ npm run test:domain
 
 ## Acuan PRD
 
-- Development phase: `docs/product/requirements/0702-live-tracking/0702_PRD_Live_Tracking_Development_phase.md`
+- Development phase: `docs/product/requirements/0702-live-tracking/0702-prd-live-tracking-development-phase.md`
 - **Produces:** —
 - **Verifikasi:** npm run test:domain
 - **Files:**

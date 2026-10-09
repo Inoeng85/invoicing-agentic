@@ -24,18 +24,18 @@ description: >-
 
 ## Output
 
-1. Salin [template.md.tmpl](./template.md.tmpl) → `docs/product/BRD.md` (atau path yang diminta user)
+1. Salin [template.md.tmpl](./template.md.tmpl) → `docs/product/brd.md` (atau path yang diminta user)
 2. Ganti semua placeholder `{{...}}`
 3. Buat/arahkan artefak turunan di `docs/product/brd/` bila scope MVP:
-   - `MVP-SCOPE-LOCK.md`, `PRODUCT-BRIEF.md`, `USER-STORIES-UAT.md`, `WIREFRAMES.md`
-4. Tambah baris indeks di `BRD-DEFINITION-OF-DONE.md` jika paket baru
+   - `mvp-scope-lock.md`, `product-brief.md`, `user-stories-uat.md`, `wireframes.md`
+4. Tambah baris indeks di `brd-definition-of-done.md` jika paket baru
 
 ## Aturan penulisan
 
 - **Bahasa:** Indonesia untuk produk ID; ID requirement tetap `FR-xx`, `BR-xx`
 - **Must** = gate release; jangan campur dengan platform PRD (PS-xx)
 - Setiap FR Must punya acceptance ringkas + link ke alignment §3 nanti
-- PPN / compliance: arahkan ke `legal/PPN-DISCLAIMER.md`, bukan e-Faktur
+- PPN / compliance: arahkan ke `legal/ppn-disclaimer.md`, bukan e-Faktur
 - Cross-link wajib: ARCHITECTURE, TECHNOLOGY-STACK, DESIGN-GUIDELINES (placeholder path jika greenfield)
 
 ## Checklist sebelum selesai
@@ -49,5 +49,5 @@ description: >-
 
 ## Referensi canonical (repo ini)
 
-- [docs/product/BRD.md](../../../docs/product/BRD.md)
-- [docs/product/brd/MVP-SCOPE-LOCK.md](../../../docs/product/brd/MVP-SCOPE-LOCK.md)
+- [docs/product/brd.md](../../../docs/product/brd.md)
+- [docs/product/brd/mvp-scope-lock.md](../../../docs/product/brd/mvp-scope-lock.md)

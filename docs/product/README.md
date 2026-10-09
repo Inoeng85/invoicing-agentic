@@ -2,15 +2,15 @@
 
 Monorepo npm tetap `@invoicing/*`; nama produk UI: **PuraPuraLupa** · **Komisi Matel Indonesia (Komando)**.
 
-**Entry point:** [BRD-DEFINITION-OF-DONE.md](BRD-DEFINITION-OF-DONE.md)
+**Entry point:** [brd-definition-of-done.md](brd-definition-of-done.md)
 
 | Pillar | Dokumen |
 |--------|---------|
-| BRD | [BRD.md](BRD.md) |
+| BRD | [brd.md](brd.md) |
 | System architecture | [Arsitektur sistem](../architecture/README.md) |
-| Technology stack | [Technology stack](../engineering/TECHNOLOGY-STACK.md) |
+| Technology stack | [Technology stack](../engineering/technology-stack.md) |
 | TDD + API | [Engineering](../engineering/README.md) |
 | Detail BRD | [brd/](brd/README.md) |
-| **Selarasan lintas dokumen** | [brd/ARCHITECTURE-ALIGNMENT.md](brd/ARCHITECTURE-ALIGNMENT.md) — keputusan canonical, matriks FR, gap register |
-| Design | [Design guidelines](../design/DESIGN-GUIDELINES.md) · [prototype](../design/prototype/index.html) |
+| **Selarasan lintas dokumen** | [brd/architecture-alignment.md](brd/architecture-alignment.md) — keputusan canonical, matriks FR, gap register |
+| Design | [Design guidelines](../design/design-guidelines.md) · [prototype](../design/prototype/index.html) |
 | Legal | [legal/](legal/) |

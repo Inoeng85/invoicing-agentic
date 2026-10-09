@@ -56,7 +56,7 @@ di folder hasil clone bersih, `npm run setup && npm run dev` → web `:44100` da
 
 ## Acuan PRD
 
-- Development phase: `docs/product/requirements/0000-platform-setup/PRD_platform_setup_development_phase.md`
+- Development phase: `docs/product/requirements/0000-platform-setup/prd-platform-setup-development-phase.md`
 - **Produces:** PS-18
 - **Verifikasi:** di folder hasil clone bersih, `npm run setup && npm run dev` → web `:44100` dan API `:44101` terbuka.
 - **Files:**

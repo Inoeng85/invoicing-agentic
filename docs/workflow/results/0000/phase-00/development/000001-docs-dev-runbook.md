@@ -10,11 +10,11 @@
 
 ## Ringkasan
 
-Runbook PS-21 / PS-46 sudah ada. Session ini menyelaraskan dua kalimat yang tertinggal: seed setup bukan lagi "no-op", dan rentang gate `verify` adalah G0–G7 di `STACK-INTEGRATION.md` dan `docs/README.md`.
+Runbook PS-21 / PS-46 sudah ada. Session ini menyelaraskan dua kalimat yang tertinggal: seed setup bukan lagi "no-op", dan rentang gate `verify` adalah G0–G7 di `stack-integration.md` dan `docs/README.md`.
 
 ## File diubah
 
-- `docs/engineering/STACK-INTEGRATION.md`
+- `docs/engineering/stack-integration.md`
 - `docs/README.md`
 
 ## Verifikasi dijalankan
@@ -28,4 +28,4 @@ Isi runbook sudah memuat prasyarat nvm/Node 24, `npm run setup`, `npm run dev`, 
 
 ## Catatan untuk QA
 
-Cek heading/tabel di `STACK-INTEGRATION.md` dan ringkasan `docs/README.md` memuat Node 24, `setup`, `dev`, `verify`, port 44100/44101, dan troubleshooting engine / `IMPORT_OUTSIDE_MOUNTS` / DB path.
+Cek heading/tabel di `stack-integration.md` dan ringkasan `docs/README.md` memuat Node 24, `setup`, `dev`, `verify`, port 44100/44101, dan troubleshooting engine / `IMPORT_OUTSIDE_MOUNTS` / DB path.

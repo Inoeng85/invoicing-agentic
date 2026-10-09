@@ -11,8 +11,8 @@ Backend HTTP JSON API (Remix router, tanpa UI). Port default **44101**.
 | GET | `/api/v1/status` | Counts entity |
 | GET | `/api/v1/clients` | Placeholder FR-01 |
 
-Spesifikasi lengkap: [docs/engineering/API.md](../../API.md)
+Spesifikasi lengkap: [docs/engineering/api.md](../../api.md)
 
 ## Dokumentasi
 
-[BRD-DEFINITION-OF-DONE.md](../../../product/BRD-DEFINITION-OF-DONE.md)
+[brd-definition-of-done.md](../../../product/brd-definition-of-done.md)

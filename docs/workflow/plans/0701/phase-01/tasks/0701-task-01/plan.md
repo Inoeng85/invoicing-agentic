@@ -46,7 +46,7 @@ npm run typecheck
 
 ## Acuan PRD
 
-- Development phase: `docs/product/requirements/0701-foto-kolektor/0701_PRD_Foto_Kolektor_Development_phase.md`
+- Development phase: `docs/product/requirements/0701-foto-kolektor/0701-prd-foto-kolektor-development-phase.md`
 - **Produces:** `prisma.debtCollectorPhoto`; `DebtCollector.photoUpdatedAt: Date | null`; type export `DebtCollectorPhoto`.
 - **Verifikasi:** npm run typecheck
 - **Files:**

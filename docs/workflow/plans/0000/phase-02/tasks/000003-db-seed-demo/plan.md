@@ -44,7 +44,7 @@ db seed demo (PRD epic 0000).
 
 ## Acuan PRD
 
-- Development phase: `docs/product/requirements/0000-platform-setup/PRD_platform_setup_development_phase.md`
+- Development phase: `docs/product/requirements/0000-platform-setup/prd-platform-setup-development-phase.md`
 - **Produces:** PS-15
 - **Verifikasi:** `db:seed` dua kali → data tidak ganda · dashboard menampilkan outstanding.
 - **Files:**

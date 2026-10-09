@@ -47,7 +47,7 @@ npm run typecheck
 
 ## Acuan PRD
 
-- Development phase: `docs/product/requirements/0700-debt-collector/0700_PRD_Debt_Collector_Development_phase.md`
+- Development phase: `docs/product/requirements/0700-debt-collector/0700-prd-debt-collector-development-phase.md`
 - **Produces:** —
 - **Verifikasi:** npm run typecheck
 - **Files:**

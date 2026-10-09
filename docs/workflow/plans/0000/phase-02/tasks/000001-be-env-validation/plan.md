@@ -52,7 +52,7 @@ Validasi env ada di `packages/platform/src/env.ts` dan dipanggil `bootstrapPlatf
 
 ## Acuan PRD
 
-- Development phase: `docs/product/requirements/0000-platform-setup/PRD_platform_setup_development_phase.md`
+- Development phase: `docs/product/requirements/0000-platform-setup/prd-platform-setup-development-phase.md`
 - **Produces:** PS-10
 - **Verifikasi:** start production tanpa `SESSION_SECRET` → exit ≠ 0 dengan nama variabel · dev tetap jalan dengan default.
 - **Files:**

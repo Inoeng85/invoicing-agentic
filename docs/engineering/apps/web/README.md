@@ -7,8 +7,8 @@ Target aplikasi web MVP invoicing (Remix + Prisma + Tailwind).
 
 ## Dokumentasi
 
-- [BRD & indeks](../../../product/BRD-DEFINITION-OF-DONE.md)
+- [BRD & indeks](../../../product/brd-definition-of-done.md)
 - [System architecture](../../../architecture/README.md)
-- [TDD](../../TECHNICAL-DESIGN.md)
+- [TDD](../../technical-design.md)
 
 Konvensi coding: [AGENTS.md](../../../../apps/web/AGENTS.md)

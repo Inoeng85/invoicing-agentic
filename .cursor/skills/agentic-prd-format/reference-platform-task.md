@@ -1,10 +1,10 @@
 # Template — task platform (PRD-0000 development phase)
 
-Gunakan struktur ini di `docs/product/requirements/0000-platform-setup/PRD_platform_setup_development_phase.md` untuk setiap task baru.
+Gunakan struktur ini di `docs/product/requirements/0000-platform-setup/prd-platform-setup-development-phase.md` untuk setiap task baru.
 
 ## Blok dokumen (urutan wajib)
 
-1. **H1** + meta (versi selaras `prd_platform_setup.md`, verifikasi terakhir)
+1. **H1** + meta (versi selaras `prd-platform-setup.md`, verifikasi terakhir)
 2. **Scope** satu baris (platform only)
 3. **Format ID task** (tabel bagian `xxxx` / `yy` / kanonik)
 4. **Ringkasan fase** (Phase 0–3, jumlah task, status gate)
@@ -38,11 +38,11 @@ Gunakan struktur ini di `docs/product/requirements/0000-platform-setup/PRD_platf
 
 ## Aturan
 
-- **PS** di kolom task = requirement platform dari `prd_platform_setup.md` §3
+- **PS** di kolom task = requirement platform dari `prd-platform-setup.md` §3
 - **Depends** = task ID lain (bukan PS)
 - **Status** baris fase vs **Status** task: fase boleh agregat (`9/9 task done`); task pakai Done / Partial / Todo
 - Setelah menambah task: update jumlah di **Ringkasan fase**, urutan canonical, dan **Matriks task ↔ PS**
-- Mirror `docs/product/requirements/0000-platform-setup/0000_PRD_Platform_Setup_Development_phase.md`: hanya ringkasan + link canonical — **tanpa** copy-paste semua `### task`
+- Mirror `docs/product/requirements/0000-platform-setup/0000-prd-platform-setup-development-phase.md`: hanya ringkasan + link canonical — **tanpa** copy-paste semua `### task`
 
 ## Meta baris verifikasi (contoh)
 

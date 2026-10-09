@@ -11,7 +11,7 @@ Membangun **daftar phase** yang akan diorkestrasi (satu kartu kanban = satu phas
 
 ## Masukan
 
-1. Instruksi human: epic, folder PRD, dan/atau path `*_Development_phase.md` (boleh **beberapa** PRD dalam satu scope).
+1. Instruksi human: epic, folder PRD, dan/atau path `*-development-phase.md` (boleh **beberapa** PRD dalam satu scope).
 2. Opsional: `.agentic/catalog/index.json` dan `tasks.json` untuk task id dan epic.
 3. Gate urutan: phase dengan `ordinal` lebih besar **tidak** boleh masuk Agent Plan sampai phase `ordinal - 1` berstatus **`released`** (Human QA selesai).
 

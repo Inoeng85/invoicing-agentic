@@ -26,7 +26,7 @@ Satu file `packages/database/prisma/dev.db` dipakai migrasi Prisma dan runtime w
 ### Docs / lainnya
 
 - `apps/api/.env.example`
-- `docs/engineering/STACK-INTEGRATION.md` (referensi saja)
+- `docs/engineering/stack-integration.md` (referensi saja)
 
 ## Task plan yang memakai feature ini
 

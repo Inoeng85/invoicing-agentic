@@ -33,7 +33,7 @@ npm run gate
 
 ## Acuan PRD
 
-- Development phase: `docs/product/requirements/0800-orkestrasi-stage/0800_PRD_Orkestrasi_Stage_Development_phase.md`
+- Development phase: `docs/product/requirements/0800-orkestrasi-stage/0800-prd-orkestrasi-stage-development-phase.md`
 - **Produces:** Skill implementer/tester dan skill auditor: baca acuan, tulis rencana, baru bertindak, lalu tulis hasil (OR-03…OR-07, OR-13, OR-17)
 - **Verifikasi:** npm run gate
 - **Files:**

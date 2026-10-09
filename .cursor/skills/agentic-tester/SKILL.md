@@ -9,7 +9,7 @@ description: >-
 
 # Tester — stage test
 
-Spec: [PRD-0800](../../../docs/product/requirements/0800-orkestrasi-stage/0800_PRD_Orkestrasi_Stage.md). Fase: [LOOP.md](../agentic-stage/LOOP.md). Template: [templates.md](templates.md).
+Spec: [PRD-0800](../../../docs/product/requirements/0800-orkestrasi-stage/0800-prd-orkestrasi-stage.md). Fase: [LOOP.md](../agentic-stage/LOOP.md). Template: [templates.md](templates.md).
 
 Tester menjalankan perintah yang sudah tertulis. Ia tidak mengubah kode produk, tidak memperbaiki uji yang gagal, tidak mengaudit, dan tidak mengubah `status` menjadi `passed`.
 

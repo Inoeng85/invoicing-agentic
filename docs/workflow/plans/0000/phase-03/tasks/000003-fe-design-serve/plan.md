@@ -42,7 +42,7 @@ fe design serve (PRD epic 0000).
 
 ## Acuan PRD
 
-- Development phase: `docs/product/requirements/0000-platform-setup/PRD_platform_setup_development_phase.md`
+- Development phase: `docs/product/requirements/0000-platform-setup/prd-platform-setup-development-phase.md`
 - **Produces:** PS-44
 - **Verifikasi:** `npm run design:serve` → prototype terbuka di browser.
 - **Files:**

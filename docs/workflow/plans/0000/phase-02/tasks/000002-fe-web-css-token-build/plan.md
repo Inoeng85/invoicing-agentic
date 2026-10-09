@@ -44,7 +44,7 @@ fe web css token build (PRD epic 0000).
 
 ## Acuan PRD
 
-- Development phase: `docs/product/requirements/0000-platform-setup/PRD_platform_setup_development_phase.md`
+- Development phase: `docs/product/requirements/0000-platform-setup/prd-platform-setup-development-phase.md`
 - **Produces:** PS-42, PS-45
 - **Verifikasi:** `npm run css:build` sukses · halaman web existing tidak berubah secara visual · tidak ada toggle dark.
 - **Files:**

@@ -39,7 +39,7 @@ npm run typecheck && npm run test:domain && npm test
 
 ## Acuan PRD
 
-- Development phase: `docs/product/requirements/0500-tandai-lunas/0500_PRD_Tandai_Lunas_Development_phase.md`
+- Development phase: `docs/product/requirements/0500-tandai-lunas/0500-prd-tandai-lunas-development-phase.md`
 - **Produces:** `paid_at`, status `paid`
 - **Verifikasi:** npm run typecheck && npm run test:domain && npm test
 - **Files:**

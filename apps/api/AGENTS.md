@@ -6,4 +6,4 @@ JSON API backend. Shared logic: `@invoicing/domain`, persistence: `@invoicing/da
 - Return responses via `src/lib/json.ts`
 - No HTML render middleware
 
-Planning: [engineering/API.md](../../docs/engineering/API.md)
+Planning: [engineering/api.md](../../docs/engineering/api.md)

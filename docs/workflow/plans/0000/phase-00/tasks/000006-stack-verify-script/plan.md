@@ -55,7 +55,7 @@ stack verify script (PRD epic 0000).
 
 ## Acuan PRD
 
-- Development phase: `docs/product/requirements/0000-platform-setup/PRD_platform_setup_development_phase.md`
+- Development phase: `docs/product/requirements/0000-platform-setup/prd-platform-setup-development-phase.md`
 - **Produces:** PS-20, PS-43
 - **Verifikasi:** `npm run verify` exit 0 di Node 24 · `design:css` dan `css:build` gagal → verify merah (PS-43).
 - **Files:**

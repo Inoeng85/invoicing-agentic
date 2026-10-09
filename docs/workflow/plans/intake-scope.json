@@ -7,7 +7,7 @@
       "docs/product/requirements/0702-live-tracking"
     ],
     "developmentPhasePaths": [
-      "docs/product/requirements/0702-live-tracking/0702_PRD_Live_Tracking_Development_phase.md"
+      "docs/product/requirements/0702-live-tracking/0702-prd-live-tracking-development-phase.md"
     ],
     "epics": [
       "all"
