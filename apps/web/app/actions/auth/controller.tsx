@@ -1,6 +1,6 @@
 import { createController } from 'remix/router'
 import { redirect } from 'remix/response/redirect'
-import type { Handle } from 'remix/ui'
+import type { Handle } from 'remix/component'
 import { loginUser, registerUser } from '@invoicing/domain'
 
 import { APP_NAME } from '../../lib/brand.ts'

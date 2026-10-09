@@ -21,7 +21,7 @@
     "@invoicing/domain": "*",
     "@invoicing/platform": "*",
     "leaflet": "^1.9.4",
-    "remix": "^3.0.0-rc.4"
+    "remix": "^3.0.0"
   },
   "devDependencies": {
     "@tailwindcss/cli": "4.3.3",

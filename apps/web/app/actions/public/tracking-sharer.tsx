@@ -1,4 +1,4 @@
-import { clientEntry, on, type Handle } from 'remix/ui'
+import { clientEntry, on, type Handle } from 'remix/component'
 
 type SharerState = 'idle' | 'sharing' | 'stopped' | 'denied' | 'unavailable' | 'ended'
 

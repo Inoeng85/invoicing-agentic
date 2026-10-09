@@ -1,4 +1,4 @@
-import type { Handle } from 'remix/ui'
+import type { Handle } from 'remix/component'
 
 import type { SystemStatus } from '@invoicing/domain'
 import { Document } from './document.tsx'

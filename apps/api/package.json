@@ -15,7 +15,7 @@
     "@invoicing/domain": "*",
     "@invoicing/database": "*",
     "@invoicing/platform": "*",
-    "remix": "^3.0.0-rc.4"
+    "remix": "^3.0.0"
   },
   "devDependencies": {
     "@types/node": "22.15.30",

@@ -1,4 +1,4 @@
-import type { Handle } from 'remix/ui'
+import type { Handle } from 'remix/component'
 import { computeInvoiceTotals, computeLineSubtotalCents } from '@invoicing/domain'
 
 import { CsrfInput } from '../lib/csrf-field.tsx'

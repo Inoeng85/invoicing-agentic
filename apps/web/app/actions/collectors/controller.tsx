@@ -1,5 +1,5 @@
 import { createController } from 'remix/router'
-import type { Handle } from 'remix/ui'
+import type { Handle } from 'remix/component'
 import type { RenderFunction } from 'remix/middleware/render'
 import { redirect } from 'remix/response/redirect'
 import {

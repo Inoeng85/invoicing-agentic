@@ -1,4 +1,4 @@
-import { clientEntry, ref, type Handle } from 'remix/ui'
+import { clientEntry, ref, type Handle } from 'remix/component'
 
 import { loadLeaflet, OSM_ATTRIBUTION, OSM_TILES, textElement } from './leaflet.ts'
 

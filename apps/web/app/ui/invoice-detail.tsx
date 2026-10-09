@@ -1,4 +1,4 @@
-import type { Handle, RemixNode } from 'remix/ui'
+import type { Handle, RemixNode } from 'remix/component'
 import { computeLineSubtotalCents, type getInvoice } from '@invoicing/domain'
 
 import { routes } from '../routes.ts'

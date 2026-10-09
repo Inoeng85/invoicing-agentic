@@ -1,4 +1,4 @@
-import { unsafeHTML } from 'remix/ui'
+import { unsafeHTML } from 'remix/component'
 
 // Lucide subset (ISC) — same paths as docs/design/prototype/assets/prototype.js.
 const ICONS = {

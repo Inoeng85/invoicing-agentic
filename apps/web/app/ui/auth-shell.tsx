@@ -1,4 +1,4 @@
-import type { Handle, RemixNode } from 'remix/ui'
+import type { Handle, RemixNode } from 'remix/component'
 
 import { Document } from '../actions/document.tsx'
 import { APP_NAME, APP_TAGLINE } from '../lib/brand.ts'

@@ -1,4 +1,4 @@
-import type { RemixNode } from 'remix/ui'
+import type { RemixNode } from 'remix/component'
 import { formatIdr } from '@invoicing/domain'
 
 import { CsrfInput } from '../lib/csrf-field.tsx'
