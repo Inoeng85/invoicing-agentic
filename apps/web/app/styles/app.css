@@ -20,9 +20,39 @@
   }
 }
 
-@layer app {
+@layer components {
+  .docs-workspace {
+    color-scheme: dark;
+    --background: #101113;
+    --foreground: #f4f4f5;
+    --page: #0d0e10;
+    --card: #151719;
+    --card-foreground: #f4f4f5;
+    --popover: #151719;
+    --popover-foreground: #f4f4f5;
+    --primary: #2dd4bf;
+    --primary-foreground: #042f2e;
+    --secondary: #24272b;
+    --secondary-foreground: #f4f4f5;
+    --muted: #24272b;
+    --muted-foreground: #a1a1aa;
+    --accent: #22282a;
+    --accent-foreground: #f4f4f5;
+    --border: #2b2e32;
+    --input: #363a40;
+    --ring: #2dd4bf;
+  }
+  .docs-feature-panel {
+    @apply border-primary/15 bg-primary/5;
+  }
   .docs-workspace .sidebar-link {
-    @apply font-normal aria-[current=page]:font-medium;
+    @apply font-normal text-foreground/80 aria-[current=page]:bg-primary/10 aria-[current=page]:font-medium aria-[current=page]:text-primary;
+  }
+  .docs-workspace .badge-paid {
+    @apply border-emerald-500/30 bg-emerald-500/10 text-emerald-300;
+  }
+  .docs-workspace :focus-visible {
+    @apply outline-primary;
   }
   .docs-mobile-nav {
     padding-top: max(1.5rem, env(safe-area-inset-top));
@@ -48,7 +78,7 @@
   }
 }
 
-@layer app {
+@layer components {
   .docs-markdown {
     @apply min-w-0 space-y-5 text-sm leading-7 text-pretty text-foreground;
     overflow-wrap: anywhere;
@@ -63,7 +93,7 @@
   .docs-markdown ol { @apply list-decimal space-y-1 pl-6; }
   .docs-markdown li > :is(ul, ol) { @apply mt-2; }
   .docs-markdown blockquote { @apply border-l-4 border-primary/30 bg-muted/40 py-3 pr-4 pl-5 text-muted-foreground; }
-  .docs-markdown pre { @apply overflow-x-auto rounded-lg border bg-foreground p-5 text-xs leading-6 text-background; overflow-wrap: normal; }
+  .docs-markdown pre { @apply overflow-x-auto rounded-lg border bg-background p-5 text-xs leading-6 text-foreground; overflow-wrap: normal; }
   .docs-markdown :not(pre) > code { @apply rounded bg-muted px-1.5 py-0.5 text-[0.85em]; }
   .docs-markdown table { @apply block max-w-full overflow-x-auto border-collapse text-left text-sm; }
   .docs-markdown th, .docs-markdown td { @apply border px-3 py-2 align-top; }
