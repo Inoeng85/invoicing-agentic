@@ -99,16 +99,16 @@ function DocsPage(handle: Handle<DocsPageProps>) {
 
     return (
       <Document title={`${title} — ${APP_NAME}`}>
-        <div class="docs-workspace min-h-dvh bg-page">
+        <div class="docs-workspace min-h-dvh bg-page text-foreground">
           {docsHeader(query)}
-          <div class="mx-auto grid max-w-[88rem] gap-8 px-4 py-6 sm:px-6 sm:py-10 lg:grid-cols-[14rem_minmax(0,1fr)] lg:px-8 xl:grid-cols-[14rem_minmax(0,1fr)_12rem] data-[landing=true]:xl:grid-cols-[14rem_minmax(0,1fr)]" data-landing={landing ? 'true' : 'false'}>
+          <div class="mx-auto grid max-w-[96rem] gap-6 px-3 py-4 sm:px-5 lg:grid-cols-[14rem_minmax(0,1fr)] xl:grid-cols-[14rem_minmax(0,1fr)_12rem] data-[landing=true]:xl:grid-cols-[14rem_minmax(0,1fr)]" data-landing={landing ? 'true' : 'false'}>
             <aside class="hidden lg:block" aria-label="Navigasi utama">
               <div class="sticky top-24 max-h-[calc(100dvh-7rem)] overflow-y-auto pr-3 pb-6">
                 {docsSidebar({ file, query, tree })}
               </div>
             </aside>
 
-            <main id="docs-content" tabindex={-1} class="min-w-0 space-y-6 outline-none">
+            <main id="docs-content" tabindex={-1} class="min-w-0 space-y-8 rounded-2xl border bg-card px-4 py-7 outline-none sm:px-8 sm:py-10 xl:px-10">
               {landing ? docsLanding(tree) : <>
                 <div class="flex flex-wrap items-center justify-between gap-3">
                   {docsBreadcrumb(file)}
@@ -133,7 +133,7 @@ function DocsPage(handle: Handle<DocsPageProps>) {
                 ) : (
                   <>
                     {!query && content ? (
-                      <section class="docs-reader rounded-xl border bg-card px-5 py-7 shadow-xs sm:px-8 sm:py-9">
+                      <section class="docs-reader">
                         <div class="mb-7 space-y-4 border-b pb-5">
                           <p class="font-mono text-xs leading-5 text-muted-foreground [overflow-wrap:anywhere]">{contentPath}</p>
                           {docsMetadata(content.metadata)}
