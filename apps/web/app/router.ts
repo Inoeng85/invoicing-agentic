@@ -11,6 +11,7 @@ import collectorsController, { collectorActionsController } from './actions/coll
 import invoicesController from './actions/invoices/controller.tsx'
 import invoiceTrackingController from './actions/invoice-tracking/controller.tsx'
 import settingsController from './actions/settings/controller.tsx'
+import docsController from './actions/docs/controller.tsx'
 import trackingController from './actions/tracking/controller.tsx'
 import { assets } from './assets.ts'
 import { formMethodOverride } from './lib/method-override.ts'
@@ -60,3 +61,4 @@ router.map(routes.invoiceCollection, collectionController)
 router.map(routes.collectorTracking, trackingController)
 router.map(routes.invoiceTracking, invoiceTrackingController)
 router.map(routes.settings, settingsController)
+router.map(routes.docs, docsController)

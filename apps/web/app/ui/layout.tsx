@@ -8,7 +8,7 @@ import { routes } from '../routes.ts'
 import { icon, type IconName } from './icons.tsx'
 import { initials } from './kit.tsx'
 
-export type NavKey = 'dashboard' | 'clients' | 'collectors' | 'invoices' | 'settings'
+export type NavKey = 'dashboard' | 'clients' | 'collectors' | 'invoices' | 'settings' | 'docs'
 
 export interface ShellUser {
   id: string
@@ -31,6 +31,7 @@ const NAV: Array<{ key: NavKey; label: string; icon: IconName; href: () => strin
   { key: 'collectors', label: 'Kolektor', icon: 'wallet', href: () => routes.collectors.index.href() },
   { key: 'invoices', label: 'Invoice', icon: 'file-text', href: () => routes.invoices.index.href() },
   { key: 'settings', label: 'Pengaturan', icon: 'settings', href: () => routes.settings.index.href() },
+  { key: 'docs', label: 'Docs', icon: 'file-text', href: () => routes.docs.index.href() },
 ]
 
 export interface AppLayoutProps {
