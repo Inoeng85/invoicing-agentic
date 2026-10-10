@@ -21,6 +21,7 @@ import {
   docsBreadcrumb,
   docsEntryCard,
   docsHeader,
+  docsLanding,
   docsMetadata,
   docsPager,
   docsSidebar,
@@ -93,100 +94,121 @@ function DocsPage(handle: Handle<DocsPageProps>) {
         ? `Hasil pencarian: ${query}`
         : (content?.title ?? (path.posix.basename(file) || 'Dokumentasi'))
     const tree = groupDocumentation(entries)
+    const landing = !file && !query && !missing
     const { previous, next } = query ? { previous: null, next: null } : adjacentDocumentation(entries, contentPath)
 
     return (
       <Document title={`${title} — ${APP_NAME}`}>
-        {docsHeader(query)}
-        <div class="mx-auto grid max-w-[88rem] gap-8 px-4 py-8 sm:px-6 lg:grid-cols-[16rem_minmax(0,1fr)] xl:grid-cols-[16rem_minmax(0,1fr)_14rem]">
-          <aside class="hidden lg:block">
-            <div class="sticky top-14 max-h-[calc(100vh-3.5rem)] overflow-y-auto pr-2 pb-6">
-              {docsSidebar({ file, query, tree })}
-            </div>
-          </aside>
+        <div class="docs-workspace min-h-dvh bg-page">
+          {docsHeader(query)}
+          <div class="mx-auto grid max-w-[88rem] gap-8 px-4 py-6 sm:px-6 sm:py-10 lg:grid-cols-[14rem_minmax(0,1fr)] lg:px-8 xl:grid-cols-[14rem_minmax(0,1fr)_12rem] data-[landing=true]:xl:grid-cols-[14rem_minmax(0,1fr)]" data-landing={landing ? 'true' : 'false'}>
+            <aside class="hidden lg:block" aria-label="Navigasi utama">
+              <div class="sticky top-24 max-h-[calc(100dvh-7rem)] overflow-y-auto pr-3 pb-6">
+                {docsSidebar({ file, query, tree })}
+              </div>
+            </aside>
 
-          <main id="docs-content" class="min-w-0 space-y-6">
-            {docsBreadcrumb(file)}
+            <main id="docs-content" tabindex={-1} class="min-w-0 space-y-6 outline-none">
+              {landing ? docsLanding(tree) : <>
+                <div class="flex flex-wrap items-center justify-between gap-3">
+                  {docsBreadcrumb(file)}
+                  {!query && content ? <a class="btn btn-ghost btn-sm text-muted-foreground" href={`${docsHref(contentPath)}?raw=1`}>
+                    {icon('file-text')} Lihat sumber
+                  </a> : null}
+                </div>
 
-            {missing ? (
-              <section class="card">
-                <div class="card-header">
-                  <h1 class="card-title text-2xl">{title}</h1>
-                  <p class="card-description">Dokumen ini tidak tersedia.</p>
-                </div>
-                <div class="card-content">
-                  <a class="btn btn-outline btn-sm" href={docsHref()}>
-                    Kembali ke dokumentasi
-                  </a>
-                </div>
-              </section>
-            ) : (
-              <>
-                {!query && content ? (
-                  <>
-                    <div class="flex flex-wrap items-center justify-between gap-3 border-b pb-4">
-                      <p class="min-w-0 truncate font-mono text-xs text-muted-foreground">{contentPath}</p>
-                      <a class="btn btn-outline btn-sm" href={`${docsHref(contentPath)}?raw=1`}>
-                        Lihat sumber
+                {missing ? (
+                  <section class="card gap-5 py-10 shadow-none">
+                    <div class="card-header">
+                      <span class="mb-2 grid size-10 place-items-center rounded-lg bg-muted text-muted-foreground">{icon('search', 'size-5')}</span>
+                      <h1 class="card-title text-2xl">{title}</h1>
+                      <p class="card-description">Dokumen ini tidak tersedia. Jelajahi bagian lain dari pusat dokumentasi.</p>
+                    </div>
+                    <div class="card-content">
+                      <a class="btn btn-outline btn-sm" href={docsHref()}>
+                        Kembali ke dokumentasi
                       </a>
                     </div>
-                    {docsMetadata(content.metadata)}
-                    <details class="rounded-xl border p-4 xl:hidden">
-                      <summary class="cursor-pointer text-sm font-medium">Daftar isi</summary>
-                      <div class="mt-3">{docsToc(content.headings)}</div>
-                    </details>
-                    <article class="docs-markdown" innerHTML={unsafeHTML(content.html)} />
-                  </>
-                ) : (
-                  <h1 class="text-3xl font-semibold tracking-tight">{title}</h1>
-                )}
-
-                {directory || query ? (
-                  <section class="space-y-4" aria-label="Daftar dokumen">
-                    <div class="flex items-center justify-between gap-4 border-t pt-6">
-                      <h2 class="text-lg font-semibold">{query ? `${visible.length} hasil` : 'Isi folder'}</h2>
-                      <span class="text-sm text-muted-foreground">
-                        {query ? 'Pencarian seluruh dokumentasi' : `${visible.length} item`}
-                      </span>
-                    </div>
-                    {visible.length === 0 ? (
-                      <p class="rounded-xl border p-6 text-muted-foreground">Tidak ada dokumen yang cocok.</p>
-                    ) : (
-                      <ul class="grid gap-3 sm:grid-cols-2">
-                        {visible.map((entry) => (
-                          <li key={entry.path}>{docsEntryCard(entry)}</li>
-                        ))}
-                      </ul>
-                    )}
                   </section>
-                ) : null}
+                ) : (
+                  <>
+                    {!query && content ? (
+                      <section class="docs-reader rounded-xl border bg-card px-5 py-7 shadow-xs sm:px-8 sm:py-9">
+                        <div class="mb-7 space-y-4 border-b pb-5">
+                          <p class="font-mono text-xs leading-5 text-muted-foreground [overflow-wrap:anywhere]">{contentPath}</p>
+                          {docsMetadata(content.metadata)}
+                        </div>
+                        {content.headings.some((heading) => heading.level === 2 || heading.level === 3) ? <details class="mb-7 rounded-lg border bg-muted/30 p-4 xl:hidden">
+                          <summary class="flex cursor-pointer items-center justify-between gap-3 text-sm font-medium">Daftar isi {icon('chevron-down', 'size-4')}</summary>
+                          <div class="mt-3">{docsToc(content.headings)}</div>
+                        </details> : null}
+                        <article class="docs-markdown" innerHTML={unsafeHTML(content.html)} />
+                      </section>
+                    ) : (
+                      <div class="space-y-3 pt-3">
+                        <span class="badge badge-outline bg-background text-muted-foreground">{query ? 'Pencarian' : 'Dokumentasi'}</span>
+                        <h1 class="text-3xl leading-tight font-semibold text-balance [overflow-wrap:anywhere]">{title}</h1>
+                        {query ? <p class="text-sm text-pretty text-muted-foreground">Temukan dokumen berdasarkan nama atau lokasi file.</p> : null}
+                      </div>
+                    )}
 
-                {docsPager(previous, next)}
-              </>
-            )}
-          </main>
+                    {directory || query ? (
+                      <section class="space-y-4" aria-label="Daftar dokumen">
+                        <div class="flex items-center justify-between gap-4 border-t pt-6">
+                          <h2 class="text-lg font-semibold">{query ? `${visible.length} hasil` : 'Isi folder'}</h2>
+                          <span class="text-sm text-muted-foreground">
+                            {query ? 'Pencarian seluruh dokumentasi' : `${visible.length} item`}
+                          </span>
+                        </div>
+                        {visible.length === 0 ? (
+                          <div class="card items-center gap-3 px-6 py-12 text-center shadow-none">
+                            <span class="grid size-11 place-items-center rounded-full bg-muted text-muted-foreground">{icon('search', 'size-5')}</span>
+                            <p class="font-medium">Tidak ada dokumen yang cocok.</p>
+                            <p class="text-sm text-pretty text-muted-foreground">Coba kata kunci lain, atau jelajahi seluruh dokumentasi.</p>
+                            <a href={docsHref()} class="btn btn-outline btn-sm mt-2">Jelajahi dokumentasi</a>
+                          </div>
+                        ) : (
+                          <ul class="grid gap-3 sm:grid-cols-2">
+                            {visible.map((entry) => (
+                              <li key={entry.path}>{docsEntryCard(entry)}</li>
+                            ))}
+                          </ul>
+                        )}
+                      </section>
+                    ) : null}
 
-          <aside class="hidden xl:block">
-            <div class="sticky top-14 max-h-[calc(100vh-3.5rem)] overflow-y-auto pb-6">
-              {!query && content ? docsToc(content.headings) : null}
-            </div>
-          </aside>
-        </div>
+                    {docsPager(previous, next)}
+                  </>
+                )}
+              </>}
+              <footer class="flex flex-wrap items-center justify-between gap-3 border-t pt-6 pb-2 text-xs text-muted-foreground">
+                <span>{APP_NAME} / Dokumentasi</span>
+                <a href={docsHref('engineering/contributing.md')} class="inline-flex items-center gap-1.5 hover:text-primary">Panduan kontribusi {icon('arrow-right', 'size-3.5')}</a>
+              </footer>
+            </main>
 
-        <div id="docs-nav" popover="auto" class="sheet lg:hidden" aria-label="Daftar dokumentasi">
-          <div class="flex items-center justify-between">
-            <span class="font-semibold">Dokumentasi</span>
-            <button
-              type="button"
-              class="btn btn-ghost btn-icon btn-sm"
-              popovertarget="docs-nav"
-              popovertargetaction="hide"
-              aria-label="Tutup"
-            >
-              {icon('x')}
-            </button>
+            {!landing ? <aside class="hidden xl:block">
+              <div class="sticky top-24 max-h-[calc(100dvh-7rem)] overflow-y-auto pb-6">
+                {!query && content ? docsToc(content.headings) : null}
+              </div>
+            </aside> : null}
           </div>
-          <div class="min-h-0 flex-1 overflow-y-auto">{docsSidebar({ file, query, tree })}</div>
+
+          <div id="docs-nav" popover="auto" class="docs-mobile-nav sheet lg:hidden" aria-label="Daftar dokumentasi">
+            <div class="flex items-center justify-between border-b pb-4">
+              <span class="font-semibold">Dokumentasi</span>
+              <button
+                type="button"
+                class="btn btn-ghost btn-icon btn-sm"
+                popovertarget="docs-nav"
+                popovertargetaction="hide"
+                aria-label="Tutup"
+              >
+                {icon('x')}
+              </button>
+            </div>
+            <div class="min-h-0 flex-1 overflow-y-auto">{docsSidebar({ file, query, tree })}</div>
+          </div>
         </div>
       </Document>
     )
