@@ -362,3 +362,57 @@ describe('root controller', () => {
     assert.deepEqual([unchanged.latitude, unchanged.longitude], [-6.2, 106.8])
   })
 })
+
+describe('documentation routes', () => {
+  it('GET /docs shows all documentation sections without requiring a session', async () => {
+    const response = await router.fetch(new URL('http://localhost/docs'))
+    assert.equal(response.status, 200)
+    const html = await response.text()
+    for (const section of ['product', 'architecture', 'engineering', 'design', 'operations', 'workflow', 'reports', 'archive']) {
+      assert.match(html, new RegExp(`href="/docs/${section}"`))
+    }
+    assert.match(html, /Cari dokumentasi/)
+  })
+
+  it('renders nested Markdown with metadata, headings, and rewritten links', async () => {
+    const response = await router.fetch(new URL('http://localhost/docs/product/brd.md'))
+    assert.equal(response.status, 200)
+    const html = await response.text()
+    assert.match(html, /Business Requirements Document/)
+    assert.match(html, /approved/)
+    assert.match(html, /id="1-executive-summary"/)
+    assert.match(html, /href="\/docs\/architecture\/README.md"/)
+    assert.ok(!html.includes('---\nstatus:'))
+  })
+
+  it('searches the whole library and handles empty results and trailing slash directories', async () => {
+    const search = await router.fetch(new URL('http://localhost/docs?q=technical-design'))
+    assert.match(await search.text(), /href="\/docs\/engineering\/technical-design.md"/)
+    const empty = await router.fetch(new URL('http://localhost/docs?q=nonexistent-document-xyz'))
+    assert.match(await empty.text(), /Tidak ada dokumen yang cocok/)
+    const directory = await router.fetch(new URL('http://localhost/docs/product/legal/'))
+    assert.equal(directory.status, 200)
+    assert.match(await directory.text(), /href="\/docs\/product\/legal\/terms.md"/)
+  })
+
+  it('serves original HTML, assets, JSON, and raw Markdown with their content types', async () => {
+    for (const [file, contentType] of [
+      ['design/prototype/index.html', 'text/html'],
+      ['design/prototype/assets/prototype.js', 'text/javascript'],
+      ['reports/workflow/kanban-board.json', 'application/json'],
+      ['product/brd.md?raw=1', 'text/plain'],
+    ]) {
+      const response = await router.fetch(new URL(`http://localhost/docs/${file}`))
+      assert.equal(response.status, 200)
+      assert.ok(response.headers.get('Content-Type')?.startsWith(contentType), response.headers.get('Content-Type') ?? '')
+      assert.equal(response.headers.get('X-Content-Type-Options'), 'nosniff')
+    }
+  })
+
+  it('returns 404 for missing, hidden, and encoded traversal requests', async () => {
+    for (const file of ['missing.md', '.gitignore', '%2e%2e%2fpackage.json', 'product%2f..%2f..%2fpackage.json']) {
+      const response = await router.fetch(new URL(`http://localhost/docs/${file}`))
+      assert.equal(response.status, 404)
+    }
+  })
+})

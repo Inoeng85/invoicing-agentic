@@ -6,13 +6,14 @@
   "scripts": {
     "css:build": "tailwindcss -i ./app/styles/app.css -o ./public/app.css",
     "css:watch": "tailwindcss -i ./app/styles/app.css -o ./public/app.css --watch",
-    "predev": "npm run css:build",
-    "prestart": "npm run css:build",
+    "predev": "npm run css:build && npm run css:docs",
+    "prestart": "npm run css:build && npm run css:docs",
     "dev": "concurrently -k -n css,server -c cyan,green \"npm run css:watch\" \"NODE_ENV=development node --watch --import remix/node-tsx server.ts\"",
     "hmr": "NODE_ENV=development node hmr.ts",
     "start": "NODE_ENV=production node --import remix/node-tsx server.ts",
     "test": "NODE_ENV=test remix test",
-    "typecheck": "tsc --noEmit"
+    "typecheck": "tsc --noEmit",
+    "css:docs": "npm run design:css --prefix ../.."
   },
   "engines": {
     "node": ">=24.3.0"
@@ -21,11 +22,13 @@
     "@invoicing/domain": "*",
     "@invoicing/platform": "*",
     "leaflet": "^1.9.4",
+    "markdown-it": "^15.0.2",
     "remix": "^3.0.0"
   },
   "devDependencies": {
     "@tailwindcss/cli": "4.3.3",
     "@types/leaflet": "^1.9.22",
+    "@types/markdown-it": "^14.2.0",
     "@types/node": "22.15.30",
     "concurrently": "^9.2.0",
     "tailwindcss": "4.3.3",
