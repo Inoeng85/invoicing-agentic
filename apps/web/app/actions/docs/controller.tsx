@@ -70,6 +70,18 @@ export default createController(routes.docs, {
   },
 })
 
+/** Prisma's display/body pairing, loaded only for the docs workspace. */
+const DOCS_FONTS = (
+  <>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css2?family=Sora:wght@500..700&family=Inter:wght@400..600&display=swap"
+    />
+  </>
+)
+
 interface DocsPageProps {
   file: string
   entries: DocumentationEntry[]
@@ -98,17 +110,17 @@ function DocsPage(handle: Handle<DocsPageProps>) {
     const { previous, next } = query ? { previous: null, next: null } : adjacentDocumentation(entries, contentPath)
 
     return (
-      <Document title={`${title} — ${APP_NAME}`}>
+      <Document title={`${title} — ${APP_NAME}`} head={DOCS_FONTS}>
         <div class="docs-workspace min-h-dvh bg-page text-foreground">
           {docsHeader(query)}
-          <div class="mx-auto grid max-w-[96rem] gap-6 px-3 py-4 sm:px-5 lg:grid-cols-[14rem_minmax(0,1fr)] xl:grid-cols-[14rem_minmax(0,1fr)_12rem] data-[landing=true]:xl:grid-cols-[14rem_minmax(0,1fr)]" data-landing={landing ? 'true' : 'false'}>
+          <div class="mx-auto grid max-w-[96rem] gap-6 px-3 py-4 sm:px-5 lg:grid-cols-[15rem_minmax(0,1fr)] xl:grid-cols-[15rem_minmax(0,1fr)_13rem] data-[landing=true]:xl:grid-cols-[15rem_minmax(0,1fr)]" data-landing={landing ? 'true' : 'false'}>
             <aside class="hidden lg:block" aria-label="Navigasi utama">
               <div class="sticky top-24 max-h-[calc(100dvh-7rem)] overflow-y-auto pr-3 pb-6">
                 {docsSidebar({ file, query, tree })}
               </div>
             </aside>
 
-            <main id="docs-content" tabindex={-1} class="min-w-0 space-y-8 rounded-2xl border bg-card px-4 py-7 outline-none sm:px-8 sm:py-10 xl:px-10">
+            <main id="docs-content" tabindex={-1} class="min-w-0 space-y-8 py-2 outline-none sm:px-2 xl:px-6">
               {landing ? docsLanding(tree) : <>
                 <div class="flex flex-wrap items-center justify-between gap-3">
                   {docsBreadcrumb(file)}

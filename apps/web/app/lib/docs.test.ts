@@ -117,3 +117,38 @@ describe('documentation tree', () => {
     }
   })
 })
+
+describe('documentation code blocks', () => {
+  it('wraps a labelled fence in a figure with the language as its header', () => {
+    const document = renderDocumentation('engineering/guide.md', '```ts\nconst x = 1\n```')
+    assert.match(document.html, /<figure class="docs-code">/)
+    assert.match(document.html, /<figcaption class="docs-code-title">ts<\/figcaption>/)
+    assert.match(document.html, /<code class="language-ts">/)
+    assert.match(document.html, /const x = 1/)
+  })
+
+  it('prefers an explicit title over the language label', () => {
+    const titled = renderDocumentation('x.md', '```prisma title="schema.prisma"\nmodel User {}\n```')
+    assert.match(titled.html, /<figcaption class="docs-code-title">schema\.prisma<\/figcaption>/)
+    assert.match(titled.html, /<code class="language-prisma">/)
+  })
+
+  it('leaves an unlabelled fence without a header bar', () => {
+    const plain = renderDocumentation('x.md', '```\nplain text\n```')
+    assert.match(plain.html, /<figure class="docs-code">/)
+    assert.ok(!plain.html.includes('docs-code-title'))
+  })
+
+  it('escapes the header label and keeps fence content escaped', () => {
+    const nasty = renderDocumentation('x.md', '```ts title="<img src=x onerror=alert(1)>"\n<script>alert(1)</script>\n```')
+    assert.ok(!nasty.html.includes('<img src=x'))
+    assert.ok(!nasty.html.includes('<script>alert(1)</script>'))
+    assert.match(nasty.html, /&lt;img/)
+  })
+
+  it('still renders inline code and indented code outside the figure wrapper', () => {
+    const document = renderDocumentation('x.md', 'Use `npm run dev` to start.')
+    assert.match(document.html, /<code>npm run dev<\/code>/)
+    assert.ok(!document.html.includes('docs-code'))
+  })
+})

@@ -21,32 +21,59 @@
 }
 
 @layer components {
+  /* Palette, radius and type mirror prisma.io/docs; scoped here so the app keeps ADR-0004 tokens. */
   .docs-workspace {
     color-scheme: dark;
-    --background: #101113;
+    --font-sans: 'Inter', ui-sans-serif, system-ui, -apple-system, 'Segoe UI', Roboto, sans-serif;
+    --font-display: 'Sora', 'Inter', ui-sans-serif, system-ui, sans-serif;
+    --radius: 0.625rem;
+
+    --page: #0f0f0f;
+    --background: #141414;
     --foreground: #f4f4f5;
-    --page: #0d0e10;
-    --card: #151719;
+    --card: #1a1a1a;
     --card-foreground: #f4f4f5;
-    --popover: #151719;
+    --popover: #1a1a1a;
     --popover-foreground: #f4f4f5;
-    --primary: #2dd4bf;
-    --primary-foreground: #042f2e;
-    --secondary: #24272b;
+    --primary: #71e8df;
+    --primary-foreground: #0d3a38;
+    --secondary: #232323;
     --secondary-foreground: #f4f4f5;
-    --muted: #24272b;
+    --muted: #232323;
     --muted-foreground: #a1a1aa;
-    --accent: #22282a;
+    --accent: #232323;
     --accent-foreground: #f4f4f5;
-    --border: #2b2e32;
-    --input: #363a40;
-    --ring: #2dd4bf;
+    --border: #1d242f;
+    --input: #303030;
+    --ring: #71e8df;
+
+    /* Cyan-tinted surface Prisma uses for the current nav item. */
+    --docs-active: #0d3a38;
+  }
+  .docs-workspace :is(h1, h2, h3, .docs-display) {
+    font-family: var(--font-display);
+    letter-spacing: -0.02em;
   }
   .docs-feature-panel {
-    @apply border-primary/15 bg-primary/5;
+    @apply border-border bg-card;
   }
   .docs-workspace .sidebar-link {
-    @apply font-normal text-foreground/80 aria-[current=page]:bg-primary/10 aria-[current=page]:font-medium aria-[current=page]:text-primary;
+    @apply font-normal text-foreground/75 aria-[current=page]:font-medium aria-[current=page]:text-primary;
+  }
+  .docs-workspace .sidebar-link[aria-current='page'] {
+    background: var(--docs-active);
+  }
+  .docs-workspace .tabs-count {
+    @apply bg-transparent text-[11px] text-muted-foreground/70 tabular-nums;
+  }
+  .docs-group-label {
+    @apply px-2.5 pt-1 pb-2 text-[11px] font-semibold tracking-[0.08em] text-muted-foreground/70 uppercase;
+  }
+  .docs-code {
+    @apply overflow-hidden rounded-[0.625rem] border bg-background;
+  }
+  .docs-code-title {
+    @apply border-b bg-muted/40 px-4 py-2 font-mono text-[11px] tracking-wide text-muted-foreground;
   }
   .docs-workspace .badge-paid {
     @apply border-emerald-500/30 bg-emerald-500/10 text-emerald-300;
@@ -94,6 +121,8 @@
   .docs-markdown li > :is(ul, ol) { @apply mt-2; }
   .docs-markdown blockquote { @apply border-l-4 border-primary/30 bg-muted/40 py-3 pr-4 pl-5 text-muted-foreground; }
   .docs-markdown pre { @apply overflow-x-auto rounded-lg border bg-background p-5 text-xs leading-6 text-foreground; overflow-wrap: normal; }
+  /* The figure owns the frame, so the inner pre drops its own border and radius. */
+  .docs-markdown .docs-code > pre { @apply rounded-none border-0; }
   .docs-markdown :not(pre) > code { @apply rounded bg-muted px-1.5 py-0.5 text-[0.85em]; }
   .docs-markdown table { @apply block max-w-full overflow-x-auto border-collapse text-left text-sm; }
   .docs-markdown th, .docs-markdown td { @apply border px-3 py-2 align-top; }
