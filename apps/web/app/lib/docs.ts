@@ -59,6 +59,71 @@ export async function listDocumentation(root = DOCS_ROOT): Promise<Documentation
   return entries.sort((a, b) => Number(b.directory) - Number(a.directory) || a.path.localeCompare(b.path))
 }
 
+export interface DocumentationNode extends DocumentationEntry {
+  /** Files anywhere in this subtree; always 0 for a file node. */
+  fileCount: number
+  children: DocumentationNode[]
+}
+
+/** A folder's README is its own landing page, so it sorts ahead of the subfolders it introduces. */
+function compareNodes(a: DocumentationNode, b: DocumentationNode): number {
+  const rank = (node: DocumentationNode) => (node.name === 'README.md' ? 0 : node.directory ? 1 : 2)
+  return rank(a) - rank(b) || a.name.localeCompare(b.name)
+}
+
+export function groupDocumentation(entries: DocumentationEntry[]): DocumentationNode[] {
+  const nodes = new Map<string, DocumentationNode>()
+  const roots: DocumentationNode[] = []
+
+  function place(entry: DocumentationEntry): DocumentationNode {
+    const existing = nodes.get(entry.path)
+    if (existing) return existing
+    const node: DocumentationNode = { ...entry, fileCount: 0, children: [] }
+    nodes.set(entry.path, node)
+    const parent = path.posix.dirname(entry.path)
+    if (parent === '.') roots.push(node)
+    else place({ path: parent, name: path.posix.basename(parent), directory: true }).children.push(node)
+    return node
+  }
+
+  for (const entry of entries) place(entry)
+
+  function finalize(siblings: DocumentationNode[]): number {
+    let files = 0
+    for (const node of siblings) {
+      node.fileCount = finalize(node.children)
+      files += node.directory ? node.fileCount : 1
+    }
+    siblings.sort(compareNodes)
+    return files
+  }
+  finalize(roots)
+
+  return roots
+}
+
+export function documentationOrder(entries: DocumentationEntry[]): DocumentationEntry[] {
+  const order: DocumentationEntry[] = []
+  function walk(nodes: DocumentationNode[]) {
+    for (const node of nodes) {
+      if (!node.directory) order.push({ path: node.path, name: node.name, directory: false })
+      walk(node.children)
+    }
+  }
+  walk(groupDocumentation(entries))
+  return order
+}
+
+export function adjacentDocumentation(
+  entries: DocumentationEntry[],
+  file: string,
+): { previous: DocumentationEntry | null; next: DocumentationEntry | null } {
+  const order = documentationOrder(entries)
+  const index = order.findIndex((entry) => entry.path === file)
+  if (index === -1) return { previous: null, next: null }
+  return { previous: order[index - 1] ?? null, next: order[index + 1] ?? null }
+}
+
 export function documentationLink(file: string, href: string): string {
   if (/^(?:[a-z][a-z\d+.-]*:|\/\/|[/#])/i.test(href)) return href
   const url = new URL(href, `https://documentation.local${docsHref(file)}`)

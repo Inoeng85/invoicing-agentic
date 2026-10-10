@@ -7,45 +7,73 @@ import { unsafeHTML, type Handle } from 'remix/component'
 
 import { Document } from '../document.tsx'
 import { APP_NAME } from '../../lib/brand.ts'
-import { docsHref, listDocumentation, readDocumentation, resolveDocumentation, type DocumentationContent, type DocumentationEntry } from '../../lib/docs.ts'
+import {
+  adjacentDocumentation,
+  docsHref,
+  groupDocumentation,
+  listDocumentation,
+  readDocumentation,
+  resolveDocumentation,
+  type DocumentationContent,
+  type DocumentationEntry,
+} from '../../lib/docs.ts'
+import {
+  docsBreadcrumb,
+  docsEntryCard,
+  docsHeader,
+  docsLanding,
+  docsMetadata,
+  docsPager,
+  docsSidebar,
+  docsToc,
+} from '../../ui/docs-shell.tsx'
+import { icon } from '../../ui/icons.tsx'
 import { routes } from '../../routes.ts'
-
-const SECTIONS: Record<string, { title: string; description: string }> = {
-  product: { title: 'Produk', description: 'BRD, requirement, scope, dan legal.' },
-  architecture: { title: 'Arsitektur', description: 'Arsitektur sistem dan keputusan teknis.' },
-  engineering: { title: 'Engineering', description: 'Setup, API, implementasi, dan pengujian.' },
-  design: { title: 'Desain', description: 'Guideline, komponen, dan prototype.' },
-  operations: { title: 'Operasional', description: 'Deployment, runbook, dan rilis.' },
-  workflow: { title: 'Workflow', description: 'Proses, backlog, plan, dan laporan task.' },
-  reports: { title: 'Laporan', description: 'Snapshot dan hasil pemeriksaan otomatis.' },
-  archive: { title: 'Arsip', description: 'Bukti task selesai dan sesi terdahulu.' },
-}
 
 async function documentationResponse(context: { url: URL; render: RenderFunction }, file: string) {
   file = file.replace(/\/+$/, '')
   const resolved = await resolveDocumentation(file)
-  if (!resolved) return context.render(<DocsPage file={file} entries={[]} missing />, { status: 404 })
+  if (!resolved) return context.render(<DocsPage file={file} entries={[]} contentPath={file} missing />, { status: 404 })
   if (!resolved.directory && (!file.endsWith('.md') || context.url.searchParams.get('raw') === '1')) {
     return new Response(new Uint8Array(await readFile(resolved.absolute)), {
-      headers: { 'Content-Type': file.endsWith('.md') ? 'text/plain; charset=utf-8' : detectContentType(file) ?? 'text/plain; charset=utf-8', 'X-Content-Type-Options': 'nosniff' },
+      headers: {
+        'Content-Type': file.endsWith('.md')
+          ? 'text/plain; charset=utf-8'
+          : detectContentType(file) ?? 'text/plain; charset=utf-8',
+        'X-Content-Type-Options': 'nosniff',
+      },
     })
   }
   const entries = await listDocumentation()
   const contentPath = resolved.directory ? path.posix.join(file, 'README.md') : file
   const content = await readDocumentation(contentPath)
-  return context.render(<DocsPage file={file} entries={entries} content={content} directory={resolved.directory} query={context.url.searchParams.get('q')?.trim() ?? ''} />)
+  return context.render(
+    <DocsPage
+      file={file}
+      entries={entries}
+      content={content}
+      contentPath={contentPath}
+      directory={resolved.directory}
+      query={context.url.searchParams.get('q')?.trim() ?? ''}
+    />,
+  )
 }
 
 export default createController(routes.docs, {
   actions: {
-    index(context) { return documentationResponse(context, '') },
-    show(context) { return documentationResponse(context, context.params.path) },
+    index(context) {
+      return documentationResponse(context, '')
+    },
+    show(context) {
+      return documentationResponse(context, context.params.path)
+    },
   },
 })
 
 interface DocsPageProps {
   file: string
   entries: DocumentationEntry[]
+  contentPath: string
   content?: DocumentationContent | null
   directory?: boolean
   query?: string
@@ -54,59 +82,133 @@ interface DocsPageProps {
 
 function DocsPage(handle: Handle<DocsPageProps>) {
   return () => {
-    const { file, entries, content, directory, query = '', missing } = handle.props
+    const { file, entries, contentPath, content, directory, query = '', missing } = handle.props
     const folder = directory ? file : path.posix.dirname(file) === '.' ? '' : path.posix.dirname(file)
     const files = entries.filter((entry) => !entry.directory)
     const visible = query
       ? files.filter((entry) => entry.path.toLowerCase().includes(query.toLowerCase()))
       : entries.filter((entry) => path.posix.dirname(entry.path) === (folder || '.'))
-    const title = missing ? 'Dokumen tidak ditemukan' : query ? `Hasil pencarian: ${query}` : content?.title ?? (path.posix.basename(file) || 'Dokumentasi')
-    const segments = file.split('/').filter(Boolean)
+    const title = missing
+      ? 'Dokumen tidak ditemukan'
+      : query
+        ? `Hasil pencarian: ${query}`
+        : (content?.title ?? (path.posix.basename(file) || 'Dokumentasi'))
+    const tree = groupDocumentation(entries)
+    const landing = !file && !query && !missing
+    const { previous, next } = query ? { previous: null, next: null } : adjacentDocumentation(entries, contentPath)
+
     return (
       <Document title={`${title} — ${APP_NAME}`}>
-        <header class="border-b bg-background">
-          <div class="mx-auto flex max-w-7xl items-center justify-between gap-4 px-4 py-4 sm:px-6">
-            <a href={routes.docs.index.href()} class="text-lg font-semibold tracking-tight">{APP_NAME} <span class="text-muted-foreground">/ Dokumentasi</span></a>
-            <a href={routes.home.href()} class="btn btn-outline btn-sm">Buka aplikasi</a>
-          </div>
-        </header>
-        <div class="mx-auto grid max-w-7xl gap-8 px-4 py-8 sm:px-6 lg:grid-cols-[15rem_minmax(0,1fr)]">
-          <aside class="space-y-6">
-            <form action={routes.docs.index.href()} method="get" role="search" class="space-y-2">
-              <label for="docs-search" class="text-sm font-medium">Cari dokumentasi</label>
-              <input id="docs-search" name="q" type="search" value={query} placeholder="Nama atau path dokumen" class="input w-full" />
-              <button type="submit" class="btn btn-outline btn-sm w-full">Cari</button>
-            </form>
-            <nav aria-label="Bagian dokumentasi" class="grid grid-cols-2 gap-1 lg:block lg:space-y-1">
-              <a href={docsHref()} class="nav-link block" aria-current={!file && !query ? 'page' : undefined}>Semua dokumentasi</a>
-              {Object.entries(SECTIONS).map(([key, section]) => (
-                <a key={key} href={docsHref(key)} class="nav-link flex justify-between gap-2" aria-current={file.split('/')[0] === key ? 'page' : undefined}>
-                  <span>{section.title}</span><span class="text-xs text-muted-foreground">{files.filter((entry) => entry.path.startsWith(`${key}/`)).length}</span>
-                </a>
-              ))}
-            </nav>
-          </aside>
-          <main id="docs-content" class="min-w-0 space-y-8">
-            <nav aria-label="Breadcrumb" class="flex flex-wrap items-center gap-2 text-sm text-muted-foreground">
-              <a href={docsHref()} class="hover:underline">Docs</a>
-              {segments.map((segment, index) => <span key={index}> / <a href={docsHref(segments.slice(0, index + 1).join('/'))} class="break-all hover:underline">{segment}</a></span>)}
-            </nav>
-            {missing ? <section class="card"><h1 class="text-2xl font-semibold">{title}</h1><p>Dokumen ini tidak tersedia.</p><a class="text-primary underline" href={docsHref()}>Kembali ke dokumentasi</a></section> : <>
-              {!query && content ? <>
-                <div class="flex flex-wrap items-center justify-between gap-3 border-b pb-4 text-sm text-muted-foreground">
-                  <p class="break-all">{directory ? path.posix.join(file, 'README.md') : file}</p>
-                  <a class="btn btn-outline btn-sm" href={`${docsHref(directory ? path.posix.join(file, 'README.md') : file)}?raw=1`}>Lihat sumber</a>
+        <div class="docs-workspace min-h-dvh bg-page">
+          {docsHeader(query)}
+          <div class="mx-auto grid max-w-[88rem] gap-8 px-4 py-6 sm:px-6 sm:py-10 lg:grid-cols-[14rem_minmax(0,1fr)] lg:px-8 xl:grid-cols-[14rem_minmax(0,1fr)_12rem] data-[landing=true]:xl:grid-cols-[14rem_minmax(0,1fr)]" data-landing={landing ? 'true' : 'false'}>
+            <aside class="hidden lg:block" aria-label="Navigasi utama">
+              <div class="sticky top-24 max-h-[calc(100dvh-7rem)] overflow-y-auto pr-3 pb-6">
+                {docsSidebar({ file, query, tree })}
+              </div>
+            </aside>
+
+            <main id="docs-content" tabindex={-1} class="min-w-0 space-y-6 outline-none">
+              {landing ? docsLanding(tree) : <>
+                <div class="flex flex-wrap items-center justify-between gap-3">
+                  {docsBreadcrumb(file)}
+                  {!query && content ? <a class="btn btn-ghost btn-sm text-muted-foreground" href={`${docsHref(contentPath)}?raw=1`}>
+                    {icon('file-text')} Lihat sumber
+                  </a> : null}
                 </div>
-                {content.metadata.length > 0 ? <dl class="flex flex-wrap gap-x-6 gap-y-3 rounded-xl border bg-muted/30 p-4 text-sm">{content.metadata.map((item) => <div key={item.name}><dt class="text-xs text-muted-foreground">{item.name}</dt><dd class="font-medium">{item.value}</dd></div>)}</dl> : null}
-                {content.headings.filter((heading) => heading.level === 2).length > 0 ? <details class="rounded-xl border p-4"><summary class="cursor-pointer text-sm font-medium">Daftar isi</summary><nav aria-label="Daftar isi" class="mt-3 flex flex-wrap gap-x-5 gap-y-2 text-sm">{content.headings.filter((heading) => heading.level === 2).map((heading) => <a key={heading.id} href={`#${heading.id}`} class="text-primary hover:underline">{heading.title}</a>)}</nav></details> : null}
-                <article class="docs-markdown" innerHTML={unsafeHTML(content.html)} />
-              </> : <h1 class="text-3xl font-semibold tracking-tight">{title}</h1>}
-              {directory || query ? <section class="space-y-4" aria-label="Daftar dokumen">
-                <div class="flex items-center justify-between gap-4"><h2 class="text-xl font-semibold">{query ? `${visible.length} hasil` : 'Isi folder'}</h2><span class="text-sm text-muted-foreground">{query ? 'Pencarian seluruh dokumentasi' : `${visible.length} item`}</span></div>
-                {visible.length === 0 ? <p class="rounded-xl border p-6 text-muted-foreground">Tidak ada dokumen yang cocok.</p> : <ul class="grid gap-3 sm:grid-cols-2">{visible.map((entry) => <li key={entry.path}><a href={docsHref(entry.path)} class="block h-full rounded-xl border bg-card p-4 transition-colors hover:border-primary/40 hover:bg-muted/30"><span class="block break-all font-medium">{SECTIONS[entry.path]?.title ?? entry.name}{entry.directory ? '/' : ''}</span><span class="mt-1 block break-all text-xs text-muted-foreground">{SECTIONS[entry.path]?.description ?? entry.path}</span></a></li>)}</ul>}
-              </section> : null}
-            </>}
-          </main>
+
+                {missing ? (
+                  <section class="card gap-5 py-10 shadow-none">
+                    <div class="card-header">
+                      <span class="mb-2 grid size-10 place-items-center rounded-lg bg-muted text-muted-foreground">{icon('search', 'size-5')}</span>
+                      <h1 class="card-title text-2xl">{title}</h1>
+                      <p class="card-description">Dokumen ini tidak tersedia. Jelajahi bagian lain dari pusat dokumentasi.</p>
+                    </div>
+                    <div class="card-content">
+                      <a class="btn btn-outline btn-sm" href={docsHref()}>
+                        Kembali ke dokumentasi
+                      </a>
+                    </div>
+                  </section>
+                ) : (
+                  <>
+                    {!query && content ? (
+                      <section class="docs-reader rounded-xl border bg-card px-5 py-7 shadow-xs sm:px-8 sm:py-9">
+                        <div class="mb-7 space-y-4 border-b pb-5">
+                          <p class="font-mono text-xs leading-5 text-muted-foreground [overflow-wrap:anywhere]">{contentPath}</p>
+                          {docsMetadata(content.metadata)}
+                        </div>
+                        {content.headings.some((heading) => heading.level === 2 || heading.level === 3) ? <details class="mb-7 rounded-lg border bg-muted/30 p-4 xl:hidden">
+                          <summary class="flex cursor-pointer items-center justify-between gap-3 text-sm font-medium">Daftar isi {icon('chevron-down', 'size-4')}</summary>
+                          <div class="mt-3">{docsToc(content.headings)}</div>
+                        </details> : null}
+                        <article class="docs-markdown" innerHTML={unsafeHTML(content.html)} />
+                      </section>
+                    ) : (
+                      <div class="space-y-3 pt-3">
+                        <span class="badge badge-outline bg-background text-muted-foreground">{query ? 'Pencarian' : 'Dokumentasi'}</span>
+                        <h1 class="text-3xl leading-tight font-semibold text-balance [overflow-wrap:anywhere]">{title}</h1>
+                        {query ? <p class="text-sm text-pretty text-muted-foreground">Temukan dokumen berdasarkan nama atau lokasi file.</p> : null}
+                      </div>
+                    )}
+
+                    {directory || query ? (
+                      <section class="space-y-4" aria-label="Daftar dokumen">
+                        <div class="flex items-center justify-between gap-4 border-t pt-6">
+                          <h2 class="text-lg font-semibold">{query ? `${visible.length} hasil` : 'Isi folder'}</h2>
+                          <span class="text-sm text-muted-foreground">
+                            {query ? 'Pencarian seluruh dokumentasi' : `${visible.length} item`}
+                          </span>
+                        </div>
+                        {visible.length === 0 ? (
+                          <div class="card items-center gap-3 px-6 py-12 text-center shadow-none">
+                            <span class="grid size-11 place-items-center rounded-full bg-muted text-muted-foreground">{icon('search', 'size-5')}</span>
+                            <p class="font-medium">Tidak ada dokumen yang cocok.</p>
+                            <p class="text-sm text-pretty text-muted-foreground">Coba kata kunci lain, atau jelajahi seluruh dokumentasi.</p>
+                            <a href={docsHref()} class="btn btn-outline btn-sm mt-2">Jelajahi dokumentasi</a>
+                          </div>
+                        ) : (
+                          <ul class="grid gap-3 sm:grid-cols-2">
+                            {visible.map((entry) => (
+                              <li key={entry.path}>{docsEntryCard(entry)}</li>
+                            ))}
+                          </ul>
+                        )}
+                      </section>
+                    ) : null}
+
+                    {docsPager(previous, next)}
+                  </>
+                )}
+              </>}
+              <footer class="flex flex-wrap items-center justify-between gap-3 border-t pt-6 pb-2 text-xs text-muted-foreground">
+                <span>{APP_NAME} / Dokumentasi</span>
+                <a href={docsHref('engineering/contributing.md')} class="inline-flex items-center gap-1.5 hover:text-primary">Panduan kontribusi {icon('arrow-right', 'size-3.5')}</a>
+              </footer>
+            </main>
+
+            {!landing ? <aside class="hidden xl:block">
+              <div class="sticky top-24 max-h-[calc(100dvh-7rem)] overflow-y-auto pb-6">
+                {!query && content ? docsToc(content.headings) : null}
+              </div>
+            </aside> : null}
+          </div>
+
+          <div id="docs-nav" popover="auto" class="docs-mobile-nav sheet lg:hidden" aria-label="Daftar dokumentasi">
+            <div class="flex items-center justify-between border-b pb-4">
+              <span class="font-semibold">Dokumentasi</span>
+              <button
+                type="button"
+                class="btn btn-ghost btn-icon btn-sm"
+                popovertarget="docs-nav"
+                popovertargetaction="hide"
+                aria-label="Tutup"
+              >
+                {icon('x')}
+              </button>
+            </div>
+            <div class="min-h-0 flex-1 overflow-y-auto">{docsSidebar({ file, query, tree })}</div>
+          </div>
         </div>
       </Document>
     )
