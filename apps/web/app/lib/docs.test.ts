@@ -3,7 +3,7 @@ import { describe, it } from 'remix/test'
 import { mkdtemp, mkdir, writeFile, symlink, rm } from 'node:fs/promises'
 import os from 'node:os'
 import path from 'node:path'
-import { documentationLink, renderDocumentation, resolveDocumentation, listDocumentation } from './docs.ts'
+import { adjacentDocumentation, documentationLink, groupDocumentation, renderDocumentation, resolveDocumentation, listDocumentation } from './docs.ts'
 
 describe('documentation reader', () => {
   it('renders headings, tables, code, metadata, and relative documentation links', () => {
@@ -48,6 +48,72 @@ describe('documentation reader', () => {
       }
     } finally {
       await rm(temporary, { recursive: true, force: true })
+    }
+  })
+})
+
+describe('documentation tree', () => {
+  /** Shape `listDocumentation` returns: every directory first, then every file, each group sorted by path. */
+  const entries = [
+    { path: 'architecture', name: 'architecture', directory: true },
+    { path: 'architecture/decisions', name: 'decisions', directory: true },
+    { path: 'product', name: 'product', directory: true },
+    { path: 'README.md', name: 'README.md', directory: false },
+    { path: 'architecture/README.md', name: 'README.md', directory: false },
+    { path: 'architecture/decisions/adr-0002-hosting.md', name: 'adr-0002-hosting.md', directory: false },
+    { path: 'architecture/decisions/adr-0001-sqlite.md', name: 'adr-0001-sqlite.md', directory: false },
+    { path: 'product/brd.md', name: 'brd.md', directory: false },
+    { path: 'product/README.md', name: 'README.md', directory: false },
+  ]
+
+  it('nests entries and orders each level as README, then folders, then files', () => {
+    const tree = groupDocumentation(entries)
+    assert.deepEqual(tree.map((node) => node.path), ['README.md', 'architecture', 'product'])
+
+    const architecture = tree.find((node) => node.path === 'architecture')!
+    assert.deepEqual(architecture.children.map((node) => node.path), [
+      'architecture/README.md',
+      'architecture/decisions',
+    ])
+    assert.deepEqual(
+      architecture.children.find((node) => node.path === 'architecture/decisions')!.children.map((node) => node.path),
+      ['architecture/decisions/adr-0001-sqlite.md', 'architecture/decisions/adr-0002-hosting.md'],
+    )
+    assert.deepEqual(tree.find((node) => node.path === 'product')!.children.map((node) => node.path), [
+      'product/README.md',
+      'product/brd.md',
+    ])
+  })
+
+  it('counts every file in a folder subtree so section badges do not rescan the list', () => {
+    const tree = groupDocumentation(entries)
+    assert.equal(tree.find((node) => node.path === 'architecture')!.fileCount, 3)
+    assert.equal(tree.find((node) => node.path === 'product')!.fileCount, 2)
+    assert.equal(tree.find((node) => node.path === 'README.md')!.fileCount, 0)
+  })
+
+  it('walks neighbours in sidebar reading order and stops at both ends', () => {
+    assert.deepEqual(
+      adjacentDocumentation(entries, 'architecture/README.md').next?.path,
+      'architecture/decisions/adr-0001-sqlite.md',
+    )
+    assert.deepEqual(
+      adjacentDocumentation(entries, 'architecture/decisions/adr-0001-sqlite.md').previous?.path,
+      'architecture/README.md',
+    )
+    assert.deepEqual(adjacentDocumentation(entries, 'product/brd.md').previous?.path, 'product/README.md')
+
+    const first = adjacentDocumentation(entries, 'README.md')
+    assert.equal(first.previous, null)
+    assert.equal(first.next?.path, 'architecture/README.md')
+
+    const last = adjacentDocumentation(entries, 'product/brd.md')
+    assert.equal(last.next, null)
+  })
+
+  it('reports no neighbours for a path that is not a document', () => {
+    for (const file of ['', 'architecture', 'missing.md']) {
+      assert.deepEqual(adjacentDocumentation(entries, file), { previous: null, next: null })
     }
   })
 })

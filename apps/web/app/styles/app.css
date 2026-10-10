@@ -21,6 +21,27 @@
 }
 
 @layer app {
+  .docs-tree {
+    @apply grid gap-0.5;
+  }
+  .docs-tree .docs-tree {
+    @apply mt-0.5 ml-3 border-l pl-2;
+  }
+  .docs-tree .sidebar-link {
+    @apply h-8 text-[13px];
+  }
+  .docs-tree-chevron {
+    @apply shrink-0 text-muted-foreground;
+  }
+  .docs-toc-link {
+    @apply block border-l-2 border-transparent py-1 pl-3 text-sm text-muted-foreground transition-colors hover:border-border hover:text-foreground;
+  }
+  .docs-toc-link-nested {
+    @apply pl-6 text-[13px];
+  }
+}
+
+@layer app {
   .docs-markdown {
     @apply min-w-0 space-y-5 text-sm leading-7 text-foreground;
     overflow-wrap: anywhere;
