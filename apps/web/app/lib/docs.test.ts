@@ -6,6 +6,23 @@ import path from 'node:path'
 import { adjacentDocumentation, documentationLink, groupDocumentation, renderDocumentation, resolveDocumentation, listDocumentation } from './docs.ts'
 
 describe('documentation reader', () => {
+  it('marks Mermaid fences for rendering and preserves escaped source without JavaScript', () => {
+    const document = renderDocumentation('workflow/README.md', '# Flow\n\n```mermaid title="Workflow"\nflowchart LR\n A["<script>alert(1)</script>"] --> B[Done]\n```\n\n```ts\nconst x = 1\n```')
+    assert.equal(document.hasMermaid, true)
+    assert.match(document.html, /<figcaption class="docs-code-title">Workflow<\/figcaption><pre class="mermaid">flowchart LR/)
+    assert.match(document.html, /&lt;script&gt;alert\(1\)&lt;\/script&gt;/)
+    assert.ok(!document.html.includes('<script>'))
+    assert.match(document.html, /class="language-ts"/)
+  })
+
+  it('loads no diagram renderer for ordinary code or Mermaid examples inside another fence', () => {
+    for (const source of ['# Docs\n\n```ts\nconst mermaid = true\n```', '````markdown\n```mermaid\nflowchart LR\n A --> B\n```\n````']) {
+      const document = renderDocumentation('README.md', source)
+      assert.equal(document.hasMermaid, false)
+      assert.ok(!document.html.includes('class="mermaid"'))
+    }
+  })
+
   it('renders headings, tables, code, metadata, and relative documentation links', () => {
     const document = renderDocumentation('engineering/guide.md', '---\nstatus: draft\nreviewed: 2026-10-10\n---\n# Developer guide\n\n## Setup\n\n[Product](../product/brd.md#scope)\n\n| Command | Purpose |\n|---|---|\n| dev | Start |\n\n```ts\nconst x = 1\n```\n\n## Setup')
     assert.equal(document.title, 'Developer guide')
@@ -115,5 +132,40 @@ describe('documentation tree', () => {
     for (const file of ['', 'architecture', 'missing.md']) {
       assert.deepEqual(adjacentDocumentation(entries, file), { previous: null, next: null })
     }
+  })
+})
+
+describe('documentation code blocks', () => {
+  it('wraps a labelled fence in a figure with the language as its header', () => {
+    const document = renderDocumentation('engineering/guide.md', '```ts\nconst x = 1\n```')
+    assert.match(document.html, /<figure class="docs-code">/)
+    assert.match(document.html, /<figcaption class="docs-code-title">ts<\/figcaption>/)
+    assert.match(document.html, /<code class="language-ts">/)
+    assert.match(document.html, /const x = 1/)
+  })
+
+  it('prefers an explicit title over the language label', () => {
+    const titled = renderDocumentation('x.md', '```prisma title="schema.prisma"\nmodel User {}\n```')
+    assert.match(titled.html, /<figcaption class="docs-code-title">schema\.prisma<\/figcaption>/)
+    assert.match(titled.html, /<code class="language-prisma">/)
+  })
+
+  it('leaves an unlabelled fence without a header bar', () => {
+    const plain = renderDocumentation('x.md', '```\nplain text\n```')
+    assert.match(plain.html, /<figure class="docs-code">/)
+    assert.ok(!plain.html.includes('docs-code-title'))
+  })
+
+  it('escapes the header label and keeps fence content escaped', () => {
+    const nasty = renderDocumentation('x.md', '```ts title="<img src=x onerror=alert(1)>"\n<script>alert(1)</script>\n```')
+    assert.ok(!nasty.html.includes('<img src=x'))
+    assert.ok(!nasty.html.includes('<script>alert(1)</script>'))
+    assert.match(nasty.html, /&lt;img/)
+  })
+
+  it('still renders inline code and indented code outside the figure wrapper', () => {
+    const document = renderDocumentation('x.md', 'Use `npm run dev` to start.')
+    assert.match(document.html, /<code>npm run dev<\/code>/)
+    assert.ok(!document.html.includes('docs-code'))
   })
 })

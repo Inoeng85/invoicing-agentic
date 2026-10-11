@@ -37,6 +37,7 @@ import { AppLayout, loadShellUser } from '../ui/layout.tsx'
 import { PublicInvoicePage, PublicInvoiceUnavailable } from '../ui/public-invoice.tsx'
 import { SendPage, type SendState } from '../ui/send-page.tsx'
 import { assets } from '../assets.ts'
+import { mermaidAssetResponse } from '../lib/mermaid-assets.ts'
 import { routes } from '../routes.ts'
 
 const DASHBOARD_TABS: StatusFilter[] = ['all', 'draft', 'sent', 'overdue', 'paid']
@@ -49,6 +50,8 @@ function showRedirect(invoiceId: string, notice?: string): never {
 export default createController(routes, {
   actions: {
     async assets(context) {
+      const vendor = await mermaidAssetResponse(context.request)
+      if (vendor) return vendor
       return (await assets.fetch(context.request)) ?? new Response('Not Found', { status: 404 })
     },
 

@@ -5,6 +5,7 @@ import {
   type DocumentationEntry,
   type DocumentationNode,
 } from '../lib/docs.ts'
+import { SearchShortcut } from '../actions/public/search-shortcut.tsx'
 import { routes } from '../routes.ts'
 import { icon, type IconName } from './icons.tsx'
 
@@ -58,11 +59,11 @@ export function docsHeader(query: string) {
           <span class="text-base">{APP_NAME}</span>
         </a>
         <span class="hidden items-center gap-3 text-lg font-semibold sm:inline-flex"><span class="font-normal text-muted-foreground">/</span> docs</span>
-        <form action={docsHref()} method="get" role="search" class="order-last w-full sm:order-none sm:ml-auto sm:max-w-xs">
+        <form action={docsHref()} method="get" role="search" class="order-last w-full sm:order-none sm:ml-auto sm:max-w-sm">
           <label for="docs-search" class="sr-only">
             Cari dokumentasi
           </label>
-          <div class="input-group rounded-full border-border bg-card shadow-none">
+          <div class="input-group rounded-lg border-border bg-card shadow-none">
             <span class="input-addon bg-transparent pr-0 text-muted-foreground">{icon('search', 'size-4')}</span>
             <input
               id="docs-search"
@@ -72,12 +73,10 @@ export function docsHeader(query: string) {
               placeholder="Cari panduan dan referensi…"
               class="input"
             />
-            <button type="submit" class="btn btn-ghost btn-icon btn-sm mr-1" aria-label="Cari dokumentasi">
-              {icon('arrow-right')}
-            </button>
+            <SearchShortcut target="docs-search" />
           </div>
         </form>
-        <a class="btn btn-sm ml-auto shrink-0 rounded-full bg-foreground text-background hover:bg-foreground/90 sm:ml-0" href={routes.home.href()} aria-label="Buka aplikasi">
+        <a class="btn btn-sm ml-auto shrink-0 rounded-lg bg-foreground text-background hover:bg-foreground/90 sm:ml-0" href={routes.home.href()} aria-label="Buka aplikasi">
           <span class="hidden sm:inline">Buka aplikasi</span>
           {icon('arrow-right')}
         </a>
@@ -122,7 +121,7 @@ export function docsSidebar(options: { file: string; query: string; tree: Docume
   const openSection = file.split('/')[0] ?? ''
   return (
     <nav aria-label="Bagian dokumentasi" class="grid gap-1">
-      <p class="px-2.5 pt-1 pb-2 text-xs text-muted-foreground">Mulai</p>
+      <p class="docs-group-label">Mulai</p>
       <a href={docsHref()} class="sidebar-link" aria-current={!file && !query ? 'page' : undefined}>
         {icon('book-open')}
         Mulai di sini
@@ -133,7 +132,7 @@ export function docsSidebar(options: { file: string; query: string; tree: Docume
       </a>
       {DOC_GROUPS.map((group) => (
         <div key={group.title} class="mt-6 grid gap-1">
-          <p class="px-2.5 pb-2 text-xs text-muted-foreground">{group.title}</p>
+          <p class="docs-group-label">{group.title}</p>
           {group.sections.map((key) => {
             const section = DOC_SECTIONS[key]!
             const node = tree.find((entry) => entry.path === key)
