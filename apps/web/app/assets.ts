@@ -28,7 +28,10 @@ export const assets = createAssetServer({
         moduleImporter: 'remix/multiple-import-maps-polyfill',
       }
     : undefined,
-  scripts: { loaders: isHmr ? [componentHmr()] : undefined },
+  scripts: {
+    external: ['/assets/vendor/mermaid/mermaid.esm.min.mjs'],
+    loaders: isHmr ? [componentHmr()] : undefined,
+  },
 })
 
 const entry = 'app/actions/public/entry.ts'

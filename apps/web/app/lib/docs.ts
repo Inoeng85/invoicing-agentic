@@ -16,6 +16,7 @@ export interface DocumentationEntry {
 export interface DocumentationContent {
   title: string
   html: string
+  hasMermaid: boolean
   metadata: Array<{ name: string; value: string }>
   headings: Array<{ id: string; title: string; level: number }>
 }
@@ -166,12 +167,17 @@ export function renderDocumentation(file: string, source: string): Documentation
     }
   }
   const renderFence = markdown.renderer.rules.fence
+  let hasMermaid = false
   markdown.renderer.rules.fence = (tokens, index, options, env, renderer) => {
     const token = tokens[index]
     const info = token.info.trim()
     const language = info.split(/\s+/)[0] ?? ''
     // Docs use bare language fences today; `title="…"` stays supported for named files.
     const label = info.match(/title="([^"]*)"/)?.[1] ?? language
+    if (language === 'mermaid') {
+      hasMermaid = true
+      return `<figure class="docs-code docs-mermaid"><figcaption class="docs-code-title">${markdown.utils.escapeHtml(label)}</figcaption><pre class="mermaid">${markdown.utils.escapeHtml(token.content)}</pre></figure>`
+    }
     token.info = language
     const code = renderFence
       ? renderFence(tokens, index, options, env, renderer)
@@ -183,7 +189,7 @@ export function renderDocumentation(file: string, source: string): Documentation
   }
 
   const html = markdown.render(source)
-  return { title: headings.find((heading) => heading.level === 1)?.title ?? path.basename(file), html, metadata, headings }
+  return { title: headings.find((heading) => heading.level === 1)?.title ?? path.basename(file), html, hasMermaid, metadata, headings }
 }
 
 export async function readDocumentation(file: string) {

@@ -6,6 +6,7 @@ import { detectContentType } from 'remix/mime'
 import { unsafeHTML, type Handle } from 'remix/component'
 
 import { Document } from '../document.tsx'
+import { MermaidDiagrams } from '../public/mermaid-diagrams.tsx'
 import { APP_NAME } from '../../lib/brand.ts'
 import {
   adjacentDocumentation,
@@ -154,7 +155,8 @@ function DocsPage(handle: Handle<DocsPageProps>) {
                           <summary class="flex cursor-pointer items-center justify-between gap-3 text-sm font-medium">Daftar isi {icon('chevron-down', 'size-4')}</summary>
                           <div class="mt-3">{docsToc(content.headings)}</div>
                         </details> : null}
-                        <article class="docs-markdown" innerHTML={unsafeHTML(content.html)} />
+                        <article id="docs-article" class="docs-markdown" innerHTML={unsafeHTML(content.html)} />
+                        {content.hasMermaid ? <MermaidDiagrams target="docs-article" /> : null}
                       </section>
                     ) : (
                       <div class="space-y-3 pt-3">

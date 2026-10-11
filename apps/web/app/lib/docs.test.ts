@@ -6,6 +6,23 @@ import path from 'node:path'
 import { adjacentDocumentation, documentationLink, groupDocumentation, renderDocumentation, resolveDocumentation, listDocumentation } from './docs.ts'
 
 describe('documentation reader', () => {
+  it('marks Mermaid fences for rendering and preserves escaped source without JavaScript', () => {
+    const document = renderDocumentation('workflow/README.md', '# Flow\n\n```mermaid title="Workflow"\nflowchart LR\n A["<script>alert(1)</script>"] --> B[Done]\n```\n\n```ts\nconst x = 1\n```')
+    assert.equal(document.hasMermaid, true)
+    assert.match(document.html, /<figcaption class="docs-code-title">Workflow<\/figcaption><pre class="mermaid">flowchart LR/)
+    assert.match(document.html, /&lt;script&gt;alert\(1\)&lt;\/script&gt;/)
+    assert.ok(!document.html.includes('<script>'))
+    assert.match(document.html, /class="language-ts"/)
+  })
+
+  it('loads no diagram renderer for ordinary code or Mermaid examples inside another fence', () => {
+    for (const source of ['# Docs\n\n```ts\nconst mermaid = true\n```', '````markdown\n```mermaid\nflowchart LR\n A --> B\n```\n````']) {
+      const document = renderDocumentation('README.md', source)
+      assert.equal(document.hasMermaid, false)
+      assert.ok(!document.html.includes('class="mermaid"'))
+    }
+  })
+
   it('renders headings, tables, code, metadata, and relative documentation links', () => {
     const document = renderDocumentation('engineering/guide.md', '---\nstatus: draft\nreviewed: 2026-10-10\n---\n# Developer guide\n\n## Setup\n\n[Product](../product/brd.md#scope)\n\n| Command | Purpose |\n|---|---|\n| dev | Start |\n\n```ts\nconst x = 1\n```\n\n## Setup')
     assert.equal(document.title, 'Developer guide')

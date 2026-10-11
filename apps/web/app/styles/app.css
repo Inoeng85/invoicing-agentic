@@ -123,6 +123,8 @@
   .docs-markdown pre { @apply overflow-x-auto rounded-lg border bg-background p-5 text-xs leading-6 text-foreground; overflow-wrap: normal; }
   /* The figure owns the frame, so the inner pre drops its own border and radius. */
   .docs-markdown .docs-code > pre { @apply rounded-none border-0; }
+  .docs-markdown .mermaid[data-mermaid-state='rendered'] { @apply whitespace-normal; }
+  .docs-markdown .mermaid > svg { @apply mx-auto block h-auto; }
   .docs-markdown :not(pre) > code { @apply rounded bg-muted px-1.5 py-0.5 text-[0.85em]; }
   .docs-markdown table { @apply block max-w-full overflow-x-auto border-collapse text-left text-sm; }
   .docs-markdown th, .docs-markdown td { @apply border px-3 py-2 align-top; }
